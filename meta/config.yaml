@@ -1,0 +1,29 @@
+# Configurations for APIEndpoints. APIServer will
+# act on individual methods upon the configurations
+# provided.
+
+type: "InterceptorConfig"
+authenticationInterceptor:
+  order: 1
+  unauthenticatedEndpoint:
+    - "/health.Health/Status"
+    - "/auth.Authentication/Login"
+    - "/auth.Authentication/Logout"
+    - "/auth.Authentication/Token"
+    - "/kubernetes.Clusters/StartupScript"
+    - "/mailinglist.MailingList/SendEmail"
+    - "/mailinglist.MailingList/Subscribe"
+    - "/mailinglist.MailingList/Unsubscribe"
+    - "/namespace.Namespace/Create"
+    - "/namespace.Namespace/Get"
+    - "/namespace.Namespace/IsAvailable"
+  systemAuthenticatedEndpoint:
+    - "/ci.Master/Create"
+    - "/ci.Master/Delete"
+    - "/backup.Client/ReConfigure"
+    - "/backup.Server/Create"
+    - "/backup.Server/Delete"
+validationInterceptor:
+  order: 2
+  noValidation:
+    - "/health.Health/Status"

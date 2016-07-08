@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package gearman;
+
+import "api/certificate/v0.1/certificate.proto";
+import "api/ci/v0.1/agent.proto";
+import "api/kubernetes/v0.1/clusters.proto";
+import "api/db/v0.1/database.proto";
+
+message Auth {
+  string namespace = 1;
+  string username = 2;
+  string token = 3;
+  string token_type = 4;
+}
+
+message Metadata {
+  repeated string purchase_phid = 1;
+}
+
+// Next Id: 11
+enum OperationType {
+  UNKNOWN = 0;
+  CLUSTER_CREATE = 1;
+  CLUSTER_SCALE = 2;
+  CLUSTER_DELETE = 3;
+  CLUSTER_UPDATE = 4;
+  CI_AGENT_CREATE = 5;
+  CI_AGENT_DELETE = 6;
+  CHECK_DNS = 7;
+  NAMESPACE_CREATE = 8;
+  DATA_BUCKET_DELETE = 9;
+  DATABASE_BACKUP = 10;
+  NAMESPACE_ADMIN_TASK = 11;
+}
+
+// Next Id: 10
+message Operation {
+  string phid = 1;
+  Auth auth = 2;
+  int64 request_time = 3;
+  Metadata metadata = 4;
+  OperationType type = 5;
+  oneof request {
+    kubernetes.ClusterCreateRequest cluster_create_request = 6;
+    kubernetes.ClusterScaleRequest cluster_scale_request = 7;
+    kubernetes.ClusterDeleteRequest cluster_delete_request = 8;
+    kubernetes.ClusterUpdateRequest cluster_update_request = 9;
+    ci.AgentCreateRequest ci_agent_create_request = 10;
+    ci.AgentDeleteRequest ci_agent_delete_request = 11;
+    certificate.DNSCheckRequest dns_check_request = 12;
+    DataBucketDeleteRequest data_bucket_delete_request = 13;
+    db.BackupScheduleRequest db_backup_schedule_request = 14;
+  }
+}
+
+message DataBucketDeleteRequest {
+  string data_type = 1;
+  string namespace = 2;
+  string prefix = 3;
+}
