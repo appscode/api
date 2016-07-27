@@ -143,11 +143,6 @@ func init() {
     "icinga_service": {
       "type": "string"
     },
-    "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
-    },
     "notifier_param": {
       "items": {
         "$ref": "#/definitions/alertNotifierParam"
@@ -249,11 +244,6 @@ func init() {
     },
     "icinga_param": {
       "$ref": "#/definitions/alertIcingaParam"
-    },
-    "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
     },
     "notifier_param": {
       "items": {
