@@ -4,9 +4,120 @@
     "application/json"
   ],
   "definitions": {
-    "artifactoryArtifact": {
+    "artifactoryArtifactVersion": {
       "properties": {
+        "docker": {
+          "$ref": "#/definitions/artifactoryDockerSpec"
+        },
+        "id": {
+          "format": "string",
+          "type": "string"
+        },
+        "java": {
+          "$ref": "#/definitions/artifactoryJavaSpec"
+        },
         "last_modified_time": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "npm": {
+          "$ref": "#/definitions/artifactoryNpmSpec"
+        },
+        "php": {
+          "$ref": "#/definitions/artifactoryPhpSpec"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        },
+        "version": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "artifactoryDockerSpec": {
+      "properties": {
+        "manifest_url": {
+          "format": "string",
+          "type": "string"
+        },
+        "tar_sums": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "artifactoryJavaSpec": {
+      "properties": {
+        "artifact_id": {
+          "format": "string",
+          "type": "string"
+        },
+        "artifact_url": {
+          "format": "string",
+          "type": "string"
+        },
+        "group_id": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "artifactoryNpmSpec": {
+      "properties": {
+        "artifact_id": {
+          "format": "string",
+          "type": "string"
+        },
+        "artifact_url": {
+          "format": "string",
+          "type": "string"
+        },
+        "description": {
+          "format": "string",
+          "type": "string"
+        },
+        "keywords": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "shasum": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "artifactoryPhpSpec": {
+      "properties": {
+        "download_url": {
+          "format": "string",
+          "type": "string"
+        },
+        "shasum": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "artifactoryVersionDescribeRequest": {
+      "properties": {
+        "id": {
           "format": "string",
           "type": "string"
         },
@@ -21,52 +132,36 @@
       },
       "type": "object"
     },
-    "artifactoryArtifactListRequest": {
+    "artifactoryVersionDescribeResponse": {
       "properties": {
-        "type": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "artifactoryArtifactListResponse": {
-      "properties": {
-        "artifacts": {
-          "items": {
-            "$ref": "#/definitions/artifactoryArtifact"
-          },
-          "type": "array"
-        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        },
+        "version": {
+          "$ref": "#/definitions/artifactoryArtifactVersion"
         }
       },
       "type": "object"
     },
-    "artifactoryArtifactSearchRequest": {
+    "artifactoryVersionListRequest": {
       "properties": {
-        "query": {
-          "format": "string",
-          "type": "string"
-        },
-        "type": {
+        "name": {
           "format": "string",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "artifactoryArtifactSearchResponse": {
+    "artifactoryVersionListResponse": {
       "properties": {
-        "artifacts": {
-          "items": {
-            "$ref": "#/definitions/artifactoryArtifact"
-          },
-          "type": "array"
-        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        },
+        "versions": {
+          "items": {
+            "$ref": "#/definitions/artifactoryArtifactVersion"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -138,39 +233,71 @@
   },
   "host": "api.appscode.com",
   "info": {
-    "title": "artifact.proto",
+    "title": "version.proto",
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/artifactory/v0.1/artifact": {
+    "/appscode/api/artifactory/v0.1/artifact/{name}": {
       "get": {
         "operationId": "List",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/artifactoryArtifactListResponse"
+              "$ref": "#/definitions/artifactoryVersionListResponse"
             }
           }
         },
         "tags": [
-          "Artifacts"
+          "Versions"
         ]
       }
     },
-    "/appscode/api/artifactory/v0.1/search": {
+    "/appscode/api/artifactory/v0.1/artifact/{name}/{id}/{type}": {
       "get": {
-        "operationId": "Search",
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/artifactoryArtifactSearchResponse"
+              "$ref": "#/definitions/artifactoryVersionDescribeResponse"
             }
           }
         },
         "tags": [
-          "Artifacts"
+          "Versions"
         ]
       }
     }

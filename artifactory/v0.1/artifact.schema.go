@@ -7,25 +7,12 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var listRequestSchema *gojsonschema.Schema
-var searchRequestSchema *gojsonschema.Schema
-var describeRequestSchema *gojsonschema.Schema
+var artifactSearchRequestSchema *gojsonschema.Schema
+var artifactListRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	listRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "type": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	searchRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	artifactSearchRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "query": {
@@ -40,12 +27,9 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	describeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	artifactListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "id": {
-      "type": "string"
-    },
     "type": {
       "type": "string"
     }
@@ -57,27 +41,19 @@ func init() {
 	}
 }
 
-func (m *ListRequest) IsValid() (*gojsonschema.Result, error) {
-	return listRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *ArtifactSearchRequest) IsValid() (*gojsonschema.Result, error) {
+	return artifactSearchRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ListRequest) IsRequest() {}
+func (m *ArtifactSearchRequest) IsRequest() {}
 
-func (m *SearchRequest) IsValid() (*gojsonschema.Result, error) {
-	return searchRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *ArtifactListRequest) IsValid() (*gojsonschema.Result, error) {
+	return artifactListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *SearchRequest) IsRequest() {}
+func (m *ArtifactListRequest) IsRequest() {}
 
-func (m *DescribeRequest) IsValid() (*gojsonschema.Result, error) {
-	return describeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *DescribeRequest) IsRequest() {}
-
-func (m *ListResponse) SetStatus(s *dtypes.Status) {
+func (m *ArtifactSearchResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-func (m *DescribeResponse) SetStatus(s *dtypes.Status) {
-	m.Status = s
-}
-func (m *SearchResponse) SetStatus(s *dtypes.Status) {
+func (m *ArtifactListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

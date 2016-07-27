@@ -6,88 +6,40 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Artifacts {
-  rpc Search(SearchRequest) returns(SearchResponse) {
+  rpc Search(ArtifactSearchRequest) returns(ArtifactSearchResponse) {
     option(google.api.http) = {
       get: "/appscode/api/artifactory/v0.1/search"
     };
   }
 
-  rpc List(ListRequest) returns (ListResponse) {
+  rpc List(ArtifactListRequest) returns (ArtifactListResponse) {
     option (google.api.http) = {
       get: "/appscode/api/artifactory/v0.1/artifact"
     };
   }
-
-  rpc Describe(DescribeRequest) returns (DescribeResponse) {
-    option(google.api.http) = {
-      get: "/appscode/api/artifactory/v0.1/artifact/{id}/{type}"
-    };
-  }
 }
 
-message SearchRequest {
+message ArtifactSearchRequest {
   string query = 1;
   string type = 2;
 }
 
-message SearchResponse {
+message ArtifactSearchResponse {
   dtypes.Status status = 1;
   repeated Artifact artifacts = 2;
 }
 
-message ListRequest {
+message ArtifactListRequest {
   string type = 1;
 }
 
-message ListResponse {
+message ArtifactListResponse {
   dtypes.Status status = 1;
   repeated Artifact artifacts = 2;
-}
-
-message DescribeRequest {
-  string id = 2;
-  string type = 1;
-}
-
-message DescribeResponse {
-  dtypes.Status status = 1;
-  Artifact artifact = 2;
 }
 
 message Artifact {
-  string id = 1;
-  string name = 2;
-  string version = 3;
-  string last_modified_time = 4;
-  string type = 5;
-  oneof specs {
-    JavaSpec java = 6;
-    DockerSpec docker = 7;
-    PhpSpec php = 8;
-    NpmSpec npm = 9;
-  }
-}
-
-message JavaSpec {
-  string group_id = 1;
-  string artifact_id = 2;
-  string artifact_url = 3;
-}
-
-message DockerSpec {
-  repeated string tar_sums = 1;
-  string manifest_url = 2;
-}
-
-message PhpSpec {
-  string download_url = 1;
-  string shasum = 2;
-}
-
-message NpmSpec {
-  string description = 1;
-  string artifact_id = 2;
-  string shasum = 3;
-  repeated string keywords = 4;
-  string artifact_url = 5;
+  string name = 1;
+  string type = 2;
+  string last_modified_time = 3;
 }
