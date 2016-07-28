@@ -70,7 +70,7 @@ message IcingaState {
 
 message NotifierParam {
   string state = 1;
-  string user_phid = 2;
+  string user_uid = 2;
   string method = 3;
 }
 
