@@ -205,7 +205,7 @@
           "format": "string",
           "type": "string"
         },
-        "user_phid": {
+        "user_uid": {
           "format": "string",
           "type": "string"
         }

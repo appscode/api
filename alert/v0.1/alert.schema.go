@@ -120,7 +120,7 @@ func init() {
         "state": {
           "type": "string"
         },
-        "user_phid": {
+        "user_uid": {
           "type": "string"
         }
       },
@@ -231,7 +231,7 @@ func init() {
         "state": {
           "type": "string"
         },
-        "user_phid": {
+        "user_uid": {
           "type": "string"
         }
       },
