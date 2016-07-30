@@ -52,6 +52,7 @@ It has these top-level messages:
 	ClusterInstanceListRequest
 	ClusterInstance
 	ClusterInstanceListResponse
+	ClusterUpdateRequest
 	ClusterUpgradeRequest
 	EventRequest
 	EventResponse

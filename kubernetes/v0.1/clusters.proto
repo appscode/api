@@ -25,6 +25,12 @@ service Clusters {
     };
   }
 
+  rpc Update(ClusterUpdateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+       post : "/appscode/api/kubernetes/v0.1/clusters/{name}"
+    };
+  }
+
   rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
       post: "/appscode/api/kubernetes/v0.1/clusters/{name}/scale"
@@ -74,8 +80,8 @@ message Cluster {
   int32 nodes = 8;
   string created_at = 9;
   map<string, string> links = 10;
+  bool do_not_delete = 11;
 }
-
 
 message ClusterDescribeRequest {
   string name = 1;
@@ -97,7 +103,6 @@ message ClusterDescribeResponse {
   Specs specs = 3;
 }
 
-
 message ClusterListResponse {
   dtypes.Status status = 1;
   repeated Cluster clusters = 2;
@@ -113,6 +118,7 @@ message ClusterCreateRequest {
   string saltbase_version = 7;
   string kube_starter_version = 8;
   string kube_version = 9;
+  bool do_not_delete = 10;
 }
 
 message ClusterScaleRequest {
@@ -165,6 +171,11 @@ message ClusterInstance {
 message ClusterInstanceListResponse {
   dtypes.Status status = 1;
   repeated ClusterInstance instances = 2;
+}
+
+message ClusterUpdateRequest {
+  string name = 1;
+  bool do_not_delete = 2;
 }
 
 message ClusterUpgradeRequest {

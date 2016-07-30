@@ -27,6 +27,9 @@
           },
           "type": "object"
         },
+        "do_not_delete": {
+          "type": "boolean"
+        },
         "kube_starter_version": {
           "type": "string"
         },
@@ -108,6 +111,19 @@
     "kubernetesClusterStartupScriptRequest": {
       "properties": {
         "role": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterUpdateRequest": {
+      "properties": {
+        "do_not_delete": {
+          "type": "boolean"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },

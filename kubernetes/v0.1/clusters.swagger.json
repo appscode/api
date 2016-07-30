@@ -106,11 +106,23 @@
       "description": "Void Requests and response to use with other types.",
       "type": "object"
     },
+    "dtypesVoidResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesCluster": {
       "properties": {
         "created_at": {
           "format": "string",
           "type": "string"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
         },
         "links": {
           "additionalProperties": {
@@ -187,6 +199,10 @@
             "type": "string"
           },
           "type": "object"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
         },
         "kube_starter_version": {
           "format": "string",
@@ -365,6 +381,19 @@
       },
       "type": "object"
     },
+    "kubernetesClusterUpdateRequest": {
+      "properties": {
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesClusterUpgradeRequest": {
       "properties": {
         "kube_starter_version": {
@@ -539,6 +568,29 @@
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesClusterDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      },
+      "post": {
+        "operationId": "Update",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
