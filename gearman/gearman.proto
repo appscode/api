@@ -24,7 +24,7 @@ enum OperationType {
   CLUSTER_CREATE = 1;
   CLUSTER_SCALE = 2;
   CLUSTER_DELETE = 3;
-  CLUSTER_UPDATE = 4;
+  CLUSTER_UPGRADE = 4;
   CI_AGENT_CREATE = 5;
   CI_AGENT_DELETE = 6;
   CHECK_DNS = 7;
@@ -45,7 +45,7 @@ message Operation {
     kubernetes.ClusterCreateRequest cluster_create_request = 6;
     kubernetes.ClusterScaleRequest cluster_scale_request = 7;
     kubernetes.ClusterDeleteRequest cluster_delete_request = 8;
-    kubernetes.ClusterUpdateRequest cluster_update_request = 9;
+    kubernetes.ClusterUpgradeRequest cluster_upgrade_request = 9;
     ci.AgentCreateRequest ci_agent_create_request = 10;
     ci.AgentDeleteRequest ci_agent_delete_request = 11;
     certificate.DNSCheckRequest dns_check_request = 12;

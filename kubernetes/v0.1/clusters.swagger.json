@@ -365,7 +365,7 @@
       },
       "type": "object"
     },
-    "kubernetesClusterUpdateRequest": {
+    "kubernetesClusterUpgradeRequest": {
       "properties": {
         "kube_starter_version": {
           "format": "string",
@@ -442,30 +442,6 @@
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesClusterListResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      },
-      "post": {
-        "operationId": "Scale",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/kubernetesClusterScaleRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesLongRunningResponse"
             }
           }
         },
@@ -569,29 +545,6 @@
         "tags": [
           "Clusters"
         ]
-      },
-      "post": {
-        "operationId": "Update",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesLongRunningResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
       }
     },
     "/appscode/api/kubernetes/v0.1/clusters/{name}/client-config": {
@@ -611,6 +564,64 @@
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/kubernetesClusterClientConfigResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v0.1/clusters/{name}/scale": {
+      "post": {
+        "operationId": "Scale",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/kubernetesClusterScaleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v0.1/clusters/{name}/upgrade": {
+      "post": {
+        "operationId": "Upgrade",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
             }
           }
         },

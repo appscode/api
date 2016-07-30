@@ -6,6 +6,12 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Clusters {
+  rpc List(dtypes.VoidRequest) returns (ClusterListResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v0.1/clusters"
+     };
+  }
+
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v0.1/clusters/{name}"
@@ -13,41 +19,29 @@ service Clusters {
   }
 
   rpc Create(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
-  	option (google.api.http) = {
-  	  put: "/appscode/api/kubernetes/v0.1/clusters"
+    option (google.api.http) = {
+      put: "/appscode/api/kubernetes/v0.1/clusters"
       body: "*"
     };
   }
 
   rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
-  	option (google.api.http) = {
-  	  post: "/appscode/api/kubernetes/v0.1/clusters"
+    option (google.api.http) = {
+      post: "/appscode/api/kubernetes/v0.1/clusters/{name}/scale"
       body: "*"
     };
   }
 
-  rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
-  	option (google.api.http) = {
-  	  delete : "/appscode/api/kubernetes/v0.1/clusters/{name}"
-  	};
-  }
-
-  rpc Update(ClusterUpdateRequest) returns (dtypes.LongRunningResponse) {
+  rpc Upgrade(ClusterUpgradeRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-       post : "/appscode/api/kubernetes/v0.1/clusters/{name}"
+       post : "/appscode/api/kubernetes/v0.1/clusters/{name}/upgrade"
     };
   }
 
-  rpc List(dtypes.VoidRequest) returns (ClusterListResponse) {
-     option (google.api.http) = {
-       get : "/appscode/api/kubernetes/v0.1/clusters"
-     };
-  }
-
-  rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
-     option (google.api.http) = {
-       get : "/appscode/api/kubernetes/v0.1/cluster-startup-script/{role}"
-     };
+  rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+      delete : "/appscode/api/kubernetes/v0.1/clusters/{name}"
+    };
   }
 
   rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
@@ -59,6 +53,12 @@ service Clusters {
   rpc Instances(ClusterInstanceListRequest) returns (ClusterInstanceListResponse) {
      option (google.api.http) = {
        get : "/appscode/api/kubernetes/v0.1/clusters/{cluster_name}/instances"
+     };
+  }
+
+  rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v0.1/cluster-startup-script/{role}"
      };
   }
 }
@@ -167,7 +167,7 @@ message ClusterInstanceListResponse {
   repeated ClusterInstance instances = 2;
 }
 
-message ClusterUpdateRequest {
+message ClusterUpgradeRequest {
   string name = 1;
   string saltbase_version = 2;
   string kube_starter_version = 3;

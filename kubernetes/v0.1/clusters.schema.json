@@ -113,7 +113,7 @@
       },
       "type": "object"
     },
-    "kubernetesClusterUpdateRequest": {
+    "kubernetesClusterUpgradeRequest": {
       "properties": {
         "kube_starter_version": {
           "type": "string"

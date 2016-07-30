@@ -9,7 +9,7 @@ import (
 
 var clusterInstanceListRequestSchema *gojsonschema.Schema
 var clusterScaleRequestSchema *gojsonschema.Schema
-var clusterUpdateRequestSchema *gojsonschema.Schema
+var clusterUpgradeRequestSchema *gojsonschema.Schema
 var clusterDeleteRequestSchema *gojsonschema.Schema
 var clusterDescribeRequestSchema *gojsonschema.Schema
 var clusterStartupScriptRequestSchema *gojsonschema.Schema
@@ -52,7 +52,7 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	clusterUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	clusterUpgradeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "kube_starter_version": {
@@ -190,10 +190,10 @@ func (m *ClusterScaleRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterScaleRequest) IsRequest() {}
 
-func (m *ClusterUpdateRequest) IsValid() (*gojsonschema.Result, error) {
-	return clusterUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *ClusterUpgradeRequest) IsValid() (*gojsonschema.Result, error) {
+	return clusterUpgradeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterUpdateRequest) IsRequest() {}
+func (m *ClusterUpgradeRequest) IsRequest() {}
 
 func (m *ClusterDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
