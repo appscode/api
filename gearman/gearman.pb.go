@@ -13,6 +13,7 @@ It has these top-level messages:
 	Metadata
 	Operation
 	DataBucketDeleteRequest
+	NamespaceAdminTaskRequest
 */
 package gearman
 
@@ -23,6 +24,7 @@ import certificate "github.com/appscode/api/certificate/v0.1"
 import ci "github.com/appscode/api/ci/v0.1"
 import kubernetes "github.com/appscode/api/kubernetes/v0.1"
 import db "github.com/appscode/api/db/v0.1"
+import namespace "github.com/appscode/api/namespace/v0.1"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -46,11 +48,11 @@ const (
 	OperationType_CLUSTER_UPGRADE      OperationType = 4
 	OperationType_CI_AGENT_CREATE      OperationType = 5
 	OperationType_CI_AGENT_DELETE      OperationType = 6
-	OperationType_CHECK_DNS            OperationType = 7
-	OperationType_NAMESPACE_CREATE     OperationType = 8
-	OperationType_DATA_BUCKET_DELETE   OperationType = 9
-	OperationType_DATABASE_BACKUP      OperationType = 10
-	OperationType_NAMESPACE_ADMIN_TASK OperationType = 11
+	OperationType_DATA_BUCKET_DELETE   OperationType = 7
+	OperationType_DATABASE_BACKUP      OperationType = 8
+	OperationType_NAMESPACE_CREATE     OperationType = 9
+	OperationType_NAMESPACE_ADMIN_TASK OperationType = 10
+	OperationType_CHECK_DNS            OperationType = 11
 )
 
 var OperationType_name = map[int32]string{
@@ -61,11 +63,11 @@ var OperationType_name = map[int32]string{
 	4:  "CLUSTER_UPGRADE",
 	5:  "CI_AGENT_CREATE",
 	6:  "CI_AGENT_DELETE",
-	7:  "CHECK_DNS",
-	8:  "NAMESPACE_CREATE",
-	9:  "DATA_BUCKET_DELETE",
-	10: "DATABASE_BACKUP",
-	11: "NAMESPACE_ADMIN_TASK",
+	7:  "DATA_BUCKET_DELETE",
+	8:  "DATABASE_BACKUP",
+	9:  "NAMESPACE_CREATE",
+	10: "NAMESPACE_ADMIN_TASK",
+	11: "CHECK_DNS",
 }
 var OperationType_value = map[string]int32{
 	"UNKNOWN":              0,
@@ -75,11 +77,11 @@ var OperationType_value = map[string]int32{
 	"CLUSTER_UPGRADE":      4,
 	"CI_AGENT_CREATE":      5,
 	"CI_AGENT_DELETE":      6,
-	"CHECK_DNS":            7,
-	"NAMESPACE_CREATE":     8,
-	"DATA_BUCKET_DELETE":   9,
-	"DATABASE_BACKUP":      10,
-	"NAMESPACE_ADMIN_TASK": 11,
+	"DATA_BUCKET_DELETE":   7,
+	"DATABASE_BACKUP":      8,
+	"NAMESPACE_CREATE":     9,
+	"NAMESPACE_ADMIN_TASK": 10,
+	"CHECK_DNS":            11,
 }
 
 func (x OperationType) String() string {
@@ -110,11 +112,6 @@ func (*Metadata) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1}
 
 // Next Id: 10
 type Operation struct {
-	Phid        string        `protobuf:"bytes,1,opt,name=phid" json:"phid,omitempty"`
-	Auth        *Auth         `protobuf:"bytes,2,opt,name=auth" json:"auth,omitempty"`
-	RequestTime int64         `protobuf:"varint,3,opt,name=request_time,json=requestTime" json:"request_time,omitempty"`
-	Metadata    *Metadata     `protobuf:"bytes,4,opt,name=metadata" json:"metadata,omitempty"`
-	Type        OperationType `protobuf:"varint,5,opt,name=type,enum=gearman.OperationType" json:"type,omitempty"`
 	// Types that are valid to be assigned to Request:
 	//	*Operation_ClusterCreateRequest
 	//	*Operation_ClusterScaleRequest
@@ -122,10 +119,17 @@ type Operation struct {
 	//	*Operation_ClusterUpgradeRequest
 	//	*Operation_CiAgentCreateRequest
 	//	*Operation_CiAgentDeleteRequest
-	//	*Operation_DnsCheckRequest
 	//	*Operation_DataBucketDeleteRequest
 	//	*Operation_DbBackupScheduleRequest
-	Request isOperation_Request `protobuf_oneof:"request"`
+	//	*Operation_NamespaceCreateRequest
+	//	*Operation_NamespaceAdminTaskRequest
+	//	*Operation_DnsCheckRequest
+	Request     isOperation_Request `protobuf_oneof:"request"`
+	Type        OperationType       `protobuf:"varint,12,opt,name=type,enum=gearman.OperationType" json:"type,omitempty"`
+	RequestTime int64               `protobuf:"varint,13,opt,name=request_time,json=requestTime" json:"request_time,omitempty"`
+	Phid        string              `protobuf:"bytes,14,opt,name=phid" json:"phid,omitempty"`
+	Auth        *Auth               `protobuf:"bytes,15,opt,name=auth" json:"auth,omitempty"`
+	Metadata    *Metadata           `protobuf:"bytes,16,opt,name=metadata" json:"metadata,omitempty"`
 }
 
 func (m *Operation) Reset()                    { *m = Operation{} }
@@ -138,60 +142,54 @@ type isOperation_Request interface {
 }
 
 type Operation_ClusterCreateRequest struct {
-	ClusterCreateRequest *kubernetes.ClusterCreateRequest `protobuf:"bytes,6,opt,name=cluster_create_request,json=clusterCreateRequest,oneof"`
+	ClusterCreateRequest *kubernetes.ClusterCreateRequest `protobuf:"bytes,1,opt,name=cluster_create_request,json=clusterCreateRequest,oneof"`
 }
 type Operation_ClusterScaleRequest struct {
-	ClusterScaleRequest *kubernetes.ClusterScaleRequest `protobuf:"bytes,7,opt,name=cluster_scale_request,json=clusterScaleRequest,oneof"`
+	ClusterScaleRequest *kubernetes.ClusterScaleRequest `protobuf:"bytes,2,opt,name=cluster_scale_request,json=clusterScaleRequest,oneof"`
 }
 type Operation_ClusterDeleteRequest struct {
-	ClusterDeleteRequest *kubernetes.ClusterDeleteRequest `protobuf:"bytes,8,opt,name=cluster_delete_request,json=clusterDeleteRequest,oneof"`
+	ClusterDeleteRequest *kubernetes.ClusterDeleteRequest `protobuf:"bytes,3,opt,name=cluster_delete_request,json=clusterDeleteRequest,oneof"`
 }
 type Operation_ClusterUpgradeRequest struct {
-	ClusterUpgradeRequest *kubernetes.ClusterUpgradeRequest `protobuf:"bytes,9,opt,name=cluster_upgrade_request,json=clusterUpgradeRequest,oneof"`
+	ClusterUpgradeRequest *kubernetes.ClusterUpgradeRequest `protobuf:"bytes,4,opt,name=cluster_upgrade_request,json=clusterUpgradeRequest,oneof"`
 }
 type Operation_CiAgentCreateRequest struct {
-	CiAgentCreateRequest *ci.AgentCreateRequest `protobuf:"bytes,10,opt,name=ci_agent_create_request,json=ciAgentCreateRequest,oneof"`
+	CiAgentCreateRequest *ci.AgentCreateRequest `protobuf:"bytes,5,opt,name=ci_agent_create_request,json=ciAgentCreateRequest,oneof"`
 }
 type Operation_CiAgentDeleteRequest struct {
-	CiAgentDeleteRequest *ci.AgentDeleteRequest `protobuf:"bytes,11,opt,name=ci_agent_delete_request,json=ciAgentDeleteRequest,oneof"`
-}
-type Operation_DnsCheckRequest struct {
-	DnsCheckRequest *certificate.DNSCheckRequest `protobuf:"bytes,12,opt,name=dns_check_request,json=dnsCheckRequest,oneof"`
+	CiAgentDeleteRequest *ci.AgentDeleteRequest `protobuf:"bytes,6,opt,name=ci_agent_delete_request,json=ciAgentDeleteRequest,oneof"`
 }
 type Operation_DataBucketDeleteRequest struct {
-	DataBucketDeleteRequest *DataBucketDeleteRequest `protobuf:"bytes,13,opt,name=data_bucket_delete_request,json=dataBucketDeleteRequest,oneof"`
+	DataBucketDeleteRequest *DataBucketDeleteRequest `protobuf:"bytes,7,opt,name=data_bucket_delete_request,json=dataBucketDeleteRequest,oneof"`
 }
 type Operation_DbBackupScheduleRequest struct {
-	DbBackupScheduleRequest *db.BackupScheduleRequest `protobuf:"bytes,14,opt,name=db_backup_schedule_request,json=dbBackupScheduleRequest,oneof"`
+	DbBackupScheduleRequest *db.BackupScheduleRequest `protobuf:"bytes,8,opt,name=db_backup_schedule_request,json=dbBackupScheduleRequest,oneof"`
+}
+type Operation_NamespaceCreateRequest struct {
+	NamespaceCreateRequest *namespace.CreateRequest `protobuf:"bytes,9,opt,name=namespace_create_request,json=namespaceCreateRequest,oneof"`
+}
+type Operation_NamespaceAdminTaskRequest struct {
+	NamespaceAdminTaskRequest *NamespaceAdminTaskRequest `protobuf:"bytes,10,opt,name=namespace_admin_task_request,json=namespaceAdminTaskRequest,oneof"`
+}
+type Operation_DnsCheckRequest struct {
+	DnsCheckRequest *certificate.DNSCheckRequest `protobuf:"bytes,11,opt,name=dns_check_request,json=dnsCheckRequest,oneof"`
 }
 
-func (*Operation_ClusterCreateRequest) isOperation_Request()    {}
-func (*Operation_ClusterScaleRequest) isOperation_Request()     {}
-func (*Operation_ClusterDeleteRequest) isOperation_Request()    {}
-func (*Operation_ClusterUpgradeRequest) isOperation_Request()   {}
-func (*Operation_CiAgentCreateRequest) isOperation_Request()    {}
-func (*Operation_CiAgentDeleteRequest) isOperation_Request()    {}
-func (*Operation_DnsCheckRequest) isOperation_Request()         {}
-func (*Operation_DataBucketDeleteRequest) isOperation_Request() {}
-func (*Operation_DbBackupScheduleRequest) isOperation_Request() {}
+func (*Operation_ClusterCreateRequest) isOperation_Request()      {}
+func (*Operation_ClusterScaleRequest) isOperation_Request()       {}
+func (*Operation_ClusterDeleteRequest) isOperation_Request()      {}
+func (*Operation_ClusterUpgradeRequest) isOperation_Request()     {}
+func (*Operation_CiAgentCreateRequest) isOperation_Request()      {}
+func (*Operation_CiAgentDeleteRequest) isOperation_Request()      {}
+func (*Operation_DataBucketDeleteRequest) isOperation_Request()   {}
+func (*Operation_DbBackupScheduleRequest) isOperation_Request()   {}
+func (*Operation_NamespaceCreateRequest) isOperation_Request()    {}
+func (*Operation_NamespaceAdminTaskRequest) isOperation_Request() {}
+func (*Operation_DnsCheckRequest) isOperation_Request()           {}
 
 func (m *Operation) GetRequest() isOperation_Request {
 	if m != nil {
 		return m.Request
-	}
-	return nil
-}
-
-func (m *Operation) GetAuth() *Auth {
-	if m != nil {
-		return m.Auth
-	}
-	return nil
-}
-
-func (m *Operation) GetMetadata() *Metadata {
-	if m != nil {
-		return m.Metadata
 	}
 	return nil
 }
@@ -238,13 +236,6 @@ func (m *Operation) GetCiAgentDeleteRequest() *ci.AgentDeleteRequest {
 	return nil
 }
 
-func (m *Operation) GetDnsCheckRequest() *certificate.DNSCheckRequest {
-	if x, ok := m.GetRequest().(*Operation_DnsCheckRequest); ok {
-		return x.DnsCheckRequest
-	}
-	return nil
-}
-
 func (m *Operation) GetDataBucketDeleteRequest() *DataBucketDeleteRequest {
 	if x, ok := m.GetRequest().(*Operation_DataBucketDeleteRequest); ok {
 		return x.DataBucketDeleteRequest
@@ -259,6 +250,41 @@ func (m *Operation) GetDbBackupScheduleRequest() *db.BackupScheduleRequest {
 	return nil
 }
 
+func (m *Operation) GetNamespaceCreateRequest() *namespace.CreateRequest {
+	if x, ok := m.GetRequest().(*Operation_NamespaceCreateRequest); ok {
+		return x.NamespaceCreateRequest
+	}
+	return nil
+}
+
+func (m *Operation) GetNamespaceAdminTaskRequest() *NamespaceAdminTaskRequest {
+	if x, ok := m.GetRequest().(*Operation_NamespaceAdminTaskRequest); ok {
+		return x.NamespaceAdminTaskRequest
+	}
+	return nil
+}
+
+func (m *Operation) GetDnsCheckRequest() *certificate.DNSCheckRequest {
+	if x, ok := m.GetRequest().(*Operation_DnsCheckRequest); ok {
+		return x.DnsCheckRequest
+	}
+	return nil
+}
+
+func (m *Operation) GetAuth() *Auth {
+	if m != nil {
+		return m.Auth
+	}
+	return nil
+}
+
+func (m *Operation) GetMetadata() *Metadata {
+	if m != nil {
+		return m.Metadata
+	}
+	return nil
+}
+
 // XXX_OneofFuncs is for the internal use of the proto package.
 func (*Operation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
 	return _Operation_OneofMarshaler, _Operation_OneofUnmarshaler, _Operation_OneofSizer, []interface{}{
@@ -268,9 +294,11 @@ func (*Operation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) err
 		(*Operation_ClusterUpgradeRequest)(nil),
 		(*Operation_CiAgentCreateRequest)(nil),
 		(*Operation_CiAgentDeleteRequest)(nil),
-		(*Operation_DnsCheckRequest)(nil),
 		(*Operation_DataBucketDeleteRequest)(nil),
 		(*Operation_DbBackupScheduleRequest)(nil),
+		(*Operation_NamespaceCreateRequest)(nil),
+		(*Operation_NamespaceAdminTaskRequest)(nil),
+		(*Operation_DnsCheckRequest)(nil),
 	}
 }
 
@@ -279,48 +307,58 @@ func _Operation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
 	// request
 	switch x := m.Request.(type) {
 	case *Operation_ClusterCreateRequest:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
+		b.EncodeVarint(1<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.ClusterCreateRequest); err != nil {
 			return err
 		}
 	case *Operation_ClusterScaleRequest:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
+		b.EncodeVarint(2<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.ClusterScaleRequest); err != nil {
 			return err
 		}
 	case *Operation_ClusterDeleteRequest:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
+		b.EncodeVarint(3<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.ClusterDeleteRequest); err != nil {
 			return err
 		}
 	case *Operation_ClusterUpgradeRequest:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
+		b.EncodeVarint(4<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.ClusterUpgradeRequest); err != nil {
 			return err
 		}
 	case *Operation_CiAgentCreateRequest:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
+		b.EncodeVarint(5<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.CiAgentCreateRequest); err != nil {
 			return err
 		}
 	case *Operation_CiAgentDeleteRequest:
-		b.EncodeVarint(11<<3 | proto.WireBytes)
+		b.EncodeVarint(6<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.CiAgentDeleteRequest); err != nil {
 			return err
 		}
-	case *Operation_DnsCheckRequest:
-		b.EncodeVarint(12<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DnsCheckRequest); err != nil {
-			return err
-		}
 	case *Operation_DataBucketDeleteRequest:
-		b.EncodeVarint(13<<3 | proto.WireBytes)
+		b.EncodeVarint(7<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.DataBucketDeleteRequest); err != nil {
 			return err
 		}
 	case *Operation_DbBackupScheduleRequest:
-		b.EncodeVarint(14<<3 | proto.WireBytes)
+		b.EncodeVarint(8<<3 | proto.WireBytes)
 		if err := b.EncodeMessage(x.DbBackupScheduleRequest); err != nil {
+			return err
+		}
+	case *Operation_NamespaceCreateRequest:
+		b.EncodeVarint(9<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.NamespaceCreateRequest); err != nil {
+			return err
+		}
+	case *Operation_NamespaceAdminTaskRequest:
+		b.EncodeVarint(10<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.NamespaceAdminTaskRequest); err != nil {
+			return err
+		}
+	case *Operation_DnsCheckRequest:
+		b.EncodeVarint(11<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.DnsCheckRequest); err != nil {
 			return err
 		}
 	case nil:
@@ -333,7 +371,7 @@ func _Operation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
 func _Operation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
 	m := msg.(*Operation)
 	switch tag {
-	case 6: // request.cluster_create_request
+	case 1: // request.cluster_create_request
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
@@ -341,7 +379,7 @@ func _Operation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buff
 		err := b.DecodeMessage(msg)
 		m.Request = &Operation_ClusterCreateRequest{msg}
 		return true, err
-	case 7: // request.cluster_scale_request
+	case 2: // request.cluster_scale_request
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
@@ -349,7 +387,7 @@ func _Operation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buff
 		err := b.DecodeMessage(msg)
 		m.Request = &Operation_ClusterScaleRequest{msg}
 		return true, err
-	case 8: // request.cluster_delete_request
+	case 3: // request.cluster_delete_request
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
@@ -357,7 +395,7 @@ func _Operation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buff
 		err := b.DecodeMessage(msg)
 		m.Request = &Operation_ClusterDeleteRequest{msg}
 		return true, err
-	case 9: // request.cluster_upgrade_request
+	case 4: // request.cluster_upgrade_request
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
@@ -365,7 +403,7 @@ func _Operation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buff
 		err := b.DecodeMessage(msg)
 		m.Request = &Operation_ClusterUpgradeRequest{msg}
 		return true, err
-	case 10: // request.ci_agent_create_request
+	case 5: // request.ci_agent_create_request
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
@@ -373,7 +411,7 @@ func _Operation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buff
 		err := b.DecodeMessage(msg)
 		m.Request = &Operation_CiAgentCreateRequest{msg}
 		return true, err
-	case 11: // request.ci_agent_delete_request
+	case 6: // request.ci_agent_delete_request
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
@@ -381,15 +419,7 @@ func _Operation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buff
 		err := b.DecodeMessage(msg)
 		m.Request = &Operation_CiAgentDeleteRequest{msg}
 		return true, err
-	case 12: // request.dns_check_request
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(certificate.DNSCheckRequest)
-		err := b.DecodeMessage(msg)
-		m.Request = &Operation_DnsCheckRequest{msg}
-		return true, err
-	case 13: // request.data_bucket_delete_request
+	case 7: // request.data_bucket_delete_request
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
@@ -397,13 +427,37 @@ func _Operation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buff
 		err := b.DecodeMessage(msg)
 		m.Request = &Operation_DataBucketDeleteRequest{msg}
 		return true, err
-	case 14: // request.db_backup_schedule_request
+	case 8: // request.db_backup_schedule_request
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
 		msg := new(db.BackupScheduleRequest)
 		err := b.DecodeMessage(msg)
 		m.Request = &Operation_DbBackupScheduleRequest{msg}
+		return true, err
+	case 9: // request.namespace_create_request
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(namespace.CreateRequest)
+		err := b.DecodeMessage(msg)
+		m.Request = &Operation_NamespaceCreateRequest{msg}
+		return true, err
+	case 10: // request.namespace_admin_task_request
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(NamespaceAdminTaskRequest)
+		err := b.DecodeMessage(msg)
+		m.Request = &Operation_NamespaceAdminTaskRequest{msg}
+		return true, err
+	case 11: // request.dns_check_request
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(certificate.DNSCheckRequest)
+		err := b.DecodeMessage(msg)
+		m.Request = &Operation_DnsCheckRequest{msg}
 		return true, err
 	default:
 		return false, nil
@@ -416,47 +470,57 @@ func _Operation_OneofSizer(msg proto.Message) (n int) {
 	switch x := m.Request.(type) {
 	case *Operation_ClusterCreateRequest:
 		s := proto.Size(x.ClusterCreateRequest)
-		n += proto.SizeVarint(6<<3 | proto.WireBytes)
+		n += proto.SizeVarint(1<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Operation_ClusterScaleRequest:
 		s := proto.Size(x.ClusterScaleRequest)
-		n += proto.SizeVarint(7<<3 | proto.WireBytes)
+		n += proto.SizeVarint(2<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Operation_ClusterDeleteRequest:
 		s := proto.Size(x.ClusterDeleteRequest)
-		n += proto.SizeVarint(8<<3 | proto.WireBytes)
+		n += proto.SizeVarint(3<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Operation_ClusterUpgradeRequest:
 		s := proto.Size(x.ClusterUpgradeRequest)
-		n += proto.SizeVarint(9<<3 | proto.WireBytes)
+		n += proto.SizeVarint(4<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Operation_CiAgentCreateRequest:
 		s := proto.Size(x.CiAgentCreateRequest)
-		n += proto.SizeVarint(10<<3 | proto.WireBytes)
+		n += proto.SizeVarint(5<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Operation_CiAgentDeleteRequest:
 		s := proto.Size(x.CiAgentDeleteRequest)
-		n += proto.SizeVarint(11<<3 | proto.WireBytes)
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Operation_DnsCheckRequest:
-		s := proto.Size(x.DnsCheckRequest)
-		n += proto.SizeVarint(12<<3 | proto.WireBytes)
+		n += proto.SizeVarint(6<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Operation_DataBucketDeleteRequest:
 		s := proto.Size(x.DataBucketDeleteRequest)
-		n += proto.SizeVarint(13<<3 | proto.WireBytes)
+		n += proto.SizeVarint(7<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Operation_DbBackupScheduleRequest:
 		s := proto.Size(x.DbBackupScheduleRequest)
-		n += proto.SizeVarint(14<<3 | proto.WireBytes)
+		n += proto.SizeVarint(8<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Operation_NamespaceCreateRequest:
+		s := proto.Size(x.NamespaceCreateRequest)
+		n += proto.SizeVarint(9<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Operation_NamespaceAdminTaskRequest:
+		s := proto.Size(x.NamespaceAdminTaskRequest)
+		n += proto.SizeVarint(10<<3 | proto.WireBytes)
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *Operation_DnsCheckRequest:
+		s := proto.Size(x.DnsCheckRequest)
+		n += proto.SizeVarint(11<<3 | proto.WireBytes)
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case nil:
@@ -477,64 +541,79 @@ func (m *DataBucketDeleteRequest) String() string            { return proto.Comp
 func (*DataBucketDeleteRequest) ProtoMessage()               {}
 func (*DataBucketDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
 
+type NamespaceAdminTaskRequest struct {
+	Namespace string `protobuf:"bytes,1,opt,name=namespace" json:"namespace,omitempty"`
+}
+
+func (m *NamespaceAdminTaskRequest) Reset()                    { *m = NamespaceAdminTaskRequest{} }
+func (m *NamespaceAdminTaskRequest) String() string            { return proto.CompactTextString(m) }
+func (*NamespaceAdminTaskRequest) ProtoMessage()               {}
+func (*NamespaceAdminTaskRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+
 func init() {
 	proto.RegisterType((*Auth)(nil), "gearman.Auth")
 	proto.RegisterType((*Metadata)(nil), "gearman.Metadata")
 	proto.RegisterType((*Operation)(nil), "gearman.Operation")
 	proto.RegisterType((*DataBucketDeleteRequest)(nil), "gearman.DataBucketDeleteRequest")
+	proto.RegisterType((*NamespaceAdminTaskRequest)(nil), "gearman.NamespaceAdminTaskRequest")
 	proto.RegisterEnum("gearman.OperationType", OperationType_name, OperationType_value)
 }
 
 func init() { proto.RegisterFile("gearman.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 766 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x74, 0x95, 0xdb, 0x6e, 0xda, 0x4c,
-	0x14, 0x85, 0x13, 0x20, 0x80, 0x37, 0x21, 0x71, 0x26, 0xf9, 0x81, 0x9f, 0xa6, 0x6a, 0x42, 0xa5,
-	0xaa, 0x8a, 0x54, 0xa7, 0x4d, 0x9f, 0xc0, 0x18, 0x2b, 0x49, 0x49, 0x08, 0xb2, 0x41, 0xad, 0xd4,
-	0x8b, 0xd1, 0xd8, 0x9e, 0x04, 0x0b, 0x02, 0xae, 0x0f, 0x55, 0x7b, 0xdb, 0xe7, 0xec, 0xc3, 0x74,
-	0x3c, 0x1e, 0x63, 0x73, 0xc8, 0x1d, 0x5e, 0x7b, 0xcd, 0x37, 0x6b, 0xcf, 0x09, 0xa8, 0x3f, 0x51,
-	0xe2, 0x3f, 0x93, 0xb9, 0xe2, 0xf9, 0x8b, 0x70, 0x81, 0x2a, 0xe2, 0xb3, 0xfd, 0x8e, 0x78, 0xee,
-	0xa5, 0x4d, 0xfd, 0xd0, 0x7d, 0x74, 0x6d, 0x12, 0xd2, 0xcb, 0x9f, 0x1f, 0x95, 0x4f, 0x79, 0x21,
-	0x19, 0xd0, 0x6e, 0x72, 0x9f, 0x9b, 0x94, 0xc9, 0x13, 0x9d, 0x87, 0xa2, 0xd0, 0x89, 0x0b, 0xd3,
-	0xc8, 0xa2, 0xfe, 0x9c, 0x86, 0x34, 0x10, 0xe3, 0x67, 0x51, 0x10, 0x52, 0x3f, 0x10, 0x9e, 0x76,
-	0xec, 0x71, 0xac, 0xa4, 0xe6, 0x90, 0x90, 0x58, 0x24, 0x10, 0xe0, 0x4e, 0x04, 0x25, 0x35, 0x0a,
-	0x27, 0xe8, 0x14, 0xa4, 0x39, 0x79, 0xa6, 0x81, 0x47, 0x6c, 0xda, 0xda, 0x3d, 0xdb, 0x7d, 0x2f,
-	0x19, 0x99, 0x80, 0xda, 0x50, 0x8d, 0x02, 0x36, 0x05, 0x13, 0x5a, 0x05, 0x5e, 0x5c, 0x7e, 0xa3,
-	0x13, 0xd8, 0x0b, 0x17, 0x53, 0x3a, 0x6f, 0x15, 0x79, 0x21, 0xf9, 0x40, 0xaf, 0x01, 0xf8, 0x0f,
-	0x1c, 0xfe, 0xf6, 0x68, 0xab, 0x94, 0x00, 0xb9, 0x32, 0x62, 0x42, 0xe7, 0x12, 0xaa, 0xf7, 0x34,
-	0x24, 0x71, 0x18, 0xf4, 0x16, 0xea, 0x5e, 0xe4, 0xdb, 0x13, 0x16, 0x0a, 0x7b, 0x13, 0xd7, 0x61,
-	0xd3, 0x17, 0x99, 0x7b, 0x3f, 0x15, 0x87, 0x4c, 0xeb, 0xfc, 0xad, 0x80, 0xf4, 0xe0, 0x51, 0x9f,
-	0x84, 0xee, 0x62, 0x8e, 0x10, 0x94, 0x84, 0x33, 0xe6, 0xf2, 0xdf, 0xe8, 0x1c, 0x4a, 0x84, 0x75,
-	0xc2, 0xf3, 0xd5, 0xae, 0xea, 0x4a, 0xba, 0xe2, 0x71, 0x7b, 0x06, 0x2f, 0x31, 0xcb, 0xbe, 0x4f,
-	0x7f, 0x44, 0x34, 0x08, 0x71, 0xe8, 0xb2, 0x56, 0xe2, 0xc4, 0x45, 0xa3, 0x26, 0xb4, 0x11, 0x93,
-	0xd0, 0x07, 0xa8, 0x3e, 0x8b, 0x60, 0x3c, 0x75, 0xed, 0xea, 0x68, 0x49, 0x4a, 0x13, 0x1b, 0x4b,
-	0x0b, 0xba, 0x80, 0x12, 0x6f, 0x70, 0x8f, 0x59, 0x0f, 0xae, 0x1a, 0x4b, 0xeb, 0x32, 0x6a, 0xdc,
-	0xad, 0xc1, 0x3d, 0xe8, 0x1b, 0x34, 0xc4, 0xc6, 0x60, 0xdb, 0xa7, 0x6c, 0x6f, 0xb1, 0x98, 0xb8,
-	0x55, 0xe6, 0x13, 0x9d, 0x29, 0xd9, 0x3e, 0x2a, 0x5a, 0xe2, 0xd4, 0xb8, 0xd1, 0x48, 0x7c, 0x37,
-	0x3b, 0xc6, 0x89, 0xbd, 0x45, 0x47, 0x63, 0xf8, 0x2f, 0x25, 0x07, 0x36, 0x99, 0x65, 0xe0, 0x0a,
-	0x07, 0xbf, 0xd9, 0x02, 0x36, 0x63, 0x5f, 0xc6, 0x3d, 0xb6, 0x37, 0xe5, 0x7c, 0x60, 0x87, 0xce,
-	0x68, 0x2e, 0x70, 0xf5, 0xc5, 0xc0, 0x3d, 0x6e, 0xdc, 0x0c, 0xbc, 0xa2, 0xa3, 0xef, 0xd0, 0x4c,
-	0xc9, 0x91, 0xf7, 0xe4, 0x13, 0x27, 0x43, 0x4b, 0x1c, 0x7d, 0xbe, 0x05, 0x3d, 0x4e, 0x9c, 0x19,
-	0x3b, 0x6d, 0x7a, 0xb5, 0x80, 0x1e, 0x18, 0xdc, 0xc5, 0xfc, 0x92, 0xac, 0x2f, 0x34, 0x70, 0x78,
-	0x43, 0xb1, 0x5d, 0x45, 0x8d, 0xeb, 0x9b, 0xcb, 0xeb, 0x6e, 0xea, 0x2b, 0xc0, 0xb5, 0x85, 0xa8,
-	0xad, 0x01, 0x37, 0xdb, 0x77, 0x37, 0x75, 0xf4, 0x05, 0x8e, 0x9c, 0x79, 0x80, 0xed, 0x09, 0xb5,
-	0xa7, 0x4b, 0xd4, 0x3e, 0x47, 0x9d, 0x2a, 0xf9, 0xcb, 0xdf, 0x1b, 0x98, 0x5a, 0x6c, 0xca, 0x80,
-	0x87, 0x6c, 0x60, 0x5e, 0x42, 0x18, 0xda, 0xf1, 0x49, 0xc4, 0x56, 0x64, 0x4f, 0xe9, 0x46, 0xbe,
-	0xba, 0xd8, 0xa8, 0xf4, 0x5c, 0xf6, 0x98, 0xb5, 0xcb, 0x9d, 0xeb, 0x49, 0x9b, 0xce, 0xf6, 0x12,
-	0x3b, 0x05, 0x6d, 0xc7, 0xc2, 0x16, 0xb1, 0xa7, 0x91, 0xc7, 0x8e, 0xd7, 0x84, 0x3a, 0x51, 0xee,
-	0x84, 0x1d, 0xf0, 0x09, 0xfe, 0x57, 0x1c, 0x4b, 0xe9, 0x72, 0x8b, 0x29, 0x1c, 0x79, 0xb2, 0xb5,
-	0xb5, 0xd4, 0x95, 0xa0, 0x22, 0x30, 0x9d, 0x19, 0x34, 0x5f, 0x88, 0x86, 0x5e, 0x81, 0xc4, 0x1b,
-	0xe4, 0xf7, 0x2c, 0xb9, 0xf0, 0xd5, 0x58, 0x88, 0x6f, 0xd6, 0xea, 0xb3, 0x55, 0x58, 0x7f, 0xb6,
-	0x1a, 0x50, 0xf6, 0x7c, 0xfa, 0xe8, 0xfe, 0x12, 0x6f, 0x93, 0xf8, 0xba, 0xf8, 0x53, 0x80, 0xfa,
-	0xca, 0x0d, 0x45, 0x35, 0xa8, 0x8c, 0x07, 0xfd, 0xc1, 0xc3, 0xd7, 0x81, 0xbc, 0xc3, 0x5e, 0x97,
-	0x03, 0xed, 0x6e, 0x6c, 0x8e, 0x74, 0x03, 0x6b, 0x86, 0xae, 0x8e, 0x74, 0x79, 0x17, 0x1d, 0x41,
-	0x3d, 0xd5, 0x4c, 0x4d, 0xbd, 0xd3, 0xe5, 0x42, 0xde, 0xd6, 0xd3, 0xef, 0x74, 0x66, 0x2b, 0xa2,
-	0x63, 0x38, 0x4c, 0xb5, 0xf1, 0xf0, 0xda, 0x50, 0x7b, 0xba, 0x5c, 0xe2, 0xe2, 0x2d, 0x56, 0xaf,
-	0xf5, 0xc1, 0x28, 0x05, 0xee, 0xad, 0x88, 0x62, 0x78, 0x19, 0xd5, 0x41, 0xd2, 0x6e, 0x74, 0xad,
-	0x8f, 0xd9, 0xc6, 0xcb, 0x15, 0xf6, 0xb4, 0xca, 0x03, 0xf5, 0x5e, 0x37, 0x87, 0xaa, 0xa6, 0xa7,
-	0x23, 0xab, 0xac, 0x2b, 0xd4, 0x53, 0x47, 0x2a, 0xee, 0x8e, 0xb5, 0xbe, 0xbe, 0x1c, 0x2c, 0xc5,
-	0xc4, 0x58, 0xef, 0xaa, 0xa6, 0x8e, 0xbb, 0xaa, 0xd6, 0x1f, 0x0f, 0x65, 0x40, 0x2d, 0x38, 0xc9,
-	0x10, 0x6a, 0xef, 0xfe, 0x76, 0x80, 0x47, 0xaa, 0xd9, 0x97, 0x6b, 0x56, 0x99, 0xff, 0x01, 0x7c,
-	0xfe, 0x17, 0x00, 0x00, 0xff, 0xff, 0x71, 0x50, 0xe0, 0x70, 0x9b, 0x06, 0x00, 0x00,
+	// 840 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x7c, 0x55, 0x5b, 0x6f, 0xe2, 0x46,
+	0x14, 0xde, 0x00, 0x01, 0x7c, 0x08, 0x89, 0x33, 0x9b, 0x82, 0x43, 0x53, 0x75, 0x97, 0x4a, 0x55,
+	0xb5, 0x52, 0x9d, 0x5e, 0x9e, 0xfa, 0x68, 0x8c, 0xb5, 0x9b, 0x92, 0x38, 0xc8, 0x36, 0x6a, 0xa5,
+	0x3e, 0x8c, 0xc6, 0xf6, 0x24, 0x58, 0x80, 0x71, 0x7d, 0xa9, 0xda, 0xd7, 0xfe, 0x8b, 0xfe, 0xdb,
+	0x8e, 0xc7, 0x57, 0x6e, 0xfb, 0xc6, 0x7c, 0xe7, 0x3b, 0xdf, 0x39, 0x73, 0x38, 0xf3, 0x19, 0xfa,
+	0xaf, 0x94, 0x84, 0x1b, 0xe2, 0xcb, 0x41, 0xb8, 0x8d, 0xb7, 0xa8, 0x93, 0x1f, 0x47, 0xdf, 0x92,
+	0xc0, 0xbb, 0x77, 0x68, 0x18, 0x7b, 0x2f, 0x9e, 0x43, 0x62, 0x7a, 0xff, 0xd7, 0x0f, 0xf2, 0x8f,
+	0x75, 0x20, 0x4b, 0x18, 0x0d, 0x39, 0xcf, 0xcb, 0xc2, 0xe4, 0x95, 0xfa, 0x71, 0x1e, 0x18, 0xa7,
+	0x81, 0x55, 0x62, 0xd3, 0xd0, 0xa7, 0x31, 0x8d, 0xf2, 0xfc, 0x75, 0x12, 0xc5, 0x34, 0x8c, 0x72,
+	0xce, 0x28, 0xe5, 0xb8, 0x76, 0x16, 0x73, 0x49, 0x4c, 0x6c, 0x12, 0xd1, 0x7a, 0xbe, 0x4f, 0x36,
+	0x34, 0x0a, 0x88, 0x93, 0x97, 0x2f, 0x8f, 0x19, 0x67, 0x9c, 0x40, 0x4b, 0x49, 0xe2, 0x25, 0xba,
+	0x03, 0xa1, 0x0c, 0x49, 0x67, 0xef, 0xce, 0xbe, 0x13, 0x8c, 0x0a, 0x40, 0x23, 0xe8, 0x26, 0x11,
+	0x6b, 0x83, 0x01, 0x52, 0x83, 0x07, 0xcb, 0x33, 0xba, 0x81, 0xf3, 0x78, 0xbb, 0xa2, 0xbe, 0xd4,
+	0xe4, 0x81, 0xec, 0x80, 0xbe, 0x02, 0xe0, 0x3f, 0x70, 0xfc, 0x4f, 0x40, 0xa5, 0x56, 0x26, 0xc8,
+	0x11, 0x8b, 0x01, 0xe3, 0x7b, 0xe8, 0x3e, 0xd1, 0x98, 0xa4, 0x0d, 0xa3, 0x6f, 0xa0, 0x1f, 0x24,
+	0xa1, 0xb3, 0x64, 0x8d, 0xe3, 0x60, 0xe9, 0xb9, 0xac, 0x7c, 0x93, 0xb1, 0x2f, 0x0a, 0x70, 0xce,
+	0xb0, 0xf1, 0x7f, 0x02, 0x08, 0xcf, 0x01, 0x0d, 0x49, 0xec, 0x6d, 0x7d, 0xf4, 0x3b, 0x0c, 0xf2,
+	0x39, 0x60, 0x27, 0xa4, 0x6c, 0x94, 0x38, 0xa4, 0x7f, 0x26, 0x34, 0x8a, 0x79, 0xeb, 0xbd, 0x9f,
+	0xde, 0xc9, 0xd5, 0xd8, 0x64, 0x35, 0x63, 0xaa, 0x9c, 0x68, 0x64, 0xbc, 0x4f, 0x6f, 0x8c, 0x1b,
+	0xe7, 0x08, 0x8e, 0x16, 0xf0, 0x45, 0xa1, 0x1c, 0x39, 0x64, 0x5d, 0x09, 0x37, 0xb8, 0xf0, 0xd7,
+	0x47, 0x84, 0xcd, 0x94, 0x57, 0xe9, 0xbe, 0x75, 0x0e, 0xe1, 0x7a, 0xc3, 0x2e, 0x5d, 0xd3, 0x5a,
+	0xc3, 0xcd, 0x93, 0x0d, 0x4f, 0x39, 0xf1, 0xb0, 0xe1, 0x1d, 0x1c, 0xfd, 0x01, 0xc3, 0x42, 0x39,
+	0x09, 0x5e, 0x43, 0xe2, 0x56, 0xd2, 0x2d, 0x2e, 0xfd, 0xfe, 0x88, 0xf4, 0x22, 0x63, 0x56, 0xda,
+	0xc5, 0xa5, 0x77, 0x03, 0xe8, 0x99, 0x89, 0x7b, 0x98, 0xef, 0xe4, 0xfe, 0xa0, 0xcf, 0xb9, 0xf8,
+	0x40, 0x76, 0x3c, 0x59, 0x49, 0xe3, 0x87, 0xe3, 0xf5, 0x0e, 0xf1, 0x1d, 0xc1, 0xbd, 0x41, 0xb4,
+	0xf7, 0x04, 0x0f, 0xaf, 0xef, 0x1d, 0xe2, 0x08, 0xc3, 0x28, 0x5d, 0x22, 0x6c, 0x27, 0xce, 0x8a,
+	0x1e, 0x68, 0x76, 0xf2, 0xe1, 0x16, 0x2f, 0x74, 0xca, 0xa8, 0x13, 0xce, 0xdc, 0x57, 0x1f, 0xba,
+	0xc7, 0x43, 0xec, 0x9f, 0x1b, 0xb9, 0x36, 0xb6, 0x89, 0xb3, 0x4a, 0x02, 0xb6, 0x12, 0x4b, 0xea,
+	0x26, 0xb5, 0xad, 0xe8, 0xf2, 0x02, 0xb7, 0xb2, 0x6b, 0xcb, 0x13, 0x4e, 0x31, 0x73, 0x46, 0x5d,
+	0xd9, 0x3e, 0x1a, 0x42, 0x16, 0x48, 0xe5, 0x0b, 0xdb, 0x9f, 0xae, 0xc0, 0x75, 0x25, 0xb9, 0x7a,
+	0xae, 0xfb, 0xf3, 0x1d, 0x94, 0xa1, 0xdd, 0x09, 0x53, 0xb8, 0xab, 0x54, 0x89, 0xbb, 0xf1, 0xd8,
+	0x13, 0x24, 0xd1, 0xaa, 0x54, 0x06, 0xae, 0x3c, 0x2e, 0x47, 0xa2, 0x17, 0x64, 0x25, 0xe5, 0x5a,
+	0x8c, 0x5a, 0xd5, 0xb8, 0xf5, 0x4f, 0x05, 0xd1, 0xaf, 0x70, 0xed, 0xfa, 0x11, 0x66, 0x57, 0x72,
+	0x2a, 0xed, 0x1e, 0xd7, 0xbe, 0x93, 0xeb, 0x1e, 0x37, 0xd5, 0x4d, 0x35, 0x25, 0x55, 0xaa, 0x57,
+	0x2c, 0xb1, 0x0e, 0xa1, 0x0f, 0xd0, 0xe2, 0x2e, 0x71, 0xc1, 0xd2, 0x2f, 0xd9, 0x06, 0x14, 0xad,
+	0x95, 0xef, 0x3d, 0xb5, 0x0c, 0x83, 0x73, 0xd0, 0x7b, 0xb8, 0xc8, 0xab, 0xe1, 0xd8, 0x63, 0x6e,
+	0xd4, 0x67, 0x39, 0x4d, 0xa3, 0x97, 0x63, 0x16, 0x83, 0x10, 0x82, 0x16, 0xb7, 0x91, 0x4b, 0x6e,
+	0x3a, 0xfc, 0x37, 0x4b, 0x6b, 0x11, 0x66, 0x73, 0xd2, 0x15, 0xef, 0xb0, 0x5f, 0x96, 0x48, 0xbd,
+	0xcf, 0xe0, 0x21, 0xf4, 0x3d, 0x74, 0x37, 0xb9, 0x25, 0x49, 0x22, 0xa7, 0x5d, 0x97, 0xb4, 0xc2,
+	0xab, 0x8c, 0x92, 0x32, 0x11, 0xa0, 0x93, 0x17, 0x1d, 0xaf, 0x61, 0x78, 0x62, 0xb1, 0xd0, 0x97,
+	0x20, 0xf0, 0xf5, 0xe4, 0xf7, 0xcb, 0x6c, 0xb5, 0x9b, 0x02, 0xe9, 0x8d, 0x76, 0x3d, 0xb7, 0xb1,
+	0xef, 0xb9, 0x03, 0x68, 0x07, 0x21, 0x7d, 0xf1, 0xfe, 0xce, 0x8d, 0x35, 0x3f, 0x8d, 0x7f, 0x81,
+	0xdb, 0x93, 0xff, 0xd9, 0xe7, 0x6d, 0xfc, 0xc3, 0xbf, 0x0d, 0xe8, 0xef, 0x0c, 0x15, 0xf5, 0xa0,
+	0xb3, 0xd0, 0x67, 0xfa, 0xf3, 0x6f, 0xba, 0xf8, 0x86, 0x0d, 0xee, 0x52, 0x7d, 0x5c, 0x98, 0x96,
+	0x66, 0x60, 0xd5, 0xd0, 0x14, 0x4b, 0x13, 0xcf, 0xd0, 0x35, 0xf4, 0x0b, 0xcc, 0x54, 0x95, 0x47,
+	0x4d, 0x6c, 0xd4, 0x69, 0x53, 0xed, 0x51, 0x63, 0xb4, 0x26, 0x7a, 0x0b, 0x57, 0x05, 0xb6, 0x98,
+	0x7f, 0x34, 0x94, 0xa9, 0x26, 0xb6, 0x38, 0xf8, 0x80, 0x95, 0x8f, 0x9a, 0x6e, 0x15, 0x82, 0xe7,
+	0x3b, 0x60, 0x9e, 0xde, 0x66, 0x77, 0x45, 0x53, 0xc5, 0x52, 0xf0, 0x64, 0xa1, 0xce, 0xb4, 0x12,
+	0xef, 0xa4, 0xe4, 0x14, 0x9f, 0x28, 0xa6, 0x86, 0x27, 0x8a, 0x3a, 0x5b, 0xcc, 0xc5, 0x2e, 0xfb,
+	0xe0, 0x88, 0xba, 0xf2, 0xa4, 0x99, 0x73, 0x45, 0xd5, 0x0a, 0x5d, 0x01, 0x49, 0x70, 0x53, 0xa1,
+	0xca, 0xf4, 0xe9, 0x41, 0xc7, 0x96, 0x62, 0xce, 0x44, 0x40, 0x7d, 0x10, 0xd4, 0x4f, 0x9a, 0x3a,
+	0xc3, 0x6c, 0x15, 0xc5, 0x9e, 0xdd, 0xe6, 0x1f, 0xbe, 0x9f, 0xff, 0x0f, 0x00, 0x00, 0xff, 0xff,
+	0x86, 0xa4, 0x06, 0x2e, 0xb7, 0x07, 0x00, 0x00,
 }
