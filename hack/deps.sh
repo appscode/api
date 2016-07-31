@@ -13,7 +13,7 @@ setup_protoc() {
 	pushd /tmp
 	git clone https://github.com/google/protobuf.git
 	cd protobuf/
-	git checkout tags/v3.0.0-beta-3.3
+	git checkout tags/v3.0.0
 	./autogen.sh
 	./configure
 	make
@@ -28,8 +28,9 @@ setup_protoc() {
 setup_proxy() {
 	echo "Setting up grpc proxy"
 	go get github.com/golang/protobuf/protoc-gen-go
-	rm -rf $GOPATH/src/github.com/gengo/grpc-gateway
+	mkdir -p $GOPATH/src/github.com/gengo
 	pushd $GOPATH/src/github.com/gengo
+	rm -rf grpc-gateway
 	git clone git@github.com:appscode/grpc-gateway.git
 	popd
 	go install github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway
