@@ -148,6 +148,10 @@
         "name": {
           "format": "string",
           "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -237,31 +241,6 @@
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/artifactory/v0.1/artifact/{name}": {
-      "get": {
-        "operationId": "List",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/artifactoryVersionListResponse"
-            }
-          }
-        },
-        "tags": [
-          "Versions"
-        ]
-      }
-    },
     "/appscode/api/artifactory/v0.1/artifact/{name}/{id}/{type}": {
       "get": {
         "operationId": "Describe",
@@ -293,6 +272,38 @@
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/artifactoryVersionDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Versions"
+        ]
+      }
+    },
+    "/appscode/api/artifactory/v0.1/artifact/{name}/{type}": {
+      "get": {
+        "operationId": "List",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/artifactoryVersionListResponse"
             }
           }
         },
