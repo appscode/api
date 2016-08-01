@@ -8,7 +8,7 @@ import "api/dtypes/types.proto";
 service Versions {
   rpc List(VersionListRequest) returns (VersionListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/artifactory/v0.1/artifact/{name}"
+      get: "/appscode/api/artifactory/v0.1/artifact/{name}/{type}"
     };
   }
 
@@ -21,6 +21,7 @@ service Versions {
 
 message VersionListRequest {
   string name = 1;
+  string type = 2;
 }
 
 message VersionListResponse {
