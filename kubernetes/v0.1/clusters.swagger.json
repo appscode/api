@@ -102,10 +102,6 @@
       },
       "type": "object"
     },
-    "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
-      "type": "object"
-    },
     "dtypesVoidResponse": {
       "properties": {
         "status": {
@@ -326,6 +322,18 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterListRequest": {
+      "properties": {
+        "status": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"

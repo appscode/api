@@ -40,6 +40,7 @@ It has these top-level messages:
 	Cluster
 	ClusterDescribeRequest
 	ClusterDescribeResponse
+	ClusterListRequest
 	ClusterListResponse
 	ClusterCreateRequest
 	ClusterScaleRequest

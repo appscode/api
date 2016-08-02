@@ -6,7 +6,7 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Clusters {
-  rpc List(dtypes.VoidRequest) returns (ClusterListResponse) {
+  rpc List(ClusterListRequest) returns (ClusterListResponse) {
      option (google.api.http) = {
        get : "/appscode/api/kubernetes/v0.1/clusters"
      };
@@ -101,6 +101,10 @@ message ClusterDescribeResponse {
     int64 total_memory = 6;
   }
   Specs specs = 3;
+}
+
+message ClusterListRequest {
+  repeated string status = 1;
 }
 
 message ClusterListResponse {
