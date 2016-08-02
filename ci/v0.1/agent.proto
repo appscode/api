@@ -47,10 +47,6 @@ message AgentListRequest {
   //   OFFLINE
   //   DELETED
   repeated string status = 1;
-  // from > to, timestamp = seconds since epoch
-  int64 from_timestamp = 3;
-  int64 to_timestamp = 4;
-
 }
 
 message AgentListResponse {
