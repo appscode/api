@@ -109,15 +109,8 @@ func init() {
 	agentListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "from_timestamp": {
-      "title": "from > to, timestamp = seconds since epoch",
-      "type": "integer"
-    },
     "status": {
       "type": "string"
-    },
-    "to_timestamp": {
-      "type": "integer"
     }
   },
   "type": "object"

@@ -54,15 +54,8 @@
     },
     "ciAgentListRequest": {
       "properties": {
-        "from_timestamp": {
-          "title": "from > to, timestamp = seconds since epoch",
-          "type": "integer"
-        },
         "status": {
           "type": "string"
-        },
-        "to_timestamp": {
-          "type": "integer"
         }
       },
       "type": "object"

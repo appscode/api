@@ -324,6 +324,14 @@
     },
     "dbListRequest": {
       "properties": {
+        "status": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  READY\n  DELETED",
+          "type": "array"
+        },
         "type": {
           "format": "string",
           "type": "string"
@@ -334,12 +342,6 @@
     "dbListResponse": {
       "properties": {
         "databases": {
-          "items": {
-            "$ref": "#/definitions/dbDatabase"
-          },
-          "type": "array"
-        },
-        "deleted_databases": {
           "items": {
             "$ref": "#/definitions/dbDatabase"
           },
