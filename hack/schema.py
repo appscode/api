@@ -186,7 +186,7 @@ def generate_json_schema():
                             if m in ext_defs \
                                     and 'properties' in ext_defs[m] \
                                     and f in ext_defs[m]['properties'] \
-                                    and not set(fspec.keys()).issuperset(set(ext_defs[m]['properties'][f].keys())):
+                                    and set(fspec.keys()) != set(ext_defs[m]['properties'][f].keys()):
                                 print mspec['properties'][f]
                                 print ext_defs[m]['properties'][f]
                                 mspec['properties'][f] = ext_defs[m]['properties'][f]
