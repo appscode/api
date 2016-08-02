@@ -45,6 +45,41 @@
       },
       "type": "object"
     },
+    "alertAlertListRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "object_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "plugin": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertListResponse": {
+      "properties": {
+        "alerts": {
+          "items": {
+            "$ref": "#/definitions/alertAlert"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
     "alertCheckInfluxData": {
       "properties": {
         "critical_condition": {
@@ -156,41 +191,6 @@
         "check_interval_sec": {
           "format": "int64",
           "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "alertListRequest": {
-      "properties": {
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "object_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "plugin": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertListResponse": {
-      "properties": {
-        "alerts": {
-          "items": {
-            "$ref": "#/definitions/alertAlert"
-          },
-          "type": "array"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
         }
       },
       "type": "object"
@@ -319,7 +319,7 @@
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/alertListResponse"
+              "$ref": "#/definitions/alertAlertListResponse"
             }
           }
         },

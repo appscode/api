@@ -7,19 +7,47 @@ import "api/dtypes/types.proto";
 
 // Alert service protobufs for cluster alert notification.
 service Notifications {
+  rpc List(NotificationListRequest) returns (NotificationListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/alert/v0.1/notifications"
+    };
+  }
+
   rpc Notify(NotifyRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/alert/v0.1/notifications/notify"
+      post : "/appscode/api/alert/v0.1/notifications"
       body : "*"
     };
   }
 
   rpc Acknowledge(AcknowledgeRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/alert/v0.1/notifications/acknowledge"
+      post : "/appscode/api/alert/v0.1/notifications/{phid}/acknowledge"
       body : "*"
     };
   }
+}
+
+message Notification {
+  string service_name = 1;
+  string host_name = 2;
+  string state = 3;
+  string state_type = 4;
+  string method = 5;
+  string user_uid = 6;
+  int64 alert_created = 7;
+}
+
+message NotificationListRequest {
+  string cluster = 1;
+  string plugin = 2;
+  string kubernetes_namespace  = 3;
+  string object_name = 4;
+}
+
+message NotificationListResponse {
+  dtypes.Status status = 1;
+  repeated Notification notifications = 2;
 }
 
 message NotifyRequest {

@@ -18,6 +18,74 @@
       },
       "type": "object"
     },
+    "alertNotification": {
+      "properties": {
+        "alert_created": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "host_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "method": {
+          "format": "string",
+          "type": "string"
+        },
+        "service_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "state": {
+          "format": "string",
+          "type": "string"
+        },
+        "state_type": {
+          "format": "string",
+          "type": "string"
+        },
+        "user_uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertNotificationListRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "object_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "plugin": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertNotificationListResponse": {
+      "properties": {
+        "notifications": {
+          "items": {
+            "$ref": "#/definitions/alertNotification"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
     "alertNotifyRequest": {
       "properties": {
         "alert_phid": {
@@ -126,16 +194,30 @@
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/alert/v0.1/notifications/acknowledge": {
+    "/appscode/api/alert/v0.1/notifications": {
+      "get": {
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/alertNotificationListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Notifications"
+        ]
+      },
       "post": {
-        "operationId": "Acknowledge",
+        "operationId": "Notify",
         "parameters": [
           {
             "in": "body",
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/alertAcknowledgeRequest"
+              "$ref": "#/definitions/alertNotifyRequest"
             }
           }
         ],
@@ -152,16 +234,23 @@
         ]
       }
     },
-    "/appscode/api/alert/v0.1/notifications/notify": {
+    "/appscode/api/alert/v0.1/notifications/{phid}/acknowledge": {
       "post": {
-        "operationId": "Notify",
+        "operationId": "Acknowledge",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "phid",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "body",
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/alertNotifyRequest"
+              "$ref": "#/definitions/alertAcknowledgeRequest"
             }
           }
         ],
