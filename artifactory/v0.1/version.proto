@@ -6,14 +6,21 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Versions {
+
   rpc List(VersionListRequest) returns (VersionListResponse) {
     option (google.api.http) = {
+      // Provides version lists of an particular artifact identified by `name`.
+      // Recives {type} in - `docker, maven, composer, npm` as path parameter
+      // and `name` as query parametrs.
       get: "/appscode/api/artifactory/v0.1/artifacts/{type}/versions"
     };
   }
 
   rpc Describe(VersionDescribeRequest) returns (VersionDescribeResponse) {
     option(google.api.http) = {
+      // Provides details of an particular artifacts version.
+      // Recives {type} in - `docker, maven, composer, npm` as path parameter
+      // and `id` `name` as query parametrs.
       get: "/appscode/api/artifactory/v0.1/artifacts/{type}/versions/description"
     };
   }
