@@ -142,9 +142,18 @@
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/artifactory/v0.1/artifact": {
+    "/appscode/api/artifactory/v0.1/artifacts/{type}": {
       "get": {
         "operationId": "List",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Description",
