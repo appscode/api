@@ -110,7 +110,11 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "status": {
-      "type": "string"
+      "items": {
+        "type": "string"
+      },
+      "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  ONLINE\n  OFFLINE\n  DELETED",
+      "type": "array"
     }
   },
   "type": "object"
