@@ -140,18 +140,13 @@
     },
     "ciAgentListRequest": {
       "properties": {
-        "from_timestamp": {
-          "format": "int64",
-          "title": "from > to, timestamp = seconds since epoch",
-          "type": "integer"
-        },
         "status": {
-          "format": "string",
-          "type": "string"
-        },
-        "to_timestamp": {
-          "format": "int64",
-          "type": "integer"
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  ONLINE\n  OFFLINE\n  DELETED",
+          "type": "array"
         }
       },
       "type": "object"
