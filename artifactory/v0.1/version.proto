@@ -8,13 +8,13 @@ import "api/dtypes/types.proto";
 service Versions {
   rpc List(VersionListRequest) returns (VersionListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/artifactory/v0.1/artifact/{name}/{type}"
+      get: "/appscode/api/artifactory/v0.1/artifact/{type}"
     };
   }
 
   rpc Describe(VersionDescribeRequest) returns (VersionDescribeResponse) {
     option(google.api.http) = {
-      get: "/appscode/api/artifactory/v0.1/artifact/{name}/{id}/{type}"
+      get: "/appscode/api/artifactory/v0.1/artifact/{id}/{type}"
     };
   }
 }

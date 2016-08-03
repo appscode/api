@@ -14,7 +14,7 @@ service Artifacts {
 
   rpc List(ArtifactListRequest) returns (ArtifactListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/artifactory/v0.1/artifact"
+      get: "/appscode/api/artifactory/v0.1/artifacts/{type}"
     };
   }
 }
