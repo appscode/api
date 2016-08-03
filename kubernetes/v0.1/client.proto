@@ -7,7 +7,14 @@ import "api/dtypes/types.proto";
 import "api/alert/v0.1/alert.proto";
 
 service Clients {
-    rpc Nodes(ClientRequest) returns (NodeListResponse) {
+  rpc Copy(CopyResourceRequest) returns (CopyResourceResponse) {
+    option (google.api.http) = {
+      put : "/appscode/api/kubernetes/v0.1/actions/copy"
+      body : "*"
+    };
+  }
+
+  rpc Nodes(ClientRequest) returns (NodeListResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v0.1/client/{cluster}/nodes"
     };
@@ -87,6 +94,22 @@ service Clients {
 
 }
 
+
+message KubeResource {
+  string type = 1;
+  string name = 2;
+  string namespace = 3;
+  string cluster = 4;
+}
+
+message CopyResourceRequest {
+  KubeResource source = 1;
+  KubeResource destination = 2;
+}
+
+message CopyResourceResponse {
+  dtypes.Status status = 1;
+}
 
 message ClientRequest {
   string cluster = 1;

@@ -322,6 +322,25 @@
       },
       "type": "object"
     },
+    "kubernetesCopyResourceRequest": {
+      "properties": {
+        "destination": {
+          "$ref": "#/definitions/kubernetesKubeResource"
+        },
+        "source": {
+          "$ref": "#/definitions/kubernetesKubeResource"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesCopyResourceResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesJob": {
       "properties": {
         "active": {
@@ -387,6 +406,27 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesKubeResource": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -777,6 +817,32 @@
     "version": "0.1"
   },
   "paths": {
+    "/appscode/api/kubernetes/v0.1/actions/copy": {
+      "put": {
+        "operationId": "Copy",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/kubernetesCopyResourceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesCopyResourceResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
     "/appscode/api/kubernetes/v0.1/client/{cluster}/apps": {
       "get": {
         "operationId": "Apps",
