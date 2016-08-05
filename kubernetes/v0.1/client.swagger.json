@@ -253,6 +253,10 @@
         "namespace": {
           "format": "string",
           "type": "string"
+        },
+        "raw": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -281,6 +285,9 @@
         "namespace": {
           "format": "string",
           "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/kubernetesRaw"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -580,6 +587,19 @@
       },
       "type": "object"
     },
+    "kubernetesRaw": {
+      "properties": {
+        "data": {
+          "format": "string",
+          "type": "string"
+        },
+        "format": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesReplicationController": {
       "properties": {
         "app": {
@@ -675,6 +695,10 @@
         "namespace": {
           "format": "string",
           "type": "string"
+        },
+        "raw": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -703,6 +727,9 @@
         "namespace": {
           "format": "string",
           "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/kubernetesRaw"
         },
         "resource_version": {
           "format": "string",

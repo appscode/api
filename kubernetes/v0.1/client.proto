@@ -20,21 +20,45 @@ service Clients {
     };
   }
 
-  rpc Secrets(ClientRequest) returns (SecretListResponse) {
+  rpc Apps(ClientRequest) returns (AppListResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/secrets"
+      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/apps"
     };
   }
 
-  rpc Jobs(ClientRequest) returns (JobListResponse) {
+  rpc App(AppDescribeRequest) returns (AppDescribeResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/jobs"
+      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}"
+    };
+  }
+
+  rpc AppPods(AppDescribeRequest) returns (PodListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}/pods"
     };
   }
 
   rpc Namespaces(ClientRequest) returns (NamespaceListResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v0.1/client/{cluster}/namespaces"
+    };
+  }
+
+  rpc Secrets(ClientRequest) returns (SecretListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/secrets"
+    };
+  }
+
+  rpc Secret(SecretDescribeRequest) returns (SecretDescribeResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}"
+    };
+  }
+
+  rpc Jobs(ClientRequest) returns (JobListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/jobs"
     };
   }
 
@@ -56,24 +80,6 @@ service Clients {
     };
   }
 
-  rpc Apps(ClientRequest) returns (AppListResponse) {
-    option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/apps"
-    };
-  }
-
-  rpc App(AppDescribeRequest) returns (AppDescribeResponse) {
-    option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}"
-    };
-  }
-
-  rpc AppPods(AppDescribeRequest) returns (PodListResponse) {
-    option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/apps/{namespace}/{name}/pods"
-    };
-  }
-
   rpc ConfigMaps(ClientRequest) returns (ConfigMapListResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v0.1/client/{cluster}/configmaps"
@@ -85,13 +91,6 @@ service Clients {
       get : "/appscode/api/kubernetes/v0.1/client/{cluster}/configmaps/{namespace}/{name}"
     };
   }
-
-  rpc Secret(SecretDescribeRequest) returns (SecretDescribeResponse) {
-    option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v0.1/client/{cluster}/secrets/{namespace}/{name}"
-    };
-  }
-
 }
 
 
@@ -314,6 +313,8 @@ message ConfigMapDescribeRequest {
   string cluster = 1;
   string name = 2;
   string namespace = 3;
+
+  string raw = 4;
 }
 
 message ConfigMapDescribeResponse {
@@ -323,12 +324,16 @@ message ConfigMapDescribeResponse {
   string cluster = 4;
   string created_time = 5;
   map <string, string> data = 6;
+
+  Raw raw = 7;
 }
 
 message SecretDescribeRequest {
   string cluster = 1;
   string name = 2;
   string namespace = 3;
+
+  string raw = 4;
 }
 
 message SecretDescribeResponse {
@@ -340,4 +345,11 @@ message SecretDescribeResponse {
   string resource_version = 6;
   string type = 7;
   map <string, string> data = 8;
+
+  Raw raw = 9;
+}
+
+message Raw {
+  string format = 1;
+  string data = 2;
 }
