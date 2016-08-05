@@ -15,8 +15,17 @@ message Auth {
   string token_type = 4;
 }
 
+// Metadata holds other on request or operation specific data
+// that could be used inside that operation.
+// An welldefined message instead of a map is used
+// so that the data fields can be explicitly defined with
+// its own data type. Resolves data convertions.
 message Metadata {
+  // Contains PurchasePHID is this is a purchase request.
   repeated string purchase_phid = 1;
+
+  // PHID of the user who requested this operation.
+  string author_phid = 2;
 }
 
 // Next Id: 11
