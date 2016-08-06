@@ -44,7 +44,7 @@ enum OperationType {
   CHECK_DNS = 11;
 }
 
-// Next Id: 10
+// Next Id: 16
 message Operation {
   oneof request {
     kubernetes.ClusterCreateRequest cluster_create_request = 1;
@@ -60,10 +60,9 @@ message Operation {
     certificate.DNSCheckRequest dns_check_request = 11;
   }
   OperationType type = 12;
-  int64 request_time = 13;
-  string phid = 14;
-  Auth auth = 15;
-  Metadata metadata = 16;
+  string phid = 13;
+  Auth auth = 14;
+  Metadata metadata = 15;
 }
 
 message DataBucketDeleteRequest {
