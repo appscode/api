@@ -26,6 +26,7 @@ message Metadata {
 
   // PHID of the user who requested this operation.
   string author_phid = 2;
+  string author_name = 3;
 }
 
 // Next Id: 11
