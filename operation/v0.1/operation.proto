@@ -1,12 +1,36 @@
 syntax = "proto3";
 
-package gearman;
+package operation;
 
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
 import "api/certificate/v0.1/certificate.proto";
 import "api/ci/v0.1/agent.proto";
 import "api/kubernetes/v0.1/clusters.proto";
 import "api/db/v0.1/database.proto";
 import "api/namespace/v0.1/namespace.proto";
+
+service Operations {
+  rpc Describe(DescribeRequest) returns (DescribeResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/operation/v0.1/operations/{phid}"
+    };
+  }
+}
+
+message DescribeRequest {
+  string phid = 1;
+}
+
+message DescribeResponse {
+  dtypes.Status status = 1;
+  Operation op = 2;
+  message Log {
+    int64 timestamp = 1;
+    string message = 2;
+  }
+  repeated Log log = 3;
+}
 
 message Auth {
   string namespace = 1;

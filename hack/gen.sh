@@ -18,7 +18,8 @@ ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any,"
 ALIAS+="Mapi/artifactory/model_artifacts.proto=github.com/appscode/api/artifactory,"
 ALIAS+="Mapi/db/v0.1/database.proto=github.com/appscode/api/db/v0.1,"
 ALIAS+="Mapi/namespace/v0.1/namespace.proto=github.com/appscode/api/namespace/v0.1,"
-ALIAS+="Mapi/alert/v0.1/alert.proto=github.com/appscode/api/alert/v0.1"
+ALIAS+="Mapi/alert/v0.1/alert.proto=github.com/appscode/api/alert/v0.1,"
+ALIAS+="Mapi/operation/operation.proto=github.com/appscode/api/operation"
 
 clean() {
 	(find . | grep pb.go | xargs rm) || true
