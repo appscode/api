@@ -14,7 +14,7 @@ service Clusters {
 
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v0.1/clusters/{name}"
+      get : "/appscode/api/kubernetes/v0.1/clusters/{uid}"
     };
   }
 
@@ -84,7 +84,7 @@ message Cluster {
 }
 
 message ClusterDescribeRequest {
-  string name = 1;
+  string uid = 1;
 }
 
 message ClusterDescribeResponse {

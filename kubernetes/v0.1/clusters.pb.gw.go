@@ -55,12 +55,12 @@ func request_Clusters_Describe_0(ctx context.Context, marshaler runtime.Marshale
 		_   = err
 	)
 
-	val, ok = pathParams["name"]
+	val, ok = pathParams["uid"]
 	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
 	}
 
-	protoReq.Name, err = runtime.String(val)
+	protoReq.Uid, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
@@ -577,7 +577,7 @@ func RegisterClustersHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 var (
 	pattern_Clusters_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "kubernetes", "v0.1", "clusters"}, ""))
 
-	pattern_Clusters_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "kubernetes", "v0.1", "clusters", "name"}, ""))
+	pattern_Clusters_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "kubernetes", "v0.1", "clusters", "uid"}, ""))
 
 	pattern_Clusters_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "kubernetes", "v0.1", "clusters"}, ""))
 

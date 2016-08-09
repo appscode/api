@@ -241,7 +241,7 @@
     },
     "kubernetesClusterDescribeRequest": {
       "properties": {
-        "name": {
+        "uid": {
           "format": "string",
           "type": "string"
         }
@@ -552,29 +552,6 @@
           "Clusters"
         ]
       },
-      "get": {
-        "operationId": "Describe",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/kubernetesClusterDescribeResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      },
       "post": {
         "operationId": "Update",
         "parameters": [
@@ -674,6 +651,31 @@
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v0.1/clusters/{uid}": {
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesClusterDescribeResponse"
             }
           }
         },
