@@ -27,7 +27,8 @@ service Clusters {
 
   rpc Update(ClusterUpdateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-       post : "/appscode/api/kubernetes/v0.1/clusters/{name}"
+       post: "/appscode/api/kubernetes/v0.1/clusters/{name}"
+       body: "*"
     };
   }
 
@@ -40,7 +41,8 @@ service Clusters {
 
   rpc Upgrade(ClusterUpgradeRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-       post : "/appscode/api/kubernetes/v0.1/clusters/{name}/upgrade"
+       post: "/appscode/api/kubernetes/v0.1/clusters/{name}/upgrade"
+       body: "*"
     };
   }
 
