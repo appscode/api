@@ -284,10 +284,6 @@
           "format": "string",
           "type": "string"
         },
-        "role": {
-          "format": "string",
-          "type": "string"
-        },
         "sku": {
           "format": "string",
           "type": "string"
@@ -561,6 +557,14 @@
             "name": "name",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/kubernetesClusterUpdateRequest"
+            }
           }
         ],
         "responses": {
@@ -644,6 +648,14 @@
             "name": "name",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/kubernetesClusterUpgradeRequest"
+            }
           }
         ],
         "responses": {

@@ -170,8 +170,7 @@ message ClusterInstance {
   string name = 3;
   string external_ip = 4;
   string internal_ip = 5;
-  string role = 6;
-  string sku = 7;
+  string sku = 6;
 }
 
 message ClusterInstanceListResponse {
