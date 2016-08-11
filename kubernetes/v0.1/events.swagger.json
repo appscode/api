@@ -10,6 +10,10 @@
           "format": "string",
           "type": "string"
         },
+        "instance_ip": {
+          "format": "string",
+          "type": "string"
+        },
         "kind": {
           "format": "string",
           "type": "string"
