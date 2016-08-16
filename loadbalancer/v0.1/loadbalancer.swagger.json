@@ -300,6 +300,10 @@
     },
     "loadbalancerTCPLoadBalancerRule": {
       "properties": {
+        "SSL_secret_name": {
+          "format": "string",
+          "type": "string"
+        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
