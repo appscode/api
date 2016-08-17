@@ -18,8 +18,7 @@ authenticationInterceptor:
     - "/namespace.Namespace/Get"
     - "/namespace.Namespace/IsAvailable"
 
-    # Following Endpoints are exclusivly private, can not able to access
-    # from outside.
+    # Following Endpoints are private, not accessable to internet.
     - "/billing.Charge/Estimate"
     - "/billing.Invoice/Create"
     - "/billing.Purchase/Begin"
