@@ -20,7 +20,7 @@
     },
     "alertNotification": {
       "properties": {
-        "alert_created": {
+        "count": {
           "format": "int64",
           "type": "integer"
         },
@@ -28,9 +28,9 @@
           "format": "string",
           "type": "string"
         },
-        "method": {
-          "format": "string",
-          "type": "string"
+        "last_notified": {
+          "format": "int64",
+          "type": "integer"
         },
         "service_name": {
           "format": "string",
@@ -44,7 +44,7 @@
           "format": "string",
           "type": "string"
         },
-        "user_uid": {
+        "status": {
           "format": "string",
           "type": "string"
         }

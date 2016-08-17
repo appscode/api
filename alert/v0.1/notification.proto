@@ -33,9 +33,10 @@ message Notification {
   string host_name = 2;
   string state = 3;
   string state_type = 4;
-  string method = 5;
-  string user_uid = 6;
-  int64 alert_created = 7;
+  int64 count = 5;
+  string status = 6;
+  int64 last_notified = 7;
+
 }
 
 message NotificationListRequest {
