@@ -32,6 +32,10 @@
           "format": "int64",
           "type": "integer"
         },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        },
         "service_name": {
           "format": "string",
           "type": "string"

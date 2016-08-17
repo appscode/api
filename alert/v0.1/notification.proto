@@ -29,13 +29,14 @@ service Notifications {
 }
 
 message Notification {
-  string service_name = 1;
-  string host_name = 2;
-  string state = 3;
-  string state_type = 4;
-  int64 count = 5;
-  string status = 6;
-  int64 last_notified = 7;
+  string phid = 1;
+  string service_name = 2;
+  string host_name = 3;
+  string state = 4;
+  string state_type = 5;
+  int64 count = 6;
+  string status = 7;
+  int64 last_notified = 8;
 
 }
 
