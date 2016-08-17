@@ -17,14 +17,6 @@ authenticationInterceptor:
     - "/namespace.Namespace/Create"
     - "/namespace.Namespace/Get"
     - "/namespace.Namespace/IsAvailable"
-
-    # Following Endpoints are private, not accessable to internet.
-    - "/billing.Charge/Estimate"
-    - "/billing.Invoice/Create"
-    - "/billing.Purchase/Begin"
-    - "/billing.Purchase/Complete"
-    - "/billing.Purchase/Close"
-    - "billing.Subscription/Subscribe"
   systemAuthenticatedEndpoint:
     - "/ci.Master/Create"
     - "/ci.Master/Delete"
