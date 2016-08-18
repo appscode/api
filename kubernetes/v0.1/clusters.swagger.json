@@ -104,6 +104,10 @@
     },
     "kubernetesCluster": {
       "properties": {
+        "api_server_url": {
+          "format": "string",
+          "type": "string"
+        },
         "created_at": {
           "format": "string",
           "type": "string"
@@ -111,6 +115,18 @@
         "do_not_delete": {
           "format": "boolean",
           "type": "boolean"
+        },
+        "gce_project": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_server_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_starter_version": {
+          "format": "string",
+          "type": "string"
         },
         "links": {
           "additionalProperties": {
@@ -123,7 +139,7 @@
           "format": "string",
           "type": "string"
         },
-        "nodes": {
+        "node_count": {
           "format": "int32",
           "type": "integer"
         },
@@ -143,7 +159,15 @@
           "format": "string",
           "type": "string"
         },
+        "saltbase_version": {
+          "format": "string",
+          "type": "string"
+        },
         "status": {
+          "format": "string",
+          "type": "string"
+        },
+        "status_cause": {
           "format": "string",
           "type": "string"
         },

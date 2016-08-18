@@ -78,11 +78,17 @@ message Cluster {
   string os = 4;
   string region = 5;
   string zone = 6;
-  string status = 7;
-  int32 nodes = 8;
-  string created_at = 9;
-  map<string, string> links = 10;
-  bool do_not_delete = 11;
+  int32 node_count = 7;
+  string created_at = 8;
+  map<string, string> links = 9;
+  bool do_not_delete = 10;
+  string api_server_url = 11;
+  string status = 12;
+  string status_cause = 13;
+  string gce_project = 14;
+  string kube_server_version = 15;
+  string saltbase_version = 16;
+  string kube_starter_version = 17;
 }
 
 message ClusterDescribeRequest {
