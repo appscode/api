@@ -38,9 +38,7 @@ It has these top-level messages:
 	JobCopyRequest
 	Job
 	MasterCreateRequest
-	MasterCreateResponse
 	MasterDeleteRequest
-	MasterDeleteResponse
 */
 package ci
 
