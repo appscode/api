@@ -13,6 +13,9 @@ func init() {
 	subscriptionSubscribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "auto_extend": {
+      "type": "boolean"
+    },
     "product_id": {
       "type": "string"
     },
@@ -31,4 +34,3 @@ func (m *SubscriptionSubscribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return subscriptionSubscribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SubscriptionSubscribeRequest) IsRequest() {}
-
