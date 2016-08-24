@@ -83,7 +83,7 @@ func metaConfigYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "meta/config.yaml", size: 883, mode: os.FileMode(436), modTime: time.Unix(1471430546, 0)}
+	info := bindataFileInfo{name: "meta/config.yaml", size: 883, mode: os.FileMode(436), modTime: time.Unix(1469499308, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -182,7 +182,6 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
-
 var _bintree = &bintree{nil, map[string]*bintree{
 	"meta": &bintree{nil, map[string]*bintree{
 		"config.yaml": &bintree{metaConfigYaml, map[string]*bintree{}},
@@ -235,3 +234,4 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
+
