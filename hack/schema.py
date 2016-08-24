@@ -84,11 +84,11 @@ def deps():
         if cfg.get('install', False):
             call('go install ./...', cwd=expandvars('$GOPATH/src/' + cfg['pkg'].rstrip('/...')))
     # special treatment for grc-gateway
-    call('rm -rf $GOPATH/src/github.com/gengo/grpc-gateway')
-    call('mkdir -p $GOPATH/src/github.com/gengo')
-    call('git clone https://github.com/appscode/grpc-gateway.git', cwd=expandvars('$GOPATH/src/github.com/gengo'))
-    call('go install github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway')
-    call('go install github.com/gengo/grpc-gateway/protoc-gen-swagger')
+    call('rm -rf $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway')
+    call('mkdir -p $GOPATH/src/github.com/grpc-ecosystem')
+    call('git clone https://github.com/appscode/grpc-gateway.git', cwd=expandvars('$GOPATH/src/github.com/grpc-ecosystem'))
+    call('go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway')
+    call('go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger')
     # Copy google http apis proto files
     call('mkdir -p $GOPATH/src/github.com/google')
     call('git clone https://github.com/googleapis/googleapis.git', cwd=expandvars('$GOPATH/src/github.com/google'))

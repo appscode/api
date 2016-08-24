@@ -8,7 +8,7 @@ RETVAL=0
 ROOT=$PWD
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ALIAS="Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api,"
+ALIAS="Mgoogle/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api,"
 ALIAS+="Mapi/dtypes/types.proto=github.com/appscode/api/dtypes,"
 ALIAS+="Mapi/ci/v0.1/agent.proto=github.com/appscode/api/ci/v0.1,"
 ALIAS+="Mapi/ci/v0.1/master.proto=github.com/appscode/api/ci/v0.1,"
@@ -30,6 +30,7 @@ clean() {
 	# (find . | grep schema.json | xargs rm) || true
 	(find . | grep schema.go | xargs rm) || true
 	(find . | grep php | xargs rm) || true
+	(find . | grep _pb2.py | xargs rm) || true
 }
 
 gen_proto() {
@@ -39,7 +40,7 @@ gen_proto() {
   rm -rf *.pb.go
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
-         -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
          -I ${GOPATH}/src/github.com/google/googleapis/google \
          --go_out=plugins=grpc,${ALIAS}:. *.proto
 }
@@ -51,7 +52,7 @@ gen_gateway_proto() {
   rm -rf *.pb.gw.go
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
-         -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
          -I ${GOPATH}/src/github.com/google/googleapis/google \
          --grpc-gateway_out=logtostderr=true,${ALIAS}:. *.proto
 }
@@ -63,7 +64,7 @@ gen_swagger_def() {
    rm -rf *.swagger.json
    protoc -I /usr/local/include -I . \
           -I ${GOPATH}/src/github.com/appscode \
-          -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
+          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
           -I ${GOPATH}/src/github.com/google/googleapis/google \
           --swagger_out=logtostderr=true,${ALIAS}:. *.proto
 }
@@ -125,7 +126,7 @@ gen_py() {
   rm -rf *.py
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
-         -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
          -I ${GOPATH}/src/github.com/google/googleapis/google \
          --python_out=plugins=grpc,${ALIAS}:. *.proto
 }
@@ -153,7 +154,7 @@ gen_php() {
   rm -rf *.php
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
-         -I ${GOPATH}/src/github.com/gengo/grpc-gateway/third_party/googleapis \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
          -I ${GOPATH}/src/github.com/google/googleapis/google \
          --plugin=protoc-gen-php="$(which protoc-gen-php)" \
          --php_out=':.' *.proto

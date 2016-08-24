@@ -20,7 +20,7 @@ func init() {
       "type": "string"
     },
     "start_time": {
-      "type": "integer"
+      "type": "string"
     }
   },
   "type": "object"

@@ -28,13 +28,16 @@ setup_protoc() {
 setup_proxy() {
 	echo "Setting up grpc proxy"
 	go get github.com/golang/protobuf/protoc-gen-go
-	mkdir -p $GOPATH/src/github.com/gengo
-	pushd $GOPATH/src/github.com/gengo
+	mkdir -p $GOPATH/src/github.com/grpc-ecosystem
+	pushd $GOPATH/src/github.com/grpc-ecosystem
 	rm -rf grpc-gateway
 	git clone git@github.com:appscode/grpc-gateway.git
+	cd grpc-gateway
+	git fetch
+	git checkout go1.7
 	popd
-	go install github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway
-	go install github.com/gengo/grpc-gateway/protoc-gen-swagger
+	go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
+	go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 }
 
 setup() {
@@ -43,7 +46,7 @@ setup() {
 }
 
 if [ $# -eq 0 ]; then
-	setup
+	setup_proxy
 	exit $RETVAL
 fi
 
@@ -51,13 +54,13 @@ case "$1" in
 	protoc)
 		setup_protoc
 		;;
-	gatway)
+	gateway)
 		setup_proxy
 		;;
-	setup)
+	all)
 		setup
 		;;
-	*)  echo $"Usage: $0 {protoc|gateway|setup}"
+	*)  echo $"Usage: $0 {protoc|gateway|all}"
 		RETVAL=1
 		;;
 esac
