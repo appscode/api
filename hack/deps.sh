@@ -32,9 +32,6 @@ setup_proxy() {
 	pushd $GOPATH/src/github.com/grpc-ecosystem
 	rm -rf grpc-gateway
 	git clone git@github.com:appscode/grpc-gateway.git
-	cd grpc-gateway
-	git fetch
-	git checkout go1.7
 	popd
 	go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 	go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
