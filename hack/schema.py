@@ -62,18 +62,19 @@ def deps():
     get_pkgs = [
         {
             'pkg': 'github.com/golang/protobuf/protoc-gen-go',
-            'commit_hash': '5386fff85b00d237cd7d34b2d6ecbb403eb42eb8',
+            'commit_hash': '888eb0692c857ec880338addf316bd662d5e630e',
             'install': True
         },
         {
             'pkg': 'google.golang.org/grpc',
-            'commit_hash': 'aecdccadd24d03e42d00ec82f6774a428fc63c30'
+            'commit_hash': '0032a855ba5c8a3c8e0d71c2deef354b70af1584'
         },
         {
             'pkg': 'github.com/golang/glog',
             'commit_hash': '44145f04b68cf362d9c4df2182967c2275eaefed'
         },
         {'pkg': 'github.com/jteeuwen/go-bindata/...'},
+        {'pkg': 'golang.org/x/tools/cmd/goimports'},
         {'pkg': 'github.com/xeipuuv/gojsonschema'},
     ]
     for cfg in get_pkgs:
