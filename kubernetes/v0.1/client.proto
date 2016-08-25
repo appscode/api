@@ -138,6 +138,7 @@ message Node {
 
   string kubelet_version = 8;
   string instance_type = 9;
+  bool is_master = 10;
 }
 
 message NamespaceListResponse {
