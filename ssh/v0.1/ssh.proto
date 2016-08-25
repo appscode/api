@@ -27,6 +27,7 @@ message SSHGetResponse {
   string instance_addr = 3;
   int32 instance_port = 4;
   string user = 5;
+  string command = 6;
 }
 
 message SSHKey {

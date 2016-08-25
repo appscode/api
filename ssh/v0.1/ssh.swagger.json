@@ -88,6 +88,10 @@
     },
     "sshSSHGetResponse": {
       "properties": {
+        "command": {
+          "format": "string",
+          "type": "string"
+        },
         "instance_addr": {
           "format": "string",
           "type": "string"
