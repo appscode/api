@@ -3,8 +3,12 @@
 # provided.
 
 type: "InterceptorConfig"
-authenticationInterceptor:
+validationInterceptor:
   order: 1
+  noValidation:
+    - "/health.Health/Status"
+authenticationInterceptor:
+  order: 2
   unauthenticatedEndpoint:
     - "/health.Health/Status"
     - "/auth.Authentication/Login"
@@ -23,7 +27,3 @@ authenticationInterceptor:
     - "/backup.Client/ReConfigure"
     - "/backup.Server/Create"
     - "/backup.Server/Delete"
-validationInterceptor:
-  order: 2
-  noValidation:
-    - "/health.Health/Status"

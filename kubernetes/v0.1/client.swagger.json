@@ -486,6 +486,10 @@
           "format": "string",
           "type": "string"
         },
+        "is_master": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "kernel_version": {
           "format": "string",
           "type": "string"
