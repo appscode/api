@@ -275,6 +275,10 @@
     },
     "kubernetesClusterDeleteRequest": {
       "properties": {
+        "force": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "name": {
           "format": "string",
           "type": "string"

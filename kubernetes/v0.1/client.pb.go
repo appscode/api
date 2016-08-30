@@ -41,6 +41,7 @@ It has these top-level messages:
 	SecretDescribeRequest
 	SecretDescribeResponse
 	Raw
+	ClusterSettings
 	Cluster
 	ClusterDescribeRequest
 	ClusterDescribeResponse

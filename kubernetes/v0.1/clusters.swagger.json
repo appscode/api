@@ -179,6 +179,9 @@
           "format": "string",
           "type": "string"
         },
+        "settings": {
+          "$ref": "#/definitions/kubernetesClusterSettings"
+        },
         "status": {
           "format": "string",
           "type": "string"
@@ -268,6 +271,10 @@
     },
     "kubernetesClusterDeleteRequest": {
       "properties": {
+        "force": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "name": {
           "format": "string",
           "type": "string"
@@ -396,6 +403,25 @@
       },
       "type": "object"
     },
+    "kubernetesClusterSettings": {
+      "properties": {
+        "log_index_prefix": {
+          "format": "string",
+          "type": "string"
+        },
+        "log_storage_lifetime": {
+          "format": "int64",
+          "title": "Number of secs logs will be stored in ElasticSearch",
+          "type": "integer"
+        },
+        "monitoring_storage_lifetime": {
+          "format": "int64",
+          "title": "Number of secs logs will be stored in InfluxDB",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesClusterStartupScriptRequest": {
       "properties": {
         "role": {
@@ -426,6 +452,9 @@
         "name": {
           "format": "string",
           "type": "string"
+        },
+        "settings": {
+          "$ref": "#/definitions/kubernetesClusterSettings"
         }
       },
       "type": "object"

@@ -56,6 +56,24 @@ func init() {
 	}
 	clusterUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "kubernetesClusterSettings": {
+      "properties": {
+        "log_index_prefix": {
+          "type": "string"
+        },
+        "log_storage_lifetime": {
+          "title": "Number of secs logs will be stored in ElasticSearch",
+          "type": "integer"
+        },
+        "monitoring_storage_lifetime": {
+          "title": "Number of secs logs will be stored in InfluxDB",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    }
+  },
   "properties": {
     "do_not_delete": {
       "type": "boolean"
@@ -64,6 +82,9 @@ func init() {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
+    },
+    "settings": {
+      "$ref": "#/definitions/kubernetesClusterSettings"
     }
   },
   "type": "object"
@@ -74,6 +95,9 @@ func init() {
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "force": {
+      "type": "boolean"
+    },
     "name": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
