@@ -146,6 +146,7 @@ message ClusterScaleRequest {
 message ClusterDeleteRequest {
   string name = 1;
   bool release_reserved_ip = 2;
+  bool force = 3;
 }
 
 message ClusterStartupScriptRequest {
