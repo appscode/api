@@ -74,8 +74,8 @@ gen_server_protos() {
     for d in */ ; do
       pushd ${d}
       gen_proto
-      if [ -d */ ]; then
-        for dd in */ ; do
+      if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
+        for dd in $dirs ; do
           pushd ${dd}
           gen_proto
           popd
@@ -90,7 +90,7 @@ gen_proxy_protos() {
     for d in */ ; do
       pushd ${d}
       gen_gateway_proto
-      if [ -d */ ]; then
+      if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
         for dd in */ ; do
           pushd ${dd}
           gen_gateway_proto
@@ -106,7 +106,7 @@ gen_swagger_defs() {
     for d in */ ; do
       pushd ${d}
       gen_swagger_def
-      if [ -d */ ]; then
+      if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
         for dd in */ ; do
           pushd ${dd}
           gen_swagger_def
@@ -136,7 +136,7 @@ gen_python_protos() {
   for d in */ ; do
     pushd ${d}
     gen_py
-    if [ -d */ ]; then
+    if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
       for dd in */ ; do
         pushd ${dd}
         gen_py
@@ -164,7 +164,7 @@ gen_php_protos() {
   for d in */ ; do
     pushd ${d}
     gen_php
-    if [ -d */ ]; then
+    if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
       for dd in */ ; do
         pushd ${dd}
         gen_php
