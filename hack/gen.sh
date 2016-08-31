@@ -91,7 +91,7 @@ gen_proxy_protos() {
       pushd ${d}
       gen_gateway_proto
       if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
-        for dd in */ ; do
+        for dd in $dirs ; do
           pushd ${dd}
           gen_gateway_proto
           popd
@@ -107,7 +107,7 @@ gen_swagger_defs() {
       pushd ${d}
       gen_swagger_def
       if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
-        for dd in */ ; do
+        for dd in $dirs ; do
           pushd ${dd}
           gen_swagger_def
           popd
@@ -137,7 +137,7 @@ gen_python_protos() {
     pushd ${d}
     gen_py
     if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
-      for dd in */ ; do
+      for dd in $dirs ; do
         pushd ${dd}
         gen_py
         popd
@@ -165,7 +165,7 @@ gen_php_protos() {
     pushd ${d}
     gen_php
     if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
-      for dd in */ ; do
+      for dd in $dirs ; do
         pushd ${dd}
         gen_php
         popd
