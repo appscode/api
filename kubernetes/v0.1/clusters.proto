@@ -71,6 +71,14 @@ service Clusters {
   }
 }
 
+message ClusterSettings {
+  string log_index_prefix = 1;
+  // Number of secs logs will be stored in ElasticSearch
+  int64 log_storage_lifetime = 2;
+  // Number of secs logs will be stored in InfluxDB
+  int64 monitoring_storage_lifetime = 3;
+}
+
 message Cluster {
   string phid = 1;
   string name = 2;
@@ -94,6 +102,8 @@ message Cluster {
   string kube_password = 19;
   string ca_cert = 20;
   string kube_bearer_token = 21;
+
+  ClusterSettings settings = 22;
 }
 
 message ClusterDescribeRequest {
@@ -193,6 +203,7 @@ message ClusterInstanceListResponse {
 message ClusterUpdateRequest {
   string name = 1;
   bool do_not_delete = 2;
+  ClusterSettings settings = 3;
 }
 
 message ClusterUpgradeRequest {
