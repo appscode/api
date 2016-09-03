@@ -4,60 +4,59 @@
     "application/json"
   ],
   "definitions": {
-    "alertAcknowledgeRequest": {
+    "IncidentEvent": {
       "properties": {
         "comment": {
           "format": "string",
           "type": "string"
         },
-        "phid": {
-          "format": "string",
-          "title": "Notification PHID",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertNotification": {
-      "properties": {
-        "count": {
+        "reported": {
           "format": "int64",
           "type": "integer"
-        },
-        "host_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "last_notified": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "service_name": {
-          "format": "string",
-          "type": "string"
         },
         "state": {
           "format": "string",
           "type": "string"
         },
-        "state_type": {
+        "type": {
           "format": "string",
           "type": "string"
         },
-        "status": {
-          "format": "string",
-          "type": "string"
+        "user": {
+          "$ref": "#/definitions/dtypesUid"
         }
       },
       "type": "object"
     },
-    "alertNotificationListRequest": {
+    "alertIncident": {
       "properties": {
-        "cluster": {
+        "acknowledged": {
+          "format": "int64",
+          "title": "Timestamp of first acknowledgement",
+          "type": "integer"
+        },
+        "alert": {
+          "$ref": "#/definitions/dtypesUid"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/definitions/IncidentEvent"
+          },
+          "type": "array"
+        },
+        "icinga_host": {
+          "format": "string",
+          "type": "string"
+        },
+        "icinga_service": {
+          "format": "string",
+          "type": "string"
+        },
+        "icingaweb_url": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_cluster": {
           "format": "string",
           "type": "string"
         },
@@ -65,22 +64,120 @@
           "format": "string",
           "type": "string"
         },
-        "object_name": {
+        "kubernetes_node": {
           "format": "string",
           "type": "string"
         },
-        "plugin": {
+        "kubernetes_objectName": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_pod": {
+          "format": "string",
+          "type": "string"
+        },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        },
+        "recovered": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "reported": {
+          "format": "int64",
+          "title": "Timestamp of first reported event",
+          "type": "integer"
+        },
+        "state": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/dtypesUid"
+        }
+      },
+      "type": "object"
+    },
+    "alertIncidentDescribeRequest": {
+      "properties": {
+        "phid": {
           "format": "string",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "alertNotificationListResponse": {
+    "alertIncidentDescribeResponse": {
       "properties": {
-        "notifications": {
+        "incident": {
+          "$ref": "#/definitions/alertIncident"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "alertIncidentEventCreateRequest": {
+      "properties": {
+        "acknowledge": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "comment": {
+          "format": "string",
+          "type": "string"
+        },
+        "phid": {
+          "format": "string",
+          "title": "Incident PHID",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertIncidentListRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "format": "string",
+          "type": "string"
+        },
+        "state": {
           "items": {
-            "$ref": "#/definitions/alertNotification"
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "alertIncidentListResponse": {
+      "properties": {
+        "incidents": {
+          "items": {
+            "$ref": "#/definitions/alertIncident"
           },
           "type": "array"
         },
@@ -90,7 +187,7 @@
       },
       "type": "object"
     },
-    "alertNotifyRequest": {
+    "alertIncidentNotifyRequest": {
       "properties": {
         "alert_phid": {
           "format": "string",
@@ -100,7 +197,7 @@
           "format": "string",
           "type": "string"
         },
-        "service_output": {
+        "output": {
           "format": "string",
           "type": "string"
         },
@@ -108,11 +205,11 @@
           "format": "string",
           "type": "string"
         },
-        "state_type": {
+        "time": {
           "format": "string",
           "type": "string"
         },
-        "time": {
+        "type": {
           "format": "string",
           "type": "string"
         }
@@ -167,6 +264,20 @@
       "title": "Next Id = 5",
       "type": "object"
     },
+    "dtypesUid": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Response/Output only",
+      "type": "object"
+    },
     "dtypesVoidResponse": {
       "properties": {
         "status": {
@@ -194,23 +305,23 @@
   },
   "host": "api.appscode.com",
   "info": {
-    "title": "notification.proto",
+    "title": "incident.proto",
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/alert/v0.1/notifications": {
+    "/appscode/api/alert/v0.1/incidents": {
       "get": {
         "operationId": "List",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/alertNotificationListResponse"
+              "$ref": "#/definitions/alertIncidentListResponse"
             }
           }
         },
         "tags": [
-          "Notifications"
+          "Incidents"
         ]
       },
       "post": {
@@ -221,7 +332,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/alertNotifyRequest"
+              "$ref": "#/definitions/alertIncidentNotifyRequest"
             }
           }
         ],
@@ -234,13 +345,38 @@
           }
         },
         "tags": [
-          "Notifications"
+          "Incidents"
         ]
       }
     },
-    "/appscode/api/alert/v0.1/notifications/{phid}/acknowledge": {
+    "/appscode/api/alert/v0.1/incidents/{phid}": {
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "phid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/alertIncidentDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Incidents"
+        ]
+      }
+    },
+    "/appscode/api/alert/v0.1/incidents/{phid}/events": {
       "post": {
-        "operationId": "Acknowledge",
+        "operationId": "CreateEvent",
         "parameters": [
           {
             "format": "string",
@@ -254,7 +390,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/alertAcknowledgeRequest"
+              "$ref": "#/definitions/alertIncidentEventCreateRequest"
             }
           }
         ],
@@ -267,7 +403,7 @@
           }
         },
         "tags": [
-          "Notifications"
+          "Incidents"
         ]
       }
     }

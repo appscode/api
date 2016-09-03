@@ -1,17 +1,108 @@
 {
   "definitions": {
-    "alertAlertListRequest": {
+    "alertAlertCreateRequest": {
       "properties": {
-        "cluster": {
+        "check_command": {
+          "type": "string"
+        },
+        "command_param": {
+          "$ref": "#/definitions/alertCommandParam"
+        },
+        "icinga_param": {
+          "$ref": "#/definitions/alertIcingaParam"
+        },
+        "icinga_service": {
+          "type": "string"
+        },
+        "kubernetes_cluster": {
           "type": "string"
         },
         "kubernetes_namespace": {
           "type": "string"
         },
-        "object_name": {
+        "kubernetes_objectName": {
           "type": "string"
         },
+        "kubernetes_objectType": {
+          "type": "string"
+        },
+        "notifier_param": {
+          "items": {
+            "$ref": "#/definitions/alertNotifierParam"
+          },
+          "type": "array"
+        },
         "plugin": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertDeleteRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertDescribeRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertListRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertSyncRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertUpdateRequest": {
+      "properties": {
+        "command_param": {
+          "$ref": "#/definitions/alertCommandParam"
+        },
+        "icinga_param": {
+          "$ref": "#/definitions/alertIcingaParam"
+        },
+        "notifier_param": {
+          "items": {
+            "$ref": "#/definitions/alertNotifierParam"
+          },
+          "type": "array"
+        },
+        "phid": {
           "type": "string"
         }
       },
@@ -20,12 +111,6 @@
     "alertCheckInfluxData": {
       "properties": {
         "critical_condition": {
-          "type": "string"
-        },
-        "kubernetes_namespace": {
-          "type": "string"
-        },
-        "object_name": {
           "type": "string"
         },
         "query": {
@@ -68,43 +153,6 @@
       },
       "type": "object"
     },
-    "alertCreateRequest": {
-      "properties": {
-        "check_command": {
-          "type": "string"
-        },
-        "cluster": {
-          "type": "string"
-        },
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
-        },
-        "icinga_param": {
-          "$ref": "#/definitions/alertIcingaParam"
-        },
-        "icinga_service": {
-          "type": "string"
-        },
-        "notifier_param": {
-          "items": {
-            "$ref": "#/definitions/alertNotifierParam"
-          },
-          "type": "array"
-        },
-        "plugin": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertDeleteRequest": {
-      "properties": {
-        "phid": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "alertIcingaParam": {
       "properties": {
         "alert_interval_sec": {
@@ -125,26 +173,6 @@
           "type": "string"
         },
         "user_uid": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertUpdateRequest": {
-      "properties": {
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
-        },
-        "icinga_param": {
-          "$ref": "#/definitions/alertIcingaParam"
-        },
-        "notifier_param": {
-          "items": {
-            "$ref": "#/definitions/alertNotifierParam"
-          },
-          "type": "array"
-        },
-        "phid": {
           "type": "string"
         }
       },

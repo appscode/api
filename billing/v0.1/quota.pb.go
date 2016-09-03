@@ -29,7 +29,7 @@ type QuotaGetResponse struct {
 func (m *QuotaGetResponse) Reset()                    { *m = QuotaGetResponse{} }
 func (m *QuotaGetResponse) String() string            { return proto.CompactTextString(m) }
 func (*QuotaGetResponse) ProtoMessage()               {}
-func (*QuotaGetResponse) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
+func (*QuotaGetResponse) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
 
 func (m *QuotaGetResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -125,12 +125,12 @@ var _Quota_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor4,
+	Metadata: fileDescriptor3,
 }
 
-func init() { proto.RegisterFile("quota.proto", fileDescriptor4) }
+func init() { proto.RegisterFile("quota.proto", fileDescriptor3) }
 
-var fileDescriptor4 = []byte{
+var fileDescriptor3 = []byte{
 	// 305 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x94, 0x91, 0xc1, 0x4a, 0xc3, 0x30,
 	0x1c, 0xc6, 0x69, 0xeb, 0xa6, 0xfb, 0x0f, 0x65, 0x44, 0x91, 0x59, 0x3c, 0x8c, 0x0a, 0xda, 0x53,

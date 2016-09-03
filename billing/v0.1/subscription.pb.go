@@ -29,7 +29,7 @@ type SubscriptionSubscribeRequest struct {
 func (m *SubscriptionSubscribeRequest) Reset()                    { *m = SubscriptionSubscribeRequest{} }
 func (m *SubscriptionSubscribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*SubscriptionSubscribeRequest) ProtoMessage()               {}
-func (*SubscriptionSubscribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{0} }
+func (*SubscriptionSubscribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
 
 func init() {
 	proto.RegisterType((*SubscriptionSubscribeRequest)(nil), "billing.SubscriptionSubscribeRequest")
@@ -104,12 +104,12 @@ var _Subscription_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor5,
+	Metadata: fileDescriptor4,
 }
 
-func init() { proto.RegisterFile("subscription.proto", fileDescriptor5) }
+func init() { proto.RegisterFile("subscription.proto", fileDescriptor4) }
 
-var fileDescriptor5 = []byte{
+var fileDescriptor4 = []byte{
 	// 262 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x7c, 0x90, 0x3f, 0x4b, 0xc5, 0x30,
 	0x14, 0xc5, 0xe9, 0x7b, 0xa0, 0x36, 0x3a, 0x05, 0x91, 0x52, 0x9e, 0x28, 0x05, 0x51, 0x44, 0x52,

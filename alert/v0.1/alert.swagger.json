@@ -10,10 +10,6 @@
           "format": "string",
           "type": "string"
         },
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
         "command_param": {
           "$ref": "#/definitions/alertCommandParam"
         },
@@ -25,6 +21,22 @@
           "type": "string"
         },
         "icingaweb_url": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectType": {
           "format": "string",
           "type": "string"
         },
@@ -45,9 +57,23 @@
       },
       "type": "object"
     },
-    "alertAlertListRequest": {
+    "alertAlertCreateRequest": {
       "properties": {
-        "cluster": {
+        "check_command": {
+          "format": "string",
+          "type": "string"
+        },
+        "command_param": {
+          "$ref": "#/definitions/alertCommandParam"
+        },
+        "icinga_param": {
+          "$ref": "#/definitions/alertIcingaParam"
+        },
+        "icinga_service": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_cluster": {
           "format": "string",
           "type": "string"
         },
@@ -55,11 +81,71 @@
           "format": "string",
           "type": "string"
         },
-        "object_name": {
+        "kubernetes_objectName": {
           "format": "string",
           "type": "string"
         },
+        "kubernetes_objectType": {
+          "format": "string",
+          "type": "string"
+        },
+        "notifier_param": {
+          "items": {
+            "$ref": "#/definitions/alertNotifierParam"
+          },
+          "type": "array"
+        },
         "plugin": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertDeleteRequest": {
+      "properties": {
+        "phid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertDescribeRequest": {
+      "properties": {
+        "phid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertDescribeResponse": {
+      "properties": {
+        "alerts": {
+          "$ref": "#/definitions/alertAlert"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertListRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectType": {
           "format": "string",
           "type": "string"
         }
@@ -80,9 +166,9 @@
       },
       "type": "object"
     },
-    "alertCheckInfluxData": {
+    "alertAlertSyncRequest": {
       "properties": {
-        "critical_condition": {
+        "kubernetes_cluster": {
           "format": "string",
           "type": "string"
         },
@@ -90,7 +176,41 @@
           "format": "string",
           "type": "string"
         },
-        "object_name": {
+        "kubernetes_objectName": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertUpdateRequest": {
+      "properties": {
+        "command_param": {
+          "$ref": "#/definitions/alertCommandParam"
+        },
+        "icinga_param": {
+          "$ref": "#/definitions/alertIcingaParam"
+        },
+        "notifier_param": {
+          "items": {
+            "$ref": "#/definitions/alertNotifierParam"
+          },
+          "type": "array"
+        },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertCheckInfluxData": {
+      "properties": {
+        "critical_condition": {
           "format": "string",
           "type": "string"
         },
@@ -140,48 +260,6 @@
       },
       "type": "object"
     },
-    "alertCreateRequest": {
-      "properties": {
-        "check_command": {
-          "format": "string",
-          "type": "string"
-        },
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
-        },
-        "icinga_param": {
-          "$ref": "#/definitions/alertIcingaParam"
-        },
-        "icinga_service": {
-          "format": "string",
-          "type": "string"
-        },
-        "notifier_param": {
-          "items": {
-            "$ref": "#/definitions/alertNotifierParam"
-          },
-          "type": "array"
-        },
-        "plugin": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertDeleteRequest": {
-      "properties": {
-        "phid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "alertIcingaParam": {
       "properties": {
         "alert_interval_sec": {
@@ -206,27 +284,6 @@
           "type": "string"
         },
         "user_uid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertUpdateRequest": {
-      "properties": {
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
-        },
-        "icinga_param": {
-          "$ref": "#/definitions/alertIcingaParam"
-        },
-        "notifier_param": {
-          "items": {
-            "$ref": "#/definitions/alertNotifierParam"
-          },
-          "type": "array"
-        },
-        "phid": {
           "format": "string",
           "type": "string"
         }
@@ -335,7 +392,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/alertCreateRequest"
+              "$ref": "#/definitions/alertAlertCreateRequest"
             }
           }
         ],
@@ -376,6 +433,29 @@
           "Alerts"
         ]
       },
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "phid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/alertAlertDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Alerts"
+        ]
+      },
       "post": {
         "operationId": "Update",
         "parameters": [
@@ -391,7 +471,33 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/alertUpdateRequest"
+              "$ref": "#/definitions/alertAlertUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Alerts"
+        ]
+      }
+    },
+    "/appscode/api/alert/v0.1/alerts:SYNC": {
+      "post": {
+        "operationId": "Sync",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/alertAlertSyncRequest"
             }
           }
         ],

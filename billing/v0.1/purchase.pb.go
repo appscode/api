@@ -28,7 +28,7 @@ type PurchaseBeginRequest struct {
 func (m *PurchaseBeginRequest) Reset()                    { *m = PurchaseBeginRequest{} }
 func (m *PurchaseBeginRequest) String() string            { return proto.CompactTextString(m) }
 func (*PurchaseBeginRequest) ProtoMessage()               {}
-func (*PurchaseBeginRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
+func (*PurchaseBeginRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
 type PurchaseBeginResponse struct {
 	Status   *dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -38,7 +38,7 @@ type PurchaseBeginResponse struct {
 func (m *PurchaseBeginResponse) Reset()                    { *m = PurchaseBeginResponse{} }
 func (m *PurchaseBeginResponse) String() string            { return proto.CompactTextString(m) }
 func (*PurchaseBeginResponse) ProtoMessage()               {}
-func (*PurchaseBeginResponse) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{1} }
+func (*PurchaseBeginResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
 
 func (m *PurchaseBeginResponse) GetStatus() *dtypes.Status {
 	if m != nil {
@@ -57,7 +57,7 @@ type PurchaseCompleteRequest struct {
 func (m *PurchaseCompleteRequest) Reset()                    { *m = PurchaseCompleteRequest{} }
 func (m *PurchaseCompleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*PurchaseCompleteRequest) ProtoMessage()               {}
-func (*PurchaseCompleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{2} }
+func (*PurchaseCompleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
 
 func (m *PurchaseCompleteRequest) GetMetadata() map[string]string {
 	if m != nil {
@@ -73,7 +73,7 @@ type PurchaseCloseRequest struct {
 func (m *PurchaseCloseRequest) Reset()                    { *m = PurchaseCloseRequest{} }
 func (m *PurchaseCloseRequest) String() string            { return proto.CompactTextString(m) }
 func (*PurchaseCloseRequest) ProtoMessage()               {}
-func (*PurchaseCloseRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{3} }
+func (*PurchaseCloseRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
 
 func init() {
 	proto.RegisterType((*PurchaseBeginRequest)(nil), "billing.PurchaseBeginRequest")
@@ -217,12 +217,12 @@ var _Purchase_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor3,
+	Metadata: fileDescriptor2,
 }
 
-func init() { proto.RegisterFile("purchase.proto", fileDescriptor3) }
+func init() { proto.RegisterFile("purchase.proto", fileDescriptor2) }
 
-var fileDescriptor3 = []byte{
+var fileDescriptor2 = []byte{
 	// 472 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0x8c, 0x53, 0xcb, 0x6e, 0xd3, 0x40,
 	0x14, 0x95, 0x9d, 0x26, 0xb8, 0x37, 0xa2, 0x42, 0xa3, 0x50, 0x22, 0xf3, 0xaa, 0x8c, 0x84, 0xaa,

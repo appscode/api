@@ -7,7 +7,6 @@ Package billing is a generated protocol buffer package.
 
 It is generated from these files:
 	charge.proto
-	invoice.proto
 	paymentmethod.proto
 	purchase.proto
 	quota.proto
@@ -15,8 +14,6 @@ It is generated from these files:
 
 It has these top-level messages:
 	ChargeEstimateResponse
-	InvoiceCreateRequest
-	InvoiceCreateResponse
 	PurchaseBeginRequest
 	PurchaseBeginResponse
 	PurchaseCompleteRequest

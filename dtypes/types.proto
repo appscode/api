@@ -149,3 +149,9 @@ message VoidRequest{}
 message VoidResponse {
     Status status = 1;
 }
+
+// Response/Output only
+message Uid {
+    string phid = 1;
+    string name = 2;
+}
