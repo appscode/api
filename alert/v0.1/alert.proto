@@ -146,6 +146,11 @@ message AlertSyncRequest {
   string kubernetes_namespace  = 2;
   string kubernetes_objectType = 3;
   string kubernetes_objectName = 4;
+  message PodAncestor {
+    string type = 1;
+    string name = 2;
+  }
+  repeated PodAncestor pod_ancestor = 5;
 }
 
 message AlertDeleteRequest {

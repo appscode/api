@@ -1,5 +1,41 @@
 {
   "definitions": {
+    "AlertSyncRequestPodAncestor": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertSyncRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        },
+        "pod_ancestor": {
+          "items": {
+            "$ref": "#/definitions/AlertSyncRequestPodAncestor"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "certificateDNSCheckRequest": {
       "properties": {
         "domain": {

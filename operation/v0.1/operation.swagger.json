@@ -4,6 +4,19 @@
     "application/json"
   ],
   "definitions": {
+    "AlertSyncRequestPodAncestor": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "DescribeResponseLog": {
       "properties": {
         "message": {
@@ -13,6 +26,33 @@
         "timestamp": {
           "format": "int64",
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertSyncRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "format": "string",
+          "type": "string"
+        },
+        "pod_ancestor": {
+          "items": {
+            "$ref": "#/definitions/AlertSyncRequestPodAncestor"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -465,6 +505,9 @@
     },
     "operationOperation": {
       "properties": {
+        "alert_sync_request": {
+          "$ref": "#/definitions/alertAlertSyncRequest"
+        },
         "auth": {
           "$ref": "#/definitions/operationAuth"
         },
@@ -518,7 +561,7 @@
           "$ref": "#/definitions/operationOperationType"
         }
       },
-      "title": "Next Id: 16",
+      "title": "Next Id: 19",
       "type": "object"
     },
     "operationOperationType": {
@@ -537,9 +580,10 @@
         "DATABASE_BACKUP",
         "NAMESPACE_CREATE",
         "NAMESPACE_ADMIN_TASK",
-        "CHECK_DNS"
+        "CHECK_DNS",
+        "ALERT_SYNC"
       ],
-      "title": "Next Id: 11",
+      "title": "Next Id: 15",
       "type": "string"
     },
     "protobufAny": {

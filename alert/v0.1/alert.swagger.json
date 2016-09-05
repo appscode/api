@@ -4,6 +4,19 @@
     "application/json"
   ],
   "definitions": {
+    "AlertSyncRequestPodAncestor": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "alertAlert": {
       "properties": {
         "check_command": {
@@ -183,6 +196,12 @@
         "kubernetes_objectType": {
           "format": "string",
           "type": "string"
+        },
+        "pod_ancestor": {
+          "items": {
+            "$ref": "#/definitions/AlertSyncRequestPodAncestor"
+          },
+          "type": "array"
         }
       },
       "type": "object"

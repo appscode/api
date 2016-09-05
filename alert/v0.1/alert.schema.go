@@ -273,6 +273,21 @@ func init() {
 	}
 	alertSyncRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "AlertSyncRequestPodAncestor": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
   "properties": {
     "kubernetes_cluster": {
       "type": "string"
@@ -285,6 +300,12 @@ func init() {
     },
     "kubernetes_objectType": {
       "type": "string"
+    },
+    "pod_ancestor": {
+      "items": {
+        "$ref": "#/definitions/AlertSyncRequestPodAncestor"
+      },
+      "type": "array"
     }
   },
   "type": "object"
