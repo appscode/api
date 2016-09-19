@@ -62,21 +62,13 @@
     },
     "glusterfsVolume": {
       "properties": {
-        "bricks": {
-          "format": "string",
-          "type": "string"
-        },
-        "endpoint": {
-          "format": "string",
-          "type": "string"
+        "bacula_enabled": {
+          "format": "boolean",
+          "type": "boolean"
         },
         "path": {
           "format": "string",
           "type": "string"
-        },
-        "replica": {
-          "format": "int64",
-          "type": "integer"
         }
       },
       "type": "object"

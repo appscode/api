@@ -41,11 +41,9 @@ message Cluster {
   string phid = 1;
   string name = 2;
   string kube_cluster = 3;
-  string mood = 4;
-  string kube_namespace = 5;
-  int64 replica = 6;
-  int32 BaculaEnabled = 7;
-  string created = 8;
+  string kube_namespace = 4;
+  int64 replica = 5;
+  string created = 7;
 }
 
 message ClusterListRequest {
@@ -69,9 +67,9 @@ message ClusterDescribeResponse {
 message ClusterCreateRequest {
   string name = 1;
   int64 node = 2;
-  string mood = 3;
-  repeated string disks = 4;
-  string kube_cluster = 5;
+  repeated string disks = 3;
+  string kube_cluster = 4;
+  string kube_namespace = 5;
 }
 
 message ClusterDeleteRequest {

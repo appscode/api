@@ -62,10 +62,6 @@
     },
     "glusterfsCluster": {
       "properties": {
-        "BaculaEnabled": {
-          "format": "int32",
-          "type": "integer"
-        },
         "created": {
           "format": "string",
           "type": "string"
@@ -75,10 +71,6 @@
           "type": "string"
         },
         "kube_namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "mood": {
           "format": "string",
           "type": "string"
         },
@@ -110,7 +102,7 @@
           "format": "string",
           "type": "string"
         },
-        "mood": {
+        "kube_namespace": {
           "format": "string",
           "type": "string"
         },

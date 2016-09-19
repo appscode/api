@@ -51,7 +51,5 @@ message VolumeListResponse {
 
 message Volume {
   string path = 1;
-  string bricks = 2;
-  string endpoint = 3;
-  int64 replica = 4;
+  bool bacula_enabled = 2;
 }
