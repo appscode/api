@@ -96,6 +96,10 @@
           "format": "string",
           "type": "string"
         },
+        "kube_namespace": {
+          "format": "string",
+          "type": "string"
+        },
         "volume": {
           "format": "string",
           "type": "string"
@@ -110,6 +114,10 @@
           "type": "string"
         },
         "kube_cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_namespace": {
           "format": "string",
           "type": "string"
         }
@@ -186,7 +194,7 @@
         ]
       }
     },
-    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}": {
+    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{kube_namespace}/{glusterfs_cluster}": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -194,6 +202,13 @@
             "format": "string",
             "in": "path",
             "name": "kube_cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "kube_namespace",
             "required": true,
             "type": "string"
           },
@@ -218,7 +233,7 @@
         ]
       }
     },
-    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}/{volume}": {
+    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{kube_namespace}/{glusterfs_cluster}/{volume}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -226,6 +241,13 @@
             "format": "string",
             "in": "path",
             "name": "kube_cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "kube_namespace",
             "required": true,
             "type": "string"
           },

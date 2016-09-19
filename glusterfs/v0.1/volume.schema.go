@@ -21,6 +21,9 @@ func init() {
     },
     "kube_cluster": {
       "type": "string"
+    },
+    "kube_namespace": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -53,6 +56,9 @@ func init() {
       "type": "string"
     },
     "kube_cluster": {
+      "type": "string"
+    },
+    "kube_namespace": {
       "type": "string"
     },
     "volume": {
