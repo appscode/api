@@ -22,6 +22,9 @@
         "kube_cluster": {
           "type": "string"
         },
+        "kube_namespace": {
+          "type": "string"
+        },
         "volume": {
           "type": "string"
         }
@@ -34,6 +37,9 @@
           "type": "string"
         },
         "kube_cluster": {
+          "type": "string"
+        },
+        "kube_namespace": {
           "type": "string"
         }
       },

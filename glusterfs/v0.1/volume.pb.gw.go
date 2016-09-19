@@ -49,6 +49,17 @@ func request_Volumes_List_0(ctx context.Context, marshaler runtime.Marshaler, cl
 		return nil, metadata, err
 	}
 
+	val, ok = pathParams["kube_namespace"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_namespace")
+	}
+
+	protoReq.KubeNamespace, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
 	val, ok = pathParams["glusterfs_cluster"]
 	if !ok {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "glusterfs_cluster")
@@ -113,6 +124,17 @@ func request_Volumes_Delete_0(ctx context.Context, marshaler runtime.Marshaler, 
 	}
 
 	protoReq.KubeCluster, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["kube_namespace"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kube_namespace")
+	}
+
+	protoReq.KubeNamespace, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
@@ -263,11 +285,11 @@ func RegisterVolumesHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 }
 
 var (
-	pattern_Volumes_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "glusterfs", "v0.1", "volumes", "kube_cluster", "glusterfs_cluster"}, ""))
+	pattern_Volumes_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "glusterfs", "v0.1", "volumes", "kube_cluster", "kube_namespace", "glusterfs_cluster"}, ""))
 
 	pattern_Volumes_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "glusterfs", "v0.1", "volumes", "kube_cluster"}, ""))
 
-	pattern_Volumes_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "glusterfs", "v0.1", "volumes", "kube_cluster", "glusterfs_cluster", "volume"}, ""))
+	pattern_Volumes_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "glusterfs", "v0.1", "volumes", "kube_cluster", "kube_namespace", "glusterfs_cluster", "volume"}, ""))
 )
 
 var (
