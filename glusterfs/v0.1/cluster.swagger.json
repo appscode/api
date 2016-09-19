@@ -66,6 +66,10 @@
           "format": "string",
           "type": "string"
         },
+        "endpoint": {
+          "format": "string",
+          "type": "string"
+        },
         "kube_cluster": {
           "format": "string",
           "type": "string"
@@ -85,6 +89,10 @@
         "replica": {
           "format": "int64",
           "type": "integer"
+        },
+        "status": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -123,6 +131,10 @@
           "format": "string",
           "type": "string"
         },
+        "kube_namespace": {
+          "format": "string",
+          "type": "string"
+        },
         "name": {
           "format": "string",
           "type": "string"
@@ -133,6 +145,10 @@
     "glusterfsClusterDescribeRequest": {
       "properties": {
         "kube_cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_namespace": {
           "format": "string",
           "type": "string"
         },
@@ -156,6 +172,14 @@
         "kube_cluster": {
           "format": "string",
           "type": "string"
+        },
+        "status": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  READY\n  DELETED",
+          "type": "array"
         }
       },
       "type": "object"
@@ -254,7 +278,7 @@
         ]
       }
     },
-    "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}/{name}": {
+    "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}/{kube_namespace}/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -262,6 +286,13 @@
             "format": "string",
             "in": "path",
             "name": "kube_cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "kube_namespace",
             "required": true,
             "type": "string"
           },
@@ -292,6 +323,13 @@
             "format": "string",
             "in": "path",
             "name": "kube_cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "kube_namespace",
             "required": true,
             "type": "string"
           },
