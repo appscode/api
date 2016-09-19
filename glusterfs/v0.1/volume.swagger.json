@@ -62,10 +62,6 @@
     },
     "glusterfsVolume": {
       "properties": {
-        "bacula_enabled": {
-          "format": "boolean",
-          "type": "boolean"
-        },
         "path": {
           "format": "string",
           "type": "string"
@@ -75,10 +71,6 @@
     },
     "glusterfsVolumeCreateRequest": {
       "properties": {
-        "enable_bacula": {
-          "format": "int32",
-          "type": "integer"
-        },
         "glusterfs_cluster": {
           "format": "string",
           "type": "string"

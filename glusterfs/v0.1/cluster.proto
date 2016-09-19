@@ -46,6 +46,7 @@ message Cluster {
   string endpoint = 6;
   string created = 7;
   string status = 8;
+  bool bacula_enabled = 9;
 }
 
 message ClusterListRequest {
@@ -80,6 +81,7 @@ message ClusterCreateRequest {
   repeated string disks = 3;
   string kube_cluster = 4;
   string kube_namespace = 5;
+  bool bacula_enabled = 6;
 }
 
 message ClusterDeleteRequest {

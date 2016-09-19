@@ -2,6 +2,9 @@
   "definitions": {
     "glusterfsClusterCreateRequest": {
       "properties": {
+        "bacula_enabled": {
+          "type": "boolean"
+        },
         "disks": {
           "items": {
             "type": "string"

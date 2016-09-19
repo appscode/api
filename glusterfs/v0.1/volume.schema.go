@@ -31,9 +31,6 @@ func init() {
 	volumeCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "enable_bacula": {
-      "type": "integer"
-    },
     "glusterfs_cluster": {
       "type": "string"
     },

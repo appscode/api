@@ -62,6 +62,10 @@
     },
     "glusterfsCluster": {
       "properties": {
+        "bacula_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "created": {
           "format": "string",
           "type": "string"
@@ -99,6 +103,10 @@
     },
     "glusterfsClusterCreateRequest": {
       "properties": {
+        "bacula_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "disks": {
           "items": {
             "format": "string",
