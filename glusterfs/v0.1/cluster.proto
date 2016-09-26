@@ -46,7 +46,6 @@ message Cluster {
   string endpoint = 6;
   string created = 7;
   string status = 8;
-  bool bacula_enabled = 9;
 }
 
 message ClusterListRequest {

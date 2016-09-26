@@ -11,32 +11,6 @@ service Volumes {
       get: "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{kube_namespace}/{glusterfs_cluster}"
     };
   }
-
-  rpc Create(VolumeCreateRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      put : "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}"
-      body: "*"
-    };
-  }
-
-  rpc Delete(VolumeDeleteRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      delete : "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{kube_namespace}/{glusterfs_cluster}/{volume}"
-    };
-  }
-}
-
-message VolumeCreateRequest {
-  string kube_cluster = 1;
-  string glusterfs_cluster = 2;
-  string volume = 3;
-}
-
-message VolumeDeleteRequest {
-  string kube_cluster = 1;
-  string kube_namespace = 2;
-  string glusterfs_cluster = 3;
-  string volume = 4;
 }
 
 message VolumeListRequest {
