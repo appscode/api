@@ -32,51 +32,6 @@ func init() {
 	alertUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "alertCheckInfluxData": {
-      "properties": {
-        "critical_condition": {
-          "type": "string"
-        },
-        "query": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "r": {
-          "type": "string"
-        },
-        "warning_condition": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCheckKubernetes": {
-      "properties": {
-        "count": {
-          "type": "integer"
-        },
-        "selector": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCommandParam": {
-      "properties": {
-        "check_influx_data": {
-          "$ref": "#/definitions/alertCheckInfluxData"
-        },
-        "check_kubernetes": {
-          "$ref": "#/definitions/alertCheckKubernetes"
-        }
-      },
-      "type": "object"
-    },
     "alertIcingaParam": {
       "properties": {
         "alert_interval_sec": {
@@ -104,9 +59,6 @@ func init() {
     }
   },
   "properties": {
-    "command_param": {
-      "$ref": "#/definitions/alertCommandParam"
-    },
     "icinga_param": {
       "$ref": "#/definitions/alertIcingaParam"
     },
@@ -157,51 +109,6 @@ func init() {
 	alertCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "alertCheckInfluxData": {
-      "properties": {
-        "critical_condition": {
-          "type": "string"
-        },
-        "query": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "r": {
-          "type": "string"
-        },
-        "warning_condition": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCheckKubernetes": {
-      "properties": {
-        "count": {
-          "type": "integer"
-        },
-        "selector": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCommandParam": {
-      "properties": {
-        "check_influx_data": {
-          "$ref": "#/definitions/alertCheckInfluxData"
-        },
-        "check_kubernetes": {
-          "$ref": "#/definitions/alertCheckKubernetes"
-        }
-      },
-      "type": "object"
-    },
     "alertIcingaParam": {
       "properties": {
         "alert_interval_sec": {
@@ -232,9 +139,6 @@ func init() {
     "check_command": {
       "type": "string"
     },
-    "command_param": {
-      "$ref": "#/definitions/alertCommandParam"
-    },
     "icinga_param": {
       "$ref": "#/definitions/alertIcingaParam"
     },
@@ -258,9 +162,6 @@ func init() {
         "$ref": "#/definitions/alertNotifierParam"
       },
       "type": "array"
-    },
-    "plugin": {
-      "type": "string"
     },
     "vars": {
       "additionalProperties": {

@@ -17,9 +17,6 @@
         "check_command": {
           "type": "string"
         },
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
-        },
         "icinga_param": {
           "$ref": "#/definitions/alertIcingaParam"
         },
@@ -43,9 +40,6 @@
             "$ref": "#/definitions/alertNotifierParam"
           },
           "type": "array"
-        },
-        "plugin": {
-          "type": "string"
         },
         "vars": {
           "additionalProperties": {
@@ -119,9 +113,6 @@
     },
     "alertAlertUpdateRequest": {
       "properties": {
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
-        },
         "icinga_param": {
           "$ref": "#/definitions/alertIcingaParam"
         },
@@ -142,51 +133,6 @@
         }
       },
       "title": "Next Id: 6",
-      "type": "object"
-    },
-    "alertCheckInfluxData": {
-      "properties": {
-        "critical_condition": {
-          "type": "string"
-        },
-        "query": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "r": {
-          "type": "string"
-        },
-        "warning_condition": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCheckKubernetes": {
-      "properties": {
-        "count": {
-          "type": "integer"
-        },
-        "selector": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCommandParam": {
-      "properties": {
-        "check_influx_data": {
-          "$ref": "#/definitions/alertCheckInfluxData"
-        },
-        "check_kubernetes": {
-          "$ref": "#/definitions/alertCheckKubernetes"
-        }
-      },
       "type": "object"
     },
     "alertIcingaParam": {

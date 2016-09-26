@@ -52,24 +52,6 @@ message IcingaParam {
   int64 alert_interval_sec = 2;
 }
 
-message CheckInfluxData {
-  map<string, string> query = 1;
-  string r  = 2;
-  string warning_condition = 3;
-  string critical_condition  = 4;
-}
-
-message CheckKubernetes {
-  string type = 1;
-  int64 count = 2;
-  string selector = 3;
-}
-
-message CommandParam {
-  CheckInfluxData check_influx_data = 1;
-  CheckKubernetes check_kubernetes = 2;
-}
-
 // This one is used in kubernetes/v0.1/client.proto
 // To send information if alert is set for app/pod
 message IcingaState {
@@ -91,11 +73,9 @@ message Alert {
   string kubernetes_namespace  = 3;
   string kubernetes_objectType = 4;
   string kubernetes_objectName = 5;
-  string plugin = 6 [deprecated=true];
   string icinga_service = 7;
   IcingaParam icinga_param = 8;
   string check_command = 9;
-  CommandParam command_param = 10 [deprecated=true];
   repeated NotifierParam notifier_param = 11;
   string icingaweb_url = 12;
   map <string, string> vars = 13;
@@ -120,11 +100,9 @@ message AlertCreateRequest {
   string kubernetes_namespace  = 2;
   string kubernetes_objectType = 3;
   string kubernetes_objectName = 4;
-  string plugin = 5 [deprecated=true];
   string icinga_service = 6;
   IcingaParam icinga_param = 7;
   string check_command = 8;
-  CommandParam command_param = 9 [deprecated=true];
   repeated NotifierParam notifier_param = 10;
   map <string, string> vars = 11;
 }
@@ -143,7 +121,6 @@ message AlertDescribeResponse {
 message AlertUpdateRequest {
   string phid = 1;
   IcingaParam icinga_param = 2;
-  CommandParam command_param = 3 [deprecated=true];
   repeated NotifierParam notifier_param = 4;
   map <string, string> vars = 5;
 }
