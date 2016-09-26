@@ -15,6 +15,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 3",
       "type": "object"
     },
     "alertAlert": {
@@ -66,6 +67,13 @@
         "plugin": {
           "format": "string",
           "type": "string"
+        },
+        "vars": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
         }
       },
       "type": "object"
@@ -111,8 +119,16 @@
         "plugin": {
           "format": "string",
           "type": "string"
+        },
+        "vars": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
         }
       },
+      "title": "Next Id: 12",
       "type": "object"
     },
     "alertAlertDeleteRequest": {
@@ -122,6 +138,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 2",
       "type": "object"
     },
     "alertAlertDescribeRequest": {
@@ -131,6 +148,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 2",
       "type": "object"
     },
     "alertAlertDescribeResponse": {
@@ -163,6 +181,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 5",
       "type": "object"
     },
     "alertAlertListResponse": {
@@ -204,6 +223,7 @@
           "type": "array"
         }
       },
+      "title": "Next Id: 6",
       "type": "object"
     },
     "alertAlertUpdateRequest": {
@@ -223,8 +243,16 @@
         "phid": {
           "format": "string",
           "type": "string"
+        },
+        "vars": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
         }
       },
+      "title": "Next Id: 6",
       "type": "object"
     },
     "alertCheckInfluxData": {

@@ -23,6 +23,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Next Id: 2",
   "type": "object"
 }`))
 	if err != nil {
@@ -117,8 +118,15 @@ func init() {
     },
     "phid": {
       "type": "string"
+    },
+    "vars": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
     }
   },
+  "title": "Next Id: 6",
   "type": "object"
 }`))
 	if err != nil {
@@ -140,6 +148,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Next Id: 5",
   "type": "object"
 }`))
 	if err != nil {
@@ -252,8 +261,15 @@ func init() {
     },
     "plugin": {
       "type": "string"
+    },
+    "vars": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
     }
   },
+  "title": "Next Id: 12",
   "type": "object"
 }`))
 	if err != nil {
@@ -266,6 +282,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Next Id: 2",
   "type": "object"
 }`))
 	if err != nil {
@@ -277,14 +294,13 @@ func init() {
     "AlertSyncRequestPodAncestor": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "type": {
           "type": "string"
         }
       },
+      "title": "Next Id: 3",
       "type": "object"
     }
   },
@@ -308,6 +324,7 @@ func init() {
       "type": "array"
     }
   },
+  "title": "Next Id: 6",
   "type": "object"
 }`))
 	if err != nil {

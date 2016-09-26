@@ -3,14 +3,13 @@
     "AlertSyncRequestPodAncestor": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "type": {
           "type": "string"
         }
       },
+      "title": "Next Id: 3",
       "type": "object"
     },
     "alertAlertCreateRequest": {
@@ -47,8 +46,15 @@
         },
         "plugin": {
           "type": "string"
+        },
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
         }
       },
+      "title": "Next Id: 12",
       "type": "object"
     },
     "alertAlertDeleteRequest": {
@@ -57,6 +63,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 2",
       "type": "object"
     },
     "alertAlertDescribeRequest": {
@@ -65,6 +72,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 2",
       "type": "object"
     },
     "alertAlertListRequest": {
@@ -82,6 +90,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 5",
       "type": "object"
     },
     "alertAlertSyncRequest": {
@@ -105,6 +114,7 @@
           "type": "array"
         }
       },
+      "title": "Next Id: 6",
       "type": "object"
     },
     "alertAlertUpdateRequest": {
@@ -123,8 +133,15 @@
         },
         "phid": {
           "type": "string"
+        },
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
         }
       },
+      "title": "Next Id: 6",
       "type": "object"
     },
     "alertCheckInfluxData": {
