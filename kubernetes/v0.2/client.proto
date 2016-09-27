@@ -208,7 +208,8 @@ message KubeResource {
     Secret secret = 13;
     ReplicationController replication_controller = 14;
   }
-  Raw raw = 15;
+  repeated Event events = 15;
+  Raw raw = 16;
 }
 
 message Meta {
@@ -492,3 +493,20 @@ message PetSet {
 message LabelSelector {
   map<string, string> match_labels = 1;
 }
+
+message Event {
+  Meta meta = 1;
+  string reason = 2;
+  string message = 3;
+  EventSource source = 4;
+  int64 first_timestamp = 5;
+  int64 last_timestamp = 6;
+  int32 count = 7;
+  string type = 8;
+}
+
+message EventSource {
+  string componenet = 1;
+  string host = 2;
+}
+

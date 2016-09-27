@@ -628,6 +628,54 @@
       },
       "type": "object"
     },
+    "kubernetesEvent": {
+      "properties": {
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "first_timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "message": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/kubernetesMeta"
+        },
+        "reason": {
+          "format": "string",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/kubernetesEventSource"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesEventSource": {
+      "properties": {
+        "componenet": {
+          "format": "string",
+          "type": "string"
+        },
+        "host": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesJob": {
       "properties": {
         "app": {
@@ -721,6 +769,12 @@
         },
         "deployment": {
           "$ref": "#/definitions/kubernetesDeployment"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/definitions/kubernetesEvent"
+          },
+          "type": "array"
         },
         "job": {
           "$ref": "#/definitions/kubernetesJob"
