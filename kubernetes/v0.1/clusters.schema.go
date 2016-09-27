@@ -167,6 +167,9 @@ func init() {
   "properties": {
     "role": {
       "type": "string"
+    },
+    "uid": {
+      "type": "string"
     }
   },
   "type": "object"

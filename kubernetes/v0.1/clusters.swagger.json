@@ -427,6 +427,10 @@
         "role": {
           "format": "string",
           "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -503,31 +507,6 @@
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v0.1/cluster-startup-script/{role}": {
-      "get": {
-        "operationId": "StartupScript",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "role",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/kubernetesClusterStartupScriptResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
     "/appscode/api/kubernetes/v0.1/clusters": {
       "get": {
         "operationId": "List",
@@ -757,6 +736,38 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesClusterDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v0.1/clusters/{uid}/startup-script/{role}": {
+      "get": {
+        "operationId": "StartupScript",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/kubernetesClusterStartupScriptResponse"
             }
           }
         },
