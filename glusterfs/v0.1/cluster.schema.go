@@ -72,6 +72,9 @@ func init() {
     "kube_cluster": {
       "type": "string"
     },
+    "kube_namespace": {
+      "type": "string"
+    },
     "mood": {
       "type": "string"
     },

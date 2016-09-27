@@ -110,6 +110,10 @@
           "format": "string",
           "type": "string"
         },
+        "kube_namespace": {
+          "format": "string",
+          "type": "string"
+        },
         "mood": {
           "format": "string",
           "type": "string"
