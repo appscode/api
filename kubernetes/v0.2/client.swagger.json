@@ -25,7 +25,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesApp"
+            "$ref": "#/definitions/v02App"
           },
           "type": "array"
         }
@@ -36,7 +36,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesConfigMap"
+            "$ref": "#/definitions/v02ConfigMap"
           },
           "type": "array"
         }
@@ -47,7 +47,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesDaemonSet"
+            "$ref": "#/definitions/v02DaemonSet"
           },
           "type": "array"
         }
@@ -58,7 +58,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesDeployment"
+            "$ref": "#/definitions/v02Deployment"
           },
           "type": "array"
         }
@@ -69,7 +69,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesJob"
+            "$ref": "#/definitions/v02Job"
           },
           "type": "array"
         }
@@ -80,7 +80,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesNamespace"
+            "$ref": "#/definitions/v02Namespace"
           },
           "type": "array"
         }
@@ -91,7 +91,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesNode"
+            "$ref": "#/definitions/v02Node"
           },
           "type": "array"
         }
@@ -102,7 +102,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesPetSet"
+            "$ref": "#/definitions/v02PetSet"
           },
           "type": "array"
         }
@@ -113,7 +113,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesPod"
+            "$ref": "#/definitions/v02Pod"
           },
           "type": "array"
         }
@@ -124,7 +124,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesReplicaSet"
+            "$ref": "#/definitions/v02ReplicaSet"
           },
           "type": "array"
         }
@@ -135,7 +135,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesReplicationController"
+            "$ref": "#/definitions/v02ReplicationController"
           },
           "type": "array"
         }
@@ -146,7 +146,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesSecret"
+            "$ref": "#/definitions/v02Secret"
           },
           "type": "array"
         }
@@ -157,7 +157,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/kubernetesService"
+            "$ref": "#/definitions/v02Service"
           },
           "type": "array"
         }
@@ -353,10 +353,26 @@
       "title": "Next Id = 5",
       "type": "object"
     },
-    "kubernetesApp": {
+    "protobufAny": {
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }",
+      "properties": {
+        "type_url": {
+          "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
+          "format": "string",
+          "type": "string"
+        },
+        "value": {
+          "description": "Must be a valid serialized protocol buffer of the above specified type.",
+          "format": "byte",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v02App": {
       "properties": {
         "app": {
-          "$ref": "#/definitions/kubernetesService"
+          "$ref": "#/definitions/v02Service"
         },
         "cluster": {
           "format": "string",
@@ -395,7 +411,7 @@
       },
       "type": "object"
     },
-    "kubernetesClientActionResponse": {
+    "v02ClientActionResponse": {
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -403,7 +419,7 @@
       },
       "type": "object"
     },
-    "kubernetesConfigMap": {
+    "v02ConfigMap": {
       "properties": {
         "data": {
           "additionalProperties": {
@@ -413,12 +429,12 @@
           "type": "object"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         }
       },
       "type": "object"
     },
-    "kubernetesConfigMapUpdateRequest": {
+    "v02ConfigMapUpdateRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -456,47 +472,47 @@
       },
       "type": "object"
     },
-    "kubernetesCopyResourceRequest": {
+    "v02CopyResourceRequest": {
       "properties": {
         "destination": {
-          "$ref": "#/definitions/kubernetesKubeObject"
+          "$ref": "#/definitions/v02KubeObject"
         },
         "source": {
-          "$ref": "#/definitions/kubernetesKubeObject"
+          "$ref": "#/definitions/v02KubeObject"
         }
       },
       "type": "object"
     },
-    "kubernetesDaemonSet": {
+    "v02DaemonSet": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "spec": {
-          "$ref": "#/definitions/kubernetesDaemonSetSpec"
+          "$ref": "#/definitions/v02DaemonSetSpec"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesDaemonSetStatus"
+          "$ref": "#/definitions/v02DaemonSetStatus"
         }
       },
       "type": "object"
     },
-    "kubernetesDaemonSetSpec": {
+    "v02DaemonSetSpec": {
       "properties": {
         "pod_template": {
-          "$ref": "#/definitions/kubernetesPodSpec"
+          "$ref": "#/definitions/v02PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/kubernetesLabelSelector"
+          "$ref": "#/definitions/v02LabelSelector"
         }
       },
       "type": "object"
     },
-    "kubernetesDaemonSetStatus": {
+    "v02DaemonSetStatus": {
       "properties": {
         "current_number_scheduled": {
           "format": "int32",
@@ -513,7 +529,7 @@
       },
       "type": "object"
     },
-    "kubernetesDeleteResourceRequest": {
+    "v02DeleteResourceRequest": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -534,40 +550,40 @@
       },
       "type": "object"
     },
-    "kubernetesDeployment": {
+    "v02Deployment": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "spec": {
-          "$ref": "#/definitions/kubernetesDeploymentSpec"
+          "$ref": "#/definitions/v02DeploymentSpec"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesDeploymentStatus"
+          "$ref": "#/definitions/v02DeploymentStatus"
         }
       },
       "type": "object"
     },
-    "kubernetesDeploymentSpec": {
+    "v02DeploymentSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/kubernetesPodSpec"
+          "$ref": "#/definitions/v02PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/kubernetesLabelSelector"
+          "$ref": "#/definitions/v02LabelSelector"
         }
       },
       "type": "object"
     },
-    "kubernetesDeploymentStatus": {
+    "v02DeploymentStatus": {
       "properties": {
         "available_replicas": {
           "format": "int32",
@@ -592,7 +608,7 @@
       },
       "type": "object"
     },
-    "kubernetesDescribeResourceRequest": {
+    "v02DescribeResourceRequest": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -617,10 +633,10 @@
       },
       "type": "object"
     },
-    "kubernetesDescribeResourceResponse": {
+    "v02DescribeResourceResponse": {
       "properties": {
         "resource": {
-          "$ref": "#/definitions/kubernetesKubeResource"
+          "$ref": "#/definitions/v02KubeResource"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -628,7 +644,7 @@
       },
       "type": "object"
     },
-    "kubernetesEvent": {
+    "v02Event": {
       "properties": {
         "count": {
           "format": "int32",
@@ -647,14 +663,14 @@
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "reason": {
           "format": "string",
           "type": "string"
         },
         "source": {
-          "$ref": "#/definitions/kubernetesEventSource"
+          "$ref": "#/definitions/v02EventSource"
         },
         "type": {
           "format": "string",
@@ -663,7 +679,7 @@
       },
       "type": "object"
     },
-    "kubernetesEventSource": {
+    "v02EventSource": {
       "properties": {
         "componenet": {
           "format": "string",
@@ -676,25 +692,25 @@
       },
       "type": "object"
     },
-    "kubernetesJob": {
+    "v02Job": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "space": {
-          "$ref": "#/definitions/kubernetesJobSpec"
+          "$ref": "#/definitions/v02JobSpec"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesJobStatus"
+          "$ref": "#/definitions/v02JobStatus"
         }
       },
       "type": "object"
     },
-    "kubernetesJobSpec": {
+    "v02JobSpec": {
       "properties": {
         "completions": {
           "format": "int32",
@@ -705,12 +721,12 @@
           "type": "integer"
         },
         "template": {
-          "$ref": "#/definitions/kubernetesPodSpec"
+          "$ref": "#/definitions/v02PodSpec"
         }
       },
       "type": "object"
     },
-    "kubernetesJobStatus": {
+    "v02JobStatus": {
       "properties": {
         "active": {
           "format": "int32",
@@ -735,7 +751,7 @@
       },
       "type": "object"
     },
-    "kubernetesKubeObject": {
+    "v02KubeObject": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -756,55 +772,55 @@
       },
       "type": "object"
     },
-    "kubernetesKubeResource": {
+    "v02KubeResource": {
       "properties": {
         "app": {
-          "$ref": "#/definitions/kubernetesApp"
+          "$ref": "#/definitions/v02App"
         },
         "config_map": {
-          "$ref": "#/definitions/kubernetesConfigMap"
+          "$ref": "#/definitions/v02ConfigMap"
         },
         "daemon_set": {
-          "$ref": "#/definitions/kubernetesDaemonSet"
+          "$ref": "#/definitions/v02DaemonSet"
         },
         "deployment": {
-          "$ref": "#/definitions/kubernetesDeployment"
+          "$ref": "#/definitions/v02Deployment"
         },
         "events": {
           "items": {
-            "$ref": "#/definitions/kubernetesEvent"
+            "$ref": "#/definitions/v02Event"
           },
           "type": "array"
         },
         "job": {
-          "$ref": "#/definitions/kubernetesJob"
+          "$ref": "#/definitions/v02Job"
         },
         "namespace": {
-          "$ref": "#/definitions/kubernetesNamespace"
+          "$ref": "#/definitions/v02Namespace"
         },
         "node": {
-          "$ref": "#/definitions/kubernetesNode"
+          "$ref": "#/definitions/v02Node"
         },
         "pet_set": {
-          "$ref": "#/definitions/kubernetesPetSet"
+          "$ref": "#/definitions/v02PetSet"
         },
         "pod": {
-          "$ref": "#/definitions/kubernetesPod"
+          "$ref": "#/definitions/v02Pod"
         },
         "raw": {
-          "$ref": "#/definitions/kubernetesRaw"
+          "$ref": "#/definitions/v02Raw"
         },
         "replica_set": {
-          "$ref": "#/definitions/kubernetesReplicaSet"
+          "$ref": "#/definitions/v02ReplicaSet"
         },
         "replication_controller": {
-          "$ref": "#/definitions/kubernetesReplicationController"
+          "$ref": "#/definitions/v02ReplicationController"
         },
         "secret": {
-          "$ref": "#/definitions/kubernetesSecret"
+          "$ref": "#/definitions/v02Secret"
         },
         "service": {
-          "$ref": "#/definitions/kubernetesService"
+          "$ref": "#/definitions/v02Service"
         },
         "type": {
           "format": "string",
@@ -813,7 +829,7 @@
       },
       "type": "object"
     },
-    "kubernetesKubeResourceList": {
+    "v02KubeResourceList": {
       "properties": {
         "apps": {
           "$ref": "#/definitions/KubeResourceListApps"
@@ -861,7 +877,7 @@
       },
       "type": "object"
     },
-    "kubernetesLabelSelector": {
+    "v02LabelSelector": {
       "properties": {
         "match_labels": {
           "additionalProperties": {
@@ -873,7 +889,7 @@
       },
       "type": "object"
     },
-    "kubernetesListResourceRequest": {
+    "v02ListResourceRequest": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -890,10 +906,10 @@
       },
       "type": "object"
     },
-    "kubernetesListResourceResponse": {
+    "v02ListResourceResponse": {
       "properties": {
         "resources": {
-          "$ref": "#/definitions/kubernetesKubeResourceList"
+          "$ref": "#/definitions/v02KubeResourceList"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -901,7 +917,7 @@
       },
       "type": "object"
     },
-    "kubernetesMeta": {
+    "v02Meta": {
       "properties": {
         "annotations": {
           "additionalProperties": {
@@ -944,18 +960,18 @@
       },
       "type": "object"
     },
-    "kubernetesNamespace": {
+    "v02Namespace": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesNamespaceStatus"
+          "$ref": "#/definitions/v02NamespaceStatus"
         }
       },
       "type": "object"
     },
-    "kubernetesNamespaceStatus": {
+    "v02NamespaceStatus": {
       "properties": {
         "phase": {
           "format": "string",
@@ -964,25 +980,25 @@
       },
       "type": "object"
     },
-    "kubernetesNode": {
+    "v02Node": {
       "properties": {
         "is_master": {
           "format": "boolean",
           "type": "boolean"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "spec": {
-          "$ref": "#/definitions/kubernetesNodeSpec"
+          "$ref": "#/definitions/v02NodeSpec"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesNodeStatus"
+          "$ref": "#/definitions/v02NodeStatus"
         }
       },
       "type": "object"
     },
-    "kubernetesNodeSpec": {
+    "v02NodeSpec": {
       "properties": {
         "external_id": {
           "format": "string",
@@ -999,7 +1015,7 @@
       },
       "type": "object"
     },
-    "kubernetesNodeStatus": {
+    "v02NodeStatus": {
       "properties": {
         "capacity": {
           "$ref": "#/definitions/StatusCapacity"
@@ -1014,35 +1030,35 @@
       },
       "type": "object"
     },
-    "kubernetesPetSet": {
+    "v02PetSet": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "spec": {
-          "$ref": "#/definitions/kubernetesPetSetSpec"
+          "$ref": "#/definitions/v02PetSetSpec"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesPetSetStatus"
+          "$ref": "#/definitions/v02PetSetStatus"
         }
       },
       "type": "object"
     },
-    "kubernetesPetSetSpec": {
+    "v02PetSetSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/kubernetesPodSpec"
+          "$ref": "#/definitions/v02PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/kubernetesLabelSelector"
+          "$ref": "#/definitions/v02LabelSelector"
         },
         "service_name": {
           "format": "string",
@@ -1051,7 +1067,7 @@
       },
       "type": "object"
     },
-    "kubernetesPetSetStatus": {
+    "v02PetSetStatus": {
       "properties": {
         "current_replicas": {
           "format": "int32",
@@ -1064,25 +1080,25 @@
       },
       "type": "object"
     },
-    "kubernetesPod": {
+    "v02Pod": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "spec": {
-          "$ref": "#/definitions/kubernetesPodSpec"
+          "$ref": "#/definitions/v02PodSpec"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesPodStatus"
+          "$ref": "#/definitions/v02PodStatus"
         }
       },
       "type": "object"
     },
-    "kubernetesPodSpec": {
+    "v02PodSpec": {
       "properties": {
         "containers": {
           "items": {
@@ -1121,7 +1137,7 @@
       },
       "type": "object"
     },
-    "kubernetesPodStatus": {
+    "v02PodStatus": {
       "properties": {
         "hostIP": {
           "format": "string",
@@ -1146,7 +1162,7 @@
       },
       "type": "object"
     },
-    "kubernetesRaw": {
+    "v02Raw": {
       "properties": {
         "data": {
           "format": "string",
@@ -1159,40 +1175,40 @@
       },
       "type": "object"
     },
-    "kubernetesReplicaSet": {
+    "v02ReplicaSet": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "spec": {
-          "$ref": "#/definitions/kubernetesReplicaSetSpec"
+          "$ref": "#/definitions/v02ReplicaSetSpec"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesReplicaSetStatus"
+          "$ref": "#/definitions/v02ReplicaSetStatus"
         }
       },
       "type": "object"
     },
-    "kubernetesReplicaSetSpec": {
+    "v02ReplicaSetSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/kubernetesPodSpec"
+          "$ref": "#/definitions/v02PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/kubernetesLabelSelector"
+          "$ref": "#/definitions/v02LabelSelector"
         }
       },
       "type": "object"
     },
-    "kubernetesReplicaSetStatus": {
+    "v02ReplicaSetStatus": {
       "properties": {
         "current_replicas": {
           "format": "int32",
@@ -1205,32 +1221,32 @@
       },
       "type": "object"
     },
-    "kubernetesReplicationController": {
+    "v02ReplicationController": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "spec": {
-          "$ref": "#/definitions/kubernetesReplicationControllerSpec"
+          "$ref": "#/definitions/v02ReplicationControllerSpec"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesReplicationControllerStatus"
+          "$ref": "#/definitions/v02ReplicationControllerStatus"
         }
       },
       "type": "object"
     },
-    "kubernetesReplicationControllerSpec": {
+    "v02ReplicationControllerSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/kubernetesPodSpec"
+          "$ref": "#/definitions/v02PodSpec"
         },
         "selectors": {
           "additionalProperties": {
@@ -1242,7 +1258,7 @@
       },
       "type": "object"
     },
-    "kubernetesReplicationControllerStatus": {
+    "v02ReplicationControllerStatus": {
       "properties": {
         "current_replicas": {
           "format": "int32",
@@ -1255,7 +1271,7 @@
       },
       "type": "object"
     },
-    "kubernetesSecret": {
+    "v02Secret": {
       "properties": {
         "data": {
           "additionalProperties": {
@@ -1265,7 +1281,7 @@
           "type": "object"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "type": {
           "format": "string",
@@ -1274,7 +1290,7 @@
       },
       "type": "object"
     },
-    "kubernetesSecretUpdateRequest": {
+    "v02SecretUpdateRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -1312,25 +1328,25 @@
       },
       "type": "object"
     },
-    "kubernetesService": {
+    "v02Service": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/kubernetesMeta"
+          "$ref": "#/definitions/v02Meta"
         },
         "spec": {
-          "$ref": "#/definitions/kubernetesServiceSpec"
+          "$ref": "#/definitions/v02ServiceSpec"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesServiceStatus"
+          "$ref": "#/definitions/v02ServiceStatus"
         }
       },
       "type": "object"
     },
-    "kubernetesServiceSpec": {
+    "v02ServiceSpec": {
       "properties": {
         "clusterIP": {
           "format": "string",
@@ -1367,7 +1383,7 @@
       },
       "type": "object"
     },
-    "kubernetesServiceStatus": {
+    "v02ServiceStatus": {
       "properties": {
         "loadbalancer_ingresses": {
           "items": {
@@ -1378,7 +1394,7 @@
       },
       "type": "object"
     },
-    "kubernetesUpdateResourceRequest": {
+    "v02UpdateResourceRequest": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -1393,26 +1409,10 @@
           "type": "string"
         },
         "raw": {
-          "$ref": "#/definitions/kubernetesRaw"
+          "$ref": "#/definitions/v02Raw"
         },
         "type": {
           "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "protobufAny": {
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }",
-      "properties": {
-        "type_url": {
-          "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
-          "type": "string"
-        },
-        "value": {
-          "description": "Must be a valid serialized protocol buffer of the above specified type.",
-          "format": "byte",
           "type": "string"
         }
       },
@@ -1455,7 +1455,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/kubernetesConfigMapUpdateRequest"
+              "$ref": "#/definitions/v02ConfigMapUpdateRequest"
             }
           }
         ],
@@ -1463,7 +1463,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/kubernetesClientActionResponse"
+              "$ref": "#/definitions/v02ClientActionResponse"
             }
           }
         },
@@ -1502,7 +1502,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/kubernetesSecretUpdateRequest"
+              "$ref": "#/definitions/v02SecretUpdateRequest"
             }
           }
         ],
@@ -1510,7 +1510,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/kubernetesClientActionResponse"
+              "$ref": "#/definitions/v02ClientActionResponse"
             }
           }
         },
@@ -1542,7 +1542,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/kubernetesListResourceResponse"
+              "$ref": "#/definitions/v02ListResourceResponse"
             }
           }
         },
@@ -1574,7 +1574,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/kubernetesUpdateResourceRequest"
+              "$ref": "#/definitions/v02UpdateResourceRequest"
             }
           }
         ],
@@ -1582,7 +1582,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/kubernetesClientActionResponse"
+              "$ref": "#/definitions/v02ClientActionResponse"
             }
           }
         },
@@ -1628,7 +1628,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/kubernetesClientActionResponse"
+              "$ref": "#/definitions/v02ClientActionResponse"
             }
           }
         },
@@ -1672,7 +1672,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/kubernetesDescribeResourceResponse"
+              "$ref": "#/definitions/v02DescribeResourceResponse"
             }
           }
         },
@@ -1704,7 +1704,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/kubernetesCopyResourceRequest"
+              "$ref": "#/definitions/v02CopyResourceRequest"
             }
           }
         ],
@@ -1712,7 +1712,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/kubernetesClientActionResponse"
+              "$ref": "#/definitions/v02ClientActionResponse"
             }
           }
         },

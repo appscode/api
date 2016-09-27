@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package kubernetes;
+package kubernetes.v02;
 
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";

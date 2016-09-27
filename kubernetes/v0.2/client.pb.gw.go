@@ -3,11 +3,11 @@
 // DO NOT EDIT!
 
 /*
-Package kubernetes is a reverse proxy.
+Package kubernetes_v02 is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package kubernetes
+package kubernetes_v02
 
 import (
 	"io"
