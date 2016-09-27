@@ -15,6 +15,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 3",
       "type": "object"
     },
     "alertAlert": {
@@ -22,9 +23,6 @@
         "check_command": {
           "format": "string",
           "type": "string"
-        },
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
         },
         "icinga_param": {
           "$ref": "#/definitions/alertIcingaParam"
@@ -63,9 +61,12 @@
           "format": "string",
           "type": "string"
         },
-        "plugin": {
-          "format": "string",
-          "type": "string"
+        "vars": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
         }
       },
       "type": "object"
@@ -75,9 +76,6 @@
         "check_command": {
           "format": "string",
           "type": "string"
-        },
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
         },
         "icinga_param": {
           "$ref": "#/definitions/alertIcingaParam"
@@ -108,11 +106,15 @@
           },
           "type": "array"
         },
-        "plugin": {
-          "format": "string",
-          "type": "string"
+        "vars": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
         }
       },
+      "title": "Next Id: 12",
       "type": "object"
     },
     "alertAlertDeleteRequest": {
@@ -122,6 +124,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 2",
       "type": "object"
     },
     "alertAlertDescribeRequest": {
@@ -131,6 +134,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 2",
       "type": "object"
     },
     "alertAlertDescribeResponse": {
@@ -163,6 +167,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 5",
       "type": "object"
     },
     "alertAlertListResponse": {
@@ -204,13 +209,11 @@
           "type": "array"
         }
       },
+      "title": "Next Id: 6",
       "type": "object"
     },
     "alertAlertUpdateRequest": {
       "properties": {
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
-        },
         "icinga_param": {
           "$ref": "#/definitions/alertIcingaParam"
         },
@@ -223,60 +226,16 @@
         "phid": {
           "format": "string",
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCheckInfluxData": {
-      "properties": {
-        "critical_condition": {
-          "format": "string",
-          "type": "string"
         },
-        "query": {
+        "vars": {
           "additionalProperties": {
             "format": "string",
             "type": "string"
           },
           "type": "object"
-        },
-        "r": {
-          "format": "string",
-          "type": "string"
-        },
-        "warning_condition": {
-          "format": "string",
-          "type": "string"
         }
       },
-      "type": "object"
-    },
-    "alertCheckKubernetes": {
-      "properties": {
-        "count": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "selector": {
-          "format": "string",
-          "type": "string"
-        },
-        "type": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCommandParam": {
-      "properties": {
-        "check_influx_data": {
-          "$ref": "#/definitions/alertCheckInfluxData"
-        },
-        "check_kubernetes": {
-          "$ref": "#/definitions/alertCheckKubernetes"
-        }
-      },
+      "title": "Next Id: 6",
       "type": "object"
     },
     "alertIcingaParam": {

@@ -9,6 +9,7 @@ import (
 
 var clusterInstanceListRequestSchema *gojsonschema.Schema
 var clusterScaleRequestSchema *gojsonschema.Schema
+var clusterInstanceByIPRequestSchema *gojsonschema.Schema
 var clusterUpdateRequestSchema *gojsonschema.Schema
 var clusterDeleteRequestSchema *gojsonschema.Schema
 var clusterUpgradeRequestSchema *gojsonschema.Schema
@@ -47,6 +48,21 @@ func init() {
         "type": "integer"
       },
       "type": "object"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	clusterInstanceByIPRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "external_ip": {
+      "type": "string"
+    },
+    "phid": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -167,6 +183,9 @@ func init() {
   "properties": {
     "role": {
       "type": "string"
+    },
+    "uid": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -249,6 +268,11 @@ func (m *ClusterScaleRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterScaleRequest) IsRequest() {}
 
+func (m *ClusterInstanceByIPRequest) IsValid() (*gojsonschema.Result, error) {
+	return clusterInstanceByIPRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *ClusterInstanceByIPRequest) IsRequest() {}
+
 func (m *ClusterUpdateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
@@ -289,10 +313,10 @@ func (m *ClusterClientConfigRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterClientConfigRequest) IsRequest() {}
 
-func (m *ClusterListResponse) SetStatus(s *dtypes.Status) {
+func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-func (m *ClusterStartupScriptResponse) SetStatus(s *dtypes.Status) {
+func (m *ClusterListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
 func (m *ClusterClientConfigResponse) SetStatus(s *dtypes.Status) {
@@ -301,6 +325,9 @@ func (m *ClusterClientConfigResponse) SetStatus(s *dtypes.Status) {
 func (m *ClusterInstanceListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
+func (m *ClusterInstanceResponse) SetStatus(s *dtypes.Status) {
+	m.Status = s
+}
+func (m *ClusterStartupScriptResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

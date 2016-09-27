@@ -23,6 +23,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Next Id: 2",
   "type": "object"
 }`))
 	if err != nil {
@@ -31,51 +32,6 @@ func init() {
 	alertUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "alertCheckInfluxData": {
-      "properties": {
-        "critical_condition": {
-          "type": "string"
-        },
-        "query": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "r": {
-          "type": "string"
-        },
-        "warning_condition": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCheckKubernetes": {
-      "properties": {
-        "count": {
-          "type": "integer"
-        },
-        "selector": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCommandParam": {
-      "properties": {
-        "check_influx_data": {
-          "$ref": "#/definitions/alertCheckInfluxData"
-        },
-        "check_kubernetes": {
-          "$ref": "#/definitions/alertCheckKubernetes"
-        }
-      },
-      "type": "object"
-    },
     "alertIcingaParam": {
       "properties": {
         "alert_interval_sec": {
@@ -103,9 +59,6 @@ func init() {
     }
   },
   "properties": {
-    "command_param": {
-      "$ref": "#/definitions/alertCommandParam"
-    },
     "icinga_param": {
       "$ref": "#/definitions/alertIcingaParam"
     },
@@ -117,8 +70,15 @@ func init() {
     },
     "phid": {
       "type": "string"
+    },
+    "vars": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
     }
   },
+  "title": "Next Id: 6",
   "type": "object"
 }`))
 	if err != nil {
@@ -140,6 +100,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Next Id: 5",
   "type": "object"
 }`))
 	if err != nil {
@@ -148,51 +109,6 @@ func init() {
 	alertCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "alertCheckInfluxData": {
-      "properties": {
-        "critical_condition": {
-          "type": "string"
-        },
-        "query": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "r": {
-          "type": "string"
-        },
-        "warning_condition": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCheckKubernetes": {
-      "properties": {
-        "count": {
-          "type": "integer"
-        },
-        "selector": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCommandParam": {
-      "properties": {
-        "check_influx_data": {
-          "$ref": "#/definitions/alertCheckInfluxData"
-        },
-        "check_kubernetes": {
-          "$ref": "#/definitions/alertCheckKubernetes"
-        }
-      },
-      "type": "object"
-    },
     "alertIcingaParam": {
       "properties": {
         "alert_interval_sec": {
@@ -223,9 +139,6 @@ func init() {
     "check_command": {
       "type": "string"
     },
-    "command_param": {
-      "$ref": "#/definitions/alertCommandParam"
-    },
     "icinga_param": {
       "$ref": "#/definitions/alertIcingaParam"
     },
@@ -250,10 +163,14 @@ func init() {
       },
       "type": "array"
     },
-    "plugin": {
-      "type": "string"
+    "vars": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
     }
   },
+  "title": "Next Id: 12",
   "type": "object"
 }`))
 	if err != nil {
@@ -266,6 +183,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Next Id: 2",
   "type": "object"
 }`))
 	if err != nil {
@@ -277,14 +195,13 @@ func init() {
     "AlertSyncRequestPodAncestor": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "type": {
           "type": "string"
         }
       },
+      "title": "Next Id: 3",
       "type": "object"
     }
   },
@@ -308,6 +225,7 @@ func init() {
       "type": "array"
     }
   },
+  "title": "Next Id: 6",
   "type": "object"
 }`))
 	if err != nil {
