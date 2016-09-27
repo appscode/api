@@ -79,6 +79,17 @@
       },
       "type": "object"
     },
+    "kubernetesClusterInstanceByIPRequest": {
+      "properties": {
+        "external_ip": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesClusterInstanceListRequest": {
       "properties": {
         "cluster_name": {

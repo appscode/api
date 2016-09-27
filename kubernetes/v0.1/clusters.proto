@@ -69,6 +69,12 @@ service Clusters {
        get : "/appscode/api/kubernetes/v0.1/clusters/{uid}/startup-script/{role}"
      };
   }
+
+  rpc InstanceByIP(ClusterInstanceByIPRequest) returns (ClusterInstanceResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v0.1/clusters/{phid}/instance-by-ip/{external_ip}"
+     };
+  }
 }
 
 message ClusterSettings {
@@ -167,6 +173,16 @@ message ClusterStartupScriptRequest {
 message ClusterStartupScriptResponse {
   dtypes.Status status = 1;
   string configuration = 2;
+}
+
+message ClusterInstanceByIPRequest {
+  string phid = 1;
+  string external_ip = 2;
+}
+
+message ClusterInstanceResponse {
+  dtypes.Status status = 1;
+  ClusterInstance instance = 2;
 }
 
 message ClusterClientConfigRequest {

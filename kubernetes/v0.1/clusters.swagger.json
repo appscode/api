@@ -338,6 +338,19 @@
       },
       "type": "object"
     },
+    "kubernetesClusterInstanceByIPRequest": {
+      "properties": {
+        "external_ip": {
+          "format": "string",
+          "type": "string"
+        },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesClusterInstanceListRequest": {
       "properties": {
         "cluster_name": {
@@ -354,6 +367,17 @@
             "$ref": "#/definitions/kubernetesClusterInstance"
           },
           "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterInstanceResponse": {
+      "properties": {
+        "instance": {
+          "$ref": "#/definitions/kubernetesClusterInstance"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -711,6 +735,38 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v0.1/clusters/{phid}/instance-by-ip/{external_ip}": {
+      "get": {
+        "operationId": "InstanceByIP",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "phid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "external_ip",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/kubernetesClusterInstanceResponse"
             }
           }
         },

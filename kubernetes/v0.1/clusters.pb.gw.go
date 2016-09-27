@@ -304,6 +304,44 @@ func request_Clusters_StartupScript_0(ctx context.Context, marshaler runtime.Mar
 
 }
 
+func request_Clusters_InstanceByIP_0(ctx context.Context, marshaler runtime.Marshaler, client ClustersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ClusterInstanceByIPRequest
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["phid"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "phid")
+	}
+
+	protoReq.Phid, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["external_ip"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "external_ip")
+	}
+
+	protoReq.ExternalIp, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	msg, err := client.InstanceByIP(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
 // RegisterClustersHandlerFromEndpoint is same as RegisterClustersHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
 func RegisterClustersHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
@@ -614,6 +652,34 @@ func RegisterClustersHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 
 	})
 
+	mux.Handle("GET", pattern_Clusters_InstanceByIP_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, req)
+		if err != nil {
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+		}
+		resp, md, err := request_Clusters_InstanceByIP_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_Clusters_InstanceByIP_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	return nil
 }
 
@@ -637,6 +703,8 @@ var (
 	pattern_Clusters_Instances_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "kubernetes", "v0.1", "clusters", "cluster_name", "instances"}, ""))
 
 	pattern_Clusters_StartupScript_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "kubernetes", "v0.1", "clusters", "uid", "startup-script", "role"}, ""))
+
+	pattern_Clusters_InstanceByIP_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "kubernetes", "v0.1", "clusters", "phid", "instance-by-ip", "external_ip"}, ""))
 )
 
 var (
@@ -659,4 +727,6 @@ var (
 	forward_Clusters_Instances_0 = runtime.ForwardResponseMessage
 
 	forward_Clusters_StartupScript_0 = runtime.ForwardResponseMessage
+
+	forward_Clusters_InstanceByIP_0 = runtime.ForwardResponseMessage
 )
