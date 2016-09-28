@@ -1425,7 +1425,7 @@
     "version": "1beta2"
   },
   "paths": {
-    "/appscode/api/kubernetes/v0.2/client/{cluster}/configmaps/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v1beta2/client/{cluster}/configmaps/{namespace}/{name}": {
       "post": {
         "operationId": "UpdateConfigMap",
         "parameters": [
@@ -1472,7 +1472,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v0.2/client/{cluster}/secrets/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v1beta2/client/{cluster}/secrets/{namespace}/{name}": {
       "post": {
         "operationId": "UpdateSecret",
         "parameters": [
@@ -1519,7 +1519,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v0.2/client/{cluster}/{type}": {
+    "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -1551,7 +1551,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v0.2/client/{cluster}/{type}/actions/update": {
+    "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/actions/update": {
       "put": {
         "operationId": "Update",
         "parameters": [
@@ -1591,7 +1591,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v0.2/client/{cluster}/{type}/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/{namespace}/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -1681,7 +1681,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v0.2/client/{source.cluster}/{source.type}/actions/copy": {
+    "/appscode/api/kubernetes/v1beta2/client/{source.cluster}/{source.type}/actions/copy": {
       "put": {
         "operationId": "Copy",
         "parameters": [

@@ -11,46 +11,46 @@ import "api/alert/v0.1/alert.proto";
 service Clients {
   rpc List(ListResourceRequest) returns (ListResourceResponse){
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v0.2/client/{cluster}/{type}"
+      get : "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}"
     };
   }
 
   rpc Describe(DescribeResourceRequest) returns (DescribeResourceResponse){
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v0.2/client/{cluster}/{type}/{namespace}/{name}"
+      get : "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/{namespace}/{name}"
     };
   }
 
   rpc Delete(DeleteResourceRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/kubernetes/v0.2/client/{cluster}/{type}/{namespace}/{name}"
+      delete: "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/{namespace}/{name}"
     };
   }
 
   rpc Update(UpdateResourceRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
-      put : "/appscode/api/kubernetes/v0.2/client/{cluster}/{type}/actions/update"
+      put : "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/actions/update"
       body : "*"
     };
   }
 
   rpc Copy(CopyResourceRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
-      put : "/appscode/api/kubernetes/v0.2/client/{source.cluster}/{source.type}/actions/copy"
+      put : "/appscode/api/kubernetes/v1beta2/client/{source.cluster}/{source.type}/actions/copy"
       body : "*"
     };
   }
 
   rpc UpdateConfigMap(ConfigMapUpdateRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/kubernetes/v0.2/client/{cluster}/configmaps/{namespace}/{name}"
+      post : "/appscode/api/kubernetes/v1beta2/client/{cluster}/configmaps/{namespace}/{name}"
       body : "*"
     };
   }
 
   rpc UpdateSecret(SecretUpdateRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/kubernetes/v0.2/client/{cluster}/secrets/{namespace}/{name}"
+      post : "/appscode/api/kubernetes/v1beta2/client/{cluster}/secrets/{namespace}/{name}"
       body : "*"
     };
   }

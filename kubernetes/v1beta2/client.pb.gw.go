@@ -621,19 +621,19 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 }
 
 var (
-	pattern_Clients_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "kubernetes", "v0.2", "client", "cluster", "type"}, ""))
+	pattern_Clients_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "kubernetes", "v1beta2", "client", "cluster", "type"}, ""))
 
-	pattern_Clients_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v0.2", "client", "cluster", "type", "namespace", "name"}, ""))
+	pattern_Clients_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "client", "cluster", "type", "namespace", "name"}, ""))
 
-	pattern_Clients_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v0.2", "client", "cluster", "type", "namespace", "name"}, ""))
+	pattern_Clients_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "client", "cluster", "type", "namespace", "name"}, ""))
 
-	pattern_Clients_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"appscode", "api", "kubernetes", "v0.2", "client", "cluster", "type", "actions", "update"}, ""))
+	pattern_Clients_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "client", "cluster", "type", "actions", "update"}, ""))
 
-	pattern_Clients_Copy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"appscode", "api", "kubernetes", "v0.2", "client", "source.cluster", "source.type", "actions", "copy"}, ""))
+	pattern_Clients_Copy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "client", "source.cluster", "source.type", "actions", "copy"}, ""))
 
-	pattern_Clients_UpdateConfigMap_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v0.2", "client", "cluster", "configmaps", "namespace", "name"}, ""))
+	pattern_Clients_UpdateConfigMap_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "client", "cluster", "configmaps", "namespace", "name"}, ""))
 
-	pattern_Clients_UpdateSecret_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v0.2", "client", "cluster", "secrets", "namespace", "name"}, ""))
+	pattern_Clients_UpdateSecret_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "client", "cluster", "secrets", "namespace", "name"}, ""))
 )
 
 var (
