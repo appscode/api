@@ -3,6 +3,7 @@ package api
 import (
 	alert "github.com/appscode/api/alert/v0.1"
 	artifactory "github.com/appscode/api/artifactory/v0.1"
+	backup "github.com/appscode/api/backup/v0.1"
 	billing "github.com/appscode/api/billing/v0.1"
 	bucket "github.com/appscode/api/bucket/v0.1"
 	certificate "github.com/appscode/api/certificate/v0.1"
@@ -11,12 +12,12 @@ import (
 	db "github.com/appscode/api/db/v0.1"
 	glusterfs "github.com/appscode/api/glusterfs/v0.1"
 	kubernetes "github.com/appscode/api/kubernetes/v0.1"
+	kubernetes_v1beta2 "github.com/appscode/api/kubernetes/v1beta2"
 	loadbalancer "github.com/appscode/api/loadbalancer/v0.1"
 	mailinglist "github.com/appscode/api/mailinglist/v0.1"
 	namespace "github.com/appscode/api/namespace/v0.1"
 	pv "github.com/appscode/api/pv/v0.1"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	backup "github.com/appscode/api/backup/v0.1"
 )
 
 // This is a hackish method to add support javascript
@@ -29,6 +30,7 @@ func Patterens() []runtime.Pattern {
 	ps = append(ps, credential.Patterns()...)
 	ps = append(ps, namespace.Patterns()...)
 	ps = append(ps, kubernetes.Patterns()...)
+	ps = append(ps, kubernetes_v1beta2.Patterns()...)
 	ps = append(ps, db.Patterns()...)
 	ps = append(ps, ci.Patterns()...)
 	ps = append(ps, pv.Patterns()...)

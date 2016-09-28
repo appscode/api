@@ -1,0 +1,1732 @@
+{
+  "basePath": "/",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "ContainerVolumeMount": {
+      "properties": {
+        "mount_path": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "read_only": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListApps": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2App"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListConfigMaps": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2ConfigMap"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListDaemonSets": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2DaemonSet"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListDeployments": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Deployment"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListJobs": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Job"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListNamespaces": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Namespace"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListNodes": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Node"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPetSets": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2PetSet"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPods": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Pod"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListReplicaSets": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2ReplicaSet"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListReplicationControllers": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2ReplicationController"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListSecrets": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Secret"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListServices": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Service"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PodSpecContainer": {
+      "properties": {
+        "commands": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "image": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "volume_mount": {
+          "items": {
+            "$ref": "#/definitions/ContainerVolumeMount"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PodSpecVolume": {
+      "properties": {
+        "host_path": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SpecPort": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "node_port": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "protocol": {
+          "format": "string",
+          "type": "string"
+        },
+        "target_port": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "StatusCapacity": {
+      "properties": {
+        "cpu": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "memory": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "pods": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "StatusLoadBalancerIngress": {
+      "properties": {
+        "IP": {
+          "format": "string",
+          "type": "string"
+        },
+        "host_name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "StatusNodeInfo": {
+      "properties": {
+        "container_runtime_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kernel_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_proxy_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubelet_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "os_image": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertIcingaState": {
+      "properties": {
+        "Critical": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OK": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Unknown": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Warning": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "title": "This one is used in kubernetes/v0.1/client.proto\nTo send information if alert is set for app/pod",
+      "type": "object"
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "format": "string",
+          "title": "Describe what link offers",
+          "type": "string"
+        },
+        "url": {
+          "description": "The URL of The link.",
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
+      "type": "object"
+    },
+    "dtypesStatus": {
+      "properties": {
+        "code": {
+          "format": "string",
+          "title": "Response status code",
+          "type": "string"
+        },
+        "details": {
+          "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use.",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          },
+          "type": "array"
+        },
+        "help": {
+          "$ref": "#/definitions/dtypesHelp",
+          "description": "Optional. Help link if there is an error."
+        },
+        "message": {
+          "description": "User facing message.",
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "description": "Response status code string.",
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id = 5",
+      "type": "object"
+    },
+    "protobufAny": {
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }",
+      "properties": {
+        "type_url": {
+          "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
+          "format": "string",
+          "type": "string"
+        },
+        "value": {
+          "description": "Must be a valid serialized protocol buffer of the above specified type.",
+          "format": "byte",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2App": {
+      "properties": {
+        "app": {
+          "$ref": "#/definitions/v1beta2Service"
+        },
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "cluster_ip": {
+          "format": "string",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "string",
+          "type": "string"
+        },
+        "icinga_state": {
+          "$ref": "#/definitions/alertIcingaState"
+        },
+        "links": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ClientActionResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ConfigMap": {
+      "properties": {
+        "data": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ConfigMapUpdateRequest": {
+      "properties": {
+        "add": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "deleted": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "update": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2CopyResourceRequest": {
+      "properties": {
+        "destination": {
+          "$ref": "#/definitions/v1beta2KubeObject"
+        },
+        "source": {
+          "$ref": "#/definitions/v1beta2KubeObject"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DaemonSet": {
+      "properties": {
+        "app": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2DaemonSetSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2DaemonSetStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DaemonSetSpec": {
+      "properties": {
+        "pod_template": {
+          "$ref": "#/definitions/v1beta2PodSpec"
+        },
+        "selector": {
+          "$ref": "#/definitions/v1beta2LabelSelector"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DaemonSetStatus": {
+      "properties": {
+        "current_number_scheduled": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "desired_number_scheduled": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "number_misscheduled": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DeleteResourceRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Deployment": {
+      "properties": {
+        "app": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2DeploymentSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2DeploymentStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DeploymentSpec": {
+      "properties": {
+        "desired_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pod_template": {
+          "$ref": "#/definitions/v1beta2PodSpec"
+        },
+        "selector": {
+          "$ref": "#/definitions/v1beta2LabelSelector"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DeploymentStatus": {
+      "properties": {
+        "available_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "observed_generation": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "unavailable_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "updated_replicas": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DescribeResourceRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "raw": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DescribeResourceResponse": {
+      "properties": {
+        "resource": {
+          "$ref": "#/definitions/v1beta2KubeResource"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Event": {
+      "properties": {
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "first_timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "message": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "reason": {
+          "format": "string",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/v1beta2EventSource"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2EventSource": {
+      "properties": {
+        "componenet": {
+          "format": "string",
+          "type": "string"
+        },
+        "host": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Job": {
+      "properties": {
+        "app": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "space": {
+          "$ref": "#/definitions/v1beta2JobSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2JobStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2JobSpec": {
+      "properties": {
+        "completions": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "parallelism": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "template": {
+          "$ref": "#/definitions/v1beta2PodSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2JobStatus": {
+      "properties": {
+        "active": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "completion_time": {
+          "format": "string",
+          "type": "string"
+        },
+        "failed": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "start_time": {
+          "format": "string",
+          "type": "string"
+        },
+        "succeeded": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2KubeObject": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2KubeResource": {
+      "properties": {
+        "app": {
+          "$ref": "#/definitions/v1beta2App"
+        },
+        "config_map": {
+          "$ref": "#/definitions/v1beta2ConfigMap"
+        },
+        "daemon_set": {
+          "$ref": "#/definitions/v1beta2DaemonSet"
+        },
+        "deployment": {
+          "$ref": "#/definitions/v1beta2Deployment"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Event"
+          },
+          "type": "array"
+        },
+        "job": {
+          "$ref": "#/definitions/v1beta2Job"
+        },
+        "namespace": {
+          "$ref": "#/definitions/v1beta2Namespace"
+        },
+        "node": {
+          "$ref": "#/definitions/v1beta2Node"
+        },
+        "pet_set": {
+          "$ref": "#/definitions/v1beta2PetSet"
+        },
+        "pod": {
+          "$ref": "#/definitions/v1beta2Pod"
+        },
+        "raw": {
+          "$ref": "#/definitions/v1beta2Raw"
+        },
+        "replica_set": {
+          "$ref": "#/definitions/v1beta2ReplicaSet"
+        },
+        "replication_controller": {
+          "$ref": "#/definitions/v1beta2ReplicationController"
+        },
+        "secret": {
+          "$ref": "#/definitions/v1beta2Secret"
+        },
+        "service": {
+          "$ref": "#/definitions/v1beta2Service"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2KubeResourceList": {
+      "properties": {
+        "apps": {
+          "$ref": "#/definitions/KubeResourceListApps"
+        },
+        "config_maps": {
+          "$ref": "#/definitions/KubeResourceListConfigMaps"
+        },
+        "daemon_sets": {
+          "$ref": "#/definitions/KubeResourceListDaemonSets"
+        },
+        "deployments": {
+          "$ref": "#/definitions/KubeResourceListDeployments"
+        },
+        "jobs": {
+          "$ref": "#/definitions/KubeResourceListJobs"
+        },
+        "namespaces": {
+          "$ref": "#/definitions/KubeResourceListNamespaces"
+        },
+        "nodes": {
+          "$ref": "#/definitions/KubeResourceListNodes"
+        },
+        "pet_sets": {
+          "$ref": "#/definitions/KubeResourceListPetSets"
+        },
+        "pods": {
+          "$ref": "#/definitions/KubeResourceListPods"
+        },
+        "replica_sets": {
+          "$ref": "#/definitions/KubeResourceListReplicaSets"
+        },
+        "replication_controllers": {
+          "$ref": "#/definitions/KubeResourceListReplicationControllers"
+        },
+        "secrets": {
+          "$ref": "#/definitions/KubeResourceListSecrets"
+        },
+        "services": {
+          "$ref": "#/definitions/KubeResourceListServices"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2LabelSelector": {
+      "properties": {
+        "match_labels": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ListResourceRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ListResourceResponse": {
+      "properties": {
+        "resources": {
+          "$ref": "#/definitions/v1beta2KubeResourceList"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Meta": {
+      "properties": {
+        "annotations": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "created_at": {
+          "format": "string",
+          "type": "string"
+        },
+        "generation": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "labels": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "resource_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "self_links": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Namespace": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2NamespaceStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2NamespaceStatus": {
+      "properties": {
+        "phase": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Node": {
+      "properties": {
+        "is_master": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2NodeSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2NodeStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2NodeSpec": {
+      "properties": {
+        "external_id": {
+          "format": "string",
+          "type": "string"
+        },
+        "provider_id": {
+          "format": "string",
+          "type": "string"
+        },
+        "unschedulable": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2NodeStatus": {
+      "properties": {
+        "capacity": {
+          "$ref": "#/definitions/StatusCapacity"
+        },
+        "node_info": {
+          "$ref": "#/definitions/StatusNodeInfo"
+        },
+        "phase": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PetSet": {
+      "properties": {
+        "app": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2PetSetSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2PetSetStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PetSetSpec": {
+      "properties": {
+        "desired_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pod_template": {
+          "$ref": "#/definitions/v1beta2PodSpec"
+        },
+        "selector": {
+          "$ref": "#/definitions/v1beta2LabelSelector"
+        },
+        "service_name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PetSetStatus": {
+      "properties": {
+        "current_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "observed_generation": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Pod": {
+      "properties": {
+        "app": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2PodSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2PodStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PodSpec": {
+      "properties": {
+        "containers": {
+          "items": {
+            "$ref": "#/definitions/PodSpecContainer"
+          },
+          "type": "array"
+        },
+        "image_pull_secrets": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "node_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "node_selectors": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "service_account_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "volumes": {
+          "items": {
+            "$ref": "#/definitions/PodSpecVolume"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PodStatus": {
+      "properties": {
+        "hostIP": {
+          "format": "string",
+          "type": "string"
+        },
+        "message": {
+          "format": "string",
+          "type": "string"
+        },
+        "phase": {
+          "format": "string",
+          "type": "string"
+        },
+        "podIP": {
+          "format": "string",
+          "type": "string"
+        },
+        "reason": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Raw": {
+      "properties": {
+        "data": {
+          "format": "string",
+          "type": "string"
+        },
+        "format": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ReplicaSet": {
+      "properties": {
+        "app": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2ReplicaSetSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2ReplicaSetStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ReplicaSetSpec": {
+      "properties": {
+        "desired_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pod_template": {
+          "$ref": "#/definitions/v1beta2PodSpec"
+        },
+        "selector": {
+          "$ref": "#/definitions/v1beta2LabelSelector"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ReplicaSetStatus": {
+      "properties": {
+        "current_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "observed_generation": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ReplicationController": {
+      "properties": {
+        "app": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2ReplicationControllerSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2ReplicationControllerStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ReplicationControllerSpec": {
+      "properties": {
+        "desired_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pod_template": {
+          "$ref": "#/definitions/v1beta2PodSpec"
+        },
+        "selectors": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ReplicationControllerStatus": {
+      "properties": {
+        "current_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "observed_generation": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Secret": {
+      "properties": {
+        "data": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2SecretUpdateRequest": {
+      "properties": {
+        "add": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "deleted": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "update": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Service": {
+      "properties": {
+        "app": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2ServiceSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2ServiceStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ServiceSpec": {
+      "properties": {
+        "clusterIP": {
+          "format": "string",
+          "type": "string"
+        },
+        "externalIPs": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "loadbalancerIP": {
+          "format": "string",
+          "type": "string"
+        },
+        "ports": {
+          "items": {
+            "$ref": "#/definitions/SpecPort"
+          },
+          "type": "array"
+        },
+        "seletors": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ServiceStatus": {
+      "properties": {
+        "loadbalancer_ingresses": {
+          "items": {
+            "$ref": "#/definitions/StatusLoadBalancerIngress"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2UpdateResourceRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/v1beta2Raw"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "api.appscode.com",
+  "info": {
+    "title": "client.proto",
+    "version": "1beta2"
+  },
+  "paths": {
+    "/appscode/api/kubernetes/v1beta2/client/{cluster}/configmaps/{namespace}/{name}": {
+      "post": {
+        "operationId": "UpdateConfigMap",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta2ConfigMapUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta2/client/{cluster}/secrets/{namespace}/{name}": {
+      "post": {
+        "operationId": "UpdateSecret",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta2SecretUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}": {
+      "get": {
+        "operationId": "List",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2ListResourceResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/actions/update": {
+      "put": {
+        "operationId": "Update",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta2UpdateResourceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/{namespace}/{name}": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      },
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2DescribeResourceResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta2/client/{source.cluster}/{source.type}/actions/copy": {
+      "put": {
+        "operationId": "Copy",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "source.cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "source.type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta2CopyResourceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
+}

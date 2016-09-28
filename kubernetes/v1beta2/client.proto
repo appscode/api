@@ -1,0 +1,514 @@
+syntax = "proto3";
+
+package kubernetes.v1beta2;
+
+option go_package = "v1beta2";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+import "api/alert/v0.1/alert.proto";
+
+service Clients {
+  rpc List(ListResourceRequest) returns (ListResourceResponse){
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}"
+    };
+  }
+
+  rpc Describe(DescribeResourceRequest) returns (DescribeResourceResponse){
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/{namespace}/{name}"
+    };
+  }
+
+  rpc Delete(DeleteResourceRequest) returns (ClientActionResponse) {
+    option (google.api.http) = {
+      delete: "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/{namespace}/{name}"
+    };
+  }
+
+  rpc Update(UpdateResourceRequest) returns (ClientActionResponse) {
+    option (google.api.http) = {
+      put : "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/actions/update"
+      body : "*"
+    };
+  }
+
+  rpc Copy(CopyResourceRequest) returns (ClientActionResponse) {
+    option (google.api.http) = {
+      put : "/appscode/api/kubernetes/v1beta2/client/{source.cluster}/{source.type}/actions/copy"
+      body : "*"
+    };
+  }
+
+  rpc UpdateConfigMap(ConfigMapUpdateRequest) returns (ClientActionResponse) {
+    option (google.api.http) = {
+      post : "/appscode/api/kubernetes/v1beta2/client/{cluster}/configmaps/{namespace}/{name}"
+      body : "*"
+    };
+  }
+
+  rpc UpdateSecret(SecretUpdateRequest) returns (ClientActionResponse) {
+    option (google.api.http) = {
+      post : "/appscode/api/kubernetes/v1beta2/client/{cluster}/secrets/{namespace}/{name}"
+      body : "*"
+    };
+  }
+}
+
+message ListResourceRequest {
+  string cluster = 1;
+  string type = 2;
+  string namespace = 3;
+}
+
+message ListResourceResponse {
+  dtypes.Status status = 1;
+  KubeResourceList resources = 2;
+}
+
+message DescribeResourceRequest {
+  string cluster = 1;
+  string type = 2;
+  string namespace = 3;
+  string name = 4;
+  string raw = 5;
+}
+
+message DescribeResourceResponse {
+  dtypes.Status status = 1;
+  KubeResource resource = 2;
+}
+
+message UpdateResourceRequest {
+  string cluster = 1;
+  string type = 2;
+  string namespace = 3;
+  string name = 4;
+  Raw raw = 5;
+}
+
+message ConfigMapUpdateRequest {
+  string cluster = 1;
+  string namespace = 2;
+  string name = 3;
+  map<string, string>  add = 4;
+  map<string, string>  update = 5;
+  repeated string deleted = 6;
+}
+
+message SecretUpdateRequest {
+  string cluster = 1;
+  string namespace = 2;
+  string name = 3;
+  map<string, string>  add = 4;
+  map<string, string>  update = 5;
+  repeated string deleted = 6;
+}
+
+message ClientActionResponse {
+  dtypes.Status status = 1;
+}
+
+message CopyResourceRequest {
+  KubeObject source = 1;
+  KubeObject destination = 2;
+}
+
+message DeleteResourceRequest {
+  string cluster = 1;
+  string type = 2;
+  string namespace = 3;
+  string name = 4;
+}
+
+message KubeResourceList {
+  string type = 1;
+  oneof  resource {
+    Apps apps = 2;
+    ConfigMaps config_maps = 3;
+    DaemonSets daemon_sets = 4;
+    Deployments deployments = 5;
+    Jobs jobs = 6;
+    Namespaces namespaces = 7;
+    Nodes nodes = 8;
+    PetSets pet_sets = 9;
+    Pods pods = 10;
+    ReplicaSets replica_sets = 11;
+    Services services = 12;
+    Secrets secrets = 13;
+    ReplicationControllers replication_controllers = 14;
+  }
+
+  message Apps {
+    repeated App items = 1;
+  }
+
+  message ConfigMaps {
+    repeated ConfigMap items = 1;
+  }
+
+  message DaemonSets {
+    repeated DaemonSet items = 1;
+  }
+
+  message Deployments {
+    repeated Deployment items = 1;
+  }
+
+  message Jobs {
+    repeated Job items = 1;
+  }
+
+  message Namespaces {
+    repeated Namespace items = 1;
+  }
+
+  message Nodes {
+    repeated Node items = 1;
+  }
+
+  message PetSets {
+    repeated PetSet items = 1;
+  }
+
+  message Pods {
+    repeated Pod items = 1;
+  }
+
+  message ReplicaSets {
+    repeated ReplicaSet items = 1;
+  }
+
+  message Services {
+    repeated Service items = 1;
+  }
+
+  message Secrets {
+    repeated Secret items = 1;
+  }
+
+  message ReplicationControllers {
+    repeated ReplicationController items = 1;
+  }
+}
+
+message KubeResource {
+  string type = 1;
+  oneof  resource {
+    App app = 2;
+    ConfigMap config_map = 3;
+    DaemonSet daemon_set = 4;
+    Deployment deployment = 5;
+    Job job = 6;
+    Namespace namespace = 7;
+    Node node = 8;
+    PetSet pet_set = 9;
+    Pod pod = 10;
+    ReplicaSet replica_set = 11;
+    Service service = 12;
+    Secret secret = 13;
+    ReplicationController replication_controller = 14;
+  }
+  repeated Event events = 15;
+  Raw raw = 16;
+}
+
+message Meta {
+  string name = 1;
+  string namespace = 2;
+  string self_links = 3;
+  string resource_version = 4;
+  string created_at= 5;
+  int64 generation = 6;
+  map<string, string> labels = 7;
+  map<string, string> annotations = 8;
+}
+
+message KubeObject {
+  string cluster = 1;
+  string type = 2;
+  string namespace = 3;
+  string name = 4;
+}
+
+message App {
+  string cluster = 1;
+  string type = 2;
+  string namespace = 3;
+  string name = 4;
+  Service app = 5;
+  map<string, string> links = 6;
+  string created_at = 7;
+  string cluster_ip = 8;
+  alert.IcingaState icinga_state = 9;
+}
+
+message PodSpec {
+  repeated  Volume  volumes = 1;
+  repeated  Container containers = 2;
+  map<string, string> node_selectors = 3;
+  string service_account_name = 4;
+  string node_name = 5;
+  repeated string image_pull_secrets = 6;
+
+  message Container {
+    string name  = 1;
+    string image = 2;
+    repeated string commands = 3;
+    repeated VolumeMount volume_mount = 4;
+
+    message VolumeMount {
+      string name = 1;
+      bool read_only = 2;
+      string mount_path = 3;
+    }
+  }
+
+  message Volume {
+    string name = 1;
+    string host_path = 2;
+  }
+}
+
+message Raw {
+  string format = 1;
+  string data = 2;
+}
+
+message ConfigMap {
+  Meta meta = 1;
+  map<string, string> data = 2;
+}
+
+message Job {
+  Meta meta = 1;
+  string app = 2;
+  Spec space = 3;
+  Status status = 4;
+
+  message Spec {
+    int32 parallelism = 1;
+    int32 completions = 2;
+    PodSpec template = 3;
+  }
+
+  message Status {
+    string start_time = 1;
+    string completion_time = 2;
+    int32 active = 3;
+    int32 succeeded = 4;
+    int32 failed = 5;
+  }
+}
+
+message Namespace {
+  Meta meta = 1;
+  Status status = 2;
+
+  message Status {
+    string phase = 1;
+  }
+}
+
+message Node {
+  Meta meta = 1;
+  Spec spec = 2;
+  bool is_master = 3;
+  Status status = 4;
+
+  message Spec {
+    string external_id = 1;
+    string provider_id = 2;
+    bool unschedulable = 3;
+  }
+
+  message Status {
+    Capacity capacity = 1;
+    string phase = 2;
+    NodeInfo node_info = 3;
+
+    message Capacity {
+      int64 cpu = 1;
+      int64 memory = 2;
+      int64 pods = 3;
+    }
+
+    message NodeInfo {
+      string kernel_version = 1;
+      string os_image = 2;
+      string container_runtime_version = 3;
+      string kubelet_version = 4;
+      string kube_proxy_version = 5;
+    }
+  }
+}
+
+message Pod {
+  Meta meta = 1;
+  string app = 2;
+  PodSpec spec = 3;
+  Status status = 4;
+
+  message Status {
+    string phase = 1;
+    string message = 2;
+    string reason = 3;
+    string hostIP = 4;
+    string podIP = 5;
+  }
+}
+
+message Service {
+  Meta meta = 1;
+  string app = 2;
+  Spec spec = 3;
+  Status status = 4;
+
+  message Spec {
+    string type = 1;
+    repeated Port ports = 2;
+    map<string, string> seletors = 3;
+    string clusterIP = 4;
+    repeated string externalIPs = 5;
+    string loadbalancerIP = 6;
+
+    message Port {
+      string name = 1;
+      string protocol = 2;
+      int32 port = 3;
+      string target_port = 4;
+      int32 node_port = 5;
+    }
+  }
+
+  message Status {
+    repeated LoadBalancerIngress loadbalancer_ingresses = 1;
+
+    message LoadBalancerIngress {
+      string host_name = 1;
+      string IP = 2;
+    }
+  }
+}
+
+message Secret {
+  Meta meta = 1;
+  map<string, string> data = 2;
+  string type = 3;
+}
+
+message ReplicationController {
+  Meta meta = 1;
+  string app = 2;
+  Spec spec = 3;
+  Status status = 4;
+
+  message Spec {
+    int32 desired_replicas = 1;
+    map<string, string> selectors = 2;
+    PodSpec pod_template = 3;
+  }
+
+  message Status {
+    int32 current_replicas = 1;
+    int64 observed_generation = 2;
+  }
+}
+
+message ReplicaSet {
+  Meta meta = 1;
+  string app = 2;
+  Spec spec = 3;
+  Status status = 4;
+
+  message Spec {
+    int32 desired_replicas = 1;
+    LabelSelector selector = 2;
+    PodSpec pod_template = 3;
+  }
+
+  message Status {
+    int32 current_replicas = 1;
+    int64 observed_generation = 2;
+  }
+}
+
+message DaemonSet {
+  Meta meta = 1;
+  string app = 2;
+  Spec spec = 3;
+  Status status = 4;
+
+  message Spec {
+    LabelSelector selector = 1;
+    PodSpec pod_template = 2;
+  }
+
+  message Status {
+    int32 current_number_scheduled = 1;
+    int32 number_misscheduled = 2;
+    int32 desired_number_scheduled = 3;
+  }
+}
+
+message Deployment {
+  Meta meta = 1;
+  string app = 2;
+  Spec spec = 3;
+  Status status = 4;
+
+  message Spec {
+    int32 desired_replicas = 1;
+    LabelSelector selector = 2;
+    PodSpec pod_template = 3;
+  }
+
+  message Status {
+    int64 observed_generation = 1;
+    int32 replicas = 2;
+    int32 updated_replicas = 3;
+    int32 available_replicas = 4;
+    int32 unavailable_replicas = 5;
+  }
+}
+
+message PetSet {
+  Meta meta = 1;
+  string app = 2;
+  Spec spec = 3;
+  Status status = 4;
+
+  message Spec {
+    int32 desired_replicas = 1;
+    LabelSelector selector = 2;
+    PodSpec pod_template = 3;
+    string service_name = 4;
+  }
+
+  message Status {
+    int32 current_replicas = 1;
+    int64 observed_generation = 2;
+  }
+}
+
+message LabelSelector {
+  map<string, string> match_labels = 1;
+}
+
+message Event {
+  Meta meta = 1;
+  string reason = 2;
+  string message = 3;
+  EventSource source = 4;
+  int64 first_timestamp = 5;
+  int64 last_timestamp = 6;
+  int32 count = 7;
+  string type = 8;
+}
+
+message EventSource {
+  string componenet = 1;
+  string host = 2;
+}
+
