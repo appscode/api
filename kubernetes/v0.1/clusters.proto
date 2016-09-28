@@ -191,7 +191,14 @@ message ClusterClientConfigRequest {
 
 message ClusterClientConfigResponse {
   dtypes.Status status = 1;
-  string configuration = 2;
+  string configuration = 2 [deprecated=true];
+  string cluster_domain = 3;
+  string ca_cert = 4;
+  string api_server_url = 5;
+  string cluster_user_name = 6;
+  string user_cert = 7;
+  string user_Key = 8;
+  string context_name = 9;
 }
 
 message ClusterClientContainerRequest {

@@ -208,12 +208,40 @@
     },
     "kubernetesClusterClientConfigResponse": {
       "properties": {
+        "api_server_url": {
+          "format": "string",
+          "type": "string"
+        },
+        "ca_cert": {
+          "format": "string",
+          "type": "string"
+        },
+        "cluster_domain": {
+          "format": "string",
+          "type": "string"
+        },
+        "cluster_user_name": {
+          "format": "string",
+          "type": "string"
+        },
         "configuration": {
+          "format": "string",
+          "type": "string"
+        },
+        "context_name": {
           "format": "string",
           "type": "string"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        },
+        "user_Key": {
+          "format": "string",
+          "type": "string"
+        },
+        "user_cert": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
