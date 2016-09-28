@@ -197,7 +197,7 @@ message ClusterClientConfigResponse {
   string api_server_url = 5;
   string cluster_user_name = 6;
   string user_cert = 7;
-  string user_Key = 8;
+  string user_key = 8;
   string context_name = 9;
 }
 

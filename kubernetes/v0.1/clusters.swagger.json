@@ -235,11 +235,11 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         },
-        "user_Key": {
+        "user_cert": {
           "format": "string",
           "type": "string"
         },
-        "user_cert": {
+        "user_key": {
           "format": "string",
           "type": "string"
         }
