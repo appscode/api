@@ -1,4 +1,4 @@
-package kubernetes_v02
+package v1beta2
 
 import "github.com/grpc-ecosystem/grpc-gateway/runtime"
 

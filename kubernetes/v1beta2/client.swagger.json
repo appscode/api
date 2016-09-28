@@ -25,7 +25,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02App"
+            "$ref": "#/definitions/v1beta2App"
           },
           "type": "array"
         }
@@ -36,7 +36,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02ConfigMap"
+            "$ref": "#/definitions/v1beta2ConfigMap"
           },
           "type": "array"
         }
@@ -47,7 +47,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02DaemonSet"
+            "$ref": "#/definitions/v1beta2DaemonSet"
           },
           "type": "array"
         }
@@ -58,7 +58,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02Deployment"
+            "$ref": "#/definitions/v1beta2Deployment"
           },
           "type": "array"
         }
@@ -69,7 +69,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02Job"
+            "$ref": "#/definitions/v1beta2Job"
           },
           "type": "array"
         }
@@ -80,7 +80,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02Namespace"
+            "$ref": "#/definitions/v1beta2Namespace"
           },
           "type": "array"
         }
@@ -91,7 +91,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02Node"
+            "$ref": "#/definitions/v1beta2Node"
           },
           "type": "array"
         }
@@ -102,7 +102,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02PetSet"
+            "$ref": "#/definitions/v1beta2PetSet"
           },
           "type": "array"
         }
@@ -113,7 +113,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02Pod"
+            "$ref": "#/definitions/v1beta2Pod"
           },
           "type": "array"
         }
@@ -124,7 +124,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02ReplicaSet"
+            "$ref": "#/definitions/v1beta2ReplicaSet"
           },
           "type": "array"
         }
@@ -135,7 +135,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02ReplicationController"
+            "$ref": "#/definitions/v1beta2ReplicationController"
           },
           "type": "array"
         }
@@ -146,7 +146,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02Secret"
+            "$ref": "#/definitions/v1beta2Secret"
           },
           "type": "array"
         }
@@ -157,7 +157,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v02Service"
+            "$ref": "#/definitions/v1beta2Service"
           },
           "type": "array"
         }
@@ -369,10 +369,10 @@
       },
       "type": "object"
     },
-    "v02App": {
+    "v1beta2App": {
       "properties": {
         "app": {
-          "$ref": "#/definitions/v02Service"
+          "$ref": "#/definitions/v1beta2Service"
         },
         "cluster": {
           "format": "string",
@@ -411,7 +411,7 @@
       },
       "type": "object"
     },
-    "v02ClientActionResponse": {
+    "v1beta2ClientActionResponse": {
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -419,7 +419,7 @@
       },
       "type": "object"
     },
-    "v02ConfigMap": {
+    "v1beta2ConfigMap": {
       "properties": {
         "data": {
           "additionalProperties": {
@@ -429,12 +429,12 @@
           "type": "object"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         }
       },
       "type": "object"
     },
-    "v02ConfigMapUpdateRequest": {
+    "v1beta2ConfigMapUpdateRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -472,47 +472,47 @@
       },
       "type": "object"
     },
-    "v02CopyResourceRequest": {
+    "v1beta2CopyResourceRequest": {
       "properties": {
         "destination": {
-          "$ref": "#/definitions/v02KubeObject"
+          "$ref": "#/definitions/v1beta2KubeObject"
         },
         "source": {
-          "$ref": "#/definitions/v02KubeObject"
+          "$ref": "#/definitions/v1beta2KubeObject"
         }
       },
       "type": "object"
     },
-    "v02DaemonSet": {
+    "v1beta2DaemonSet": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v02DaemonSetSpec"
+          "$ref": "#/definitions/v1beta2DaemonSetSpec"
         },
         "status": {
-          "$ref": "#/definitions/v02DaemonSetStatus"
+          "$ref": "#/definitions/v1beta2DaemonSetStatus"
         }
       },
       "type": "object"
     },
-    "v02DaemonSetSpec": {
+    "v1beta2DaemonSetSpec": {
       "properties": {
         "pod_template": {
-          "$ref": "#/definitions/v02PodSpec"
+          "$ref": "#/definitions/v1beta2PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/v02LabelSelector"
+          "$ref": "#/definitions/v1beta2LabelSelector"
         }
       },
       "type": "object"
     },
-    "v02DaemonSetStatus": {
+    "v1beta2DaemonSetStatus": {
       "properties": {
         "current_number_scheduled": {
           "format": "int32",
@@ -529,7 +529,7 @@
       },
       "type": "object"
     },
-    "v02DeleteResourceRequest": {
+    "v1beta2DeleteResourceRequest": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -550,40 +550,40 @@
       },
       "type": "object"
     },
-    "v02Deployment": {
+    "v1beta2Deployment": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v02DeploymentSpec"
+          "$ref": "#/definitions/v1beta2DeploymentSpec"
         },
         "status": {
-          "$ref": "#/definitions/v02DeploymentStatus"
+          "$ref": "#/definitions/v1beta2DeploymentStatus"
         }
       },
       "type": "object"
     },
-    "v02DeploymentSpec": {
+    "v1beta2DeploymentSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/v02PodSpec"
+          "$ref": "#/definitions/v1beta2PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/v02LabelSelector"
+          "$ref": "#/definitions/v1beta2LabelSelector"
         }
       },
       "type": "object"
     },
-    "v02DeploymentStatus": {
+    "v1beta2DeploymentStatus": {
       "properties": {
         "available_replicas": {
           "format": "int32",
@@ -608,7 +608,7 @@
       },
       "type": "object"
     },
-    "v02DescribeResourceRequest": {
+    "v1beta2DescribeResourceRequest": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -633,10 +633,10 @@
       },
       "type": "object"
     },
-    "v02DescribeResourceResponse": {
+    "v1beta2DescribeResourceResponse": {
       "properties": {
         "resource": {
-          "$ref": "#/definitions/v02KubeResource"
+          "$ref": "#/definitions/v1beta2KubeResource"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -644,7 +644,7 @@
       },
       "type": "object"
     },
-    "v02Event": {
+    "v1beta2Event": {
       "properties": {
         "count": {
           "format": "int32",
@@ -663,14 +663,14 @@
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "reason": {
           "format": "string",
           "type": "string"
         },
         "source": {
-          "$ref": "#/definitions/v02EventSource"
+          "$ref": "#/definitions/v1beta2EventSource"
         },
         "type": {
           "format": "string",
@@ -679,7 +679,7 @@
       },
       "type": "object"
     },
-    "v02EventSource": {
+    "v1beta2EventSource": {
       "properties": {
         "componenet": {
           "format": "string",
@@ -692,25 +692,25 @@
       },
       "type": "object"
     },
-    "v02Job": {
+    "v1beta2Job": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "space": {
-          "$ref": "#/definitions/v02JobSpec"
+          "$ref": "#/definitions/v1beta2JobSpec"
         },
         "status": {
-          "$ref": "#/definitions/v02JobStatus"
+          "$ref": "#/definitions/v1beta2JobStatus"
         }
       },
       "type": "object"
     },
-    "v02JobSpec": {
+    "v1beta2JobSpec": {
       "properties": {
         "completions": {
           "format": "int32",
@@ -721,12 +721,12 @@
           "type": "integer"
         },
         "template": {
-          "$ref": "#/definitions/v02PodSpec"
+          "$ref": "#/definitions/v1beta2PodSpec"
         }
       },
       "type": "object"
     },
-    "v02JobStatus": {
+    "v1beta2JobStatus": {
       "properties": {
         "active": {
           "format": "int32",
@@ -751,7 +751,7 @@
       },
       "type": "object"
     },
-    "v02KubeObject": {
+    "v1beta2KubeObject": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -772,55 +772,55 @@
       },
       "type": "object"
     },
-    "v02KubeResource": {
+    "v1beta2KubeResource": {
       "properties": {
         "app": {
-          "$ref": "#/definitions/v02App"
+          "$ref": "#/definitions/v1beta2App"
         },
         "config_map": {
-          "$ref": "#/definitions/v02ConfigMap"
+          "$ref": "#/definitions/v1beta2ConfigMap"
         },
         "daemon_set": {
-          "$ref": "#/definitions/v02DaemonSet"
+          "$ref": "#/definitions/v1beta2DaemonSet"
         },
         "deployment": {
-          "$ref": "#/definitions/v02Deployment"
+          "$ref": "#/definitions/v1beta2Deployment"
         },
         "events": {
           "items": {
-            "$ref": "#/definitions/v02Event"
+            "$ref": "#/definitions/v1beta2Event"
           },
           "type": "array"
         },
         "job": {
-          "$ref": "#/definitions/v02Job"
+          "$ref": "#/definitions/v1beta2Job"
         },
         "namespace": {
-          "$ref": "#/definitions/v02Namespace"
+          "$ref": "#/definitions/v1beta2Namespace"
         },
         "node": {
-          "$ref": "#/definitions/v02Node"
+          "$ref": "#/definitions/v1beta2Node"
         },
         "pet_set": {
-          "$ref": "#/definitions/v02PetSet"
+          "$ref": "#/definitions/v1beta2PetSet"
         },
         "pod": {
-          "$ref": "#/definitions/v02Pod"
+          "$ref": "#/definitions/v1beta2Pod"
         },
         "raw": {
-          "$ref": "#/definitions/v02Raw"
+          "$ref": "#/definitions/v1beta2Raw"
         },
         "replica_set": {
-          "$ref": "#/definitions/v02ReplicaSet"
+          "$ref": "#/definitions/v1beta2ReplicaSet"
         },
         "replication_controller": {
-          "$ref": "#/definitions/v02ReplicationController"
+          "$ref": "#/definitions/v1beta2ReplicationController"
         },
         "secret": {
-          "$ref": "#/definitions/v02Secret"
+          "$ref": "#/definitions/v1beta2Secret"
         },
         "service": {
-          "$ref": "#/definitions/v02Service"
+          "$ref": "#/definitions/v1beta2Service"
         },
         "type": {
           "format": "string",
@@ -829,7 +829,7 @@
       },
       "type": "object"
     },
-    "v02KubeResourceList": {
+    "v1beta2KubeResourceList": {
       "properties": {
         "apps": {
           "$ref": "#/definitions/KubeResourceListApps"
@@ -877,7 +877,7 @@
       },
       "type": "object"
     },
-    "v02LabelSelector": {
+    "v1beta2LabelSelector": {
       "properties": {
         "match_labels": {
           "additionalProperties": {
@@ -889,7 +889,7 @@
       },
       "type": "object"
     },
-    "v02ListResourceRequest": {
+    "v1beta2ListResourceRequest": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -906,10 +906,10 @@
       },
       "type": "object"
     },
-    "v02ListResourceResponse": {
+    "v1beta2ListResourceResponse": {
       "properties": {
         "resources": {
-          "$ref": "#/definitions/v02KubeResourceList"
+          "$ref": "#/definitions/v1beta2KubeResourceList"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -917,7 +917,7 @@
       },
       "type": "object"
     },
-    "v02Meta": {
+    "v1beta2Meta": {
       "properties": {
         "annotations": {
           "additionalProperties": {
@@ -960,18 +960,18 @@
       },
       "type": "object"
     },
-    "v02Namespace": {
+    "v1beta2Namespace": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "status": {
-          "$ref": "#/definitions/v02NamespaceStatus"
+          "$ref": "#/definitions/v1beta2NamespaceStatus"
         }
       },
       "type": "object"
     },
-    "v02NamespaceStatus": {
+    "v1beta2NamespaceStatus": {
       "properties": {
         "phase": {
           "format": "string",
@@ -980,25 +980,25 @@
       },
       "type": "object"
     },
-    "v02Node": {
+    "v1beta2Node": {
       "properties": {
         "is_master": {
           "format": "boolean",
           "type": "boolean"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v02NodeSpec"
+          "$ref": "#/definitions/v1beta2NodeSpec"
         },
         "status": {
-          "$ref": "#/definitions/v02NodeStatus"
+          "$ref": "#/definitions/v1beta2NodeStatus"
         }
       },
       "type": "object"
     },
-    "v02NodeSpec": {
+    "v1beta2NodeSpec": {
       "properties": {
         "external_id": {
           "format": "string",
@@ -1015,7 +1015,7 @@
       },
       "type": "object"
     },
-    "v02NodeStatus": {
+    "v1beta2NodeStatus": {
       "properties": {
         "capacity": {
           "$ref": "#/definitions/StatusCapacity"
@@ -1030,35 +1030,35 @@
       },
       "type": "object"
     },
-    "v02PetSet": {
+    "v1beta2PetSet": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v02PetSetSpec"
+          "$ref": "#/definitions/v1beta2PetSetSpec"
         },
         "status": {
-          "$ref": "#/definitions/v02PetSetStatus"
+          "$ref": "#/definitions/v1beta2PetSetStatus"
         }
       },
       "type": "object"
     },
-    "v02PetSetSpec": {
+    "v1beta2PetSetSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/v02PodSpec"
+          "$ref": "#/definitions/v1beta2PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/v02LabelSelector"
+          "$ref": "#/definitions/v1beta2LabelSelector"
         },
         "service_name": {
           "format": "string",
@@ -1067,7 +1067,7 @@
       },
       "type": "object"
     },
-    "v02PetSetStatus": {
+    "v1beta2PetSetStatus": {
       "properties": {
         "current_replicas": {
           "format": "int32",
@@ -1080,25 +1080,25 @@
       },
       "type": "object"
     },
-    "v02Pod": {
+    "v1beta2Pod": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v02PodSpec"
+          "$ref": "#/definitions/v1beta2PodSpec"
         },
         "status": {
-          "$ref": "#/definitions/v02PodStatus"
+          "$ref": "#/definitions/v1beta2PodStatus"
         }
       },
       "type": "object"
     },
-    "v02PodSpec": {
+    "v1beta2PodSpec": {
       "properties": {
         "containers": {
           "items": {
@@ -1137,7 +1137,7 @@
       },
       "type": "object"
     },
-    "v02PodStatus": {
+    "v1beta2PodStatus": {
       "properties": {
         "hostIP": {
           "format": "string",
@@ -1162,7 +1162,7 @@
       },
       "type": "object"
     },
-    "v02Raw": {
+    "v1beta2Raw": {
       "properties": {
         "data": {
           "format": "string",
@@ -1175,40 +1175,40 @@
       },
       "type": "object"
     },
-    "v02ReplicaSet": {
+    "v1beta2ReplicaSet": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v02ReplicaSetSpec"
+          "$ref": "#/definitions/v1beta2ReplicaSetSpec"
         },
         "status": {
-          "$ref": "#/definitions/v02ReplicaSetStatus"
+          "$ref": "#/definitions/v1beta2ReplicaSetStatus"
         }
       },
       "type": "object"
     },
-    "v02ReplicaSetSpec": {
+    "v1beta2ReplicaSetSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/v02PodSpec"
+          "$ref": "#/definitions/v1beta2PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/v02LabelSelector"
+          "$ref": "#/definitions/v1beta2LabelSelector"
         }
       },
       "type": "object"
     },
-    "v02ReplicaSetStatus": {
+    "v1beta2ReplicaSetStatus": {
       "properties": {
         "current_replicas": {
           "format": "int32",
@@ -1221,32 +1221,32 @@
       },
       "type": "object"
     },
-    "v02ReplicationController": {
+    "v1beta2ReplicationController": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v02ReplicationControllerSpec"
+          "$ref": "#/definitions/v1beta2ReplicationControllerSpec"
         },
         "status": {
-          "$ref": "#/definitions/v02ReplicationControllerStatus"
+          "$ref": "#/definitions/v1beta2ReplicationControllerStatus"
         }
       },
       "type": "object"
     },
-    "v02ReplicationControllerSpec": {
+    "v1beta2ReplicationControllerSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/v02PodSpec"
+          "$ref": "#/definitions/v1beta2PodSpec"
         },
         "selectors": {
           "additionalProperties": {
@@ -1258,7 +1258,7 @@
       },
       "type": "object"
     },
-    "v02ReplicationControllerStatus": {
+    "v1beta2ReplicationControllerStatus": {
       "properties": {
         "current_replicas": {
           "format": "int32",
@@ -1271,7 +1271,7 @@
       },
       "type": "object"
     },
-    "v02Secret": {
+    "v1beta2Secret": {
       "properties": {
         "data": {
           "additionalProperties": {
@@ -1281,7 +1281,7 @@
           "type": "object"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "type": {
           "format": "string",
@@ -1290,7 +1290,7 @@
       },
       "type": "object"
     },
-    "v02SecretUpdateRequest": {
+    "v1beta2SecretUpdateRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -1328,25 +1328,25 @@
       },
       "type": "object"
     },
-    "v02Service": {
+    "v1beta2Service": {
       "properties": {
         "app": {
           "format": "string",
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v02Meta"
+          "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v02ServiceSpec"
+          "$ref": "#/definitions/v1beta2ServiceSpec"
         },
         "status": {
-          "$ref": "#/definitions/v02ServiceStatus"
+          "$ref": "#/definitions/v1beta2ServiceStatus"
         }
       },
       "type": "object"
     },
-    "v02ServiceSpec": {
+    "v1beta2ServiceSpec": {
       "properties": {
         "clusterIP": {
           "format": "string",
@@ -1383,7 +1383,7 @@
       },
       "type": "object"
     },
-    "v02ServiceStatus": {
+    "v1beta2ServiceStatus": {
       "properties": {
         "loadbalancer_ingresses": {
           "items": {
@@ -1394,7 +1394,7 @@
       },
       "type": "object"
     },
-    "v02UpdateResourceRequest": {
+    "v1beta2UpdateResourceRequest": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -1409,7 +1409,7 @@
           "type": "string"
         },
         "raw": {
-          "$ref": "#/definitions/v02Raw"
+          "$ref": "#/definitions/v1beta2Raw"
         },
         "type": {
           "format": "string",
@@ -1422,7 +1422,7 @@
   "host": "api.appscode.com",
   "info": {
     "title": "client.proto",
-    "version": "0.2"
+    "version": "1beta2"
   },
   "paths": {
     "/appscode/api/kubernetes/v0.2/client/{cluster}/configmaps/{namespace}/{name}": {
@@ -1455,7 +1455,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v02ConfigMapUpdateRequest"
+              "$ref": "#/definitions/v1beta2ConfigMapUpdateRequest"
             }
           }
         ],
@@ -1463,7 +1463,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v02ClientActionResponse"
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
             }
           }
         },
@@ -1502,7 +1502,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v02SecretUpdateRequest"
+              "$ref": "#/definitions/v1beta2SecretUpdateRequest"
             }
           }
         ],
@@ -1510,7 +1510,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v02ClientActionResponse"
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
             }
           }
         },
@@ -1542,7 +1542,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v02ListResourceResponse"
+              "$ref": "#/definitions/v1beta2ListResourceResponse"
             }
           }
         },
@@ -1574,7 +1574,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v02UpdateResourceRequest"
+              "$ref": "#/definitions/v1beta2UpdateResourceRequest"
             }
           }
         ],
@@ -1582,7 +1582,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v02ClientActionResponse"
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
             }
           }
         },
@@ -1628,7 +1628,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v02ClientActionResponse"
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
             }
           }
         },
@@ -1672,7 +1672,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v02DescribeResourceResponse"
+              "$ref": "#/definitions/v1beta2DescribeResourceResponse"
             }
           }
         },
@@ -1704,7 +1704,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v02CopyResourceRequest"
+              "$ref": "#/definitions/v1beta2CopyResourceRequest"
             }
           }
         ],
@@ -1712,7 +1712,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v02ClientActionResponse"
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
             }
           }
         },

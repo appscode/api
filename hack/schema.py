@@ -22,7 +22,8 @@ VALID_FORMATS = ['date-time',
                  'ipv4',
                  'ipv6',
                  'uri']
-PKG_REGEX = re.compile(ur'^package\s*(?P<pkg>.*);$')
+PROTO_PKG_REGEX = ur'^package\s*(?P<pkg>[^;]*);$'
+GO_PKG_REGEX = ur'^option go_package\s*=\s*"(?P<pkg>[^;]*)"\s*;$'
 
 
 def call(cmd, stdin=None, cwd=API_ROOT):
@@ -287,12 +288,19 @@ def render_schema_go(pkg, schemas):
 
 def detect_pkg(schema):
     proto = schema[:-len('.schema.json')] + '.proto'
+
     with open(proto) as f:
-        for line in f:
-            line = line.strip()
-            m = re.search(PKG_REGEX, line)
+        content = f.read()
+        m = re.search(GO_PKG_REGEX, content, re.MULTILINE)
+        if m:
+            return m.group('pkg')
+        else:
+            m = re.search(PROTO_PKG_REGEX, content, re.MULTILINE)
             if m:
                 return m.group('pkg')
+            else:
+                print("Failed to detect package.")
+                sys.exit(1)
 
 
 def generate_go_schema():

@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "v02ConfigMapUpdateRequest": {
+    "v1beta2ConfigMapUpdateRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -36,18 +36,18 @@
       },
       "type": "object"
     },
-    "v02CopyResourceRequest": {
+    "v1beta2CopyResourceRequest": {
       "properties": {
         "destination": {
-          "$ref": "#/definitions/v02KubeObject"
+          "$ref": "#/definitions/v1beta2KubeObject"
         },
         "source": {
-          "$ref": "#/definitions/v02KubeObject"
+          "$ref": "#/definitions/v1beta2KubeObject"
         }
       },
       "type": "object"
     },
-    "v02DeleteResourceRequest": {
+    "v1beta2DeleteResourceRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -68,7 +68,7 @@
       },
       "type": "object"
     },
-    "v02DescribeResourceRequest": {
+    "v1beta2DescribeResourceRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -92,7 +92,7 @@
       },
       "type": "object"
     },
-    "v02KubeObject": {
+    "v1beta2KubeObject": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -113,7 +113,7 @@
       },
       "type": "object"
     },
-    "v02ListResourceRequest": {
+    "v1beta2ListResourceRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -129,7 +129,7 @@
       },
       "type": "object"
     },
-    "v02Raw": {
+    "v1beta2Raw": {
       "properties": {
         "data": {
           "type": "string"
@@ -140,7 +140,7 @@
       },
       "type": "object"
     },
-    "v02SecretUpdateRequest": {
+    "v1beta2SecretUpdateRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -176,7 +176,7 @@
       },
       "type": "object"
     },
-    "v02UpdateResourceRequest": {
+    "v1beta2UpdateResourceRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -192,7 +192,7 @@
           "type": "string"
         },
         "raw": {
-          "$ref": "#/definitions/v02Raw"
+          "$ref": "#/definitions/v1beta2Raw"
         },
         "type": {
           "type": "string"
