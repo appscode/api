@@ -148,10 +148,12 @@ message ClusterCreateRequest {
   string cloud_credential = 4;
   map<string, string> cloud_credential_data = 5;
   map<string, int64> node_set = 6;
-  string saltbase_version = 7;
+  string kube_saltbase_version = 7;
   string kube_starter_version = 8;
-  string kube_version = 9;
+  string kube_server_version = 9;
   bool do_not_delete = 10;
+  string hostfacts_version = 11;
+  string version = 12;
 }
 
 message ClusterScaleRequest {
@@ -232,7 +234,9 @@ message ClusterUpdateRequest {
 
 message ClusterUpgradeRequest {
   string name = 1;
-  string saltbase_version = 2;
+  string kube_saltbase_version = 2;
   string kube_starter_version = 3;
-  string kube_version = 4;
+  string kube_server_version = 4;
+  string hostfacts_version = 5;
+  string version = 6;
 }

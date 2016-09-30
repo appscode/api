@@ -131,10 +131,16 @@ func init() {
 	clusterUpgradeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "kube_starter_version": {
+    "hostfacts_version": {
       "type": "string"
     },
-    "kube_version": {
+    "kube_saltbase_version": {
+      "type": "string"
+    },
+    "kube_server_version": {
+      "type": "string"
+    },
+    "kube_starter_version": {
       "type": "string"
     },
     "name": {
@@ -142,7 +148,7 @@ func init() {
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
-    "saltbase_version": {
+    "version": {
       "type": "string"
     }
   },
@@ -210,10 +216,16 @@ func init() {
     "do_not_delete": {
       "type": "boolean"
     },
-    "kube_starter_version": {
+    "hostfacts_version": {
       "type": "string"
     },
-    "kube_version": {
+    "kube_saltbase_version": {
+      "type": "string"
+    },
+    "kube_server_version": {
+      "type": "string"
+    },
+    "kube_starter_version": {
       "type": "string"
     },
     "name": {
@@ -230,7 +242,7 @@ func init() {
     "provider": {
       "type": "string"
     },
-    "saltbase_version": {
+    "version": {
       "type": "string"
     },
     "zone": {
