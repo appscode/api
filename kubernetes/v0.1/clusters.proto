@@ -99,7 +99,7 @@ message Cluster {
   string status_cause = 11;
   string gce_project = 12;
   string kube_server_version = 13;
-  string saltbase_version = 14;
+  string kube_saltbase_version = 14;
   string kube_starter_version = 15;
 
   int32 node_count = 16;
@@ -112,6 +112,9 @@ message Cluster {
   ClusterSettings settings = 22;
 
   string instance_root_password = 23;
+  string version = 24;
+  string sku = 25;
+  string created_by = 26;
 }
 
 message ClusterDescribeRequest {

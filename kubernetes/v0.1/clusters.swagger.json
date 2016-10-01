@@ -116,6 +116,10 @@
           "format": "string",
           "type": "string"
         },
+        "created_by": {
+          "format": "string",
+          "type": "string"
+        },
         "do_not_delete": {
           "format": "boolean",
           "type": "boolean"
@@ -133,6 +137,10 @@
           "type": "string"
         },
         "kube_password": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_saltbase_version": {
           "format": "string",
           "type": "string"
         },
@@ -179,18 +187,22 @@
           "format": "string",
           "type": "string"
         },
-        "saltbase_version": {
-          "format": "string",
-          "type": "string"
-        },
         "settings": {
           "$ref": "#/definitions/kubernetesClusterSettings"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
         },
         "status": {
           "format": "string",
           "type": "string"
         },
         "status_cause": {
+          "format": "string",
+          "type": "string"
+        },
+        "version": {
           "format": "string",
           "type": "string"
         },
