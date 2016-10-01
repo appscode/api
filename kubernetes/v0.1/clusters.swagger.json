@@ -124,6 +124,10 @@
           "format": "string",
           "type": "string"
         },
+        "instance_root_password": {
+          "format": "string",
+          "type": "string"
+        },
         "kube_bearer_token": {
           "format": "string",
           "type": "string"

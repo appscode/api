@@ -110,6 +110,8 @@ message Cluster {
   string kube_bearer_token = 21;
 
   ClusterSettings settings = 22;
+
+  string instance_root_password = 23;
 }
 
 message ClusterDescribeRequest {
