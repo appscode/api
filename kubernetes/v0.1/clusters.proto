@@ -206,6 +206,7 @@ message ClusterClientConfigResponse {
   string user_cert = 7;
   string user_key = 8;
   string context_name = 9;
+  string user_token = 10;
 }
 
 message ClusterClientContainerRequest {

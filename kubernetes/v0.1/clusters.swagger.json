@@ -258,6 +258,10 @@
         "user_key": {
           "format": "string",
           "type": "string"
+        },
+        "user_token": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
