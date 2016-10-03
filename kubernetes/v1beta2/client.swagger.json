@@ -283,28 +283,6 @@
       },
       "type": "object"
     },
-    "alertIcingaState": {
-      "properties": {
-        "Critical": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "OK": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "Unknown": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "Warning": {
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "title": "This one is used in kubernetes/v0.1/client.proto\nTo send information if alert is set for app/pod",
-      "type": "object"
-    },
     "dtypesHelp": {
       "properties": {
         "description": {
@@ -369,6 +347,28 @@
       },
       "type": "object"
     },
+    "v1beta1IcingaState": {
+      "properties": {
+        "Critical": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OK": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Unknown": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Warning": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "title": "This one is used in kubernetes/v1beta1/client.proto\nTo send information if alert is set for app/pod",
+      "type": "object"
+    },
     "v1beta2App": {
       "properties": {
         "app": {
@@ -383,11 +383,11 @@
           "type": "string"
         },
         "created_at": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "icinga_state": {
-          "$ref": "#/definitions/alertIcingaState"
+          "$ref": "#/definitions/v1beta1IcingaState"
         },
         "links": {
           "additionalProperties": {
@@ -927,8 +927,8 @@
           "type": "object"
         },
         "created_at": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "generation": {
           "format": "int64",
@@ -1425,7 +1425,7 @@
     "version": "1beta2"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta2/client/{cluster}/configmaps/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v1beta2/clients/{cluster}/configmaps/{namespace}/{name}": {
       "post": {
         "operationId": "UpdateConfigMap",
         "parameters": [
@@ -1472,7 +1472,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/client/{cluster}/secrets/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v1beta2/clients/{cluster}/secrets/{namespace}/{name}": {
       "post": {
         "operationId": "UpdateSecret",
         "parameters": [
@@ -1519,7 +1519,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}": {
+    "/appscode/api/kubernetes/v1beta2/clients/{cluster}/{type}": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -1551,7 +1551,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/actions/update": {
+    "/appscode/api/kubernetes/v1beta2/clients/{cluster}/{type}/actions/update": {
       "put": {
         "operationId": "Update",
         "parameters": [
@@ -1591,7 +1591,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v1beta2/clients/{cluster}/{type}/{namespace}/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -1681,7 +1681,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/client/{source.cluster}/{source.type}/actions/copy": {
+    "/appscode/api/kubernetes/v1beta2/clients/{source.cluster}/{source.type}/actions/copy": {
       "put": {
         "operationId": "Copy",
         "parameters": [

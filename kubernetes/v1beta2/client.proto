@@ -6,51 +6,51 @@ option go_package = "v1beta2";
 
 import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
-import "api/alert/v0.1/alert.proto";
+import "api/alert/v1beta1/alert.proto";
 
 service Clients {
   rpc List(ListResourceRequest) returns (ListResourceResponse){
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}"
+      get : "/appscode/api/kubernetes/v1beta2/clients/{cluster}/{type}"
     };
   }
 
   rpc Describe(DescribeResourceRequest) returns (DescribeResourceResponse){
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/{namespace}/{name}"
+      get : "/appscode/api/kubernetes/v1beta2/clients/{cluster}/{type}/{namespace}/{name}"
     };
   }
 
   rpc Delete(DeleteResourceRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/{namespace}/{name}"
+      delete: "/appscode/api/kubernetes/v1beta2/clients/{cluster}/{type}/{namespace}/{name}"
     };
   }
 
   rpc Update(UpdateResourceRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
-      put : "/appscode/api/kubernetes/v1beta2/client/{cluster}/{type}/actions/update"
+      put : "/appscode/api/kubernetes/v1beta2/clients/{cluster}/{type}/actions/update"
       body : "*"
     };
   }
 
   rpc Copy(CopyResourceRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
-      put : "/appscode/api/kubernetes/v1beta2/client/{source.cluster}/{source.type}/actions/copy"
+      put : "/appscode/api/kubernetes/v1beta2/clients/{source.cluster}/{source.type}/actions/copy"
       body : "*"
     };
   }
 
   rpc UpdateConfigMap(ConfigMapUpdateRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/kubernetes/v1beta2/client/{cluster}/configmaps/{namespace}/{name}"
+      post : "/appscode/api/kubernetes/v1beta2/clients/{cluster}/configmaps/{namespace}/{name}"
       body : "*"
     };
   }
 
   rpc UpdateSecret(SecretUpdateRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/kubernetes/v1beta2/client/{cluster}/secrets/{namespace}/{name}"
+      post : "/appscode/api/kubernetes/v1beta2/clients/{cluster}/secrets/{namespace}/{name}"
       body : "*"
     };
   }
@@ -219,7 +219,7 @@ message Meta {
   string namespace = 2;
   string self_links = 3;
   string resource_version = 4;
-  string created_at= 5;
+  int64 created_at= 5;
   int64 generation = 6;
   map<string, string> labels = 7;
   map<string, string> annotations = 8;
@@ -239,9 +239,9 @@ message App {
   string name = 4;
   Service app = 5;
   map<string, string> links = 6;
-  string created_at = 7;
+  int64 created_at = 7;
   string cluster_ip = 8;
-  alert.IcingaState icinga_state = 9;
+  alert.v1beta1.IcingaState icinga_state = 9;
 }
 
 message PodSpec {

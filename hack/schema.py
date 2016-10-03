@@ -286,9 +286,26 @@ def render_schema_go(pkg, schemas):
     return contents
 
 
-def detect_pkg(schema):
-    proto = schema[:-len('.schema.json')] + '.proto'
+def detect_schema_pkg(swagger):
+    proto = swagger[:-len('.swagger.json')] + '.proto'
+    with open(proto) as f:
+        content = f.read()
+        m = re.search(PROTO_PKG_REGEX, content, re.MULTILINE)
+        if m:
+            pkg = m.group('pkg')
+            parts = pkg.split(".")
+            for x in range(0, len(parts)):
+                prefix = str.join("", parts[x:])
+                for key, defs in read_json(swagger)['definitions'].iteritems():
+                    if key.startswith(prefix) and key.endswith("Request"):
+                        return prefix
+        else:
+            print("Failed to detect package.")
+            sys.exit(1)
 
+
+def detect_go_pkg(swagger):
+    proto = swagger[:-len('.swagger.json')] + '.proto'
     with open(proto) as f:
         content = f.read()
         m = re.search(GO_PKG_REGEX, content, re.MULTILINE)
@@ -310,14 +327,15 @@ def generate_go_schema():
             schema = os.path.join(root, filename.replace('.swagger.', '.schema.'))
             go = schema[:-len('.json')] + '.go'
             print go
-            pkg = detect_pkg(schema)
-            defs = swagger_defs(read_json(swagger)['definitions'])
-            # overwrite requests with json schema from *.schema.json
-            # to preserve hand written rules
-            defs['requests'] = read_json(schema)['definitions']
-            schemas = schema_go(pkg, defs)
-            if schemas['requests'] or schemas['responses']:
-                write_file(go, render_schema_go(pkg, schemas))
+            pkg = detect_schema_pkg(swagger)
+            if pkg:
+                defs = swagger_defs(read_json(swagger)['definitions'])
+                # overwrite requests with json schema from *.schema.json
+                # to preserve hand written rules
+                defs['requests'] = read_json(schema)['definitions']
+                schemas = schema_go(pkg, defs)
+                if schemas['requests'] or schemas['responses']:
+                    write_file(go, render_schema_go(detect_go_pkg(swagger), schemas))
 
 
 def apply_naming_policy():

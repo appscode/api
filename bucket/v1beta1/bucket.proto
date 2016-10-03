@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package bucket.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Buckets {
+  rpc List(BucketListRequest) returns (BucketListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/bucket/v1beta1/buckets"
+    };
+  }
+}
+
+message BucketListRequest {
+  string cloud_credential = 1;
+}
+
+message BucketListResponse {
+  dtypes.Status status = 1;
+  repeated string name = 2;
+}
