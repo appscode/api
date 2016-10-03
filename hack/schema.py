@@ -6,6 +6,7 @@ import os
 import re
 import subprocess
 import sys
+from itertools import chain
 from os.path import expandvars
 
 # binary -> GOOS -> GOARCH
@@ -24,6 +25,8 @@ VALID_FORMATS = ['date-time',
                  'uri']
 PROTO_PKG_REGEX = ur'^package\s*(?P<pkg>[^;]*);$'
 GO_PKG_REGEX = ur'^option go_package\s*=\s*"(?P<pkg>[^;]*)"\s*;$'
+REQ_REGEX = ur'^\s*rpc\s*\w+\s*\(\s*(?P<req>\w+)\s*\)'
+RESP_REGEX = ur'^\s*rpc\s*\w+\s*\(\s*[^)]+\)\s*returns\s*\(\s*(?P<resp>\w+)\s*\)'
 
 
 def call(cmd, stdin=None, cwd=API_ROOT):
@@ -87,7 +90,8 @@ def deps():
     # special treatment for grc-gateway
     call('rm -rf $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway')
     call('mkdir -p $GOPATH/src/github.com/grpc-ecosystem')
-    call('git clone https://github.com/appscode/grpc-gateway.git', cwd=expandvars('$GOPATH/src/github.com/grpc-ecosystem'))
+    call('git clone https://github.com/appscode/grpc-gateway.git',
+         cwd=expandvars('$GOPATH/src/github.com/grpc-ecosystem'))
     call('go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway')
     call('go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger')
     # Copy google http apis proto files
@@ -143,7 +147,8 @@ def swagger_defs(defs):
                         stack.append(nw_obj)
                 if 'format' in v and not v['format'] in VALID_FORMATS:
                     v.pop('format', None)
-                if 'additionalProperties' in v and 'format' in v['additionalProperties'] and not v['additionalProperties']['format'] in VALID_FORMATS:
+                if 'additionalProperties' in v and 'format' in v['additionalProperties'] and not \
+                        v['additionalProperties']['format'] in VALID_FORMATS:
                     v['additionalProperties'].pop('format', None)
                 if 'items' in v:
                     if '$ref' in v['items']:
@@ -196,15 +201,15 @@ def generate_json_schema():
     call("(find . | grep schema.json.ext | xargs rm) || true")
 
 
-def schema_go(pkg, defs):
+def schema_go(reqs, resps, defs):
     result = {
         'requests': {},
         'responses': {}
     }
     for key in defs['requests'].keys():
-        if key.startswith(pkg) and key.endswith("Request"):
+        if key in reqs.keys() and key.endswith("Request"):
             schema = defs['requests'][key]
-            result['requests'][key[len(pkg):]] = schema
+            result['requests'][reqs[key]] = schema
             dep_defs = {}
             stack = []
             stack.append(schema)
@@ -226,10 +231,10 @@ def schema_go(pkg, defs):
                 schema['definitions'] = dep_defs
             schema['$schema'] = 'http://json-schema.org/draft-04/schema#'
     for key in defs['responses'].keys():
-        print key
-        if key.startswith(pkg) and key.endswith("Response"):
+        # print key
+        if key in resps.keys() and key.endswith("Response"):
             schema = defs['responses'][key]
-            result['responses'][key[len(pkg):]] = schema
+            result['responses'][resps[key]] = schema
     return result
 
 
@@ -286,6 +291,37 @@ def render_schema_go(pkg, schemas):
     return contents
 
 
+def detect_objs(swagger):
+    proto = swagger[:-len('.swagger.json')] + '.proto'
+    proto_reqs = []
+    proto_resps = []
+    reqs = {}
+    resps = {}
+    with open(proto) as f:
+        content = f.read()
+        proto_reqs = re.findall(REQ_REGEX, content, re.MULTILINE)
+        proto_resps = re.findall(RESP_REGEX, content, re.MULTILINE)
+        defs = read_json(swagger)['definitions']
+        m = re.search(PROTO_PKG_REGEX, content, re.MULTILINE)
+        if m:
+            pkg = m.group('pkg')
+            parts = pkg.split(".")
+            for x in reversed(range(0, len(parts))):
+                prefix = str.join("", parts[x:])
+                found = True
+                for obj in chain(proto_reqs, proto_resps):
+                    found &= ((prefix + obj) in defs)
+                if found:
+                    for r in proto_reqs:
+                        reqs[prefix + r] = r
+                    for r in proto_resps:
+                        resps[prefix + r] = r
+        else:
+            print("Failed to detect package.")
+            sys.exit(1)
+    return reqs, resps
+
+
 def detect_schema_pkg(swagger):
     proto = swagger[:-len('.swagger.json')] + '.proto'
     with open(proto) as f:
@@ -326,14 +362,14 @@ def generate_go_schema():
             swagger = os.path.join(root, filename)
             schema = os.path.join(root, filename.replace('.swagger.', '.schema.'))
             go = schema[:-len('.json')] + '.go'
-            print go
-            pkg = detect_schema_pkg(swagger)
-            if pkg:
+            # print go
+            reqs, resps = detect_objs(swagger)
+            if reqs:
                 defs = swagger_defs(read_json(swagger)['definitions'])
                 # overwrite requests with json schema from *.schema.json
                 # to preserve hand written rules
                 defs['requests'] = read_json(schema)['definitions']
-                schemas = schema_go(pkg, defs)
+                schemas = schema_go(reqs, resps, defs)
                 if schemas['requests'] or schemas['responses']:
                     write_file(go, render_schema_go(detect_go_pkg(swagger), schemas))
 

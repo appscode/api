@@ -9,7 +9,7 @@ import (
 	certificate "github.com/appscode/api/certificate/v1beta1"
 	ci "github.com/appscode/api/ci/v1beta1"
 	credential "github.com/appscode/api/credential/v1beta1"
-	db "github.com/appscode/api/db/v0.1"
+	db "github.com/appscode/api/db/v1beta1"
 	glusterfs "github.com/appscode/api/glusterfs/v1beta1"
 	kubernetes "github.com/appscode/api/kubernetes/v1beta1"
 	kubernetes_v1beta2 "github.com/appscode/api/kubernetes/v1beta2"

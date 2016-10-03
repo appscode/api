@@ -31,59 +31,6 @@
       },
       "type": "object"
     },
-    "dbBackupScheduleRequest": {
-      "properties": {
-        "auth_secret_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "bucket_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "credential": {
-          "format": "string",
-          "type": "string"
-        },
-        "dump": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "force": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "region": {
-          "format": "string",
-          "type": "string"
-        },
-        "schedule_cron_expr": {
-          "format": "string",
-          "type": "string"
-        },
-        "snapshot_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "type": {
-          "format": "string",
-          "type": "string"
-        },
-        "wal": {
-          "format": "boolean",
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
     "dtypesHelp": {
       "properties": {
         "description": {
@@ -130,72 +77,6 @@
         }
       },
       "title": "Next Id = 5",
-      "type": "object"
-    },
-    "namespacev1beta1CreateRequest": {
-      "properties": {
-        "client_ip": {
-          "format": "string",
-          "type": "string"
-        },
-        "display_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "email": {
-          "format": "string",
-          "type": "string"
-        },
-        "invite_email": {
-          "items": {
-            "format": "string",
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "password": {
-          "format": "string",
-          "type": "string"
-        },
-        "subscription_type": {
-          "format": "string",
-          "type": "string"
-        },
-        "user_name": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "operationv1beta1DescribeRequest": {
-      "properties": {
-        "phid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "operationv1beta1DescribeResponse": {
-      "properties": {
-        "log": {
-          "items": {
-            "$ref": "#/definitions/DescribeResponseLog"
-          },
-          "type": "array"
-        },
-        "op": {
-          "$ref": "#/definitions/v1beta1Operation"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
       "type": "object"
     },
     "protobufAny": {
@@ -309,6 +190,40 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "v1beta1BackupScheduleRequest": {
+      "properties": {
+        "auth_secret_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "bucket_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "credential_uid": {
+          "format": "string",
+          "type": "string"
+        },
+        "schedule_cron_expr": {
+          "format": "string",
+          "type": "string"
+        },
+        "snapshot_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 13",
       "type": "object"
     },
     "v1beta1ClusterCreateRequest": {
@@ -433,6 +348,46 @@
       },
       "type": "object"
     },
+    "v1beta1CreateRequest": {
+      "properties": {
+        "client_ip": {
+          "format": "string",
+          "type": "string"
+        },
+        "display_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "email": {
+          "format": "string",
+          "type": "string"
+        },
+        "invite_email": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "password": {
+          "format": "string",
+          "type": "string"
+        },
+        "subscription_type": {
+          "format": "string",
+          "type": "string"
+        },
+        "user_name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1DNSCheckRequest": {
       "properties": {
         "domain": {
@@ -459,6 +414,50 @@
         "prefix": {
           "format": "string",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1DatabaseCheckRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "purchase_phid": {
+          "format": "string",
+          "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 4",
+      "type": "object"
+    },
+    "v1beta1DescribeRequest": {
+      "properties": {
+        "phid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1DescribeResponse": {
+      "properties": {
+        "log": {
+          "items": {
+            "$ref": "#/definitions/DescribeResponseLog"
+          },
+          "type": "array"
+        },
+        "op": {
+          "$ref": "#/definitions/v1beta1Operation"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       },
       "type": "object"
@@ -533,6 +532,9 @@
         "auth": {
           "$ref": "#/definitions/v1beta1Auth"
         },
+        "backup_schedule_request": {
+          "$ref": "#/definitions/v1beta1BackupScheduleRequest"
+        },
         "ci_agent_create_request": {
           "$ref": "#/definitions/v1beta1AgentCreateRequest"
         },
@@ -560,8 +562,8 @@
         "data_bucket_delete_request": {
           "$ref": "#/definitions/v1beta1DataBucketDeleteRequest"
         },
-        "db_backup_schedule_request": {
-          "$ref": "#/definitions/dbBackupScheduleRequest"
+        "database_check_request": {
+          "$ref": "#/definitions/v1beta1DatabaseCheckRequest"
         },
         "dns_check_request": {
           "$ref": "#/definitions/v1beta1DNSCheckRequest"
@@ -573,17 +575,20 @@
           "$ref": "#/definitions/v1beta1NamespaceAdminTaskRequest"
         },
         "namespace_create_request": {
-          "$ref": "#/definitions/namespacev1beta1CreateRequest"
+          "$ref": "#/definitions/v1beta1CreateRequest"
         },
         "phid": {
           "format": "string",
           "type": "string"
         },
+        "snapshot_check_request": {
+          "$ref": "#/definitions/v1beta1SnapshotCheckRequest"
+        },
         "type": {
           "$ref": "#/definitions/v1beta1OperationType"
         }
       },
-      "title": "Next Id: 19",
+      "title": "Next Id: 21",
       "type": "object"
     },
     "v1beta1OperationType": {
@@ -599,13 +604,15 @@
         "CI_AGENT_CREATE",
         "CI_AGENT_DELETE",
         "DATA_BUCKET_DELETE",
-        "DATABASE_BACKUP",
+        "BACKUP_SCHEDULE",
         "NAMESPACE_CREATE",
         "NAMESPACE_ADMIN_TASK",
         "CHECK_DNS",
-        "ALERT_SYNC"
+        "ALERT_SYNC",
+        "DATABASE_CHECK",
+        "SNAPSHOT_CHECK"
       ],
-      "title": "Next Id: 15",
+      "title": "Next Id: 17",
       "type": "string"
     },
     "v1beta1PortInfo": {
@@ -619,6 +626,20 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "v1beta1SnapshotCheckRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 4",
       "type": "object"
     }
   },
@@ -644,7 +665,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/operationv1beta1DescribeResponse"
+              "$ref": "#/definitions/v1beta1DescribeResponse"
             }
           }
         },
