@@ -364,7 +364,7 @@ def generate_go_schema():
             go = schema[:-len('.json')] + '.go'
             # print go
             reqs, resps = detect_objs(swagger)
-            if reqs:
+            if reqs or resps:
                 defs = swagger_defs(read_json(swagger)['definitions'])
                 # overwrite requests with json schema from *.schema.json
                 # to preserve hand written rules
