@@ -733,16 +733,16 @@
           "type": "integer"
         },
         "completion_time": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "failed": {
           "format": "int32",
           "type": "integer"
         },
         "start_time": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "succeeded": {
           "format": "int32",
