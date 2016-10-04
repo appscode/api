@@ -22,7 +22,8 @@ ALIAS+="Mapi/db/v1beta1/database.proto=github.com/appscode/api/db/v1beta1,"
 ALIAS+="Mapi/db/v1beta1/snapshot.proto=github.com/appscode/api/db/v1beta1,"
 ALIAS+="Mapi/namespace/v1beta1/team.proto=github.com/appscode/api/namespace/v1beta1,"
 ALIAS+="Mapi/alert/v1beta1/alert.proto=github.com/appscode/api/alert/v1beta1,"
-ALIAS+="Mapi/operation/operation.proto=github.com/appscode/api/operation"
+ALIAS+="Mapi/operation/operation.proto=github.com/appscode/api/operation,"
+ALIAS+="Mapi/version/version.proto=github.com/appscode/api/version"
 
 clean() {
 	(find . | grep pb.go | xargs rm) || true
