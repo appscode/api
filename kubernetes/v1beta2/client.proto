@@ -60,6 +60,13 @@ message ListResourceRequest {
   string cluster = 1;
   string type = 2;
   string namespace = 3;
+  bool include_metrics = 4;
+  PodAncestor pod_ancestor = 5;
+
+  message PodAncestor {
+      string type = 1;
+      string name = 2;
+  }
 }
 
 message ListResourceResponse {
@@ -73,6 +80,7 @@ message DescribeResourceRequest {
   string namespace = 3;
   string name = 4;
   string raw = 5;
+  bool include_metrics = 6;
 }
 
 message DescribeResourceResponse {
@@ -316,6 +324,7 @@ message Node {
   Spec spec = 2;
   bool is_master = 3;
   Status status = 4;
+  Metrics metrics = 5;
 
   message Spec {
     string external_id = 1;
@@ -349,6 +358,8 @@ message Pod {
   string app = 2;
   PodSpec spec = 3;
   Status status = 4;
+  Metrics metrics = 5;
+
   message Status {
     string phase = 1;
     string message = 2;
@@ -511,3 +522,14 @@ message EventSource {
   string host = 2;
 }
 
+message Metrics {
+  int64 cpu_usage = 1;
+  int64 memory_usage = 2;
+  repeated MetricResult cpu_usage_history = 3;
+  repeated MetricResult memory_usage_history = 4;
+
+  message MetricResult {
+    int64 timestamp = 1;
+    int64 value     = 2;
+  }
+}

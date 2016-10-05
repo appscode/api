@@ -164,6 +164,19 @@
       },
       "type": "object"
     },
+    "MetricsMetricResult": {
+      "properties": {
+        "timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "value": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "PodSpecContainer": {
       "properties": {
         "commands": {
@@ -614,6 +627,10 @@
           "format": "string",
           "type": "string"
         },
+        "include_metrics": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "name": {
           "format": "string",
           "type": "string"
@@ -895,7 +912,27 @@
           "format": "string",
           "type": "string"
         },
+        "include_metrics": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "pod_ancestor": {
+          "$ref": "#/definitions/v1beta2ListResourceRequestPodAncestor"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ListResourceRequestPodAncestor": {
+      "properties": {
+        "name": {
           "format": "string",
           "type": "string"
         },
@@ -960,6 +997,31 @@
       },
       "type": "object"
     },
+    "v1beta2Metrics": {
+      "properties": {
+        "cpu_usage": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "cpu_usage_history": {
+          "items": {
+            "$ref": "#/definitions/MetricsMetricResult"
+          },
+          "type": "array"
+        },
+        "memory_usage": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "memory_usage_history": {
+          "items": {
+            "$ref": "#/definitions/MetricsMetricResult"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Namespace": {
       "properties": {
         "meta": {
@@ -988,6 +1050,9 @@
         },
         "meta": {
           "$ref": "#/definitions/v1beta2Meta"
+        },
+        "metrics": {
+          "$ref": "#/definitions/v1beta2Metrics"
         },
         "spec": {
           "$ref": "#/definitions/v1beta2NodeSpec"
@@ -1088,6 +1153,9 @@
         },
         "meta": {
           "$ref": "#/definitions/v1beta2Meta"
+        },
+        "metrics": {
+          "$ref": "#/definitions/v1beta2Metrics"
         },
         "spec": {
           "$ref": "#/definitions/v1beta2PodSpec"
