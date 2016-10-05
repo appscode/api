@@ -10,7 +10,7 @@
           "format": "string",
           "type": "string"
         },
-        "reported": {
+        "reported_at": {
           "format": "int64",
           "type": "integer"
         },
@@ -116,7 +116,7 @@
     },
     "v1beta1Incident": {
       "properties": {
-        "acknowledged": {
+        "acknowledged_at": {
           "format": "int64",
           "title": "Timestamp of first acknowledgement",
           "type": "integer"
@@ -162,11 +162,11 @@
           "format": "string",
           "type": "string"
         },
-        "recovered": {
+        "recovered_at": {
           "format": "int64",
           "type": "integer"
         },
-        "reported": {
+        "reported_at": {
           "format": "int64",
           "title": "Timestamp of first reported event",
           "type": "integer"
@@ -295,6 +295,7 @@
           "type": "string"
         },
         "time": {
+          "description": "The time object is used in icinga to send request. This\nindicates detection time from icinga.",
           "format": "int64",
           "type": "integer"
         },

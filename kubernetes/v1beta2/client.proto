@@ -219,7 +219,7 @@ message Meta {
   string namespace = 2;
   string self_links = 3;
   string resource_version = 4;
-  int64 created_at= 5;
+  int64 created_at = 5;
   int64 generation = 6;
   map<string, string> labels = 7;
   map<string, string> annotations = 8;
@@ -349,7 +349,6 @@ message Pod {
   string app = 2;
   PodSpec spec = 3;
   Status status = 4;
-
   message Status {
     string phase = 1;
     string message = 2;

@@ -58,8 +58,8 @@ message Database {
   string version = 8;
   string auth_secret = 9;
   string schedule_cron_expr = 10;
-  int64 pv_size = 11;
-  int64 last_backup = 12;
+  int32 pv_size_gb = 11;
+  int64 last_backup_at = 12;
   string status = 13;
   int64 created_at = 14;
   int64 deleted_at = 15;
@@ -96,9 +96,9 @@ message DatabaseCreateRequest {
   string type = 3;
   string sku = 4;
   string version = 5;
-  int64 pv_size = 7;
+  int32 pv_size_gb = 7;
   string auth_secret_name = 8;
-  int64 size = 9;
+  int32 size = 9;
   string snapshot_phid = 14;
   string hostname = 15;
 }
@@ -107,7 +107,7 @@ message DatabaseCreateRequest {
 message DatabaseScaleRequest {
   string cluster = 1;
   string uid = 2;
-  int64 size = 3;
+  int32 size = 3;
 }
 
 // Next Id: 4
@@ -125,10 +125,10 @@ message DatabaseDescribeRequest {
 
 // Next Id: 7
 message SnapshotSummary {
-  int64 backup_attempt = 3;
-  int64 backup_success = 4;
-  int64 restore_attempt = 5;
-  int64 restore_success = 6;
+  int32 backup_attempt = 3;
+  int32 backup_success = 4;
+  int32 restore_attempt = 5;
+  int32 restore_success = 6;
 }
 
 // Next Id: 17

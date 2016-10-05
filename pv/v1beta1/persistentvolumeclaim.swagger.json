@@ -121,7 +121,7 @@
           "format": "string",
           "type": "string"
         },
-        "size": {
+        "size_gb": {
           "format": "int64",
           "type": "integer"
         },
@@ -150,7 +150,7 @@
           "format": "string",
           "type": "string"
         },
-        "size": {
+        "size_gb": {
           "format": "int64",
           "type": "integer"
         }

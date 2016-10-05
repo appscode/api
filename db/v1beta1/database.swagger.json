@@ -98,7 +98,7 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "last_backup": {
+        "last_backup_at": {
           "format": "int64",
           "type": "integer"
         },
@@ -114,8 +114,8 @@
           "format": "string",
           "type": "string"
         },
-        "pv_size": {
-          "format": "int64",
+        "pv_size_gb": {
+          "format": "int32",
           "type": "integer"
         },
         "schedule_cron_expr": {
@@ -160,8 +160,8 @@
           "format": "string",
           "type": "string"
         },
-        "pv_size": {
-          "format": "int64",
+        "pv_size_gb": {
+          "format": "int32",
           "type": "integer"
         },
         "service_name": {
@@ -169,7 +169,7 @@
           "type": "string"
         },
         "size": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         },
         "sku": {
@@ -275,7 +275,7 @@
           "type": "string"
         },
         "size": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         },
         "uid": {
@@ -307,19 +307,19 @@
     "v1beta1SnapshotSummary": {
       "properties": {
         "backup_attempt": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         },
         "backup_success": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         },
         "restore_attempt": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         },
         "restore_success": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         }
       },

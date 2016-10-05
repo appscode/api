@@ -65,7 +65,7 @@ func init() {
     "hostname": {
       "type": "string"
     },
-    "pv_size": {
+    "pv_size_gb": {
       "type": "integer"
     },
     "service_name": {

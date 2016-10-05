@@ -44,7 +44,7 @@ message Cluster {
   string name = 2;
   string kube_cluster = 3;
   string kube_namespace = 4;
-  int64 replica = 5;
+  int32 replica = 5;
   string endpoint = 6;
   int64 created_at = 7;
   string status = 8;
@@ -78,7 +78,7 @@ message ClusterDescribeResponse {
 
 message ClusterCreateRequest {
   string name = 1;
-  int64 node = 2;
+  int32 node = 2;
   repeated string disks = 3;
   string kube_cluster = 4;
   string kube_namespace = 5;

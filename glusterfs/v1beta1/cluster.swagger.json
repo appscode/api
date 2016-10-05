@@ -103,7 +103,7 @@
           "type": "string"
         },
         "replica": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         },
         "status": {
@@ -139,7 +139,7 @@
           "type": "string"
         },
         "node": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         }
       },
