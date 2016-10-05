@@ -27,7 +27,7 @@ service Clusters {
 
   rpc Create(ClusterCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put : "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}"
+      post : "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}"
       body: "*"
     };
   }
