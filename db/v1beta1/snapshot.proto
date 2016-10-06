@@ -49,8 +49,6 @@ message Snapshot {
   string provider = 3;
   string cloud_credential = 4;
   string bucket = 5;
-  string region = 6;
-  string zone = 7;
   string status = 8;
   string process = 9;
   string type = 10;

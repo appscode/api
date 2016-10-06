@@ -89,7 +89,7 @@ message DatabaseListResponse {
   repeated Database databases = 2;
 }
 
-// Next Id: 15
+// Next Id: 16
 message DatabaseCreateRequest {
   string cluster = 1;
   string service_name = 2;
@@ -101,6 +101,7 @@ message DatabaseCreateRequest {
   int32 size = 9;
   string snapshot_phid = 14;
   string hostname = 15;
+  string storage_class = 16;
 }
 
 // Next Id: 4
@@ -138,10 +139,11 @@ message DatabaseDescribeResponse {
   Database database = 16;
 }
 
-// Next Id: 3
+// Next Id: 4
 message DatabaseDeleteRequest {
   string cluster = 1;
   string uid = 2;
+  bool destroy = 3;
 }
 
 // Next Id: 4

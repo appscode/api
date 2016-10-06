@@ -176,10 +176,6 @@
           "format": "string",
           "type": "string"
         },
-        "region": {
-          "format": "string",
-          "type": "string"
-        },
         "source_database": {
           "format": "string",
           "type": "string"
@@ -193,10 +189,6 @@
           "type": "string"
         },
         "type": {
-          "format": "string",
-          "type": "string"
-        },
-        "zone": {
           "format": "string",
           "type": "string"
         }

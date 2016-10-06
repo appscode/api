@@ -180,6 +180,10 @@
           "format": "string",
           "type": "string"
         },
+        "storage_class": {
+          "format": "string",
+          "type": "string"
+        },
         "type": {
           "format": "string",
           "type": "string"
@@ -189,7 +193,7 @@
           "type": "string"
         }
       },
-      "title": "Next Id: 15",
+      "title": "Next Id: 16",
       "type": "object"
     },
     "v1beta1DatabaseDeleteRequest": {
@@ -198,12 +202,16 @@
           "format": "string",
           "type": "string"
         },
+        "destroy": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "uid": {
           "format": "string",
           "type": "string"
         }
       },
-      "title": "Next Id: 3",
+      "title": "Next Id: 4",
       "type": "object"
     },
     "v1beta1DatabaseDescribeRequest": {

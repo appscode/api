@@ -30,6 +30,9 @@
         "snapshot_phid": {
           "type": "string"
         },
+        "storage_class": {
+          "type": "string"
+        },
         "type": {
           "type": "string"
         },
@@ -37,7 +40,7 @@
           "type": "string"
         }
       },
-      "title": "Next Id: 15",
+      "title": "Next Id: 16",
       "type": "object"
     },
     "v1beta1DatabaseDeleteRequest": {
@@ -45,11 +48,14 @@
         "cluster": {
           "type": "string"
         },
+        "destroy": {
+          "type": "boolean"
+        },
         "uid": {
           "type": "string"
         }
       },
-      "title": "Next Id: 3",
+      "title": "Next Id: 4",
       "type": "object"
     },
     "v1beta1DatabaseDescribeRequest": {
