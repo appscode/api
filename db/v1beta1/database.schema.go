@@ -104,6 +104,9 @@ func init() {
 	databaseListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "cluster": {
+      "type": "string"
+    },
     "status": {
       "items": {
         "type": "string"

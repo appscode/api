@@ -74,7 +74,7 @@ func request_Clients_List_0(ctx context.Context, marshaler runtime.Marshaler, cl
 }
 
 var (
-	filter_Clients_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"cluster": 0, "type": 1, "namespace": 2, "name": 3}, Base: []int{1, 1, 2, 3, 4, 0, 0, 0, 0}, Check: []int{0, 1, 1, 1, 1, 2, 3, 4, 5}}
+	filter_Clients_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"cluster": 0, "type": 1, "name": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
 )
 
 func request_Clients_Describe_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -110,17 +110,6 @@ func request_Clients_Describe_0(ctx context.Context, marshaler runtime.Marshaler
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["namespace"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
-	}
-
-	protoReq.Namespace, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
 	val, ok = pathParams["name"]
 	if !ok {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
@@ -140,6 +129,10 @@ func request_Clients_Describe_0(ctx context.Context, marshaler runtime.Marshaler
 	return msg, metadata, err
 
 }
+
+var (
+	filter_Clients_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"cluster": 0, "type": 1, "name": 2}, Base: []int{1, 1, 2, 3, 0, 0, 0}, Check: []int{0, 1, 1, 1, 2, 3, 4}}
+)
 
 func request_Clients_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteResourceRequest
@@ -174,17 +167,6 @@ func request_Clients_Delete_0(ctx context.Context, marshaler runtime.Marshaler, 
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["namespace"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
-	}
-
-	protoReq.Namespace, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
 	val, ok = pathParams["name"]
 	if !ok {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
@@ -194,6 +176,10 @@ func request_Clients_Delete_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	if err != nil {
 		return nil, metadata, err
+	}
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Clients_Delete_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -238,6 +224,17 @@ func request_Clients_Update_0(ctx context.Context, marshaler runtime.Marshaler, 
 		return nil, metadata, err
 	}
 
+	val, ok = pathParams["name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+	}
+
+	protoReq.Name, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
 	msg, err := client.Update(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -249,35 +246,6 @@ func request_Clients_Copy_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["source.cluster"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "source.cluster")
-	}
-
-	err = runtime.PopulateFieldFromPath(&protoReq, "source.cluster", val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
-	val, ok = pathParams["source.type"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "source.type")
-	}
-
-	err = runtime.PopulateFieldFromPath(&protoReq, "source.type", val)
-
-	if err != nil {
-		return nil, metadata, err
 	}
 
 	msg, err := client.Copy(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -621,19 +589,19 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 }
 
 var (
-	pattern_Clients_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "kubernetes", "v1beta2", "clients", "cluster", "type"}, ""))
+	pattern_Clients_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "kubernetes", "v1beta2", "clusters", "cluster", "type"}, ""))
 
-	pattern_Clients_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "clients", "cluster", "type", "namespace", "name"}, ""))
+	pattern_Clients_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "kubernetes", "v1beta2", "clusters", "cluster", "type", "name"}, ""))
 
-	pattern_Clients_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "clients", "cluster", "type", "namespace", "name"}, ""))
+	pattern_Clients_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "kubernetes", "v1beta2", "clusters", "cluster", "type", "name"}, ""))
 
-	pattern_Clients_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "clients", "cluster", "type", "actions", "update"}, ""))
+	pattern_Clients_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "kubernetes", "v1beta2", "clusters", "cluster", "type", "name"}, ""))
 
-	pattern_Clients_Copy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "clients", "source.cluster", "source.type", "actions", "copy"}, ""))
+	pattern_Clients_Copy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "kubernetes", "v1beta2", "actions", "copy"}, ""))
 
-	pattern_Clients_UpdateConfigMap_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "clients", "cluster", "configmaps", "namespace", "name"}, ""))
+	pattern_Clients_UpdateConfigMap_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 1, 0, 4, 1, 5, 9, 2, 10, 2, 11}, []string{"appscode", "api", "kubernetes", "v1beta2", "clusters", "cluster", "namespaces", "namespace", "configmaps", "name", "actions", "edit"}, ""))
 
-	pattern_Clients_UpdateSecret_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 1, 0, 4, 1, 5, 8}, []string{"appscode", "api", "kubernetes", "v1beta2", "clients", "cluster", "secrets", "namespace", "name"}, ""))
+	pattern_Clients_UpdateSecret_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 1, 0, 4, 1, 5, 9, 2, 10, 2, 11}, []string{"appscode", "api", "kubernetes", "v1beta2", "clusters", "cluster", "namespaces", "namespace", "secrets", "name", "actions", "edit"}, ""))
 )
 
 var (

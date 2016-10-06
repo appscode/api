@@ -40,7 +40,7 @@ func init() {
     "cluster": {
       "type": "string"
     },
-    "identifier": {
+    "uid": {
       "type": "string"
     }
   },

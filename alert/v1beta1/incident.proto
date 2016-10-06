@@ -11,26 +11,26 @@ import "api/dtypes/types.proto";
 service Incidents {
   rpc List(IncidentListRequest) returns (IncidentListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/alert/v1beta1/incidents"
+      get: "/appscode/api/kubernetes/v1beta1/incidents"
     };
   }
 
   rpc Describe(IncidentDescribeRequest) returns (IncidentDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/alert/v1beta1/incidents/{phid}"
+      get: "/appscode/api/kubernetes/v1beta1/incidents/{phid}"
     };
   }
 
   rpc Notify(IncidentNotifyRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/alert/v1beta1/incidents"
+      post : "/appscode/api/kubernetes/v1beta1/alerts/{alert_phid}/actions/notify"
       body : "*"
     };
   }
 
   rpc CreateEvent(IncidentEventCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/alert/v1beta1/incidents/{phid}/events"
+      post : "/appscode/api/kubernetes/v1beta1/incidents/{phid}/events"
       body : "*"
     };
   }

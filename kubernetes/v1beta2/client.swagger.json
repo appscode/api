@@ -1493,7 +1493,33 @@
     "version": "1beta2"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta2/clients/{cluster}/configmaps/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v1beta2/actions/copy": {
+      "put": {
+        "operationId": "Copy",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta2CopyResourceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2ClientActionResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit": {
       "post": {
         "operationId": "UpdateConfigMap",
         "parameters": [
@@ -1540,7 +1566,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clients/{cluster}/secrets/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit": {
       "post": {
         "operationId": "UpdateSecret",
         "parameters": [
@@ -1587,7 +1613,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clients/{cluster}/{type}": {
+    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -1619,47 +1645,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clients/{cluster}/{type}/actions/update": {
-      "put": {
-        "operationId": "Update",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta2UpdateResourceRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta2ClientActionResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clients"
-        ]
-      }
-    },
-    "/appscode/api/kubernetes/v1beta2/clients/{cluster}/{type}/{namespace}/{name}": {
+    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -1674,13 +1660,6 @@
             "format": "string",
             "in": "path",
             "name": "type",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "namespace",
             "required": true,
             "type": "string"
           },
@@ -1724,13 +1703,6 @@
           {
             "format": "string",
             "in": "path",
-            "name": "namespace",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
             "name": "name",
             "required": true,
             "type": "string"
@@ -1747,23 +1719,28 @@
         "tags": [
           "Clients"
         ]
-      }
-    },
-    "/appscode/api/kubernetes/v1beta2/clients/{source.cluster}/{source.type}/actions/copy": {
+      },
       "put": {
-        "operationId": "Copy",
+        "operationId": "Update",
         "parameters": [
           {
             "format": "string",
             "in": "path",
-            "name": "source.cluster",
+            "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
             "format": "string",
             "in": "path",
-            "name": "source.type",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
             "required": true,
             "type": "string"
           },
@@ -1772,7 +1749,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta2CopyResourceRequest"
+              "$ref": "#/definitions/v1beta2UpdateResourceRequest"
             }
           }
         ],

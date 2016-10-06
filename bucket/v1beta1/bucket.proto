@@ -10,7 +10,7 @@ import "api/dtypes/types.proto";
 service Buckets {
   rpc List(BucketListRequest) returns (BucketListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/bucket/v1beta1/buckets"
+      get: "/appscode/api/cloud/v1beta1/buckets"
     };
   }
 }

@@ -10,20 +10,20 @@ import "api/dtypes/types.proto";
 service PersistentVolumeClaims {
   rpc Describe(PVCDescribeRequest) returns (PVCDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/pv/v1beta1/persistent-volume-claims/{cluster}/{name}/{namespace}"
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
     };
   }
 
   rpc Register(PVCRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/pv/v1beta1/persistent-volume-claims/{cluster}/{name}"
+      put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
       body: "*"
     };
   }
 
   rpc Unregister(PVCUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/pv/v1beta1/persistent-volume-claims/{cluster}/{name}/{namespace}"
+      delete: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
     };
   }
 }

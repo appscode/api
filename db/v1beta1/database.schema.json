@@ -72,6 +72,9 @@
     },
     "v1beta1DatabaseListRequest": {
       "properties": {
+        "cluster": {
+          "type": "string"
+        },
         "status": {
           "items": {
             "type": "string"

@@ -15,26 +15,26 @@ service Clusters {
   // with respect to the provided kube cluster space.
   rpc List(ClusterListRequest) returns (ClusterListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}"
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs"
     };
   }
 
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}/{kube_namespace}/{name}"
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}"
     };
   }
 
   rpc Create(ClusterCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}"
+      post : "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs"
       body: "*"
     };
   }
 
   rpc Delete(ClusterDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete : "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}/{kube_namespace}/{name}"
+      delete : "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}"
     };
   }
 }

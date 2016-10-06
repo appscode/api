@@ -10,20 +10,20 @@ import "api/dtypes/types.proto";
 service PersistentVolumes {
  rpc Describe(PVDescribeRequest) returns (PVDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/pv/v1beta1/persistent-volumes/{cluster}/{name}"
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
     };
   }
 
   rpc Register(PVRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/pv/v1beta1/persistent-volumes/{cluster}/{name}"
+      put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
       body: "*"
     };
   }
 
   rpc Unregister(PVUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/pv/v1beta1/persistent-volumes/{cluster}/{name}"
+      delete: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
     };
   }
 }

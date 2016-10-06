@@ -99,7 +99,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/bucket/v1beta1/buckets": {
+    "/appscode/api/cloud/v1beta1/buckets": {
       "get": {
         "operationId": "List",
         "responses": {

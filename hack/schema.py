@@ -27,6 +27,7 @@ PROTO_PKG_REGEX = ur'^package\s*(?P<pkg>[^;]*);$'
 GO_PKG_REGEX = ur'^option go_package\s*=\s*"(?P<pkg>[^;]*)"\s*;$'
 REQ_REGEX = ur'^\s*rpc\s*\w+\s*\(\s*(?P<req>\w+)\s*\)'
 RESP_REGEX = ur'^\s*rpc\s*\w+\s*\(\s*[^)]+\)\s*returns\s*\(\s*(?P<resp>\w+)\s*\)'
+URL_REGREX = ur'^\s*(?P<verb>get|post|put|patch|delete)\s*:\s*"(?P<url>[^"]+)"'
 
 
 def call(cmd, stdin=None, cwd=API_ROOT):
@@ -400,6 +401,37 @@ def apply_naming_policy():
             write_json(content, schema)
 
 
+def generate_url_summary():
+    urls = {}
+    for root, dirnames, filenames in os.walk(API_ROOT):
+        for filename in fnmatch.filter(filenames, '*.proto'):
+            proto = os.path.join(root, filename)
+            rel_proto = proto[proto.index('github.com/appscode/api') + len('github.com/appscode/api'):]
+            with open(proto) as f:
+                content = f.read()
+                apis = re.findall(URL_REGREX, content, re.MULTILINE)
+                for verb, url in apis:
+                    # form url key by replacing {} parts with *
+                    parts = url.split('/')
+                    for idx, part in enumerate(parts):
+                        if part.startswith('{') and part.endswith('}'):
+                            parts[idx] = '*'
+                    url_key = '/'.join(parts)
+                    # check that verb is not redefined
+                    if url_key in urls:
+                        if verb in urls[url_key]:
+                            print verb, 'verb is redefined for URL:', url_key
+                            print 'previously defined as ', urls[url_key][verb]['url'], 'in', urls[url_key][verb]['file']
+                            sys.exit(1)
+                    else:
+                        urls[url_key] = {}
+                    urls[url_key][verb] = {
+                        'url': url,
+                        'file': rel_proto
+                    }
+    write_json(urls, API_ROOT + '/api_urls.json')
+
+
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         # http://stackoverflow.com/a/834451
@@ -409,3 +441,4 @@ if __name__ == "__main__":
         generate_json_schema()
         # apply_naming_policy()
         generate_go_schema()
+        generate_url_summary()
