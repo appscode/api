@@ -181,6 +181,9 @@
     },
     "v1beta1ClusterDescribeResponse": {
       "properties": {
+        "glusterfs": {
+          "$ref": "#/definitions/v1beta1Cluster"
+        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }

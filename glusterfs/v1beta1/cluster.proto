@@ -74,6 +74,7 @@ message ClusterDescribeRequest {
 
 message ClusterDescribeResponse {
   dtypes.Status status = 1;
+  Cluster glusterfs = 2;
 }
 
 message ClusterCreateRequest {
