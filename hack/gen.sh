@@ -9,6 +9,7 @@ ROOT=$PWD
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ALIAS="Mgoogle/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api,"
+ALIAS+="Mappscode/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis/appscode/api,"
 ALIAS+="Mapi/dtypes/types.proto=github.com/appscode/api/dtypes,"
 ALIAS+="Mapi/ci/v1beta1/agent.proto=github.com/appscode/api/ci/v1beta1,"
 ALIAS+="Mapi/ci/v1beta1/master.proto=github.com/appscode/api/ci/v1beta1,"
@@ -28,6 +29,8 @@ ALIAS+="Mapi/version/version.proto=github.com/appscode/api/version"
 clean() {
 	(find . | grep pb.go | xargs rm) || true
 	(find . | grep pb.gw.go | xargs rm) || true
+	(find . | grep cors.go | xargs rm) || true
+	(find . | grep gw.cors.go | xargs rm) || true
 	# Do NOT delete schema.json files as they contain handwritten validation rules.
 	# contact tamal@ / sadlil@ if in doubt.
 	# (find . | grep schema.json | xargs rm) || true
@@ -44,7 +47,7 @@ gen_proto() {
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-         -I ${GOPATH}/src/github.com/google/googleapis/google \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
          --go_out=plugins=grpc,${ALIAS}:. *.proto
 }
 
@@ -56,8 +59,20 @@ gen_gateway_proto() {
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-         -I ${GOPATH}/src/github.com/google/googleapis/google \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
          --grpc-gateway_out=logtostderr=true,${ALIAS}:. *.proto
+}
+
+gen_cors_pattern() {
+  if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
+    return
+  fi
+  rm -rf *.gw.cors.go
+  protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src/github.com/appscode \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
+         --grpc-gateway-cors_out=logtostderr=true,${ALIAS}:. *.proto
 }
 
 gen_swagger_def() {
@@ -68,7 +83,7 @@ gen_swagger_def() {
    protoc -I /usr/local/include -I . \
           -I ${GOPATH}/src/github.com/appscode \
           -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-          -I ${GOPATH}/src/github.com/google/googleapis/google \
+          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
           --swagger_out=logtostderr=true,${ALIAS}:. *.proto
 }
 
@@ -97,6 +112,22 @@ gen_proxy_protos() {
         for dd in $dirs ; do
           pushd ${dd}
           gen_gateway_proto
+          popd
+        done
+      fi
+      popd
+    done
+}
+
+gen_cors_patterns() {
+    echo "Generating gateway protobuf files"
+    for d in */ ; do
+      pushd ${d}
+      gen_cors_pattern
+      if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
+        for dd in $dirs ; do
+          pushd ${dd}
+          gen_cors_pattern
           popd
         done
       fi
@@ -188,6 +219,7 @@ gen_protos() {
   python $DIR/schema.py gen_assets
   gen_server_protos
   gen_proxy_protos
+  gen_cors_patterns
   gen_swagger_defs
   python $DIR/schema.py
   # gen_python_protos

@@ -5,6 +5,7 @@ package kubernetes.v1beta2;
 option go_package = "v1beta2";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 import "api/alert/v1beta1/alert.proto";
 
@@ -13,17 +14,26 @@ service Clients {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Describe(DescribeResourceRequest) returns (DescribeResourceResponse){
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Delete(DeleteResourceRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -32,12 +42,18 @@ service Clients {
       put : "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
       body : "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Copy(CopyResourceRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
       put : "/appscode/api/kubernetes/v1beta2/actions/copy"
       body : "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -46,12 +62,18 @@ service Clients {
       post : "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit"
       body : "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc UpdateSecret(SecretUpdateRequest) returns (ClientActionResponse) {
     option (google.api.http) = {
       post : "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit"
       body : "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }
