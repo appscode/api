@@ -257,21 +257,21 @@
   },
   "/appscode/api/cloud/v1beta1/credentials": {
     "get": {
-      "file": "/credential/v1beta1/cloudcredential.proto",
+      "file": "/credential/v1beta1/credential.proto",
       "url": "/appscode/api/cloud/v1beta1/credentials"
     },
     "post": {
-      "file": "/credential/v1beta1/cloudcredential.proto",
+      "file": "/credential/v1beta1/credential.proto",
       "url": "/appscode/api/cloud/v1beta1/credentials"
     }
   },
   "/appscode/api/cloud/v1beta1/credentials/*": {
     "delete": {
-      "file": "/credential/v1beta1/cloudcredential.proto",
+      "file": "/credential/v1beta1/credential.proto",
       "url": "/appscode/api/cloud/v1beta1/credentials/{name}"
     },
     "put": {
-      "file": "/credential/v1beta1/cloudcredential.proto",
+      "file": "/credential/v1beta1/credential.proto",
       "url": "/appscode/api/cloud/v1beta1/credentials/{name}"
     }
   },
