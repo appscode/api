@@ -9,43 +9,43 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func DatabasesList(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases'
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func DatabasesCreate(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases'
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases'
 	delete p['cluster']
-	return xhr(url, 'POST', conf, null, p);
+	return xhr(path, 'POST', conf, null, p);
 }
 
 func DatabasesScale(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid'] + '/actions/scale'
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid'] + '/actions/scale'
 	delete p['cluster']
 	delete p['uid']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func DatabasesUpdate(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid']
 	delete p['cluster']
 	delete p['uid']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func DatabasesDescribe(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid']
 	delete p['cluster']
 	delete p['uid']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func DatabasesDelete(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid']
 	delete p['cluster']
 	delete p['uid']
-	return xhr(url, 'DELETE', conf, p);
+	return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {

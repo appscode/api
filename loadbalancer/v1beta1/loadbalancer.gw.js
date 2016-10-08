@@ -9,36 +9,36 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func LoadBalancersList(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func LoadBalancersDescribe(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
 	delete p['cluster']
 	delete p['name']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func LoadBalancersCreate(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
 	delete p['cluster']
-	return xhr(url, 'POST', conf, null, p);
+	return xhr(path, 'POST', conf, null, p);
 }
 
 func LoadBalancersUpdate(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
 	delete p['cluster']
 	delete p['name']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func LoadBalancersDelete(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
 	delete p['cluster']
 	delete p['name']
-	return xhr(url, 'DELETE', conf, p);
+	return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {

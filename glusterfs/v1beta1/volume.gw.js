@@ -9,11 +9,11 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func VolumesList(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/namespaces/' + p['kube_namespace'] + '/glusterfs/' + p['glusterfs_cluster'] + '/volumes'
+	path = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/namespaces/' + p['kube_namespace'] + '/glusterfs/' + p['glusterfs_cluster'] + '/volumes'
 	delete p['kube_cluster']
 	delete p['kube_namespace']
 	delete p['glusterfs_cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 module.exports = {

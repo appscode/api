@@ -9,8 +9,8 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func SubscriptionsSubscribe(p, conf) {
-	url = '/billing/v1beta1/subscriptions'
-	return xhr(url, 'POST', conf, null, p);
+	path = '/billing/v1beta1/subscriptions'
+	return xhr(path, 'POST', conf, null, p);
 }
 
 module.exports = {

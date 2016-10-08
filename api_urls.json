@@ -23,16 +23,16 @@
       "url": "/appscode/api/artifactory/v1beta1/search"
     }
   },
-  "/appscode/api/auth/v1beta1/conduits/users": {
+  "/appscode/api/auth/v1beta1/conduit/users": {
     "post": {
       "file": "/auth/v1beta1/conduit.proto",
-      "url": "/appscode/api/auth/v1beta1/conduits/users"
+      "url": "/appscode/api/auth/v1beta1/conduit/users"
     }
   },
-  "/appscode/api/auth/v1beta1/conduits/whoami": {
+  "/appscode/api/auth/v1beta1/conduit/whoami": {
     "post": {
       "file": "/auth/v1beta1/conduit.proto",
-      "url": "/appscode/api/auth/v1beta1/conduits/whoami"
+      "url": "/appscode/api/auth/v1beta1/conduit/whoami"
     }
   },
   "/appscode/api/auth/v1beta1/login": {

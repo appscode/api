@@ -9,15 +9,15 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func EventsConstructive(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster_name'] + '/actions/construct-event'
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster_name'] + '/actions/construct-event'
 	delete p['cluster_name']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func EventsDestructive(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster_name'] + '/actions/destruct-event'
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster_name'] + '/actions/destruct-event'
 	delete p['cluster_name']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 module.exports = {

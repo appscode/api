@@ -9,14 +9,14 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func ArtifactsSearch(p, conf) {
-	url = '/artifactory/v1beta1/search'
-	return xhr(url, 'GET', conf, p);
+	path = '/artifactory/v1beta1/search'
+	return xhr(path, 'GET', conf, p);
 }
 
 func ArtifactsList(p, conf) {
-	url = '/artifactory/v1beta1/artifacts/' + p['type']
+	path = '/artifactory/v1beta1/artifacts/' + p['type']
 	delete p['type']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 module.exports = {

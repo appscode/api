@@ -9,69 +9,69 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func ClustersList(p, conf) {
-	url = '/kubernetes/v1beta1/clusters'
-	return xhr(url, 'GET', conf, p);
+	path = '/kubernetes/v1beta1/clusters'
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClustersDescribe(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['uid']
+	path = '/kubernetes/v1beta1/clusters/' + p['uid']
 	delete p['uid']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClustersCreate(p, conf) {
-	url = '/kubernetes/v1beta1/clusters'
-	return xhr(url, 'POST', conf, null, p);
+	path = '/kubernetes/v1beta1/clusters'
+	return xhr(path, 'POST', conf, null, p);
 }
 
 func ClustersUpdate(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['name']
 	delete p['name']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func ClustersScale(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['name'] + '/actions/scale'
+	path = '/kubernetes/v1beta1/clusters/' + p['name'] + '/actions/scale'
 	delete p['name']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func ClustersUpgrade(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['name'] + '/actions/upgrade'
+	path = '/kubernetes/v1beta1/clusters/' + p['name'] + '/actions/upgrade'
 	delete p['name']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func ClustersDelete(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['name']
 	delete p['name']
-	return xhr(url, 'DELETE', conf, p);
+	return xhr(path, 'DELETE', conf, p);
 }
 
 func ClustersClientConfig(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['name'] + '/client-config'
+	path = '/kubernetes/v1beta1/clusters/' + p['name'] + '/client-config'
 	delete p['name']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClustersInstances(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster_name'] + '/instances'
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster_name'] + '/instances'
 	delete p['cluster_name']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClustersStartupScript(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['uid'] + '/startup-script/' + p['role']
+	path = '/kubernetes/v1beta1/clusters/' + p['uid'] + '/startup-script/' + p['role']
 	delete p['uid']
 	delete p['role']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClustersInstanceByIP(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['phid'] + '/instance-by-ip/' + p['external_ip']
+	path = '/kubernetes/v1beta1/clusters/' + p['phid'] + '/instance-by-ip/' + p['external_ip']
 	delete p['phid']
 	delete p['external_ip']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 module.exports = {

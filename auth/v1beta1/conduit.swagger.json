@@ -159,7 +159,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/auth/v1beta1/conduits/users": {
+    "/appscode/api/auth/v1beta1/conduit/users": {
       "post": {
         "operationId": "Users",
         "parameters": [
@@ -186,7 +186,7 @@
         ]
       }
     },
-    "/appscode/api/auth/v1beta1/conduits/whoami": {
+    "/appscode/api/auth/v1beta1/conduit/whoami": {
       "post": {
         "operationId": "WhoAmI",
         "parameters": [

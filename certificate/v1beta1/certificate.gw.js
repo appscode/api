@@ -9,49 +9,49 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func CertificatesList(p, conf) {
-	url = '/certificate/v1beta1/certificates'
-	return xhr(url, 'GET', conf, p);
+	path = '/certificate/v1beta1/certificates'
+	return xhr(path, 'GET', conf, p);
 }
 
 func CertificatesDescribe(p, conf) {
-	url = '/certificate/v1beta1/certificates/' + p['uid']
+	path = '/certificate/v1beta1/certificates/' + p['uid']
 	delete p['uid']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func CertificatesCreate(p, conf) {
-	url = '/certificate/v1beta1/certificates'
-	return xhr(url, 'POST', conf, null, p);
+	path = '/certificate/v1beta1/certificates'
+	return xhr(path, 'POST', conf, null, p);
 }
 
 func CertificatesImport(p, conf) {
-	url = '/certificate/v1beta1/certificates/' + p['name'] + '/actions/import'
+	path = '/certificate/v1beta1/certificates/' + p['name'] + '/actions/import'
 	delete p['name']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func CertificatesDelete(p, conf) {
-	url = '/certificate/v1beta1/certificates/' + p['uid']
+	path = '/certificate/v1beta1/certificates/' + p['uid']
 	delete p['uid']
-	return xhr(url, 'DELETE', conf, p);
+	return xhr(path, 'DELETE', conf, p);
 }
 
 func CertificatesRenew(p, conf) {
-	url = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/renew'
+	path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/renew'
 	delete p['uid']
-	return xhr(url, 'POST', conf, p);
+	return xhr(path, 'POST', conf, p);
 }
 
 func CertificatesRevoke(p, conf) {
-	url = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/revoke'
+	path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/revoke'
 	delete p['uid']
-	return xhr(url, 'PUT', conf, p);
+	return xhr(path, 'PUT', conf, p);
 }
 
 func CertificatesDeploy(p, conf) {
-	url = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/deploy'
+	path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/deploy'
 	delete p['uid']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 module.exports = {

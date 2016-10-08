@@ -9,24 +9,24 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func PersistentVolumesDescribe(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
 	delete p['cluster']
 	delete p['name']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func PersistentVolumesRegister(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
 	delete p['cluster']
 	delete p['name']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func PersistentVolumesUnregister(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
 	delete p['cluster']
 	delete p['name']
-	return xhr(url, 'DELETE', conf, p);
+	return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {

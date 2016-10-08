@@ -9,94 +9,94 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func ClientsCopy(p, conf) {
-	url = '/kubernetes/v1beta1/actions/copy'
-	return xhr(url, 'PUT', conf, null, p);
+	path = '/kubernetes/v1beta1/actions/copy'
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func ClientsNodes(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/nodes'
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/nodes'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsApps(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps'
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsApp(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps/' + p['namespace'] + '/' + p['name']
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps/' + p['namespace'] + '/' + p['name']
 	delete p['cluster']
 	delete p['namespace']
 	delete p['name']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsAppPods(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps/' + p['namespace'] + '/' + p['name'] + '/pods'
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps/' + p['namespace'] + '/' + p['name'] + '/pods'
 	delete p['cluster']
 	delete p['namespace']
 	delete p['name']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsNamespaces(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/namespaces'
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/namespaces'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsSecrets(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/secrets'
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/secrets'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsSecret(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/secrets/' + p['namespace'] + '/' + p['name']
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/secrets/' + p['namespace'] + '/' + p['name']
 	delete p['cluster']
 	delete p['namespace']
 	delete p['name']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsJobs(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/jobs'
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/jobs'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsPods(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/pods'
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/pods'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsServices(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/services'
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/services'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsReplicationControllers(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/rcs'
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/rcs'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsConfigMaps(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/configmaps'
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/configmaps'
 	delete p['cluster']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func ClientsConfigMap(p, conf) {
-	url = '/kubernetes/v1beta1/client/' + p['cluster'] + '/configmaps/' + p['namespace'] + '/' + p['name']
+	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/configmaps/' + p['namespace'] + '/' + p['name']
 	delete p['cluster']
 	delete p['namespace']
 	delete p['name']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 module.exports = {

@@ -9,37 +9,37 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func AlertsList(p, conf) {
-	url = '/kubernetes/v1beta1/alerts'
-	return xhr(url, 'GET', conf, p);
+	path = '/kubernetes/v1beta1/alerts'
+	return xhr(path, 'GET', conf, p);
 }
 
 func AlertsCreate(p, conf) {
-	url = '/kubernetes/v1beta1/alerts'
-	return xhr(url, 'POST', conf, null, p);
+	path = '/kubernetes/v1beta1/alerts'
+	return xhr(path, 'POST', conf, null, p);
 }
 
 func AlertsDescribe(p, conf) {
-	url = '/kubernetes/v1beta1/alerts/' + p['phid']
+	path = '/kubernetes/v1beta1/alerts/' + p['phid']
 	delete p['phid']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func AlertsUpdate(p, conf) {
-	url = '/kubernetes/v1beta1/alerts/' + p['phid']
+	path = '/kubernetes/v1beta1/alerts/' + p['phid']
 	delete p['phid']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func AlertsSync(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['kubernetes_cluster'] + '/actions/sync-alerts'
+	path = '/kubernetes/v1beta1/clusters/' + p['kubernetes_cluster'] + '/actions/sync-alerts'
 	delete p['kubernetes_cluster']
-	return xhr(url, 'POST', conf, null, p);
+	return xhr(path, 'POST', conf, null, p);
 }
 
 func AlertsDelete(p, conf) {
-	url = '/kubernetes/v1beta1/alerts/' + p['phid']
+	path = '/kubernetes/v1beta1/alerts/' + p['phid']
 	delete p['phid']
-	return xhr(url, 'DELETE', conf, p);
+	return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {

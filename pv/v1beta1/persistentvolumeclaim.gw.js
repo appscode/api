@@ -9,27 +9,27 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func PersistentVolumeClaimsDescribe(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
 	delete p['cluster']
 	delete p['namespace']
 	delete p['name']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func PersistentVolumeClaimsRegister(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
 	delete p['cluster']
 	delete p['namespace']
 	delete p['name']
-	return xhr(url, 'PUT', conf, null, p);
+	return xhr(path, 'PUT', conf, null, p);
 }
 
 func PersistentVolumeClaimsUnregister(p, conf) {
-	url = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
+	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
 	delete p['cluster']
 	delete p['namespace']
 	delete p['name']
-	return xhr(url, 'DELETE', conf, p);
+	return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {

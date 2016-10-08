@@ -12,7 +12,7 @@ service Conduit {
   // This rpc is used to check a valid user from other applications.
   rpc WhoAmI(ConduitRequest) returns (ConduitWhoAmIResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/auth/v1beta1/conduits/whoami"
+      post : "/appscode/api/auth/v1beta1/conduit/whoami"
       body : "*"
     };
     option (appscode.api.cors) = {
@@ -23,7 +23,7 @@ service Conduit {
   // appctl used this to validates the user token with phabricator.
   rpc Users(ConduitRequest) returns (ConduitUsersResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/auth/v1beta1/conduits/users"
+      post: "/appscode/api/auth/v1beta1/conduit/users"
       body: "*"
     };
     option (appscode.api.cors) = {

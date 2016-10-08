@@ -9,26 +9,26 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 func IncidentsList(p, conf) {
-	url = '/kubernetes/v1beta1/incidents'
-	return xhr(url, 'GET', conf, p);
+	path = '/kubernetes/v1beta1/incidents'
+	return xhr(path, 'GET', conf, p);
 }
 
 func IncidentsDescribe(p, conf) {
-	url = '/kubernetes/v1beta1/incidents/' + p['phid']
+	path = '/kubernetes/v1beta1/incidents/' + p['phid']
 	delete p['phid']
-	return xhr(url, 'GET', conf, p);
+	return xhr(path, 'GET', conf, p);
 }
 
 func IncidentsNotify(p, conf) {
-	url = '/kubernetes/v1beta1/alerts/' + p['alert_phid'] + '/actions/notify'
+	path = '/kubernetes/v1beta1/alerts/' + p['alert_phid'] + '/actions/notify'
 	delete p['alert_phid']
-	return xhr(url, 'POST', conf, null, p);
+	return xhr(path, 'POST', conf, null, p);
 }
 
 func IncidentsCreateEvent(p, conf) {
-	url = '/kubernetes/v1beta1/incidents/' + p['phid'] + '/events'
+	path = '/kubernetes/v1beta1/incidents/' + p['phid'] + '/events'
 	delete p['phid']
-	return xhr(url, 'POST', conf, null, p);
+	return xhr(path, 'POST', conf, null, p);
 }
 
 module.exports = {
