@@ -31,6 +31,7 @@ clean() {
 	(find . | grep pb.gw.go | xargs rm) || true
 	(find . | grep cors.go | xargs rm) || true
 	(find . | grep gw.cors.go | xargs rm) || true
+	(find . | grep gw.js | xargs rm) || true
 	# Do NOT delete schema.json files as they contain handwritten validation rules.
 	# contact tamal@ / sadlil@ if in doubt.
 	# (find . | grep schema.json | xargs rm) || true
@@ -73,6 +74,18 @@ gen_cors_pattern() {
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
          --grpc-gateway-cors_out=logtostderr=true,${ALIAS}:. *.proto
+}
+
+gen_js_client() {
+  if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
+    return
+  fi
+  rm -rf *.gw.js
+  protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src/github.com/appscode \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
+         --grpc-js-client_out=logtostderr=true,remove_prefix=/appscode/api,${ALIAS}:. *.proto
 }
 
 gen_swagger_def() {
@@ -120,7 +133,7 @@ gen_proxy_protos() {
 }
 
 gen_cors_patterns() {
-    echo "Generating gateway protobuf files"
+    echo "Generating gateway cors files"
     for d in */ ; do
       pushd ${d}
       gen_cors_pattern
@@ -128,6 +141,22 @@ gen_cors_patterns() {
         for dd in $dirs ; do
           pushd ${dd}
           gen_cors_pattern
+          popd
+        done
+      fi
+      popd
+    done
+}
+
+gen_js_clients() {
+    echo "Generating protobuf js client"
+    for d in */ ; do
+      pushd ${d}
+      gen_js_client
+      if dirs=$( ls -1 -F | grep "^v.*/" | tr -d "/" ); then
+        for dd in $dirs ; do
+          pushd ${dd}
+          gen_js_client
           popd
         done
       fi
@@ -220,6 +249,7 @@ gen_protos() {
   gen_server_protos
   gen_proxy_protos
   gen_cors_patterns
+  gen_js_clients
   gen_swagger_defs
   python $DIR/schema.py
   # gen_python_protos
@@ -257,7 +287,7 @@ case "$1" in
 	php)
 	  gen_php_protos
 	  ;;
-	*)  echo $"Usage: $0 {compile|server|proxy|swagger|json-schema|all|clean}"
+	*)  echo $"Usage: $0 {compile|server|proxy|cors|js|swagger|json-schema|all|clean}"
 		RETVAL=1
 		;;
 esac
