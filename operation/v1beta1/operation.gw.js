@@ -14,8 +14,16 @@ func OperationsDescribe(p, conf) {
 	return xhr(path, 'GET', conf, p);
 }
 
+func OperationsDescribeLog(p, conf) {
+	path = '/operation/v1beta1/operations/' + p['phid'] + '/logs/' + p['log_id']
+	delete p['phid']
+	delete p['log_id']
+	return xhr(path, 'GET', conf, p);
+}
+
 module.exports = {
   Operations: {
-      Describe: OperationsDescribe
+      Describe: OperationsDescribe,
+      DescribeLog: OperationsDescribeLog
   }
 }

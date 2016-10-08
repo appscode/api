@@ -18,19 +18,6 @@
       "title": "Next Id: 3",
       "type": "object"
     },
-    "DescribeResponseLog": {
-      "properties": {
-        "message": {
-          "format": "string",
-          "type": "string"
-        },
-        "timestamp": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "dtypesHelp": {
       "properties": {
         "description": {
@@ -467,12 +454,49 @@
       "properties": {
         "log": {
           "items": {
-            "$ref": "#/definitions/DescribeResponseLog"
+            "$ref": "#/definitions/v1beta1Log"
           },
           "type": "array"
         },
         "op": {
           "$ref": "#/definitions/v1beta1Operation"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1Log": {
+      "properties": {
+        "message": {
+          "format": "string",
+          "type": "string"
+        },
+        "timestamp": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1LogDescribeRequest": {
+      "properties": {
+        "log_id": {
+          "format": "string",
+          "type": "string"
+        },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1LogDescribeResponse": {
+      "properties": {
+        "log": {
+          "$ref": "#/definitions/v1beta1Log"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -688,6 +712,38 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/v1beta1DescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Operations"
+        ]
+      }
+    },
+    "/appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}": {
+      "get": {
+        "operationId": "DescribeLog",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "phid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "log_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1LogDescribeResponse"
             }
           }
         },

@@ -721,6 +721,12 @@
       "url": "/appscode/api/operation/v1beta1/operations/{phid}"
     }
   },
+  "/appscode/api/operation/v1beta1/operations/*/logs/*": {
+    "get": {
+      "file": "/operation/v1beta1/operation.proto",
+      "url": "/appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}"
+    }
+  },
   "/appscode/api/ssh/v1beta1/ssh": {
     "get": {
       "file": "/ssh/v1beta1/ssh.proto",

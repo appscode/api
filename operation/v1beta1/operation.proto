@@ -25,6 +25,19 @@ service Operations {
       enable: true
     };
   }
+  rpc DescribeLog(LogDescribeRequest) returns (LogDescribeResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
+message Log {
+  int64 timestamp = 1;
+  string message = 2;
 }
 
 message DescribeRequest {
@@ -34,11 +47,17 @@ message DescribeRequest {
 message DescribeResponse {
   dtypes.Status status = 1;
   Operation op = 2;
-  message Log {
-    int64 timestamp = 1;
-    string message = 2;
-  }
   repeated Log log = 3;
+}
+
+message LogDescribeRequest {
+  string phid = 1;
+  string log_id = 2;
+}
+
+message LogDescribeResponse {
+  dtypes.Status status = 1;
+  Log log = 2;
 }
 
 message Auth {

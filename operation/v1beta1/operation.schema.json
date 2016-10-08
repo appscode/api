@@ -297,6 +297,17 @@
       },
       "type": "object"
     },
+    "v1beta1LogDescribeRequest": {
+      "properties": {
+        "log_id": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1MasterCreateRequest": {
       "properties": {
         "cluster_name": {
