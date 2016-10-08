@@ -253,8 +253,8 @@ func request_Clients_Copy_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 }
 
-func request_Clients_UpdateConfigMap_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ConfigMapUpdateRequest
+func request_Clients_EditConfigMap_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ConfigMapEditRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -301,13 +301,13 @@ func request_Clients_UpdateConfigMap_0(ctx context.Context, marshaler runtime.Ma
 		return nil, metadata, err
 	}
 
-	msg, err := client.UpdateConfigMap(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.EditConfigMap(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func request_Clients_UpdateSecret_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq SecretUpdateRequest
+func request_Clients_EditSecret_0(ctx context.Context, marshaler runtime.Marshaler, client ClientsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq SecretEditRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -354,7 +354,7 @@ func request_Clients_UpdateSecret_0(ctx context.Context, marshaler runtime.Marsh
 		return nil, metadata, err
 	}
 
-	msg, err := client.UpdateSecret(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.EditSecret(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -529,7 +529,7 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 
 	})
 
-	mux.Handle("POST", pattern_Clients_UpdateConfigMap_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Clients_EditConfigMap_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -546,18 +546,18 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 		}
-		resp, md, err := request_Clients_UpdateConfigMap_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_EditConfigMap_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Clients_UpdateConfigMap_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_EditConfigMap_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_Clients_UpdateSecret_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Clients_EditSecret_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {
@@ -574,14 +574,14 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 		}
-		resp, md, err := request_Clients_UpdateSecret_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Clients_EditSecret_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_Clients_UpdateSecret_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Clients_EditSecret_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -599,9 +599,9 @@ var (
 
 	pattern_Clients_Copy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "kubernetes", "v1beta2", "actions", "copy"}, ""))
 
-	pattern_Clients_UpdateConfigMap_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 1, 0, 4, 1, 5, 9, 2, 10, 2, 11}, []string{"appscode", "api", "kubernetes", "v1beta2", "clusters", "cluster", "namespaces", "namespace", "configmaps", "name", "actions", "edit"}, ""))
+	pattern_Clients_EditConfigMap_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 1, 0, 4, 1, 5, 9, 2, 10, 2, 11}, []string{"appscode", "api", "kubernetes", "v1beta2", "clusters", "cluster", "namespaces", "namespace", "configmaps", "name", "actions", "edit"}, ""))
 
-	pattern_Clients_UpdateSecret_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 1, 0, 4, 1, 5, 9, 2, 10, 2, 11}, []string{"appscode", "api", "kubernetes", "v1beta2", "clusters", "cluster", "namespaces", "namespace", "secrets", "name", "actions", "edit"}, ""))
+	pattern_Clients_EditSecret_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 1, 0, 4, 1, 5, 9, 2, 10, 2, 11}, []string{"appscode", "api", "kubernetes", "v1beta2", "clusters", "cluster", "namespaces", "namespace", "secrets", "name", "actions", "edit"}, ""))
 )
 
 var (
@@ -615,7 +615,7 @@ var (
 
 	forward_Clients_Copy_0 = runtime.ForwardResponseMessage
 
-	forward_Clients_UpdateConfigMap_0 = runtime.ForwardResponseMessage
+	forward_Clients_EditConfigMap_0 = runtime.ForwardResponseMessage
 
-	forward_Clients_UpdateSecret_0 = runtime.ForwardResponseMessage
+	forward_Clients_EditSecret_0 = runtime.ForwardResponseMessage
 )

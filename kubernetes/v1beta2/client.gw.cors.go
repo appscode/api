@@ -20,7 +20,7 @@ func ExportClientsCorsPatterns() []runtime.Pattern {
 		pattern_Clients_Delete_0,
 		pattern_Clients_Update_0,
 		pattern_Clients_Copy_0,
-		pattern_Clients_UpdateConfigMap_0,
-		pattern_Clients_UpdateSecret_0,
+		pattern_Clients_EditConfigMap_0,
+		pattern_Clients_EditSecret_0,
 	}
 }

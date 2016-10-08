@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "v1beta2ConfigMapUpdateRequest": {
+    "v1beta2ConfigMapEditRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -19,6 +19,7 @@
         },
         "name": {
           "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
@@ -157,7 +158,7 @@
       },
       "type": "object"
     },
-    "v1beta2SecretUpdateRequest": {
+    "v1beta2SecretEditRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -176,6 +177,7 @@
         },
         "name": {
           "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {

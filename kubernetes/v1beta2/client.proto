@@ -28,7 +28,7 @@ service Clients {
     };
   }
 
-  rpc Delete(DeleteResourceRequest) returns (ClientActionResponse) {
+  rpc Delete(DeleteResourceRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
     };
@@ -37,7 +37,7 @@ service Clients {
     };
   }
 
-  rpc Update(UpdateResourceRequest) returns (ClientActionResponse) {
+  rpc Update(UpdateResourceRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put : "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
       body : "*"
@@ -47,7 +47,7 @@ service Clients {
     };
   }
 
-  rpc Copy(CopyResourceRequest) returns (ClientActionResponse) {
+  rpc Copy(CopyResourceRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put : "/appscode/api/kubernetes/v1beta2/actions/copy"
       body : "*"
@@ -57,7 +57,7 @@ service Clients {
     };
   }
 
-  rpc UpdateConfigMap(ConfigMapUpdateRequest) returns (ClientActionResponse) {
+  rpc EditConfigMap(ConfigMapEditRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post : "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit"
       body : "*"
@@ -67,7 +67,7 @@ service Clients {
     };
   }
 
-  rpc UpdateSecret(SecretUpdateRequest) returns (ClientActionResponse) {
+  rpc EditSecret(SecretEditRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post : "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit"
       body : "*"
@@ -118,7 +118,7 @@ message UpdateResourceRequest {
   Raw raw = 5;
 }
 
-message ConfigMapUpdateRequest {
+message ConfigMapEditRequest {
   string cluster = 1;
   string namespace = 2;
   string name = 3;
@@ -127,17 +127,13 @@ message ConfigMapUpdateRequest {
   repeated string deleted = 6;
 }
 
-message SecretUpdateRequest {
+message SecretEditRequest {
   string cluster = 1;
   string namespace = 2;
   string name = 3;
   map<string, string>  add = 4;
   map<string, string>  update = 5;
   repeated string deleted = 6;
-}
-
-message ClientActionResponse {
-  dtypes.Status status = 1;
 }
 
 message CopyResourceRequest {

@@ -7,17 +7,17 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var secretUpdateRequestSchema *gojsonschema.Schema
+var secretEditRequestSchema *gojsonschema.Schema
 var updateResourceRequestSchema *gojsonschema.Schema
-var configMapUpdateRequestSchema *gojsonschema.Schema
 var copyResourceRequestSchema *gojsonschema.Schema
 var deleteResourceRequestSchema *gojsonschema.Schema
+var configMapEditRequestSchema *gojsonschema.Schema
 var listResourceRequestSchema *gojsonschema.Schema
 var describeResourceRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	secretUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	secretEditRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "add": {
@@ -37,6 +37,7 @@ func init() {
     },
     "name": {
       "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
@@ -97,45 +98,6 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	configMapUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "add": {
-      "additionalProperties": {
-        "type": "string"
-      },
-      "type": "object"
-    },
-    "cluster": {
-      "type": "string"
-    },
-    "deleted": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
-    },
-    "name": {
-      "maxLength": 63,
-      "type": "string"
-    },
-    "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
-    },
-    "update": {
-      "additionalProperties": {
-        "type": "string"
-      },
-      "type": "object"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 	copyResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
@@ -189,6 +151,46 @@ func init() {
     },
     "type": {
       "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	configMapEditRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "add": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "cluster": {
+      "type": "string"
+    },
+    "deleted": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "update": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
     }
   },
   "type": "object"
@@ -269,20 +271,15 @@ func init() {
 	}
 }
 
-func (m *SecretUpdateRequest) IsValid() (*gojsonschema.Result, error) {
-	return secretUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *SecretEditRequest) IsValid() (*gojsonschema.Result, error) {
+	return secretEditRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *SecretUpdateRequest) IsRequest() {}
+func (m *SecretEditRequest) IsRequest() {}
 
 func (m *UpdateResourceRequest) IsValid() (*gojsonschema.Result, error) {
 	return updateResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *UpdateResourceRequest) IsRequest() {}
-
-func (m *ConfigMapUpdateRequest) IsValid() (*gojsonschema.Result, error) {
-	return configMapUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *ConfigMapUpdateRequest) IsRequest() {}
 
 func (m *CopyResourceRequest) IsValid() (*gojsonschema.Result, error) {
 	return copyResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
@@ -294,6 +291,11 @@ func (m *DeleteResourceRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *DeleteResourceRequest) IsRequest() {}
 
+func (m *ConfigMapEditRequest) IsValid() (*gojsonschema.Result, error) {
+	return configMapEditRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *ConfigMapEditRequest) IsRequest() {}
+
 func (m *ListResourceRequest) IsValid() (*gojsonschema.Result, error) {
 	return listResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
@@ -304,12 +306,9 @@ func (m *DescribeResourceRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *DescribeResourceRequest) IsRequest() {}
 
-func (m *DescribeResourceResponse) SetStatus(s *dtypes.Status) {
-	m.Status = s
-}
-func (m *ClientActionResponse) SetStatus(s *dtypes.Status) {
-	m.Status = s
-}
 func (m *ListResourceResponse) SetStatus(s *dtypes.Status) {
+	m.Status = s
+}
+func (m *DescribeResourceResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
