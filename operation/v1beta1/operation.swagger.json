@@ -469,6 +469,10 @@
     },
     "v1beta1Log": {
       "properties": {
+        "id": {
+          "format": "string",
+          "type": "string"
+        },
         "message": {
           "format": "string",
           "type": "string"
