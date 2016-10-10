@@ -8,7 +8,7 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function PersistentVolumeClaimsDescribe(p, conf) {
+function persistentVolumeClaimsDescribe(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
     delete p['cluster']
     delete p['namespace']
@@ -16,7 +16,7 @@ function PersistentVolumeClaimsDescribe(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-function PersistentVolumeClaimsRegister(p, conf) {
+function persistentVolumeClaimsRegister(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
     delete p['cluster']
     delete p['namespace']
@@ -24,7 +24,7 @@ function PersistentVolumeClaimsRegister(p, conf) {
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function PersistentVolumeClaimsUnregister(p, conf) {
+function persistentVolumeClaimsUnregister(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
     delete p['cluster']
     delete p['namespace']
@@ -33,9 +33,9 @@ function PersistentVolumeClaimsUnregister(p, conf) {
 }
 
 module.exports = {
-    PersistentVolumeClaims: {
-        Describe: PersistentVolumeClaimsDescribe,
-        Register: PersistentVolumeClaimsRegister,
-        Unregister: PersistentVolumeClaimsUnregister
+    persistentVolumeClaims: {
+        describe: persistentVolumeClaimsDescribe,
+        register: persistentVolumeClaimsRegister,
+        unregister: persistentVolumeClaimsUnregister
     }
 };

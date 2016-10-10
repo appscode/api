@@ -8,14 +8,14 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function ClientsList(p, conf) {
+function clientsList(p, conf) {
     path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/' + p['type']
     delete p['cluster']
     delete p['type']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsDescribe(p, conf) {
+function clientsDescribe(p, conf) {
     path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/' + p['type'] + '/' + p['name']
     delete p['cluster']
     delete p['type']
@@ -23,7 +23,7 @@ function ClientsDescribe(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsDelete(p, conf) {
+function clientsDelete(p, conf) {
     path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/' + p['type'] + '/' + p['name']
     delete p['cluster']
     delete p['type']
@@ -31,7 +31,7 @@ function ClientsDelete(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-function ClientsUpdate(p, conf) {
+function clientsUpdate(p, conf) {
     path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/' + p['type'] + '/' + p['name']
     delete p['cluster']
     delete p['type']
@@ -39,12 +39,12 @@ function ClientsUpdate(p, conf) {
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function ClientsCopy(p, conf) {
+function clientsCopy(p, conf) {
     path = '/kubernetes/v1beta2/actions/copy'
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function ClientsEditConfigMap(p, conf) {
+function clientsEditConfigMap(p, conf) {
     path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/configmaps/' + p['name'] + '/actions/edit'
     delete p['cluster']
     delete p['namespace']
@@ -52,7 +52,7 @@ function ClientsEditConfigMap(p, conf) {
     return xhr(path, 'POST', conf, null, p);
 }
 
-function ClientsEditSecret(p, conf) {
+function clientsEditSecret(p, conf) {
     path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/secrets/' + p['name'] + '/actions/edit'
     delete p['cluster']
     delete p['namespace']
@@ -61,13 +61,13 @@ function ClientsEditSecret(p, conf) {
 }
 
 module.exports = {
-    Clients: {
-        List: ClientsList,
-        Describe: ClientsDescribe,
-        Delete: ClientsDelete,
-        Update: ClientsUpdate,
-        Copy: ClientsCopy,
-        EditConfigMap: ClientsEditConfigMap,
-        EditSecret: ClientsEditSecret
+    clients: {
+        list: clientsList,
+        describe: clientsDescribe,
+        delete: clientsDelete,
+        update: clientsUpdate,
+        copy: clientsCopy,
+        editConfigMap: clientsEditConfigMap,
+        editSecret: clientsEditSecret
     }
 };

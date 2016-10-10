@@ -8,7 +8,7 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function VolumesList(p, conf) {
+function volumesList(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/namespaces/' + p['kube_namespace'] + '/glusterfs/' + p['glusterfs_cluster'] + '/volumes'
     delete p['kube_cluster']
     delete p['kube_namespace']
@@ -17,7 +17,7 @@ function VolumesList(p, conf) {
 }
 
 module.exports = {
-    Volumes: {
-        List: VolumesList
+    volumes: {
+        list: volumesList
     }
 };

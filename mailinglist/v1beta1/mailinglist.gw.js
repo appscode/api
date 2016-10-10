@@ -8,19 +8,19 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function MailingListSendEmail(p, conf) {
+function mailingListSendEmail(p, conf) {
     path = '/mail/v1beta1'
     return xhr(path, 'POST', conf, null, p);
 }
 
-function MailingListSubscribe(p, conf) {
+function mailingListSubscribe(p, conf) {
     path = '/mailinglist/v1beta1/subscribe'
     return xhr(path, 'PUT', conf, null, p);
 }
 
 module.exports = {
-    MailingList: {
-        SendEmail: MailingListSendEmail,
-        Subscribe: MailingListSubscribe
+    mailingList: {
+        sendEmail: mailingListSendEmail,
+        subscribe: mailingListSubscribe
     }
 };

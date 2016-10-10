@@ -8,27 +8,27 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function PurchasesBegin(p, conf) {
+function purchasesBegin(p, conf) {
     path = '/billing/v1beta1/purchases'
     return xhr(path, 'POST', conf, null, p);
 }
 
-function PurchasesComplete(p, conf) {
+function purchasesComplete(p, conf) {
     path = '/billing/v1beta1/purchases/' + p['phid']
     delete p['phid']
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function PurchasesClose(p, conf) {
+function purchasesClose(p, conf) {
     path = '/billing/v1beta1/purchases/' + p['object_phid']
     delete p['object_phid']
     return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {
-    Purchases: {
-        Begin: PurchasesBegin,
-        Complete: PurchasesComplete,
-        Close: PurchasesClose
+    purchases: {
+        begin: purchasesBegin,
+        complete: purchasesComplete,
+        close: purchasesClose
     }
 };

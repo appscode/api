@@ -8,33 +8,33 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function LoadBalancersList(p, conf) {
+function loadBalancersList(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function LoadBalancersDescribe(p, conf) {
+function loadBalancersDescribe(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
     delete p['cluster']
     delete p['name']
     return xhr(path, 'GET', conf, p);
 }
 
-function LoadBalancersCreate(p, conf) {
+function loadBalancersCreate(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
     delete p['cluster']
     return xhr(path, 'POST', conf, null, p);
 }
 
-function LoadBalancersUpdate(p, conf) {
+function loadBalancersUpdate(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
     delete p['cluster']
     delete p['name']
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function LoadBalancersDelete(p, conf) {
+function loadBalancersDelete(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
     delete p['cluster']
     delete p['name']
@@ -42,11 +42,11 @@ function LoadBalancersDelete(p, conf) {
 }
 
 module.exports = {
-    LoadBalancers: {
-        List: LoadBalancersList,
-        Describe: LoadBalancersDescribe,
-        Create: LoadBalancersCreate,
-        Update: LoadBalancersUpdate,
-        Delete: LoadBalancersDelete
+    loadBalancers: {
+        list: loadBalancersList,
+        describe: loadBalancersDescribe,
+        create: loadBalancersCreate,
+        update: loadBalancersUpdate,
+        delete: loadBalancersDelete
     }
 };

@@ -8,13 +8,13 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function ChargesEstimate(p, conf) {
+function chargesEstimate(p, conf) {
     path = '/billing/v1beta1/charges'
     return xhr(path, 'GET', conf, p);
 }
 
 module.exports = {
-    Charges: {
-        Estimate: ChargesEstimate
+    charges: {
+        estimate: chargesEstimate
     }
 };

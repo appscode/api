@@ -8,13 +8,13 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function ClustersList(p, conf) {
+function clustersList(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/glusterfs'
     delete p['kube_cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClustersDescribe(p, conf) {
+function clustersDescribe(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/namespaces/' + p['kube_namespace'] + '/glusterfs/' + p['name']
     delete p['kube_cluster']
     delete p['kube_namespace']
@@ -22,14 +22,14 @@ function ClustersDescribe(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-function ClustersCreate(p, conf) {
+function clustersCreate(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/namespaces/' + p['kube_namespace'] + '/glusterfs'
     delete p['kube_cluster']
     delete p['kube_namespace']
     return xhr(path, 'POST', conf, null, p);
 }
 
-function ClustersDelete(p, conf) {
+function clustersDelete(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/namespaces/' + p['kube_namespace'] + '/glusterfs/' + p['name']
     delete p['kube_cluster']
     delete p['kube_namespace']
@@ -38,10 +38,10 @@ function ClustersDelete(p, conf) {
 }
 
 module.exports = {
-    Clusters: {
-        List: ClustersList,
-        Describe: ClustersDescribe,
-        Create: ClustersCreate,
-        Delete: ClustersDelete
+    clusters: {
+        list: clustersList,
+        describe: clustersDescribe,
+        create: clustersCreate,
+        delete: clustersDelete
     }
 };

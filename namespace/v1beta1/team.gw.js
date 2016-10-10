@@ -8,33 +8,33 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function TeamsCreate(p, conf) {
+function teamsCreate(p, conf) {
     path = '/namespace/v1beta1/teams'
     return xhr(path, 'POST', conf, null, p);
 }
 
-function TeamsGet(p, conf) {
+function teamsGet(p, conf) {
     path = '/namespace/v1beta1/teams/' + p['name']
     delete p['name']
     return xhr(path, 'GET', conf, p);
 }
 
-function TeamsIsAvailable(p, conf) {
+function teamsIsAvailable(p, conf) {
     path = '/namespace/v1beta1/teams/' + p['name'] + '/is-available'
     delete p['name']
     return xhr(path, 'GET', conf, p);
 }
 
-function TeamsSubscription(p, conf) {
+function teamsSubscription(p, conf) {
     path = '/namespace/v1beta1/billing/subscription'
     return xhr(path, 'GET', conf, p);
 }
 
 module.exports = {
-    Teams: {
-        Create: TeamsCreate,
-        Get: TeamsGet,
-        IsAvailable: TeamsIsAvailable,
-        Subscription: TeamsSubscription
+    teams: {
+        create: teamsCreate,
+        get: teamsGet,
+        isAvailable: teamsIsAvailable,
+        subscription: teamsSubscription
     }
 };

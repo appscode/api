@@ -8,66 +8,66 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function ClustersList(p, conf) {
+function clustersList(p, conf) {
     path = '/kubernetes/v1beta1/clusters'
     return xhr(path, 'GET', conf, p);
 }
 
-function ClustersDescribe(p, conf) {
+function clustersDescribe(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['uid']
     delete p['uid']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClustersCreate(p, conf) {
+function clustersCreate(p, conf) {
     path = '/kubernetes/v1beta1/clusters'
     return xhr(path, 'POST', conf, null, p);
 }
 
-function ClustersUpdate(p, conf) {
+function clustersUpdate(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['name']
     delete p['name']
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function ClustersScale(p, conf) {
+function clustersScale(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['name'] + '/actions/scale'
     delete p['name']
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function ClustersUpgrade(p, conf) {
+function clustersUpgrade(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['name'] + '/actions/upgrade'
     delete p['name']
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function ClustersDelete(p, conf) {
+function clustersDelete(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['name']
     delete p['name']
     return xhr(path, 'DELETE', conf, p);
 }
 
-function ClustersClientConfig(p, conf) {
+function clustersClientConfig(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['name'] + '/client-config'
     delete p['name']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClustersInstances(p, conf) {
+function clustersInstances(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster_name'] + '/instances'
     delete p['cluster_name']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClustersStartupScript(p, conf) {
+function clustersStartupScript(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['uid'] + '/startup-script/' + p['role']
     delete p['uid']
     delete p['role']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClustersInstanceByIP(p, conf) {
+function clustersInstanceByIP(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['phid'] + '/instance-by-ip/' + p['external_ip']
     delete p['phid']
     delete p['external_ip']
@@ -75,17 +75,17 @@ function ClustersInstanceByIP(p, conf) {
 }
 
 module.exports = {
-    Clusters: {
-        List: ClustersList,
-        Describe: ClustersDescribe,
-        Create: ClustersCreate,
-        Update: ClustersUpdate,
-        Scale: ClustersScale,
-        Upgrade: ClustersUpgrade,
-        Delete: ClustersDelete,
-        ClientConfig: ClustersClientConfig,
-        Instances: ClustersInstances,
-        StartupScript: ClustersStartupScript,
-        InstanceByIP: ClustersInstanceByIP
+    clusters: {
+        list: clustersList,
+        describe: clustersDescribe,
+        create: clustersCreate,
+        update: clustersUpdate,
+        scale: clustersScale,
+        upgrade: clustersUpgrade,
+        delete: clustersDelete,
+        clientConfig: clustersClientConfig,
+        instances: clustersInstances,
+        startupScript: clustersStartupScript,
+        instanceByIP: clustersInstanceByIP
     }
 };

@@ -8,40 +8,40 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function DatabasesList(p, conf) {
+function databasesList(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function DatabasesCreate(p, conf) {
+function databasesCreate(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases'
     delete p['cluster']
     return xhr(path, 'POST', conf, null, p);
 }
 
-function DatabasesScale(p, conf) {
+function databasesScale(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid'] + '/actions/scale'
     delete p['cluster']
     delete p['uid']
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function DatabasesUpdate(p, conf) {
+function databasesUpdate(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid']
     delete p['cluster']
     delete p['uid']
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function DatabasesDescribe(p, conf) {
+function databasesDescribe(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid']
     delete p['cluster']
     delete p['uid']
     return xhr(path, 'GET', conf, p);
 }
 
-function DatabasesDelete(p, conf) {
+function databasesDelete(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid']
     delete p['cluster']
     delete p['uid']
@@ -49,12 +49,12 @@ function DatabasesDelete(p, conf) {
 }
 
 module.exports = {
-    Databases: {
-        List: DatabasesList,
-        Create: DatabasesCreate,
-        Scale: DatabasesScale,
-        Update: DatabasesUpdate,
-        Describe: DatabasesDescribe,
-        Delete: DatabasesDelete
+    databases: {
+        list: databasesList,
+        create: databasesCreate,
+        scale: databasesScale,
+        update: databasesUpdate,
+        describe: databasesDescribe,
+        delete: databasesDelete
     }
 };

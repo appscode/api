@@ -8,24 +8,24 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function ClientsCopy(p, conf) {
+function clientsCopy(p, conf) {
     path = '/kubernetes/v1beta1/actions/copy'
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function ClientsNodes(p, conf) {
+function clientsNodes(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/nodes'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsApps(p, conf) {
+function clientsApps(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsApp(p, conf) {
+function clientsApp(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps/' + p['namespace'] + '/' + p['name']
     delete p['cluster']
     delete p['namespace']
@@ -33,7 +33,7 @@ function ClientsApp(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsAppPods(p, conf) {
+function clientsAppPods(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps/' + p['namespace'] + '/' + p['name'] + '/pods'
     delete p['cluster']
     delete p['namespace']
@@ -41,19 +41,19 @@ function ClientsAppPods(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsNamespaces(p, conf) {
+function clientsNamespaces(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/namespaces'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsSecrets(p, conf) {
+function clientsSecrets(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/secrets'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsSecret(p, conf) {
+function clientsSecret(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/secrets/' + p['namespace'] + '/' + p['name']
     delete p['cluster']
     delete p['namespace']
@@ -61,37 +61,37 @@ function ClientsSecret(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsJobs(p, conf) {
+function clientsJobs(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/jobs'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsPods(p, conf) {
+function clientsPods(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/pods'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsServices(p, conf) {
+function clientsServices(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/services'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsReplicationControllers(p, conf) {
+function clientsReplicationControllers(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/rcs'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsConfigMaps(p, conf) {
+function clientsConfigMaps(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/configmaps'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function ClientsConfigMap(p, conf) {
+function clientsConfigMap(p, conf) {
     path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/configmaps/' + p['namespace'] + '/' + p['name']
     delete p['cluster']
     delete p['namespace']
@@ -100,20 +100,20 @@ function ClientsConfigMap(p, conf) {
 }
 
 module.exports = {
-    Clients: {
-        Copy: ClientsCopy,
-        Nodes: ClientsNodes,
-        Apps: ClientsApps,
-        App: ClientsApp,
-        AppPods: ClientsAppPods,
-        Namespaces: ClientsNamespaces,
-        Secrets: ClientsSecrets,
-        Secret: ClientsSecret,
-        Jobs: ClientsJobs,
-        Pods: ClientsPods,
-        Services: ClientsServices,
-        ReplicationControllers: ClientsReplicationControllers,
-        ConfigMaps: ClientsConfigMaps,
-        ConfigMap: ClientsConfigMap
+    clients: {
+        copy: clientsCopy,
+        nodes: clientsNodes,
+        apps: clientsApps,
+        app: clientsApp,
+        appPods: clientsAppPods,
+        namespaces: clientsNamespaces,
+        secrets: clientsSecrets,
+        secret: clientsSecret,
+        jobs: clientsJobs,
+        pods: clientsPods,
+        services: clientsServices,
+        replicationControllers: clientsReplicationControllers,
+        configMaps: clientsConfigMaps,
+        configMap: clientsConfigMap
     }
 };

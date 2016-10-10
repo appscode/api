@@ -8,26 +8,26 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function DisksList(p, conf) {
+function disksList(p, conf) {
     path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks'
     delete p['cluster']
     return xhr(path, 'GET', conf, p);
 }
 
-function DisksDescribe(p, conf) {
+function disksDescribe(p, conf) {
     path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks/' + p['name']
     delete p['cluster']
     delete p['name']
     return xhr(path, 'GET', conf, p);
 }
 
-function DisksCreate(p, conf) {
+function disksCreate(p, conf) {
     path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks'
     delete p['cluster']
     return xhr(path, 'POST', conf, null, p);
 }
 
-function DisksDelete(p, conf) {
+function disksDelete(p, conf) {
     path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks/' + p['uid']
     delete p['cluster']
     delete p['uid']
@@ -35,10 +35,10 @@ function DisksDelete(p, conf) {
 }
 
 module.exports = {
-    Disks: {
-        List: DisksList,
-        Describe: DisksDescribe,
-        Create: DisksCreate,
-        Delete: DisksDelete
+    disks: {
+        list: disksList,
+        describe: disksDescribe,
+        create: disksCreate,
+        delete: disksDelete
     }
 };

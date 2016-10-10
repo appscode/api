@@ -8,47 +8,47 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function AlertsList(p, conf) {
+function alertsList(p, conf) {
     path = '/kubernetes/v1beta1/alerts'
     return xhr(path, 'GET', conf, p);
 }
 
-function AlertsCreate(p, conf) {
+function alertsCreate(p, conf) {
     path = '/kubernetes/v1beta1/alerts'
     return xhr(path, 'POST', conf, null, p);
 }
 
-function AlertsDescribe(p, conf) {
+function alertsDescribe(p, conf) {
     path = '/kubernetes/v1beta1/alerts/' + p['phid']
     delete p['phid']
     return xhr(path, 'GET', conf, p);
 }
 
-function AlertsUpdate(p, conf) {
+function alertsUpdate(p, conf) {
     path = '/kubernetes/v1beta1/alerts/' + p['phid']
     delete p['phid']
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function AlertsSync(p, conf) {
+function alertsSync(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['kubernetes_cluster'] + '/actions/sync-alerts'
     delete p['kubernetes_cluster']
     return xhr(path, 'POST', conf, null, p);
 }
 
-function AlertsDelete(p, conf) {
+function alertsDelete(p, conf) {
     path = '/kubernetes/v1beta1/alerts/' + p['phid']
     delete p['phid']
     return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {
-    Alerts: {
-        List: AlertsList,
-        Create: AlertsCreate,
-        Describe: AlertsDescribe,
-        Update: AlertsUpdate,
-        Sync: AlertsSync,
-        Delete: AlertsDelete
+    alerts: {
+        list: alertsList,
+        create: alertsCreate,
+        describe: alertsDescribe,
+        update: alertsUpdate,
+        sync: alertsSync,
+        delete: alertsDelete
     }
 };

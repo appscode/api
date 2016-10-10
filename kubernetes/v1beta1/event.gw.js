@@ -8,21 +8,21 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-function EventsConstructive(p, conf) {
+function eventsConstructive(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster_name'] + '/actions/construct-event'
     delete p['cluster_name']
     return xhr(path, 'PUT', conf, null, p);
 }
 
-function EventsDestructive(p, conf) {
+function eventsDestructive(p, conf) {
     path = '/kubernetes/v1beta1/clusters/' + p['cluster_name'] + '/actions/destruct-event'
     delete p['cluster_name']
     return xhr(path, 'PUT', conf, null, p);
 }
 
 module.exports = {
-    Events: {
-        Constructive: EventsConstructive,
-        Destructive: EventsDestructive
+    events: {
+        constructive: eventsConstructive,
+        destructive: eventsDestructive
     }
 };
