@@ -9,36 +9,36 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 function DisksList(p, conf) {
-	path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks'
-	delete p['cluster']
-	return xhr(path, 'GET', conf, p);
+    path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks'
+    delete p['cluster']
+    return xhr(path, 'GET', conf, p);
 }
 
 function DisksDescribe(p, conf) {
-	path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks/' + p['name']
-	delete p['cluster']
-	delete p['name']
-	return xhr(path, 'GET', conf, p);
+    path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks/' + p['name']
+    delete p['cluster']
+    delete p['name']
+    return xhr(path, 'GET', conf, p);
 }
 
 function DisksCreate(p, conf) {
-	path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks'
-	delete p['cluster']
-	return xhr(path, 'POST', conf, null, p);
+    path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks'
+    delete p['cluster']
+    return xhr(path, 'POST', conf, null, p);
 }
 
 function DisksDelete(p, conf) {
-	path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks/' + p['uid']
-	delete p['cluster']
-	delete p['uid']
-	return xhr(path, 'DELETE', conf, p);
+    path = '/cloud/v1beta1/clusters/' + p['cluster'] + '/disks/' + p['uid']
+    delete p['cluster']
+    delete p['uid']
+    return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {
-  Disks: {
-      List: DisksList,
-      Describe: DisksDescribe,
-      Create: DisksCreate,
-      Delete: DisksDelete
-  }
+    Disks: {
+        List: DisksList,
+        Describe: DisksDescribe,
+        Create: DisksCreate,
+        Delete: DisksDelete
+    }
 };

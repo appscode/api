@@ -9,12 +9,12 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 function AcmeUsersRegister(p, conf) {
-	path = '/certificate/v1beta1/acme-users'
-	return xhr(path, 'PUT', conf, p);
+    path = '/certificate/v1beta1/acme-users'
+    return xhr(path, 'PUT', conf, p);
 }
 
 module.exports = {
-  AcmeUsers: {
-      Register: AcmeUsersRegister
-  }
+    AcmeUsers: {
+        Register: AcmeUsersRegister
+    }
 };

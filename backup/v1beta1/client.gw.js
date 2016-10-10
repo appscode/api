@@ -9,13 +9,13 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 function ClientsReconfigure(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/apps/bacula/actions/reconfigure'
-	delete p['cluster']
-	return xhr(path, 'PUT', conf, null, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/apps/bacula/actions/reconfigure'
+    delete p['cluster']
+    return xhr(path, 'PUT', conf, null, p);
 }
 
 module.exports = {
-  Clients: {
-      Reconfigure: ClientsReconfigure
-  }
+    Clients: {
+        Reconfigure: ClientsReconfigure
+    }
 };

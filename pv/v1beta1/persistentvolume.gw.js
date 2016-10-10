@@ -9,30 +9,30 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 function PersistentVolumesDescribe(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
-	delete p['cluster']
-	delete p['name']
-	return xhr(path, 'GET', conf, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
+    delete p['cluster']
+    delete p['name']
+    return xhr(path, 'GET', conf, p);
 }
 
 function PersistentVolumesRegister(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
-	delete p['cluster']
-	delete p['name']
-	return xhr(path, 'PUT', conf, null, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
+    delete p['cluster']
+    delete p['name']
+    return xhr(path, 'PUT', conf, null, p);
 }
 
 function PersistentVolumesUnregister(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
-	delete p['cluster']
-	delete p['name']
-	return xhr(path, 'DELETE', conf, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/persistentvolumes/' + p['name']
+    delete p['cluster']
+    delete p['name']
+    return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {
-  PersistentVolumes: {
-      Describe: PersistentVolumesDescribe,
-      Register: PersistentVolumesRegister,
-      Unregister: PersistentVolumesUnregister
-  }
+    PersistentVolumes: {
+        Describe: PersistentVolumesDescribe,
+        Register: PersistentVolumesRegister,
+        Unregister: PersistentVolumesUnregister
+    }
 };

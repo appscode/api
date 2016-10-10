@@ -9,24 +9,24 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 function AuthenticationLogin(p, conf) {
-	path = '/auth/v1beta1/login'
-	return xhr(path, 'POST', conf, null, p);
+    path = '/auth/v1beta1/login'
+    return xhr(path, 'POST', conf, null, p);
 }
 
 function AuthenticationLogout(p, conf) {
-	path = '/auth/v1beta1/logout'
-	return xhr(path, 'POST', conf, null, p);
+    path = '/auth/v1beta1/logout'
+    return xhr(path, 'POST', conf, null, p);
 }
 
 function AuthenticationToken(p, conf) {
-	path = '/auth/v1beta1/token'
-	return xhr(path, 'POST', conf, null, p);
+    path = '/auth/v1beta1/token'
+    return xhr(path, 'POST', conf, null, p);
 }
 
 module.exports = {
-  Authentication: {
-      Login: AuthenticationLogin,
-      Logout: AuthenticationLogout,
-      Token: AuthenticationToken
-  }
+    Authentication: {
+        Login: AuthenticationLogin,
+        Logout: AuthenticationLogout,
+        Token: AuthenticationToken
+    }
 };

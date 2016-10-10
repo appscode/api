@@ -9,12 +9,12 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 function HealthStatus(p, conf) {
-	path = '/health'
-	return xhr(path, 'GET', conf, p);
+    path = '/health'
+    return xhr(path, 'GET', conf, p);
 }
 
 module.exports = {
-  Health: {
-      Status: HealthStatus
-  }
+    Health: {
+        Status: HealthStatus
+    }
 };

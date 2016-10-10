@@ -9,60 +9,60 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 function CertificatesList(p, conf) {
-	path = '/certificate/v1beta1/certificates'
-	return xhr(path, 'GET', conf, p);
+    path = '/certificate/v1beta1/certificates'
+    return xhr(path, 'GET', conf, p);
 }
 
 function CertificatesDescribe(p, conf) {
-	path = '/certificate/v1beta1/certificates/' + p['uid']
-	delete p['uid']
-	return xhr(path, 'GET', conf, p);
+    path = '/certificate/v1beta1/certificates/' + p['uid']
+    delete p['uid']
+    return xhr(path, 'GET', conf, p);
 }
 
 function CertificatesCreate(p, conf) {
-	path = '/certificate/v1beta1/certificates'
-	return xhr(path, 'POST', conf, null, p);
+    path = '/certificate/v1beta1/certificates'
+    return xhr(path, 'POST', conf, null, p);
 }
 
 function CertificatesImport(p, conf) {
-	path = '/certificate/v1beta1/certificates/' + p['name'] + '/actions/import'
-	delete p['name']
-	return xhr(path, 'PUT', conf, null, p);
+    path = '/certificate/v1beta1/certificates/' + p['name'] + '/actions/import'
+    delete p['name']
+    return xhr(path, 'PUT', conf, null, p);
 }
 
 function CertificatesDelete(p, conf) {
-	path = '/certificate/v1beta1/certificates/' + p['uid']
-	delete p['uid']
-	return xhr(path, 'DELETE', conf, p);
+    path = '/certificate/v1beta1/certificates/' + p['uid']
+    delete p['uid']
+    return xhr(path, 'DELETE', conf, p);
 }
 
 function CertificatesRenew(p, conf) {
-	path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/renew'
-	delete p['uid']
-	return xhr(path, 'POST', conf, p);
+    path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/renew'
+    delete p['uid']
+    return xhr(path, 'POST', conf, p);
 }
 
 function CertificatesRevoke(p, conf) {
-	path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/revoke'
-	delete p['uid']
-	return xhr(path, 'PUT', conf, p);
+    path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/revoke'
+    delete p['uid']
+    return xhr(path, 'PUT', conf, p);
 }
 
 function CertificatesDeploy(p, conf) {
-	path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/deploy'
-	delete p['uid']
-	return xhr(path, 'PUT', conf, null, p);
+    path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/deploy'
+    delete p['uid']
+    return xhr(path, 'PUT', conf, null, p);
 }
 
 module.exports = {
-  Certificates: {
-      List: CertificatesList,
-      Describe: CertificatesDescribe,
-      Create: CertificatesCreate,
-      Import: CertificatesImport,
-      Delete: CertificatesDelete,
-      Renew: CertificatesRenew,
-      Revoke: CertificatesRevoke,
-      Deploy: CertificatesDeploy
-  }
+    Certificates: {
+        List: CertificatesList,
+        Describe: CertificatesDescribe,
+        Create: CertificatesCreate,
+        Import: CertificatesImport,
+        Delete: CertificatesDelete,
+        Renew: CertificatesRenew,
+        Revoke: CertificatesRevoke,
+        Deploy: CertificatesDeploy
+    }
 };

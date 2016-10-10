@@ -9,33 +9,33 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 function PersistentVolumeClaimsDescribe(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
-	delete p['cluster']
-	delete p['namespace']
-	delete p['name']
-	return xhr(path, 'GET', conf, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
+    delete p['cluster']
+    delete p['namespace']
+    delete p['name']
+    return xhr(path, 'GET', conf, p);
 }
 
 function PersistentVolumeClaimsRegister(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
-	delete p['cluster']
-	delete p['namespace']
-	delete p['name']
-	return xhr(path, 'PUT', conf, null, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
+    delete p['cluster']
+    delete p['namespace']
+    delete p['name']
+    return xhr(path, 'PUT', conf, null, p);
 }
 
 function PersistentVolumeClaimsUnregister(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
-	delete p['cluster']
-	delete p['namespace']
-	delete p['name']
-	return xhr(path, 'DELETE', conf, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/persistentvolumeclaims/' + p['name']
+    delete p['cluster']
+    delete p['namespace']
+    delete p['name']
+    return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {
-  PersistentVolumeClaims: {
-      Describe: PersistentVolumeClaimsDescribe,
-      Register: PersistentVolumeClaimsRegister,
-      Unregister: PersistentVolumeClaimsUnregister
-  }
+    PersistentVolumeClaims: {
+        Describe: PersistentVolumeClaimsDescribe,
+        Register: PersistentVolumeClaimsRegister,
+        Unregister: PersistentVolumeClaimsUnregister
+    }
 };

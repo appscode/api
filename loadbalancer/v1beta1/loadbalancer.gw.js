@@ -9,44 +9,44 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 function LoadBalancersList(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
-	delete p['cluster']
-	return xhr(path, 'GET', conf, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
+    delete p['cluster']
+    return xhr(path, 'GET', conf, p);
 }
 
 function LoadBalancersDescribe(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
-	delete p['cluster']
-	delete p['name']
-	return xhr(path, 'GET', conf, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
+    delete p['cluster']
+    delete p['name']
+    return xhr(path, 'GET', conf, p);
 }
 
 function LoadBalancersCreate(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
-	delete p['cluster']
-	return xhr(path, 'POST', conf, null, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
+    delete p['cluster']
+    return xhr(path, 'POST', conf, null, p);
 }
 
 function LoadBalancersUpdate(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
-	delete p['cluster']
-	delete p['name']
-	return xhr(path, 'PUT', conf, null, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
+    delete p['cluster']
+    delete p['name']
+    return xhr(path, 'PUT', conf, null, p);
 }
 
 function LoadBalancersDelete(p, conf) {
-	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
-	delete p['cluster']
-	delete p['name']
-	return xhr(path, 'DELETE', conf, p);
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
+    delete p['cluster']
+    delete p['name']
+    return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {
-  LoadBalancers: {
-      List: LoadBalancersList,
-      Describe: LoadBalancersDescribe,
-      Create: LoadBalancersCreate,
-      Update: LoadBalancersUpdate,
-      Delete: LoadBalancersDelete
-  }
+    LoadBalancers: {
+        List: LoadBalancersList,
+        Describe: LoadBalancersDescribe,
+        Create: LoadBalancersCreate,
+        Update: LoadBalancersUpdate,
+        Delete: LoadBalancersDelete
+    }
 };

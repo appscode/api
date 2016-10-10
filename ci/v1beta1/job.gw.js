@@ -9,45 +9,45 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 var xhr = require('grpc-xhr');
 
 function JobsList(p, conf) {
-	path = '/ci/v1beta1/jobs'
-	return xhr(path, 'GET', conf, p);
+    path = '/ci/v1beta1/jobs'
+    return xhr(path, 'GET', conf, p);
 }
 
 function JobsDescribe(p, conf) {
-	path = '/ci/v1beta1/jobs/' + p['name']
-	delete p['name']
-	return xhr(path, 'GET', conf, p);
+    path = '/ci/v1beta1/jobs/' + p['name']
+    delete p['name']
+    return xhr(path, 'GET', conf, p);
 }
 
 function JobsCreate(p, conf) {
-	path = '/ci/v1beta1/jobs'
-	return xhr(path, 'POST', conf, null, p);
+    path = '/ci/v1beta1/jobs'
+    return xhr(path, 'POST', conf, null, p);
 }
 
 function JobsCopy(p, conf) {
-	path = '/ci/v1beta1/actions/copy'
-	return xhr(path, 'PUT', conf, null, p);
+    path = '/ci/v1beta1/actions/copy'
+    return xhr(path, 'PUT', conf, null, p);
 }
 
 function JobsBuild(p, conf) {
-	path = '/ci/v1beta1/jobs/' + p['name'] + '/actions/build'
-	delete p['name']
-	return xhr(path, 'POST', conf, null, p);
+    path = '/ci/v1beta1/jobs/' + p['name'] + '/actions/build'
+    delete p['name']
+    return xhr(path, 'POST', conf, null, p);
 }
 
 function JobsDelete(p, conf) {
-	path = '/ci/v1beta1/jobs/' + p['name']
-	delete p['name']
-	return xhr(path, 'DELETE', conf, p);
+    path = '/ci/v1beta1/jobs/' + p['name']
+    delete p['name']
+    return xhr(path, 'DELETE', conf, p);
 }
 
 module.exports = {
-  Jobs: {
-      List: JobsList,
-      Describe: JobsDescribe,
-      Create: JobsCreate,
-      Copy: JobsCopy,
-      Build: JobsBuild,
-      Delete: JobsDelete
-  }
+    Jobs: {
+        List: JobsList,
+        Describe: JobsDescribe,
+        Create: JobsCreate,
+        Copy: JobsCopy,
+        Build: JobsBuild,
+        Delete: JobsDelete
+    }
 };
