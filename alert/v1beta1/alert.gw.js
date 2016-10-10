@@ -8,35 +8,35 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-func AlertsList(p, conf) {
+function AlertsList(p, conf) {
 	path = '/kubernetes/v1beta1/alerts'
 	return xhr(path, 'GET', conf, p);
 }
 
-func AlertsCreate(p, conf) {
+function AlertsCreate(p, conf) {
 	path = '/kubernetes/v1beta1/alerts'
 	return xhr(path, 'POST', conf, null, p);
 }
 
-func AlertsDescribe(p, conf) {
+function AlertsDescribe(p, conf) {
 	path = '/kubernetes/v1beta1/alerts/' + p['phid']
 	delete p['phid']
 	return xhr(path, 'GET', conf, p);
 }
 
-func AlertsUpdate(p, conf) {
+function AlertsUpdate(p, conf) {
 	path = '/kubernetes/v1beta1/alerts/' + p['phid']
 	delete p['phid']
 	return xhr(path, 'PUT', conf, null, p);
 }
 
-func AlertsSync(p, conf) {
+function AlertsSync(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['kubernetes_cluster'] + '/actions/sync-alerts'
 	delete p['kubernetes_cluster']
 	return xhr(path, 'POST', conf, null, p);
 }
 
-func AlertsDelete(p, conf) {
+function AlertsDelete(p, conf) {
 	path = '/kubernetes/v1beta1/alerts/' + p['phid']
 	delete p['phid']
 	return xhr(path, 'DELETE', conf, p);

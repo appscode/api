@@ -8,7 +8,7 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-func PaymentMethodsCheck(p, conf) {
+function PaymentMethodsCheck(p, conf) {
 	path = '/billing/v1beta1/paymentmethods'
 	return xhr(path, 'GET', conf, p);
 }

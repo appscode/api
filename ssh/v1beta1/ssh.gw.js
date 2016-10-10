@@ -8,7 +8,7 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-func SSHGet(p, conf) {
+function SSHGet(p, conf) {
 	path = '/ssh/v1beta1/ssh'
 	return xhr(path, 'GET', conf, p);
 }

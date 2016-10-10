@@ -8,13 +8,13 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-func ServersCreate(p, conf) {
+function ServersCreate(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/apps/bacula'
 	delete p['cluster']
 	return xhr(path, 'POST', conf, null, p);
 }
 
-func ServersDelete(p, conf) {
+function ServersDelete(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/apps/bacula'
 	delete p['cluster']
 	return xhr(path, 'DELETE', conf, p);

@@ -8,24 +8,24 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-func ClientsCopy(p, conf) {
+function ClientsCopy(p, conf) {
 	path = '/kubernetes/v1beta1/actions/copy'
 	return xhr(path, 'PUT', conf, null, p);
 }
 
-func ClientsNodes(p, conf) {
+function ClientsNodes(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/nodes'
 	delete p['cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsApps(p, conf) {
+function ClientsApps(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps'
 	delete p['cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsApp(p, conf) {
+function ClientsApp(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps/' + p['namespace'] + '/' + p['name']
 	delete p['cluster']
 	delete p['namespace']
@@ -33,7 +33,7 @@ func ClientsApp(p, conf) {
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsAppPods(p, conf) {
+function ClientsAppPods(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/apps/' + p['namespace'] + '/' + p['name'] + '/pods'
 	delete p['cluster']
 	delete p['namespace']
@@ -41,19 +41,19 @@ func ClientsAppPods(p, conf) {
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsNamespaces(p, conf) {
+function ClientsNamespaces(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/namespaces'
 	delete p['cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsSecrets(p, conf) {
+function ClientsSecrets(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/secrets'
 	delete p['cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsSecret(p, conf) {
+function ClientsSecret(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/secrets/' + p['namespace'] + '/' + p['name']
 	delete p['cluster']
 	delete p['namespace']
@@ -61,37 +61,37 @@ func ClientsSecret(p, conf) {
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsJobs(p, conf) {
+function ClientsJobs(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/jobs'
 	delete p['cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsPods(p, conf) {
+function ClientsPods(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/pods'
 	delete p['cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsServices(p, conf) {
+function ClientsServices(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/services'
 	delete p['cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsReplicationControllers(p, conf) {
+function ClientsReplicationControllers(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/rcs'
 	delete p['cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsConfigMaps(p, conf) {
+function ClientsConfigMaps(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/configmaps'
 	delete p['cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsConfigMap(p, conf) {
+function ClientsConfigMap(p, conf) {
 	path = '/kubernetes/v1beta1/client/' + p['cluster'] + '/configmaps/' + p['namespace'] + '/' + p['name']
 	delete p['cluster']
 	delete p['namespace']

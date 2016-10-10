@@ -8,29 +8,29 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-func AgentsList(p, conf) {
+function AgentsList(p, conf) {
 	path = '/ci/v1beta1/agents'
 	return xhr(path, 'GET', conf, p);
 }
 
-func AgentsDescribe(p, conf) {
+function AgentsDescribe(p, conf) {
 	path = '/ci/v1beta1/agents/' + p['name']
 	delete p['name']
 	return xhr(path, 'GET', conf, p);
 }
 
-func AgentsCreate(p, conf) {
+function AgentsCreate(p, conf) {
 	path = '/ci/v1beta1/agents'
 	return xhr(path, 'POST', conf, null, p);
 }
 
-func AgentsDelete(p, conf) {
+function AgentsDelete(p, conf) {
 	path = '/ci/v1beta1/agents/' + p['name']
 	delete p['name']
 	return xhr(path, 'DELETE', conf, p);
 }
 
-func AgentsRestart(p, conf) {
+function AgentsRestart(p, conf) {
 	path = '/ci/v1beta1/agents/' + p['name'] + '/actions/reboot'
 	delete p['name']
 	return xhr(path, 'POST', conf, p);

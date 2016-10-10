@@ -8,47 +8,47 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-func CertificatesList(p, conf) {
+function CertificatesList(p, conf) {
 	path = '/certificate/v1beta1/certificates'
 	return xhr(path, 'GET', conf, p);
 }
 
-func CertificatesDescribe(p, conf) {
+function CertificatesDescribe(p, conf) {
 	path = '/certificate/v1beta1/certificates/' + p['uid']
 	delete p['uid']
 	return xhr(path, 'GET', conf, p);
 }
 
-func CertificatesCreate(p, conf) {
+function CertificatesCreate(p, conf) {
 	path = '/certificate/v1beta1/certificates'
 	return xhr(path, 'POST', conf, null, p);
 }
 
-func CertificatesImport(p, conf) {
+function CertificatesImport(p, conf) {
 	path = '/certificate/v1beta1/certificates/' + p['name'] + '/actions/import'
 	delete p['name']
 	return xhr(path, 'PUT', conf, null, p);
 }
 
-func CertificatesDelete(p, conf) {
+function CertificatesDelete(p, conf) {
 	path = '/certificate/v1beta1/certificates/' + p['uid']
 	delete p['uid']
 	return xhr(path, 'DELETE', conf, p);
 }
 
-func CertificatesRenew(p, conf) {
+function CertificatesRenew(p, conf) {
 	path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/renew'
 	delete p['uid']
 	return xhr(path, 'POST', conf, p);
 }
 
-func CertificatesRevoke(p, conf) {
+function CertificatesRevoke(p, conf) {
 	path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/revoke'
 	delete p['uid']
 	return xhr(path, 'PUT', conf, p);
 }
 
-func CertificatesDeploy(p, conf) {
+function CertificatesDeploy(p, conf) {
 	path = '/certificate/v1beta1/certificates/' + p['uid'] + '/actions/deploy'
 	delete p['uid']
 	return xhr(path, 'PUT', conf, null, p);

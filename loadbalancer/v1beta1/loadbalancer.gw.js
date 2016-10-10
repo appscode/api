@@ -8,33 +8,33 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-func LoadBalancersList(p, conf) {
+function LoadBalancersList(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
 	delete p['cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func LoadBalancersDescribe(p, conf) {
+function LoadBalancersDescribe(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
 	delete p['cluster']
 	delete p['name']
 	return xhr(path, 'GET', conf, p);
 }
 
-func LoadBalancersCreate(p, conf) {
+function LoadBalancersCreate(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers'
 	delete p['cluster']
 	return xhr(path, 'POST', conf, null, p);
 }
 
-func LoadBalancersUpdate(p, conf) {
+function LoadBalancersUpdate(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
 	delete p['cluster']
 	delete p['name']
 	return xhr(path, 'PUT', conf, null, p);
 }
 
-func LoadBalancersDelete(p, conf) {
+function LoadBalancersDelete(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/loadbalancers/' + p['name']
 	delete p['cluster']
 	delete p['name']

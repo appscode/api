@@ -8,14 +8,14 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-func ClientsList(p, conf) {
+function ClientsList(p, conf) {
 	path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/' + p['type']
 	delete p['cluster']
 	delete p['type']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsDescribe(p, conf) {
+function ClientsDescribe(p, conf) {
 	path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/' + p['type'] + '/' + p['name']
 	delete p['cluster']
 	delete p['type']
@@ -23,7 +23,7 @@ func ClientsDescribe(p, conf) {
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClientsDelete(p, conf) {
+function ClientsDelete(p, conf) {
 	path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/' + p['type'] + '/' + p['name']
 	delete p['cluster']
 	delete p['type']
@@ -31,7 +31,7 @@ func ClientsDelete(p, conf) {
 	return xhr(path, 'DELETE', conf, p);
 }
 
-func ClientsUpdate(p, conf) {
+function ClientsUpdate(p, conf) {
 	path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/' + p['type'] + '/' + p['name']
 	delete p['cluster']
 	delete p['type']
@@ -39,12 +39,12 @@ func ClientsUpdate(p, conf) {
 	return xhr(path, 'PUT', conf, null, p);
 }
 
-func ClientsCopy(p, conf) {
+function ClientsCopy(p, conf) {
 	path = '/kubernetes/v1beta2/actions/copy'
 	return xhr(path, 'PUT', conf, null, p);
 }
 
-func ClientsEditConfigMap(p, conf) {
+function ClientsEditConfigMap(p, conf) {
 	path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/configmaps/' + p['name'] + '/actions/edit'
 	delete p['cluster']
 	delete p['namespace']
@@ -52,7 +52,7 @@ func ClientsEditConfigMap(p, conf) {
 	return xhr(path, 'POST', conf, null, p);
 }
 
-func ClientsEditSecret(p, conf) {
+function ClientsEditSecret(p, conf) {
 	path = '/kubernetes/v1beta2/clusters/' + p['cluster'] + '/namespaces/' + p['namespace'] + '/secrets/' + p['name'] + '/actions/edit'
 	delete p['cluster']
 	delete p['namespace']

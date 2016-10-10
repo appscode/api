@@ -8,13 +8,13 @@ This is a RSVP based Ajax client for gRPC gateway JSON APIs.
 
 var xhr = require('grpc-xhr');
 
-func ClustersList(p, conf) {
+function ClustersList(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/glusterfs'
 	delete p['kube_cluster']
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClustersDescribe(p, conf) {
+function ClustersDescribe(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/namespaces/' + p['kube_namespace'] + '/glusterfs/' + p['name']
 	delete p['kube_cluster']
 	delete p['kube_namespace']
@@ -22,14 +22,14 @@ func ClustersDescribe(p, conf) {
 	return xhr(path, 'GET', conf, p);
 }
 
-func ClustersCreate(p, conf) {
+function ClustersCreate(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/namespaces/' + p['kube_namespace'] + '/glusterfs'
 	delete p['kube_cluster']
 	delete p['kube_namespace']
 	return xhr(path, 'POST', conf, null, p);
 }
 
-func ClustersDelete(p, conf) {
+function ClustersDelete(p, conf) {
 	path = '/kubernetes/v1beta1/clusters/' + p['kube_cluster'] + '/namespaces/' + p['kube_namespace'] + '/glusterfs/' + p['name']
 	delete p['kube_cluster']
 	delete p['kube_namespace']
