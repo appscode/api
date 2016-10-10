@@ -43,4 +43,4 @@ module.exports = {
       BackupUnschedule: SnapshotsBackupUnschedule,
       Restore: SnapshotsRestore
   }
-}
+};

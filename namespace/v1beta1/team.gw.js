@@ -37,4 +37,4 @@ module.exports = {
       IsAvailable: TeamsIsAvailable,
       Subscription: TeamsSubscription
   }
-}
+};

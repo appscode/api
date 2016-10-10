@@ -37,4 +37,4 @@ module.exports = {
       Update: CredentialsUpdate,
       Delete: CredentialsDelete
   }
-}
+};

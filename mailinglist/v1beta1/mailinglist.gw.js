@@ -23,4 +23,4 @@ module.exports = {
       SendEmail: MailingListSendEmail,
       Subscribe: MailingListSubscribe
   }
-}
+};

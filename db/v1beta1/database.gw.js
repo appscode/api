@@ -57,4 +57,4 @@ module.exports = {
       Describe: DatabasesDescribe,
       Delete: DatabasesDelete
   }
-}
+};

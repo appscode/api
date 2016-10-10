@@ -44,4 +44,4 @@ module.exports = {
       Delete: AgentsDelete,
       Restart: AgentsRestart
   }
-}
+};

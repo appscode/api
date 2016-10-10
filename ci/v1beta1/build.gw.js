@@ -26,4 +26,4 @@ module.exports = {
       Describe: BuildsDescribe,
       List: BuildsList
   }
-}
+};

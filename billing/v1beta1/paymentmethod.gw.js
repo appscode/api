@@ -17,4 +17,4 @@ module.exports = {
   PaymentMethods: {
       Check: PaymentMethodsCheck
   }
-}
+};

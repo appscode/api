@@ -38,4 +38,4 @@ module.exports = {
       Notify: IncidentsNotify,
       CreateEvent: IncidentsCreateEvent
   }
-}
+};

@@ -17,4 +17,4 @@ module.exports = {
   Charges: {
       Estimate: ChargesEstimate
   }
-}
+};

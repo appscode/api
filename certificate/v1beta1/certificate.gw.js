@@ -65,4 +65,4 @@ module.exports = {
       Revoke: CertificatesRevoke,
       Deploy: CertificatesDeploy
   }
-}
+};

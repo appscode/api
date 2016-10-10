@@ -17,4 +17,4 @@ module.exports = {
   CAs: {
       Create: CAsCreate
   }
-}
+};

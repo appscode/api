@@ -34,6 +34,8 @@ setup_proxy() {
 		git clone git@github.com:appscode/grpc-gateway.git
 	fi
 	cd grpc-gateway
+	git reset --soft HEAD~10
+	git reset HEAD --hard
 	git pull origin master
 	go install ./protoc-gen-grpc-gateway/...
 	go install ./protoc-gen-grpc-gateway-cors/...

@@ -26,4 +26,4 @@ module.exports = {
       Describe: OperationsDescribe,
       DescribeLog: OperationsDescribeLog
   }
-}
+};

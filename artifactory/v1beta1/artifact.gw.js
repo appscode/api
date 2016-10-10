@@ -24,4 +24,4 @@ module.exports = {
       Search: ArtifactsSearch,
       List: ArtifactsList
   }
-}
+};

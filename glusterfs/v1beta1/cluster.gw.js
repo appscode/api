@@ -44,4 +44,4 @@ module.exports = {
       Create: ClustersCreate,
       Delete: ClustersDelete
   }
-}
+};

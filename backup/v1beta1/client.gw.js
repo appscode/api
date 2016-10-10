@@ -18,4 +18,4 @@ module.exports = {
   Clients: {
       Reconfigure: ClientsReconfigure
   }
-}
+};

@@ -17,4 +17,4 @@ module.exports = {
   Health: {
       Status: HealthStatus
   }
-}
+};

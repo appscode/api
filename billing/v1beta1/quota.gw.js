@@ -17,4 +17,4 @@ module.exports = {
   Quotas: {
       Get: QuotasGet
   }
-}
+};

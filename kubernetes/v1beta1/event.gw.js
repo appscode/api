@@ -25,4 +25,4 @@ module.exports = {
       Constructive: EventsConstructive,
       Destructive: EventsDestructive
   }
-}
+};

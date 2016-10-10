@@ -49,4 +49,4 @@ module.exports = {
       Update: LoadBalancersUpdate,
       Delete: LoadBalancersDelete
   }
-}
+};

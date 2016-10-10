@@ -41,4 +41,4 @@ module.exports = {
       Create: DisksCreate,
       Delete: DisksDelete
   }
-}
+};

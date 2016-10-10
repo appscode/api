@@ -38,4 +38,4 @@ module.exports = {
       Register: PersistentVolumeClaimsRegister,
       Unregister: PersistentVolumeClaimsUnregister
   }
-}
+};

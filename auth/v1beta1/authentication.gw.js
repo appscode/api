@@ -29,4 +29,4 @@ module.exports = {
       Logout: AuthenticationLogout,
       Token: AuthenticationToken
   }
-}
+};

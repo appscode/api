@@ -23,4 +23,4 @@ module.exports = {
       WhoAmI: ConduitWhoAmI,
       Users: ConduitUsers
   }
-}
+};

@@ -70,4 +70,4 @@ module.exports = {
       EditConfigMap: ClientsEditConfigMap,
       EditSecret: ClientsEditSecret
   }
-}
+};
