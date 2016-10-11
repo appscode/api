@@ -264,6 +264,10 @@
           "format": "string",
           "type": "string"
         },
+        "password": {
+          "format": "string",
+          "type": "string"
+        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         },
