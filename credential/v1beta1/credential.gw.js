@@ -24,6 +24,12 @@ function credentialsUpdate(p, conf) {
     return xhr(path, 'PUT', conf, null, p);
 }
 
+function credentialsIsAuthorized(p, conf) {
+    path = '/cloud/v1beta1/credentials/' + p['name'] + '/is-authorized'
+    delete p['name']
+    return xhr(path, 'POST', conf, null, p);
+}
+
 function credentialsDelete(p, conf) {
     path = '/cloud/v1beta1/credentials/' + p['name']
     delete p['name']
@@ -35,6 +41,7 @@ module.exports = {
         list: credentialsList,
         create: credentialsCreate,
         update: credentialsUpdate,
+        isAuthorized: credentialsIsAuthorized,
         delete: credentialsDelete
     }
 };

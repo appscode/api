@@ -275,6 +275,12 @@
       "url": "/appscode/api/cloud/v1beta1/credentials/{name}"
     }
   },
+  "/appscode/api/cloud/v1beta1/credentials/*/is-authorized": {
+    "post": {
+      "file": "/credential/v1beta1/credential.proto",
+      "url": "/appscode/api/cloud/v1beta1/credentials/{name}/is-authorized"
+    }
+  },
   "/appscode/api/health": {
     "get": {
       "file": "/health/health.proto",
