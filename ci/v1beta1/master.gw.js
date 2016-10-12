@@ -18,9 +18,11 @@ function masterDelete(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-module.exports = {
+var services = {
     master: {
         create: masterCreate,
         delete: masterDelete
     }
 };
+
+module.exports = { ci: { v1beta1: services } };

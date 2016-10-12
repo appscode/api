@@ -31,7 +31,7 @@ function incidentsCreateEvent(p, conf) {
     return xhr(path, 'POST', conf, null, p);
 }
 
-module.exports = {
+var services = {
     incidents: {
         list: incidentsList,
         describe: incidentsDescribe,
@@ -39,3 +39,5 @@ module.exports = {
         createEvent: incidentsCreateEvent
     }
 };
+
+module.exports = { alert: { v1beta1: services } };

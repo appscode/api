@@ -41,7 +41,7 @@ function jobsDelete(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-module.exports = {
+var services = {
     jobs: {
         list: jobsList,
         describe: jobsDescribe,
@@ -51,3 +51,5 @@ module.exports = {
         delete: jobsDelete
     }
 };
+
+module.exports = { ci: { v1beta1: services } };

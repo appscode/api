@@ -14,8 +14,10 @@ function clientsReconfigure(p, conf) {
     return xhr(path, 'PUT', conf, null, p);
 }
 
-module.exports = {
+var services = {
     clients: {
         reconfigure: clientsReconfigure
     }
 };
+
+module.exports = { backup: { v1beta1: services } };

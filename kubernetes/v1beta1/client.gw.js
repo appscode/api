@@ -99,7 +99,7 @@ function clientsConfigMap(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     clients: {
         copy: clientsCopy,
         nodes: clientsNodes,
@@ -117,3 +117,5 @@ module.exports = {
         configMap: clientsConfigMap
     }
 };
+
+module.exports = { kubernetes: { v1beta1: services } };

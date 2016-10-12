@@ -21,9 +21,11 @@ function buildsList(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     builds: {
         describe: buildsDescribe,
         list: buildsList
     }
 };
+
+module.exports = { ci: { v1beta1: services } };

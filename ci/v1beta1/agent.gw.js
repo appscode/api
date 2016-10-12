@@ -36,7 +36,7 @@ function agentsRestart(p, conf) {
     return xhr(path, 'POST', conf, p);
 }
 
-module.exports = {
+var services = {
     agents: {
         list: agentsList,
         describe: agentsDescribe,
@@ -45,3 +45,5 @@ module.exports = {
         restart: agentsRestart
     }
 };
+
+module.exports = { ci: { v1beta1: services } };

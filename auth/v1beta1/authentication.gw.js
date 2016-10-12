@@ -23,10 +23,12 @@ function authenticationToken(p, conf) {
     return xhr(path, 'POST', conf, null, p);
 }
 
-module.exports = {
+var services = {
     authentication: {
         login: authenticationLogin,
         logout: authenticationLogout,
         token: authenticationToken
     }
 };
+
+module.exports = { auth: { v1beta1: services } };

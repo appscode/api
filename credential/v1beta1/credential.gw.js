@@ -36,7 +36,7 @@ function credentialsDelete(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-module.exports = {
+var services = {
     credentials: {
         list: credentialsList,
         create: credentialsCreate,
@@ -45,3 +45,5 @@ module.exports = {
         delete: credentialsDelete
     }
 };
+
+module.exports = { credential: { v1beta1: services } };

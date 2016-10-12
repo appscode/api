@@ -13,8 +13,10 @@ function healthStatus(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     health: {
         status: healthStatus
     }
 };
+
+module.exports = { health: services };

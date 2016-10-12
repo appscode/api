@@ -13,8 +13,10 @@ function sSHGet(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     sSH: {
         get: sSHGet
     }
 };
+
+module.exports = { ssh: { v1beta1: services } };

@@ -21,9 +21,11 @@ function operationsDescribeLog(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     operations: {
         describe: operationsDescribe,
         describeLog: operationsDescribeLog
     }
 };
+
+module.exports = { operation: { v1beta1: services } };

@@ -42,7 +42,7 @@ function alertsDelete(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-module.exports = {
+var services = {
     alerts: {
         list: alertsList,
         create: alertsCreate,
@@ -52,3 +52,5 @@ module.exports = {
         delete: alertsDelete
     }
 };
+
+module.exports = { alert: { v1beta1: services } };

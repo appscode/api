@@ -36,7 +36,7 @@ function snapshotsRestore(p, conf) {
     return xhr(path, 'POST', conf, null, p);
 }
 
-module.exports = {
+var services = {
     snapshots: {
         list: snapshotsList,
         backupSchedule: snapshotsBackupSchedule,
@@ -44,3 +44,5 @@ module.exports = {
         restore: snapshotsRestore
     }
 };
+
+module.exports = { db: { v1beta1: services } };

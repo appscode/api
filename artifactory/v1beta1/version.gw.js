@@ -20,9 +20,11 @@ function versionsDescribe(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     versions: {
         list: versionsList,
         describe: versionsDescribe
     }
 };
+
+module.exports = { artifactory: { v1beta1: services } };

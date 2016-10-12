@@ -13,8 +13,10 @@ function chargesEstimate(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     charges: {
         estimate: chargesEstimate
     }
 };
+
+module.exports = { billing: { v1beta1: services } };

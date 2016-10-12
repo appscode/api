@@ -20,9 +20,11 @@ function serversDelete(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-module.exports = {
+var services = {
     servers: {
         create: serversCreate,
         delete: serversDelete
     }
 };
+
+module.exports = { backup: { v1beta1: services } };

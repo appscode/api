@@ -13,8 +13,10 @@ function acmeUsersRegister(p, conf) {
     return xhr(path, 'PUT', conf, p);
 }
 
-module.exports = {
+var services = {
     acmeUsers: {
         register: acmeUsersRegister
     }
 };
+
+module.exports = { certificate: { v1beta1: services } };

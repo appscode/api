@@ -32,10 +32,12 @@ function persistentVolumeClaimsUnregister(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-module.exports = {
+var services = {
     persistentVolumeClaims: {
         describe: persistentVolumeClaimsDescribe,
         register: persistentVolumeClaimsRegister,
         unregister: persistentVolumeClaimsUnregister
     }
 };
+
+module.exports = { pv: { v1beta1: services } };

@@ -54,7 +54,7 @@ function certificatesDeploy(p, conf) {
     return xhr(path, 'PUT', conf, null, p);
 }
 
-module.exports = {
+var services = {
     certificates: {
         list: certificatesList,
         describe: certificatesDescribe,
@@ -66,3 +66,5 @@ module.exports = {
         deploy: certificatesDeploy
     }
 };
+
+module.exports = { certificate: { v1beta1: services } };

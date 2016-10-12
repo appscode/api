@@ -19,9 +19,11 @@ function artifactsList(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     artifacts: {
         search: artifactsSearch,
         list: artifactsList
     }
 };
+
+module.exports = { artifactory: { v1beta1: services } };

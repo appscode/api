@@ -16,8 +16,10 @@ function volumesList(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     volumes: {
         list: volumesList
     }
 };
+
+module.exports = { glusterfs: { v1beta1: services } };

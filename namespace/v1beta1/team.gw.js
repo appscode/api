@@ -30,7 +30,7 @@ function teamsSubscription(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     teams: {
         create: teamsCreate,
         get: teamsGet,
@@ -38,3 +38,5 @@ module.exports = {
         subscription: teamsSubscription
     }
 };
+
+module.exports = { namespace: { v1beta1: services } };

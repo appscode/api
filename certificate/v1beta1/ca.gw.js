@@ -13,8 +13,10 @@ function cAsCreate(p, conf) {
     return xhr(path, 'POST', conf, null, p);
 }
 
-module.exports = {
+var services = {
     cAs: {
         create: cAsCreate
     }
 };
+
+module.exports = { certificate: { v1beta1: services } };

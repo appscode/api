@@ -25,10 +25,12 @@ function purchasesClose(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-module.exports = {
+var services = {
     purchases: {
         begin: purchasesBegin,
         complete: purchasesComplete,
         close: purchasesClose
     }
 };
+
+module.exports = { billing: { v1beta1: services } };

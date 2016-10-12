@@ -34,7 +34,7 @@ function disksDelete(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-module.exports = {
+var services = {
     disks: {
         list: disksList,
         describe: disksDescribe,
@@ -42,3 +42,5 @@ module.exports = {
         delete: disksDelete
     }
 };
+
+module.exports = { pv: { v1beta1: services } };

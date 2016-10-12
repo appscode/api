@@ -20,9 +20,11 @@ function eventsDestructive(p, conf) {
     return xhr(path, 'PUT', conf, null, p);
 }
 
-module.exports = {
+var services = {
     events: {
         constructive: eventsConstructive,
         destructive: eventsDestructive
     }
 };
+
+module.exports = { kubernetes: { v1beta1: services } };

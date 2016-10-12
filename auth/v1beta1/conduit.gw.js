@@ -18,9 +18,11 @@ function conduitUsers(p, conf) {
     return xhr(path, 'POST', conf, null, p);
 }
 
-module.exports = {
+var services = {
     conduit: {
         whoAmI: conduitWhoAmI,
         users: conduitUsers
     }
 };
+
+module.exports = { auth: { v1beta1: services } };

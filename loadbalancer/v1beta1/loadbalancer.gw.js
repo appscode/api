@@ -41,7 +41,7 @@ function loadBalancersDelete(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-module.exports = {
+var services = {
     loadBalancers: {
         list: loadBalancersList,
         describe: loadBalancersDescribe,
@@ -50,3 +50,5 @@ module.exports = {
         delete: loadBalancersDelete
     }
 };
+
+module.exports = { loadbalancer: { v1beta1: services } };

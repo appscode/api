@@ -37,7 +37,7 @@ function clustersDelete(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
-module.exports = {
+var services = {
     clusters: {
         list: clustersList,
         describe: clustersDescribe,
@@ -45,3 +45,5 @@ module.exports = {
         delete: clustersDelete
     }
 };
+
+module.exports = { glusterfs: { v1beta1: services } };

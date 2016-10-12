@@ -13,8 +13,10 @@ function bucketsList(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     buckets: {
         list: bucketsList
     }
 };
+
+module.exports = { bucket: { v1beta1: services } };

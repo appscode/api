@@ -13,8 +13,10 @@ function subscriptionsSubscribe(p, conf) {
     return xhr(path, 'POST', conf, null, p);
 }
 
-module.exports = {
+var services = {
     subscriptions: {
         subscribe: subscriptionsSubscribe
     }
 };
+
+module.exports = { billing: { v1beta1: services } };

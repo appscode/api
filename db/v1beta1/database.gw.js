@@ -55,7 +55,7 @@ function databasesRecover(p, conf) {
     return xhr(path, 'PUT', conf, null, p);
 }
 
-module.exports = {
+var services = {
     databases: {
         list: databasesList,
         create: databasesCreate,
@@ -66,3 +66,5 @@ module.exports = {
         recover: databasesRecover
     }
 };
+
+module.exports = { db: { v1beta1: services } };

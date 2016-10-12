@@ -74,7 +74,7 @@ function clustersInstanceByIP(p, conf) {
     return xhr(path, 'GET', conf, p);
 }
 
-module.exports = {
+var services = {
     clusters: {
         list: clustersList,
         describe: clustersDescribe,
@@ -89,3 +89,5 @@ module.exports = {
         instanceByIP: clustersInstanceByIP
     }
 };
+
+module.exports = { kubernetes: { v1beta1: services } };

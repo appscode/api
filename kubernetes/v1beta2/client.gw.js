@@ -60,7 +60,7 @@ function clientsEditSecret(p, conf) {
     return xhr(path, 'POST', conf, null, p);
 }
 
-module.exports = {
+var services = {
     clients: {
         list: clientsList,
         describe: clientsDescribe,
@@ -71,3 +71,5 @@ module.exports = {
         editSecret: clientsEditSecret
     }
 };
+
+module.exports = { kubernetes: { v1beta2: services } };
