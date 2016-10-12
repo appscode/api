@@ -65,6 +65,13 @@ service Databases {
       enable: true
     };
   }
+
+  rpc Recover(DatabaseRecoverRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/recover"
+      body: "*"
+    };
+  }
 }
 
 // Next Id: 19
@@ -82,12 +89,10 @@ message Database {
   string status = 13;
   int64 created_at = 14;
   int64 deleted_at = 15;
-  string service_name = 16;
   bool do_not_delete = 17;
-  string provider = 18;
 }
 
-// Next Id: 3
+// Next Id: 4
 message DatabaseListRequest {
   string cluster = 1;
   string type = 2;
@@ -109,10 +114,10 @@ message DatabaseListResponse {
   repeated Database databases = 2;
 }
 
-// Next Id: 16
+// Next Id: 18
 message DatabaseCreateRequest {
   string cluster = 1;
-  string service_name = 2;
+  string name = 2;
   string type = 3;
   string sku = 4;
   string version = 5;
@@ -122,6 +127,7 @@ message DatabaseCreateRequest {
   string snapshot_phid = 14;
   string hostname = 15;
   string storage_class = 16;
+  bool ignore_validation = 17;
 }
 
 // Next Id: 4
@@ -164,6 +170,12 @@ message DatabaseDeleteRequest {
   string cluster = 1;
   string uid = 2;
   bool destroy = 3;
+}
+
+// Next Id: 3
+message DatabaseRecoverRequest {
+  string cluster = 1;
+  string uid = 2;
 }
 
 // Next Id: 4

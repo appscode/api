@@ -501,6 +501,12 @@
       "url": "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}"
     }
   },
+  "/appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/recover": {
+    "put": {
+      "file": "/db/v1beta1/database.proto",
+      "url": "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/recover"
+    }
+  },
   "/appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/restore": {
     "post": {
       "file": "/db/v1beta1/snapshot.proto",

@@ -110,19 +110,11 @@
           "format": "string",
           "type": "string"
         },
-        "provider": {
-          "format": "string",
-          "type": "string"
-        },
         "pv_size_gb": {
           "format": "int32",
           "type": "integer"
         },
         "schedule_cron_expr": {
-          "format": "string",
-          "type": "string"
-        },
-        "service_name": {
           "format": "string",
           "type": "string"
         },
@@ -160,13 +152,17 @@
           "format": "string",
           "type": "string"
         },
+        "ignore_validation": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
         "pv_size_gb": {
           "format": "int32",
           "type": "integer"
-        },
-        "service_name": {
-          "format": "string",
-          "type": "string"
         },
         "size": {
           "format": "int32",
@@ -193,7 +189,7 @@
           "type": "string"
         }
       },
-      "title": "Next Id: 16",
+      "title": "Next Id: 18",
       "type": "object"
     },
     "v1beta1DatabaseDeleteRequest": {
@@ -262,7 +258,7 @@
           "type": "string"
         }
       },
-      "title": "Next Id: 3",
+      "title": "Next Id: 4",
       "type": "object"
     },
     "v1beta1DatabaseListResponse": {
@@ -275,6 +271,20 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
+    "v1beta1DatabaseRecoverRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
         }
       },
       "title": "Next Id: 3",
@@ -485,6 +495,46 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1beta1DatabaseUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/recover": {
+      "put": {
+        "operationId": "Recover",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1DatabaseRecoverRequest"
             }
           }
         ],

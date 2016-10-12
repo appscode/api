@@ -48,6 +48,13 @@ function databasesDelete(p, conf) {
     return xhr(path, 'DELETE', conf, p);
 }
 
+function databasesRecover(p, conf) {
+    path = '/kubernetes/v1beta1/clusters/' + p['cluster'] + '/databases/' + p['uid'] + '/actions/recover'
+    delete p['cluster']
+    delete p['uid']
+    return xhr(path, 'PUT', conf, null, p);
+}
+
 module.exports = {
     databases: {
         list: databasesList,
@@ -55,6 +62,7 @@ module.exports = {
         scale: databasesScale,
         update: databasesUpdate,
         describe: databasesDescribe,
-        delete: databasesDelete
+        delete: databasesDelete,
+        recover: databasesRecover
     }
 };
