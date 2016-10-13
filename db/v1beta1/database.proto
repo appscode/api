@@ -114,7 +114,7 @@ message DatabaseListResponse {
   repeated Database databases = 2;
 }
 
-// Next Id: 18
+// Next Id: 19
 message DatabaseCreateRequest {
   string cluster = 1;
   string name = 2;
@@ -128,6 +128,26 @@ message DatabaseCreateRequest {
   string hostname = 15;
   string storage_class = 16;
   bool ignore_validation = 17;
+  message InitialScript {
+    string script_path = 1;
+    message GitRepo {
+      string repository = 1;
+      string revision = 2;
+      string directory = 3;
+    }
+    message Secret {
+      string name = 1;
+    }
+    message ConfigMap {
+      string name = 1;
+    }
+    oneof ScriptSource {
+      GitRepo git_repo = 2;
+      Secret secret = 3;
+      ConfigMap config_map = 4;
+    }
+  }
+  InitialScript initial_script = 18;
 }
 
 // Next Id: 4

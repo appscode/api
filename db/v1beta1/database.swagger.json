@@ -4,6 +4,59 @@
     "application/json"
   ],
   "definitions": {
+    "DatabaseCreateRequestInitialScript": {
+      "properties": {
+        "config_map": {
+          "$ref": "#/definitions/InitialScriptConfigMap"
+        },
+        "git_repo": {
+          "$ref": "#/definitions/InitialScriptGitRepo"
+        },
+        "script_path": {
+          "format": "string",
+          "type": "string"
+        },
+        "secret": {
+          "$ref": "#/definitions/InitialScriptSecret"
+        }
+      },
+      "type": "object"
+    },
+    "InitialScriptConfigMap": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InitialScriptGitRepo": {
+      "properties": {
+        "directory": {
+          "format": "string",
+          "type": "string"
+        },
+        "repository": {
+          "format": "string",
+          "type": "string"
+        },
+        "revision": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InitialScriptSecret": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "dtypesHelp": {
       "properties": {
         "description": {
@@ -156,6 +209,9 @@
           "format": "boolean",
           "type": "boolean"
         },
+        "initial_script": {
+          "$ref": "#/definitions/DatabaseCreateRequestInitialScript"
+        },
         "name": {
           "format": "string",
           "type": "string"
@@ -189,7 +245,7 @@
           "type": "string"
         }
       },
-      "title": "Next Id: 18",
+      "title": "Next Id: 19",
       "type": "object"
     },
     "v1beta1DatabaseDeleteRequest": {
