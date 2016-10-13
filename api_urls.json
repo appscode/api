@@ -24,13 +24,13 @@
     }
   },
   "/appscode/api/auth/v1beta1/conduit/users": {
-    "post": {
+    "get": {
       "file": "/auth/v1beta1/conduit.proto",
       "url": "/appscode/api/auth/v1beta1/conduit/users"
     }
   },
   "/appscode/api/auth/v1beta1/conduit/whoami": {
-    "post": {
+    "get": {
       "file": "/auth/v1beta1/conduit.proto",
       "url": "/appscode/api/auth/v1beta1/conduit/whoami"
     }

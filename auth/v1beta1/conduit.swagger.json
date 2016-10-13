@@ -160,18 +160,8 @@
   },
   "paths": {
     "/appscode/api/auth/v1beta1/conduit/users": {
-      "post": {
+      "get": {
         "operationId": "Users",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1ConduitRequest"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -187,18 +177,8 @@
       }
     },
     "/appscode/api/auth/v1beta1/conduit/whoami": {
-      "post": {
+      "get": {
         "operationId": "WhoAmI",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1ConduitRequest"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "",

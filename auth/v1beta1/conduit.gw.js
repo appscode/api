@@ -10,12 +10,12 @@ var xhr = require('grpc-xhr');
 
 function conduitWhoAmI(p, conf) {
     path = '/auth/v1beta1/conduit/whoami'
-    return xhr(path, 'POST', conf, null, p);
+    return xhr(path, 'GET', conf, p);
 }
 
 function conduitUsers(p, conf) {
     path = '/auth/v1beta1/conduit/users'
-    return xhr(path, 'POST', conf, null, p);
+    return xhr(path, 'GET', conf, p);
 }
 
 var services = {
