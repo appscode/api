@@ -51,4 +51,4 @@ var services = {
     }
 };
 
-module.exports = { loadbalancer: { v1beta1: services } };
+module.exports = {loadbalancer: {v1beta1: services}};

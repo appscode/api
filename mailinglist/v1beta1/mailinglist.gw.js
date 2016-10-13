@@ -25,4 +25,4 @@ var services = {
     }
 };
 
-module.exports = { mailinglist: { v1beta1: services } };
+module.exports = {mailinglist: {v1beta1: services}};

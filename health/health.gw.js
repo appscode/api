@@ -19,4 +19,4 @@ var services = {
     }
 };
 
-module.exports = { health: services };
+module.exports = {health: services};

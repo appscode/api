@@ -67,4 +67,4 @@ var services = {
     }
 };
 
-module.exports = { db: { v1beta1: services } };
+module.exports = {db: {v1beta1: services}};

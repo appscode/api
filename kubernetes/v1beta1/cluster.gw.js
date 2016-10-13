@@ -90,4 +90,4 @@ var services = {
     }
 };
 
-module.exports = { kubernetes: { v1beta1: services } };
+module.exports = {kubernetes: {v1beta1: services}};

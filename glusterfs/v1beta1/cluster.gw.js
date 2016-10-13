@@ -46,4 +46,4 @@ var services = {
     }
 };
 
-module.exports = { glusterfs: { v1beta1: services } };
+module.exports = {glusterfs: {v1beta1: services}};

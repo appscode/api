@@ -19,4 +19,4 @@ var services = {
     }
 };
 
-module.exports = { certificate: { v1beta1: services } };
+module.exports = {certificate: {v1beta1: services}};

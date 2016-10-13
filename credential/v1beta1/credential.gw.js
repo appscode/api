@@ -46,4 +46,4 @@ var services = {
     }
 };
 
-module.exports = { credential: { v1beta1: services } };
+module.exports = {credential: {v1beta1: services}};

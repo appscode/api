@@ -31,4 +31,4 @@ var services = {
     }
 };
 
-module.exports = { auth: { v1beta1: services } };
+module.exports = {auth: {v1beta1: services}};

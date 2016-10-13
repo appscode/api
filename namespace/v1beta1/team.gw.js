@@ -39,4 +39,4 @@ var services = {
     }
 };
 
-module.exports = { namespace: { v1beta1: services } };
+module.exports = {namespace: {v1beta1: services}};

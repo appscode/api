@@ -28,4 +28,4 @@ var services = {
     }
 };
 
-module.exports = { ci: { v1beta1: services } };
+module.exports = {ci: {v1beta1: services}};

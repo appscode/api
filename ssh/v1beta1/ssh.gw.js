@@ -19,4 +19,4 @@ var services = {
     }
 };
 
-module.exports = { ssh: { v1beta1: services } };
+module.exports = {ssh: {v1beta1: services}};

@@ -33,4 +33,4 @@ var services = {
     }
 };
 
-module.exports = { billing: { v1beta1: services } };
+module.exports = {billing: {v1beta1: services}};

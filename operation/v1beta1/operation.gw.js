@@ -28,4 +28,4 @@ var services = {
     }
 };
 
-module.exports = { operation: { v1beta1: services } };
+module.exports = {operation: {v1beta1: services}};

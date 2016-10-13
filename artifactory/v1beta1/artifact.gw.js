@@ -26,4 +26,4 @@ var services = {
     }
 };
 
-module.exports = { artifactory: { v1beta1: services } };
+module.exports = {artifactory: {v1beta1: services}};

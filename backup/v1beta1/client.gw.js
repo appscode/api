@@ -20,4 +20,4 @@ var services = {
     }
 };
 
-module.exports = { backup: { v1beta1: services } };
+module.exports = {backup: {v1beta1: services}};

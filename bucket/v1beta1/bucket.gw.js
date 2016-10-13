@@ -19,4 +19,4 @@ var services = {
     }
 };
 
-module.exports = { bucket: { v1beta1: services } };
+module.exports = {bucket: {v1beta1: services}};
