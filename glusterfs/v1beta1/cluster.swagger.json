@@ -115,10 +115,6 @@
     },
     "v1beta1ClusterCreateRequest": {
       "properties": {
-        "bacula_enabled": {
-          "format": "boolean",
-          "type": "boolean"
-        },
         "disks": {
           "items": {
             "format": "string",

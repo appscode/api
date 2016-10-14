@@ -2,9 +2,6 @@
   "definitions": {
     "v1beta1ClusterCreateRequest": {
       "properties": {
-        "bacula_enabled": {
-          "type": "boolean"
-        },
         "disks": {
           "items": {
             "type": "string"
