@@ -10,7 +10,7 @@ import "api/dtypes/types.proto";
 
 service Conduit {
   // This rpc is used to check a valid user from other applications.
-  rpc WhoAmI(ConduitRequest) returns (ConduitWhoAmIResponse) {
+  rpc WhoAmI(dtypes.VoidRequest) returns (ConduitWhoAmIResponse) {
     option (google.api.http) = {
       get : "/appscode/api/auth/v1beta1/conduit/whoami"
     };
@@ -20,7 +20,7 @@ service Conduit {
 }
 
   // appctl used this to validates the user token with phabricator.
-  rpc Users(ConduitRequest) returns (ConduitUsersResponse) {
+  rpc Users(dtypes.VoidRequest) returns (ConduitUsersResponse) {
     option (google.api.http) = {
       get: "/appscode/api/auth/v1beta1/conduit/users"
     };
@@ -29,8 +29,6 @@ service Conduit {
     };
   }
 }
-
-message ConduitRequest {}
 
 message ConduitWhoAmIResponse {
   dtypes.Status status = 1;

@@ -16,7 +16,6 @@ It has these top-level messages:
 	LoginResponse
 	LogoutRequest
 	LogoutResponse
-	ConduitRequest
 	ConduitWhoAmIResponse
 	ConduitUsersResponse
 	ConduitUser
