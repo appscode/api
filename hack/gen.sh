@@ -249,7 +249,7 @@ gen_protos() {
   gen_server_protos
   gen_proxy_protos
   gen_cors_patterns
-  gen_js_clients
+  # gen_js_clients
   gen_swagger_defs
   python $DIR/schema.py
   # gen_python_protos
@@ -271,6 +271,10 @@ case "$1" in
 		;;
 	proxy)
 		gen_proxy_protos
+		gen_cors_patterns
+		;;
+	js)
+		gen_js_clients
 		;;
 	swagger)
 		gen_swagger_defs
@@ -287,7 +291,7 @@ case "$1" in
 	php)
 	  gen_php_protos
 	  ;;
-	*)  echo $"Usage: $0 {compile|server|proxy|cors|js|swagger|json-schema|all|clean}"
+	*)  echo $"Usage: $0 {compile|server|proxy|js|swagger|json-schema|all|clean}"
 		RETVAL=1
 		;;
 esac
