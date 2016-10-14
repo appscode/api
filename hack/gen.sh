@@ -218,9 +218,9 @@ gen_php() {
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-         -I ${GOPATH}/src/github.com/google/googleapis/google \
-         --plugin=protoc-gen-php="$(which protoc-gen-php)" \
-         --php_out=':.' *.proto
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
+         --plugin=protoc-gen-grpc="$(which grpc_php_plugin)" \
+         --php_out=':.' --grpc_out=':.' *.proto
 }
 
 gen_php_protos() {
