@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package namespace.v1beta1;
+package appscode.namespace.v1beta1;
 
 option go_package = "v1beta1";
 

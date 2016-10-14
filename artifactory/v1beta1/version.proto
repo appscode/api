@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package artifactory.v1beta1;
+package appscode.artifactory.v1beta1;
 
 option go_package = "v1beta1";
 

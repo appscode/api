@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package billing.v1beta1;
+package appscode.billing.v1beta1;
 
 option go_package = "v1beta1";
 
