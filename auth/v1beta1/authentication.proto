@@ -18,6 +18,10 @@ service Authentication {
     option (google.api.http) = {
       post : "/appscode/api/auth/v1beta1/login"
       body : "*"
+      additional_bindings {
+        post : "/appscode/api/auth/v0.1/login"
+        body : "*"
+      }
     };
     option (appscode.api.cors) = {
       enable: true
@@ -28,6 +32,10 @@ service Authentication {
     option (google.api.http) = {
       post : "/appscode/api/auth/v1beta1/logout"
       body : "*"
+      additional_bindings {
+        post : "/appscode/api/auth/v0.1/logout"
+        body : "*"
+      }
     };
     option (appscode.api.cors) = {
       enable: true
