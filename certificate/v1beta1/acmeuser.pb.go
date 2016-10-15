@@ -23,7 +23,7 @@ It has these top-level messages:
 	SubjectInfo
 	CertificateCreateResponse
 	Certificate
-	CertificateImportRequest
+	CertificateObtainRequest
 	CertificateDeleteRequest
 	CertificateRenewRequest
 	CertificateRenewResponse

@@ -41,7 +41,7 @@ service Certificates {
     };
   }
 
-  rpc Import(CertificateImportRequest) returns (dtypes.VoidResponse) {
+  rpc Obtain(CertificateObtainRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/certificate/v1beta1/certificates/{name}/actions/import"
       body: "*"
@@ -153,7 +153,7 @@ message Certificate {
   string serial_number = 11;
 }
 
-message CertificateImportRequest {
+message CertificateObtainRequest {
   string name = 1;
   string cert_data = 2;
   string key_data = 3;
