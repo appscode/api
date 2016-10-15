@@ -187,11 +187,12 @@ gen_py() {
     return
   fi
   rm -rf *.py
-  protoc -I /usr/local/include -I . \
+  python -m grpc.tools.protoc \
+         -I /usr/local/include -I . \
          -I ${GOPATH}/src/github.com/appscode \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-         -I ${GOPATH}/src/github.com/google/googleapis/google \
-         --python_out=plugins=grpc,${ALIAS}:. *.proto
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
+         --python_out=':.' --grpc_python_out=':.' *.proto
 }
 
 gen_python_protos() {
