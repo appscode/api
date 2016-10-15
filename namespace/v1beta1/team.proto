@@ -4,6 +4,10 @@ package appscode.namespace.v1beta1;
 
 option go_package = "v1beta1";
 
+option java_multiple_files = true;
+option java_outer_classname = "TeamProto";
+option java_package = "com.appscode.api.namespace.v1beta1";
+
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";

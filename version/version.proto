@@ -4,6 +4,10 @@ package appscode.version;
 
 option go_package = "version";
 
+option java_multiple_files = true;
+option java_outer_classname = "VersionProto";
+option java_package = "com.appscode.api.version";
+
 message Version {
   string name              = 1;
   string version           = 2;
