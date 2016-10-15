@@ -10,7 +10,7 @@ option java_package = "com.appscode.api.billing.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "api/dtypes/types.proto";
+import "appscode/api/dtypes/types.proto";
 
 service PaymentMethods {
   rpc Check(dtypes.VoidRequest) returns (dtypes.VoidResponse) {
