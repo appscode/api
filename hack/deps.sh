@@ -44,7 +44,7 @@ EOF
 
 setup_proxy() {
 	echo "Setting up grpc proxy"
-	go get github.com/golang/protobuf/protoc-gen-go
+	go get -u github.com/golang/protobuf/protoc-gen-go
 	mkdir -p $GOPATH/src/github.com/grpc-ecosystem
 	pushd $GOPATH/src/github.com/grpc-ecosystem
 	if [ ! -d grpc-gateway ]; then
