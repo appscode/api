@@ -45,6 +45,19 @@ func init() {
         }
       },
       "type": "object"
+    },
+    "EventRequestParents": {
+      "properties": {
+        "name": {
+          "items": {
+            "type": "string"
+          },
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "array"
+        }
+      },
+      "type": "object"
     }
   },
   "properties": {

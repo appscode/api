@@ -233,6 +233,11 @@ def schema_go(reqs, resps, defs):
                             if nw_obj not in dep_defs:
                                 dep_defs[nw_obj] = defs['requests'][nw_obj]
                                 stack.append(defs['requests'][nw_obj])
+                        if 'additionalProperties' in v and '$ref' in v['additionalProperties']:
+                                nw_obj = v['additionalProperties']['$ref'][len('#/definitions/'):]
+                                if nw_obj not in dep_defs:
+                                    dep_defs[nw_obj] = defs['requests'][nw_obj]
+                                    stack.append(defs['requests'][nw_obj])
             if dep_defs:
                 schema['definitions'] = dep_defs
             schema['$schema'] = 'http://json-schema.org/draft-04/schema#'
