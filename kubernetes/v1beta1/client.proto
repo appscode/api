@@ -1,13 +1,17 @@
 syntax = "proto3";
 
-package kubernetes.v1beta1;
+package appscode.kubernetes.v1beta1;
 
 option go_package = "v1beta1";
 
+option java_multiple_files = true;
+option java_outer_classname = "ClientProto";
+option java_package = "com.appscode.api.kubernetes.v1beta1";
+
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "api/dtypes/types.proto";
-import "api/alert/v1beta1/alert.proto";
+import "appscode/api/dtypes/types.proto";
+import "appscode/api/alert/v1beta1/alert.proto";
 
 // All those clients api in v1beta1 are deprecated. will be removed in future version.
 // Use v0.2 apis instead.

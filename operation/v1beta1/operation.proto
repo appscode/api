@@ -1,20 +1,24 @@
 syntax = "proto3";
 
-package operation.v1beta1;
+package appscode.operation.v1beta1;
 
 option go_package = "v1beta1";
 
+option java_multiple_files = true;
+option java_outer_classname = "OperationProto";
+option java_package = "com.appscode.api.operation.v1beta1";
+
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "api/dtypes/types.proto";
-import "api/certificate/v1beta1/certificate.proto";
-import "api/ci/v1beta1/agent.proto";
-import "api/ci/v1beta1/master.proto";
-import "api/kubernetes/v1beta1/cluster.proto";
-import "api/db/v1beta1/database.proto";
-import "api/db/v1beta1/snapshot.proto";
-import "api/namespace/v1beta1/team.proto";
-import "api/alert/v1beta1/alert.proto";
+import "appscode/api/dtypes/types.proto";
+import "appscode/api/certificate/v1beta1/certificate.proto";
+import "appscode/api/ci/v1beta1/agent.proto";
+import "appscode/api/ci/v1beta1/master.proto";
+import "appscode/api/kubernetes/v1beta1/cluster.proto";
+import "appscode/api/db/v1beta1/database.proto";
+import "appscode/api/db/v1beta1/snapshot.proto";
+import "appscode/api/namespace/v1beta1/team.proto";
+import "appscode/api/alert/v1beta1/alert.proto";
 
 service Operations {
   rpc Describe(DescribeRequest) returns (DescribeResponse) {

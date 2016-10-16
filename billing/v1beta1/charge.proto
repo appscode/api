@@ -1,11 +1,15 @@
 syntax = "proto3";
 
-package billing.v1beta1;
+package appscode.billing.v1beta1;
 
 option go_package = "v1beta1";
 
+option java_multiple_files = true;
+option java_outer_classname = "ChargeProto";
+option java_package = "com.appscode.api.billing.v1beta1";
+
 import "google/api/annotations.proto";
-import "api/dtypes/types.proto";
+import "appscode/api/dtypes/types.proto";
 
 service Charges {
   rpc Estimate(dtypes.VoidRequest) returns (ChargeEstimateResponse) {

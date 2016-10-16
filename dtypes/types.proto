@@ -1,6 +1,12 @@
 syntax = "proto3";
 
-package dtypes;
+package appscode.dtypes;
+
+option go_package = "dtypes";
+
+option java_multiple_files = true;
+option java_outer_classname = "TypeProto";
+option java_package = "com.appscode.api.dtypes";
 
 import "google/protobuf/any.proto";
 

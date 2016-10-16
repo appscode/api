@@ -23,6 +23,18 @@
       "url": "/appscode/api/artifactory/v1beta1/search"
     }
   },
+  "/appscode/api/auth/v0.1/login": {
+    "post": {
+      "file": "/auth/v1beta1/authentication.proto",
+      "url": "/appscode/api/auth/v0.1/login"
+    }
+  },
+  "/appscode/api/auth/v0.1/logout": {
+    "post": {
+      "file": "/auth/v1beta1/authentication.proto",
+      "url": "/appscode/api/auth/v0.1/logout"
+    }
+  },
   "/appscode/api/auth/v1beta1/conduit/users": {
     "get": {
       "file": "/auth/v1beta1/conduit.proto",

@@ -1,12 +1,16 @@
 syntax = "proto3";
 
-package certificate.v1beta1;
+package appscode.certificate.v1beta1;
 
 option go_package = "v1beta1";
 
+option java_multiple_files = true;
+option java_outer_classname = "CertificateProto";
+option java_package = "com.appscode.api.certificate.v1beta1";
+
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "api/dtypes/types.proto";
+import "appscode/api/dtypes/types.proto";
 
 service Certificates {
   rpc List(CertificateListRequest) returns (CertificateListResponse) {
@@ -37,7 +41,7 @@ service Certificates {
     };
   }
 
-  rpc Import(CertificateImportRequest) returns (dtypes.VoidResponse) {
+  rpc Obtain(CertificateObtainRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/certificate/v1beta1/certificates/{name}/actions/import"
       body: "*"
@@ -149,7 +153,7 @@ message Certificate {
   string serial_number = 11;
 }
 
-message CertificateImportRequest {
+message CertificateObtainRequest {
   string name = 1;
   string cert_data = 2;
   string key_data = 3;

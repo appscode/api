@@ -73,7 +73,10 @@
       },
       "type": "object"
     },
-    "v1beta1CertificateImportRequest": {
+    "v1beta1CertificateListRequest": {
+      "type": "object"
+    },
+    "v1beta1CertificateObtainRequest": {
       "properties": {
         "cert_data": {
           "type": "string"
@@ -87,9 +90,6 @@
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "v1beta1CertificateListRequest": {
       "type": "object"
     },
     "v1beta1CertificateRenewRequest": {

@@ -1,16 +1,20 @@
 syntax = "proto3";
 
-package auth.v1beta1;
+package appscode.auth.v1beta1;
 
 option go_package = "v1beta1";
 
+option java_multiple_files = true;
+option java_outer_classname = "ConduitProto";
+option java_package = "com.appscode.api.auth.v1beta1";
+
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "api/dtypes/types.proto";
+import "appscode/api/dtypes/types.proto";
 
 service Conduit {
   // This rpc is used to check a valid user from other applications.
-  rpc WhoAmI(ConduitRequest) returns (ConduitWhoAmIResponse) {
+  rpc WhoAmI(dtypes.VoidRequest) returns (ConduitWhoAmIResponse) {
     option (google.api.http) = {
       get : "/appscode/api/auth/v1beta1/conduit/whoami"
     };
@@ -20,7 +24,7 @@ service Conduit {
 }
 
   // appctl used this to validates the user token with phabricator.
-  rpc Users(ConduitRequest) returns (ConduitUsersResponse) {
+  rpc Users(dtypes.VoidRequest) returns (ConduitUsersResponse) {
     option (google.api.http) = {
       get: "/appscode/api/auth/v1beta1/conduit/users"
     };
@@ -29,8 +33,6 @@ service Conduit {
     };
   }
 }
-
-message ConduitRequest {}
 
 message ConduitWhoAmIResponse {
   dtypes.Status status = 1;

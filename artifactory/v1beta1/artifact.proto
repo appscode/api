@@ -1,12 +1,16 @@
 syntax = "proto3";
 
-package artifactory.v1beta1;
+package appscode.artifactory.v1beta1;
 
 option go_package = "v1beta1";
 
+option java_multiple_files = true;
+option java_outer_classname = "ArtifactProto";
+option java_package = "com.appscode.api.artifactory.v1beta1";
+
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "api/dtypes/types.proto";
+import "appscode/api/dtypes/types.proto";
 
 service Artifacts {
   rpc Search(ArtifactSearchRequest) returns(ArtifactSearchResponse) {

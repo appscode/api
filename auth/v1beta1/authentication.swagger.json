@@ -151,6 +151,59 @@
     "version": "1beta1"
   },
   "paths": {
+    "/appscode/api/auth/v0.1/login": {
+      "post": {
+        "operationId": "Login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1LoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1LoginResponse"
+            }
+          }
+        },
+        "summary": "This rpc is used to check a valid user from other applications.",
+        "tags": [
+          "Authentication"
+        ]
+      }
+    },
+    "/appscode/api/auth/v0.1/logout": {
+      "post": {
+        "operationId": "Logout",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1LogoutRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1LogoutResponse"
+            }
+          }
+        },
+        "tags": [
+          "Authentication"
+        ]
+      }
+    },
     "/appscode/api/auth/v1beta1/login": {
       "post": {
         "operationId": "Login",
