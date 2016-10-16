@@ -29,15 +29,22 @@
           "format": "string",
           "type": "string"
         },
+        "parents": {
+          "additionalProperties": {
+            "$ref": "#/definitions/EventRequestParents"
+          },
+          "type": "object"
+        },
         "pod_ip": {
           "format": "string",
           "type": "string"
-        },
-        "replication_controller": {
-          "format": "string",
-          "type": "string"
-        },
-        "service": {
+        }
+      },
+      "type": "object"
+    },
+    "EventRequestParents": {
+      "properties": {
+        "name": {
           "items": {
             "format": "string",
             "type": "string"

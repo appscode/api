@@ -34,17 +34,14 @@ func init() {
         "namespace": {
           "type": "string"
         },
+        "parents": {
+          "additionalProperties": {
+            "$ref": "#/definitions/EventRequestParents"
+          },
+          "type": "object"
+        },
         "pod_ip": {
           "type": "string"
-        },
-        "replication_controller": {
-          "type": "string"
-        },
-        "service": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
         }
       },
       "type": "object"

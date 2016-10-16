@@ -39,14 +39,18 @@ message EventRequest {
 
   message ObjectMeta {
     string kind = 1;
-    repeated string service = 2;
-    string replication_controller = 3;
+    map<string, Parents> parents = 9;
     string namespace = 4;
     string pod_ip = 5;
     string instance_id = 6;
     string instance_ip = 7;
     map<string, string> labels = 8;
   }
+
+  message Parents {
+    repeated string name = 1;
+  }
+
   ObjectMeta metadata = 7;
 }
 
