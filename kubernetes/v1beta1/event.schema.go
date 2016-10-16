@@ -14,8 +14,28 @@ func init() {
 	eventRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
+    "EventRequestAncestors": {
+      "properties": {
+        "names": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "EventRequestObjectMeta": {
       "properties": {
+        "ancestors": {
+          "items": {
+            "$ref": "#/definitions/EventRequestAncestors"
+          },
+          "type": "array"
+        },
         "instance_id": {
           "type": "string"
         },
@@ -34,27 +54,8 @@ func init() {
         "namespace": {
           "type": "string"
         },
-        "parents": {
-          "additionalProperties": {
-            "$ref": "#/definitions/EventRequestParents"
-          },
-          "type": "object"
-        },
         "pod_ip": {
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "EventRequestParents": {
-      "properties": {
-        "name": {
-          "items": {
-            "type": "string"
-          },
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-          "type": "array"
         }
       },
       "type": "object"

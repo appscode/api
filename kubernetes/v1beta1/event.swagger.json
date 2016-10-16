@@ -4,8 +4,30 @@
     "application/json"
   ],
   "definitions": {
+    "EventRequestAncestors": {
+      "properties": {
+        "names": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "EventRequestObjectMeta": {
       "properties": {
+        "ancestors": {
+          "items": {
+            "$ref": "#/definitions/EventRequestAncestors"
+          },
+          "type": "array"
+        },
         "instance_id": {
           "format": "string",
           "type": "string"
@@ -29,27 +51,9 @@
           "format": "string",
           "type": "string"
         },
-        "parents": {
-          "additionalProperties": {
-            "$ref": "#/definitions/EventRequestParents"
-          },
-          "type": "object"
-        },
         "pod_ip": {
           "format": "string",
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "EventRequestParents": {
-      "properties": {
-        "name": {
-          "items": {
-            "format": "string",
-            "type": "string"
-          },
-          "type": "array"
         }
       },
       "type": "object"

@@ -41,20 +41,19 @@ message EventRequest {
   string kube_object_name = 4;
   string event_type = 5;
 
+  message Ancestors {
+    string type = 1;
+    repeated string names = 2;
+  }
   message ObjectMeta {
     string kind = 1;
-    map<string, Parents> parents = 9;
+    repeated Ancestors ancestors = 9;
     string namespace = 4;
     string pod_ip = 5;
     string instance_id = 6;
     string instance_ip = 7;
     map<string, string> labels = 8;
   }
-
-  message Parents {
-    repeated string name = 1;
-  }
-
   ObjectMeta metadata = 7;
 }
 
