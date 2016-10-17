@@ -85,7 +85,7 @@ message SnapshotListRequest {
 message SnapshotListResponse {
   dtypes.Status status = 1;
   DatabaseInfo database_info = 2;
-  repeated Snapshot list = 3;
+  repeated Snapshot snapshots = 3;
 }
 
 // Next Id: 13

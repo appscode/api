@@ -68,7 +68,7 @@ message PVInfo {
   string volume = 4;
   string claim = 5;
   string plugin = 6;
-  repeated string accessModes = 7;
+  repeated string access_modes = 7;
 }
 
 message PVDescribeResponse {

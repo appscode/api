@@ -205,7 +205,7 @@
     },
     "v1beta1ClusterListResponse": {
       "properties": {
-        "glusterfs": {
+        "clusters": {
           "items": {
             "$ref": "#/definitions/v1beta1Cluster"
           },

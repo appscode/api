@@ -87,7 +87,7 @@ message IncidentListRequest {
   string kubernetes_namespace  = 2;
   string kubernetes_objectType = 3;
   string kubernetes_objectName = 4;
-  repeated string state = 5;
+  repeated string states = 5;
 }
 
 message IncidentListResponse {

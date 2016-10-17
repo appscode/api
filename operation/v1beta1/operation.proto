@@ -52,7 +52,7 @@ message DescribeRequest {
 message DescribeResponse {
   dtypes.Status status = 1;
   Operation op = 2;
-  repeated Log log = 3;
+  repeated Log logs = 3;
 }
 
 message LogDescribeRequest {
@@ -79,7 +79,7 @@ message Auth {
 // its own data type. Resolves data convertions.
 message Metadata {
   // Contains PurchasePHID is this is a purchase request.
-  repeated string purchase_phid = 1;
+  repeated string purchase_phids = 1;
 
   // PHID of the user who requested this operation.
   string author_phid = 2;

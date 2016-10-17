@@ -71,7 +71,7 @@ message DiskListRequest {
 message DiskListResponse {
   dtypes.Status status = 1;
   string  kube = 2;
-  repeated Result result = 3;
+  repeated Result results = 3;
 }
 
 message Result{

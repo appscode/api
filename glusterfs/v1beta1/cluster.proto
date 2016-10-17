@@ -80,7 +80,7 @@ message ClusterListRequest {
 
 message ClusterListResponse {
   dtypes.Status status = 1;
-  repeated Cluster glusterfs = 2;
+  repeated Cluster clusters = 2;
 }
 
 message ClusterDescribeRequest {

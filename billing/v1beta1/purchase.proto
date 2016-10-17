@@ -40,7 +40,7 @@ message PurchaseBeginRequest {
 
 message PurchaseBeginResponse {
   dtypes.Status status = 1;
-  repeated string phid_list = 2;
+  repeated string phids = 2;
 }
 
 message PurchaseCompleteRequest {

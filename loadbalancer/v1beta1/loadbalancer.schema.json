@@ -79,7 +79,7 @@
         "backend": {
           "$ref": "#/definitions/v1beta1LoadBalancerBackend"
         },
-        "header_rule": {
+        "header_rules": {
           "items": {
             "type": "string"
           },
@@ -88,7 +88,7 @@
         "path": {
           "type": "string"
         },
-        "rewrite_rule": {
+        "rewrite_rules": {
           "items": {
             "type": "string"
           },

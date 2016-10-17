@@ -110,7 +110,7 @@ message CertificateCreateRequest {
   string account_phid = 1;
   string name = 2;
   string common_name = 3;
-  repeated string san = 4;
+  repeated string sans = 4;
   bool bundle = 5;
   string key_data = 6;
   SubjectInfo subject_info = 7;

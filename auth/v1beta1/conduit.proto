@@ -41,7 +41,7 @@ message ConduitWhoAmIResponse {
 
 message ConduitUsersResponse {
   dtypes.Status status = 1;
-  repeated ConduitUser user = 2;
+  repeated ConduitUser users = 2;
 }
 
 message ConduitUser {

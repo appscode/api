@@ -29,5 +29,5 @@ message BucketListRequest {
 
 message BucketListResponse {
   dtypes.Status status = 1;
-  repeated string name = 2;
+  repeated string names = 2;
 }

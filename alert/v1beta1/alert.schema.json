@@ -35,7 +35,7 @@
         "kubernetes_objectType": {
           "type": "string"
         },
-        "notifier_param": {
+        "notifier_params": {
           "items": {
             "$ref": "#/definitions/v1beta1NotifierParam"
           },
@@ -101,7 +101,7 @@
         "kubernetes_objectType": {
           "type": "string"
         },
-        "pod_ancestor": {
+        "pod_ancestors": {
           "items": {
             "$ref": "#/definitions/AlertSyncRequestPodAncestor"
           },
@@ -116,7 +116,7 @@
         "icinga_param": {
           "$ref": "#/definitions/v1beta1IcingaParam"
         },
-        "notifier_param": {
+        "notifier_params": {
           "items": {
             "$ref": "#/definitions/v1beta1NotifierParam"
           },

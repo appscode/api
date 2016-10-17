@@ -91,7 +91,7 @@
     },
     "v1beta1PurchaseBeginResponse": {
       "properties": {
-        "phid_list": {
+        "phids": {
           "items": {
             "format": "string",
             "type": "string"

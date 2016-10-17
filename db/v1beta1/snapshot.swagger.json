@@ -215,7 +215,7 @@
         "database_info": {
           "$ref": "#/definitions/v1beta1DatabaseInfo"
         },
-        "list": {
+        "snapshots": {
           "items": {
             "$ref": "#/definitions/v1beta1Snapshot"
           },

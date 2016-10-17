@@ -116,7 +116,7 @@
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         },
-        "user": {
+        "users": {
           "items": {
             "$ref": "#/definitions/v1beta1ConduitUser"
           },

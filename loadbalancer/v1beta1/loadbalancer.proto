@@ -68,7 +68,7 @@ message ListRequest {
 
 message ListResponse {
   dtypes.Status status = 1;
-  repeated LoadBalancer load_balancer = 2;
+  repeated LoadBalancer load_balancers = 2;
 }
 
 message DescribeRequest {
@@ -161,8 +161,8 @@ message LoadBalancerRule {
 message HTTPLoadBalancerRule {
   string path = 1;
   LoadBalancerBackend backend = 2;
-  repeated string header_rule = 3;
-  repeated string rewrite_rule = 4;
+  repeated string header_rules = 3;
+  repeated string rewrite_rules = 4;
 }
 
 message TCPLoadBalancerRule {

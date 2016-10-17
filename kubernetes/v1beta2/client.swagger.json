@@ -164,7 +164,7 @@
       },
       "type": "object"
     },
-    "MetricsMetricResult": {
+    "MetricsDataPoint": {
       "properties": {
         "timestamp": {
           "format": "int64",
@@ -194,7 +194,7 @@
           "format": "string",
           "type": "string"
         },
-        "volume_mount": {
+        "volume_mounts": {
           "items": {
             "$ref": "#/definitions/ContainerVolumeMount"
           },
@@ -1000,22 +1000,14 @@
     "v1beta2Metrics": {
       "properties": {
         "cpu_usage": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "cpu_usage_history": {
           "items": {
-            "$ref": "#/definitions/MetricsMetricResult"
+            "$ref": "#/definitions/MetricsDataPoint"
           },
           "type": "array"
         },
         "memory_usage": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "memory_usage_history": {
           "items": {
-            "$ref": "#/definitions/MetricsMetricResult"
+            "$ref": "#/definitions/MetricsDataPoint"
           },
           "type": "array"
         }

@@ -105,7 +105,7 @@ message JobDescribeResponse {
   int64 last_failed_build_id = 14;
   int64 last_successful_build_id = 15;
   int64 next_build_number = 16;
-  repeated JobHealth health_report = 17;
+  repeated JobHealth health_reports = 17;
 }
 
 message JobHealth {

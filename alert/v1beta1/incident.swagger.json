@@ -243,7 +243,7 @@
           "format": "string",
           "type": "string"
         },
-        "state": {
+        "states": {
           "items": {
             "format": "string",
             "type": "string"

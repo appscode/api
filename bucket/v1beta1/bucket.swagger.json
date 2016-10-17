@@ -79,7 +79,7 @@
     },
     "v1beta1BucketListResponse": {
       "properties": {
-        "name": {
+        "names": {
           "items": {
             "format": "string",
             "type": "string"

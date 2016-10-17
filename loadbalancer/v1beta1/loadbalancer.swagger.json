@@ -165,7 +165,7 @@
         "backend": {
           "$ref": "#/definitions/v1beta1LoadBalancerBackend"
         },
-        "header_rule": {
+        "header_rules": {
           "items": {
             "format": "string",
             "type": "string"
@@ -176,7 +176,7 @@
           "format": "string",
           "type": "string"
         },
-        "rewrite_rule": {
+        "rewrite_rules": {
           "items": {
             "format": "string",
             "type": "string"
@@ -197,7 +197,7 @@
     },
     "v1beta1ListResponse": {
       "properties": {
-        "load_balancer": {
+        "load_balancers": {
           "items": {
             "$ref": "#/definitions/v1beta1LoadBalancer"
           },

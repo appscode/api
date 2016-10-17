@@ -203,7 +203,7 @@
           "format": "int64",
           "type": "integer"
         },
-        "health_report": {
+        "health_reports": {
           "items": {
             "$ref": "#/definitions/v1beta1JobHealth"
           },

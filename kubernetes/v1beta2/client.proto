@@ -126,8 +126,8 @@ message ConfigMapEditRequest {
   string cluster = 1;
   string namespace = 2;
   string name = 3;
-  map<string, string>  add = 4;
-  map<string, string>  update = 5;
+  map<string, string> add = 4;
+  map<string, string> update = 5;
   repeated string deleted = 6;
 }
 
@@ -286,7 +286,7 @@ message PodSpec {
     string name  = 1;
     string image = 2;
     repeated string commands = 3;
-    repeated VolumeMount volume_mount = 4;
+    repeated VolumeMount volume_mounts = 4;
 
     message VolumeMount {
       string name = 1;
@@ -545,12 +545,10 @@ message EventSource {
 }
 
 message Metrics {
-  int64 cpu_usage = 1;
-  int64 memory_usage = 2;
-  repeated MetricResult cpu_usage_history = 3;
-  repeated MetricResult memory_usage_history = 4;
+  repeated DataPoint cpu_usage = 1;
+  repeated DataPoint memory_usage = 2;
 
-  message MetricResult {
+  message DataPoint {
     int64 timestamp = 1;
     int64 value     = 2;
   }

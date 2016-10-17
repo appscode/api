@@ -101,7 +101,7 @@ message Alert {
   string icinga_service = 7;
   IcingaParam icinga_param = 8;
   string check_command = 9;
-  repeated NotifierParam notifier_param = 11;
+  repeated NotifierParam notifier_params = 11;
   string icingaweb_url = 12;
   map <string, string> vars = 13;
 }
@@ -128,7 +128,7 @@ message AlertCreateRequest {
   string icinga_service = 6;
   IcingaParam icinga_param = 7;
   string check_command = 8;
-  repeated NotifierParam notifier_param = 10;
+  repeated NotifierParam notifier_params = 10;
   map <string, string> vars = 11;
 }
 
@@ -146,7 +146,7 @@ message AlertDescribeResponse {
 message AlertUpdateRequest {
   string phid = 1;
   IcingaParam icinga_param = 2;
-  repeated NotifierParam notifier_param = 4;
+  repeated NotifierParam notifier_params = 4;
   map <string, string> vars = 5;
 }
 
@@ -161,7 +161,7 @@ message AlertSyncRequest {
     string type = 1;
     string name = 2;
   }
-  repeated PodAncestor pod_ancestor = 5;
+  repeated PodAncestor pod_ancestors = 5;
 }
 
 // Next Id: 2

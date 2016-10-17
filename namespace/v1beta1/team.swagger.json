@@ -115,7 +115,7 @@
           "format": "string",
           "type": "string"
         },
-        "invite_email": {
+        "invite_emails": {
           "items": {
             "format": "string",
             "type": "string"

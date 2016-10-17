@@ -148,7 +148,7 @@
           "format": "string",
           "type": "string"
         },
-        "pod_ancestor": {
+        "pod_ancestors": {
           "items": {
             "$ref": "#/definitions/AlertSyncRequestPodAncestor"
           },
@@ -349,7 +349,7 @@
           "format": "string",
           "type": "string"
         },
-        "invite_email": {
+        "invite_emails": {
           "items": {
             "format": "string",
             "type": "string"
@@ -452,7 +452,7 @@
     },
     "v1beta1DescribeResponse": {
       "properties": {
-        "log": {
+        "logs": {
           "items": {
             "$ref": "#/definitions/v1beta1Log"
           },
@@ -550,7 +550,7 @@
           "format": "string",
           "type": "string"
         },
-        "purchase_phid": {
+        "purchase_phids": {
           "description": "Contains PurchasePHID is this is a purchase request.",
           "items": {
             "format": "string",

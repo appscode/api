@@ -155,7 +155,7 @@
           "format": "string",
           "type": "string"
         },
-        "san": {
+        "sans": {
           "items": {
             "format": "string",
             "type": "string"

@@ -209,7 +209,7 @@
           "format": "string",
           "type": "string"
         },
-        "result": {
+        "results": {
           "items": {
             "$ref": "#/definitions/v1beta1Result"
           },
