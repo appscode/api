@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package appscode.kubernetes.v1beta1;
+
+option go_package = "v1beta1";
+
+option java_multiple_files = true;
+option java_outer_classname = "MetadataProto";
+option java_package = "com.appscode.api.kubernetes.v1beta1";
+
+import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
+import "appscode/api/dtypes/types.proto";
+
+service Metadata {
+  rpc ListRegions(ListRegionsRequest) returns (ListRegionsResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/cloud/v1beta1/metadata/{provider}/regions"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc ListZones(ListZonesRequest) returns (ListZonesResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/cloud/v1beta1/metadata/{provider}/regions/{region}/zones"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
+message ListRegionsRequest {
+  string provider = 1;
+  string cloud_credential = 2; // name or phid
+}
+
+message ListRegionsResponse {
+  dtypes.Status status = 1;
+  repeated string regions = 2;
+}
+
+message ListZonesRequest {
+  string provider = 1;
+  string region = 2;
+  string cloud_credential = 3; // name or phid
+}
+
+message ListZonesResponse {
+  dtypes.Status status = 1;
+  repeated string zones = 2;
+}

@@ -293,6 +293,18 @@
       "url": "/appscode/api/cloud/v1beta1/credentials/{name}/is-authorized"
     }
   },
+  "/appscode/api/cloud/v1beta1/metadata/*/regions": {
+    "get": {
+      "file": "/kubernetes/v1beta1/metadata.proto",
+      "url": "/appscode/api/cloud/v1beta1/metadata/{provider}/regions"
+    }
+  },
+  "/appscode/api/cloud/v1beta1/metadata/*/regions/*/zones": {
+    "get": {
+      "file": "/kubernetes/v1beta1/metadata.proto",
+      "url": "/appscode/api/cloud/v1beta1/metadata/{provider}/regions/{region}/zones"
+    }
+  },
   "/appscode/api/health": {
     "get": {
       "file": "/health/health.proto",
