@@ -274,11 +274,11 @@
     },
     "v1beta1ClusterDeleteRequest": {
       "properties": {
-        "destroy_dynamic_volumes": {
+        "delete_dynamic_volumes": {
           "format": "boolean",
           "type": "boolean"
         },
-        "destroy_lodabalancers": {
+        "delete_lodabalancers": {
           "format": "boolean",
           "type": "boolean"
         },
