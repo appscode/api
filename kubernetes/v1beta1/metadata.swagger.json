@@ -135,7 +135,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/cloud/v1beta1/metadata/{provider}/regions": {
+    "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions": {
       "get": {
         "operationId": "ListRegions",
         "parameters": [
@@ -160,7 +160,7 @@
         ]
       }
     },
-    "/appscode/api/cloud/v1beta1/metadata/{provider}/regions/{region}/zones": {
+    "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions/{region}/zones": {
       "get": {
         "operationId": "ListZones",
         "parameters": [

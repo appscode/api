@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Metadata {
   rpc ListRegions(ListRegionsRequest) returns (ListRegionsResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/cloud/v1beta1/metadata/{provider}/regions"
+      get : "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Metadata {
 
   rpc ListZones(ListZonesRequest) returns (ListZonesResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/cloud/v1beta1/metadata/{provider}/regions/{region}/zones"
+      get : "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions/{region}/zones"
     };
     option (appscode.api.cors) = {
       enable: true

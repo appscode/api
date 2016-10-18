@@ -293,16 +293,16 @@
       "url": "/appscode/api/cloud/v1beta1/credentials/{name}/is-authorized"
     }
   },
-  "/appscode/api/cloud/v1beta1/metadata/*/regions": {
+  "/appscode/api/cloud/v1beta1/metadata/providers/*/regions": {
     "get": {
       "file": "/kubernetes/v1beta1/metadata.proto",
-      "url": "/appscode/api/cloud/v1beta1/metadata/{provider}/regions"
+      "url": "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions"
     }
   },
-  "/appscode/api/cloud/v1beta1/metadata/*/regions/*/zones": {
+  "/appscode/api/cloud/v1beta1/metadata/providers/*/regions/*/zones": {
     "get": {
       "file": "/kubernetes/v1beta1/metadata.proto",
-      "url": "/appscode/api/cloud/v1beta1/metadata/{provider}/regions/{region}/zones"
+      "url": "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions/{region}/zones"
     }
   },
   "/appscode/api/health": {
