@@ -68,20 +68,40 @@
       },
       "type": "object"
     },
-    "v1beta1ListRegionsRequest": {
+    "v1beta1BucketListRequest": {
       "properties": {
         "cloud_credential": {
-          "format": "string",
-          "type": "string"
-        },
-        "provider": {
           "format": "string",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1beta1ListRegionsResponse": {
+    "v1beta1BucketListResponse": {
+      "properties": {
+        "names": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1RegionListRequest": {
+      "properties": {
+        "cloud_credential": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1RegionListResponse": {
       "properties": {
         "regions": {
           "items": {
@@ -96,13 +116,9 @@
       },
       "type": "object"
     },
-    "v1beta1ListZonesRequest": {
+    "v1beta1ZoneListRequest": {
       "properties": {
         "cloud_credential": {
-          "format": "string",
-          "type": "string"
-        },
-        "provider": {
           "format": "string",
           "type": "string"
         },
@@ -113,7 +129,7 @@
       },
       "type": "object"
     },
-    "v1beta1ListZonesResponse": {
+    "v1beta1ZoneListResponse": {
       "properties": {
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -135,23 +151,14 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions": {
+    "/appscode/api/cloud/v1beta1/buckets": {
       "get": {
-        "operationId": "ListRegions",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "provider",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "operationId": "ListBuckets",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1ListRegionsResponse"
+              "$ref": "#/definitions/v1beta1BucketListResponse"
             }
           }
         },
@@ -160,17 +167,26 @@
         ]
       }
     },
-    "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions/{region}/zones": {
+    "/appscode/api/cloud/v1beta1/regions": {
+      "get": {
+        "operationId": "ListRegions",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1RegionListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Metadata"
+        ]
+      }
+    },
+    "/appscode/api/cloud/v1beta1/regions/{region}/zones": {
       "get": {
         "operationId": "ListZones",
         "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "provider",
-            "required": true,
-            "type": "string"
-          },
           {
             "format": "string",
             "in": "path",
@@ -183,7 +199,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1ListZonesResponse"
+              "$ref": "#/definitions/v1beta1ZoneListResponse"
             }
           }
         },

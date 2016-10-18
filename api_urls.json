@@ -243,7 +243,7 @@
   },
   "/appscode/api/cloud/v1beta1/buckets": {
     "get": {
-      "file": "/bucket/v1beta1/bucket.proto",
+      "file": "/kubernetes/v1beta1/metadata.proto",
       "url": "/appscode/api/cloud/v1beta1/buckets"
     }
   },
@@ -293,16 +293,16 @@
       "url": "/appscode/api/cloud/v1beta1/credentials/{name}/is-authorized"
     }
   },
-  "/appscode/api/cloud/v1beta1/metadata/providers/*/regions": {
+  "/appscode/api/cloud/v1beta1/regions": {
     "get": {
       "file": "/kubernetes/v1beta1/metadata.proto",
-      "url": "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions"
+      "url": "/appscode/api/cloud/v1beta1/regions"
     }
   },
-  "/appscode/api/cloud/v1beta1/metadata/providers/*/regions/*/zones": {
+  "/appscode/api/cloud/v1beta1/regions/*/zones": {
     "get": {
       "file": "/kubernetes/v1beta1/metadata.proto",
-      "url": "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions/{region}/zones"
+      "url": "/appscode/api/cloud/v1beta1/regions/{region}/zones"
     }
   },
   "/appscode/api/health": {

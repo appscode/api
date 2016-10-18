@@ -1,26 +1,30 @@
 {
   "definitions": {
-    "v1beta1ListRegionsRequest": {
+    "v1beta1BucketListRequest": {
       "properties": {
         "cloud_credential": {
           "maxLength": 63,
           "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-          "type": "string"
-        },
-        "provider": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1beta1ListZonesRequest": {
+    "v1beta1RegionListRequest": {
       "properties": {
         "cloud_credential": {
           "maxLength": 63,
           "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
-        },
-        "provider": {
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ZoneListRequest": {
+      "properties": {
+        "cloud_credential": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "region": {

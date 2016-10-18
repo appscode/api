@@ -13,18 +13,27 @@ import "appscode/api/annotations.proto";
 import "appscode/api/dtypes/types.proto";
 
 service Metadata {
-  rpc ListRegions(ListRegionsRequest) returns (ListRegionsResponse) {
+  rpc ListRegions(RegionListRequest) returns (RegionListResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions"
+      get : "/appscode/api/cloud/v1beta1/regions"
     };
     option (appscode.api.cors) = {
       enable: true
     };
   }
 
-  rpc ListZones(ListZonesRequest) returns (ListZonesResponse) {
+  rpc ListZones(ZoneListRequest) returns (ZoneListResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/cloud/v1beta1/metadata/providers/{provider}/regions/{region}/zones"
+      get : "/appscode/api/cloud/v1beta1/regions/{region}/zones"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc ListBuckets(BucketListRequest) returns (BucketListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/cloud/v1beta1/buckets"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -32,23 +41,30 @@ service Metadata {
   }
 }
 
-message ListRegionsRequest {
-  string provider = 1;
-  string cloud_credential = 2; // name or phid
+message RegionListRequest {
+  string cloud_credential = 1; // name or phid
 }
 
-message ListRegionsResponse {
+message RegionListResponse {
   dtypes.Status status = 1;
   repeated string regions = 2;
 }
 
-message ListZonesRequest {
-  string provider = 1;
+message ZoneListRequest {
+  string cloud_credential = 1; // name or phid
   string region = 2;
-  string cloud_credential = 3; // name or phid
 }
 
-message ListZonesResponse {
+message ZoneListResponse {
   dtypes.Status status = 1;
   repeated string zones = 2;
+}
+
+message BucketListRequest {
+  string cloud_credential = 1; // name or phid
+}
+
+message BucketListResponse {
+  dtypes.Status status = 1;
+  repeated string names = 2;
 }
