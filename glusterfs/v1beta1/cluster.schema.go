@@ -76,11 +76,8 @@ func init() {
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "disks": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+    "disk_size_gb": {
+      "type": "integer"
     },
     "kube_cluster": {
       "type": "string"

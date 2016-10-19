@@ -2,11 +2,8 @@
   "definitions": {
     "v1beta1ClusterCreateRequest": {
       "properties": {
-        "disks": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
+        "disk_size_gb": {
+          "type": "integer"
         },
         "kube_cluster": {
           "type": "string"

@@ -97,7 +97,7 @@ message ClusterDescribeResponse {
 message ClusterCreateRequest {
   string name = 1;
   int32 node = 2;
-  repeated string disks = 3;
+  int32 disk_size_gb = 6;
   string kube_cluster = 4;
   string kube_namespace = 5;
 }

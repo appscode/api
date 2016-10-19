@@ -115,12 +115,9 @@
     },
     "v1beta1ClusterCreateRequest": {
       "properties": {
-        "disks": {
-          "items": {
-            "format": "string",
-            "type": "string"
-          },
-          "type": "array"
+        "disk_size_gb": {
+          "format": "int32",
+          "type": "integer"
         },
         "kube_cluster": {
           "format": "string",
