@@ -131,7 +131,7 @@
     },
     "v1beta1Database": {
       "properties": {
-        "auth_secret": {
+        "auth_secret_name": {
           "format": "string",
           "type": "string"
         },
@@ -151,6 +151,10 @@
           "format": "boolean",
           "type": "boolean"
         },
+        "hostname": {
+          "format": "string",
+          "type": "string"
+        },
         "last_backup_at": {
           "format": "int64",
           "type": "integer"
@@ -158,6 +162,10 @@
         "name": {
           "format": "string",
           "type": "string"
+        },
+        "node_count": {
+          "format": "int32",
+          "type": "integer"
         },
         "phid": {
           "format": "string",
@@ -179,6 +187,10 @@
           "format": "string",
           "type": "string"
         },
+        "storage_class": {
+          "format": "string",
+          "type": "string"
+        },
         "type": {
           "format": "string",
           "type": "string"
@@ -188,7 +200,7 @@
           "type": "string"
         }
       },
-      "title": "Next Id: 19",
+      "title": "Next Id: 22",
       "type": "object"
     },
     "v1beta1DatabaseCreateRequest": {
@@ -216,11 +228,11 @@
           "format": "string",
           "type": "string"
         },
-        "pv_size_gb": {
+        "node_count": {
           "format": "int32",
           "type": "integer"
         },
-        "size": {
+        "pv_size_gb": {
           "format": "int32",
           "type": "integer"
         },
@@ -352,7 +364,7 @@
           "format": "string",
           "type": "string"
         },
-        "size": {
+        "node_count": {
           "format": "int32",
           "type": "integer"
         },
