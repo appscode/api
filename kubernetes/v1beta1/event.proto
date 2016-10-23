@@ -51,7 +51,8 @@ message EventRequest {
     string namespace = 4;
     string pod_ip = 5;
     string instance_id = 6;
-    string instance_ip = 7;
+    string instance_internal_ip = 7;
+    string instance_external_ip = 10;
     map<string, string> labels = 8;
   }
   ObjectMeta metadata = 7;
