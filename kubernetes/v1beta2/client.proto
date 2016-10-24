@@ -168,6 +168,7 @@ message KubeResourceList {
     Services services = 12;
     Secrets secrets = 13;
     ReplicationControllers replication_controllers = 14;
+    StorageClasses storage_classes = 15;
   }
 
   message Apps {
@@ -221,6 +222,10 @@ message KubeResourceList {
   message ReplicationControllers {
     repeated ReplicationController items = 1;
   }
+
+  message StorageClasses {
+      repeated StorageClass items = 1;
+  }
 }
 
 message KubeResource {
@@ -239,9 +244,10 @@ message KubeResource {
     Service service = 12;
     Secret secret = 13;
     ReplicationController replication_controller = 14;
+    StorageClass storage_class = 15;
   }
-  repeated Event events = 15;
-  Raw raw = 16;
+  repeated Event events = 16;
+  Raw raw = 17;
 }
 
 message Meta {
@@ -522,6 +528,12 @@ message PetSet {
     int32 current_replicas = 1;
     int64 observed_generation = 2;
   }
+}
+
+message StorageClass {
+    Meta meta = 1;
+    string provisioner = 2;
+    map<string, string> parameters = 3;
 }
 
 message LabelSelector {

@@ -164,6 +164,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListStorageClasses": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2StorageClass"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "MetricsDataPoint": {
       "properties": {
         "timestamp": {
@@ -839,6 +850,9 @@
         "service": {
           "$ref": "#/definitions/v1beta2Service"
         },
+        "storage_class": {
+          "$ref": "#/definitions/v1beta2StorageClass"
+        },
         "type": {
           "format": "string",
           "type": "string"
@@ -886,6 +900,9 @@
         },
         "services": {
           "$ref": "#/definitions/KubeResourceListServices"
+        },
+        "storage_classes": {
+          "$ref": "#/definitions/KubeResourceListStorageClasses"
         },
         "type": {
           "format": "string",
@@ -1450,6 +1467,25 @@
             "$ref": "#/definitions/StatusLoadBalancerIngress"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2StorageClass": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "parameters": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "provisioner": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
