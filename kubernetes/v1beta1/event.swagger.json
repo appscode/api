@@ -28,11 +28,15 @@
           },
           "type": "array"
         },
+        "instance_external_ip": {
+          "format": "string",
+          "type": "string"
+        },
         "instance_id": {
           "format": "string",
           "type": "string"
         },
-        "instance_ip": {
+        "instance_internal_ip": {
           "format": "string",
           "type": "string"
         },

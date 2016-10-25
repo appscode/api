@@ -241,7 +241,6 @@ message ClusterClientConfigRequest {
 
 message ClusterClientConfigResponse {
   dtypes.Status status = 1;
-  string configuration = 2 [deprecated=true];
   string cluster_domain = 3;
   string ca_cert = 4;
   string api_server_url = 5;

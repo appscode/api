@@ -256,10 +256,6 @@
           "format": "string",
           "type": "string"
         },
-        "configuration": {
-          "format": "string",
-          "type": "string"
-        },
         "context_name": {
           "format": "string",
           "type": "string"
