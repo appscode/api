@@ -134,6 +134,10 @@
         "node": {
           "format": "int32",
           "type": "integer"
+        },
+        "storage_class": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"

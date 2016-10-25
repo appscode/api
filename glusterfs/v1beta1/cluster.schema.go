@@ -92,6 +92,9 @@ func init() {
     },
     "node": {
       "type": "integer"
+    },
+    "storage_class": {
+      "type": "string"
     }
   },
   "type": "object"
