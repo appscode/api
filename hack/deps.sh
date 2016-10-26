@@ -15,7 +15,15 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-apt-get -y install curl unzip git build-essential automake libtool
+# ref: http://stackoverflow.com/a/17072017
+if [ "$(uname)" == "Darwin" ]; then
+    xcode-select --install
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    apt-get -y install curl unzip git build-essential automake libtool
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    echo "Windows NT platform is not supported."
+fi
+
 rm -rf /opt/grpc
 mkdir -p /opt
 pushd /opt
