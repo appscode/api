@@ -81,8 +81,8 @@ enum StatusCode {
     // to give ARE_YOU_SURE option
     ARE_YOU_SURE = 16;
 
-    //invalied data
-    INVALIED_DATA = 17;
+    //invalid data
+    INVALID_DATA = 17;
 }
 
 
