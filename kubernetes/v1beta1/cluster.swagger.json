@@ -529,6 +529,10 @@
     },
     "v1beta1ClusterStartupScriptRequest": {
       "properties": {
+        "context_version": {
+          "format": "int64",
+          "type": "integer"
+        },
         "role": {
           "format": "string",
           "type": "string"
@@ -890,6 +894,45 @@
             "name": "role",
             "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1ClusterStartupScriptResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}/context-versions/{context_version}": {
+      "get": {
+        "operationId": "StartupScript",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "int64",
+            "in": "path",
+            "name": "context_version",
+            "required": true,
+            "type": "integer"
           }
         ],
         "responses": {

@@ -101,6 +101,9 @@ service Clusters {
   rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}"
+      additional_bindings {
+        get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}/context-versions/{context_version}"
+      }
     };
     option (appscode.api.cors) = {
       enable: true
@@ -218,6 +221,7 @@ message ClusterDeleteRequest {
 message ClusterStartupScriptRequest {
   string uid = 1;
   string role = 2;
+  int64 context_version = 3;
 }
 
 message ClusterStartupScriptResponse {

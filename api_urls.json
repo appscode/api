@@ -659,6 +659,12 @@
       "url": "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}"
     }
   },
+  "/appscode/api/kubernetes/v1beta1/clusters/*/startup-script/*/context-versions/*": {
+    "get": {
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}/context-versions/{context_version}"
+    }
+  },
   "/appscode/api/kubernetes/v1beta1/incidents": {
     "get": {
       "file": "/alert/v1beta1/incident.proto",
