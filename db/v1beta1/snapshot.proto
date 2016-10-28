@@ -113,8 +113,9 @@ message SnapshotRestoreRequest {
   string auth_secret_name = 13;
 }
 
-// Next Id: 4
+// Next Id: 5
 message SnapshotCheckRequest {
   string cluster = 1;
   string phid = 2;
+  bool schedule_backup = 4;
 }
