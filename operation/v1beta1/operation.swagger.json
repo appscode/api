@@ -695,9 +695,13 @@
         "phid": {
           "format": "string",
           "type": "string"
+        },
+        "schedule_backup": {
+          "format": "boolean",
+          "type": "boolean"
         }
       },
-      "title": "Next Id: 4",
+      "title": "Next Id: 5",
       "type": "object"
     }
   },
