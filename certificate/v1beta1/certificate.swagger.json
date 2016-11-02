@@ -394,7 +394,7 @@
         ]
       }
     },
-    "/appscode/api/certificate/v1beta1/certificates/{name}/actions/import": {
+    "/appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain": {
       "put": {
         "operationId": "Obtain",
         "parameters": [

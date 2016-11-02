@@ -143,10 +143,10 @@
       "url": "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy"
     }
   },
-  "/appscode/api/certificate/v1beta1/certificates/*/actions/import": {
+  "/appscode/api/certificate/v1beta1/certificates/*/actions/obtain": {
     "put": {
       "file": "/certificate/v1beta1/certificate.proto",
-      "url": "/appscode/api/certificate/v1beta1/certificates/{name}/actions/import"
+      "url": "/appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain"
     }
   },
   "/appscode/api/certificate/v1beta1/certificates/*/actions/renew": {

@@ -43,7 +43,7 @@ service Certificates {
 
   rpc Obtain(CertificateObtainRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/certificate/v1beta1/certificates/{name}/actions/import"
+      put: "/appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain"
       body: "*"
     };
     option (appscode.api.cors) = {
