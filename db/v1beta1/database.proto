@@ -209,5 +209,4 @@ message DatabaseRecoverRequest {
 message DatabaseCheckRequest {
   string cluster = 1;
   string uid = 2;
-  string purchase_phid = 3;
 }
