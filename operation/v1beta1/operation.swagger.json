@@ -419,10 +419,6 @@
           "format": "string",
           "type": "string"
         },
-        "purchase_phid": {
-          "format": "string",
-          "type": "string"
-        },
         "uid": {
           "format": "string",
           "type": "string"

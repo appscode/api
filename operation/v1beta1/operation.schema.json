@@ -270,9 +270,6 @@
         "cluster": {
           "type": "string"
         },
-        "purchase_phid": {
-          "type": "string"
-        },
         "uid": {
           "type": "string"
         }
