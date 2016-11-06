@@ -240,17 +240,6 @@
       },
       "type": "object"
     },
-    "v1beta1DNSCheckRequest": {
-      "properties": {
-        "domain": {
-          "type": "string"
-        },
-        "key_auth": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1DataBucketDeleteRequest": {
       "properties": {
         "data_type": {

@@ -60,24 +60,6 @@ service Certificates {
     };
   }
 
-  rpc Renew(CertificateRenewRequest) returns (CertificateRenewResponse) {
-    option (google.api.http) = {
-      post: "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/renew"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-
-  rpc Revoke(CertificateRevokeRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      put: "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/revoke"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-
   rpc Deploy(CertificateDeployRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy"
@@ -163,30 +145,9 @@ message CertificateDeleteRequest {
   string uid = 1;
 }
 
-message CertificateRenewRequest {
-  string account_phid = 1;
-  string name = 2;
-  string uid = 3;
-}
-
-message CertificateRenewResponse {
-  dtypes.Status status = 1;
-  string cert = 2;
-}
-
-message CertificateRevokeRequest {
-  string account_phid = 1;
-  string uid = 2;
-}
-
 message CertificateDeployRequest {
   string uid = 1;
   string secret_name = 2;
   string cluster_name = 3;
   string namespace = 4;
-}
-
-message DNSCheckRequest {
-  string domain =1;
-  string key_auth = 2;
 }

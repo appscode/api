@@ -279,48 +279,6 @@
       },
       "type": "object"
     },
-    "v1beta1CertificateRenewRequest": {
-      "properties": {
-        "account_phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "uid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1CertificateRenewResponse": {
-      "properties": {
-        "cert": {
-          "format": "string",
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1CertificateRevokeRequest": {
-      "properties": {
-        "account_phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "uid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1SubjectInfo": {
       "description": "A Name contains the SubjectInfo fields.",
       "properties": {
@@ -493,56 +451,6 @@
             "schema": {
               "$ref": "#/definitions/v1beta1CertificateDeployRequest"
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Certificates"
-        ]
-      }
-    },
-    "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/renew": {
-      "post": {
-        "operationId": "Renew",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "uid",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1CertificateRenewResponse"
-            }
-          }
-        },
-        "tags": [
-          "Certificates"
-        ]
-      }
-    },
-    "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/revoke": {
-      "put": {
-        "operationId": "Revoke",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "uid",
-            "required": true,
-            "type": "string"
           }
         ],
         "responses": {

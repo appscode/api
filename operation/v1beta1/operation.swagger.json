@@ -383,19 +383,6 @@
       },
       "type": "object"
     },
-    "v1beta1DNSCheckRequest": {
-      "properties": {
-        "domain": {
-          "format": "string",
-          "type": "string"
-        },
-        "key_auth": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1DataBucketDeleteRequest": {
       "properties": {
         "data_type": {
@@ -618,9 +605,6 @@
         "database_delete_request": {
           "$ref": "#/definitions/v1beta1DatabaseDeleteRequest"
         },
-        "dns_check_request": {
-          "$ref": "#/definitions/v1beta1DNSCheckRequest"
-        },
         "metadata": {
           "$ref": "#/definitions/v1beta1Metadata"
         },
@@ -660,7 +644,6 @@
         "BACKUP_SCHEDULE",
         "NAMESPACE_CREATE",
         "NAMESPACE_ADMIN_TASK",
-        "CHECK_DNS",
         "ALERT_SYNC",
         "DATABASE_CHECK",
         "SNAPSHOT_CHECK",

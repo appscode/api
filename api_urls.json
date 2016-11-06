@@ -105,18 +105,6 @@
       "url": "/appscode/api/billing/v1beta1/subscriptions"
     }
   },
-  "/appscode/api/certificate/v1beta1/acme-users": {
-    "put": {
-      "file": "/certificate/v1beta1/acmeuser.proto",
-      "url": "/appscode/api/certificate/v1beta1/acme-users"
-    }
-  },
-  "/appscode/api/certificate/v1beta1/cas": {
-    "post": {
-      "file": "/certificate/v1beta1/ca.proto",
-      "url": "/appscode/api/certificate/v1beta1/cas"
-    }
-  },
   "/appscode/api/certificate/v1beta1/certificates": {
     "get": {
       "file": "/certificate/v1beta1/certificate.proto",
@@ -147,18 +135,6 @@
     "put": {
       "file": "/certificate/v1beta1/certificate.proto",
       "url": "/appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain"
-    }
-  },
-  "/appscode/api/certificate/v1beta1/certificates/*/actions/renew": {
-    "post": {
-      "file": "/certificate/v1beta1/certificate.proto",
-      "url": "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/renew"
-    }
-  },
-  "/appscode/api/certificate/v1beta1/certificates/*/actions/revoke": {
-    "put": {
-      "file": "/certificate/v1beta1/certificate.proto",
-      "url": "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/revoke"
     }
   },
   "/appscode/api/ci/v1beta1/actions/copy": {
