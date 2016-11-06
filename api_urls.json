@@ -109,10 +109,6 @@
     "get": {
       "file": "/certificate/v1beta1/certificate.proto",
       "url": "/appscode/api/certificate/v1beta1/certificates"
-    },
-    "post": {
-      "file": "/certificate/v1beta1/certificate.proto",
-      "url": "/appscode/api/certificate/v1beta1/certificates"
     }
   },
   "/appscode/api/certificate/v1beta1/certificates/*": {

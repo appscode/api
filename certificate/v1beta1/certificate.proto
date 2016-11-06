@@ -31,16 +31,6 @@ service Certificates {
     };
   }
 
-  rpc Create(CertificateCreateRequest) returns (CertificateCreateResponse) {
-    option (google.api.http) = {
-      post: "/appscode/api/certificate/v1beta1/certificates"
-      body: "*"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-
   rpc Obtain(CertificateObtainRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain"
@@ -86,35 +76,6 @@ message CertificateDescribeRequest {
 message CertificateDescribeResponse {
   dtypes.Status status = 1;
   Certificate certificate = 2;
-}
-
-message CertificateCreateRequest {
-  string account_phid = 1;
-  string name = 2;
-  string common_name = 3;
-  repeated string sans = 4;
-  bool bundle = 5;
-  string key_data = 6;
-  SubjectInfo subject_info = 7;
-  bool issue_private_cert = 8;
-}
-
-// A Name contains the SubjectInfo fields.
-message SubjectInfo {
-  string C  = 1; // Country
-  string ST = 2; // State
-  string L  = 3; // Locality
-  string O  = 4; // OrganisationName
-  string OU = 5; // OrganisationalUnitName
-}
-
-message CertificateCreateResponse {
-  dtypes.Status status = 1;
-  Certificate certificate = 2;
-  string phid = 3;
-  bytes cert = 4;
-  bytes key = 5;
-  bytes root = 6;
 }
 
 message Certificate {

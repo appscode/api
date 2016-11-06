@@ -129,72 +129,6 @@
       },
       "type": "object"
     },
-    "v1beta1CertificateCreateRequest": {
-      "properties": {
-        "account_phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "bundle": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "common_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "issue_private_cert": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "key_data": {
-          "format": "string",
-          "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "sans": {
-          "items": {
-            "format": "string",
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "subject_info": {
-          "$ref": "#/definitions/v1beta1SubjectInfo"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1CertificateCreateResponse": {
-      "properties": {
-        "cert": {
-          "format": "byte",
-          "type": "string"
-        },
-        "certificate": {
-          "$ref": "#/definitions/v1beta1Certificate"
-        },
-        "key": {
-          "format": "byte",
-          "type": "string"
-        },
-        "phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "root": {
-          "format": "byte",
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1CertificateDeleteRequest": {
       "properties": {
         "uid": {
@@ -278,32 +212,6 @@
         }
       },
       "type": "object"
-    },
-    "v1beta1SubjectInfo": {
-      "description": "A Name contains the SubjectInfo fields.",
-      "properties": {
-        "C": {
-          "format": "string",
-          "type": "string"
-        },
-        "L": {
-          "format": "string",
-          "type": "string"
-        },
-        "O": {
-          "format": "string",
-          "type": "string"
-        },
-        "OU": {
-          "format": "string",
-          "type": "string"
-        },
-        "ST": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
     }
   },
   "host": "api.appscode.com",
@@ -320,30 +228,6 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/v1beta1CertificateListResponse"
-            }
-          }
-        },
-        "tags": [
-          "Certificates"
-        ]
-      },
-      "post": {
-        "operationId": "Create",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1CertificateCreateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1CertificateCreateResponse"
             }
           }
         },
