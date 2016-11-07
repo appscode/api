@@ -254,6 +254,10 @@
       "file": "/credential/v1beta1/credential.proto",
       "url": "/appscode/api/cloud/v1beta1/credentials/{name}"
     },
+    "get": {
+      "file": "/credential/v1beta1/credential.proto",
+      "url": "/appscode/api/cloud/v1beta1/credentials/{name}"
+    },
     "put": {
       "file": "/credential/v1beta1/credential.proto",
       "url": "/appscode/api/cloud/v1beta1/credentials/{name}"
