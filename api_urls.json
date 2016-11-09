@@ -281,6 +281,26 @@
       "url": "/appscode/api/cloud/v1beta1/regions/{region}/zones"
     }
   },
+  "/appscode/api/cloud/v1beta2/disks": {
+    "get": {
+      "file": "/kubernetes/v1beta2/disk.proto",
+      "url": "/appscode/api/cloud/v1beta2/disks"
+    },
+    "post": {
+      "file": "/kubernetes/v1beta2/disk.proto",
+      "url": "/appscode/api/cloud/v1beta2/disks"
+    }
+  },
+  "/appscode/api/cloud/v1beta2/disks/*": {
+    "delete": {
+      "file": "/kubernetes/v1beta2/disk.proto",
+      "url": "/appscode/api/cloud/v1beta2/disks/{uid}"
+    },
+    "get": {
+      "file": "/kubernetes/v1beta2/disk.proto",
+      "url": "/appscode/api/cloud/v1beta2/disks/{name}"
+    }
+  },
   "/appscode/api/health": {
     "get": {
       "file": "/health/health.proto",
@@ -669,6 +689,10 @@
     "get": {
       "file": "/kubernetes/v1beta2/client.proto",
       "url": "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}"
+    },
+    "post": {
+      "file": "/kubernetes/v1beta2/client.proto",
+      "url": "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}"
     }
   },
   "/appscode/api/kubernetes/v1beta2/clusters/*/*/*": {
@@ -695,6 +719,30 @@
     "post": {
       "file": "/kubernetes/v1beta2/client.proto",
       "url": "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit"
+    }
+  },
+  "/appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumeclaims/*/actions/register": {
+    "post": {
+      "file": "/kubernetes/v1beta2/client.proto",
+      "url": "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register"
+    }
+  },
+  "/appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumeclaims/*/actions/unregister": {
+    "delete": {
+      "file": "/kubernetes/v1beta2/client.proto",
+      "url": "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister"
+    }
+  },
+  "/appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumes/*/actions/register": {
+    "post": {
+      "file": "/kubernetes/v1beta2/client.proto",
+      "url": "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register"
+    }
+  },
+  "/appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumes/*/actions/unregister": {
+    "delete": {
+      "file": "/kubernetes/v1beta2/client.proto",
+      "url": "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister"
     }
   },
   "/appscode/api/mail/v1beta1": {

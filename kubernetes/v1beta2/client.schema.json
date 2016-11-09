@@ -47,6 +47,25 @@
       },
       "type": "object"
     },
+    "v1beta2CreateResourceRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "resource": {
+          "$ref": "#/definitions/v1beta2Raw"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2DeleteResourceRequest": {
       "properties": {
         "cluster": {
@@ -142,6 +161,83 @@
           "type": "string"
         },
         "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeClaimRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "size_gb": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeClaimUnRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "plugin": {
+          "type": "string"
+        },
+        "size_gb": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeUnRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },

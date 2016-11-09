@@ -32,6 +32,16 @@ service Clients {
     };
   }
 
+  rpc Create(CreateResourceRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}"
+      body : "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
   rpc Delete(DeleteResourceRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
@@ -75,6 +85,44 @@ service Clients {
     option (google.api.http) = {
       post : "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit"
       body : "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc RegisterPersistentVolume(PersistentVolumeRegisterRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc UnregisterPersistentVolume(PersistentVolumeUnRegisterRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc RegisterPersistentVolumeClaim(PersistentVolumeClaimRegisterRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc UnregisterPersistentVolumeClaim(PersistentVolumeClaimUnRegisterRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -145,6 +193,13 @@ message CopyResourceRequest {
   KubeObject destination = 2;
 }
 
+message CreateResourceRequest {
+  string cluster = 1;
+  string type = 2;
+  string name = 4;
+  Raw resource = 5;
+}
+
 message DeleteResourceRequest {
   string cluster = 1;
   string type = 2;
@@ -169,6 +224,8 @@ message KubeResourceList {
     Secrets secrets = 13;
     ReplicationControllers replication_controllers = 14;
     StorageClasses storage_classes = 15;
+    PersistentVolumes persistent_volumes = 16;
+    PersistentVolumeClaims persistent_volume_claims = 17;
   }
 
   message Apps {
@@ -226,8 +283,17 @@ message KubeResourceList {
   message StorageClasses {
       repeated StorageClass items = 1;
   }
+
+  message PersistentVolumes {
+    repeated PersistentVolume items = 1;
+  }
+
+  message PersistentVolumeClaims {
+    repeated PersistentVolumeClaim items = 1;
+  }
 }
 
+// TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
 message KubeResource {
   string type = 1;
   oneof  resource {
@@ -245,9 +311,11 @@ message KubeResource {
     Secret secret = 13;
     ReplicationController replication_controller = 14;
     StorageClass storage_class = 15;
+    PersistentVolume persistent_volume = 16;
+    PersistentVolumeClaim persistent_volume_claim = 17;
   }
-  repeated Event events = 16;
-  Raw raw = 17;
+  repeated Event events = 18;
+  Raw raw = 19;
 }
 
 message Meta {
@@ -395,6 +463,58 @@ message Pod {
     string hostIP = 4;
     string podIP = 5;
   }
+}
+
+message PersistentVolume {
+  Meta meta = 1;
+  PersistentVolumeSpec spec = 2;
+  PersistentVolumeStatus status = 3;
+
+  message PersistentVolumeSpec {
+    map <string, string> capacity = 1;
+    repeated string access_modes = 2;
+    string persistent_volume_reclaim_policy = 3;
+    ObjectReference claim_ref = 4;
+    PersistentVolumeSource persistent_volume_source = 5;
+  }
+
+  message PersistentVolumeStatus {
+    string phase = 1;
+    string message = 2;
+    string reason = 3;
+  }
+}
+
+message PersistentVolumeClaim {
+  Meta meta = 1;
+  PersistentVolumeClaimSpec spec = 2;
+  PersistentVolumeClaimStatus status = 3;
+
+  message PersistentVolumeClaimSpec {
+    repeated string access_modes = 1;
+    ResourceRequirements resources = 2;
+    string volume_name = 3;
+
+    message ResourceRequirements {
+        map<string, string> limits = 1;
+        map<string, string> requests = 2;
+    }
+  }
+
+  message PersistentVolumeClaimStatus {
+    string phase = 1;
+    repeated string access_modes = 2;
+    map <string, string> capacity = 3;
+  }
+}
+
+message ObjectReference {
+  string kind = 1;
+  string namespace = 2;
+  string name = 3;
+  string uid = 4;
+  string API_version = 5;
+  string resource_version = 6;
 }
 
 message Service {
@@ -564,4 +684,472 @@ message Metrics {
     int64 timestamp = 1;
     int64 value     = 2;
   }
+}
+
+message PersistentVolumeRegisterRequest {
+  string cluster = 1;
+  string name = 2;
+  string identifier = 3;
+  string plugin = 4;
+  int64 size_gb = 5;
+  string endpoint = 6;
+}
+
+message PersistentVolumeUnRegisterRequest {
+  string cluster = 1;
+  string name = 2;
+}
+
+message PersistentVolumeClaimRegisterRequest {
+  string cluster = 1;
+  string name = 2;
+  int64 size_gb = 3;
+  string namespace = 4;
+}
+
+message PersistentVolumeClaimUnRegisterRequest {
+  string cluster = 1;
+  string name = 2;
+  string namespace = 3;
+}
+
+
+// TODO
+// The following values are copied from kubernetes/pkg/api/v1/generated.proto
+// Those values should be removed and use by importing those protobuf
+// while kubernetes completely moved to protobuf.
+
+// PersistentVolumeSource is similar to VolumeSource but meant for the
+// administrator who creates PVs. Exactly one of its members must be set.
+message PersistentVolumeSource {
+  // GCEPersistentDisk represents a GCE Disk resource that is attached to a
+  // kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk
+  GCEPersistentDiskVolumeSource gcePersistentDisk = 1;
+
+  // AWSElasticBlockStore represents an AWS Disk resource that is attached to a
+  // kubelet's host machine and then exposed to the pod.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore
+  AWSElasticBlockStoreVolumeSource awsElasticBlockStore = 2;
+
+  // HostPath represents a directory on the host.
+  // Provisioned by a developer or tester.
+  // This is useful for single-node development and testing only!
+  // On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#hostpath
+  HostPathVolumeSource hostPath = 3;
+
+  // Glusterfs represents a Glusterfs volume that is attached to a host and
+  // exposed to the pod. Provisioned by an admin.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md
+  GlusterfsVolumeSource glusterfs = 4;
+
+  // NFS represents an NFS mount on the host. Provisioned by an admin.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs
+  NFSVolumeSource nfs = 5;
+
+  // RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md
+  RBDVolumeSource rbd = 6;
+
+  // ISCSI represents an ISCSI Disk resource that is attached to a
+  // kubelet's host machine and then exposed to the pod. Provisioned by an admin.
+  ISCSIVolumeSource iscsi = 7;
+
+  // Cinder represents a cinder volume attached and mounted on kubelets host machine
+  // More info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md
+  CinderVolumeSource cinder = 8;
+
+  // CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+  CephFSVolumeSource cephfs = 9;
+
+  // FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+  FCVolumeSource fc = 10;
+
+  // Flocker represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+  FlockerVolumeSource flocker = 11;
+
+  // FlexVolume represents a generic volume resource that is
+  // provisioned/attached using an exec based plugin. This is an
+  // alpha feature and may change in future.
+  FlexVolumeSource flexVolume = 12;
+
+  // AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
+  AzureFileVolumeSource azureFile = 13;
+
+  // VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
+  VsphereVirtualDiskVolumeSource vsphereVolume = 14;
+
+  // Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+  QuobyteVolumeSource quobyte = 15;
+
+  // AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+  AzureDiskVolumeSource azureDisk = 16;
+}
+
+// Represents a Persistent Disk resource in AWS.
+//
+// An AWS EBS disk must exist before mounting to a container. The disk
+// must also be in the same AWS zone as the kubelet. An AWS EBS disk
+// can only be mounted as read/write once. AWS EBS volumes support
+// ownership management and SELinux relabeling.
+message AWSElasticBlockStoreVolumeSource {
+  // Unique ID of the persistent disk resource in AWS (Amazon EBS volume).
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore
+  string volumeID = 1;
+
+  // Filesystem type of the volume that you want to mount.
+  // Tip: Ensure that the filesystem type is supported by the host operating system.
+  // Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore
+  // TODO: how do we prevent errors in the filesystem from compromising the machine
+  string fsType = 2;
+
+  // The partition in the volume that you want to mount.
+  // If omitted, the default is to mount by volume name.
+  // Examples: For volume /dev/sda1, you specify the partition as "1".
+  // Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+  int32 partition = 3;
+
+  // Specify "true" to force and set the ReadOnly property in VolumeMounts to "true".
+  // If omitted, the default is "false".
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore
+  bool readOnly = 4;
+}
+
+// Represents a host path mapped into a pod.
+// Host path volumes do not support ownership management or SELinux relabeling.
+message HostPathVolumeSource {
+  // Path of the directory on the host.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#hostpath
+  string path = 1;
+}
+
+// Represents an NFS mount that lasts the lifetime of a pod.
+// NFS volumes do not support ownership management or SELinux relabeling.
+message NFSVolumeSource {
+  // Server is the hostname or IP address of the NFS server.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs
+  string server = 1;
+
+  // Path that is exported by the NFS server.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs
+  string path = 2;
+
+  // ReadOnly here will force
+  // the NFS export to be mounted with read-only permissions.
+  // Defaults to false.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs
+  bool readOnly = 3;
+}
+
+// Represents a Fibre Channel volume.
+// Fibre Channel volumes can only be mounted as read/write once.
+// Fibre Channel volumes support ownership management and SELinux relabeling.
+message FCVolumeSource {
+  // Required: FC target worldwide names (WWNs)
+  repeated string targetWWNs = 1;
+
+  // Required: FC target lun number
+  int32 lun = 2;
+
+  // Filesystem type to mount.
+  // Must be a filesystem type supported by the host operating system.
+  // Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  // TODO: how do we prevent errors in the filesystem from compromising the machine
+  string fsType = 3;
+
+  // Optional: Defaults to false (read/write). ReadOnly here will force
+  // the ReadOnly setting in VolumeMounts.
+  bool readOnly = 4;
+}
+
+// FlexVolume represents a generic volume resource that is
+// provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
+message FlexVolumeSource {
+  // Driver is the name of the driver to use for this volume.
+  string driver = 1;
+
+  // Filesystem type to mount.
+  // Must be a filesystem type supported by the host operating system.
+  // Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+  string fsType = 2;
+
+  // Optional: SecretRef is reference to the secret object containing
+  // sensitive information to pass to the plugin scripts. This may be
+  // empty if no secret object is specified. If the secret object
+  // contains more than one secret, all secrets are passed to the plugin
+  // scripts.
+  ObjectReference secretRef = 3;
+
+  // Optional: Defaults to false (read/write). ReadOnly here will force
+  // the ReadOnly setting in VolumeMounts.
+  bool readOnly = 4;
+
+  // Optional: Extra command options if any.
+  map<string, string> options = 5;
+}
+
+// Represents a Flocker volume mounted by the Flocker agent.
+// Flocker volumes do not support ownership management or SELinux relabeling.
+message FlockerVolumeSource {
+  // Required: the volume name. This is going to be store on metadata -> name on the payload for Flocker
+  string datasetName = 1;
+}
+
+// Represents a Persistent Disk resource in Google Compute Engine.
+//
+// A GCE PD must exist before mounting to a container. The disk must
+// also be in the same GCE project and zone as the kubelet. A GCE PD
+// can only be mounted as read/write once or read-only many times. GCE
+// PDs support ownership management and SELinux relabeling.
+message GCEPersistentDiskVolumeSource {
+  // Unique name of the PD resource in GCE. Used to identify the disk in GCE.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk
+  string pdName = 1;
+
+  // Filesystem type of the volume that you want to mount.
+  // Tip: Ensure that the filesystem type is supported by the host operating system.
+  // Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk
+  // TODO: how do we prevent errors in the filesystem from compromising the machine
+  string fsType = 2;
+
+  // The partition in the volume that you want to mount.
+  // If omitted, the default is to mount by volume name.
+  // Examples: For volume /dev/sda1, you specify the partition as "1".
+  // Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk
+  int32 partition = 3;
+
+  // ReadOnly here will force the ReadOnly setting in VolumeMounts.
+  // Defaults to false.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk
+  bool readOnly = 4;
+}
+
+// Represents a volume that is populated with the contents of a git repository.
+// Git repo volumes do not support ownership management.
+// Git repo volumes support SELinux relabeling.
+message GitRepoVolumeSource {
+  // Repository URL
+  string repository = 1;
+
+  // Commit hash for the specified revision.
+  string revision = 2;
+
+  // Target directory name.
+  // Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the
+  // git repository.  Otherwise, if specified, the volume will contain the git repository in
+  // the subdirectory with the given name.
+  string directory = 3;
+}
+
+// Represents a Glusterfs mount that lasts the lifetime of a pod.
+// Glusterfs volumes do not support ownership management or SELinux relabeling.
+message GlusterfsVolumeSource {
+  // EndpointsName is the endpoint name that details Glusterfs topology.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod
+  string endpoints = 1;
+
+  // Path is the Glusterfs volume path.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod
+  string path = 2;
+
+  // ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions.
+  // Defaults to false.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod
+  bool readOnly = 3;
+}
+
+// Represents a Rados Block Device mount that lasts the lifetime of a pod.
+// RBD volumes support ownership management and SELinux relabeling.
+message RBDVolumeSource {
+  // A collection of Ceph monitors.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it
+  repeated string monitors = 1;
+
+  // The rados image name.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it
+  string image = 2;
+
+  // Filesystem type of the volume that you want to mount.
+  // Tip: Ensure that the filesystem type is supported by the host operating system.
+  // Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#rbd
+  // TODO: how do we prevent errors in the filesystem from compromising the machine
+  string fsType = 3;
+
+  // The rados pool name.
+  // Default is rbd.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it.
+  string pool = 4;
+
+  // The rados user name.
+  // Default is admin.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it
+  string user = 5;
+
+  // Keyring is the path to key ring for RBDUser.
+  // Default is /etc/ceph/keyring.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it
+  string keyring = 6;
+
+  // SecretRef is name of the authentication secret for RBDUser. If provided
+  // overrides keyring.
+  // Default is nil.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it
+  ObjectReference secretRef = 7;
+
+  // ReadOnly here will force the ReadOnly setting in VolumeMounts.
+  // Defaults to false.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it
+  bool readOnly = 8;
+}
+
+// Represents an ISCSI disk.
+// ISCSI volumes can only be mounted as read/write once.
+// ISCSI volumes support ownership management and SELinux relabeling.
+message ISCSIVolumeSource {
+  // iSCSI target portal. The portal is either an IP or ip_addr:port if the port
+  // is other than default (typically TCP ports 860 and 3260).
+  string targetPortal = 1;
+
+  // Target iSCSI Qualified Name.
+  string iqn = 2;
+
+  // iSCSI target lun number.
+  int32 lun = 3;
+
+  // Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport.
+  string iscsiInterface = 4;
+
+  // Filesystem type of the volume that you want to mount.
+  // Tip: Ensure that the filesystem type is supported by the host operating system.
+  // Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#iscsi
+  // TODO: how do we prevent errors in the filesystem from compromising the machine
+  string fsType = 5;
+
+  // ReadOnly here will force the ReadOnly setting in VolumeMounts.
+  // Defaults to false.
+  bool readOnly = 6;
+}
+
+// AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
+message AzureFileVolumeSource {
+  // the name of secret that contains Azure Storage Account Name and Key
+  string secretName = 1;
+
+  // Share Name
+  string shareName = 2;
+
+  // Defaults to false (read/write). ReadOnly here will force
+  // the ReadOnly setting in VolumeMounts.
+  bool readOnly = 3;
+}
+
+// Represents a vSphere volume resource.
+message VsphereVirtualDiskVolumeSource {
+  // Path that identifies vSphere volume vmdk
+  string volumePath = 1;
+
+  // Filesystem type to mount.
+  // Must be a filesystem type supported by the host operating system.
+  // Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  string fsType = 2;
+}
+
+// Represents a Quobyte mount that lasts the lifetime of a pod.
+// Quobyte volumes do not support ownership management or SELinux relabeling.
+message QuobyteVolumeSource {
+  // Registry represents a single or multiple Quobyte Registry services
+  // specified as a string as host:port pair (multiple entries are separated with commas)
+  // which acts as the central registry for volumes
+  string registry = 1;
+
+  // Volume is a string that references an already created Quobyte volume by name.
+  string volume = 2;
+
+  // ReadOnly here will force the Quobyte volume to be mounted with read-only permissions.
+  // Defaults to false.
+  bool readOnly = 3;
+
+  // User to map volume access to
+  // Defaults to serivceaccount user
+  string user = 4;
+
+  // Group to map volume access to
+  // Default is no group
+  string group = 5;
+}
+
+// AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+message AzureDiskVolumeSource {
+  // The Name of the data disk in the blob storage
+  string diskName = 1;
+
+  // The URI the data disk in the blob storage
+  string diskURI = 2;
+
+  // Host Caching mode: None, Read Only, Read Write.
+  string cachingMode = 3;
+
+  // Filesystem type to mount.
+  // Must be a filesystem type supported by the host operating system.
+  // Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  string fsType = 4;
+
+  // Defaults to false (read/write). ReadOnly here will force
+  // the ReadOnly setting in VolumeMounts.
+  bool readOnly = 5;
+}
+
+// Represents a cinder volume resource in Openstack.
+// A Cinder volume must exist before mounting to a container.
+// The volume must also be in the same region as the kubelet.
+// Cinder volumes support ownership management and SELinux relabeling.
+message CinderVolumeSource {
+  // volume id used to identify the volume in cinder
+  // More info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md
+  string volumeID = 1;
+
+  // Filesystem type to mount.
+  // Must be a filesystem type supported by the host operating system.
+  // Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  // More info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md
+  string fsType = 2;
+
+  // Optional: Defaults to false (read/write). ReadOnly here will force
+  // the ReadOnly setting in VolumeMounts.
+  // More info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md
+  bool readOnly = 3;
+}
+
+// Represents a Ceph Filesystem mount that lasts the lifetime of a pod
+// Cephfs volumes do not support ownership management or SELinux relabeling.
+message CephFSVolumeSource {
+  // Required: Monitors is a collection of Ceph monitors
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it
+  repeated string monitors = 1;
+
+  // Optional: Used as the mounted root, rather than the full Ceph tree, default is /
+  string path = 2;
+
+  // Optional: User is the rados user name, default is admin
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it
+  string user = 3;
+
+  // Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it
+  string secretFile = 4;
+
+  // Optional: SecretRef is reference to the authentication secret for User, default is empty.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it
+  ObjectReference secretRef = 5;
+
+  // Optional: Defaults to false (read/write). ReadOnly here will force
+  // the ReadOnly setting in VolumeMounts.
+  // More info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it
+  bool readOnly = 6;
 }

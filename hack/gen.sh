@@ -15,7 +15,7 @@ ALIAS+="Mappscode/api/ci/v1beta1/agent.proto=github.com/appscode/api/ci/v1beta1,
 ALIAS+="Mappscode/api/ci/v1beta1/master.proto=github.com/appscode/api/ci/v1beta1,"
 ALIAS+="Mappscode/api/certificate/v1beta1/certificate.proto=github.com/appscode/api/certificate/v1beta1,"
 ALIAS+="Mappscode/api/kubernetes/v1beta1/cluster.proto=github.com/appscode/api/kubernetes/v1beta1,"
-ALIAS+="Mappscode/api/kubernetes/v1beta2/cluster.proto=github.com/appscode/api/kubernetes/v1beta2,"
+ALIAS+="Mappscode/api/kubernetes/v1beta2/client.proto=github.com/appscode/api/kubernetes/v1beta2,"
 ALIAS+="Mappscode/api/ssh/v1beta1/ssh.proto=github.com/appscode/api/ssh/v1beta1,"
 ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any,"
 ALIAS+="Mappscode/api/artifactory/artifacts.proto=github.com/appscode/api/artifactory,"

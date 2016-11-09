@@ -8,12 +8,17 @@ import (
 )
 
 var secretEditRequestSchema *gojsonschema.Schema
+var persistentVolumeClaimRegisterRequestSchema *gojsonschema.Schema
+var createResourceRequestSchema *gojsonschema.Schema
 var updateResourceRequestSchema *gojsonschema.Schema
+var persistentVolumeUnRegisterRequestSchema *gojsonschema.Schema
 var copyResourceRequestSchema *gojsonschema.Schema
-var deleteResourceRequestSchema *gojsonschema.Schema
+var describeResourceRequestSchema *gojsonschema.Schema
 var configMapEditRequestSchema *gojsonschema.Schema
 var listResourceRequestSchema *gojsonschema.Schema
-var describeResourceRequestSchema *gojsonschema.Schema
+var persistentVolumeClaimUnRegisterRequestSchema *gojsonschema.Schema
+var persistentVolumeRegisterRequestSchema *gojsonschema.Schema
+var deleteResourceRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
@@ -50,6 +55,67 @@ func init() {
         "type": "string"
       },
       "type": "object"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	persistentVolumeClaimRegisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "size_gb": {
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	createResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "v1beta2Raw": {
+      "properties": {
+        "data": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "resource": {
+      "$ref": "#/definitions/v1beta2Raw"
+    },
+    "type": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -98,6 +164,23 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
+	persistentVolumeUnRegisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
 	copyResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
@@ -135,11 +218,14 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	deleteResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	describeResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
       "type": "string"
+    },
+    "include_metrics": {
+      "type": "boolean"
     },
     "name": {
       "maxLength": 63,
@@ -147,6 +233,10 @@ func init() {
     },
     "namespace": {
       "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "raw": {
       "type": "string"
     },
     "type": {
@@ -239,14 +329,62 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	describeResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	persistentVolumeClaimUnRegisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
       "type": "string"
     },
-    "include_metrics": {
-      "type": "boolean"
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "namespace": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	persistentVolumeRegisterRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "endpoint": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "plugin": {
+      "type": "string"
+    },
+    "size_gb": {
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	deleteResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
     },
     "name": {
       "maxLength": 63,
@@ -254,10 +392,6 @@ func init() {
     },
     "namespace": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
-    },
-    "raw": {
       "type": "string"
     },
     "type": {
@@ -276,20 +410,35 @@ func (m *SecretEditRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *SecretEditRequest) IsRequest() {}
 
+func (m *PersistentVolumeClaimRegisterRequest) IsValid() (*gojsonschema.Result, error) {
+	return persistentVolumeClaimRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *PersistentVolumeClaimRegisterRequest) IsRequest() {}
+
+func (m *CreateResourceRequest) IsValid() (*gojsonschema.Result, error) {
+	return createResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *CreateResourceRequest) IsRequest() {}
+
 func (m *UpdateResourceRequest) IsValid() (*gojsonschema.Result, error) {
 	return updateResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *UpdateResourceRequest) IsRequest() {}
+
+func (m *PersistentVolumeUnRegisterRequest) IsValid() (*gojsonschema.Result, error) {
+	return persistentVolumeUnRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *PersistentVolumeUnRegisterRequest) IsRequest() {}
 
 func (m *CopyResourceRequest) IsValid() (*gojsonschema.Result, error) {
 	return copyResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *CopyResourceRequest) IsRequest() {}
 
-func (m *DeleteResourceRequest) IsValid() (*gojsonschema.Result, error) {
-	return deleteResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *DescribeResourceRequest) IsValid() (*gojsonschema.Result, error) {
+	return describeResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *DeleteResourceRequest) IsRequest() {}
+func (m *DescribeResourceRequest) IsRequest() {}
 
 func (m *ConfigMapEditRequest) IsValid() (*gojsonschema.Result, error) {
 	return configMapEditRequestSchema.Validate(gojsonschema.NewGoLoader(m))
@@ -301,10 +450,20 @@ func (m *ListResourceRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ListResourceRequest) IsRequest() {}
 
-func (m *DescribeResourceRequest) IsValid() (*gojsonschema.Result, error) {
-	return describeResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *PersistentVolumeClaimUnRegisterRequest) IsValid() (*gojsonschema.Result, error) {
+	return persistentVolumeClaimUnRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *DescribeResourceRequest) IsRequest() {}
+func (m *PersistentVolumeClaimUnRegisterRequest) IsRequest() {}
+
+func (m *PersistentVolumeRegisterRequest) IsValid() (*gojsonschema.Result, error) {
+	return persistentVolumeRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *PersistentVolumeRegisterRequest) IsRequest() {}
+
+func (m *DeleteResourceRequest) IsValid() (*gojsonschema.Result, error) {
+	return deleteResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *DeleteResourceRequest) IsRequest() {}
 
 func (m *ListResourceResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s

@@ -98,6 +98,28 @@
       },
       "type": "object"
     },
+    "KubeResourceListPersistentVolumeClaims": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2PersistentVolumeClaim"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPersistentVolumes": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2PersistentVolume"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListPetSets": {
       "properties": {
         "items": {
@@ -184,6 +206,113 @@
         "value": {
           "format": "int64",
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "PersistentVolumeClaimPersistentVolumeClaimSpec": {
+      "properties": {
+        "access_modes": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resources": {
+          "$ref": "#/definitions/PersistentVolumeClaimSpecResourceRequirements"
+        },
+        "volume_name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PersistentVolumeClaimPersistentVolumeClaimStatus": {
+      "properties": {
+        "access_modes": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "capacity": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "phase": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PersistentVolumeClaimSpecResourceRequirements": {
+      "properties": {
+        "limits": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "requests": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "PersistentVolumePersistentVolumeSpec": {
+      "properties": {
+        "access_modes": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "capacity": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "claim_ref": {
+          "$ref": "#/definitions/v1beta2ObjectReference"
+        },
+        "persistent_volume_reclaim_policy": {
+          "format": "string",
+          "type": "string"
+        },
+        "persistent_volume_source": {
+          "$ref": "#/definitions/v1beta2PersistentVolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "PersistentVolumePersistentVolumeStatus": {
+      "properties": {
+        "message": {
+          "format": "string",
+          "type": "string"
+        },
+        "phase": {
+          "format": "string",
+          "type": "string"
+        },
+        "reason": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -401,6 +530,32 @@
       "title": "This one is used in kubernetes/v1beta1/client.proto\nTo send information if alert is set for app/pod",
       "type": "object"
     },
+    "v1beta2AWSElasticBlockStoreVolumeSource": {
+      "description": "Represents a Persistent Disk resource in AWS.\n\nAn AWS EBS disk must exist before mounting to a container. The disk\nmust also be in the same AWS zone as the kubelet. An AWS EBS disk\ncan only be mounted as read/write once. AWS EBS volumes support\nownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "format": "string",
+          "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+          "type": "string"
+        },
+        "partition": {
+          "description": "The partition in the volume that you want to mount.\nIf omitted, the default is to mount by volume name.\nExamples: For volume /dev/sda1, you specify the partition as \"1\".\nSimilarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty).",
+          "format": "int32",
+          "type": "integer"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Specify \"true\" to force and set the ReadOnly property in VolumeMounts to \"true\".\nIf omitted, the default is \"false\".\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore",
+          "type": "boolean"
+        },
+        "volumeID": {
+          "format": "string",
+          "title": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume).\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2App": {
       "properties": {
         "app": {
@@ -438,6 +593,117 @@
         },
         "type": {
           "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2AzureDiskVolumeSource": {
+      "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.",
+      "properties": {
+        "cachingMode": {
+          "description": "Host Caching mode: None, Read Only, Read Write.",
+          "format": "string",
+          "type": "string"
+        },
+        "diskName": {
+          "format": "string",
+          "title": "The Name of the data disk in the blob storage",
+          "type": "string"
+        },
+        "diskURI": {
+          "format": "string",
+          "title": "The URI the data disk in the blob storage",
+          "type": "string"
+        },
+        "fsType": {
+          "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
+          "format": "string",
+          "type": "string"
+        },
+        "readOnly": {
+          "description": "Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.",
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2AzureFileVolumeSource": {
+      "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.",
+      "properties": {
+        "readOnly": {
+          "description": "Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "secretName": {
+          "format": "string",
+          "title": "the name of secret that contains Azure Storage Account Name and Key",
+          "type": "string"
+        },
+        "shareName": {
+          "format": "string",
+          "title": "Share Name",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2CephFSVolumeSource": {
+      "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod\nCephfs volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "monitors": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "title": "Required: Monitors is a collection of Ceph monitors\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
+          "type": "array"
+        },
+        "path": {
+          "format": "string",
+          "title": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
+          "type": "boolean"
+        },
+        "secretFile": {
+          "format": "string",
+          "title": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
+          "type": "string"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1beta2ObjectReference",
+          "title": "Optional: SecretRef is reference to the authentication secret for User, default is empty.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it"
+        },
+        "user": {
+          "format": "string",
+          "title": "Optional: User is the rados user name, default is admin\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2CinderVolumeSource": {
+      "description": "Represents a cinder volume resource in Openstack.\nA Cinder volume must exist before mounting to a container.\nThe volume must also be in the same region as the kubelet.\nCinder volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "format": "string",
+          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md",
+          "type": "boolean"
+        },
+        "volumeID": {
+          "format": "string",
+          "title": "volume id used to identify the volume in cinder\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md",
           "type": "string"
         }
       },
@@ -503,6 +769,26 @@
         },
         "source": {
           "$ref": "#/definitions/v1beta2KubeObject"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2CreateResourceRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "resource": {
+          "$ref": "#/definitions/v1beta2Raw"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -720,6 +1006,173 @@
       },
       "type": "object"
     },
+    "v1beta2FCVolumeSource": {
+      "description": "Represents a Fibre Channel volume.\nFibre Channel volumes can only be mounted as read/write once.\nFibre Channel volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "format": "string",
+          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+          "type": "string"
+        },
+        "lun": {
+          "format": "int32",
+          "title": "Required: FC target lun number",
+          "type": "integer"
+        },
+        "readOnly": {
+          "description": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "targetWWNs": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "title": "Required: FC target worldwide names (WWNs)",
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2FlexVolumeSource": {
+      "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an alpha feature and may change in future.",
+      "properties": {
+        "driver": {
+          "description": "Driver is the name of the driver to use for this volume.",
+          "format": "string",
+          "type": "string"
+        },
+        "fsType": {
+          "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script.",
+          "format": "string",
+          "type": "string"
+        },
+        "options": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "description": "Optional: Extra command options if any.",
+          "type": "object"
+        },
+        "readOnly": {
+          "description": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1beta2ObjectReference",
+          "description": "Optional: SecretRef is reference to the secret object containing\nsensitive information to pass to the plugin scripts. This may be\nempty if no secret object is specified. If the secret object\ncontains more than one secret, all secrets are passed to the plugin\nscripts."
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2FlockerVolumeSource": {
+      "description": "Represents a Flocker volume mounted by the Flocker agent.\nFlocker volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "datasetName": {
+          "format": "string",
+          "title": "Required: the volume name. This is going to be store on metadata -> name on the payload for Flocker",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2GCEPersistentDiskVolumeSource": {
+      "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must\nalso be in the same GCE project and zone as the kubelet. A GCE PD\ncan only be mounted as read/write once or read-only many times. GCE\nPDs support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "format": "string",
+          "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+          "type": "string"
+        },
+        "partition": {
+          "format": "int32",
+          "title": "The partition in the volume that you want to mount.\nIf omitted, the default is to mount by volume name.\nExamples: For volume /dev/sda1, you specify the partition as \"1\".\nSimilarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty).\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk",
+          "type": "integer"
+        },
+        "pdName": {
+          "format": "string",
+          "title": "Unique name of the PD resource in GCE. Used to identify the disk in GCE.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "ReadOnly here will force the ReadOnly setting in VolumeMounts.\nDefaults to false.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2GlusterfsVolumeSource": {
+      "description": "Represents a Glusterfs mount that lasts the lifetime of a pod.\nGlusterfs volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "endpoints": {
+          "format": "string",
+          "title": "EndpointsName is the endpoint name that details Glusterfs topology.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod",
+          "type": "string"
+        },
+        "path": {
+          "format": "string",
+          "title": "Path is the Glusterfs volume path.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions.\nDefaults to false.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2HostPathVolumeSource": {
+      "description": "Represents a host path mapped into a pod.\nHost path volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "path": {
+          "format": "string",
+          "title": "Path of the directory on the host.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#hostpath",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ISCSIVolumeSource": {
+      "description": "Represents an ISCSI disk.\nISCSI volumes can only be mounted as read/write once.\nISCSI volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "format": "string",
+          "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#iscsi\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+          "type": "string"
+        },
+        "iqn": {
+          "description": "Target iSCSI Qualified Name.",
+          "format": "string",
+          "type": "string"
+        },
+        "iscsiInterface": {
+          "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport.",
+          "format": "string",
+          "type": "string"
+        },
+        "lun": {
+          "description": "iSCSI target lun number.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "readOnly": {
+          "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts.\nDefaults to false.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "targetPortal": {
+          "description": "iSCSI target portal. The portal is either an IP or ip_addr:port if the port\nis other than default (typically TCP ports 860 and 3260).",
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Job": {
       "properties": {
         "app": {
@@ -801,6 +1254,7 @@
       "type": "object"
     },
     "v1beta2KubeResource": {
+      "description": "TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.",
       "properties": {
         "app": {
           "$ref": "#/definitions/v1beta2App"
@@ -828,6 +1282,12 @@
         },
         "node": {
           "$ref": "#/definitions/v1beta2Node"
+        },
+        "persistent_volume": {
+          "$ref": "#/definitions/v1beta2PersistentVolume"
+        },
+        "persistent_volume_claim": {
+          "$ref": "#/definitions/v1beta2PersistentVolumeClaim"
         },
         "pet_set": {
           "$ref": "#/definitions/v1beta2PetSet"
@@ -882,6 +1342,12 @@
         },
         "nodes": {
           "$ref": "#/definitions/KubeResourceListNodes"
+        },
+        "persistent_volume_claims": {
+          "$ref": "#/definitions/KubeResourceListPersistentVolumeClaims"
+        },
+        "persistent_volumes": {
+          "$ref": "#/definitions/KubeResourceListPersistentVolumes"
         },
         "pet_sets": {
           "$ref": "#/definitions/KubeResourceListPetSets"
@@ -1031,6 +1497,27 @@
       },
       "type": "object"
     },
+    "v1beta2NFSVolumeSource": {
+      "description": "Represents an NFS mount that lasts the lifetime of a pod.\nNFS volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "path": {
+          "format": "string",
+          "title": "Path that is exported by the NFS server.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "ReadOnly here will force\nthe NFS export to be mounted with read-only permissions.\nDefaults to false.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs",
+          "type": "boolean"
+        },
+        "server": {
+          "format": "string",
+          "title": "Server is the hostname or IP address of the NFS server.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Namespace": {
       "properties": {
         "meta": {
@@ -1098,6 +1585,213 @@
           "$ref": "#/definitions/StatusNodeInfo"
         },
         "phase": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ObjectReference": {
+      "properties": {
+        "API_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kind": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "resource_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolume": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/PersistentVolumePersistentVolumeSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/PersistentVolumePersistentVolumeStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeClaim": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/PersistentVolumeClaimPersistentVolumeClaimSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/PersistentVolumeClaimPersistentVolumeClaimStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeClaimRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "size_gb": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeClaimUnRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "endpoint": {
+          "format": "string",
+          "type": "string"
+        },
+        "identifier": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "plugin": {
+          "format": "string",
+          "type": "string"
+        },
+        "size_gb": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeSource": {
+      "description": "PersistentVolumeSource is similar to VolumeSource but meant for the\nadministrator who creates PVs. Exactly one of its members must be set.",
+      "properties": {
+        "awsElasticBlockStore": {
+          "$ref": "#/definitions/v1beta2AWSElasticBlockStoreVolumeSource",
+          "title": "AWSElasticBlockStore represents an AWS Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore"
+        },
+        "azureDisk": {
+          "$ref": "#/definitions/v1beta2AzureDiskVolumeSource",
+          "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod."
+        },
+        "azureFile": {
+          "$ref": "#/definitions/v1beta2AzureFileVolumeSource",
+          "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod."
+        },
+        "cephfs": {
+          "$ref": "#/definitions/v1beta2CephFSVolumeSource",
+          "title": "CephFS represents a Ceph FS mount on the host that shares a pod's lifetime"
+        },
+        "cinder": {
+          "$ref": "#/definitions/v1beta2CinderVolumeSource",
+          "title": "Cinder represents a cinder volume attached and mounted on kubelets host machine\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md"
+        },
+        "fc": {
+          "$ref": "#/definitions/v1beta2FCVolumeSource",
+          "description": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod."
+        },
+        "flexVolume": {
+          "$ref": "#/definitions/v1beta2FlexVolumeSource",
+          "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future."
+        },
+        "flocker": {
+          "$ref": "#/definitions/v1beta2FlockerVolumeSource",
+          "title": "Flocker represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running"
+        },
+        "gcePersistentDisk": {
+          "$ref": "#/definitions/v1beta2GCEPersistentDiskVolumeSource",
+          "title": "GCEPersistentDisk represents a GCE Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod. Provisioned by an admin.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk"
+        },
+        "glusterfs": {
+          "$ref": "#/definitions/v1beta2GlusterfsVolumeSource",
+          "title": "Glusterfs represents a Glusterfs volume that is attached to a host and\nexposed to the pod. Provisioned by an admin.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md"
+        },
+        "hostPath": {
+          "$ref": "#/definitions/v1beta2HostPathVolumeSource",
+          "title": "HostPath represents a directory on the host.\nProvisioned by a developer or tester.\nThis is useful for single-node development and testing only!\nOn-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#hostpath"
+        },
+        "iscsi": {
+          "$ref": "#/definitions/v1beta2ISCSIVolumeSource",
+          "description": "ISCSI represents an ISCSI Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod. Provisioned by an admin."
+        },
+        "nfs": {
+          "$ref": "#/definitions/v1beta2NFSVolumeSource",
+          "title": "NFS represents an NFS mount on the host. Provisioned by an admin.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs"
+        },
+        "quobyte": {
+          "$ref": "#/definitions/v1beta2QuobyteVolumeSource",
+          "title": "Quobyte represents a Quobyte mount on the host that shares a pod's lifetime"
+        },
+        "rbd": {
+          "$ref": "#/definitions/v1beta2RBDVolumeSource",
+          "title": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md"
+        },
+        "vsphereVolume": {
+          "$ref": "#/definitions/v1beta2VsphereVirtualDiskVolumeSource",
+          "title": "VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeUnRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
           "format": "string",
           "type": "string"
         }
@@ -1234,6 +1928,85 @@
         },
         "reason": {
           "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2QuobyteVolumeSource": {
+      "description": "Represents a Quobyte mount that lasts the lifetime of a pod.\nQuobyte volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "group": {
+          "format": "string",
+          "title": "Group to map volume access to\nDefault is no group",
+          "type": "string"
+        },
+        "readOnly": {
+          "description": "ReadOnly here will force the Quobyte volume to be mounted with read-only permissions.\nDefaults to false.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "registry": {
+          "format": "string",
+          "title": "Registry represents a single or multiple Quobyte Registry services\nspecified as a string as host:port pair (multiple entries are separated with commas)\nwhich acts as the central registry for volumes",
+          "type": "string"
+        },
+        "user": {
+          "format": "string",
+          "title": "User to map volume access to\nDefaults to serivceaccount user",
+          "type": "string"
+        },
+        "volume": {
+          "description": "Volume is a string that references an already created Quobyte volume by name.",
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2RBDVolumeSource": {
+      "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod.\nRBD volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "format": "string",
+          "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#rbd\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+          "type": "string"
+        },
+        "image": {
+          "format": "string",
+          "title": "The rados image name.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "string"
+        },
+        "keyring": {
+          "format": "string",
+          "title": "Keyring is the path to key ring for RBDUser.\nDefault is /etc/ceph/keyring.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "string"
+        },
+        "monitors": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "title": "A collection of Ceph monitors.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "array"
+        },
+        "pool": {
+          "description": "The rados pool name.\nDefault is rbd.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it.",
+          "format": "string",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "ReadOnly here will force the ReadOnly setting in VolumeMounts.\nDefaults to false.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "boolean"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1beta2ObjectReference",
+          "title": "SecretRef is name of the authentication secret for RBDUser. If provided\noverrides keyring.\nDefault is nil.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it"
+        },
+        "user": {
+          "format": "string",
+          "title": "The rados user name.\nDefault is admin.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
           "type": "string"
         }
       },
@@ -1513,6 +2286,22 @@
         }
       },
       "type": "object"
+    },
+    "v1beta2VsphereVirtualDiskVolumeSource": {
+      "description": "Represents a vSphere volume resource.",
+      "properties": {
+        "fsType": {
+          "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
+          "format": "string",
+          "type": "string"
+        },
+        "volumePath": {
+          "format": "string",
+          "title": "Path that identifies vSphere volume vmdk",
+          "type": "string"
+        }
+      },
+      "type": "object"
     }
   },
   "host": "api.appscode.com",
@@ -1641,6 +2430,150 @@
         ]
       }
     },
+    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register": {
+      "post": {
+        "operationId": "RegisterPersistentVolumeClaim",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta2PersistentVolumeClaimRegisterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister": {
+      "delete": {
+        "operationId": "UnregisterPersistentVolumeClaim",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register": {
+      "post": {
+        "operationId": "RegisterPersistentVolume",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta2PersistentVolumeRegisterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister": {
+      "delete": {
+        "operationId": "UnregisterPersistentVolume",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
     "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}": {
       "get": {
         "operationId": "List",
@@ -1665,6 +2598,44 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/v1beta2ListResourceResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      },
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta2CreateResourceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
