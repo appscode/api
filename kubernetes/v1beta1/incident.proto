@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package appscode.alert.v1beta1;
+package appscode.kubernetes.v1beta1;
 
 option go_package = "v1beta1";
 
 option java_multiple_files = true;
 option java_outer_classname = "IncidentProto";
-option java_package = "com.appscode.api.alert.v1beta1";
+option java_package = "com.appscode.api.kubernetes.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
@@ -34,7 +34,7 @@ service Incidents {
 
   rpc Notify(IncidentNotifyRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/kubernetes/v1beta1/alerts/{alert_phid}/actions/notify"
+      post: "/appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident"
       body : "*"
     };
     option (appscode.api.cors) = {
@@ -55,11 +55,11 @@ service Incidents {
 
 message Incident {
   string phid = 1;
-  string kubernetes_cluster = 2;
+  dtypes.Uid kubernetes_cluster = 2;
   string kubernetes_namespace  = 3;
-  string kubernetes_objectType = 4;
-  string kubernetes_objectName = 5;
-  dtypes.Uid alert = 6;
+  string kubernetes_object_type = 4;
+  string kubernetes_object_name = 5;
+  string kubernetes_alert_name = 6;
   string icinga_host = 7;
   string icinga_service = 8;
   string type = 9;
@@ -85,8 +85,8 @@ message Incident {
 message IncidentListRequest {
   string kubernetes_cluster = 1;
   string kubernetes_namespace  = 2;
-  string kubernetes_objectType = 3;
-  string kubernetes_objectName = 4;
+  string kubernetes_object_type = 3;
+  string kubernetes_object_name = 4;
   repeated string states = 5;
 }
 
@@ -105,9 +105,9 @@ message IncidentDescribeResponse {
   Incident incident = 2;
 }
 
-// Next Id: 9
+// Next Id: 12
 message IncidentNotifyRequest {
-  string alert_phid = 1;
+  string alert_phid = 1 [deprecated=true];
   string host_name = 2;
   string type = 3;
   string state = 4;
@@ -117,6 +117,9 @@ message IncidentNotifyRequest {
   int64 time = 6;
   string author = 7;
   string comment = 8;
+  string kubernetes_alert_name = 9;
+  string kubernetes_cluster = 10;
+  string kubernetes_namespace = 11;
 }
 
 // Next Id: 4
