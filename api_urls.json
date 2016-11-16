@@ -59,6 +59,18 @@
       "url": "/appscode/api/auth/v1beta1/logout"
     }
   },
+  "/appscode/api/auth/v1beta1/projects": {
+    "get": {
+      "file": "/auth/v1beta1/project.proto",
+      "url": "/appscode/api/auth/v1beta1/projects"
+    }
+  },
+  "/appscode/api/auth/v1beta1/projects/*/members": {
+    "get": {
+      "file": "/auth/v1beta1/project.proto",
+      "url": "/appscode/api/auth/v1beta1/projects/{uid}/members"
+    }
+  },
   "/appscode/api/auth/v1beta1/token": {
     "post": {
       "file": "/auth/v1beta1/authentication.proto",
