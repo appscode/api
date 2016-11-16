@@ -22,7 +22,7 @@ ALIAS+="Mappscode/api/artifactory/artifacts.proto=github.com/appscode/api/artifa
 ALIAS+="Mappscode/api/db/v1beta1/database.proto=github.com/appscode/api/db/v1beta1,"
 ALIAS+="Mappscode/api/db/v1beta1/snapshot.proto=github.com/appscode/api/db/v1beta1,"
 ALIAS+="Mappscode/api/namespace/v1beta1/team.proto=github.com/appscode/api/namespace/v1beta1,"
-ALIAS+="Mappscode/api/alert/v1beta1/alert.proto=github.com/appscode/api/alert/v1beta1,"
+ALIAS+="Mappscode/api/alert/v1beta1/incident.proto=github.com/appscode/api/alert/v1beta1,"
 ALIAS+="Mappscode/api/operation/operation.proto=github.com/appscode/api/operation,"
 ALIAS+="Mappscode/api/version/version.proto=github.com/appscode/api/version"
 

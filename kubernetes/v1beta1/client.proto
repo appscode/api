@@ -11,7 +11,6 @@ option java_package = "com.appscode.api.kubernetes.v1beta1";
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
 import "appscode/api/dtypes/types.proto";
-import "appscode/api/alert/v1beta1/alert.proto";
 
 // All those clients api in v1beta1 are deprecated. will be removed in future version.
 // Use v0.2 apis instead.
@@ -150,6 +149,13 @@ message KubeResource {
   string name = 2;
   string namespace = 3;
   string cluster = 4;
+}
+
+message IcingaState {
+    int32 OK = 1;
+    int32 Warning = 2;
+    int32 Critical = 3;
+    int32 Unknown = 4;
 }
 
 message CopyResourceRequest {
@@ -312,7 +318,7 @@ message AppDescribeResponse {
   dtypes.Status status = 1;
   Service app = 2;
   map<string, string> links = 3;
-  alert.v1beta1.IcingaState icinga_state = 4;
+  IcingaState icinga_state = 4;
 }
 
 message AppListResponse {

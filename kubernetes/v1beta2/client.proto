@@ -11,7 +11,6 @@ option java_package = "com.appscode.api.kubernetes.v1beta2";
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
 import "appscode/api/dtypes/types.proto";
-import "appscode/api/alert/v1beta1/alert.proto";
 
 service Clients {
   rpc List(ListResourceRequest) returns (ListResourceResponse){
@@ -135,9 +134,9 @@ message ListResourceRequest {
   string type = 2;
   string namespace = 3;
   bool include_metrics = 4;
-  PodAncestor pod_ancestor = 5;
+  Ancestor ancestor = 5;
 
-  message PodAncestor {
+  message Ancestor {
       string type = 1;
       string name = 2;
   }
@@ -226,6 +225,7 @@ message KubeResourceList {
     StorageClasses storage_classes = 15;
     PersistentVolumes persistent_volumes = 16;
     PersistentVolumeClaims persistent_volume_claims = 17;
+    Alerts alerts = 18;
   }
 
   message Apps {
@@ -291,6 +291,10 @@ message KubeResourceList {
   message PersistentVolumeClaims {
     repeated PersistentVolumeClaim items = 1;
   }
+
+  message Alerts {
+    repeated Alert items = 1;
+  }
 }
 
 // TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
@@ -313,6 +317,7 @@ message KubeResource {
     StorageClass storage_class = 15;
     PersistentVolume persistent_volume = 16;
     PersistentVolumeClaim persistent_volume_claim = 17;
+    Alert alert = 20;
   }
   repeated Event events = 18;
   Raw raw = 19;
@@ -336,6 +341,13 @@ message KubeObject {
   string name = 4;
 }
 
+message IcingaState {
+    int32 OK = 1;
+    int32 Warning = 2;
+    int32 Critical = 3;
+    int32 Unknown = 4;
+}
+
 message App {
   string cluster = 1;
   string type = 2;
@@ -345,7 +357,7 @@ message App {
   map<string, string> links = 6;
   int64 created_at = 7;
   string cluster_ip = 8;
-  alert.v1beta1.IcingaState icinga_state = 9;
+  IcingaState icinga_state = 9;
 }
 
 message PodSpec {
@@ -713,6 +725,29 @@ message PersistentVolumeClaimUnRegisterRequest {
   string namespace = 3;
 }
 
+message Alert {
+    Meta meta = 1;
+    AlertSpec spec = 2;
+    string status = 3;
+
+    message AlertSpec {
+        IcingaParam icinga_param = 1;
+        string check_command = 2;
+        repeated NotifierParam notifier_params= 3;
+        map<string, string> vars = 4;
+
+        message IcingaParam {
+           int64 check_interval_sec = 1;
+           int64 alert_interval_sec = 2;
+        }
+
+        message NotifierParam {
+            string state = 1;
+            string user_uid = 2;
+            string method = 3;
+        }
+    }
+}
 
 // TODO
 // The following values are copied from kubernetes/pkg/api/v1/generated.proto

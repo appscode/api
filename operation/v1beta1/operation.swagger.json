@@ -4,20 +4,6 @@
     "application/json"
   ],
   "definitions": {
-    "AlertSyncRequestPodAncestor": {
-      "properties": {
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "type": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 3",
-      "type": "object"
-    },
     "dtypesHelp": {
       "properties": {
         "description": {
@@ -128,34 +114,6 @@
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "v1beta1AlertSyncRequest": {
-      "properties": {
-        "kubernetes_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_objectName": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_objectType": {
-          "format": "string",
-          "type": "string"
-        },
-        "pod_ancestors": {
-          "items": {
-            "$ref": "#/definitions/AlertSyncRequestPodAncestor"
-          },
-          "type": "array"
-        }
-      },
-      "title": "Next Id: 6",
       "type": "object"
     },
     "v1beta1Auth": {
@@ -563,9 +521,6 @@
     },
     "v1beta1Operation": {
       "properties": {
-        "alert_sync_request": {
-          "$ref": "#/definitions/v1beta1AlertSyncRequest"
-        },
         "auth": {
           "$ref": "#/definitions/v1beta1Auth"
         },
@@ -644,7 +599,6 @@
         "BACKUP_SCHEDULE",
         "NAMESPACE_CREATE",
         "NAMESPACE_ADMIN_TASK",
-        "ALERT_SYNC",
         "DATABASE_CHECK",
         "SNAPSHOT_CHECK",
         "DATABASE_DELETE"

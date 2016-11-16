@@ -361,7 +361,6 @@
           "type": "integer"
         }
       },
-      "title": "This one is used in kubernetes/v1beta1/client.proto\nTo send information if alert is set for app/pod",
       "type": "object"
     },
     "v1beta1Job": {

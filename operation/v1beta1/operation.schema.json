@@ -1,17 +1,5 @@
 {
   "definitions": {
-    "AlertSyncRequestPodAncestor": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 3",
-      "type": "object"
-    },
     "v1beta1AgentCreateRequest": {
       "properties": {
         "ci_starter_version": {
@@ -50,30 +38,6 @@
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "v1beta1AlertSyncRequest": {
-      "properties": {
-        "kubernetes_cluster": {
-          "type": "string"
-        },
-        "kubernetes_namespace": {
-          "type": "string"
-        },
-        "kubernetes_objectName": {
-          "type": "string"
-        },
-        "kubernetes_objectType": {
-          "type": "string"
-        },
-        "pod_ancestors": {
-          "items": {
-            "$ref": "#/definitions/AlertSyncRequestPodAncestor"
-          },
-          "type": "array"
-        }
-      },
-      "title": "Next Id: 6",
       "type": "object"
     },
     "v1beta1BackupScheduleRequest": {
