@@ -117,6 +117,34 @@ func (m *ListResourceRequest) String() string            { return proto.CompactT
 func (*ListResourceRequest) ProtoMessage()               {}
 func (*ListResourceRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *ListResourceRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *ListResourceRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *ListResourceRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *ListResourceRequest) GetIncludeMetrics() bool {
+	if m != nil {
+		return m.IncludeMetrics
+	}
+	return false
+}
+
 func (m *ListResourceRequest) GetAncestor() *ListResourceRequest_Ancestor {
 	if m != nil {
 		return m.Ancestor
@@ -133,6 +161,20 @@ func (m *ListResourceRequest_Ancestor) Reset()                    { *m = ListRes
 func (m *ListResourceRequest_Ancestor) String() string            { return proto.CompactTextString(m) }
 func (*ListResourceRequest_Ancestor) ProtoMessage()               {}
 func (*ListResourceRequest_Ancestor) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0, 0} }
+
+func (m *ListResourceRequest_Ancestor) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *ListResourceRequest_Ancestor) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 type ListResourceResponse struct {
 	Status    *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -172,6 +214,48 @@ func (m *DescribeResourceRequest) String() string            { return proto.Comp
 func (*DescribeResourceRequest) ProtoMessage()               {}
 func (*DescribeResourceRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
+func (m *DescribeResourceRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DescribeResourceRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *DescribeResourceRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *DescribeResourceRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *DescribeResourceRequest) GetRaw() string {
+	if m != nil {
+		return m.Raw
+	}
+	return ""
+}
+
+func (m *DescribeResourceRequest) GetIncludeMetrics() bool {
+	if m != nil {
+		return m.IncludeMetrics
+	}
+	return false
+}
+
 type DescribeResourceResponse struct {
 	Status   *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Resource *KubeResource           `protobuf:"bytes,2,opt,name=resource" json:"resource,omitempty"`
@@ -209,6 +293,34 @@ func (m *UpdateResourceRequest) String() string            { return proto.Compac
 func (*UpdateResourceRequest) ProtoMessage()               {}
 func (*UpdateResourceRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
+func (m *UpdateResourceRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *UpdateResourceRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *UpdateResourceRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *UpdateResourceRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 func (m *UpdateResourceRequest) GetRaw() *Raw {
 	if m != nil {
 		return m.Raw
@@ -230,6 +342,27 @@ func (m *ConfigMapEditRequest) String() string            { return proto.Compact
 func (*ConfigMapEditRequest) ProtoMessage()               {}
 func (*ConfigMapEditRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
 
+func (m *ConfigMapEditRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *ConfigMapEditRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *ConfigMapEditRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 func (m *ConfigMapEditRequest) GetAdd() map[string]string {
 	if m != nil {
 		return m.Add
@@ -240,6 +373,13 @@ func (m *ConfigMapEditRequest) GetAdd() map[string]string {
 func (m *ConfigMapEditRequest) GetUpdate() map[string]string {
 	if m != nil {
 		return m.Update
+	}
+	return nil
+}
+
+func (m *ConfigMapEditRequest) GetDeleted() []string {
+	if m != nil {
+		return m.Deleted
 	}
 	return nil
 }
@@ -258,6 +398,27 @@ func (m *SecretEditRequest) String() string            { return proto.CompactTex
 func (*SecretEditRequest) ProtoMessage()               {}
 func (*SecretEditRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
 
+func (m *SecretEditRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *SecretEditRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *SecretEditRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 func (m *SecretEditRequest) GetAdd() map[string]string {
 	if m != nil {
 		return m.Add
@@ -268,6 +429,13 @@ func (m *SecretEditRequest) GetAdd() map[string]string {
 func (m *SecretEditRequest) GetUpdate() map[string]string {
 	if m != nil {
 		return m.Update
+	}
+	return nil
+}
+
+func (m *SecretEditRequest) GetDeleted() []string {
+	if m != nil {
+		return m.Deleted
 	}
 	return nil
 }
@@ -308,6 +476,27 @@ func (m *CreateResourceRequest) String() string            { return proto.Compac
 func (*CreateResourceRequest) ProtoMessage()               {}
 func (*CreateResourceRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
 
+func (m *CreateResourceRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *CreateResourceRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *CreateResourceRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 func (m *CreateResourceRequest) GetResource() *Raw {
 	if m != nil {
 		return m.Resource
@@ -326,6 +515,34 @@ func (m *DeleteResourceRequest) Reset()                    { *m = DeleteResource
 func (m *DeleteResourceRequest) String() string            { return proto.CompactTextString(m) }
 func (*DeleteResourceRequest) ProtoMessage()               {}
 func (*DeleteResourceRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{9} }
+
+func (m *DeleteResourceRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DeleteResourceRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *DeleteResourceRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *DeleteResourceRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 type KubeResourceList struct {
 	Type string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
@@ -434,6 +651,13 @@ func (m *KubeResourceList) GetResource() isKubeResourceList_Resource {
 		return m.Resource
 	}
 	return nil
+}
+
+func (m *KubeResourceList) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
 }
 
 func (m *KubeResourceList) GetApps() *KubeResourceList_Apps {
@@ -1314,6 +1538,13 @@ func (m *KubeResource) GetResource() isKubeResource_Resource {
 	return nil
 }
 
+func (m *KubeResource) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
 func (m *KubeResource) GetApp() *App {
 	if x, ok := m.GetResource().(*KubeResource_App); ok {
 		return x.App
@@ -1822,6 +2053,48 @@ func (m *Meta) String() string            { return proto.CompactTextString(m) }
 func (*Meta) ProtoMessage()               {}
 func (*Meta) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{12} }
 
+func (m *Meta) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Meta) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *Meta) GetSelfLinks() string {
+	if m != nil {
+		return m.SelfLinks
+	}
+	return ""
+}
+
+func (m *Meta) GetResourceVersion() string {
+	if m != nil {
+		return m.ResourceVersion
+	}
+	return ""
+}
+
+func (m *Meta) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *Meta) GetGeneration() int64 {
+	if m != nil {
+		return m.Generation
+	}
+	return 0
+}
+
 func (m *Meta) GetLabels() map[string]string {
 	if m != nil {
 		return m.Labels
@@ -1848,6 +2121,34 @@ func (m *KubeObject) String() string            { return proto.CompactTextString
 func (*KubeObject) ProtoMessage()               {}
 func (*KubeObject) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{13} }
 
+func (m *KubeObject) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *KubeObject) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *KubeObject) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *KubeObject) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type IcingaState struct {
 	OK       int32 `protobuf:"varint,1,opt,name=OK" json:"OK,omitempty"`
 	Warning  int32 `protobuf:"varint,2,opt,name=Warning" json:"Warning,omitempty"`
@@ -1859,6 +2160,34 @@ func (m *IcingaState) Reset()                    { *m = IcingaState{} }
 func (m *IcingaState) String() string            { return proto.CompactTextString(m) }
 func (*IcingaState) ProtoMessage()               {}
 func (*IcingaState) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{14} }
+
+func (m *IcingaState) GetOK() int32 {
+	if m != nil {
+		return m.OK
+	}
+	return 0
+}
+
+func (m *IcingaState) GetWarning() int32 {
+	if m != nil {
+		return m.Warning
+	}
+	return 0
+}
+
+func (m *IcingaState) GetCritical() int32 {
+	if m != nil {
+		return m.Critical
+	}
+	return 0
+}
+
+func (m *IcingaState) GetUnknown() int32 {
+	if m != nil {
+		return m.Unknown
+	}
+	return 0
+}
 
 type App struct {
 	Cluster     string            `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -1877,6 +2206,34 @@ func (m *App) String() string            { return proto.CompactTextString(m) }
 func (*App) ProtoMessage()               {}
 func (*App) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{15} }
 
+func (m *App) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *App) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *App) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *App) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 func (m *App) GetApp() *Service {
 	if m != nil {
 		return m.App
@@ -1889,6 +2246,20 @@ func (m *App) GetLinks() map[string]string {
 		return m.Links
 	}
 	return nil
+}
+
+func (m *App) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *App) GetClusterIp() string {
+	if m != nil {
+		return m.ClusterIp
+	}
+	return ""
 }
 
 func (m *App) GetIcingaState() *IcingaState {
@@ -1933,6 +2304,27 @@ func (m *PodSpec) GetNodeSelectors() map[string]string {
 	return nil
 }
 
+func (m *PodSpec) GetServiceAccountName() string {
+	if m != nil {
+		return m.ServiceAccountName
+	}
+	return ""
+}
+
+func (m *PodSpec) GetNodeName() string {
+	if m != nil {
+		return m.NodeName
+	}
+	return ""
+}
+
+func (m *PodSpec) GetImagePullSecrets() []string {
+	if m != nil {
+		return m.ImagePullSecrets
+	}
+	return nil
+}
+
 type PodSpec_Container struct {
 	Name         string                           `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	Image        string                           `protobuf:"bytes,2,opt,name=image" json:"image,omitempty"`
@@ -1944,6 +2336,27 @@ func (m *PodSpec_Container) Reset()                    { *m = PodSpec_Container{
 func (m *PodSpec_Container) String() string            { return proto.CompactTextString(m) }
 func (*PodSpec_Container) ProtoMessage()               {}
 func (*PodSpec_Container) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{16, 1} }
+
+func (m *PodSpec_Container) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *PodSpec_Container) GetImage() string {
+	if m != nil {
+		return m.Image
+	}
+	return ""
+}
+
+func (m *PodSpec_Container) GetCommands() []string {
+	if m != nil {
+		return m.Commands
+	}
+	return nil
+}
 
 func (m *PodSpec_Container) GetVolumeMounts() []*PodSpec_Container_VolumeMount {
 	if m != nil {
@@ -1965,6 +2378,27 @@ func (*PodSpec_Container_VolumeMount) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{16, 1, 0}
 }
 
+func (m *PodSpec_Container_VolumeMount) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *PodSpec_Container_VolumeMount) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
+
+func (m *PodSpec_Container_VolumeMount) GetMountPath() string {
+	if m != nil {
+		return m.MountPath
+	}
+	return ""
+}
+
 type PodSpec_Volume struct {
 	Name     string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	HostPath string `protobuf:"bytes,2,opt,name=host_path,json=hostPath" json:"host_path,omitempty"`
@@ -1975,6 +2409,20 @@ func (m *PodSpec_Volume) String() string            { return proto.CompactTextSt
 func (*PodSpec_Volume) ProtoMessage()               {}
 func (*PodSpec_Volume) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{16, 2} }
 
+func (m *PodSpec_Volume) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *PodSpec_Volume) GetHostPath() string {
+	if m != nil {
+		return m.HostPath
+	}
+	return ""
+}
+
 type Raw struct {
 	Format string `protobuf:"bytes,1,opt,name=format" json:"format,omitempty"`
 	Data   string `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
@@ -1984,6 +2432,20 @@ func (m *Raw) Reset()                    { *m = Raw{} }
 func (m *Raw) String() string            { return proto.CompactTextString(m) }
 func (*Raw) ProtoMessage()               {}
 func (*Raw) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{17} }
+
+func (m *Raw) GetFormat() string {
+	if m != nil {
+		return m.Format
+	}
+	return ""
+}
+
+func (m *Raw) GetData() string {
+	if m != nil {
+		return m.Data
+	}
+	return ""
+}
 
 type ConfigMap struct {
 	Meta *Meta             `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
@@ -2028,6 +2490,13 @@ func (m *Job) GetMeta() *Meta {
 	return nil
 }
 
+func (m *Job) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
+}
+
 func (m *Job) GetSpace() *Job_Spec {
 	if m != nil {
 		return m.Space
@@ -2053,6 +2522,20 @@ func (m *Job_Spec) String() string            { return proto.CompactTextString(m
 func (*Job_Spec) ProtoMessage()               {}
 func (*Job_Spec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{19, 0} }
 
+func (m *Job_Spec) GetParallelism() int32 {
+	if m != nil {
+		return m.Parallelism
+	}
+	return 0
+}
+
+func (m *Job_Spec) GetCompletions() int32 {
+	if m != nil {
+		return m.Completions
+	}
+	return 0
+}
+
 func (m *Job_Spec) GetTemplate() *PodSpec {
 	if m != nil {
 		return m.Template
@@ -2072,6 +2555,41 @@ func (m *Job_Status) Reset()                    { *m = Job_Status{} }
 func (m *Job_Status) String() string            { return proto.CompactTextString(m) }
 func (*Job_Status) ProtoMessage()               {}
 func (*Job_Status) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{19, 1} }
+
+func (m *Job_Status) GetStartTime() int64 {
+	if m != nil {
+		return m.StartTime
+	}
+	return 0
+}
+
+func (m *Job_Status) GetCompletionTime() int64 {
+	if m != nil {
+		return m.CompletionTime
+	}
+	return 0
+}
+
+func (m *Job_Status) GetActive() int32 {
+	if m != nil {
+		return m.Active
+	}
+	return 0
+}
+
+func (m *Job_Status) GetSucceeded() int32 {
+	if m != nil {
+		return m.Succeeded
+	}
+	return 0
+}
+
+func (m *Job_Status) GetFailed() int32 {
+	if m != nil {
+		return m.Failed
+	}
+	return 0
+}
 
 type Namespace struct {
 	Meta   *Meta             `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
@@ -2106,6 +2624,13 @@ func (m *Namespace_Status) String() string            { return proto.CompactText
 func (*Namespace_Status) ProtoMessage()               {}
 func (*Namespace_Status) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{20, 0} }
 
+func (m *Namespace_Status) GetPhase() string {
+	if m != nil {
+		return m.Phase
+	}
+	return ""
+}
+
 type Node struct {
 	Meta     *Meta        `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
 	Spec     *Node_Spec   `protobuf:"bytes,2,opt,name=spec" json:"spec,omitempty"`
@@ -2133,6 +2658,13 @@ func (m *Node) GetSpec() *Node_Spec {
 	return nil
 }
 
+func (m *Node) GetIsMaster() bool {
+	if m != nil {
+		return m.IsMaster
+	}
+	return false
+}
+
 func (m *Node) GetStatus() *Node_Status {
 	if m != nil {
 		return m.Status
@@ -2158,6 +2690,27 @@ func (m *Node_Spec) String() string            { return proto.CompactTextString(
 func (*Node_Spec) ProtoMessage()               {}
 func (*Node_Spec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{21, 0} }
 
+func (m *Node_Spec) GetExternalId() string {
+	if m != nil {
+		return m.ExternalId
+	}
+	return ""
+}
+
+func (m *Node_Spec) GetProviderId() string {
+	if m != nil {
+		return m.ProviderId
+	}
+	return ""
+}
+
+func (m *Node_Spec) GetUnschedulable() bool {
+	if m != nil {
+		return m.Unschedulable
+	}
+	return false
+}
+
 type Node_Status struct {
 	Capacity *Node_Status_Capacity `protobuf:"bytes,1,opt,name=capacity" json:"capacity,omitempty"`
 	Phase    string                `protobuf:"bytes,2,opt,name=phase" json:"phase,omitempty"`
@@ -2174,6 +2727,13 @@ func (m *Node_Status) GetCapacity() *Node_Status_Capacity {
 		return m.Capacity
 	}
 	return nil
+}
+
+func (m *Node_Status) GetPhase() string {
+	if m != nil {
+		return m.Phase
+	}
+	return ""
 }
 
 func (m *Node_Status) GetNodeInfo() *Node_Status_NodeInfo {
@@ -2194,6 +2754,27 @@ func (m *Node_Status_Capacity) String() string            { return proto.Compact
 func (*Node_Status_Capacity) ProtoMessage()               {}
 func (*Node_Status_Capacity) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{21, 1, 0} }
 
+func (m *Node_Status_Capacity) GetCpu() int64 {
+	if m != nil {
+		return m.Cpu
+	}
+	return 0
+}
+
+func (m *Node_Status_Capacity) GetMemory() int64 {
+	if m != nil {
+		return m.Memory
+	}
+	return 0
+}
+
+func (m *Node_Status_Capacity) GetPods() int64 {
+	if m != nil {
+		return m.Pods
+	}
+	return 0
+}
+
 type Node_Status_NodeInfo struct {
 	KernelVersion           string `protobuf:"bytes,1,opt,name=kernel_version,json=kernelVersion" json:"kernel_version,omitempty"`
 	OsImage                 string `protobuf:"bytes,2,opt,name=os_image,json=osImage" json:"os_image,omitempty"`
@@ -2206,6 +2787,41 @@ func (m *Node_Status_NodeInfo) Reset()                    { *m = Node_Status_Nod
 func (m *Node_Status_NodeInfo) String() string            { return proto.CompactTextString(m) }
 func (*Node_Status_NodeInfo) ProtoMessage()               {}
 func (*Node_Status_NodeInfo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{21, 1, 1} }
+
+func (m *Node_Status_NodeInfo) GetKernelVersion() string {
+	if m != nil {
+		return m.KernelVersion
+	}
+	return ""
+}
+
+func (m *Node_Status_NodeInfo) GetOsImage() string {
+	if m != nil {
+		return m.OsImage
+	}
+	return ""
+}
+
+func (m *Node_Status_NodeInfo) GetContainerRuntimeVersion() string {
+	if m != nil {
+		return m.ContainerRuntimeVersion
+	}
+	return ""
+}
+
+func (m *Node_Status_NodeInfo) GetKubeletVersion() string {
+	if m != nil {
+		return m.KubeletVersion
+	}
+	return ""
+}
+
+func (m *Node_Status_NodeInfo) GetKubeProxyVersion() string {
+	if m != nil {
+		return m.KubeProxyVersion
+	}
+	return ""
+}
 
 type Pod struct {
 	Meta    *Meta       `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
@@ -2225,6 +2841,13 @@ func (m *Pod) GetMeta() *Meta {
 		return m.Meta
 	}
 	return nil
+}
+
+func (m *Pod) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
 }
 
 func (m *Pod) GetSpec() *PodSpec {
@@ -2260,6 +2883,41 @@ func (m *Pod_Status) Reset()                    { *m = Pod_Status{} }
 func (m *Pod_Status) String() string            { return proto.CompactTextString(m) }
 func (*Pod_Status) ProtoMessage()               {}
 func (*Pod_Status) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{22, 0} }
+
+func (m *Pod_Status) GetPhase() string {
+	if m != nil {
+		return m.Phase
+	}
+	return ""
+}
+
+func (m *Pod_Status) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
+func (m *Pod_Status) GetReason() string {
+	if m != nil {
+		return m.Reason
+	}
+	return ""
+}
+
+func (m *Pod_Status) GetHostIP() string {
+	if m != nil {
+		return m.HostIP
+	}
+	return ""
+}
+
+func (m *Pod_Status) GetPodIP() string {
+	if m != nil {
+		return m.PodIP
+	}
+	return ""
+}
 
 type PersistentVolume struct {
 	Meta   *Meta                                    `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
@@ -2315,6 +2973,20 @@ func (m *PersistentVolume_PersistentVolumeSpec) GetCapacity() map[string]string 
 	return nil
 }
 
+func (m *PersistentVolume_PersistentVolumeSpec) GetAccessModes() []string {
+	if m != nil {
+		return m.AccessModes
+	}
+	return nil
+}
+
+func (m *PersistentVolume_PersistentVolumeSpec) GetPersistentVolumeReclaimPolicy() string {
+	if m != nil {
+		return m.PersistentVolumeReclaimPolicy
+	}
+	return ""
+}
+
 func (m *PersistentVolume_PersistentVolumeSpec) GetClaimRef() *ObjectReference {
 	if m != nil {
 		return m.ClaimRef
@@ -2342,6 +3014,27 @@ func (m *PersistentVolume_PersistentVolumeStatus) String() string { return proto
 func (*PersistentVolume_PersistentVolumeStatus) ProtoMessage()    {}
 func (*PersistentVolume_PersistentVolumeStatus) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{23, 1}
+}
+
+func (m *PersistentVolume_PersistentVolumeStatus) GetPhase() string {
+	if m != nil {
+		return m.Phase
+	}
+	return ""
+}
+
+func (m *PersistentVolume_PersistentVolumeStatus) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
+func (m *PersistentVolume_PersistentVolumeStatus) GetReason() string {
+	if m != nil {
+		return m.Reason
+	}
+	return ""
 }
 
 type PersistentVolumeClaim struct {
@@ -2393,11 +3086,25 @@ func (*PersistentVolumeClaim_PersistentVolumeClaimSpec) Descriptor() ([]byte, []
 	return fileDescriptor0, []int{24, 0}
 }
 
+func (m *PersistentVolumeClaim_PersistentVolumeClaimSpec) GetAccessModes() []string {
+	if m != nil {
+		return m.AccessModes
+	}
+	return nil
+}
+
 func (m *PersistentVolumeClaim_PersistentVolumeClaimSpec) GetResources() *PersistentVolumeClaim_PersistentVolumeClaimSpec_ResourceRequirements {
 	if m != nil {
 		return m.Resources
 	}
 	return nil
+}
+
+func (m *PersistentVolumeClaim_PersistentVolumeClaimSpec) GetVolumeName() string {
+	if m != nil {
+		return m.VolumeName
+	}
+	return ""
 }
 
 type PersistentVolumeClaim_PersistentVolumeClaimSpec_ResourceRequirements struct {
@@ -2447,6 +3154,20 @@ func (*PersistentVolumeClaim_PersistentVolumeClaimStatus) Descriptor() ([]byte, 
 	return fileDescriptor0, []int{24, 1}
 }
 
+func (m *PersistentVolumeClaim_PersistentVolumeClaimStatus) GetPhase() string {
+	if m != nil {
+		return m.Phase
+	}
+	return ""
+}
+
+func (m *PersistentVolumeClaim_PersistentVolumeClaimStatus) GetAccessModes() []string {
+	if m != nil {
+		return m.AccessModes
+	}
+	return nil
+}
+
 func (m *PersistentVolumeClaim_PersistentVolumeClaimStatus) GetCapacity() map[string]string {
 	if m != nil {
 		return m.Capacity
@@ -2468,6 +3189,48 @@ func (m *ObjectReference) String() string            { return proto.CompactTextS
 func (*ObjectReference) ProtoMessage()               {}
 func (*ObjectReference) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{25} }
 
+func (m *ObjectReference) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
+func (m *ObjectReference) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *ObjectReference) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ObjectReference) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
+func (m *ObjectReference) GetAPIVersion() string {
+	if m != nil {
+		return m.APIVersion
+	}
+	return ""
+}
+
+func (m *ObjectReference) GetResourceVersion() string {
+	if m != nil {
+		return m.ResourceVersion
+	}
+	return ""
+}
+
 type Service struct {
 	Meta   *Meta           `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
 	App    string          `protobuf:"bytes,2,opt,name=app" json:"app,omitempty"`
@@ -2485,6 +3248,13 @@ func (m *Service) GetMeta() *Meta {
 		return m.Meta
 	}
 	return nil
+}
+
+func (m *Service) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
 }
 
 func (m *Service) GetSpec() *Service_Spec {
@@ -2515,6 +3285,13 @@ func (m *Service_Spec) String() string            { return proto.CompactTextStri
 func (*Service_Spec) ProtoMessage()               {}
 func (*Service_Spec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{26, 0} }
 
+func (m *Service_Spec) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
 func (m *Service_Spec) GetPorts() []*Service_Spec_Port {
 	if m != nil {
 		return m.Ports
@@ -2529,6 +3306,27 @@ func (m *Service_Spec) GetSeletors() map[string]string {
 	return nil
 }
 
+func (m *Service_Spec) GetClusterIP() string {
+	if m != nil {
+		return m.ClusterIP
+	}
+	return ""
+}
+
+func (m *Service_Spec) GetExternalIPs() []string {
+	if m != nil {
+		return m.ExternalIPs
+	}
+	return nil
+}
+
+func (m *Service_Spec) GetLoadbalancerIP() string {
+	if m != nil {
+		return m.LoadbalancerIP
+	}
+	return ""
+}
+
 type Service_Spec_Port struct {
 	Name       string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	Protocol   string `protobuf:"bytes,2,opt,name=protocol" json:"protocol,omitempty"`
@@ -2541,6 +3339,41 @@ func (m *Service_Spec_Port) Reset()                    { *m = Service_Spec_Port{
 func (m *Service_Spec_Port) String() string            { return proto.CompactTextString(m) }
 func (*Service_Spec_Port) ProtoMessage()               {}
 func (*Service_Spec_Port) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{26, 0, 1} }
+
+func (m *Service_Spec_Port) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Service_Spec_Port) GetProtocol() string {
+	if m != nil {
+		return m.Protocol
+	}
+	return ""
+}
+
+func (m *Service_Spec_Port) GetPort() int32 {
+	if m != nil {
+		return m.Port
+	}
+	return 0
+}
+
+func (m *Service_Spec_Port) GetTargetPort() string {
+	if m != nil {
+		return m.TargetPort
+	}
+	return ""
+}
+
+func (m *Service_Spec_Port) GetNodePort() int32 {
+	if m != nil {
+		return m.NodePort
+	}
+	return 0
+}
 
 type Service_Status struct {
 	LoadbalancerIngresses []*Service_Status_LoadBalancerIngress `protobuf:"bytes,1,rep,name=loadbalancer_ingresses,json=loadbalancerIngresses" json:"loadbalancer_ingresses,omitempty"`
@@ -2570,6 +3403,20 @@ func (*Service_Status_LoadBalancerIngress) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{26, 1, 0}
 }
 
+func (m *Service_Status_LoadBalancerIngress) GetHostName() string {
+	if m != nil {
+		return m.HostName
+	}
+	return ""
+}
+
+func (m *Service_Status_LoadBalancerIngress) GetIP() string {
+	if m != nil {
+		return m.IP
+	}
+	return ""
+}
+
 type Secret struct {
 	Meta *Meta             `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
 	Data map[string]string `protobuf:"bytes,2,rep,name=data" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
@@ -2595,6 +3442,13 @@ func (m *Secret) GetData() map[string]string {
 	return nil
 }
 
+func (m *Secret) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
 type ReplicationController struct {
 	Meta   *Meta                         `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
 	App    string                        `protobuf:"bytes,2,opt,name=app" json:"app,omitempty"`
@@ -2612,6 +3466,13 @@ func (m *ReplicationController) GetMeta() *Meta {
 		return m.Meta
 	}
 	return nil
+}
+
+func (m *ReplicationController) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
 }
 
 func (m *ReplicationController) GetSpec() *ReplicationController_Spec {
@@ -2639,6 +3500,13 @@ func (m *ReplicationController_Spec) String() string            { return proto.C
 func (*ReplicationController_Spec) ProtoMessage()               {}
 func (*ReplicationController_Spec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{28, 0} }
 
+func (m *ReplicationController_Spec) GetDesiredReplicas() int32 {
+	if m != nil {
+		return m.DesiredReplicas
+	}
+	return 0
+}
+
 func (m *ReplicationController_Spec) GetSelectors() map[string]string {
 	if m != nil {
 		return m.Selectors
@@ -2665,6 +3533,20 @@ func (*ReplicationController_Status) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{28, 1}
 }
 
+func (m *ReplicationController_Status) GetCurrentReplicas() int32 {
+	if m != nil {
+		return m.CurrentReplicas
+	}
+	return 0
+}
+
+func (m *ReplicationController_Status) GetObservedGeneration() int64 {
+	if m != nil {
+		return m.ObservedGeneration
+	}
+	return 0
+}
+
 type ReplicaSet struct {
 	Meta   *Meta              `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
 	App    string             `protobuf:"bytes,2,opt,name=app" json:"app,omitempty"`
@@ -2682,6 +3564,13 @@ func (m *ReplicaSet) GetMeta() *Meta {
 		return m.Meta
 	}
 	return nil
+}
+
+func (m *ReplicaSet) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
 }
 
 func (m *ReplicaSet) GetSpec() *ReplicaSet_Spec {
@@ -2709,6 +3598,13 @@ func (m *ReplicaSet_Spec) String() string            { return proto.CompactTextS
 func (*ReplicaSet_Spec) ProtoMessage()               {}
 func (*ReplicaSet_Spec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{29, 0} }
 
+func (m *ReplicaSet_Spec) GetDesiredReplicas() int32 {
+	if m != nil {
+		return m.DesiredReplicas
+	}
+	return 0
+}
+
 func (m *ReplicaSet_Spec) GetSelector() *LabelSelector {
 	if m != nil {
 		return m.Selector
@@ -2733,6 +3629,20 @@ func (m *ReplicaSet_Status) String() string            { return proto.CompactTex
 func (*ReplicaSet_Status) ProtoMessage()               {}
 func (*ReplicaSet_Status) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{29, 1} }
 
+func (m *ReplicaSet_Status) GetCurrentReplicas() int32 {
+	if m != nil {
+		return m.CurrentReplicas
+	}
+	return 0
+}
+
+func (m *ReplicaSet_Status) GetObservedGeneration() int64 {
+	if m != nil {
+		return m.ObservedGeneration
+	}
+	return 0
+}
+
 type DaemonSet struct {
 	Meta   *Meta             `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
 	App    string            `protobuf:"bytes,2,opt,name=app" json:"app,omitempty"`
@@ -2750,6 +3660,13 @@ func (m *DaemonSet) GetMeta() *Meta {
 		return m.Meta
 	}
 	return nil
+}
+
+func (m *DaemonSet) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
 }
 
 func (m *DaemonSet) GetSpec() *DaemonSet_Spec {
@@ -2801,6 +3718,27 @@ func (m *DaemonSet_Status) String() string            { return proto.CompactText
 func (*DaemonSet_Status) ProtoMessage()               {}
 func (*DaemonSet_Status) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{30, 1} }
 
+func (m *DaemonSet_Status) GetCurrentNumberScheduled() int32 {
+	if m != nil {
+		return m.CurrentNumberScheduled
+	}
+	return 0
+}
+
+func (m *DaemonSet_Status) GetNumberMisscheduled() int32 {
+	if m != nil {
+		return m.NumberMisscheduled
+	}
+	return 0
+}
+
+func (m *DaemonSet_Status) GetDesiredNumberScheduled() int32 {
+	if m != nil {
+		return m.DesiredNumberScheduled
+	}
+	return 0
+}
+
 type Deployment struct {
 	Meta   *Meta              `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
 	App    string             `protobuf:"bytes,2,opt,name=app" json:"app,omitempty"`
@@ -2818,6 +3756,13 @@ func (m *Deployment) GetMeta() *Meta {
 		return m.Meta
 	}
 	return nil
+}
+
+func (m *Deployment) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
 }
 
 func (m *Deployment) GetSpec() *Deployment_Spec {
@@ -2844,6 +3789,13 @@ func (m *Deployment_Spec) Reset()                    { *m = Deployment_Spec{} }
 func (m *Deployment_Spec) String() string            { return proto.CompactTextString(m) }
 func (*Deployment_Spec) ProtoMessage()               {}
 func (*Deployment_Spec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{31, 0} }
+
+func (m *Deployment_Spec) GetDesiredReplicas() int32 {
+	if m != nil {
+		return m.DesiredReplicas
+	}
+	return 0
+}
 
 func (m *Deployment_Spec) GetSelector() *LabelSelector {
 	if m != nil {
@@ -2872,6 +3824,41 @@ func (m *Deployment_Status) String() string            { return proto.CompactTex
 func (*Deployment_Status) ProtoMessage()               {}
 func (*Deployment_Status) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{31, 1} }
 
+func (m *Deployment_Status) GetObservedGeneration() int64 {
+	if m != nil {
+		return m.ObservedGeneration
+	}
+	return 0
+}
+
+func (m *Deployment_Status) GetReplicas() int32 {
+	if m != nil {
+		return m.Replicas
+	}
+	return 0
+}
+
+func (m *Deployment_Status) GetUpdatedReplicas() int32 {
+	if m != nil {
+		return m.UpdatedReplicas
+	}
+	return 0
+}
+
+func (m *Deployment_Status) GetAvailableReplicas() int32 {
+	if m != nil {
+		return m.AvailableReplicas
+	}
+	return 0
+}
+
+func (m *Deployment_Status) GetUnavailableReplicas() int32 {
+	if m != nil {
+		return m.UnavailableReplicas
+	}
+	return 0
+}
+
 type PetSet struct {
 	Meta   *Meta          `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
 	App    string         `protobuf:"bytes,2,opt,name=app" json:"app,omitempty"`
@@ -2889,6 +3876,13 @@ func (m *PetSet) GetMeta() *Meta {
 		return m.Meta
 	}
 	return nil
+}
+
+func (m *PetSet) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
 }
 
 func (m *PetSet) GetSpec() *PetSet_Spec {
@@ -2917,6 +3911,13 @@ func (m *PetSet_Spec) String() string            { return proto.CompactTextStrin
 func (*PetSet_Spec) ProtoMessage()               {}
 func (*PetSet_Spec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{32, 0} }
 
+func (m *PetSet_Spec) GetDesiredReplicas() int32 {
+	if m != nil {
+		return m.DesiredReplicas
+	}
+	return 0
+}
+
 func (m *PetSet_Spec) GetSelector() *LabelSelector {
 	if m != nil {
 		return m.Selector
@@ -2931,6 +3932,13 @@ func (m *PetSet_Spec) GetPodTemplate() *PodSpec {
 	return nil
 }
 
+func (m *PetSet_Spec) GetServiceName() string {
+	if m != nil {
+		return m.ServiceName
+	}
+	return ""
+}
+
 type PetSet_Status struct {
 	CurrentReplicas    int32 `protobuf:"varint,1,opt,name=current_replicas,json=currentReplicas" json:"current_replicas,omitempty"`
 	ObservedGeneration int64 `protobuf:"varint,2,opt,name=observed_generation,json=observedGeneration" json:"observed_generation,omitempty"`
@@ -2940,6 +3948,20 @@ func (m *PetSet_Status) Reset()                    { *m = PetSet_Status{} }
 func (m *PetSet_Status) String() string            { return proto.CompactTextString(m) }
 func (*PetSet_Status) ProtoMessage()               {}
 func (*PetSet_Status) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{32, 1} }
+
+func (m *PetSet_Status) GetCurrentReplicas() int32 {
+	if m != nil {
+		return m.CurrentReplicas
+	}
+	return 0
+}
+
+func (m *PetSet_Status) GetObservedGeneration() int64 {
+	if m != nil {
+		return m.ObservedGeneration
+	}
+	return 0
+}
 
 type StorageClass struct {
 	Meta        *Meta             `protobuf:"bytes,1,opt,name=meta" json:"meta,omitempty"`
@@ -2957,6 +3979,13 @@ func (m *StorageClass) GetMeta() *Meta {
 		return m.Meta
 	}
 	return nil
+}
+
+func (m *StorageClass) GetProvisioner() string {
+	if m != nil {
+		return m.Provisioner
+	}
+	return ""
 }
 
 func (m *StorageClass) GetParameters() map[string]string {
@@ -3005,11 +4034,53 @@ func (m *Event) GetMeta() *Meta {
 	return nil
 }
 
+func (m *Event) GetReason() string {
+	if m != nil {
+		return m.Reason
+	}
+	return ""
+}
+
+func (m *Event) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
 func (m *Event) GetSource() *EventSource {
 	if m != nil {
 		return m.Source
 	}
 	return nil
+}
+
+func (m *Event) GetFirstTimestamp() int64 {
+	if m != nil {
+		return m.FirstTimestamp
+	}
+	return 0
+}
+
+func (m *Event) GetLastTimestamp() int64 {
+	if m != nil {
+		return m.LastTimestamp
+	}
+	return 0
+}
+
+func (m *Event) GetCount() int32 {
+	if m != nil {
+		return m.Count
+	}
+	return 0
+}
+
+func (m *Event) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
 }
 
 type EventSource struct {
@@ -3021,6 +4092,20 @@ func (m *EventSource) Reset()                    { *m = EventSource{} }
 func (m *EventSource) String() string            { return proto.CompactTextString(m) }
 func (*EventSource) ProtoMessage()               {}
 func (*EventSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{36} }
+
+func (m *EventSource) GetComponenet() string {
+	if m != nil {
+		return m.Componenet
+	}
+	return ""
+}
+
+func (m *EventSource) GetHost() string {
+	if m != nil {
+		return m.Host
+	}
+	return ""
+}
 
 type Metrics struct {
 	CpuUsage    []*Metrics_DataPoint `protobuf:"bytes,1,rep,name=cpu_usage,json=cpuUsage" json:"cpu_usage,omitempty"`
@@ -3056,6 +4141,20 @@ func (m *Metrics_DataPoint) String() string            { return proto.CompactTex
 func (*Metrics_DataPoint) ProtoMessage()               {}
 func (*Metrics_DataPoint) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{37, 0} }
 
+func (m *Metrics_DataPoint) GetTimestamp() int64 {
+	if m != nil {
+		return m.Timestamp
+	}
+	return 0
+}
+
+func (m *Metrics_DataPoint) GetValue() int64 {
+	if m != nil {
+		return m.Value
+	}
+	return 0
+}
+
 type PersistentVolumeRegisterRequest struct {
 	Cluster    string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 	Name       string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
@@ -3072,6 +4171,48 @@ func (*PersistentVolumeRegisterRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{38}
 }
 
+func (m *PersistentVolumeRegisterRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *PersistentVolumeRegisterRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *PersistentVolumeRegisterRequest) GetIdentifier() string {
+	if m != nil {
+		return m.Identifier
+	}
+	return ""
+}
+
+func (m *PersistentVolumeRegisterRequest) GetPlugin() string {
+	if m != nil {
+		return m.Plugin
+	}
+	return ""
+}
+
+func (m *PersistentVolumeRegisterRequest) GetSizeGb() int64 {
+	if m != nil {
+		return m.SizeGb
+	}
+	return 0
+}
+
+func (m *PersistentVolumeRegisterRequest) GetEndpoint() string {
+	if m != nil {
+		return m.Endpoint
+	}
+	return ""
+}
+
 type PersistentVolumeUnRegisterRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 	Name    string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
@@ -3082,6 +4223,20 @@ func (m *PersistentVolumeUnRegisterRequest) String() string { return proto.Compa
 func (*PersistentVolumeUnRegisterRequest) ProtoMessage()    {}
 func (*PersistentVolumeUnRegisterRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{39}
+}
+
+func (m *PersistentVolumeUnRegisterRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *PersistentVolumeUnRegisterRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
 }
 
 type PersistentVolumeClaimRegisterRequest struct {
@@ -3098,6 +4253,34 @@ func (*PersistentVolumeClaimRegisterRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{40}
 }
 
+func (m *PersistentVolumeClaimRegisterRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *PersistentVolumeClaimRegisterRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *PersistentVolumeClaimRegisterRequest) GetSizeGb() int64 {
+	if m != nil {
+		return m.SizeGb
+	}
+	return 0
+}
+
+func (m *PersistentVolumeClaimRegisterRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
 type PersistentVolumeClaimUnRegisterRequest struct {
 	Cluster   string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 	Name      string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
@@ -3111,6 +4294,27 @@ func (m *PersistentVolumeClaimUnRegisterRequest) String() string { return proto.
 func (*PersistentVolumeClaimUnRegisterRequest) ProtoMessage()    {}
 func (*PersistentVolumeClaimUnRegisterRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{41}
+}
+
+func (m *PersistentVolumeClaimUnRegisterRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *PersistentVolumeClaimUnRegisterRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *PersistentVolumeClaimUnRegisterRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
 }
 
 type Alert struct {
@@ -3138,6 +4342,13 @@ func (m *Alert) GetSpec() *Alert_AlertSpec {
 	return nil
 }
 
+func (m *Alert) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
 type Alert_AlertSpec struct {
 	IcingaParam    *Alert_AlertSpec_IcingaParam     `protobuf:"bytes,1,opt,name=icinga_param,json=icingaParam" json:"icinga_param,omitempty"`
 	CheckCommand   string                           `protobuf:"bytes,2,opt,name=check_command,json=checkCommand" json:"check_command,omitempty"`
@@ -3155,6 +4366,13 @@ func (m *Alert_AlertSpec) GetIcingaParam() *Alert_AlertSpec_IcingaParam {
 		return m.IcingaParam
 	}
 	return nil
+}
+
+func (m *Alert_AlertSpec) GetCheckCommand() string {
+	if m != nil {
+		return m.CheckCommand
+	}
+	return ""
 }
 
 func (m *Alert_AlertSpec) GetNotifierParams() []*Alert_AlertSpec_NotifierParam {
@@ -3183,6 +4401,20 @@ func (*Alert_AlertSpec_IcingaParam) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{42, 0, 1}
 }
 
+func (m *Alert_AlertSpec_IcingaParam) GetCheckIntervalSec() int64 {
+	if m != nil {
+		return m.CheckIntervalSec
+	}
+	return 0
+}
+
+func (m *Alert_AlertSpec_IcingaParam) GetAlertIntervalSec() int64 {
+	if m != nil {
+		return m.AlertIntervalSec
+	}
+	return 0
+}
+
 type Alert_AlertSpec_NotifierParam struct {
 	State   string `protobuf:"bytes,1,opt,name=state" json:"state,omitempty"`
 	UserUid string `protobuf:"bytes,2,opt,name=user_uid,json=userUid" json:"user_uid,omitempty"`
@@ -3194,6 +4426,27 @@ func (m *Alert_AlertSpec_NotifierParam) String() string { return proto.CompactTe
 func (*Alert_AlertSpec_NotifierParam) ProtoMessage()    {}
 func (*Alert_AlertSpec_NotifierParam) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{42, 0, 2}
+}
+
+func (m *Alert_AlertSpec_NotifierParam) GetState() string {
+	if m != nil {
+		return m.State
+	}
+	return ""
+}
+
+func (m *Alert_AlertSpec_NotifierParam) GetUserUid() string {
+	if m != nil {
+		return m.UserUid
+	}
+	return ""
+}
+
+func (m *Alert_AlertSpec_NotifierParam) GetMethod() string {
+	if m != nil {
+		return m.Method
+	}
+	return ""
 }
 
 // PersistentVolumeSource is similar to VolumeSource but meant for the
@@ -3400,6 +4653,34 @@ func (*AWSElasticBlockStoreVolumeSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{44}
 }
 
+func (m *AWSElasticBlockStoreVolumeSource) GetVolumeID() string {
+	if m != nil {
+		return m.VolumeID
+	}
+	return ""
+}
+
+func (m *AWSElasticBlockStoreVolumeSource) GetFsType() string {
+	if m != nil {
+		return m.FsType
+	}
+	return ""
+}
+
+func (m *AWSElasticBlockStoreVolumeSource) GetPartition() int32 {
+	if m != nil {
+		return m.Partition
+	}
+	return 0
+}
+
+func (m *AWSElasticBlockStoreVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
+
 // Represents a host path mapped into a pod.
 // Host path volumes do not support ownership management or SELinux relabeling.
 type HostPathVolumeSource struct {
@@ -3412,6 +4693,13 @@ func (m *HostPathVolumeSource) Reset()                    { *m = HostPathVolumeS
 func (m *HostPathVolumeSource) String() string            { return proto.CompactTextString(m) }
 func (*HostPathVolumeSource) ProtoMessage()               {}
 func (*HostPathVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{45} }
+
+func (m *HostPathVolumeSource) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
 
 // Represents an NFS mount that lasts the lifetime of a pod.
 // NFS volumes do not support ownership management or SELinux relabeling.
@@ -3433,6 +4721,27 @@ func (m *NFSVolumeSource) Reset()                    { *m = NFSVolumeSource{} }
 func (m *NFSVolumeSource) String() string            { return proto.CompactTextString(m) }
 func (*NFSVolumeSource) ProtoMessage()               {}
 func (*NFSVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{46} }
+
+func (m *NFSVolumeSource) GetServer() string {
+	if m != nil {
+		return m.Server
+	}
+	return ""
+}
+
+func (m *NFSVolumeSource) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
+
+func (m *NFSVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
 
 // Represents a Fibre Channel volume.
 // Fibre Channel volumes can only be mounted as read/write once.
@@ -3456,6 +4765,34 @@ func (m *FCVolumeSource) Reset()                    { *m = FCVolumeSource{} }
 func (m *FCVolumeSource) String() string            { return proto.CompactTextString(m) }
 func (*FCVolumeSource) ProtoMessage()               {}
 func (*FCVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{47} }
+
+func (m *FCVolumeSource) GetTargetWWNs() []string {
+	if m != nil {
+		return m.TargetWWNs
+	}
+	return nil
+}
+
+func (m *FCVolumeSource) GetLun() int32 {
+	if m != nil {
+		return m.Lun
+	}
+	return 0
+}
+
+func (m *FCVolumeSource) GetFsType() string {
+	if m != nil {
+		return m.FsType
+	}
+	return ""
+}
+
+func (m *FCVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
 
 // FlexVolume represents a generic volume resource that is
 // provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.
@@ -3484,11 +4821,32 @@ func (m *FlexVolumeSource) String() string            { return proto.CompactText
 func (*FlexVolumeSource) ProtoMessage()               {}
 func (*FlexVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{48} }
 
+func (m *FlexVolumeSource) GetDriver() string {
+	if m != nil {
+		return m.Driver
+	}
+	return ""
+}
+
+func (m *FlexVolumeSource) GetFsType() string {
+	if m != nil {
+		return m.FsType
+	}
+	return ""
+}
+
 func (m *FlexVolumeSource) GetSecretRef() *ObjectReference {
 	if m != nil {
 		return m.SecretRef
 	}
 	return nil
+}
+
+func (m *FlexVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
 }
 
 func (m *FlexVolumeSource) GetOptions() map[string]string {
@@ -3509,6 +4867,13 @@ func (m *FlockerVolumeSource) Reset()                    { *m = FlockerVolumeSou
 func (m *FlockerVolumeSource) String() string            { return proto.CompactTextString(m) }
 func (*FlockerVolumeSource) ProtoMessage()               {}
 func (*FlockerVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{49} }
+
+func (m *FlockerVolumeSource) GetDatasetName() string {
+	if m != nil {
+		return m.DatasetName
+	}
+	return ""
+}
 
 // Represents a Persistent Disk resource in Google Compute Engine.
 //
@@ -3543,6 +4908,34 @@ func (m *GCEPersistentDiskVolumeSource) String() string            { return prot
 func (*GCEPersistentDiskVolumeSource) ProtoMessage()               {}
 func (*GCEPersistentDiskVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{50} }
 
+func (m *GCEPersistentDiskVolumeSource) GetPdName() string {
+	if m != nil {
+		return m.PdName
+	}
+	return ""
+}
+
+func (m *GCEPersistentDiskVolumeSource) GetFsType() string {
+	if m != nil {
+		return m.FsType
+	}
+	return ""
+}
+
+func (m *GCEPersistentDiskVolumeSource) GetPartition() int32 {
+	if m != nil {
+		return m.Partition
+	}
+	return 0
+}
+
+func (m *GCEPersistentDiskVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
+
 // Represents a volume that is populated with the contents of a git repository.
 // Git repo volumes do not support ownership management.
 // Git repo volumes support SELinux relabeling.
@@ -3563,6 +4956,27 @@ func (m *GitRepoVolumeSource) String() string            { return proto.CompactT
 func (*GitRepoVolumeSource) ProtoMessage()               {}
 func (*GitRepoVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{51} }
 
+func (m *GitRepoVolumeSource) GetRepository() string {
+	if m != nil {
+		return m.Repository
+	}
+	return ""
+}
+
+func (m *GitRepoVolumeSource) GetRevision() string {
+	if m != nil {
+		return m.Revision
+	}
+	return ""
+}
+
+func (m *GitRepoVolumeSource) GetDirectory() string {
+	if m != nil {
+		return m.Directory
+	}
+	return ""
+}
+
 // Represents a Glusterfs mount that lasts the lifetime of a pod.
 // Glusterfs volumes do not support ownership management or SELinux relabeling.
 type GlusterfsVolumeSource struct {
@@ -3582,6 +4996,27 @@ func (m *GlusterfsVolumeSource) Reset()                    { *m = GlusterfsVolum
 func (m *GlusterfsVolumeSource) String() string            { return proto.CompactTextString(m) }
 func (*GlusterfsVolumeSource) ProtoMessage()               {}
 func (*GlusterfsVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{52} }
+
+func (m *GlusterfsVolumeSource) GetEndpoints() string {
+	if m != nil {
+		return m.Endpoints
+	}
+	return ""
+}
+
+func (m *GlusterfsVolumeSource) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
+
+func (m *GlusterfsVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
 
 // Represents a Rados Block Device mount that lasts the lifetime of a pod.
 // RBD volumes support ownership management and SELinux relabeling.
@@ -3626,11 +5061,60 @@ func (m *RBDVolumeSource) String() string            { return proto.CompactTextS
 func (*RBDVolumeSource) ProtoMessage()               {}
 func (*RBDVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{53} }
 
+func (m *RBDVolumeSource) GetMonitors() []string {
+	if m != nil {
+		return m.Monitors
+	}
+	return nil
+}
+
+func (m *RBDVolumeSource) GetImage() string {
+	if m != nil {
+		return m.Image
+	}
+	return ""
+}
+
+func (m *RBDVolumeSource) GetFsType() string {
+	if m != nil {
+		return m.FsType
+	}
+	return ""
+}
+
+func (m *RBDVolumeSource) GetPool() string {
+	if m != nil {
+		return m.Pool
+	}
+	return ""
+}
+
+func (m *RBDVolumeSource) GetUser() string {
+	if m != nil {
+		return m.User
+	}
+	return ""
+}
+
+func (m *RBDVolumeSource) GetKeyring() string {
+	if m != nil {
+		return m.Keyring
+	}
+	return ""
+}
+
 func (m *RBDVolumeSource) GetSecretRef() *ObjectReference {
 	if m != nil {
 		return m.SecretRef
 	}
 	return nil
+}
+
+func (m *RBDVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
 }
 
 // Represents an ISCSI disk.
@@ -3662,6 +5146,48 @@ func (m *ISCSIVolumeSource) String() string            { return proto.CompactTex
 func (*ISCSIVolumeSource) ProtoMessage()               {}
 func (*ISCSIVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{54} }
 
+func (m *ISCSIVolumeSource) GetTargetPortal() string {
+	if m != nil {
+		return m.TargetPortal
+	}
+	return ""
+}
+
+func (m *ISCSIVolumeSource) GetIqn() string {
+	if m != nil {
+		return m.Iqn
+	}
+	return ""
+}
+
+func (m *ISCSIVolumeSource) GetLun() int32 {
+	if m != nil {
+		return m.Lun
+	}
+	return 0
+}
+
+func (m *ISCSIVolumeSource) GetIscsiInterface() string {
+	if m != nil {
+		return m.IscsiInterface
+	}
+	return ""
+}
+
+func (m *ISCSIVolumeSource) GetFsType() string {
+	if m != nil {
+		return m.FsType
+	}
+	return ""
+}
+
+func (m *ISCSIVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
+
 // AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
 type AzureFileVolumeSource struct {
 	// the name of secret that contains Azure Storage Account Name and Key
@@ -3678,6 +5204,27 @@ func (m *AzureFileVolumeSource) String() string            { return proto.Compac
 func (*AzureFileVolumeSource) ProtoMessage()               {}
 func (*AzureFileVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{55} }
 
+func (m *AzureFileVolumeSource) GetSecretName() string {
+	if m != nil {
+		return m.SecretName
+	}
+	return ""
+}
+
+func (m *AzureFileVolumeSource) GetShareName() string {
+	if m != nil {
+		return m.ShareName
+	}
+	return ""
+}
+
+func (m *AzureFileVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
+
 // Represents a vSphere volume resource.
 type VsphereVirtualDiskVolumeSource struct {
 	// Path that identifies vSphere volume vmdk
@@ -3692,6 +5239,20 @@ func (m *VsphereVirtualDiskVolumeSource) Reset()                    { *m = Vsphe
 func (m *VsphereVirtualDiskVolumeSource) String() string            { return proto.CompactTextString(m) }
 func (*VsphereVirtualDiskVolumeSource) ProtoMessage()               {}
 func (*VsphereVirtualDiskVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{56} }
+
+func (m *VsphereVirtualDiskVolumeSource) GetVolumePath() string {
+	if m != nil {
+		return m.VolumePath
+	}
+	return ""
+}
+
+func (m *VsphereVirtualDiskVolumeSource) GetFsType() string {
+	if m != nil {
+		return m.FsType
+	}
+	return ""
+}
 
 // Represents a Quobyte mount that lasts the lifetime of a pod.
 // Quobyte volumes do not support ownership management or SELinux relabeling.
@@ -3718,6 +5279,41 @@ func (m *QuobyteVolumeSource) String() string            { return proto.CompactT
 func (*QuobyteVolumeSource) ProtoMessage()               {}
 func (*QuobyteVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{57} }
 
+func (m *QuobyteVolumeSource) GetRegistry() string {
+	if m != nil {
+		return m.Registry
+	}
+	return ""
+}
+
+func (m *QuobyteVolumeSource) GetVolume() string {
+	if m != nil {
+		return m.Volume
+	}
+	return ""
+}
+
+func (m *QuobyteVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
+
+func (m *QuobyteVolumeSource) GetUser() string {
+	if m != nil {
+		return m.User
+	}
+	return ""
+}
+
+func (m *QuobyteVolumeSource) GetGroup() string {
+	if m != nil {
+		return m.Group
+	}
+	return ""
+}
+
 // AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
 type AzureDiskVolumeSource struct {
 	// The Name of the data disk in the blob storage
@@ -3739,6 +5335,41 @@ func (m *AzureDiskVolumeSource) Reset()                    { *m = AzureDiskVolum
 func (m *AzureDiskVolumeSource) String() string            { return proto.CompactTextString(m) }
 func (*AzureDiskVolumeSource) ProtoMessage()               {}
 func (*AzureDiskVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{58} }
+
+func (m *AzureDiskVolumeSource) GetDiskName() string {
+	if m != nil {
+		return m.DiskName
+	}
+	return ""
+}
+
+func (m *AzureDiskVolumeSource) GetDiskURI() string {
+	if m != nil {
+		return m.DiskURI
+	}
+	return ""
+}
+
+func (m *AzureDiskVolumeSource) GetCachingMode() string {
+	if m != nil {
+		return m.CachingMode
+	}
+	return ""
+}
+
+func (m *AzureDiskVolumeSource) GetFsType() string {
+	if m != nil {
+		return m.FsType
+	}
+	return ""
+}
+
+func (m *AzureDiskVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
 
 // Represents a cinder volume resource in Openstack.
 // A Cinder volume must exist before mounting to a container.
@@ -3763,6 +5394,27 @@ func (m *CinderVolumeSource) Reset()                    { *m = CinderVolumeSourc
 func (m *CinderVolumeSource) String() string            { return proto.CompactTextString(m) }
 func (*CinderVolumeSource) ProtoMessage()               {}
 func (*CinderVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{59} }
+
+func (m *CinderVolumeSource) GetVolumeID() string {
+	if m != nil {
+		return m.VolumeID
+	}
+	return ""
+}
+
+func (m *CinderVolumeSource) GetFsType() string {
+	if m != nil {
+		return m.FsType
+	}
+	return ""
+}
+
+func (m *CinderVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
+}
 
 // Represents a Ceph Filesystem mount that lasts the lifetime of a pod
 // Cephfs volumes do not support ownership management or SELinux relabeling.
@@ -3792,11 +5444,46 @@ func (m *CephFSVolumeSource) String() string            { return proto.CompactTe
 func (*CephFSVolumeSource) ProtoMessage()               {}
 func (*CephFSVolumeSource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{60} }
 
+func (m *CephFSVolumeSource) GetMonitors() []string {
+	if m != nil {
+		return m.Monitors
+	}
+	return nil
+}
+
+func (m *CephFSVolumeSource) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
+
+func (m *CephFSVolumeSource) GetUser() string {
+	if m != nil {
+		return m.User
+	}
+	return ""
+}
+
+func (m *CephFSVolumeSource) GetSecretFile() string {
+	if m != nil {
+		return m.SecretFile
+	}
+	return ""
+}
+
 func (m *CephFSVolumeSource) GetSecretRef() *ObjectReference {
 	if m != nil {
 		return m.SecretRef
 	}
 	return nil
+}
+
+func (m *CephFSVolumeSource) GetReadOnly() bool {
+	if m != nil {
+		return m.ReadOnly
+	}
+	return false
 }
 
 func init() {
@@ -3921,7 +5608,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Clients service
 
@@ -4347,7 +6034,7 @@ var _Clients_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "client.proto",
 }
 
 func init() { proto.RegisterFile("client.proto", fileDescriptor0) }

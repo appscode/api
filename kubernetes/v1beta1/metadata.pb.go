@@ -30,6 +30,13 @@ func (m *RegionListRequest) String() string            { return proto.CompactTex
 func (*RegionListRequest) ProtoMessage()               {}
 func (*RegionListRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
 
+func (m *RegionListRequest) GetCloudCredential() string {
+	if m != nil {
+		return m.CloudCredential
+	}
+	return ""
+}
+
 type RegionListResponse struct {
 	Status  *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Regions []string                `protobuf:"bytes,2,rep,name=regions" json:"regions,omitempty"`
@@ -47,6 +54,13 @@ func (m *RegionListResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *RegionListResponse) GetRegions() []string {
+	if m != nil {
+		return m.Regions
+	}
+	return nil
+}
+
 type ZoneListRequest struct {
 	CloudCredential string `protobuf:"bytes,1,opt,name=cloud_credential,json=cloudCredential" json:"cloud_credential,omitempty"`
 	Region          string `protobuf:"bytes,2,opt,name=region" json:"region,omitempty"`
@@ -56,6 +70,20 @@ func (m *ZoneListRequest) Reset()                    { *m = ZoneListRequest{} }
 func (m *ZoneListRequest) String() string            { return proto.CompactTextString(m) }
 func (*ZoneListRequest) ProtoMessage()               {}
 func (*ZoneListRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{2} }
+
+func (m *ZoneListRequest) GetCloudCredential() string {
+	if m != nil {
+		return m.CloudCredential
+	}
+	return ""
+}
+
+func (m *ZoneListRequest) GetRegion() string {
+	if m != nil {
+		return m.Region
+	}
+	return ""
+}
 
 type ZoneListResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -74,6 +102,13 @@ func (m *ZoneListResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *ZoneListResponse) GetZones() []string {
+	if m != nil {
+		return m.Zones
+	}
+	return nil
+}
+
 type BucketListRequest struct {
 	CloudCredential string `protobuf:"bytes,1,opt,name=cloud_credential,json=cloudCredential" json:"cloud_credential,omitempty"`
 }
@@ -82,6 +117,13 @@ func (m *BucketListRequest) Reset()                    { *m = BucketListRequest{
 func (m *BucketListRequest) String() string            { return proto.CompactTextString(m) }
 func (*BucketListRequest) ProtoMessage()               {}
 func (*BucketListRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{4} }
+
+func (m *BucketListRequest) GetCloudCredential() string {
+	if m != nil {
+		return m.CloudCredential
+	}
+	return ""
+}
 
 type BucketListResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -96,6 +138,13 @@ func (*BucketListResponse) Descriptor() ([]byte, []int) { return fileDescriptor4
 func (m *BucketListResponse) GetStatus() *appscode_dtypes.Status {
 	if m != nil {
 		return m.Status
+	}
+	return nil
+}
+
+func (m *BucketListResponse) GetNames() []string {
+	if m != nil {
+		return m.Names
 	}
 	return nil
 }
@@ -115,7 +164,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Metadata service
 
@@ -244,7 +293,7 @@ var _Metadata_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor4,
+	Metadata: "metadata.proto",
 }
 
 func init() { proto.RegisterFile("metadata.proto", fileDescriptor4) }

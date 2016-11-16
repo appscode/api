@@ -66,6 +66,7 @@ message DiskDescribeRequest {
   string cluster = 1;
   string name = 2;
   string provider = 3;
+  string vhd_container_name = 4;
 }
 
 message DiskDescribeResponse {
@@ -79,11 +80,13 @@ message DiskCreateRequest {
   string zone = 3;
   string disk_type = 4;
   int64 size_gb = 5;
+  string vhd_container_name = 6;
 }
 
 message DiskDeleteRequest {
   string cluster = 1;
   string uid = 2;
+  string vhd_container_name = 3;
 }
 
 message Disk {

@@ -34,6 +34,27 @@ func (m *ClusterSettings) String() string            { return proto.CompactTextS
 func (*ClusterSettings) ProtoMessage()               {}
 func (*ClusterSettings) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
+func (m *ClusterSettings) GetLogIndexPrefix() string {
+	if m != nil {
+		return m.LogIndexPrefix
+	}
+	return ""
+}
+
+func (m *ClusterSettings) GetLogStorageLifetime() int64 {
+	if m != nil {
+		return m.LogStorageLifetime
+	}
+	return 0
+}
+
+func (m *ClusterSettings) GetMonitoringStorageLifetime() int64 {
+	if m != nil {
+		return m.MonitoringStorageLifetime
+	}
+	return 0
+}
+
 type Cluster struct {
 	Phid                 string            `protobuf:"bytes,1,opt,name=phid" json:"phid,omitempty"`
 	Name                 string            `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
@@ -68,6 +89,55 @@ func (m *Cluster) String() string            { return proto.CompactTextString(m)
 func (*Cluster) ProtoMessage()               {}
 func (*Cluster) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
 
+func (m *Cluster) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *Cluster) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Cluster) GetProvider() string {
+	if m != nil {
+		return m.Provider
+	}
+	return ""
+}
+
+func (m *Cluster) GetOs() string {
+	if m != nil {
+		return m.Os
+	}
+	return ""
+}
+
+func (m *Cluster) GetRegion() string {
+	if m != nil {
+		return m.Region
+	}
+	return ""
+}
+
+func (m *Cluster) GetZone() string {
+	if m != nil {
+		return m.Zone
+	}
+	return ""
+}
+
+func (m *Cluster) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
 func (m *Cluster) GetLinks() map[string]string {
 	if m != nil {
 		return m.Links
@@ -75,11 +145,130 @@ func (m *Cluster) GetLinks() map[string]string {
 	return nil
 }
 
+func (m *Cluster) GetDoNotDelete() bool {
+	if m != nil {
+		return m.DoNotDelete
+	}
+	return false
+}
+
+func (m *Cluster) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *Cluster) GetStatusCause() string {
+	if m != nil {
+		return m.StatusCause
+	}
+	return ""
+}
+
+func (m *Cluster) GetGceProject() string {
+	if m != nil {
+		return m.GceProject
+	}
+	return ""
+}
+
+func (m *Cluster) GetKubeServerVersion() string {
+	if m != nil {
+		return m.KubeServerVersion
+	}
+	return ""
+}
+
+func (m *Cluster) GetKubeSaltbaseVersion() string {
+	if m != nil {
+		return m.KubeSaltbaseVersion
+	}
+	return ""
+}
+
+func (m *Cluster) GetKubeStarterVersion() string {
+	if m != nil {
+		return m.KubeStarterVersion
+	}
+	return ""
+}
+
+func (m *Cluster) GetNodeCount() int32 {
+	if m != nil {
+		return m.NodeCount
+	}
+	return 0
+}
+
+func (m *Cluster) GetApiServerUrl() string {
+	if m != nil {
+		return m.ApiServerUrl
+	}
+	return ""
+}
+
+func (m *Cluster) GetKubeUser() string {
+	if m != nil {
+		return m.KubeUser
+	}
+	return ""
+}
+
+func (m *Cluster) GetKubePassword() string {
+	if m != nil {
+		return m.KubePassword
+	}
+	return ""
+}
+
+func (m *Cluster) GetCaCert() string {
+	if m != nil {
+		return m.CaCert
+	}
+	return ""
+}
+
+func (m *Cluster) GetKubeBearerToken() string {
+	if m != nil {
+		return m.KubeBearerToken
+	}
+	return ""
+}
+
 func (m *Cluster) GetSettings() *ClusterSettings {
 	if m != nil {
 		return m.Settings
 	}
 	return nil
+}
+
+func (m *Cluster) GetInstanceRootPassword() string {
+	if m != nil {
+		return m.InstanceRootPassword
+	}
+	return ""
+}
+
+func (m *Cluster) GetVersion() string {
+	if m != nil {
+		return m.Version
+	}
+	return ""
+}
+
+func (m *Cluster) GetSku() string {
+	if m != nil {
+		return m.Sku
+	}
+	return ""
+}
+
+func (m *Cluster) GetCreatedBy() string {
+	if m != nil {
+		return m.CreatedBy
+	}
+	return ""
 }
 
 type ClusterDescribeRequest struct {
@@ -90,6 +279,13 @@ func (m *ClusterDescribeRequest) Reset()                    { *m = ClusterDescri
 func (m *ClusterDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*ClusterDescribeRequest) ProtoMessage()               {}
 func (*ClusterDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+
+func (m *ClusterDescribeRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
 
 type ClusterDescribeResponse struct {
 	Status  *appscode_dtypes.Status       `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -137,6 +333,48 @@ func (m *ClusterDescribeResponse_Spec) String() string            { return proto
 func (*ClusterDescribeResponse_Spec) ProtoMessage()               {}
 func (*ClusterDescribeResponse_Spec) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3, 0} }
 
+func (m *ClusterDescribeResponse_Spec) GetContainerCount() int32 {
+	if m != nil {
+		return m.ContainerCount
+	}
+	return 0
+}
+
+func (m *ClusterDescribeResponse_Spec) GetPodCount() int32 {
+	if m != nil {
+		return m.PodCount
+	}
+	return 0
+}
+
+func (m *ClusterDescribeResponse_Spec) GetServiceCount() int32 {
+	if m != nil {
+		return m.ServiceCount
+	}
+	return 0
+}
+
+func (m *ClusterDescribeResponse_Spec) GetRcCount() int32 {
+	if m != nil {
+		return m.RcCount
+	}
+	return 0
+}
+
+func (m *ClusterDescribeResponse_Spec) GetTotalCpu() int64 {
+	if m != nil {
+		return m.TotalCpu
+	}
+	return 0
+}
+
+func (m *ClusterDescribeResponse_Spec) GetTotalMemory() int64 {
+	if m != nil {
+		return m.TotalMemory
+	}
+	return 0
+}
+
 type ClusterListRequest struct {
 	Status []string `protobuf:"bytes,1,rep,name=status" json:"status,omitempty"`
 }
@@ -145,6 +383,13 @@ func (m *ClusterListRequest) Reset()                    { *m = ClusterListReques
 func (m *ClusterListRequest) String() string            { return proto.CompactTextString(m) }
 func (*ClusterListRequest) ProtoMessage()               {}
 func (*ClusterListRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
+
+func (m *ClusterListRequest) GetStatus() []string {
+	if m != nil {
+		return m.Status
+	}
+	return nil
+}
 
 type ClusterListResponse struct {
 	Status   *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -190,6 +435,34 @@ func (m *ClusterCreateRequest) String() string            { return proto.Compact
 func (*ClusterCreateRequest) ProtoMessage()               {}
 func (*ClusterCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{6} }
 
+func (m *ClusterCreateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ClusterCreateRequest) GetProvider() string {
+	if m != nil {
+		return m.Provider
+	}
+	return ""
+}
+
+func (m *ClusterCreateRequest) GetZone() string {
+	if m != nil {
+		return m.Zone
+	}
+	return ""
+}
+
+func (m *ClusterCreateRequest) GetCloudCredential() string {
+	if m != nil {
+		return m.CloudCredential
+	}
+	return ""
+}
+
 func (m *ClusterCreateRequest) GetCloudCredentialData() map[string]string {
 	if m != nil {
 		return m.CloudCredentialData
@@ -204,6 +477,48 @@ func (m *ClusterCreateRequest) GetNodeSet() map[string]int64 {
 	return nil
 }
 
+func (m *ClusterCreateRequest) GetKubeSaltbaseVersion() string {
+	if m != nil {
+		return m.KubeSaltbaseVersion
+	}
+	return ""
+}
+
+func (m *ClusterCreateRequest) GetKubeStarterVersion() string {
+	if m != nil {
+		return m.KubeStarterVersion
+	}
+	return ""
+}
+
+func (m *ClusterCreateRequest) GetKubeServerVersion() string {
+	if m != nil {
+		return m.KubeServerVersion
+	}
+	return ""
+}
+
+func (m *ClusterCreateRequest) GetDoNotDelete() bool {
+	if m != nil {
+		return m.DoNotDelete
+	}
+	return false
+}
+
+func (m *ClusterCreateRequest) GetHostfactsVersion() string {
+	if m != nil {
+		return m.HostfactsVersion
+	}
+	return ""
+}
+
+func (m *ClusterCreateRequest) GetVersion() string {
+	if m != nil {
+		return m.Version
+	}
+	return ""
+}
+
 type ClusterScaleRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	// New node configuration for the cluster
@@ -214,6 +529,13 @@ func (m *ClusterScaleRequest) Reset()                    { *m = ClusterScaleRequ
 func (m *ClusterScaleRequest) String() string            { return proto.CompactTextString(m) }
 func (*ClusterScaleRequest) ProtoMessage()               {}
 func (*ClusterScaleRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{7} }
+
+func (m *ClusterScaleRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 func (m *ClusterScaleRequest) GetNodeSet() map[string]int64 {
 	if m != nil {
@@ -235,6 +557,41 @@ func (m *ClusterDeleteRequest) String() string            { return proto.Compact
 func (*ClusterDeleteRequest) ProtoMessage()               {}
 func (*ClusterDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{8} }
 
+func (m *ClusterDeleteRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ClusterDeleteRequest) GetReleaseReservedIp() bool {
+	if m != nil {
+		return m.ReleaseReservedIp
+	}
+	return false
+}
+
+func (m *ClusterDeleteRequest) GetForce() bool {
+	if m != nil {
+		return m.Force
+	}
+	return false
+}
+
+func (m *ClusterDeleteRequest) GetDeleteLodabalancers() bool {
+	if m != nil {
+		return m.DeleteLodabalancers
+	}
+	return false
+}
+
+func (m *ClusterDeleteRequest) GetDeleteDynamicVolumes() bool {
+	if m != nil {
+		return m.DeleteDynamicVolumes
+	}
+	return false
+}
+
 type ClusterStartupScriptRequest struct {
 	Uid            string `protobuf:"bytes,1,opt,name=uid" json:"uid,omitempty"`
 	Role           string `protobuf:"bytes,2,opt,name=role" json:"role,omitempty"`
@@ -245,6 +602,27 @@ func (m *ClusterStartupScriptRequest) Reset()                    { *m = ClusterS
 func (m *ClusterStartupScriptRequest) String() string            { return proto.CompactTextString(m) }
 func (*ClusterStartupScriptRequest) ProtoMessage()               {}
 func (*ClusterStartupScriptRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{9} }
+
+func (m *ClusterStartupScriptRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
+func (m *ClusterStartupScriptRequest) GetRole() string {
+	if m != nil {
+		return m.Role
+	}
+	return ""
+}
+
+func (m *ClusterStartupScriptRequest) GetContextVersion() int64 {
+	if m != nil {
+		return m.ContextVersion
+	}
+	return 0
+}
 
 type ClusterStartupScriptResponse struct {
 	Status        *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -263,6 +641,13 @@ func (m *ClusterStartupScriptResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *ClusterStartupScriptResponse) GetConfiguration() string {
+	if m != nil {
+		return m.Configuration
+	}
+	return ""
+}
+
 type ClusterInstanceByIPRequest struct {
 	Phid       string `protobuf:"bytes,1,opt,name=phid" json:"phid,omitempty"`
 	ExternalIp string `protobuf:"bytes,2,opt,name=external_ip,json=externalIp" json:"external_ip,omitempty"`
@@ -272,6 +657,20 @@ func (m *ClusterInstanceByIPRequest) Reset()                    { *m = ClusterIn
 func (m *ClusterInstanceByIPRequest) String() string            { return proto.CompactTextString(m) }
 func (*ClusterInstanceByIPRequest) ProtoMessage()               {}
 func (*ClusterInstanceByIPRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{11} }
+
+func (m *ClusterInstanceByIPRequest) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *ClusterInstanceByIPRequest) GetExternalIp() string {
+	if m != nil {
+		return m.ExternalIp
+	}
+	return ""
+}
 
 type ClusterInstanceResponse struct {
 	Status   *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -306,6 +705,13 @@ func (m *ClusterClientConfigRequest) String() string            { return proto.C
 func (*ClusterClientConfigRequest) ProtoMessage()               {}
 func (*ClusterClientConfigRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{13} }
 
+func (m *ClusterClientConfigRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type ClusterClientConfigResponse struct {
 	Status          *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	ClusterDomain   string                  `protobuf:"bytes,3,opt,name=cluster_domain,json=clusterDomain" json:"cluster_domain,omitempty"`
@@ -331,6 +737,69 @@ func (m *ClusterClientConfigResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *ClusterClientConfigResponse) GetClusterDomain() string {
+	if m != nil {
+		return m.ClusterDomain
+	}
+	return ""
+}
+
+func (m *ClusterClientConfigResponse) GetCaCert() string {
+	if m != nil {
+		return m.CaCert
+	}
+	return ""
+}
+
+func (m *ClusterClientConfigResponse) GetApiServerUrl() string {
+	if m != nil {
+		return m.ApiServerUrl
+	}
+	return ""
+}
+
+func (m *ClusterClientConfigResponse) GetClusterUserName() string {
+	if m != nil {
+		return m.ClusterUserName
+	}
+	return ""
+}
+
+func (m *ClusterClientConfigResponse) GetUserCert() string {
+	if m != nil {
+		return m.UserCert
+	}
+	return ""
+}
+
+func (m *ClusterClientConfigResponse) GetUserKey() string {
+	if m != nil {
+		return m.UserKey
+	}
+	return ""
+}
+
+func (m *ClusterClientConfigResponse) GetContextName() string {
+	if m != nil {
+		return m.ContextName
+	}
+	return ""
+}
+
+func (m *ClusterClientConfigResponse) GetUserToken() string {
+	if m != nil {
+		return m.UserToken
+	}
+	return ""
+}
+
+func (m *ClusterClientConfigResponse) GetPassword() string {
+	if m != nil {
+		return m.Password
+	}
+	return ""
+}
+
 type ClusterClientContainerRequest struct {
 	Name     string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	DiskName string `protobuf:"bytes,2,opt,name=disk_name,json=diskName" json:"disk_name,omitempty"`
@@ -341,6 +810,20 @@ func (m *ClusterClientContainerRequest) String() string            { return prot
 func (*ClusterClientContainerRequest) ProtoMessage()               {}
 func (*ClusterClientContainerRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{15} }
 
+func (m *ClusterClientContainerRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ClusterClientContainerRequest) GetDiskName() string {
+	if m != nil {
+		return m.DiskName
+	}
+	return ""
+}
+
 type ClusterInstanceListRequest struct {
 	ClusterName string `protobuf:"bytes,1,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
 }
@@ -349,6 +832,13 @@ func (m *ClusterInstanceListRequest) Reset()                    { *m = ClusterIn
 func (m *ClusterInstanceListRequest) String() string            { return proto.CompactTextString(m) }
 func (*ClusterInstanceListRequest) ProtoMessage()               {}
 func (*ClusterInstanceListRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{16} }
+
+func (m *ClusterInstanceListRequest) GetClusterName() string {
+	if m != nil {
+		return m.ClusterName
+	}
+	return ""
+}
 
 type ClusterInstance struct {
 	Phid       string `protobuf:"bytes,1,opt,name=phid" json:"phid,omitempty"`
@@ -363,6 +853,48 @@ func (m *ClusterInstance) Reset()                    { *m = ClusterInstance{} }
 func (m *ClusterInstance) String() string            { return proto.CompactTextString(m) }
 func (*ClusterInstance) ProtoMessage()               {}
 func (*ClusterInstance) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{17} }
+
+func (m *ClusterInstance) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *ClusterInstance) GetExternalId() string {
+	if m != nil {
+		return m.ExternalId
+	}
+	return ""
+}
+
+func (m *ClusterInstance) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ClusterInstance) GetExternalIp() string {
+	if m != nil {
+		return m.ExternalIp
+	}
+	return ""
+}
+
+func (m *ClusterInstance) GetInternalIp() string {
+	if m != nil {
+		return m.InternalIp
+	}
+	return ""
+}
+
+func (m *ClusterInstance) GetSku() string {
+	if m != nil {
+		return m.Sku
+	}
+	return ""
+}
 
 type ClusterInstanceListResponse struct {
 	Status    *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -399,6 +931,20 @@ func (m *ClusterUpdateRequest) String() string            { return proto.Compact
 func (*ClusterUpdateRequest) ProtoMessage()               {}
 func (*ClusterUpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{19} }
 
+func (m *ClusterUpdateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ClusterUpdateRequest) GetDoNotDelete() bool {
+	if m != nil {
+		return m.DoNotDelete
+	}
+	return false
+}
+
 func (m *ClusterUpdateRequest) GetSettings() *ClusterSettings {
 	if m != nil {
 		return m.Settings
@@ -419,6 +965,48 @@ func (m *ClusterUpgradeRequest) Reset()                    { *m = ClusterUpgrade
 func (m *ClusterUpgradeRequest) String() string            { return proto.CompactTextString(m) }
 func (*ClusterUpgradeRequest) ProtoMessage()               {}
 func (*ClusterUpgradeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{20} }
+
+func (m *ClusterUpgradeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ClusterUpgradeRequest) GetKubeSaltbaseVersion() string {
+	if m != nil {
+		return m.KubeSaltbaseVersion
+	}
+	return ""
+}
+
+func (m *ClusterUpgradeRequest) GetKubeStarterVersion() string {
+	if m != nil {
+		return m.KubeStarterVersion
+	}
+	return ""
+}
+
+func (m *ClusterUpgradeRequest) GetKubeServerVersion() string {
+	if m != nil {
+		return m.KubeServerVersion
+	}
+	return ""
+}
+
+func (m *ClusterUpgradeRequest) GetHostfactsVersion() string {
+	if m != nil {
+		return m.HostfactsVersion
+	}
+	return ""
+}
+
+func (m *ClusterUpgradeRequest) GetVersion() string {
+	if m != nil {
+		return m.Version
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*ClusterSettings)(nil), "appscode.kubernetes.v1beta1.ClusterSettings")
@@ -451,7 +1039,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Clusters service
 
@@ -844,7 +1432,7 @@ var _Clusters_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor1,
+	Metadata: "cluster.proto",
 }
 
 func init() { proto.RegisterFile("cluster.proto", fileDescriptor1) }
