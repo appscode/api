@@ -313,36 +313,6 @@
       "url": "/appscode/api/kubernetes/v1beta1/actions/copy"
     }
   },
-  "/appscode/api/kubernetes/v1beta1/alerts": {
-    "get": {
-      "file": "/alert/v1beta1/alert.proto",
-      "url": "/appscode/api/kubernetes/v1beta1/alerts"
-    },
-    "post": {
-      "file": "/alert/v1beta1/alert.proto",
-      "url": "/appscode/api/kubernetes/v1beta1/alerts"
-    }
-  },
-  "/appscode/api/kubernetes/v1beta1/alerts/*": {
-    "delete": {
-      "file": "/alert/v1beta1/alert.proto",
-      "url": "/appscode/api/kubernetes/v1beta1/alerts/{phid}"
-    },
-    "get": {
-      "file": "/alert/v1beta1/alert.proto",
-      "url": "/appscode/api/kubernetes/v1beta1/alerts/{phid}"
-    },
-    "put": {
-      "file": "/alert/v1beta1/alert.proto",
-      "url": "/appscode/api/kubernetes/v1beta1/alerts/{phid}"
-    }
-  },
-  "/appscode/api/kubernetes/v1beta1/alerts/*/actions/notify": {
-    "post": {
-      "file": "/alert/v1beta1/incident.proto",
-      "url": "/appscode/api/kubernetes/v1beta1/alerts/{alert_phid}/actions/notify"
-    }
-  },
   "/appscode/api/kubernetes/v1beta1/client/*/apps": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
@@ -457,16 +427,16 @@
       "url": "/appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/destruct-event"
     }
   },
+  "/appscode/api/kubernetes/v1beta1/clusters/*/actions/notify-incident": {
+    "post": {
+      "file": "/kubernetes/v1beta1/incident.proto",
+      "url": "/appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident"
+    }
+  },
   "/appscode/api/kubernetes/v1beta1/clusters/*/actions/scale": {
     "put": {
       "file": "/kubernetes/v1beta1/cluster.proto",
       "url": "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale"
-    }
-  },
-  "/appscode/api/kubernetes/v1beta1/clusters/*/actions/sync-alerts": {
-    "post": {
-      "file": "/alert/v1beta1/alert.proto",
-      "url": "/appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/sync-alerts"
     }
   },
   "/appscode/api/kubernetes/v1beta1/clusters/*/actions/upgrade": {
@@ -663,19 +633,19 @@
   },
   "/appscode/api/kubernetes/v1beta1/incidents": {
     "get": {
-      "file": "/alert/v1beta1/incident.proto",
+      "file": "/kubernetes/v1beta1/incident.proto",
       "url": "/appscode/api/kubernetes/v1beta1/incidents"
     }
   },
   "/appscode/api/kubernetes/v1beta1/incidents/*": {
     "get": {
-      "file": "/alert/v1beta1/incident.proto",
+      "file": "/kubernetes/v1beta1/incident.proto",
       "url": "/appscode/api/kubernetes/v1beta1/incidents/{phid}"
     }
   },
   "/appscode/api/kubernetes/v1beta1/incidents/*/events": {
     "post": {
-      "file": "/alert/v1beta1/incident.proto",
+      "file": "/kubernetes/v1beta1/incident.proto",
       "url": "/appscode/api/kubernetes/v1beta1/incidents/{phid}/events"
     }
   },

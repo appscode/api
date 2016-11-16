@@ -291,7 +291,7 @@ func init() {
 	listResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "v1beta2ListResourceRequestPodAncestor": {
+    "ListResourceRequestAncestor": {
       "properties": {
         "name": {
           "maxLength": 63,
@@ -306,6 +306,9 @@ func init() {
     }
   },
   "properties": {
+    "ancestor": {
+      "$ref": "#/definitions/ListResourceRequestAncestor"
+    },
     "cluster": {
       "type": "string"
     },
@@ -316,9 +319,6 @@ func init() {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
-    },
-    "pod_ancestor": {
-      "$ref": "#/definitions/v1beta2ListResourceRequestPodAncestor"
     },
     "type": {
       "type": "string"

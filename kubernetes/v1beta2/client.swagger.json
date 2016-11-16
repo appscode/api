@@ -4,6 +4,61 @@
     "application/json"
   ],
   "definitions": {
+    "AlertAlertSpec": {
+      "properties": {
+        "check_command": {
+          "format": "string",
+          "type": "string"
+        },
+        "icinga_param": {
+          "$ref": "#/definitions/AlertSpecIcingaParam"
+        },
+        "notifier_params": {
+          "items": {
+            "$ref": "#/definitions/AlertSpecNotifierParam"
+          },
+          "type": "array"
+        },
+        "vars": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "AlertSpecIcingaParam": {
+      "properties": {
+        "alert_interval_sec": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "check_interval_sec": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "AlertSpecNotifierParam": {
+      "properties": {
+        "method": {
+          "format": "string",
+          "type": "string"
+        },
+        "state": {
+          "format": "string",
+          "type": "string"
+        },
+        "user_uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "ContainerVolumeMount": {
       "properties": {
         "mount_path": {
@@ -17,6 +72,17 @@
         "read_only": {
           "format": "boolean",
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListAlerts": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Alert"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -193,6 +259,19 @@
             "$ref": "#/definitions/v1beta2StorageClass"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ListResourceRequestAncestor": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -508,28 +587,6 @@
       },
       "type": "object"
     },
-    "v1beta1IcingaState": {
-      "properties": {
-        "Critical": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "OK": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "Unknown": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "Warning": {
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "title": "This one is used in kubernetes/v1beta1/client.proto\nTo send information if alert is set for app/pod",
-      "type": "object"
-    },
     "v1beta2AWSElasticBlockStoreVolumeSource": {
       "description": "Represents a Persistent Disk resource in AWS.\n\nAn AWS EBS disk must exist before mounting to a container. The disk\nmust also be in the same AWS zone as the kubelet. An AWS EBS disk\ncan only be mounted as read/write once. AWS EBS volumes support\nownership management and SELinux relabeling.",
       "properties": {
@@ -556,6 +613,21 @@
       },
       "type": "object"
     },
+    "v1beta2Alert": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/AlertAlertSpec"
+        },
+        "status": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2App": {
       "properties": {
         "app": {
@@ -574,7 +646,7 @@
           "type": "integer"
         },
         "icinga_state": {
-          "$ref": "#/definitions/v1beta1IcingaState"
+          "$ref": "#/definitions/v1beta2IcingaState"
         },
         "links": {
           "additionalProperties": {
@@ -1173,6 +1245,27 @@
       },
       "type": "object"
     },
+    "v1beta2IcingaState": {
+      "properties": {
+        "Critical": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OK": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Unknown": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Warning": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Job": {
       "properties": {
         "app": {
@@ -1256,6 +1349,9 @@
     "v1beta2KubeResource": {
       "description": "TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.",
       "properties": {
+        "alert": {
+          "$ref": "#/definitions/v1beta2Alert"
+        },
         "app": {
           "$ref": "#/definitions/v1beta2App"
         },
@@ -1322,6 +1418,9 @@
     },
     "v1beta2KubeResourceList": {
       "properties": {
+        "alerts": {
+          "$ref": "#/definitions/KubeResourceListAlerts"
+        },
         "apps": {
           "$ref": "#/definitions/KubeResourceListApps"
         },
@@ -1391,6 +1490,9 @@
     },
     "v1beta2ListResourceRequest": {
       "properties": {
+        "ancestor": {
+          "$ref": "#/definitions/ListResourceRequestAncestor"
+        },
         "cluster": {
           "format": "string",
           "type": "string"
@@ -1400,22 +1502,6 @@
           "type": "boolean"
         },
         "namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "pod_ancestor": {
-          "$ref": "#/definitions/v1beta2ListResourceRequestPodAncestor"
-        },
-        "type": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2ListResourceRequestPodAncestor": {
-      "properties": {
-        "name": {
           "format": "string",
           "type": "string"
         },
