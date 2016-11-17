@@ -70,6 +70,8 @@ service Clients {
     };
   }
 
+  // Followings are type specific actions api, that can be applied upon fixed resources.
+  // TODO: (@sadlil) Consider seperating them.
   rpc EditConfigMap(ConfigMapEditRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post : "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit"
