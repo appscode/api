@@ -226,6 +226,10 @@ message KubeResourceList {
     PersistentVolumes persistent_volumes = 16;
     PersistentVolumeClaims persistent_volume_claims = 17;
     Alerts alerts = 18;
+    Roles roles = 19;
+    ClusterRoles cluster_roles = 20;
+    RoleBindings role_bindings = 21;
+    ClusterRoleBindings cluster_role_bindings = 22;
   }
 
   message Apps {
@@ -295,6 +299,22 @@ message KubeResourceList {
   message Alerts {
     repeated Alert items = 1;
   }
+
+  message Roles {
+    repeated Role items = 1;
+  }
+
+  message ClusterRoles {
+    repeated ClusterRole items = 1;
+  }
+
+  message RoleBindings {
+    repeated RoleBinding items = 1;
+  }
+
+  message ClusterRoleBindings {
+    repeated ClusterRoleBinding items = 1;
+  }
 }
 
 // TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
@@ -318,6 +338,10 @@ message KubeResource {
     PersistentVolume persistent_volume = 16;
     PersistentVolumeClaim persistent_volume_claim = 17;
     Alert alert = 20;
+    Role role = 21;
+    ClusterRole cluster_role = 22;
+    RoleBinding role_binding = 23;
+    ClusterRoleBinding cluster_role_binding = 24;
   }
   repeated Event events = 18;
   Raw raw = 19;
@@ -747,6 +771,43 @@ message Alert {
             string method = 3;
         }
     }
+}
+
+message Role {
+  Meta meta = 1;
+  repeated Rule rules = 2;
+}
+
+message RoleBinding {
+  Meta meta = 1;
+  repeated Subject subjects = 2;
+  ObjectReference role_ref = 3;
+}
+
+message ClusterRole {
+  Meta meta = 1;
+  repeated Rule rules = 2;
+}
+
+message ClusterRoleBinding {
+  Meta meta = 1;
+  repeated Subject subjects = 2;
+  ObjectReference role_ref = 3;
+}
+
+message Rule {
+  repeated string verbs = 1;
+  repeated string api_groups = 2;
+  repeated string resources = 3;
+  repeated string resource_names = 4;
+  repeated string non_resource_urls = 5;
+}
+
+message Subject {
+  string kind = 1;
+  string api_version = 2;
+  string name = 3;
+  string namespace = 4;
 }
 
 // TODO
