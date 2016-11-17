@@ -396,6 +396,10 @@
           "format": "int64",
           "type": "integer"
         },
+        "vhd_container_name": {
+          "format": "string",
+          "type": "string"
+        },
         "zone": {
           "format": "string",
           "type": "string"
@@ -410,6 +414,10 @@
           "type": "string"
         },
         "uid": {
+          "format": "string",
+          "type": "string"
+        },
+        "vhd_container_name": {
           "format": "string",
           "type": "string"
         }
@@ -427,6 +435,10 @@
           "type": "string"
         },
         "provider": {
+          "format": "string",
+          "type": "string"
+        },
+        "vhd_container_name": {
           "format": "string",
           "type": "string"
         }

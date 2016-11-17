@@ -59,6 +59,13 @@ func (m *ListRequest) String() string            { return proto.CompactTextStrin
 func (*ListRequest) ProtoMessage()               {}
 func (*ListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *ListRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
 type ListResponse struct {
 	Status        *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	LoadBalancers []*LoadBalancer         `protobuf:"bytes,2,rep,name=load_balancers,json=loadBalancers" json:"load_balancers,omitempty"`
@@ -94,6 +101,34 @@ func (m *DescribeRequest) Reset()                    { *m = DescribeRequest{} }
 func (m *DescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*DescribeRequest) ProtoMessage()               {}
 func (*DescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+
+func (m *DescribeRequest) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
+func (m *DescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *DescribeRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *DescribeRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
 
 type DescribeResponse struct {
 	Status       *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -131,6 +166,27 @@ func (m *CreateRequest) String() string            { return proto.CompactTextStr
 func (*CreateRequest) ProtoMessage()               {}
 func (*CreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
+func (m *CreateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *CreateRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *CreateRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
 func (m *CreateRequest) GetLoadBalancer() *LoadBalancer {
 	if m != nil {
 		return m.LoadBalancer
@@ -148,6 +204,20 @@ func (m *UpdateRequest) Reset()                    { *m = UpdateRequest{} }
 func (m *UpdateRequest) String() string            { return proto.CompactTextString(m) }
 func (*UpdateRequest) ProtoMessage()               {}
 func (*UpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+
+func (m *UpdateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *UpdateRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
 
 func (m *UpdateRequest) GetLoadBalancer() *LoadBalancer {
 	if m != nil {
@@ -167,6 +237,34 @@ func (m *DeleteRequest) Reset()                    { *m = DeleteRequest{} }
 func (m *DeleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*DeleteRequest) ProtoMessage()               {}
 func (*DeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+
+func (m *DeleteRequest) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
+func (m *DeleteRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *DeleteRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *DeleteRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
 
 type LoadBalancer struct {
 	// 'kind' defines is it the regular kubernetes instance or the
@@ -195,6 +293,34 @@ func (m *LoadBalancer) String() string            { return proto.CompactTextStri
 func (*LoadBalancer) ProtoMessage()               {}
 func (*LoadBalancer) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
 
+func (m *LoadBalancer) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
+func (m *LoadBalancer) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *LoadBalancer) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *LoadBalancer) GetCreationTimestamp() int64 {
+	if m != nil {
+		return m.CreationTimestamp
+	}
+	return 0
+}
+
 func (m *LoadBalancer) GetOptions() map[string]string {
 	if m != nil {
 		return m.Options
@@ -214,6 +340,13 @@ func (m *LoadBalancer) GetStatus() *Status {
 		return m.Status
 	}
 	return nil
+}
+
+func (m *LoadBalancer) GetJson() string {
+	if m != nil {
+		return m.Json
+	}
+	return ""
 }
 
 type Spec struct {
@@ -266,6 +399,20 @@ func (m *LoadBalancerStatus) String() string            { return proto.CompactTe
 func (*LoadBalancerStatus) ProtoMessage()               {}
 func (*LoadBalancerStatus) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{10} }
 
+func (m *LoadBalancerStatus) GetIP() string {
+	if m != nil {
+		return m.IP
+	}
+	return ""
+}
+
+func (m *LoadBalancerStatus) GetHost() string {
+	if m != nil {
+		return m.Host
+	}
+	return ""
+}
+
 type LoadBalancerBackend struct {
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName" json:"service_name,omitempty"`
 	ServicePort string `protobuf:"bytes,2,opt,name=service_port,json=servicePort" json:"service_port,omitempty"`
@@ -275,6 +422,20 @@ func (m *LoadBalancerBackend) Reset()                    { *m = LoadBalancerBack
 func (m *LoadBalancerBackend) String() string            { return proto.CompactTextString(m) }
 func (*LoadBalancerBackend) ProtoMessage()               {}
 func (*LoadBalancerBackend) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{11} }
+
+func (m *LoadBalancerBackend) GetServiceName() string {
+	if m != nil {
+		return m.ServiceName
+	}
+	return ""
+}
+
+func (m *LoadBalancerBackend) GetServicePort() string {
+	if m != nil {
+		return m.ServicePort
+	}
+	return ""
+}
 
 type LoadBalancerRule struct {
 	Host string `protobuf:"bytes,1,opt,name=host" json:"host,omitempty"`
@@ -289,6 +450,20 @@ func (m *LoadBalancerRule) Reset()                    { *m = LoadBalancerRule{} 
 func (m *LoadBalancerRule) String() string            { return proto.CompactTextString(m) }
 func (*LoadBalancerRule) ProtoMessage()               {}
 func (*LoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{12} }
+
+func (m *LoadBalancerRule) GetHost() string {
+	if m != nil {
+		return m.Host
+	}
+	return ""
+}
+
+func (m *LoadBalancerRule) GetSSLSecretName() string {
+	if m != nil {
+		return m.SSLSecretName
+	}
+	return ""
+}
 
 func (m *LoadBalancerRule) GetHttp() []*HTTPLoadBalancerRule {
 	if m != nil {
@@ -316,9 +491,30 @@ func (m *HTTPLoadBalancerRule) String() string            { return proto.Compact
 func (*HTTPLoadBalancerRule) ProtoMessage()               {}
 func (*HTTPLoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{13} }
 
+func (m *HTTPLoadBalancerRule) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
+
 func (m *HTTPLoadBalancerRule) GetBackend() *LoadBalancerBackend {
 	if m != nil {
 		return m.Backend
+	}
+	return nil
+}
+
+func (m *HTTPLoadBalancerRule) GetHeaderRules() []string {
+	if m != nil {
+		return m.HeaderRules
+	}
+	return nil
+}
+
+func (m *HTTPLoadBalancerRule) GetRewriteRules() []string {
+	if m != nil {
+		return m.RewriteRules
 	}
 	return nil
 }
@@ -335,11 +531,32 @@ func (m *TCPLoadBalancerRule) String() string            { return proto.CompactT
 func (*TCPLoadBalancerRule) ProtoMessage()               {}
 func (*TCPLoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{14} }
 
+func (m *TCPLoadBalancerRule) GetPort() string {
+	if m != nil {
+		return m.Port
+	}
+	return ""
+}
+
 func (m *TCPLoadBalancerRule) GetBackend() *LoadBalancerBackend {
 	if m != nil {
 		return m.Backend
 	}
 	return nil
+}
+
+func (m *TCPLoadBalancerRule) GetSSLSecretName() string {
+	if m != nil {
+		return m.SSLSecretName
+	}
+	return ""
+}
+
+func (m *TCPLoadBalancerRule) GetSecretPemName() string {
+	if m != nil {
+		return m.SecretPemName
+	}
+	return ""
 }
 
 func init() {
@@ -366,7 +583,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for LoadBalancers service
 
@@ -561,7 +778,7 @@ var _LoadBalancers_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "loadbalancer.proto",
 }
 
 func init() { proto.RegisterFile("loadbalancer.proto", fileDescriptor0) }

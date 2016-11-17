@@ -14,6 +14,9 @@
         "size_gb": {
           "type": "integer"
         },
+        "vhd_container_name": {
+          "type": "string"
+        },
         "zone": {
           "type": "string"
         }
@@ -26,6 +29,9 @@
           "type": "string"
         },
         "uid": {
+          "type": "string"
+        },
+        "vhd_container_name": {
           "type": "string"
         }
       },
@@ -40,6 +46,9 @@
           "type": "string"
         },
         "provider": {
+          "type": "string"
+        },
+        "vhd_container_name": {
           "type": "string"
         }
       },
