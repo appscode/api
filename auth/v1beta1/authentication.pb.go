@@ -8,6 +8,7 @@ Package v1beta1 is a generated protocol buffer package.
 It is generated from these files:
 	authentication.proto
 	conduit.proto
+	project.proto
 
 It has these top-level messages:
 	TokenRequest
@@ -20,6 +21,12 @@ It has these top-level messages:
 	ConduitUsersResponse
 	ConduitUser
 	Preferences
+	ProjectListRequest
+	ProjectListResponse
+	ProjectMemberListRequest
+	ProjectMemberListResponse
+	Project
+	Member
 */
 package v1beta1
 
