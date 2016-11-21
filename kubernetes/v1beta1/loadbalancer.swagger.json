@@ -4,30 +4,6 @@
     "application/json"
   ],
   "definitions": {
-    "IncidentEvent": {
-      "properties": {
-        "comment": {
-          "format": "string",
-          "type": "string"
-        },
-        "reported_at": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "state": {
-          "format": "string",
-          "type": "string"
-        },
-        "type": {
-          "format": "string",
-          "type": "string"
-        },
-        "user": {
-          "$ref": "#/definitions/dtypesUid"
-        }
-      },
-      "type": "object"
-    },
     "appscodedtypesStatus": {
       "properties": {
         "code": {
@@ -76,24 +52,35 @@
       "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
       "type": "object"
     },
-    "dtypesUid": {
-      "properties": {
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "phid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Response/Output only",
-      "type": "object"
-    },
     "dtypesVoidResponse": {
       "properties": {
         "status": {
           "$ref": "#/definitions/appscodedtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerv1beta1Spec": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/v1beta1HTTPLoadBalancerRule"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LoadBalancerRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerv1beta1Status": {
+      "properties": {
+        "status": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LoadBalancerStatus"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -114,91 +101,72 @@
       },
       "type": "object"
     },
-    "v1beta1Incident": {
+    "v1beta1CreateRequest": {
       "properties": {
-        "acknowledged_at": {
-          "format": "int64",
-          "title": "Timestamp of first acknowledgement",
-          "type": "integer"
-        },
-        "events": {
-          "items": {
-            "$ref": "#/definitions/IncidentEvent"
-          },
-          "type": "array"
-        },
-        "icinga_host": {
+        "cluster": {
           "format": "string",
           "type": "string"
         },
-        "icinga_service": {
+        "load_balancer": {
+          "$ref": "#/definitions/v1beta1LoadBalancer"
+        },
+        "name": {
           "format": "string",
           "type": "string"
         },
-        "icingaweb_url": {
+        "namespace": {
           "format": "string",
           "type": "string"
-        },
-        "kubernetes_alert_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_cluster": {
-          "$ref": "#/definitions/dtypesUid"
-        },
-        "kubernetes_namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_object_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_object_type": {
-          "format": "string",
-          "type": "string"
-        },
-        "phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "recovered_at": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "reported_at": {
-          "format": "int64",
-          "title": "Timestamp of first reported event",
-          "type": "integer"
-        },
-        "state": {
-          "format": "string",
-          "type": "string"
-        },
-        "type": {
-          "format": "string",
-          "type": "string"
-        },
-        "user": {
-          "$ref": "#/definitions/dtypesUid"
         }
       },
       "type": "object"
     },
-    "v1beta1IncidentDescribeRequest": {
+    "v1beta1DeleteRequest": {
       "properties": {
-        "phid": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kind": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
           "format": "string",
           "type": "string"
         }
       },
-      "title": "Next Id: 2",
       "type": "object"
     },
-    "v1beta1IncidentDescribeResponse": {
+    "v1beta1DescribeRequest": {
       "properties": {
-        "incident": {
-          "$ref": "#/definitions/v1beta1Incident"
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kind": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1DescribeResponse": {
+      "properties": {
+        "load_balancer": {
+          "$ref": "#/definitions/v1beta1LoadBalancer"
         },
         "status": {
           "$ref": "#/definitions/appscodedtypesStatus"
@@ -206,44 +174,23 @@
       },
       "type": "object"
     },
-    "v1beta1IncidentEventCreateRequest": {
+    "v1beta1HTTPLoadBalancerRule": {
       "properties": {
-        "acknowledge": {
-          "format": "boolean",
-          "type": "boolean"
+        "backend": {
+          "$ref": "#/definitions/v1beta1LoadBalancerBackend"
         },
-        "comment": {
+        "header_rules": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "path": {
           "format": "string",
           "type": "string"
         },
-        "phid": {
-          "format": "string",
-          "title": "Incident PHID",
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 4",
-      "type": "object"
-    },
-    "v1beta1IncidentListRequest": {
-      "properties": {
-        "kubernetes_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_object_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_object_type": {
-          "format": "string",
-          "type": "string"
-        },
-        "states": {
+        "rewrite_rules": {
           "items": {
             "format": "string",
             "type": "string"
@@ -251,14 +198,22 @@
           "type": "array"
         }
       },
-      "title": "Next Id: 6",
       "type": "object"
     },
-    "v1beta1IncidentListResponse": {
+    "v1beta1ListRequest": {
       "properties": {
-        "incidents": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ListResponse": {
+      "properties": {
+        "load_balancers": {
           "items": {
-            "$ref": "#/definitions/v1beta1Incident"
+            "$ref": "#/definitions/v1beta1LoadBalancer"
           },
           "type": "array"
         },
@@ -268,72 +223,171 @@
       },
       "type": "object"
     },
-    "v1beta1IncidentNotifyRequest": {
+    "v1beta1LoadBalancer": {
       "properties": {
-        "alert_phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "author": {
-          "format": "string",
-          "type": "string"
-        },
-        "comment": {
-          "format": "string",
-          "type": "string"
-        },
-        "host_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_alert_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "output": {
-          "format": "string",
-          "type": "string"
-        },
-        "state": {
-          "format": "string",
-          "type": "string"
-        },
-        "time": {
-          "description": "The time object is used in icinga to send request. This\nindicates detection time from icinga.",
+        "creation_timestamp": {
           "format": "int64",
           "type": "integer"
         },
-        "type": {
+        "json": {
+          "format": "string",
+          "type": "string"
+        },
+        "kind": {
+          "description": "'kind' defines is it the regular kubernetes instance or the\nappscode superset called Extended Ingress. This field will\nstrictly contains only those two values\n'ingress' - default kubernetes ingress object.\n'extendedIngress' - appscode superset of ingress.\nwhen creating a Loadbalancer from UI this field will always\nbe only 'extendedIngress.' List, Describe, Update and Delete\nwill support both two modes.\nCreate will support only extendedIngress.\nFor Creating or Updating an regular ingress one must use the\nkubectl or direct API calls directly to kubernetes.",
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "options": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "spec": {
+          "$ref": "#/definitions/loadbalancerv1beta1Spec"
+        },
+        "status": {
+          "$ref": "#/definitions/loadbalancerv1beta1Status"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1LoadBalancerBackend": {
+      "properties": {
+        "service_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "service_port": {
           "format": "string",
           "type": "string"
         }
       },
-      "title": "Next Id: 12",
+      "type": "object"
+    },
+    "v1beta1LoadBalancerRule": {
+      "properties": {
+        "SSL_secret_name": {
+          "description": "ssl secret name to enable https on the host.\nssl secret must contain data with the certs pem file.",
+          "format": "string",
+          "type": "string"
+        },
+        "host": {
+          "format": "string",
+          "type": "string"
+        },
+        "http": {
+          "items": {
+            "$ref": "#/definitions/v1beta1HTTPLoadBalancerRule"
+          },
+          "type": "array"
+        },
+        "tcp": {
+          "items": {
+            "$ref": "#/definitions/v1beta1TCPLoadBalancerRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1LoadBalancerStatus": {
+      "properties": {
+        "IP": {
+          "format": "string",
+          "type": "string"
+        },
+        "host": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1TCPLoadBalancerRule": {
+      "properties": {
+        "SSL_secret_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "backend": {
+          "$ref": "#/definitions/v1beta1LoadBalancerBackend"
+        },
+        "port": {
+          "format": "string",
+          "type": "string"
+        },
+        "secret_pem_name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1UpdateRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "load_balancer": {
+          "$ref": "#/definitions/v1beta1LoadBalancer"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
       "type": "object"
     }
   },
   "host": "api.appscode.com",
   "info": {
-    "title": "incident.proto",
+    "title": "loadbalancer.proto",
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident": {
-      "post": {
-        "operationId": "Notify",
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers": {
+      "get": {
+        "operationId": "List",
         "parameters": [
           {
             "format": "string",
             "in": "path",
-            "name": "kubernetes_cluster",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1ListResponse"
+            }
+          }
+        },
+        "tags": [
+          "LoadBalancers"
+        ]
+      },
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
             "required": true,
             "type": "string"
           },
@@ -342,7 +396,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1IncidentNotifyRequest"
+              "$ref": "#/definitions/v1beta1CreateRequest"
             }
           }
         ],
@@ -355,34 +409,55 @@
           }
         },
         "tags": [
-          "Incidents"
+          "LoadBalancers"
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/incidents": {
-      "get": {
-        "operationId": "List",
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1IncidentListResponse"
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
         "tags": [
-          "Incidents"
+          "LoadBalancers"
         ]
-      }
-    },
-    "/appscode/api/kubernetes/v1beta1/incidents/{phid}": {
+      },
       "get": {
         "operationId": "Describe",
         "parameters": [
           {
             "format": "string",
             "in": "path",
-            "name": "phid",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
             "required": true,
             "type": "string"
           }
@@ -391,23 +466,28 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1IncidentDescribeResponse"
+              "$ref": "#/definitions/v1beta1DescribeResponse"
             }
           }
         },
         "tags": [
-          "Incidents"
+          "LoadBalancers"
         ]
-      }
-    },
-    "/appscode/api/kubernetes/v1beta1/incidents/{phid}/events": {
-      "post": {
-        "operationId": "CreateEvent",
+      },
+      "put": {
+        "operationId": "Update",
         "parameters": [
           {
             "format": "string",
             "in": "path",
-            "name": "phid",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
             "required": true,
             "type": "string"
           },
@@ -416,7 +496,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1IncidentEventCreateRequest"
+              "$ref": "#/definitions/v1beta1UpdateRequest"
             }
           }
         ],
@@ -429,7 +509,7 @@
           }
         },
         "tags": [
-          "Incidents"
+          "LoadBalancers"
         ]
       }
     }

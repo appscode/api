@@ -4,65 +4,7 @@
     "application/json"
   ],
   "definitions": {
-    "ClusterDescribeResponseSpec": {
-      "properties": {
-        "container_count": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "pod_count": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "rc_count": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "service_count": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "total_cpu": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "total_memory": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "format": "string",
-          "title": "Describe what link offers",
-          "type": "string"
-        },
-        "url": {
-          "description": "The URL of The link.",
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
-      "type": "object"
-    },
-    "dtypesLongRunningResponse": {
-      "properties": {
-        "job_phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "title": "Types for long running operation. usually called as jobs.\nNext Id = 3",
-      "type": "object"
-    },
-    "dtypesStatus": {
+    "appscodedtypesStatus": {
       "properties": {
         "code": {
           "format": "string",
@@ -94,10 +36,39 @@
       "title": "Next Id = 5",
       "type": "object"
     },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "format": "string",
+          "title": "Describe what link offers",
+          "type": "string"
+        },
+        "url": {
+          "description": "The URL of The link.",
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
+      "type": "object"
+    },
+    "dtypesLongRunningResponse": {
+      "properties": {
+        "job_phid": {
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/appscodedtypesStatus"
+        }
+      },
+      "title": "Types for long running operation. usually called as jobs.\nNext Id = 3",
+      "type": "object"
+    },
     "dtypesVoidResponse": {
       "properties": {
         "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "$ref": "#/definitions/appscodedtypesStatus"
         }
       },
       "type": "object"
@@ -269,7 +240,7 @@
           "type": "string"
         },
         "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "$ref": "#/definitions/appscodedtypesStatus"
         },
         "user_cert": {
           "format": "string",
@@ -390,10 +361,39 @@
           "$ref": "#/definitions/v1beta1Cluster"
         },
         "spec": {
-          "$ref": "#/definitions/ClusterDescribeResponseSpec"
+          "$ref": "#/definitions/v1beta1ClusterDescribeResponseSpec"
         },
         "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "$ref": "#/definitions/appscodedtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterDescribeResponseSpec": {
+      "properties": {
+        "container_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pod_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rc_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "service_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "total_cpu": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "total_memory": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -458,7 +458,7 @@
           "type": "array"
         },
         "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "$ref": "#/definitions/appscodedtypesStatus"
         }
       },
       "type": "object"
@@ -469,7 +469,7 @@
           "$ref": "#/definitions/v1beta1ClusterInstance"
         },
         "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "$ref": "#/definitions/appscodedtypesStatus"
         }
       },
       "type": "object"
@@ -495,7 +495,7 @@
           "type": "array"
         },
         "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "$ref": "#/definitions/appscodedtypesStatus"
         }
       },
       "type": "object"
@@ -560,7 +560,7 @@
           "type": "string"
         },
         "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "$ref": "#/definitions/appscodedtypesStatus"
         }
       },
       "type": "object"
