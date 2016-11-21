@@ -31,6 +31,20 @@ func (m *ProjectListRequest) String() string            { return proto.CompactTe
 func (*ProjectListRequest) ProtoMessage()               {}
 func (*ProjectListRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
+func (m *ProjectListRequest) GetWithMember() bool {
+	if m != nil {
+		return m.WithMember
+	}
+	return false
+}
+
+func (m *ProjectListRequest) GetMembers() []string {
+	if m != nil {
+		return m.Members
+	}
+	return nil
+}
+
 type ProjectListResponse struct {
 	Status  *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Projets []*Project              `protobuf:"bytes,2,rep,name=projets" json:"projets,omitempty"`
@@ -63,6 +77,13 @@ func (m *ProjectMemberListRequest) Reset()                    { *m = ProjectMemb
 func (m *ProjectMemberListRequest) String() string            { return proto.CompactTextString(m) }
 func (*ProjectMemberListRequest) ProtoMessage()               {}
 func (*ProjectMemberListRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+
+func (m *ProjectMemberListRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
 
 type ProjectMemberListResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -107,11 +128,81 @@ func (m *Project) String() string            { return proto.CompactTextString(m)
 func (*Project) ProtoMessage()               {}
 func (*Project) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
 
+func (m *Project) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Project) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *Project) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *Project) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *Project) GetViewPolicy() string {
+	if m != nil {
+		return m.ViewPolicy
+	}
+	return ""
+}
+
+func (m *Project) GetEditPolicy() string {
+	if m != nil {
+		return m.EditPolicy
+	}
+	return ""
+}
+
+func (m *Project) GetJoinPolicy() string {
+	if m != nil {
+		return m.JoinPolicy
+	}
+	return ""
+}
+
+func (m *Project) GetMembershipLocked() bool {
+	if m != nil {
+		return m.MembershipLocked
+	}
+	return false
+}
+
+func (m *Project) GetHasSubprojects() bool {
+	if m != nil {
+		return m.HasSubprojects
+	}
+	return false
+}
+
 func (m *Project) GetMembers() []*Member {
 	if m != nil {
 		return m.Members
 	}
 	return nil
+}
+
+func (m *Project) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
 }
 
 type Member struct {
@@ -125,6 +216,34 @@ func (m *Member) Reset()                    { *m = Member{} }
 func (m *Member) String() string            { return proto.CompactTextString(m) }
 func (*Member) ProtoMessage()               {}
 func (*Member) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{5} }
+
+func (m *Member) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *Member) GetUserName() string {
+	if m != nil {
+		return m.UserName
+	}
+	return ""
+}
+
+func (m *Member) GetRealName() string {
+	if m != nil {
+		return m.RealName
+	}
+	return ""
+}
+
+func (m *Member) GetIsAdmin() bool {
+	if m != nil {
+		return m.IsAdmin
+	}
+	return false
+}
 
 func init() {
 	proto.RegisterType((*ProjectListRequest)(nil), "appscode.auth.v1beta1.ProjectListRequest")
@@ -141,7 +260,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Projects service
 
@@ -237,7 +356,7 @@ var _Projects_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor2,
+	Metadata: "project.proto",
 }
 
 func init() { proto.RegisterFile("project.proto", fileDescriptor2) }

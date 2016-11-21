@@ -98,6 +98,28 @@
       },
       "type": "object"
     },
+    "KubeResourceListClusterRoleBindings": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2ClusterRoleBinding"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListClusterRoles": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2ClusterRole"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListConfigMaps": {
       "properties": {
         "items": {
@@ -224,6 +246,28 @@
         "items": {
           "items": {
             "$ref": "#/definitions/v1beta2ReplicationController"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListRoleBindings": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2RoleBinding"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListRoles": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Role"
           },
           "type": "array"
         }
@@ -777,6 +821,37 @@
           "format": "string",
           "title": "volume id used to identify the volume in cinder\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ClusterRole": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Rule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ClusterRoleBinding": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "role_ref": {
+          "$ref": "#/definitions/v1beta2ObjectReference"
+        },
+        "subjects": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Subject"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -1355,6 +1430,12 @@
         "app": {
           "$ref": "#/definitions/v1beta2App"
         },
+        "cluster_role": {
+          "$ref": "#/definitions/v1beta2ClusterRole"
+        },
+        "cluster_role_binding": {
+          "$ref": "#/definitions/v1beta2ClusterRoleBinding"
+        },
         "config_map": {
           "$ref": "#/definitions/v1beta2ConfigMap"
         },
@@ -1400,6 +1481,12 @@
         "replication_controller": {
           "$ref": "#/definitions/v1beta2ReplicationController"
         },
+        "role": {
+          "$ref": "#/definitions/v1beta2Role"
+        },
+        "role_binding": {
+          "$ref": "#/definitions/v1beta2RoleBinding"
+        },
         "secret": {
           "$ref": "#/definitions/v1beta2Secret"
         },
@@ -1423,6 +1510,12 @@
         },
         "apps": {
           "$ref": "#/definitions/KubeResourceListApps"
+        },
+        "cluster_role_bindings": {
+          "$ref": "#/definitions/KubeResourceListClusterRoleBindings"
+        },
+        "cluster_roles": {
+          "$ref": "#/definitions/KubeResourceListClusterRoles"
         },
         "config_maps": {
           "$ref": "#/definitions/KubeResourceListConfigMaps"
@@ -1459,6 +1552,12 @@
         },
         "replication_controllers": {
           "$ref": "#/definitions/KubeResourceListReplicationControllers"
+        },
+        "role_bindings": {
+          "$ref": "#/definitions/KubeResourceListRoleBindings"
+        },
+        "roles": {
+          "$ref": "#/definitions/KubeResourceListRoles"
         },
         "secrets": {
           "$ref": "#/definitions/KubeResourceListSecrets"
@@ -2207,6 +2306,77 @@
       },
       "type": "object"
     },
+    "v1beta2Role": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Rule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2RoleBinding": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "role_ref": {
+          "$ref": "#/definitions/v1beta2ObjectReference"
+        },
+        "subjects": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Subject"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Rule": {
+      "properties": {
+        "api_groups": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "non_resource_urls": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resource_names": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resources": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "verbs": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Secret": {
       "properties": {
         "data": {
@@ -2349,6 +2519,27 @@
       },
       "type": "object"
     },
+    "v1beta2Subject": {
+      "properties": {
+        "api_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kind": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2UpdateResourceRequest": {
       "properties": {
         "cluster": {
@@ -2464,6 +2655,7 @@
             }
           }
         },
+        "summary": "Followings are type specific actions api, that can be applied upon fixed resources.\nTODO: (@sadlil) Consider seperating them.",
         "tags": [
           "Clients"
         ]

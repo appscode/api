@@ -158,6 +158,7 @@ message Cluster {
   string version = 24;
   string sku = 25;
   string created_by = 26;
+  string default_access_level = 27;
 }
 
 message ClusterDescribeRequest {
@@ -202,15 +203,15 @@ message ClusterCreateRequest {
   bool do_not_delete = 10;
   string hostfacts_version = 11;
   string version = 12;
-  // Default access mode is to allow permission to the cluster
+  // Default access level is to allow permission to the cluster
   // when no Role matched for that specif user or group. This can
   // set as
   //    - v:cluster-admins    // to allow admin access
   //    - v:cluster-deployer  // to allow deployer access
   //    - v:cluster-viewer    // to allow viewer access
-  //    - v:cluster-none      // restrict all access to that cluster.
-  // If not set this will set as v:cluster-viewer.
-  string default_access_mode = 13;
+  //    - ""                  // empty value stands for no access
+  // If not set this will set ""
+  string default_access_level = 13;
 }
 
 message ClusterScaleRequest {
@@ -292,14 +293,14 @@ message ClusterUpdateRequest {
   string name = 1;
   bool do_not_delete = 2;
   ClusterSettings settings = 3;
-  // Default access mode is to allow permission to the cluster
+  // Default access level is to allow permission to the cluster
   // when no Role matched for that specif user or group. This can
   // set as
   //    - v:cluster-admins    // to allow admin access
   //    - v:cluster-deployer  // to allow deployer access
   //    - v:cluster-viewer    // to allow viewer access
-  //    - v:cluster-none      // restrict all access to that cluster.
-  string default_access_mode = 4;
+  //    - ""                  // empty value stands for no access
+  string default_access_level = 4;
 }
 
 message ClusterUpgradeRequest {

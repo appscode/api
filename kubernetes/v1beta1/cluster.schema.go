@@ -110,8 +110,8 @@ func init() {
     }
   },
   "properties": {
-    "default_access_mode": {
-      "description": "Default access mode is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n   - v:cluster-admins    // to allow admin access\n   - v:cluster-deployer  // to allow deployer access\n   - v:cluster-viewer    // to allow viewer access\n   - v:cluster-none      // restrict all access to that cluster.",
+    "default_access_level": {
+      "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n   - v:cluster-admins    // to allow admin access\n   - v:cluster-deployer  // to allow deployer access\n   - v:cluster-viewer    // to allow viewer access\n   - \"\"                  // empty value stands for no access",
       "type": "string"
     },
     "do_not_delete": {
@@ -227,8 +227,8 @@ func init() {
       },
       "type": "object"
     },
-    "default_access_mode": {
-      "description": "Default access mode is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n   - v:cluster-admins    // to allow admin access\n   - v:cluster-deployer  // to allow deployer access\n   - v:cluster-viewer    // to allow viewer access\n   - v:cluster-none      // restrict all access to that cluster.\nIf not set this will set as v:cluster-viewer.",
+    "default_access_level": {
+      "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n   - v:cluster-admins    // to allow admin access\n   - v:cluster-deployer  // to allow deployer access\n   - v:cluster-viewer    // to allow viewer access\n   - \"\"                  // empty value stands for no access\nIf not set this will set \"\"",
       "type": "string"
     },
     "do_not_delete": {
