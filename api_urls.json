@@ -559,25 +559,25 @@
   },
   "/appscode/api/kubernetes/v1beta1/clusters/*/loadbalancers": {
     "get": {
-      "file": "/loadbalancer/v1beta1/loadbalancer.proto",
+      "file": "/kubernetes/v1beta1/loadbalancer.proto",
       "url": "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers"
     },
     "post": {
-      "file": "/loadbalancer/v1beta1/loadbalancer.proto",
+      "file": "/kubernetes/v1beta1/loadbalancer.proto",
       "url": "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers"
     }
   },
   "/appscode/api/kubernetes/v1beta1/clusters/*/loadbalancers/*": {
     "delete": {
-      "file": "/loadbalancer/v1beta1/loadbalancer.proto",
+      "file": "/kubernetes/v1beta1/loadbalancer.proto",
       "url": "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
     },
     "get": {
-      "file": "/loadbalancer/v1beta1/loadbalancer.proto",
+      "file": "/kubernetes/v1beta1/loadbalancer.proto",
       "url": "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
     },
     "put": {
-      "file": "/loadbalancer/v1beta1/loadbalancer.proto",
+      "file": "/kubernetes/v1beta1/loadbalancer.proto",
       "url": "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
     }
   },

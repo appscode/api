@@ -60,6 +60,20 @@
       },
       "type": "object"
     },
+    "loadbalancerv1beta1Spec": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/v1beta1HTTPLoadBalancerRule"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LoadBalancerRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "loadbalancerv1beta1Status": {
       "properties": {
         "status": {
@@ -240,7 +254,7 @@
           "type": "object"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta1Spec"
+          "$ref": "#/definitions/loadbalancerv1beta1Spec"
         },
         "status": {
           "$ref": "#/definitions/loadbalancerv1beta1Status"
@@ -296,20 +310,6 @@
         "host": {
           "format": "string",
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1Spec": {
-      "properties": {
-        "backend": {
-          "$ref": "#/definitions/v1beta1HTTPLoadBalancerRule"
-        },
-        "rules": {
-          "items": {
-            "$ref": "#/definitions/v1beta1LoadBalancerRule"
-          },
-          "type": "array"
         }
       },
       "type": "object"

@@ -4,23 +4,7 @@
     "application/json"
   ],
   "definitions": {
-    "dtypesHelp": {
-      "properties": {
-        "description": {
-          "format": "string",
-          "title": "Describe what link offers",
-          "type": "string"
-        },
-        "url": {
-          "description": "The URL of The link.",
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
-      "type": "object"
-    },
-    "dtypesStatus": {
+    "appscodedtypesStatus": {
       "properties": {
         "code": {
           "format": "string",
@@ -50,6 +34,22 @@
         }
       },
       "title": "Next Id = 5",
+      "type": "object"
+    },
+    "dtypesHelp": {
+      "properties": {
+        "description": {
+          "format": "string",
+          "title": "Describe what link offers",
+          "type": "string"
+        },
+        "url": {
+          "description": "The URL of The link.",
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
       "type": "object"
     },
     "protobufAny": {
@@ -87,7 +87,7 @@
           "type": "array"
         },
         "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "$ref": "#/definitions/appscodedtypesStatus"
         }
       },
       "type": "object"
@@ -111,7 +111,7 @@
           "type": "array"
         },
         "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "$ref": "#/definitions/appscodedtypesStatus"
         }
       },
       "type": "object"
@@ -132,7 +132,7 @@
     "v1beta1ZoneListResponse": {
       "properties": {
         "status": {
-          "$ref": "#/definitions/dtypesStatus"
+          "$ref": "#/definitions/appscodedtypesStatus"
         },
         "zones": {
           "items": {
