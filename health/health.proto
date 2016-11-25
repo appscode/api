@@ -27,4 +27,13 @@ service Health {
 message StatusResponse {
   dtypes.Status status = 1;
   version.Version version = 2;
+  Metadata metadata = 3;
+}
+
+message Metadata {
+  string env = 1;
+  string protocol = 2;
+  string root_domain = 3;
+  string team_domain = 4;
+  string team_id = 5;
 }
