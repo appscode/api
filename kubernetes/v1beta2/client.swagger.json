@@ -1600,6 +1600,13 @@
           "format": "boolean",
           "type": "boolean"
         },
+        "label_selector": {
+          "additionalProperties": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "object"
+        },
         "namespace": {
           "format": "string",
           "type": "string"
