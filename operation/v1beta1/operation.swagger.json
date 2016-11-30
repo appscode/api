@@ -118,15 +118,15 @@
     },
     "v1beta1Auth": {
       "properties": {
+        "auth_type": {
+          "format": "string",
+          "type": "string"
+        },
         "namespace": {
           "format": "string",
           "type": "string"
         },
-        "token": {
-          "format": "string",
-          "type": "string"
-        },
-        "token_type": {
+        "secret": {
           "format": "string",
           "type": "string"
         },
