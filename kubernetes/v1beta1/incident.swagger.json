@@ -294,10 +294,6 @@
           "format": "string",
           "type": "string"
         },
-        "kubernetes_namespace": {
-          "format": "string",
-          "type": "string"
-        },
         "output": {
           "format": "string",
           "type": "string"

@@ -137,6 +137,7 @@ message ListResourceRequest {
   string namespace = 3;
   bool include_metrics = 4;
   Ancestor ancestor = 5;
+  map<string, string> label_selector = 6;
 
   message Ancestor {
       string type = 1;

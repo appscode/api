@@ -66,8 +66,8 @@ message LogDescribeResponse {
 message Auth {
   string namespace = 1;
   string username = 2;
-  string token = 3;
-  string token_type = 4;
+  string secret = 3;
+  string auth_type = 4;
 }
 
 // Metadata holds other on request or operation specific data

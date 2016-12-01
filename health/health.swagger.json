@@ -85,9 +85,37 @@
       "type": "object",
       "description": "Void Requests and response to use with other types."
     },
+    "healthMetadata": {
+      "type": "object",
+      "properties": {
+        "env": {
+          "type": "string",
+          "format": "string"
+        },
+        "protocol": {
+          "type": "string",
+          "format": "string"
+        },
+        "root_domain": {
+          "type": "string",
+          "format": "string"
+        },
+        "team_domain": {
+          "type": "string",
+          "format": "string"
+        },
+        "team_id": {
+          "type": "string",
+          "format": "string"
+        }
+      }
+    },
     "healthStatusResponse": {
       "type": "object",
       "properties": {
+        "metadata": {
+          "$ref": "#/definitions/healthMetadata"
+        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         },
