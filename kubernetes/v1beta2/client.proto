@@ -233,6 +233,7 @@ message KubeResourceList {
     ClusterRoles cluster_roles = 20;
     RoleBindings role_bindings = 21;
     ClusterRoleBindings cluster_role_bindings = 22;
+    Certificates certificates = 23;
   }
 
   message Apps {
@@ -318,6 +319,10 @@ message KubeResourceList {
   message ClusterRoleBindings {
     repeated ClusterRoleBinding items = 1;
   }
+
+  message Certificates {
+    repeated Certificate items = 1;
+  }
 }
 
 // TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
@@ -345,6 +350,7 @@ message KubeResource {
     ClusterRole cluster_role = 22;
     RoleBinding role_binding = 23;
     ClusterRoleBinding cluster_role_binding = 24;
+    Certificate certificate = 25;
   }
   repeated Event events = 18;
   Raw raw = 19;
@@ -811,6 +817,120 @@ message Subject {
   string api_version = 2;
   string name = 3;
   string namespace = 4;
+}
+
+message Certificate {
+  Meta meta = 1;
+  Spec spec = 2;
+  Status status = 3;
+
+  message Spec {
+    // Obtain a single certificate for all the domains. The first Domain provided wiil
+    // be counted as Name and other domains will be in SANs.
+    repeated string domains = 1;
+
+    // Provider to resolve challange. Valid Providers are
+    // "http":
+    // "cloudflare":
+    // "digitalocean":
+    // "dnsimple":
+    // "dyn":
+    // "gandi":
+    // "googlecloud":
+    // "linode":
+    // "namecheap":
+    // "ovh":
+    // "pdns":
+    // "rfc2136":
+    // "route53":
+    // "vultr":
+    string provider = 2;
+    string email = 3;
+    ObjectReference HTTP_provider_ingress_reference = 4;
+
+    // ProviderCredentialSecret Must Contain Secrets for that specific Providers.
+    // All the Key names for DNS providers needs to maintain the following formate:
+    //
+    // http
+    // HTTP Provider needs an Ingress or ExtendedIngress reference in HTTP_provider_ingress_reference.
+    //
+    // cloudflare
+    // CLOUDFLARE_EMAIL: The email of the cloudflare user
+    // CLOUDFLARE_API_KEY: The API key corresponding to the email
+    // 
+    // digitalocean
+    // DO_AUTH_TOKEN: The digital ocean authorization token
+    // 
+    // dnsimple
+    // DNSIMPLE_EMAIL: The email fo the DNSimple user
+    // DNSIMPLE_API_KEY: The API key corresponding to the email
+    // 
+    // dnsmadeeasy
+    // DNSMADEEASY_API_KEY: The API key for DNS Made Easy
+    // DNSMADEEASY_API_SECRET: The api secret corresponding with the API key
+    // DNSMADEEASY_SANDBOX: A boolean flag, if set to true or 1, requests will be sent to the sandbox API
+    // 
+    // dyn
+    // DYN_CUSTOMER_NAME: The customer name of the Dyn user
+    // DYN_USER_NAME: The user name of the Dyn user
+    // DYN_PASSWORD: The password of the Dyn user
+    // 
+    // gandi
+    // GANDI_API_KEY: The API key for Gandi
+    // 
+    // googlecloud
+    // GCE_PROJECT: The name of the Google Cloud project to use
+    //
+    // linode
+    // LINODE_API_KEY: API key for linode
+    //
+    // namecheap
+    // NAMECHEAP_API_USER: The username of the namecheap user
+    // NAMECHEAP_API_KEY: The API key corresponding with the namecheap user
+    // 
+    // ovh
+    // OVH_ENDPOINT: The URL of the API endpoint to use
+    // OVH_APPLICATION_KEY: The application key
+    // OVH_APPLICATION_SECRET: The secret corresponding to the application key
+    // OVH_CONSUMER_KEY: The consumer key
+    // 
+    // pdns
+    // PDNS_API_KEY: The API key to use
+    // 
+    // rfc2136
+    // RFC2136_NAMESERVER: The network address of the provider, in the form of "host" or "host:port"
+    // RFC2136_TSIG_ALGORITHM: The algorithm to use for TSIG authentication.
+    // RFC2136_TSIG_KEY: The key to use for TSIG authentication.
+    // RFC2136_TSIG_SECRET: The secret to use for TSIG authentication.
+    // 
+    // route53
+    // AWS_ACCESS_KEY_ID: The access key ID
+    // AWS_SECRET_ACCESS_KEY: The secret corresponding to the access key
+    // 
+    // vultr
+    // VULTR_API_KEY: The API key to use
+    string provider_credential_secret_name = 5;
+    string ACME_user_secret_name = 6;
+
+    // Provides Custom acme server url to issue certificates. If empty it
+    // uses let's encrypt servers.
+    string ACME_serverURL = 7;
+  }
+
+  message Status {
+    bool certificate_obtained = 1;
+    string message = 2;
+    int64 created_at = 3;
+    string ACME_user_secret_name = 4;
+    ACMECertificateDetails details = 5;
+
+    message ACMECertificateDetails {
+      string domain = 1;
+      string certURL = 2;
+      string cert_stableURL = 3;
+      string account_ref = 4;
+    }
+  }
 }
 
 // TODO

@@ -98,6 +98,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListCertificates": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Certificate"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListClusterRoleBindings": {
       "properties": {
         "items": {
@@ -504,6 +515,27 @@
       },
       "type": "object"
     },
+    "StatusACMECertificateDetails": {
+      "properties": {
+        "account_ref": {
+          "format": "string",
+          "type": "string"
+        },
+        "certURL": {
+          "format": "string",
+          "type": "string"
+        },
+        "cert_stableURL": {
+          "format": "string",
+          "type": "string"
+        },
+        "domain": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "StatusCapacity": {
       "properties": {
         "cpu": {
@@ -799,6 +831,84 @@
         "user": {
           "format": "string",
           "title": "Optional: User is the rados user name, default is admin\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Certificate": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2CertificateSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2CertificateStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2CertificateSpec": {
+      "properties": {
+        "ACME_serverURL": {
+          "description": "Provides Custom acme server url to issue certificates. If empty it\nuses let's encrypt servers.",
+          "format": "string",
+          "type": "string"
+        },
+        "ACME_user_secret_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "HTTP_provider_ingress_reference": {
+          "$ref": "#/definitions/v1beta2ObjectReference"
+        },
+        "domains": {
+          "description": "Obtain a single certificate for all the domains. The first Domain provided wiil\nbe counted as Name and other domains will be in SANs.",
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "email": {
+          "format": "string",
+          "type": "string"
+        },
+        "provider": {
+          "format": "string",
+          "title": "Provider to resolve challange. Valid Providers are\n\"http\":\n\"cloudflare\":\n\"digitalocean\":\n\"dnsimple\":\n\"dyn\":\n\"gandi\":\n\"googlecloud\":\n\"linode\":\n\"namecheap\":\n\"ovh\":\n\"pdns\":\n\"rfc2136\":\n\"route53\":\n\"vultr\":",
+          "type": "string"
+        },
+        "provider_credential_secret_name": {
+          "description": "http\nHTTP Provider needs an Ingress or ExtendedIngress reference in HTTP_provider_ingress_reference.\n\ncloudflare\nCLOUDFLARE_EMAIL: The email of the cloudflare user\nCLOUDFLARE_API_KEY: The API key corresponding to the email\n\ndigitalocean\nDO_AUTH_TOKEN: The digital ocean authorization token\n\ndnsimple\nDNSIMPLE_EMAIL: The email fo the DNSimple user\nDNSIMPLE_API_KEY: The API key corresponding to the email\n\ndnsmadeeasy\nDNSMADEEASY_API_KEY: The API key for DNS Made Easy\nDNSMADEEASY_API_SECRET: The api secret corresponding with the API key\nDNSMADEEASY_SANDBOX: A boolean flag, if set to true or 1, requests will be sent to the sandbox API\n\ndyn\nDYN_CUSTOMER_NAME: The customer name of the Dyn user\nDYN_USER_NAME: The user name of the Dyn user\nDYN_PASSWORD: The password of the Dyn user\n\ngandi\nGANDI_API_KEY: The API key for Gandi\n\ngooglecloud\nGCE_PROJECT: The name of the Google Cloud project to use\n\nlinode\nLINODE_API_KEY: API key for linode\n\nnamecheap\nNAMECHEAP_API_USER: The username of the namecheap user\nNAMECHEAP_API_KEY: The API key corresponding with the namecheap user\n\novh\nOVH_ENDPOINT: The URL of the API endpoint to use\nOVH_APPLICATION_KEY: The application key\nOVH_APPLICATION_SECRET: The secret corresponding to the application key\nOVH_CONSUMER_KEY: The consumer key\n\npdns\nPDNS_API_KEY: The API key to use\n\nrfc2136\nRFC2136_NAMESERVER: The network address of the provider, in the form of \"host\" or \"host:port\"\nRFC2136_TSIG_ALGORITHM: The algorithm to use for TSIG authentication.\nRFC2136_TSIG_KEY: The key to use for TSIG authentication.\nRFC2136_TSIG_SECRET: The secret to use for TSIG authentication.\n\nroute53\nAWS_ACCESS_KEY_ID: The access key ID\nAWS_SECRET_ACCESS_KEY: The secret corresponding to the access key\n\nvultr\nVULTR_API_KEY: The API key to use",
+          "format": "string",
+          "title": "ProviderCredentialSecret Must Contain Secrets for that specific Providers.\nAll the Key names for DNS providers needs to maintain the following formate:",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2CertificateStatus": {
+      "properties": {
+        "ACME_user_secret_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "certificate_obtained": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "created_at": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "details": {
+          "$ref": "#/definitions/StatusACMECertificateDetails"
+        },
+        "message": {
+          "format": "string",
           "type": "string"
         }
       },
@@ -1430,6 +1540,9 @@
         "app": {
           "$ref": "#/definitions/v1beta2App"
         },
+        "certificate": {
+          "$ref": "#/definitions/v1beta2Certificate"
+        },
         "cluster_role": {
           "$ref": "#/definitions/v1beta2ClusterRole"
         },
@@ -1510,6 +1623,9 @@
         },
         "apps": {
           "$ref": "#/definitions/KubeResourceListApps"
+        },
+        "certificates": {
+          "$ref": "#/definitions/KubeResourceListCertificates"
         },
         "cluster_role_bindings": {
           "$ref": "#/definitions/KubeResourceListClusterRoleBindings"
