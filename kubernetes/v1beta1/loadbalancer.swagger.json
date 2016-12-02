@@ -60,7 +60,7 @@
       },
       "type": "object"
     },
-    "loadbalancerv1beta1Spec": {
+    "kubernetesv1beta1Spec": {
       "properties": {
         "backend": {
           "$ref": "#/definitions/v1beta1HTTPLoadBalancerRule"
@@ -74,7 +74,7 @@
       },
       "type": "object"
     },
-    "loadbalancerv1beta1Status": {
+    "kubernetesv1beta1Status": {
       "properties": {
         "status": {
           "items": {
@@ -254,10 +254,10 @@
           "type": "object"
         },
         "spec": {
-          "$ref": "#/definitions/loadbalancerv1beta1Spec"
+          "$ref": "#/definitions/kubernetesv1beta1Spec"
         },
         "status": {
-          "$ref": "#/definitions/loadbalancerv1beta1Status"
+          "$ref": "#/definitions/kubernetesv1beta1Status"
         }
       },
       "type": "object"
