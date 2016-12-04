@@ -41,11 +41,33 @@ func init() {
 	}
 	clusterScaleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "v1beta1InstanceGroup": {
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "use_spot_instances": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    }
+  },
   "properties": {
     "name": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
+    },
+    "node_groups": {
+      "items": {
+        "$ref": "#/definitions/v1beta1InstanceGroup"
+      },
+      "type": "array"
     },
     "node_set": {
       "additionalProperties": {
@@ -215,6 +237,22 @@ func init() {
 	}
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "v1beta1InstanceGroup": {
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "use_spot_instances": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    }
+  },
   "properties": {
     "cloud_credential": {
       "maxLength": 63,
@@ -250,6 +288,12 @@ func init() {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
+    },
+    "node_groups": {
+      "items": {
+        "$ref": "#/definitions/v1beta1InstanceGroup"
+      },
+      "type": "array"
     },
     "node_set": {
       "additionalProperties": {

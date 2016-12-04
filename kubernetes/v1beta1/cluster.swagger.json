@@ -299,6 +299,12 @@
           "format": "string",
           "type": "string"
         },
+        "node_groups": {
+          "items": {
+            "$ref": "#/definitions/v1beta1InstanceGroup"
+          },
+          "type": "array"
+        },
         "node_set": {
           "additionalProperties": {
             "format": "int64",
@@ -506,6 +512,12 @@
           "format": "string",
           "type": "string"
         },
+        "node_groups": {
+          "items": {
+            "$ref": "#/definitions/v1beta1InstanceGroup"
+          },
+          "type": "array"
+        },
         "node_set": {
           "additionalProperties": {
             "format": "int64",
@@ -611,6 +623,23 @@
         "version": {
           "format": "string",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1InstanceGroup": {
+      "properties": {
+        "count": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "use_spot_instances": {
+          "format": "boolean",
+          "type": "boolean"
         }
       },
       "type": "object"

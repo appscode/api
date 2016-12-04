@@ -190,13 +190,20 @@ message ClusterListResponse {
   repeated Cluster clusters = 2;
 }
 
+message InstanceGroup {
+  string sku = 1;
+  int64 count = 2;
+  bool use_spot_instances = 3;
+}
+
 message ClusterCreateRequest {
   string name = 1;
   string provider = 2;
   string zone = 3;
   string cloud_credential = 4;
   map<string, string> cloud_credential_data = 5;
-  map<string, int64> node_set = 6;
+  map<string, int64> node_set = 6 [deprecated = true];
+  repeated InstanceGroup node_groups = 14;
   string kube_saltbase_version = 7;
   string kube_starter_version = 8;
   string kube_server_version = 9;
@@ -217,7 +224,8 @@ message ClusterCreateRequest {
 message ClusterScaleRequest {
   string name = 1;
   // New node configuration for the cluster
-  map<string, int64> node_set = 2;
+  map<string, int64> node_set = 2 [deprecated = true];
+  repeated InstanceGroup node_groups = 3;
 }
 
 message ClusterDeleteRequest {
