@@ -14,7 +14,7 @@ authenticationInterceptor:
     - "/appscode.auth.v1beta1.Authentication/Login"
     - "/appscode.auth.v1beta1.Authentication/Logout"
     - "/appscode.auth.v1beta1.Authentication/Token"
-    - "/appscode.kubernetes.v1beta1.Clusters/StartupScript"
+    - "/appscode.kubernetes.v1beta1.Clusters/StartupConfig"
     - "/appscode.kubernetes.v1beta1.Clusters/InstanceByIP"
     - "/appscode.mailinglist.v1beta1.MailingList/SendEmail"
     - "/appscode.mailinglist.v1beta1.MailingList/Subscribe"

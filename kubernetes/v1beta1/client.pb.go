@@ -55,8 +55,8 @@ It has these top-level messages:
 	ClusterCreateRequest
 	ClusterScaleRequest
 	ClusterDeleteRequest
-	ClusterStartupScriptRequest
-	ClusterStartupScriptResponse
+	ClusterStartupConfigRequest
+	ClusterStartupConfigResponse
 	ClusterInstanceByIPRequest
 	ClusterInstanceResponse
 	ClusterClientConfigRequest

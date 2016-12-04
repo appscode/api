@@ -170,7 +170,7 @@
       },
       "type": "object"
     },
-    "v1beta1ClusterStartupScriptRequest": {
+    "v1beta1ClusterStartupConfigRequest": {
       "properties": {
         "context_version": {
           "type": "integer"

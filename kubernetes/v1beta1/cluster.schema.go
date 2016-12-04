@@ -7,38 +7,20 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var clusterStartupScriptRequestSchema *gojsonschema.Schema
 var clusterScaleRequestSchema *gojsonschema.Schema
 var clusterInstanceListRequestSchema *gojsonschema.Schema
 var clusterInstanceByIPRequestSchema *gojsonschema.Schema
-var clusterUpdateRequestSchema *gojsonschema.Schema
-var clusterDeleteRequestSchema *gojsonschema.Schema
 var clusterUpgradeRequestSchema *gojsonschema.Schema
+var clusterDeleteRequestSchema *gojsonschema.Schema
+var clusterCreateRequestSchema *gojsonschema.Schema
+var clusterUpdateRequestSchema *gojsonschema.Schema
 var clusterDescribeRequestSchema *gojsonschema.Schema
 var clusterListRequestSchema *gojsonschema.Schema
-var clusterCreateRequestSchema *gojsonschema.Schema
+var clusterStartupConfigRequestSchema *gojsonschema.Schema
 var clusterClientConfigRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	clusterStartupScriptRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "context_version": {
-      "type": "integer"
-    },
-    "role": {
-      "type": "string"
-    },
-    "uid": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 	clusterScaleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
@@ -111,74 +93,6 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	clusterUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "v1beta1ClusterSettings": {
-      "properties": {
-        "log_index_prefix": {
-          "type": "string"
-        },
-        "log_storage_lifetime": {
-          "title": "Number of secs logs will be stored in ElasticSearch",
-          "type": "integer"
-        },
-        "monitoring_storage_lifetime": {
-          "title": "Number of secs logs will be stored in InfluxDB",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    }
-  },
-  "properties": {
-    "default_access_level": {
-      "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n   - v:cluster-admins    // to allow admin access\n   - v:cluster-deployer  // to allow deployer access\n   - v:cluster-viewer    // to allow viewer access\n   - \"\"                  // empty value stands for no access",
-      "type": "string"
-    },
-    "do_not_delete": {
-      "type": "boolean"
-    },
-    "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
-    },
-    "settings": {
-      "$ref": "#/definitions/v1beta1ClusterSettings"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "delete_dynamic_volumes": {
-      "type": "boolean"
-    },
-    "delete_lodabalancers": {
-      "type": "boolean"
-    },
-    "force": {
-      "type": "boolean"
-    },
-    "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
-    },
-    "release_reserved_ip": {
-      "type": "boolean"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 	clusterUpgradeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -208,26 +122,25 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	clusterDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "uid": {
+    "delete_dynamic_volumes": {
+      "type": "boolean"
+    },
+    "delete_lodabalancers": {
+      "type": "boolean"
+    },
+    "force": {
+      "type": "boolean"
+    },
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	clusterListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "status": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+    },
+    "release_reserved_ip": {
+      "type": "boolean"
     }
   },
   "type": "object"
@@ -316,6 +229,93 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
+	clusterUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "v1beta1ClusterSettings": {
+      "properties": {
+        "log_index_prefix": {
+          "type": "string"
+        },
+        "log_storage_lifetime": {
+          "title": "Number of secs logs will be stored in ElasticSearch",
+          "type": "integer"
+        },
+        "monitoring_storage_lifetime": {
+          "title": "Number of secs logs will be stored in InfluxDB",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "properties": {
+    "default_access_level": {
+      "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n   - v:cluster-admins    // to allow admin access\n   - v:cluster-deployer  // to allow deployer access\n   - v:cluster-viewer    // to allow viewer access\n   - \"\"                  // empty value stands for no access",
+      "type": "string"
+    },
+    "do_not_delete": {
+      "type": "boolean"
+    },
+    "name": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "settings": {
+      "$ref": "#/definitions/v1beta1ClusterSettings"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	clusterDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "uid": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	clusterListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "status": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	clusterStartupConfigRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "context_version": {
+      "type": "integer"
+    },
+    "role": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
 	clusterClientConfigRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -329,11 +329,6 @@ func init() {
 		glog.Fatal(err)
 	}
 }
-
-func (m *ClusterStartupScriptRequest) IsValid() (*gojsonschema.Result, error) {
-	return clusterStartupScriptRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *ClusterStartupScriptRequest) IsRequest() {}
 
 func (m *ClusterScaleRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterScaleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
@@ -350,20 +345,25 @@ func (m *ClusterInstanceByIPRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterInstanceByIPRequest) IsRequest() {}
 
-func (m *ClusterUpdateRequest) IsValid() (*gojsonschema.Result, error) {
-	return clusterUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *ClusterUpgradeRequest) IsValid() (*gojsonschema.Result, error) {
+	return clusterUpgradeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterUpdateRequest) IsRequest() {}
+func (m *ClusterUpgradeRequest) IsRequest() {}
 
 func (m *ClusterDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClusterDeleteRequest) IsRequest() {}
 
-func (m *ClusterUpgradeRequest) IsValid() (*gojsonschema.Result, error) {
-	return clusterUpgradeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
+	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterUpgradeRequest) IsRequest() {}
+func (m *ClusterCreateRequest) IsRequest() {}
+
+func (m *ClusterUpdateRequest) IsValid() (*gojsonschema.Result, error) {
+	return clusterUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *ClusterUpdateRequest) IsRequest() {}
 
 func (m *ClusterDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
@@ -375,16 +375,19 @@ func (m *ClusterListRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterListRequest) IsRequest() {}
 
-func (m *ClusterCreateRequest) IsValid() (*gojsonschema.Result, error) {
-	return clusterCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *ClusterStartupConfigRequest) IsValid() (*gojsonschema.Result, error) {
+	return clusterStartupConfigRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterCreateRequest) IsRequest() {}
+func (m *ClusterStartupConfigRequest) IsRequest() {}
 
 func (m *ClusterClientConfigRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterClientConfigRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClusterClientConfigRequest) IsRequest() {}
 
+func (m *ClusterStartupConfigResponse) SetStatus(s *dtypes.Status) {
+	m.Status = s
+}
 func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
@@ -398,8 +401,5 @@ func (m *ClusterInstanceListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
 func (m *ClusterInstanceResponse) SetStatus(s *dtypes.Status) {
-	m.Status = s
-}
-func (m *ClusterStartupScriptResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

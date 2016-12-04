@@ -98,12 +98,9 @@ service Clusters {
     };
   }
 
-  rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
+  rpc StartupConfig(ClusterStartupConfigRequest) returns (ClusterStartupConfigResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}"
-      additional_bindings {
-        get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}/context-versions/{context_version}"
-      }
+      get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -236,13 +233,13 @@ message ClusterDeleteRequest {
   bool delete_dynamic_volumes = 5;
 }
 
-message ClusterStartupScriptRequest {
+message ClusterStartupConfigRequest {
   string uid = 1;
   string role = 2;
   int64 context_version = 3;
 }
 
-message ClusterStartupScriptResponse {
+message ClusterStartupConfigResponse {
   dtypes.Status status = 1;
   string configuration = 2;
 }

@@ -548,7 +548,7 @@
       },
       "type": "object"
     },
-    "v1beta1ClusterStartupScriptRequest": {
+    "v1beta1ClusterStartupConfigRequest": {
       "properties": {
         "context_version": {
           "format": "int64",
@@ -565,7 +565,7 @@
       },
       "type": "object"
     },
-    "v1beta1ClusterStartupScriptResponse": {
+    "v1beta1ClusterStartupConfigResponse": {
       "properties": {
         "configuration": {
           "format": "string",
@@ -920,41 +920,9 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}": {
       "get": {
-        "operationId": "StartupScript",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "uid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "role",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1ClusterStartupScriptResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
-    "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}/context-versions/{context_version}": {
-      "get": {
-        "operationId": "StartupScript",
+        "operationId": "StartupConfig",
         "parameters": [
           {
             "format": "string",
@@ -982,7 +950,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1ClusterStartupScriptResponse"
+              "$ref": "#/definitions/v1beta1ClusterStartupConfigResponse"
             }
           }
         },
