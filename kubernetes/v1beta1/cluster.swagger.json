@@ -571,6 +571,10 @@
           "format": "string",
           "type": "string"
         },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
         "status": {
           "$ref": "#/definitions/appscodedtypesStatus"
         }

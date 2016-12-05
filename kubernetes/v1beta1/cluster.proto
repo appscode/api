@@ -242,6 +242,7 @@ message ClusterStartupConfigRequest {
 message ClusterStartupConfigResponse {
   dtypes.Status status = 1;
   string configuration = 2;
+  string sku = 3;
 }
 
 message ClusterInstanceByIPRequest {
