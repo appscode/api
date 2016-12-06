@@ -45,6 +45,21 @@
       "title": "Next Id: 3",
       "type": "object"
     },
+    "v1beta1SnapshotDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 4",
+      "type": "object"
+    },
     "v1beta1SnapshotListRequest": {
       "properties": {
         "cluster": {

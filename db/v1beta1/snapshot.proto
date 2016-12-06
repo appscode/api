@@ -22,6 +22,15 @@ service Snapshots {
     };
   }
 
+  rpc Describe(SnapshotDescribeRequest) returns (SnapshotDescribeResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/{phid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
   rpc BackupSchedule(BackupScheduleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/schedule-backup"
@@ -79,6 +88,20 @@ message Snapshot {
 message SnapshotListRequest {
   string cluster = 1;
   string uid = 2;
+}
+
+// Next Id: 4
+message SnapshotDescribeRequest {
+  string cluster = 1;
+  string uid = 2;
+  string phid = 3;
+}
+
+// Next Id: 4
+message SnapshotDescribeResponse {
+  dtypes.Status status = 1;
+  DatabaseInfo database_info = 2;
+  Snapshot snapshot = 3;
 }
 
 // Next Id: 4

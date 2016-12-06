@@ -539,6 +539,12 @@
       "url": "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots"
     }
   },
+  "/appscode/api/kubernetes/v1beta1/clusters/*/databases/*/snapshots/*": {
+    "get": {
+      "file": "/db/v1beta1/snapshot.proto",
+      "url": "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/{phid}"
+    }
+  },
   "/appscode/api/kubernetes/v1beta1/clusters/*/glusterfs": {
     "get": {
       "file": "/glusterfs/v1beta1/cluster.proto",

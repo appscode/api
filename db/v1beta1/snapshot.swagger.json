@@ -196,6 +196,39 @@
       "title": "Next Id: 15",
       "type": "object"
     },
+    "v1beta1SnapshotDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 4",
+      "type": "object"
+    },
+    "v1beta1SnapshotDescribeResponse": {
+      "properties": {
+        "database_info": {
+          "$ref": "#/definitions/v1beta1DatabaseInfo"
+        },
+        "snapshot": {
+          "$ref": "#/definitions/v1beta1Snapshot"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "title": "Next Id: 4",
+      "type": "object"
+    },
     "v1beta1SnapshotListRequest": {
       "properties": {
         "cluster": {
@@ -393,6 +426,45 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/v1beta1SnapshotListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Snapshots"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/{phid}": {
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "phid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1SnapshotDescribeResponse"
             }
           }
         },

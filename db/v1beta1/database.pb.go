@@ -25,6 +25,8 @@ It has these top-level messages:
 	DatabaseInfo
 	Snapshot
 	SnapshotListRequest
+	SnapshotDescribeRequest
+	SnapshotDescribeResponse
 	SnapshotListResponse
 	BackupScheduleRequest
 	BackupUnscheduleRequest
