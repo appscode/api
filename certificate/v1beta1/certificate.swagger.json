@@ -196,7 +196,7 @@
       },
       "type": "object"
     },
-    "v1beta1CertificateObtainRequest": {
+    "v1beta1CertificateLoadRequest": {
       "properties": {
         "cert_data": {
           "format": "string",
@@ -238,7 +238,7 @@
     },
     "/appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain": {
       "put": {
-        "operationId": "Obtain",
+        "operationId": "Load",
         "parameters": [
           {
             "format": "string",
@@ -252,7 +252,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1CertificateObtainRequest"
+              "$ref": "#/definitions/v1beta1CertificateLoadRequest"
             }
           }
         ],

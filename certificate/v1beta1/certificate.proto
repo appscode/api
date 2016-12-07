@@ -31,7 +31,7 @@ service Certificates {
     };
   }
 
-  rpc Obtain(CertificateObtainRequest) returns (dtypes.VoidResponse) {
+  rpc Load(CertificateLoadRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain"
       body: "*"
@@ -96,7 +96,7 @@ message Certificate {
   string serial_number = 11;
 }
 
-message CertificateObtainRequest {
+message CertificateLoadRequest {
   string name = 1;
   string cert_data = 2;
   string key_data = 3;

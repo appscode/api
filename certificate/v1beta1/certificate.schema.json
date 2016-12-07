@@ -42,7 +42,7 @@
     "v1beta1CertificateListRequest": {
       "type": "object"
     },
-    "v1beta1CertificateObtainRequest": {
+    "v1beta1CertificateLoadRequest": {
       "properties": {
         "cert_data": {
           "type": "string"
