@@ -213,6 +213,12 @@
           "format": "string",
           "type": "string"
         },
+        "node_groups": {
+          "items": {
+            "$ref": "#/definitions/v1beta1InstanceGroup"
+          },
+          "type": "array"
+        },
         "node_set": {
           "additionalProperties": {
             "format": "int64",
@@ -265,6 +271,12 @@
         "name": {
           "format": "string",
           "type": "string"
+        },
+        "node_groups": {
+          "items": {
+            "$ref": "#/definitions/v1beta1InstanceGroup"
+          },
+          "type": "array"
         },
         "node_set": {
           "additionalProperties": {
@@ -417,6 +429,23 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1InstanceGroup": {
+      "properties": {
+        "count": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "use_spot_instances": {
+          "format": "boolean",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -649,7 +678,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/operation/v1beta1/operations/{phid}": {
+    "/_appscode/api/operation/v1beta1/operations/{phid}": {
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -674,7 +703,7 @@
         ]
       }
     },
-    "/appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}": {
+    "/_appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}": {
       "get": {
         "operationId": "DescribeLog",
         "parameters": [

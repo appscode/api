@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Builds {
   rpc Describe(BuildDescribeRequest) returns (BuildDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/ci/v1beta1/jobs/{job_name}/builds/{number}"
+      get: "/_appscode/api/ci/v1beta1/jobs/{job_name}/builds/{number}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Builds {
 
   rpc List(BuildListRequest) returns (BuildListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/ci/v1beta1/jobs/{job_name}/builds"
+      get: "/_appscode/api/ci/v1beta1/jobs/{job_name}/builds"
     };
     option (appscode.api.cors) = {
       enable: true

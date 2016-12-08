@@ -279,7 +279,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/ci/v1beta1/agents": {
+    "/_appscode/api/ci/v1beta1/agents": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -319,7 +319,7 @@
         ]
       }
     },
-    "/appscode/api/ci/v1beta1/agents/{name}": {
+    "/_appscode/api/ci/v1beta1/agents/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -367,7 +367,7 @@
         ]
       }
     },
-    "/appscode/api/ci/v1beta1/agents/{name}/actions/reboot": {
+    "/_appscode/api/ci/v1beta1/agents/{name}/actions/reboot": {
       "post": {
         "operationId": "Restart",
         "parameters": [

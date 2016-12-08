@@ -144,7 +144,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/billing/v1beta1/purchases": {
+    "/_appscode/api/billing/v1beta1/purchases": {
       "post": {
         "operationId": "Begin",
         "parameters": [
@@ -170,7 +170,7 @@
         ]
       }
     },
-    "/appscode/api/billing/v1beta1/purchases/{object_phid}": {
+    "/_appscode/api/billing/v1beta1/purchases/{object_phid}": {
       "delete": {
         "operationId": "Close",
         "parameters": [
@@ -195,7 +195,7 @@
         ]
       }
     },
-    "/appscode/api/billing/v1beta1/purchases/{phid}": {
+    "/_appscode/api/billing/v1beta1/purchases/{phid}": {
       "put": {
         "operationId": "Complete",
         "parameters": [

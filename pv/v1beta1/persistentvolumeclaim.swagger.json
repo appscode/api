@@ -181,7 +181,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}": {
       "delete": {
         "operationId": "Unregister",
         "parameters": [

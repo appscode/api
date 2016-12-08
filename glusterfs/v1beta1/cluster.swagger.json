@@ -225,7 +225,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -251,7 +251,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs": {
       "post": {
         "operationId": "Create",
         "parameters": [
@@ -291,7 +291,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [

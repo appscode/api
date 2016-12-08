@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Clusters {
   rpc List(ClusterListRequest) returns (ClusterListResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v1beta1/clusters"
+      get : "/_appscode/api/kubernetes/v1beta1/clusters"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Clusters {
 
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}"
+      get : "/_appscode/api/kubernetes/v1beta1/clusters/{uid}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -33,7 +33,7 @@ service Clusters {
 
   rpc Create(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/kubernetes/v1beta1/clusters"
+      post: "/_appscode/api/kubernetes/v1beta1/clusters"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -43,7 +43,7 @@ service Clusters {
 
   rpc Update(ClusterUpdateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/kubernetes/v1beta1/clusters/{name}"
+      put: "/_appscode/api/kubernetes/v1beta1/clusters/{name}"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -53,7 +53,7 @@ service Clusters {
 
   rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale"
+      put: "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -63,7 +63,7 @@ service Clusters {
 
   rpc Upgrade(ClusterUpgradeRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-       put: "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade"
+       put: "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade"
        body: "*"
     };
     option (appscode.api.cors) = {
@@ -73,7 +73,7 @@ service Clusters {
 
   rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      delete : "/appscode/api/kubernetes/v1beta1/clusters/{name}"
+      delete : "/_appscode/api/kubernetes/v1beta1/clusters/{name}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -82,7 +82,7 @@ service Clusters {
 
   rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v1beta1/clusters/{name}/client-config"
+      get : "/_appscode/api/kubernetes/v1beta1/clusters/{name}/client-config"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -91,19 +91,16 @@ service Clusters {
 
   rpc Instances(ClusterInstanceListRequest) returns (ClusterInstanceListResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances"
+      get : "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances"
     };
     option (appscode.api.cors) = {
       enable: true
     };
   }
 
-  rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
+  rpc StartupConfig(ClusterStartupConfigRequest) returns (ClusterStartupConfigResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}"
-      additional_bindings {
-        get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}/context-versions/{context_version}"
-      }
+      get : "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -112,7 +109,7 @@ service Clusters {
 
   rpc InstanceByIP(ClusterInstanceByIPRequest) returns (ClusterInstanceResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}"
+      get : "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -190,13 +187,20 @@ message ClusterListResponse {
   repeated Cluster clusters = 2;
 }
 
+message InstanceGroup {
+  string sku = 1;
+  int64 count = 2;
+  bool use_spot_instances = 3;
+}
+
 message ClusterCreateRequest {
   string name = 1;
   string provider = 2;
   string zone = 3;
   string cloud_credential = 4;
   map<string, string> cloud_credential_data = 5;
-  map<string, int64> node_set = 6;
+  map<string, int64> node_set = 6 [deprecated = true];
+  repeated InstanceGroup node_groups = 14;
   string kube_saltbase_version = 7;
   string kube_starter_version = 8;
   string kube_server_version = 9;
@@ -217,7 +221,8 @@ message ClusterCreateRequest {
 message ClusterScaleRequest {
   string name = 1;
   // New node configuration for the cluster
-  map<string, int64> node_set = 2;
+  map<string, int64> node_set = 2 [deprecated = true];
+  repeated InstanceGroup node_groups = 3;
 }
 
 message ClusterDeleteRequest {
@@ -228,15 +233,16 @@ message ClusterDeleteRequest {
   bool delete_dynamic_volumes = 5;
 }
 
-message ClusterStartupScriptRequest {
+message ClusterStartupConfigRequest {
   string uid = 1;
   string role = 2;
   int64 context_version = 3;
 }
 
-message ClusterStartupScriptResponse {
+message ClusterStartupConfigResponse {
   dtypes.Status status = 1;
   string configuration = 2;
+  string sku = 3;
 }
 
 message ClusterInstanceByIPRequest {

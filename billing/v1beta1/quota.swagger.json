@@ -101,7 +101,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/billing/v1beta1/quotas": {
+    "/_appscode/api/billing/v1beta1/quotas": {
       "get": {
         "operationId": "Get",
         "responses": {

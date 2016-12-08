@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Servers {
   rpc Create(ServerCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula"
+      post: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -25,7 +25,7 @@ service Servers {
 
   rpc Delete(ServerDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula"
+      delete: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula"
     };
     option (appscode.api.cors) = {
       enable: true

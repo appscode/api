@@ -151,7 +151,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/auth/v0.1/login": {
+    "/_appscode/api/auth/v0.1/login": {
       "post": {
         "operationId": "Login",
         "parameters": [
@@ -178,7 +178,7 @@
         ]
       }
     },
-    "/appscode/api/auth/v0.1/logout": {
+    "/_appscode/api/auth/v0.1/logout": {
       "post": {
         "operationId": "Logout",
         "parameters": [
@@ -204,7 +204,7 @@
         ]
       }
     },
-    "/appscode/api/auth/v1beta1/login": {
+    "/_appscode/api/auth/v1beta1/login": {
       "post": {
         "operationId": "Login",
         "parameters": [
@@ -231,7 +231,7 @@
         ]
       }
     },
-    "/appscode/api/auth/v1beta1/logout": {
+    "/_appscode/api/auth/v1beta1/logout": {
       "post": {
         "operationId": "Logout",
         "parameters": [
@@ -257,7 +257,7 @@
         ]
       }
     },
-    "/appscode/api/auth/v1beta1/token": {
+    "/_appscode/api/auth/v1beta1/token": {
       "post": {
         "operationId": "Token",
         "parameters": [

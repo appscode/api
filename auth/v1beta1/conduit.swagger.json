@@ -160,7 +160,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/auth/v1beta1/conduit/users": {
+    "/_appscode/api/auth/v1beta1/conduit/users": {
       "get": {
         "operationId": "Users",
         "responses": {
@@ -177,7 +177,7 @@
         ]
       }
     },
-    "/appscode/api/auth/v1beta1/conduit/whoami": {
+    "/_appscode/api/auth/v1beta1/conduit/whoami": {
       "get": {
         "operationId": "WhoAmI",
         "responses": {

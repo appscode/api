@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Jobs {
   rpc List(JobListRequest) returns (JobListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/ci/v1beta1/jobs"
+      get: "/_appscode/api/ci/v1beta1/jobs"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Jobs {
 
   rpc Describe(JobDescribeRequest) returns (JobDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/ci/v1beta1/jobs/{name}"
+      get: "/_appscode/api/ci/v1beta1/jobs/{name}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -33,7 +33,7 @@ service Jobs {
 
   rpc Create(JobCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/ci/v1beta1/jobs"
+      post: "/_appscode/api/ci/v1beta1/jobs"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -43,7 +43,7 @@ service Jobs {
 
   rpc Copy(JobCopyRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/ci/v1beta1/actions/copy"
+      put: "/_appscode/api/ci/v1beta1/actions/copy"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -53,7 +53,7 @@ service Jobs {
 
   rpc Build(JobBuildRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/ci/v1beta1/jobs/{name}/actions/build"
+      post: "/_appscode/api/ci/v1beta1/jobs/{name}/actions/build"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -63,7 +63,7 @@ service Jobs {
 
   rpc Delete(JobDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/ci/v1beta1/jobs/{name}"
+      delete: "/_appscode/api/ci/v1beta1/jobs/{name}"
     };
   }
 }

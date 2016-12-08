@@ -213,7 +213,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/namespace/v1beta1/billing/subscription": {
+    "/_appscode/api/namespace/v1beta1/billing/subscription": {
       "get": {
         "operationId": "Subscription",
         "responses": {
@@ -230,7 +230,7 @@
         ]
       }
     },
-    "/appscode/api/namespace/v1beta1/teams": {
+    "/_appscode/api/namespace/v1beta1/teams": {
       "post": {
         "operationId": "Create",
         "parameters": [
@@ -257,7 +257,7 @@
         ]
       }
     },
-    "/appscode/api/namespace/v1beta1/teams/{name}": {
+    "/_appscode/api/namespace/v1beta1/teams/{name}": {
       "get": {
         "operationId": "Get",
         "parameters": [
@@ -283,7 +283,7 @@
         ]
       }
     },
-    "/appscode/api/namespace/v1beta1/teams/{name}/is-available": {
+    "/_appscode/api/namespace/v1beta1/teams/{name}/is-available": {
       "get": {
         "operationId": "IsAvailable",
         "parameters": [

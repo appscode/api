@@ -100,6 +100,12 @@
         "name": {
           "type": "string"
         },
+        "node_groups": {
+          "items": {
+            "$ref": "#/definitions/v1beta1InstanceGroup"
+          },
+          "type": "array"
+        },
         "node_set": {
           "additionalProperties": {
             "type": "integer"
@@ -142,6 +148,12 @@
       "properties": {
         "name": {
           "type": "string"
+        },
+        "node_groups": {
+          "items": {
+            "$ref": "#/definitions/v1beta1InstanceGroup"
+          },
+          "type": "array"
         },
         "node_set": {
           "additionalProperties": {
@@ -253,6 +265,20 @@
       "properties": {
         "phid": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1InstanceGroup": {
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "use_spot_instances": {
+          "type": "boolean"
         }
       },
       "type": "object"
