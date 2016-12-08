@@ -85,7 +85,7 @@ gen_js_client() {
          -I ${GOPATH}/src/github.com \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
-         --grpc-js-client_out=logtostderr=true,remove_prefix=/appscode/api,${ALIAS}:. *.proto
+         --grpc-js-client_out=logtostderr=true,remove_prefix=/_appscode/api,${ALIAS}:. *.proto
 }
 
 gen_swagger_def() {
