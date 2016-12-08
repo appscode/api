@@ -241,7 +241,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/artifactory/v1beta1/artifacts/{type}/versions": {
+    "/_appscode/api/artifactory/v1beta1/artifacts/{type}/versions": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -266,7 +266,7 @@
         ]
       }
     },
-    "/appscode/api/artifactory/v1beta1/artifacts/{type}/versions/description": {
+    "/_appscode/api/artifactory/v1beta1/artifacts/{type}/versions/description": {
       "get": {
         "operationId": "Describe",
         "parameters": [

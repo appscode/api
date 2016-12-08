@@ -655,7 +655,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta1/clusters": {
+    "/_appscode/api/kubernetes/v1beta1/clusters": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -695,7 +695,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances": {
       "get": {
         "operationId": "Instances",
         "parameters": [
@@ -720,7 +720,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{name}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -776,7 +776,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale": {
       "put": {
         "operationId": "Scale",
         "parameters": [
@@ -809,7 +809,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade": {
       "put": {
         "operationId": "Upgrade",
         "parameters": [
@@ -842,7 +842,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{name}/client-config": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{name}/client-config": {
       "get": {
         "operationId": "ClientConfig",
         "parameters": [
@@ -867,7 +867,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}": {
       "get": {
         "operationId": "InstanceByIP",
         "parameters": [
@@ -899,7 +899,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{uid}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}": {
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -924,7 +924,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}": {
       "get": {
         "operationId": "StartupConfig",
         "parameters": [

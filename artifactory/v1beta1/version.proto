@@ -18,7 +18,7 @@ service Versions {
       // Provides version lists of an particular artifact identified by `name`.
       // Recives {type} in - `docker, maven, composer, npm` as path parameter
       // and `name` as query parametrs.
-      get: "/appscode/api/artifactory/v1beta1/artifacts/{type}/versions"
+      get: "/_appscode/api/artifactory/v1beta1/artifacts/{type}/versions"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -30,7 +30,7 @@ service Versions {
       // Provides details of an particular artifacts version.
       // Recives {type} in - `docker, maven, composer, npm` as path parameter
       // and `id` `name` as query parametrs.
-      get: "/appscode/api/artifactory/v1beta1/artifacts/{type}/versions/description"
+      get: "/_appscode/api/artifactory/v1beta1/artifacts/{type}/versions/description"
     };
     option (appscode.api.cors) = {
       enable: true

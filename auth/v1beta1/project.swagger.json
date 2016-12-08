@@ -197,7 +197,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/auth/v1beta1/projects": {
+    "/_appscode/api/auth/v1beta1/projects": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -213,7 +213,7 @@
         ]
       }
     },
-    "/appscode/api/auth/v1beta1/projects/{uid}/members": {
+    "/_appscode/api/auth/v1beta1/projects/{uid}/members": {
       "get": {
         "operationId": "Members",
         "parameters": [

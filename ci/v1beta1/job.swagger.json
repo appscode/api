@@ -294,7 +294,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/ci/v1beta1/actions/copy": {
+    "/_appscode/api/ci/v1beta1/actions/copy": {
       "put": {
         "operationId": "Copy",
         "parameters": [
@@ -320,7 +320,7 @@
         ]
       }
     },
-    "/appscode/api/ci/v1beta1/jobs": {
+    "/_appscode/api/ci/v1beta1/jobs": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -360,7 +360,7 @@
         ]
       }
     },
-    "/appscode/api/ci/v1beta1/jobs/{name}": {
+    "/_appscode/api/ci/v1beta1/jobs/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -408,7 +408,7 @@
         ]
       }
     },
-    "/appscode/api/ci/v1beta1/jobs/{name}/actions/build": {
+    "/_appscode/api/ci/v1beta1/jobs/{name}/actions/build": {
       "post": {
         "operationId": "Build",
         "parameters": [

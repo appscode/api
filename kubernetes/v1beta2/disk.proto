@@ -16,7 +16,7 @@ import "client.proto";
 service Disks {
   rpc List(DiskListRequest) returns (DiskListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/cloud/v1beta2/disks"
+      get: "/_appscode/api/cloud/v1beta2/disks"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -25,7 +25,7 @@ service Disks {
 
   rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/cloud/v1beta2/disks/{name}"
+      get: "/_appscode/api/cloud/v1beta2/disks/{name}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -34,7 +34,7 @@ service Disks {
 
   rpc Create(DiskCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/cloud/v1beta2/disks"
+      post: "/_appscode/api/cloud/v1beta2/disks"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -44,7 +44,7 @@ service Disks {
 
   rpc Delete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/cloud/v1beta2/disks/{uid}"
+      delete: "/_appscode/api/cloud/v1beta2/disks/{uid}"
     };
     option (appscode.api.cors) = {
       enable: true

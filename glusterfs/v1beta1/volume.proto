@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Volumes {
   rpc List(VolumeListRequest) returns (VolumeListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{glusterfs_cluster}/volumes"
+      get: "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{glusterfs_cluster}/volumes"
     };
     option (appscode.api.cors) = {
       enable: true

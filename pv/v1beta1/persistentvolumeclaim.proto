@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service PersistentVolumeClaims {
   rpc Describe(PVCDescribeRequest) returns (PVCDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
+      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service PersistentVolumeClaims {
 
   rpc Register(PVCRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
+      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -34,7 +34,7 @@ service PersistentVolumeClaims {
 
   rpc Unregister(PVCUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
+      delete: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
     };
     option (appscode.api.cors) = {
       enable: true

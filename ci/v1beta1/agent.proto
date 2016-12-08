@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Agents {
   rpc List(AgentListRequest) returns (AgentListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/ci/v1beta1/agents"
+      get: "/_appscode/api/ci/v1beta1/agents"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Agents {
 
   rpc Describe(AgentDescribeRequest) returns (AgentDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/ci/v1beta1/agents/{name}"
+      get: "/_appscode/api/ci/v1beta1/agents/{name}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -33,7 +33,7 @@ service Agents {
 
   rpc Create(AgentCreateRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/ci/v1beta1/agents"
+      post: "/_appscode/api/ci/v1beta1/agents"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -43,7 +43,7 @@ service Agents {
 
   rpc Delete(AgentDeleteRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/ci/v1beta1/agents/{name}"
+      delete: "/_appscode/api/ci/v1beta1/agents/{name}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -52,7 +52,7 @@ service Agents {
 
   rpc Restart(AgentRestartRequest) returns (AgentRestartResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/ci/v1beta1/agents/{name}/actions/reboot"
+      post: "/_appscode/api/ci/v1beta1/agents/{name}/actions/reboot"
     };
     option (appscode.api.cors) = {
       enable: true

@@ -91,7 +91,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/billing/v1beta1/charges": {
+    "/_appscode/api/billing/v1beta1/charges": {
       "get": {
         "operationId": "Estimate",
         "responses": {

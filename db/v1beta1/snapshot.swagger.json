@@ -290,7 +290,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/restore": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/restore": {
       "post": {
         "operationId": "Restore",
         "parameters": [
@@ -330,7 +330,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/schedule-backup": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/schedule-backup": {
       "post": {
         "operationId": "BackupSchedule",
         "parameters": [
@@ -370,7 +370,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/unschedule-backup": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/unschedule-backup": {
       "put": {
         "operationId": "BackupUnschedule",
         "parameters": [
@@ -402,7 +402,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -434,7 +434,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/{phid}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/{phid}": {
       "get": {
         "operationId": "Describe",
         "parameters": [

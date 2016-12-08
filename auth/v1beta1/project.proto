@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Projects {
   rpc List(ProjectListRequest) returns (ProjectListResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/auth/v1beta1/projects"
+      get : "/_appscode/api/auth/v1beta1/projects"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Projects {
 
   rpc Members(ProjectMemberListRequest) returns (ProjectMemberListResponse) {
     option (google.api.http) = {
-      get : "/appscode/api/auth/v1beta1/projects/{uid}/members"
+      get : "/_appscode/api/auth/v1beta1/projects/{uid}/members"
     };
     option (appscode.api.cors) = {
       enable: true

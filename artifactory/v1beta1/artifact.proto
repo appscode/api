@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Artifacts {
   rpc Search(ArtifactSearchRequest) returns(ArtifactSearchResponse) {
     option(google.api.http) = {
-      get: "/appscode/api/artifactory/v1beta1/search"
+      get: "/_appscode/api/artifactory/v1beta1/search"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -27,7 +27,7 @@ service Artifacts {
       // Provides lists of artifacts of am particular types.
       // Recives {type} in - `docker, maven, composer, npm` and `all`
       // for all artifacts - as path parameter.
-      get: "/appscode/api/artifactory/v1beta1/artifacts/{type}"
+      get: "/_appscode/api/artifactory/v1beta1/artifacts/{type}"
     };
     option (appscode.api.cors) = {
       enable: true

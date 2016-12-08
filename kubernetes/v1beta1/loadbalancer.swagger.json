@@ -357,7 +357,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -413,7 +413,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [

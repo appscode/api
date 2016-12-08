@@ -322,7 +322,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident": {
       "post": {
         "operationId": "Notify",
         "parameters": [
@@ -355,7 +355,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/incidents": {
+    "/_appscode/api/kubernetes/v1beta1/incidents": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -371,7 +371,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/incidents/{phid}": {
+    "/_appscode/api/kubernetes/v1beta1/incidents/{phid}": {
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -396,7 +396,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/incidents/{phid}/events": {
+    "/_appscode/api/kubernetes/v1beta1/incidents/{phid}/events": {
       "post": {
         "operationId": "CreateEvent",
         "parameters": [

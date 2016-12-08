@@ -21,7 +21,7 @@ import "appscode/api/namespace/v1beta1/team.proto";
 service Operations {
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/operation/v1beta1/operations/{phid}"
+      get: "/_appscode/api/operation/v1beta1/operations/{phid}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -29,7 +29,7 @@ service Operations {
   }
   rpc DescribeLog(LogDescribeRequest) returns (LogDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}"
+      get: "/_appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}"
     };
     option (appscode.api.cors) = {
       enable: true

@@ -220,7 +220,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/certificate/v1beta1/certificates": {
+    "/_appscode/api/certificate/v1beta1/certificates": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -236,7 +236,7 @@
         ]
       }
     },
-    "/appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain": {
+    "/_appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain": {
       "put": {
         "operationId": "Load",
         "parameters": [
@@ -269,7 +269,7 @@
         ]
       }
     },
-    "/appscode/api/certificate/v1beta1/certificates/{uid}": {
+    "/_appscode/api/certificate/v1beta1/certificates/{uid}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -317,7 +317,7 @@
         ]
       }
     },
-    "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy": {
+    "/_appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy": {
       "put": {
         "operationId": "Deploy",
         "parameters": [

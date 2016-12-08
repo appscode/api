@@ -122,7 +122,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula": {
       "delete": {
         "operationId": "Delete",
         "parameters": [

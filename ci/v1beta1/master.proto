@@ -14,14 +14,14 @@ import "appscode/api/dtypes/types.proto";
 service Master {
   rpc Create(MasterCreateRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/ci/v1beta1/masters"
+      post: "/_appscode/api/ci/v1beta1/masters"
       body: "*"
     };
   }
 
   rpc Delete(MasterDeleteRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/ci/v1beta1/masters"
+      delete: "/_appscode/api/ci/v1beta1/masters"
     };
   }
 }

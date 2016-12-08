@@ -100,7 +100,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/billing/v1beta1/subscriptions": {
+    "/_appscode/api/billing/v1beta1/subscriptions": {
       "post": {
         "operationId": "Subscribe",
         "parameters": [

@@ -2710,7 +2710,7 @@
     "version": "1beta2"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta2/actions/copy": {
+    "/_appscode/api/kubernetes/v1beta2/actions/copy": {
       "put": {
         "operationId": "Copy",
         "parameters": [
@@ -2736,7 +2736,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit": {
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit": {
       "post": {
         "operationId": "EditConfigMap",
         "parameters": [
@@ -2784,7 +2784,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit": {
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit": {
       "post": {
         "operationId": "EditSecret",
         "parameters": [
@@ -2831,7 +2831,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register": {
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register": {
       "post": {
         "operationId": "RegisterPersistentVolumeClaim",
         "parameters": [
@@ -2871,7 +2871,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister": {
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister": {
       "delete": {
         "operationId": "UnregisterPersistentVolumeClaim",
         "parameters": [
@@ -2903,7 +2903,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register": {
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register": {
       "post": {
         "operationId": "RegisterPersistentVolume",
         "parameters": [
@@ -2943,7 +2943,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister": {
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister": {
       "delete": {
         "operationId": "UnregisterPersistentVolume",
         "parameters": [
@@ -2975,7 +2975,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}": {
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -3045,7 +3045,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}": {
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [

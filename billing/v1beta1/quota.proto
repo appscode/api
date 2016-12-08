@@ -14,7 +14,7 @@ import "appscode/api/dtypes/types.proto";
 service Quotas {
   rpc Get(dtypes.VoidRequest) returns (QuotaGetResponse) {
     option (google.api.http) = {
-        get: "/appscode/api/billing/v1beta1/quotas"
+        get: "/_appscode/api/billing/v1beta1/quotas"
     };
   }
 }

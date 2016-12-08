@@ -14,7 +14,7 @@ import "appscode/api/dtypes/types.proto";
 service Subscriptions {
   rpc Subscribe(SubscriptionSubscribeRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/billing/v1beta1/subscriptions"
+      post: "/_appscode/api/billing/v1beta1/subscriptions"
       body: "*"
     };
   }

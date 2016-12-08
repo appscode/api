@@ -118,7 +118,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/ci/v1beta1/masters": {
+    "/_appscode/api/ci/v1beta1/masters": {
       "delete": {
         "operationId": "Delete",
         "responses": {

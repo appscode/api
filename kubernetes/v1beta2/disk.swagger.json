@@ -939,7 +939,7 @@
     "version": "1beta2"
   },
   "paths": {
-    "/appscode/api/cloud/v1beta2/disks": {
+    "/_appscode/api/cloud/v1beta2/disks": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -979,7 +979,7 @@
         ]
       }
     },
-    "/appscode/api/cloud/v1beta2/disks/{name}": {
+    "/_appscode/api/cloud/v1beta2/disks/{name}": {
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -1004,7 +1004,7 @@
         ]
       }
     },
-    "/appscode/api/cloud/v1beta2/disks/{uid}": {
+    "/_appscode/api/cloud/v1beta2/disks/{uid}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
