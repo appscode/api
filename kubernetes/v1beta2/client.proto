@@ -219,7 +219,7 @@ message KubeResourceList {
     Jobs jobs = 6;
     Namespaces namespaces = 7;
     Nodes nodes = 8;
-    PetSets pet_sets = 9;
+    StatefulSet stateful_sets = 9;
     Pods pods = 10;
     ReplicaSets replica_sets = 11;
     Services services = 12;
@@ -264,8 +264,8 @@ message KubeResourceList {
     repeated Node items = 1;
   }
 
-  message PetSets {
-    repeated PetSet items = 1;
+  message StatefulSets {
+    repeated StatefulSet items = 1;
   }
 
   message Pods {
@@ -336,7 +336,7 @@ message KubeResource {
     Job job = 6;
     Namespace namespace = 7;
     Node node = 8;
-    PetSet pet_set = 9;
+    StatefulSet stateful_set = 9;
     Pod pod = 10;
     ReplicaSet replica_set = 11;
     Service service = 12;
@@ -676,7 +676,7 @@ message Deployment {
   }
 }
 
-message PetSet {
+message StatefulSet {
   Meta meta = 1;
   string app = 2;
   Spec spec = 3;
