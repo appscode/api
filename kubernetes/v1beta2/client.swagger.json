@@ -219,17 +219,6 @@
       },
       "type": "object"
     },
-    "KubeResourceListPetSets": {
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1beta2PetSet"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
     "KubeResourceListPods": {
       "properties": {
         "items": {
@@ -301,6 +290,17 @@
         "items": {
           "items": {
             "$ref": "#/definitions/v1beta2Service"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListStatefulSets": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2StatefulSet"
           },
           "type": "array"
         }
@@ -1579,9 +1579,6 @@
         "persistent_volume_claim": {
           "$ref": "#/definitions/v1beta2PersistentVolumeClaim"
         },
-        "pet_set": {
-          "$ref": "#/definitions/v1beta2PetSet"
-        },
         "pod": {
           "$ref": "#/definitions/v1beta2Pod"
         },
@@ -1605,6 +1602,9 @@
         },
         "service": {
           "$ref": "#/definitions/v1beta2Service"
+        },
+        "stateful_set": {
+          "$ref": "#/definitions/v1beta2StatefulSet"
         },
         "storage_class": {
           "$ref": "#/definitions/v1beta2StorageClass"
@@ -1657,9 +1657,6 @@
         "persistent_volumes": {
           "$ref": "#/definitions/KubeResourceListPersistentVolumes"
         },
-        "pet_sets": {
-          "$ref": "#/definitions/KubeResourceListPetSets"
-        },
         "pods": {
           "$ref": "#/definitions/KubeResourceListPods"
         },
@@ -1680,6 +1677,9 @@
         },
         "services": {
           "$ref": "#/definitions/KubeResourceListServices"
+        },
+        "stateful_sets": {
+          "$ref": "#/definitions/KubeResourceListStatefulSets"
         },
         "storage_classes": {
           "$ref": "#/definitions/KubeResourceListStorageClasses"
@@ -2102,56 +2102,6 @@
         "name": {
           "format": "string",
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2PetSet": {
-      "properties": {
-        "app": {
-          "format": "string",
-          "type": "string"
-        },
-        "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1beta2PetSetSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1beta2PetSetStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2PetSetSpec": {
-      "properties": {
-        "desired_replicas": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "pod_template": {
-          "$ref": "#/definitions/v1beta2PodSpec"
-        },
-        "selector": {
-          "$ref": "#/definitions/v1beta2LabelSelector"
-        },
-        "service_name": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2PetSetStatus": {
-      "properties": {
-        "current_replicas": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "observed_generation": {
-          "format": "int64",
-          "type": "integer"
         }
       },
       "type": "object"
@@ -2619,6 +2569,56 @@
             "$ref": "#/definitions/StatusLoadBalancerIngress"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2StatefulSet": {
+      "properties": {
+        "app": {
+          "format": "string",
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2StatefulSetSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2StatefulSetStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2StatefulSetSpec": {
+      "properties": {
+        "desired_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pod_template": {
+          "$ref": "#/definitions/v1beta2PodSpec"
+        },
+        "selector": {
+          "$ref": "#/definitions/v1beta2LabelSelector"
+        },
+        "service_name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2StatefulSetStatus": {
+      "properties": {
+        "current_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "observed_generation": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
