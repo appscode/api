@@ -104,6 +104,12 @@
     "healthNetConfig": {
       "type": "object",
       "properties": {
+        "URL_shortener_urls": {
+          "$ref": "#/definitions/healthURLBase"
+        },
+        "cluster_urls": {
+          "$ref": "#/definitions/healthURLBase"
+        },
         "file_urls": {
           "$ref": "#/definitions/healthURLBase"
         },
