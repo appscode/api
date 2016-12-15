@@ -113,6 +113,10 @@
         "public_urls": {
           "$ref": "#/definitions/healthURLBase"
         },
+        "team_domain": {
+          "type": "string",
+          "format": "string"
+        },
         "team_urls": {
           "$ref": "#/definitions/healthURLBase"
         }
