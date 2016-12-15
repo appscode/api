@@ -296,6 +296,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListStatefulSets": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2StatefulSet"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListStorageClasses": {
       "properties": {
         "items": {
@@ -1668,7 +1679,7 @@
           "$ref": "#/definitions/KubeResourceListServices"
         },
         "stateful_sets": {
-          "$ref": "#/definitions/v1beta2StatefulSet"
+          "$ref": "#/definitions/KubeResourceListStatefulSets"
         },
         "storage_classes": {
           "$ref": "#/definitions/KubeResourceListStorageClasses"

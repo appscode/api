@@ -30,10 +30,20 @@ message StatusResponse {
   Metadata metadata = 3;
 }
 
+message URLBase {
+  string scheme = 1;
+  string base_domain = 2;
+}
+
+message NetConfig {
+  URLBase public_urls = 1;
+  URLBase team_urls = 2;
+  URLBase in_cluster_urls = 3;
+  URLBase file_urls = 4;
+}
+
 message Metadata {
   string env = 1;
-  string protocol = 2;
-  string root_domain = 3;
-  string team_domain = 4;
-  string team_id = 5;
+  string team_id = 2;
+  NetConfig net_config = 3;
 }

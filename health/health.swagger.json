@@ -92,21 +92,29 @@
           "type": "string",
           "format": "string"
         },
-        "protocol": {
-          "type": "string",
-          "format": "string"
-        },
-        "root_domain": {
-          "type": "string",
-          "format": "string"
-        },
-        "team_domain": {
-          "type": "string",
-          "format": "string"
+        "net_config": {
+          "$ref": "#/definitions/healthNetConfig"
         },
         "team_id": {
           "type": "string",
           "format": "string"
+        }
+      }
+    },
+    "healthNetConfig": {
+      "type": "object",
+      "properties": {
+        "file_urls": {
+          "$ref": "#/definitions/healthURLBase"
+        },
+        "in_cluster_urls": {
+          "$ref": "#/definitions/healthURLBase"
+        },
+        "public_urls": {
+          "$ref": "#/definitions/healthURLBase"
+        },
+        "team_urls": {
+          "$ref": "#/definitions/healthURLBase"
         }
       }
     },
@@ -121,6 +129,19 @@
         },
         "version": {
           "$ref": "#/definitions/versionVersion"
+        }
+      }
+    },
+    "healthURLBase": {
+      "type": "object",
+      "properties": {
+        "base_domain": {
+          "type": "string",
+          "format": "string"
+        },
+        "scheme": {
+          "type": "string",
+          "format": "string"
         }
       }
     },

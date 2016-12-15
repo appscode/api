@@ -219,7 +219,7 @@ message KubeResourceList {
     Jobs jobs = 6;
     Namespaces namespaces = 7;
     Nodes nodes = 8;
-    StatefulSet stateful_sets = 9;
+    StatefulSets stateful_sets = 9;
     Pods pods = 10;
     ReplicaSets replica_sets = 11;
     Services services = 12;
