@@ -57,26 +57,26 @@
           "format": "string",
           "title": "Response status code"
         },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          },
-          "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use."
-        },
-        "help": {
-          "$ref": "#/definitions/dtypesHelp",
-          "description": "Optional. Help link if there is an error."
+        "status": {
+          "type": "string",
+          "format": "string",
+          "description": "Response status code string."
         },
         "message": {
           "type": "string",
           "format": "string",
           "description": "User facing message."
         },
-        "status": {
-          "type": "string",
-          "format": "string",
-          "description": "Response status code string."
+        "help": {
+          "$ref": "#/definitions/dtypesHelp",
+          "description": "Optional. Help link if there is an error."
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          },
+          "description": "A list of messages that carry the error details.  There will be a\ncommon set of message types for APIs to use."
         }
       },
       "title": "Next Id = 5"
@@ -92,38 +92,38 @@
           "type": "string",
           "format": "string"
         },
-        "net_config": {
-          "$ref": "#/definitions/healthNetConfig"
-        },
         "team_id": {
           "type": "string",
           "format": "string"
+        },
+        "net_config": {
+          "$ref": "#/definitions/healthNetConfig"
         }
       }
     },
     "healthNetConfig": {
       "type": "object",
       "properties": {
-        "URL_shortener_urls": {
+        "team_domain": {
+          "type": "string",
+          "format": "string"
+        },
+        "public_urls": {
+          "$ref": "#/definitions/healthURLBase"
+        },
+        "team_urls": {
           "$ref": "#/definitions/healthURLBase"
         },
         "cluster_urls": {
           "$ref": "#/definitions/healthURLBase"
         },
-        "file_urls": {
-          "$ref": "#/definitions/healthURLBase"
-        },
         "in_cluster_urls": {
           "$ref": "#/definitions/healthURLBase"
         },
-        "public_urls": {
+        "URL_shortener_urls": {
           "$ref": "#/definitions/healthURLBase"
         },
-        "team_domain": {
-          "type": "string",
-          "format": "string"
-        },
-        "team_urls": {
+        "file_urls": {
           "$ref": "#/definitions/healthURLBase"
         }
       }
@@ -131,25 +131,25 @@
     "healthStatusResponse": {
       "type": "object",
       "properties": {
-        "metadata": {
-          "$ref": "#/definitions/healthMetadata"
-        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         },
         "version": {
           "$ref": "#/definitions/versionVersion"
+        },
+        "metadata": {
+          "$ref": "#/definitions/healthMetadata"
         }
       }
     },
     "healthURLBase": {
       "type": "object",
       "properties": {
-        "base_domain": {
+        "scheme": {
           "type": "string",
           "format": "string"
         },
-        "scheme": {
+        "base_domain": {
           "type": "string",
           "format": "string"
         }
@@ -174,31 +174,27 @@
     "versionVersion": {
       "type": "object",
       "properties": {
+        "name": {
+          "type": "string",
+          "format": "string"
+        },
+        "version": {
+          "type": "string",
+          "format": "string"
+        },
+        "version_strategy": {
+          "type": "string",
+          "format": "string"
+        },
+        "os": {
+          "type": "string",
+          "format": "string"
+        },
         "arch": {
           "type": "string",
           "format": "string"
         },
-        "build_host": {
-          "type": "string",
-          "format": "string"
-        },
-        "build_host_arch": {
-          "type": "string",
-          "format": "string"
-        },
-        "build_host_os": {
-          "type": "string",
-          "format": "string"
-        },
-        "build_timestamp": {
-          "type": "string",
-          "format": "string"
-        },
         "commit_hash": {
-          "type": "string",
-          "format": "string"
-        },
-        "commit_timestamp": {
           "type": "string",
           "format": "string"
         },
@@ -210,15 +206,23 @@
           "type": "string",
           "format": "string"
         },
-        "name": {
+        "commit_timestamp": {
           "type": "string",
           "format": "string"
         },
-        "os": {
+        "build_timestamp": {
           "type": "string",
           "format": "string"
         },
-        "version": {
+        "build_host": {
+          "type": "string",
+          "format": "string"
+        },
+        "build_host_os": {
+          "type": "string",
+          "format": "string"
+        },
+        "build_host_arch": {
           "type": "string",
           "format": "string"
         }
