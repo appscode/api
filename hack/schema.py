@@ -62,47 +62,9 @@ def write_json(obj, name):
         return json.dump(obj, f, sort_keys=True, indent=2, separators=(',', ': '))
 
 
-def deps():
-    # specify git commit_hash to pin to specific version
-    get_pkgs = [
-        {
-            'pkg': 'github.com/golang/protobuf/protoc-gen-go',
-            'commit_hash': '888eb0692c857ec880338addf316bd662d5e630e',
-            'install': True
-        },
-        {
-            'pkg': 'google.golang.org/grpc',
-            'commit_hash': '0032a855ba5c8a3c8e0d71c2deef354b70af1584'
-        },
-        {
-            'pkg': 'github.com/golang/glog',
-            'commit_hash': '44145f04b68cf362d9c4df2182967c2275eaefed'
-        },
-        {'pkg': 'github.com/jteeuwen/go-bindata/...'},
-        {'pkg': 'golang.org/x/tools/cmd/goimports'},
-        {'pkg': 'github.com/xeipuuv/gojsonschema'},
-    ]
-    for cfg in get_pkgs:
-        call('go get -u ' + cfg['pkg'])
-        if cfg.get('commit_hash', ''):
-            call('git checkout ' + cfg['commit_hash'], cwd=expandvars('$GOPATH/src/' + cfg['pkg'].rstrip('/...')))
-        if cfg.get('install', False):
-            call('go install ./...', cwd=expandvars('$GOPATH/src/' + cfg['pkg'].rstrip('/...')))
-    # special treatment for grc-gateway
-    call('rm -rf $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway')
-    call('mkdir -p $GOPATH/src/github.com/grpc-ecosystem')
-    call('git clone https://github.com/appscode/grpc-gateway.git',
-         cwd=expandvars('$GOPATH/src/github.com/grpc-ecosystem'))
-    call('go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway')
-    call('go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger')
-    # Copy google http apis proto files
-    call('mkdir -p $GOPATH/src/github.com/google')
-    call('git clone https://github.com/googleapis/googleapis.git', cwd=expandvars('$GOPATH/src/github.com/google'))
-
-
 def gen_assets():
     call('go get github.com/jteeuwen/go-bindata/...')
-    call('go-bindata -ignore=\\.go -o meta/data.go -pkg meta meta/...')
+    call('go-bindata -ignore=\\.go -ignore=\\.DS_Store -mode=0644 -modtime=1453795200 -o meta/data.go -pkg meta meta/...')
 
 
 def fix_swagger_schema():
