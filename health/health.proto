@@ -36,10 +36,13 @@ message URLBase {
 }
 
 message NetConfig {
-  URLBase public_urls = 1;
-  URLBase team_urls = 2;
-  URLBase in_cluster_urls = 3;
-  URLBase file_urls = 4;
+  string team_domain = 1;
+  URLBase public_urls = 2;
+  URLBase team_urls = 3;
+  URLBase cluster_urls = 4;
+  URLBase in_cluster_urls = 5;
+  URLBase URL_shortener_urls = 6;
+  URLBase file_urls = 7;
 }
 
 message Metadata {

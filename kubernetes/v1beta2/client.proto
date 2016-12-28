@@ -234,6 +234,7 @@ message KubeResourceList {
     RoleBindings role_bindings = 21;
     ClusterRoleBindings cluster_role_bindings = 22;
     Certificates certificates = 23;
+    CronJobs cron_jobs = 24;
   }
 
   message Apps {
@@ -323,6 +324,10 @@ message KubeResourceList {
   message Certificates {
     repeated Certificate items = 1;
   }
+
+  message CronJobs {
+      repeated CronJob items = 1;
+  }
 }
 
 // TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
@@ -351,6 +356,7 @@ message KubeResource {
     RoleBinding role_binding = 23;
     ClusterRoleBinding cluster_role_binding = 24;
     Certificate certificate = 25;
+    CronJob cron_job = 26;
   }
   repeated Event events = 18;
   Raw raw = 19;
@@ -433,14 +439,8 @@ message ConfigMap {
 message Job {
   Meta meta = 1;
   string app = 2;
-  Spec space = 3;
+  JobSpec space = 3;
   Status status = 4;
-
-  message Spec {
-    int32 parallelism = 1;
-    int32 completions = 2;
-    PodSpec template = 3;
-  }
 
   message Status {
     int64 start_time = 1;
@@ -449,6 +449,12 @@ message Job {
     int32 succeeded = 4;
     int32 failed = 5;
   }
+}
+
+message JobSpec {
+    int32 parallelism = 1;
+    int32 completions = 2;
+    PodSpec template = 3;
 }
 
 message Namespace {
@@ -817,6 +823,25 @@ message Subject {
   string api_version = 2;
   string name = 3;
   string namespace = 4;
+}
+
+message CronJob {
+    Meta meta = 1;
+    Spec space = 2;
+    Status status = 3;
+
+    message Spec {
+        string schedule = 1;
+        int64 starting_deadline_seconds = 2;
+        string concurrency_policy = 3;
+        bool suspend = 4;
+        JobSpec template = 5;
+    }
+
+    message Status {
+        repeated ObjectReference active = 1;
+        int64 last_schedule_time = 2;
+    }
 }
 
 message Certificate {

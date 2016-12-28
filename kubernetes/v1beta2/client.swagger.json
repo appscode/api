@@ -142,6 +142,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListCronJobs": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2CronJob"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListDaemonSets": {
       "properties": {
         "items": {
@@ -1050,6 +1061,59 @@
       },
       "type": "object"
     },
+    "v1beta2CronJob": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "space": {
+          "$ref": "#/definitions/v1beta2CronJobSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2CronJobStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2CronJobSpec": {
+      "properties": {
+        "concurrency_policy": {
+          "format": "string",
+          "type": "string"
+        },
+        "schedule": {
+          "format": "string",
+          "type": "string"
+        },
+        "starting_deadline_seconds": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "suspend": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "template": {
+          "$ref": "#/definitions/v1beta2JobSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2CronJobStatus": {
+      "properties": {
+        "active": {
+          "items": {
+            "$ref": "#/definitions/v1beta2ObjectReference"
+          },
+          "type": "array"
+        },
+        "last_schedule_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2DaemonSet": {
       "properties": {
         "app": {
@@ -1552,6 +1616,9 @@
         "config_map": {
           "$ref": "#/definitions/v1beta2ConfigMap"
         },
+        "cron_job": {
+          "$ref": "#/definitions/v1beta2CronJob"
+        },
         "daemon_set": {
           "$ref": "#/definitions/v1beta2DaemonSet"
         },
@@ -1635,6 +1702,9 @@
         },
         "config_maps": {
           "$ref": "#/definitions/KubeResourceListConfigMaps"
+        },
+        "cron_jobs": {
+          "$ref": "#/definitions/KubeResourceListCronJobs"
         },
         "daemon_sets": {
           "$ref": "#/definitions/KubeResourceListDaemonSets"
