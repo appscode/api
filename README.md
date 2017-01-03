@@ -1,5 +1,7 @@
 [![CLA assistant](https://cla-assistant.io/readme/badge/appscode/api)](https://cla-assistant.io/appscode/api)
 
+[Website](https://appscode.com) • [Slack](https://appscode.slack.com) • [Forum](https://discuss.appscode.com) • [Twitter](https://twitter.com/AppsCodeHQ)
+
 Protocol buffer specification of AppsCode.com gRPC services.
 
 ## Installing
