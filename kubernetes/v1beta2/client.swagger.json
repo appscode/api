@@ -1279,6 +1279,165 @@
       },
       "type": "object"
     },
+    "v1beta2Disk": {
+      "properties": {
+        "endpoint": {
+          "format": "string",
+          "type": "string"
+        },
+        "id": {
+          "format": "string",
+          "type": "string"
+        },
+        "iops": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "kind": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "persistent_volume": {
+          "$ref": "#/definitions/v1beta2PersistentVolume"
+        },
+        "persistent_volume_claim": {
+          "$ref": "#/definitions/v1beta2PersistentVolumeClaim"
+        },
+        "provider": {
+          "format": "string",
+          "type": "string"
+        },
+        "size_gb": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "status": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        },
+        "users": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "zone": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DiskCreateRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "disk_type": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "size_gb": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "vhd_container_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "zone": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DiskDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        },
+        "vhd_container_name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DiskDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "provider": {
+          "format": "string",
+          "type": "string"
+        },
+        "vhd_container_name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DiskDescribeResponse": {
+      "properties": {
+        "disk": {
+          "$ref": "#/definitions/v1beta2Disk"
+        },
+        "status": {
+          "$ref": "#/definitions/appscodedtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DiskListRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DiskListResponse": {
+      "properties": {
+        "disks": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Disk"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/appscodedtypesStatus"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Event": {
       "properties": {
         "count": {
@@ -2780,6 +2939,96 @@
     "version": "1beta2"
   },
   "paths": {
+    "/_appscode/api/cloud/v1beta2/disks": {
+      "get": {
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2DiskListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      },
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta2DiskCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/_appscode/api/cloud/v1beta2/disks/{name}": {
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2DiskDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/_appscode/api/cloud/v1beta2/disks/{uid}": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
     "/_appscode/api/kubernetes/v1beta2/actions/copy": {
       "put": {
         "operationId": "Copy",

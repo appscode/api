@@ -124,6 +124,72 @@
       },
       "type": "object"
     },
+    "v1beta2DiskCreateRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "disk_type": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "size_gb": {
+          "type": "integer"
+        },
+        "vhd_container_name": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DiskDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "vhd_container_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DiskDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "vhd_container_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DiskListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2KubeObject": {
       "properties": {
         "cluster": {

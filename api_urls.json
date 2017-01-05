@@ -295,21 +295,21 @@
   },
   "/_appscode/api/cloud/v1beta2/disks": {
     "get": {
-      "file": "/kubernetes/v1beta2/disk.proto",
+      "file": "/kubernetes/v1beta2/client.proto",
       "url": "/_appscode/api/cloud/v1beta2/disks"
     },
     "post": {
-      "file": "/kubernetes/v1beta2/disk.proto",
+      "file": "/kubernetes/v1beta2/client.proto",
       "url": "/_appscode/api/cloud/v1beta2/disks"
     }
   },
   "/_appscode/api/cloud/v1beta2/disks/*": {
     "delete": {
-      "file": "/kubernetes/v1beta2/disk.proto",
+      "file": "/kubernetes/v1beta2/client.proto",
       "url": "/_appscode/api/cloud/v1beta2/disks/{uid}"
     },
     "get": {
-      "file": "/kubernetes/v1beta2/disk.proto",
+      "file": "/kubernetes/v1beta2/client.proto",
       "url": "/_appscode/api/cloud/v1beta2/disks/{name}"
     }
   },

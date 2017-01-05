@@ -1397,3 +1397,97 @@ message CephFSVolumeSource {
   // More info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it
   bool readOnly = 6;
 }
+
+// Disk apis from disk.proto
+//-----------------------------------------------------------------------------
+
+service Disks {
+  rpc List(DiskListRequest) returns (DiskListResponse) {
+    option (google.api.http) = {
+      get: "/_appscode/api/cloud/v1beta2/disks"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
+    option (google.api.http) = {
+      get: "/_appscode/api/cloud/v1beta2/disks/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Create(DiskCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/_appscode/api/cloud/v1beta2/disks"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Delete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/_appscode/api/cloud/v1beta2/disks/{uid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
+message DiskListRequest {
+  string cluster=1;
+}
+
+message DiskListResponse {
+  dtypes.Status status = 1;
+  repeated Disk disks = 2;
+}
+
+message DiskDescribeRequest {
+  string cluster = 1;
+  string name = 2;
+  string provider = 3;
+  string vhd_container_name = 4;
+}
+
+message DiskDescribeResponse {
+  dtypes.Status status = 1;
+  Disk disk = 2;
+}
+
+message DiskCreateRequest {
+  string cluster = 1;
+  string name = 2;
+  string zone = 3;
+  string disk_type = 4;
+  int64 size_gb = 5;
+  string vhd_container_name = 6;
+}
+
+message DiskDeleteRequest {
+  string cluster = 1;
+  string uid = 2;
+  string vhd_container_name = 3;
+}
+
+message Disk {
+  string name = 1;
+  string id = 2;
+  string provider = 3;
+  int64 size_gb = 4;
+  string type = 5;
+  string zone = 6;
+  string status = 7;
+  repeated string users = 8;
+  string kind = 9;
+  string endpoint = 10;
+  int64 iops = 11;
+  PersistentVolume persistent_volume = 12;
+  PersistentVolumeClaim persistent_volume_claim = 13;
+}
