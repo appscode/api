@@ -77,46 +77,6 @@
       "url": "/_appscode/api/auth/v1beta1/token"
     }
   },
-  "/_appscode/api/billing/v1beta1/charges": {
-    "get": {
-      "file": "/billing/v1beta1/charge.proto",
-      "url": "/_appscode/api/billing/v1beta1/charges"
-    }
-  },
-  "/_appscode/api/billing/v1beta1/paymentmethods": {
-    "get": {
-      "file": "/billing/v1beta1/paymentmethod.proto",
-      "url": "/_appscode/api/billing/v1beta1/paymentmethods"
-    }
-  },
-  "/_appscode/api/billing/v1beta1/purchases": {
-    "post": {
-      "file": "/billing/v1beta1/purchase.proto",
-      "url": "/_appscode/api/billing/v1beta1/purchases"
-    }
-  },
-  "/_appscode/api/billing/v1beta1/purchases/*": {
-    "delete": {
-      "file": "/billing/v1beta1/purchase.proto",
-      "url": "/_appscode/api/billing/v1beta1/purchases/{object_phid}"
-    },
-    "put": {
-      "file": "/billing/v1beta1/purchase.proto",
-      "url": "/_appscode/api/billing/v1beta1/purchases/{phid}"
-    }
-  },
-  "/_appscode/api/billing/v1beta1/quotas": {
-    "get": {
-      "file": "/billing/v1beta1/quota.proto",
-      "url": "/_appscode/api/billing/v1beta1/quotas"
-    }
-  },
-  "/_appscode/api/billing/v1beta1/subscriptions": {
-    "post": {
-      "file": "/billing/v1beta1/subscription.proto",
-      "url": "/_appscode/api/billing/v1beta1/subscriptions"
-    }
-  },
   "/_appscode/api/certificate/v1beta1/certificates": {
     "get": {
       "file": "/certificate/v1beta1/certificate.proto",
@@ -457,22 +417,6 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/apps/bacula": {
-    "delete": {
-      "file": "/backup/v1beta1/server.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula"
-    },
-    "post": {
-      "file": "/backup/v1beta1/server.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/apps/bacula/actions/reconfigure": {
-    "put": {
-      "file": "/backup/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula/actions/reconfigure"
-    }
-  },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/client-config": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
@@ -739,10 +683,22 @@
       "url": "/_appscode/api/mailinglist/v1beta1/subscribe"
     }
   },
-  "/_appscode/api/namespace/v1beta1/billing/subscription": {
+  "/_appscode/api/namespace/v1beta1/billing/paymentmethods": {
     "get": {
-      "file": "/namespace/v1beta1/team.proto",
-      "url": "/_appscode/api/namespace/v1beta1/billing/subscription"
+      "file": "/namespace/v1beta1/billing.proto",
+      "url": "/_appscode/api/namespace/v1beta1/billing/paymentmethods"
+    }
+  },
+  "/_appscode/api/namespace/v1beta1/billing/quotas": {
+    "get": {
+      "file": "/namespace/v1beta1/billing.proto",
+      "url": "/_appscode/api/namespace/v1beta1/billing/quotas"
+    }
+  },
+  "/_appscode/api/namespace/v1beta1/billing/subscriptions": {
+    "get": {
+      "file": "/namespace/v1beta1/billing.proto",
+      "url": "/_appscode/api/namespace/v1beta1/billing/subscriptions"
     }
   },
   "/_appscode/api/namespace/v1beta1/teams": {

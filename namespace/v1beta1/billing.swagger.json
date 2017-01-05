@@ -4,6 +4,27 @@
     "application/json"
   ],
   "definitions": {
+    "GetSubscriptionResponseProduct": {
+      "properties": {
+        "display_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "pricing_model": {
+          "format": "string",
+          "type": "string"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "dtypesHelp": {
       "properties": {
         "description": {
@@ -79,17 +100,66 @@
         }
       },
       "type": "object"
+    },
+    "v1beta1GetQuotaResponse": {
+      "properties": {
+        "assigned": {
+          "additionalProperties": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "type": "object"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "used": {
+          "additionalProperties": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1GetSubscriptionResponse": {
+      "properties": {
+        "auto_extend": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "date_end": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "date_start": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "product": {
+          "$ref": "#/definitions/GetSubscriptionResponseProduct"
+        },
+        "quota": {
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
     }
   },
   "host": "api.appscode.com",
   "info": {
-    "title": "paymentmethod.proto",
+    "title": "billing.proto",
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/billing/v1beta1/paymentmethods": {
+    "/_appscode/api/namespace/v1beta1/billing/paymentmethods": {
       "get": {
-        "operationId": "Check",
+        "operationId": "CheckPaymentMethod",
         "responses": {
           "200": {
             "description": "",
@@ -99,7 +169,40 @@
           }
         },
         "tags": [
-          "PaymentMethods"
+          "Billing"
+        ]
+      }
+    },
+    "/_appscode/api/namespace/v1beta1/billing/quotas": {
+      "get": {
+        "operationId": "GetQuota",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1GetQuotaResponse"
+            }
+          }
+        },
+        "tags": [
+          "Billing"
+        ]
+      }
+    },
+    "/_appscode/api/namespace/v1beta1/billing/subscriptions": {
+      "get": {
+        "operationId": "GetSubscription",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1GetSubscriptionResponse"
+            }
+          }
+        },
+        "summary": "Checks current subscription of a namespace",
+        "tags": [
+          "Billing"
         ]
       }
     }

@@ -44,16 +44,6 @@ service Teams {
       enable: true
     };
   }
-
-  // Checks current subscription of a namespace
-  rpc Subscription(dtypes.VoidRequest) returns (SubscriptionResponse) {
-    option (google.api.http) = {
-      get : "/_appscode/api/namespace/v1beta1/billing/subscription"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
 }
 
 message CreateRequest {
@@ -82,19 +72,4 @@ message GetResponse {
 
 message IsAvailableRequest {
   string name = 1;
-}
-
-message SubscriptionResponse {
-  dtypes.Status status = 1;
-  message Product {
-    string sku = 1;
-    string type = 2;
-    string display_name = 3;
-    string pricing_model = 4;
-  }
-  Product product = 2;
-  bool auto_extend = 3;
-  string quota = 4;
-  int64 date_start = 5;
-  int64 date_end = 6;
 }

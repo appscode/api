@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package appscode.namespace.v1beta1;
+
+option go_package = "v1beta1";
+
+option java_multiple_files = true;
+option java_outer_classname = "BillingProto";
+option java_package = "com.appscode.api.namespace.v1beta1";
+
+import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
+import "appscode/api/dtypes/types.proto";
+
+service Billing {
+  // Checks current subscription of a namespace
+  rpc GetSubscription(dtypes.VoidRequest) returns (GetSubscriptionResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/namespace/v1beta1/billing/subscriptions"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc GetQuota(dtypes.VoidRequest) returns (GetQuotaResponse) {
+    option (google.api.http) = {
+        get: "/_appscode/api/namespace/v1beta1/billing/quotas"
+    };
+  }
+
+  rpc CheckPaymentMethod(dtypes.VoidRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      get: "/_appscode/api/namespace/v1beta1/billing/paymentmethods"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
+message GetSubscriptionResponse {
+  dtypes.Status status = 1;
+  message Product {
+    string sku = 1;
+    string type = 2;
+    string display_name = 3;
+    string pricing_model = 4;
+  }
+  Product product = 2;
+  bool auto_extend = 3;
+  string quota = 4;
+  int64 date_start = 5;
+  int64 date_end = 6;
+}
+
+message GetQuotaResponse {
+  dtypes.Status status = 1;
+  map<string, int64> assigned = 2;
+  map<string, int64> used = 3;
+}

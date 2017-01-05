@@ -4,27 +4,6 @@
     "application/json"
   ],
   "definitions": {
-    "SubscriptionResponseProduct": {
-      "properties": {
-        "display_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "pricing_model": {
-          "format": "string",
-          "type": "string"
-        },
-        "sku": {
-          "format": "string",
-          "type": "string"
-        },
-        "type": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "dtypesHelp": {
       "properties": {
         "description": {
@@ -71,10 +50,6 @@
         }
       },
       "title": "Next Id = 5",
-      "type": "object"
-    },
-    "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
       "type": "object"
     },
     "dtypesVoidResponse": {
@@ -178,33 +153,6 @@
         }
       },
       "type": "object"
-    },
-    "v1beta1SubscriptionResponse": {
-      "properties": {
-        "auto_extend": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "date_end": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "date_start": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "product": {
-          "$ref": "#/definitions/SubscriptionResponseProduct"
-        },
-        "quota": {
-          "format": "string",
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
     }
   },
   "host": "api.appscode.com",
@@ -213,23 +161,6 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/namespace/v1beta1/billing/subscription": {
-      "get": {
-        "operationId": "Subscription",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1SubscriptionResponse"
-            }
-          }
-        },
-        "summary": "Checks current subscription of a namespace",
-        "tags": [
-          "Teams"
-        ]
-      }
-    },
     "/_appscode/api/namespace/v1beta1/teams": {
       "post": {
         "operationId": "Create",
