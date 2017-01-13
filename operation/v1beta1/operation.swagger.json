@@ -68,54 +68,6 @@
       },
       "type": "object"
     },
-    "v1beta1AgentCreateRequest": {
-      "properties": {
-        "ci_starter_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "executors": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "labels": {
-          "format": "string",
-          "type": "string"
-        },
-        "ports": {
-          "items": {
-            "$ref": "#/definitions/v1beta1PortInfo"
-          },
-          "type": "array"
-        },
-        "role": {
-          "format": "string",
-          "type": "string"
-        },
-        "saltbase_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "sku": {
-          "format": "string",
-          "type": "string"
-        },
-        "user_startup_script": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1AgentDeleteRequest": {
-      "properties": {
-        "name": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1Auth": {
       "properties": {
         "auth_type": {
@@ -491,36 +443,6 @@
       },
       "type": "object"
     },
-    "v1beta1MasterCreateRequest": {
-      "properties": {
-        "cluster_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "volume_id": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1MasterDeleteRequest": {
-      "properties": {
-        "cluster_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "namespace": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1Metadata": {
       "description": "Metadata holds other on request or operation specific data\nthat could be used inside that operation.\nAn welldefined message instead of a map is used\nso that the data fields can be explicitly defined with\nits own data type. Resolves data convertions.",
       "properties": {
@@ -560,18 +482,6 @@
         },
         "backup_schedule_request": {
           "$ref": "#/definitions/v1beta1BackupScheduleRequest"
-        },
-        "ci_agent_create_request": {
-          "$ref": "#/definitions/v1beta1AgentCreateRequest"
-        },
-        "ci_agent_delete_request": {
-          "$ref": "#/definitions/v1beta1AgentDeleteRequest"
-        },
-        "ci_master_create_request": {
-          "$ref": "#/definitions/v1beta1MasterCreateRequest"
-        },
-        "ci_master_delete_request": {
-          "$ref": "#/definitions/v1beta1MasterDeleteRequest"
         },
         "cluster_create_request": {
           "$ref": "#/definitions/v1beta1ClusterCreateRequest"
@@ -625,10 +535,6 @@
         "CLUSTER_SCALE",
         "CLUSTER_DELETE",
         "CLUSTER_UPGRADE",
-        "CI_MASTER_CREATE",
-        "CI_MASTER_DELETE",
-        "CI_AGENT_CREATE",
-        "CI_AGENT_DELETE",
         "DATA_BUCKET_DELETE",
         "BACKUP_SCHEDULE",
         "NAMESPACE_CREATE",
@@ -639,19 +545,6 @@
       ],
       "title": "Next Id: 18",
       "type": "string"
-    },
-    "v1beta1PortInfo": {
-      "properties": {
-        "port_range": {
-          "format": "string",
-          "type": "string"
-        },
-        "protocol": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
     },
     "v1beta1SnapshotCheckRequest": {
       "properties": {

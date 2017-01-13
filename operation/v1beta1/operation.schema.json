@@ -1,45 +1,5 @@
 {
   "definitions": {
-    "v1beta1AgentCreateRequest": {
-      "properties": {
-        "ci_starter_version": {
-          "type": "string"
-        },
-        "executors": {
-          "type": "integer"
-        },
-        "labels": {
-          "type": "string"
-        },
-        "ports": {
-          "items": {
-            "$ref": "#/definitions/v1beta1PortInfo"
-          },
-          "type": "array"
-        },
-        "role": {
-          "type": "string"
-        },
-        "saltbase_version": {
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "user_startup_script": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1AgentDeleteRequest": {
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1BackupScheduleRequest": {
       "properties": {
         "auth_secret_name": {
@@ -294,45 +254,9 @@
       },
       "type": "object"
     },
-    "v1beta1MasterCreateRequest": {
-      "properties": {
-        "cluster_name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "volume_id": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1MasterDeleteRequest": {
-      "properties": {
-        "cluster_name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1NamespaceAdminTaskRequest": {
       "properties": {
         "namespace": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1PortInfo": {
-      "properties": {
-        "port_range": {
-          "type": "string"
-        },
-        "protocol": {
           "type": "string"
         }
       },

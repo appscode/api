@@ -105,86 +105,6 @@
       "url": "/_appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain"
     }
   },
-  "/_appscode/api/ci/v1beta1/actions/copy": {
-    "put": {
-      "file": "/ci/v1beta1/job.proto",
-      "url": "/_appscode/api/ci/v1beta1/actions/copy"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/agents": {
-    "get": {
-      "file": "/ci/v1beta1/agent.proto",
-      "url": "/_appscode/api/ci/v1beta1/agents"
-    },
-    "post": {
-      "file": "/ci/v1beta1/agent.proto",
-      "url": "/_appscode/api/ci/v1beta1/agents"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/agents/*": {
-    "delete": {
-      "file": "/ci/v1beta1/agent.proto",
-      "url": "/_appscode/api/ci/v1beta1/agents/{name}"
-    },
-    "get": {
-      "file": "/ci/v1beta1/agent.proto",
-      "url": "/_appscode/api/ci/v1beta1/agents/{name}"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/agents/*/actions/reboot": {
-    "post": {
-      "file": "/ci/v1beta1/agent.proto",
-      "url": "/_appscode/api/ci/v1beta1/agents/{name}/actions/reboot"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/jobs": {
-    "get": {
-      "file": "/ci/v1beta1/job.proto",
-      "url": "/_appscode/api/ci/v1beta1/jobs"
-    },
-    "post": {
-      "file": "/ci/v1beta1/job.proto",
-      "url": "/_appscode/api/ci/v1beta1/jobs"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/jobs/*": {
-    "delete": {
-      "file": "/ci/v1beta1/job.proto",
-      "url": "/_appscode/api/ci/v1beta1/jobs/{name}"
-    },
-    "get": {
-      "file": "/ci/v1beta1/job.proto",
-      "url": "/_appscode/api/ci/v1beta1/jobs/{name}"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/jobs/*/actions/build": {
-    "post": {
-      "file": "/ci/v1beta1/job.proto",
-      "url": "/_appscode/api/ci/v1beta1/jobs/{name}/actions/build"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/jobs/*/builds": {
-    "get": {
-      "file": "/ci/v1beta1/build.proto",
-      "url": "/_appscode/api/ci/v1beta1/jobs/{job_name}/builds"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/jobs/*/builds/*": {
-    "get": {
-      "file": "/ci/v1beta1/build.proto",
-      "url": "/_appscode/api/ci/v1beta1/jobs/{job_name}/builds/{number}"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/masters": {
-    "delete": {
-      "file": "/ci/v1beta1/master.proto",
-      "url": "/_appscode/api/ci/v1beta1/masters"
-    },
-    "post": {
-      "file": "/ci/v1beta1/master.proto",
-      "url": "/_appscode/api/ci/v1beta1/masters"
-    }
-  },
   "/_appscode/api/cloud/v1beta1/buckets": {
     "get": {
       "file": "/kubernetes/v1beta1/metadata.proto",
@@ -415,6 +335,22 @@
     "put": {
       "file": "/kubernetes/v1beta1/cluster.proto",
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/apps/bacula": {
+    "delete": {
+      "file": "/backup/v1beta1/server.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula"
+    },
+    "post": {
+      "file": "/backup/v1beta1/server.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/apps/bacula/actions/reconfigure": {
+    "put": {
+      "file": "/backup/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula/actions/reconfigure"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/client-config": {
