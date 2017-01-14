@@ -337,22 +337,6 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/apps/bacula": {
-    "delete": {
-      "file": "/backup/v1beta1/server.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula"
-    },
-    "post": {
-      "file": "/backup/v1beta1/server.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/apps/bacula/actions/reconfigure": {
-    "put": {
-      "file": "/backup/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula/actions/reconfigure"
-    }
-  },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/client-config": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
