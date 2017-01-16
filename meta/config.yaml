@@ -22,3 +22,6 @@ authenticationInterceptor:
     - "/appscode.namespace.v1beta1.Teams/Create"
     - "/appscode.namespace.v1beta1.Teams/Get"
     - "/appscode.namespace.v1beta1.Teams/IsAvailable"
+  namespaceAdminAuthenticatedEndpoint:
+    - "/appscode.ci.v1beta1.Agents/Create"
+    - "/appscode.ci.v1beta1.Agents/Delete"
