@@ -49,11 +49,12 @@ message AgentListResponse {
 
 message Agent {
   string name = 1;
-  string status = 2;
-  string agent_status = 3;
-  int32 is_refreshed = 4;
-  int64 created_at = 5;
-  int64 updated_at = 6;
+  string role = 2;
+  string external_ip = 3;
+  string internal_ip = 4;
+  bool isDeleted = 5;
+  int64 created_at = 6;
+  int64 updated_at = 7;
 }
 
 message AgentCreateRequest {
@@ -62,8 +63,8 @@ message AgentCreateRequest {
   string external_ip = 3;
   string internal_ip = 4;
   string ssh_user = 5;
-  string ssh_port = 6;
-  string jenkins_jnlp_port = 7;
+  int32 ssh_port = 6;
+  int32 jenkins_jnlp_port = 7;
   string git_ssh_public_key = 8;
 }
 

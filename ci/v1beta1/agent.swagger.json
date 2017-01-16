@@ -103,23 +103,27 @@
     },
     "v1beta1Agent": {
       "properties": {
-        "agent_status": {
-          "format": "string",
-          "type": "string"
-        },
         "created_at": {
           "format": "int64",
           "type": "integer"
         },
-        "is_refreshed": {
-          "format": "int32",
-          "type": "integer"
+        "external_ip": {
+          "format": "string",
+          "type": "string"
+        },
+        "internal_ip": {
+          "format": "string",
+          "type": "string"
+        },
+        "isDeleted": {
+          "format": "boolean",
+          "type": "boolean"
         },
         "name": {
           "format": "string",
           "type": "string"
         },
-        "status": {
+        "role": {
           "format": "string",
           "type": "string"
         },
@@ -145,8 +149,8 @@
           "type": "string"
         },
         "jenkins_jnlp_port": {
-          "format": "string",
-          "type": "string"
+          "format": "int32",
+          "type": "integer"
         },
         "name": {
           "format": "string",
@@ -157,8 +161,8 @@
           "type": "string"
         },
         "ssh_port": {
-          "format": "string",
-          "type": "string"
+          "format": "int32",
+          "type": "integer"
         },
         "ssh_user": {
           "format": "string",

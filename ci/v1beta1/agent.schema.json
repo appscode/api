@@ -16,7 +16,7 @@
           "type": "string"
         },
         "jenkins_jnlp_port": {
-          "type": "string"
+          "type": "integer"
         },
         "name": {
           "type": "string"
@@ -25,7 +25,7 @@
           "type": "string"
         },
         "ssh_port": {
-          "type": "string"
+          "type": "integer"
         },
         "ssh_user": {
           "type": "string"
