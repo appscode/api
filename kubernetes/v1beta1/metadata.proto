@@ -62,6 +62,7 @@ message ZoneListResponse {
 
 message BucketListRequest {
   string cloud_credential = 1; // name or phid
+  string gce_project = 2;
 }
 
 message BucketListResponse {

@@ -73,6 +73,10 @@
         "cloud_credential": {
           "format": "string",
           "type": "string"
+        },
+        "gce_project": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
