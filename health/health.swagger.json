@@ -104,7 +104,7 @@
     "healthNetConfig": {
       "type": "object",
       "properties": {
-        "team_domain": {
+        "team_addr": {
           "type": "string",
           "format": "string"
         },
@@ -149,7 +149,7 @@
           "type": "string",
           "format": "string"
         },
-        "base_domain": {
+        "base_addr": {
           "type": "string",
           "format": "string"
         }

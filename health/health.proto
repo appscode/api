@@ -32,11 +32,11 @@ message StatusResponse {
 
 message URLBase {
   string scheme = 1;
-  string base_domain = 2;
+  string base_addr = 2;
 }
 
 message NetConfig {
-  string team_domain = 1;
+  string team_addr = 1;
   URLBase public_urls = 2;
   URLBase team_urls = 3;
   URLBase cluster_urls = 4;
