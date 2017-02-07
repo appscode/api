@@ -133,26 +133,6 @@
       "url": "/_appscode/api/cloud/v1beta1/buckets"
     }
   },
-  "/_appscode/api/cloud/v1beta1/clusters/*/disks": {
-    "get": {
-      "file": "/pv/v1beta1/disk.proto",
-      "url": "/_appscode/api/cloud/v1beta1/clusters/{cluster}/disks"
-    },
-    "post": {
-      "file": "/pv/v1beta1/disk.proto",
-      "url": "/_appscode/api/cloud/v1beta1/clusters/{cluster}/disks"
-    }
-  },
-  "/_appscode/api/cloud/v1beta1/clusters/*/disks/*": {
-    "delete": {
-      "file": "/pv/v1beta1/disk.proto",
-      "url": "/_appscode/api/cloud/v1beta1/clusters/{cluster}/disks/{uid}"
-    },
-    "get": {
-      "file": "/pv/v1beta1/disk.proto",
-      "url": "/_appscode/api/cloud/v1beta1/clusters/{cluster}/disks/{name}"
-    }
-  },
   "/_appscode/api/cloud/v1beta1/credentials": {
     "get": {
       "file": "/credential/v1beta1/credential.proto",
@@ -493,34 +473,6 @@
     "get": {
       "file": "/glusterfs/v1beta1/volume.proto",
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{glusterfs_cluster}/volumes"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/persistentvolumeclaims/*": {
-    "delete": {
-      "file": "/pv/v1beta1/persistentvolumeclaim.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
-    },
-    "get": {
-      "file": "/pv/v1beta1/persistentvolumeclaim.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
-    },
-    "put": {
-      "file": "/pv/v1beta1/persistentvolumeclaim.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/persistentvolumes/*": {
-    "delete": {
-      "file": "/pv/v1beta1/persistentvolume.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
-    },
-    "get": {
-      "file": "/pv/v1beta1/persistentvolume.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
-    },
-    "put": {
-      "file": "/pv/v1beta1/persistentvolume.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/context-versions/*": {
