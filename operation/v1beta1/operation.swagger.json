@@ -203,11 +203,11 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "delete_lodabalancers": {
+        "force": {
           "format": "boolean",
           "type": "boolean"
         },
-        "force": {
+        "keep_lodabalancers": {
           "format": "boolean",
           "type": "boolean"
         },
