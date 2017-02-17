@@ -314,9 +314,11 @@ message ClusterUpdateRequest {
 
 message ClusterUpgradeRequest {
   string name = 1;
-  string kube_saltbase_version = 2;
-  string kube_starter_version = 3;
-  string kube_server_version = 4;
-  string hostfacts_version = 5;
-  string version = 6;
+  string role = 2;
+  string sku = 3;
+  string version = 4;
+  string kube_saltbase_version = 5;
+  string kube_starter_version = 6;
+  string kube_server_version = 7;
+  string hostfacts_version = 8;
 }

@@ -145,6 +145,12 @@
         "name": {
           "type": "string"
         },
+        "role": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
         "version": {
           "type": "string"
         }

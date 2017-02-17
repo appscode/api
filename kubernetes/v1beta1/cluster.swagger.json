@@ -628,6 +628,14 @@
           "format": "string",
           "type": "string"
         },
+        "role": {
+          "format": "string",
+          "type": "string"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
         "version": {
           "format": "string",
           "type": "string"

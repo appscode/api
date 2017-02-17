@@ -113,6 +113,12 @@ func init() {
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
+    "role": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string"
+    },
     "version": {
       "type": "string"
     }
