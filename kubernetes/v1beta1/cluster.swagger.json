@@ -533,6 +533,43 @@
       },
       "type": "object"
     },
+    "v1beta1ClusterSetVersionRequest": {
+      "properties": {
+        "apply_to_master": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "hostfacts_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_saltbase_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_server_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_starter_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "version": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1ClusterSettings": {
       "properties": {
         "log_index_prefix": {
@@ -602,43 +639,6 @@
         },
         "settings": {
           "$ref": "#/definitions/v1beta1ClusterSettings"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterUpgradeRequest": {
-      "properties": {
-        "hostfacts_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_saltbase_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_server_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_starter_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "role": {
-          "format": "string",
-          "type": "string"
-        },
-        "sku": {
-          "format": "string",
-          "type": "string"
-        },
-        "version": {
-          "format": "string",
-          "type": "string"
         }
       },
       "type": "object"
@@ -821,9 +821,9 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/set-version": {
       "put": {
-        "operationId": "Upgrade",
+        "operationId": "SetVersion",
         "parameters": [
           {
             "format": "string",
@@ -837,7 +837,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1ClusterUpgradeRequest"
+              "$ref": "#/definitions/v1beta1ClusterSetVersionRequest"
             }
           }
         ],

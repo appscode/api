@@ -61,9 +61,9 @@ service Clusters {
     };
   }
 
-  rpc Upgrade(ClusterUpgradeRequest) returns (dtypes.LongRunningResponse) {
+  rpc SetVersion(ClusterSetVersionRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-       put: "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade"
+       put: "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/set-version"
        body: "*"
     };
     option (appscode.api.cors) = {
@@ -312,9 +312,9 @@ message ClusterUpdateRequest {
   string default_access_level = 4;
 }
 
-message ClusterUpgradeRequest {
+message ClusterSetVersionRequest {
   string name = 1;
-  string role = 2;
+  bool apply_to_master = 2;
   string sku = 3;
   string version = 4;
   string kube_saltbase_version = 5;

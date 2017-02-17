@@ -333,10 +333,10 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/upgrade": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/set-version": {
     "put": {
       "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/set-version"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/client-config": {

@@ -245,8 +245,12 @@
       },
       "type": "object"
     },
-    "v1beta1ClusterUpgradeRequest": {
+    "v1beta1ClusterSetVersionRequest": {
       "properties": {
+        "apply_to_master": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "hostfacts_version": {
           "format": "string",
           "type": "string"
@@ -264,10 +268,6 @@
           "type": "string"
         },
         "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "role": {
           "format": "string",
           "type": "string"
         },
@@ -504,8 +504,8 @@
         "cluster_scale_request": {
           "$ref": "#/definitions/v1beta1ClusterScaleRequest"
         },
-        "cluster_upgrade_request": {
-          "$ref": "#/definitions/v1beta1ClusterUpgradeRequest"
+        "cluster_set_version_request": {
+          "$ref": "#/definitions/v1beta1ClusterSetVersionRequest"
         },
         "data_bucket_delete_request": {
           "$ref": "#/definitions/v1beta1DataBucketDeleteRequest"
@@ -546,7 +546,7 @@
         "CLUSTER_CREATE",
         "CLUSTER_SCALE",
         "CLUSTER_DELETE",
-        "CLUSTER_UPGRADE",
+        "CLUSTER_SET_VERSION",
         "DATA_BUCKET_DELETE",
         "BACKUP_SCHEDULE",
         "NAMESPACE_CREATE",

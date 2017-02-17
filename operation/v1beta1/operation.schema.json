@@ -128,8 +128,11 @@
       },
       "type": "object"
     },
-    "v1beta1ClusterUpgradeRequest": {
+    "v1beta1ClusterSetVersionRequest": {
       "properties": {
+        "apply_to_master": {
+          "type": "boolean"
+        },
         "hostfacts_version": {
           "type": "string"
         },
@@ -143,9 +146,8 @@
           "type": "string"
         },
         "name": {
-          "type": "string"
-        },
-        "role": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "sku": {

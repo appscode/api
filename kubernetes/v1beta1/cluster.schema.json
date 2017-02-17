@@ -157,6 +157,37 @@
       },
       "type": "object"
     },
+    "v1beta1ClusterSetVersionRequest": {
+      "properties": {
+        "apply_to_master": {
+          "type": "boolean"
+        },
+        "hostfacts_version": {
+          "type": "string"
+        },
+        "kube_saltbase_version": {
+          "type": "string"
+        },
+        "kube_server_version": {
+          "type": "string"
+        },
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1ClusterSettings": {
       "properties": {
         "log_index_prefix": {
@@ -203,37 +234,6 @@
         },
         "settings": {
           "$ref": "#/definitions/v1beta1ClusterSettings"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterUpgradeRequest": {
-      "properties": {
-        "hostfacts_version": {
-          "type": "string"
-        },
-        "kube_saltbase_version": {
-          "type": "string"
-        },
-        "kube_server_version": {
-          "type": "string"
-        },
-        "kube_starter_version": {
-          "type": "string"
-        },
-        "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-          "type": "string"
-        },
-        "role": {
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
         }
       },
       "type": "object"
