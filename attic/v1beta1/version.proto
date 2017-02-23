@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package appscode.artifactory.v1beta1;
+package appscode.attic.v1beta1;
 
 option go_package = "v1beta1";
 
 option java_multiple_files = true;
 option java_outer_classname = "VersionProto";
-option java_package = "com.appscode.api.artifactory.v1beta1";
+option java_package = "com.appscode.api.attic.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
@@ -18,7 +18,7 @@ service Versions {
       // Provides version lists of an particular artifact identified by `name`.
       // Recives {type} in - `docker, maven, composer, npm` as path parameter
       // and `name` as query parametrs.
-      get: "/_appscode/api/artifactory/v1beta1/artifacts/{type}/versions"
+      get: "/_appscode/api/attic/v1beta1/artifacts/{type}/versions"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -30,7 +30,7 @@ service Versions {
       // Provides details of an particular artifacts version.
       // Recives {type} in - `docker, maven, composer, npm` as path parameter
       // and `id` `name` as query parametrs.
-      get: "/_appscode/api/artifactory/v1beta1/artifacts/{type}/versions/description"
+      get: "/_appscode/api/attic/v1beta1/artifacts/{type}/versions/description"
     };
     option (appscode.api.cors) = {
       enable: true

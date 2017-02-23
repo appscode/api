@@ -1,26 +1,26 @@
 {
-  "/_appscode/api/artifactory/v1beta1/artifacts/*": {
+  "/_appscode/api/attic/v1beta1/artifacts/*": {
     "get": {
-      "file": "/artifactory/v1beta1/artifact.proto",
-      "url": "/_appscode/api/artifactory/v1beta1/artifacts/{type}"
+      "file": "/attic/v1beta1/artifact.proto",
+      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}"
     }
   },
-  "/_appscode/api/artifactory/v1beta1/artifacts/*/versions": {
+  "/_appscode/api/attic/v1beta1/artifacts/*/versions": {
     "get": {
-      "file": "/artifactory/v1beta1/version.proto",
-      "url": "/_appscode/api/artifactory/v1beta1/artifacts/{type}/versions"
+      "file": "/attic/v1beta1/version.proto",
+      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/versions"
     }
   },
-  "/_appscode/api/artifactory/v1beta1/artifacts/*/versions/description": {
+  "/_appscode/api/attic/v1beta1/artifacts/*/versions/description": {
     "get": {
-      "file": "/artifactory/v1beta1/version.proto",
-      "url": "/_appscode/api/artifactory/v1beta1/artifacts/{type}/versions/description"
+      "file": "/attic/v1beta1/version.proto",
+      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/versions/description"
     }
   },
-  "/_appscode/api/artifactory/v1beta1/search": {
+  "/_appscode/api/attic/v1beta1/search": {
     "get": {
-      "file": "/artifactory/v1beta1/artifact.proto",
-      "url": "/_appscode/api/artifactory/v1beta1/search"
+      "file": "/attic/v1beta1/artifact.proto",
+      "url": "/_appscode/api/attic/v1beta1/search"
     }
   },
   "/_appscode/api/auth/v0.1/login": {

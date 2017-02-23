@@ -16,7 +16,7 @@ ALIAS+="Mappscode/api/kubernetes/v1beta1/cluster.proto=github.com/appscode/api/k
 ALIAS+="Mappscode/api/kubernetes/v1beta2/client.proto=github.com/appscode/api/kubernetes/v1beta2,"
 ALIAS+="Mappscode/api/ssh/v1beta1/ssh.proto=github.com/appscode/api/ssh/v1beta1,"
 ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any,"
-ALIAS+="Mappscode/api/artifactory/artifacts.proto=github.com/appscode/api/artifactory,"
+ALIAS+="Mappscode/api/attic/artifacts.proto=github.com/appscode/api/attic,"
 ALIAS+="Mappscode/api/db/v1beta1/database.proto=github.com/appscode/api/db/v1beta1,"
 ALIAS+="Mappscode/api/db/v1beta1/snapshot.proto=github.com/appscode/api/db/v1beta1,"
 ALIAS+="Mappscode/api/namespace/v1beta1/team.proto=github.com/appscode/api/namespace/v1beta1,"
