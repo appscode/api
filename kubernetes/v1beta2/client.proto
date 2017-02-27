@@ -141,7 +141,8 @@ message ListResourceRequest {
   // https://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57
   // https://github.com/grpc-ecosystem/grpc-gateway/issues/316
   // map<string, string> label_selector = 6;
-  repeated dtypes.Pair label_selector = 7;
+  // example label_selector=environment=production,tier=frontend
+  string label_selector = 7;
 
   message Ancestor {
       string type = 1;
