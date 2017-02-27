@@ -650,6 +650,20 @@
       "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
       "type": "object"
     },
+    "dtypesPair": {
+      "description": "Pair denotes a key value pair type. Only supports string type as key\nand value.",
+      "properties": {
+        "key": {
+          "format": "string",
+          "type": "string"
+        },
+        "value": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "dtypesVoidResponse": {
       "properties": {
         "status": {
@@ -1934,11 +1948,11 @@
           "type": "boolean"
         },
         "label_selector": {
-          "additionalProperties": {
-            "format": "string",
-            "type": "string"
+          "items": {
+            "$ref": "#/definitions/dtypesPair"
           },
-          "type": "object"
+          "title": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;",
+          "type": "array"
         },
         "namespace": {
           "format": "string",

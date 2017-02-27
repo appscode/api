@@ -161,3 +161,10 @@ message Uid {
     string phid = 1;
     string name = 2;
 }
+
+// Pair denotes a key value pair type. Only supports string type as key
+// and value.
+message Pair {
+    string key = 1;
+    string value = 2;
+}

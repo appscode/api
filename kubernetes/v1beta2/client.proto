@@ -137,7 +137,11 @@ message ListResourceRequest {
   string namespace = 3;
   bool include_metrics = 4;
   Ancestor ancestor = 5;
-  map<string, string> label_selector = 6;
+  // map type is not supported by grpc-gateway as query params.
+  // https://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57
+  // https://github.com/grpc-ecosystem/grpc-gateway/issues/316
+  // map<string, string> label_selector = 6;
+  repeated dtypes.Pair label_selector = 7;
 
   message Ancestor {
       string type = 1;
