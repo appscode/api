@@ -47,6 +47,12 @@
       "url": "/_appscode/api/auth/v1beta1/conduit/whoami"
     }
   },
+  "/_appscode/api/auth/v1beta1/csrf-token": {
+    "get": {
+      "file": "/auth/v1beta1/authentication.proto",
+      "url": "/_appscode/api/auth/v1beta1/csrf-token"
+    }
+  },
   "/_appscode/api/auth/v1beta1/login": {
     "post": {
       "file": "/auth/v1beta1/authentication.proto",

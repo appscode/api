@@ -51,6 +51,20 @@ service Authentication {
       enable: true
     };
   }
+
+  rpc CSRFToken(dtypes.VoidRequest) returns (CSRFTokenResponse) {
+    option (google.api.http) = {
+      get: "/_appscode/api/auth/v1beta1/csrf-token"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
+message CSRFTokenResponse {
+  dtypes.Status status = 1;
+  string csrf_token = 2;
 }
 
 //Next Id 4
