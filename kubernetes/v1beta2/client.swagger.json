@@ -2763,7 +2763,7 @@
           },
           "type": "array"
         },
-        "seletors": {
+        "selectors": {
           "additionalProperties": {
             "format": "string",
             "type": "string"

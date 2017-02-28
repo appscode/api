@@ -582,7 +582,7 @@ message Service {
   message Spec {
     string type = 1;
     repeated Port ports = 2;
-    map<string, string> seletors = 3;
+    map<string, string> selectors = 3;
     string clusterIP = 4;
     repeated string externalIPs = 5;
     string loadbalancerIP = 6;
