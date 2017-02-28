@@ -1934,11 +1934,9 @@
           "type": "boolean"
         },
         "label_selector": {
-          "additionalProperties": {
-            "format": "string",
-            "type": "string"
-          },
-          "type": "object"
+          "format": "string",
+          "title": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend",
+          "type": "string"
         },
         "namespace": {
           "format": "string",

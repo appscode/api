@@ -13,18 +13,6 @@
       },
       "type": "object"
     },
-    "dtypesPair": {
-      "description": "Pair denotes a key value pair type. Only supports string type as key\nand value.",
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta2ConfigMapEditRequest": {
       "properties": {
         "add": {
