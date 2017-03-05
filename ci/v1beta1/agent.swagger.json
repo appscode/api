@@ -156,6 +156,10 @@
           "format": "int32",
           "type": "integer"
         },
+        "jenkins_url": {
+          "format": "string",
+          "type": "string"
+        },
         "name": {
           "format": "string",
           "type": "string"

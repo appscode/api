@@ -27,6 +27,9 @@ func init() {
     "jenkins_jnlp_port": {
       "type": "integer"
     },
+    "jenkins_url": {
+      "type": "string"
+    },
     "name": {
       "type": "string"
     },

@@ -67,6 +67,7 @@ message AgentCreateRequest {
   int32 ssh_port = 6;
   int32 jenkins_jnlp_port = 7;
   string git_ssh_public_key = 8;
+  string jenkins_url = 9;
 }
 
 message AgentCreateResponse {
