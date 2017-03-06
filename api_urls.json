@@ -127,10 +127,10 @@
       "url": "/_appscode/api/ci/v1beta1/agents/{name}"
     }
   },
-  "/_appscode/api/ci/v1beta1/metadata/server_info": {
+  "/_appscode/api/ci/v1beta1/metadata/server-info": {
     "get": {
       "file": "/ci/v1beta1/metadata.proto",
-      "url": "/_appscode/api/ci/v1beta1/metadata/server_info"
+      "url": "/_appscode/api/ci/v1beta1/metadata/server-info"
     }
   },
   "/_appscode/api/cloud/v1beta1/buckets": {

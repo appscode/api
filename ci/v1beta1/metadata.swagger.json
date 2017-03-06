@@ -99,7 +99,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/ci/v1beta1/metadata/server_info": {
+    "/_appscode/api/ci/v1beta1/metadata/server-info": {
       "get": {
         "operationId": "ServerInfo",
         "responses": {
