@@ -6,6 +6,9 @@
     },
     "v1beta1AgentCreateRequest": {
       "properties": {
+        "ca_cert": {
+          "type": "string"
+        },
         "external_ip": {
           "type": "string"
         },

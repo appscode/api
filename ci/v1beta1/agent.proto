@@ -55,7 +55,6 @@ message Agent {
   bool isDeleted = 5;
   int64 created_at = 6;
   int64 updated_at = 7;
-  string jenkins_url = 8;
 }
 
 message AgentCreateRequest {
@@ -68,6 +67,7 @@ message AgentCreateRequest {
   int32 jenkins_jnlp_port = 7;
   string git_ssh_public_key = 8;
   string jenkins_url = 9;
+  string ca_cert = 10;
 }
 
 message AgentCreateResponse {

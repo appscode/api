@@ -119,10 +119,6 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "jenkins_url": {
-          "format": "string",
-          "type": "string"
-        },
         "name": {
           "format": "string",
           "type": "string"
@@ -140,6 +136,10 @@
     },
     "v1beta1AgentCreateRequest": {
       "properties": {
+        "ca_cert": {
+          "format": "string",
+          "type": "string"
+        },
         "external_ip": {
           "format": "string",
           "type": "string"
