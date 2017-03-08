@@ -22,6 +22,15 @@ service Agents {
     };
   }
 
+  rpc Get(AgentGetRequest) returns (AgentGetResponse) {
+    option (google.api.http) = {
+      get: "/_appscode/api/ci/v1beta1/agents/{uid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
   rpc Create(AgentCreateRequest) returns (AgentCreateResponse) {
     option (google.api.http) = {
       post: "/_appscode/api/ci/v1beta1/agents"
@@ -34,7 +43,7 @@ service Agents {
 
   rpc Delete(AgentDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/ci/v1beta1/agents/{name}"
+      delete: "/_appscode/api/ci/v1beta1/agents/{uid}"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -47,14 +56,24 @@ message AgentListResponse {
   repeated Agent agents = 2;
 }
 
+message AgentGetRequest {
+  string uid = 1;
+}
+
+message AgentGetResponse {
+  dtypes.Status status = 1;
+  Agent agent = 2;
+}
+
 message Agent {
-  string name = 1;
-  string role = 2;
-  string external_ip = 3;
-  string internal_ip = 4;
-  bool isDeleted = 5;
-  int64 created_at = 6;
-  int64 updated_at = 7;
+  string phid = 1;
+  string name = 2;
+  string role = 3;
+  string external_ip = 4;
+  string internal_ip = 5;
+  bool isDeleted = 6;
+  int64 created_at = 7;
+  int64 updated_at = 8;
 }
 
 message AgentCreateRequest {
@@ -86,5 +105,5 @@ message AgentCreateResponse {
 }
 
 message AgentDeleteRequest {
-  string name = 1;
+  string uid = 1;
 }

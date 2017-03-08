@@ -123,6 +123,10 @@
           "format": "string",
           "type": "string"
         },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        },
         "role": {
           "format": "string",
           "type": "string"
@@ -208,9 +212,29 @@
     },
     "v1beta1AgentDeleteRequest": {
       "properties": {
-        "name": {
+        "uid": {
           "format": "string",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1AgentGetRequest": {
+      "properties": {
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1AgentGetResponse": {
+      "properties": {
+        "agent": {
+          "$ref": "#/definitions/v1beta1Agent"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       },
       "type": "object"
@@ -276,14 +300,14 @@
         ]
       }
     },
-    "/_appscode/api/ci/v1beta1/agents/{name}": {
+    "/_appscode/api/ci/v1beta1/agents/{uid}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
           {
             "format": "string",
             "in": "path",
-            "name": "name",
+            "name": "uid",
             "required": true,
             "type": "string"
           }
@@ -293,6 +317,29 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Agents"
+        ]
+      },
+      "get": {
+        "operationId": "Get",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1AgentGetResponse"
             }
           }
         },

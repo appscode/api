@@ -124,7 +124,11 @@
   "/_appscode/api/ci/v1beta1/agents/*": {
     "delete": {
       "file": "/ci/v1beta1/agent.proto",
-      "url": "/_appscode/api/ci/v1beta1/agents/{name}"
+      "url": "/_appscode/api/ci/v1beta1/agents/{uid}"
+    },
+    "get": {
+      "file": "/ci/v1beta1/agent.proto",
+      "url": "/_appscode/api/ci/v1beta1/agents/{uid}"
     }
   },
   "/_appscode/api/ci/v1beta1/metadata/server-info": {

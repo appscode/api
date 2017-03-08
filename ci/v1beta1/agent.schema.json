@@ -41,7 +41,15 @@
     },
     "v1beta1AgentDeleteRequest": {
       "properties": {
-        "name": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1AgentGetRequest": {
+      "properties": {
+        "uid": {
           "type": "string"
         }
       },
