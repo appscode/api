@@ -220,7 +220,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/certificate/v1beta1/certificates": {
+    "/_appscode/api/certificate/v1beta1/certificates/json": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -236,7 +236,7 @@
         ]
       }
     },
-    "/_appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain": {
+    "/_appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain/json": {
       "put": {
         "operationId": "Load",
         "parameters": [
@@ -269,7 +269,40 @@
         ]
       }
     },
-    "/_appscode/api/certificate/v1beta1/certificates/{uid}": {
+    "/_appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy/json": {
+      "put": {
+        "operationId": "Deploy",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1CertificateDeployRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Certificates"
+        ]
+      }
+    },
+    "/_appscode/api/certificate/v1beta1/certificates/{uid}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -309,39 +342,6 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/v1beta1CertificateDescribeResponse"
-            }
-          }
-        },
-        "tags": [
-          "Certificates"
-        ]
-      }
-    },
-    "/_appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy": {
-      "put": {
-        "operationId": "Deploy",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "uid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1CertificateDeployRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },

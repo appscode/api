@@ -423,7 +423,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/json": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -479,7 +479,87 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/recover/json": {
+      "put": {
+        "operationId": "Recover",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1DatabaseRecoverRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/scale/json": {
+      "put": {
+        "operationId": "Scale",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1DatabaseScaleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      }
+    },
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -563,86 +643,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1beta1DatabaseUpdateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Databases"
-        ]
-      }
-    },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/recover": {
-      "put": {
-        "operationId": "Recover",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "uid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1DatabaseRecoverRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Databases"
-        ]
-      }
-    },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/scale": {
-      "put": {
-        "operationId": "Scale",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "uid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1DatabaseScaleRequest"
             }
           }
         ],

@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Databases {
   rpc List(DatabaseListRequest) returns (DatabaseListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases"
+      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Databases {
 
   rpc Create(DatabaseCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases"
+      post : "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/json"
       body : "*"
     };
     option (appscode.api.cors) = {
@@ -34,7 +34,7 @@ service Databases {
 
   rpc Scale(DatabaseScaleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/scale"
+      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/scale/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -44,7 +44,7 @@ service Databases {
 
   rpc Update(DatabaseUpdateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}"
+      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -54,7 +54,7 @@ service Databases {
 
   rpc Describe(DatabaseDescribeRequest) returns (DatabaseDescribeResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}"
+      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -63,7 +63,7 @@ service Databases {
 
   rpc Delete(DatabaseDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}"
+      delete: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -72,7 +72,7 @@ service Databases {
 
   rpc Recover(DatabaseRecoverRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/recover"
+      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/recover/json"
       body: "*"
     };
   }

@@ -260,7 +260,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/ci/v1beta1/agents": {
+    "/_appscode/api/ci/v1beta1/agents/json": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -300,7 +300,7 @@
         ]
       }
     },
-    "/_appscode/api/ci/v1beta1/agents/{uid}": {
+    "/_appscode/api/ci/v1beta1/agents/{uid}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [

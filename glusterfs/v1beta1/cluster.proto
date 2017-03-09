@@ -20,7 +20,7 @@ service Clusters {
   // with respect to the provided kube cluster space.
   rpc List(ClusterListRequest) returns (ClusterListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs"
+      get: "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -29,7 +29,7 @@ service Clusters {
 
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}"
+      get: "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -38,7 +38,7 @@ service Clusters {
 
   rpc Create(ClusterCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs"
+      post : "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -48,7 +48,7 @@ service Clusters {
 
   rpc Delete(ClusterDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete : "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}"
+      delete : "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true

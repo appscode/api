@@ -157,7 +157,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/namespace/v1beta1/billing/paymentmethods": {
+    "/_appscode/api/namespace/v1beta1/billing/paymentmethods/json": {
       "get": {
         "operationId": "CheckPaymentMethod",
         "responses": {
@@ -173,7 +173,7 @@
         ]
       }
     },
-    "/_appscode/api/namespace/v1beta1/billing/quotas": {
+    "/_appscode/api/namespace/v1beta1/billing/quotas/json": {
       "get": {
         "operationId": "GetQuota",
         "responses": {
@@ -189,7 +189,7 @@
         ]
       }
     },
-    "/_appscode/api/namespace/v1beta1/billing/subscriptions": {
+    "/_appscode/api/namespace/v1beta1/billing/subscriptions/json": {
       "get": {
         "operationId": "GetSubscription",
         "responses": {

@@ -115,7 +115,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{glusterfs_cluster}/volumes": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{glusterfs_cluster}/volumes/json": {
       "get": {
         "operationId": "List",
         "parameters": [

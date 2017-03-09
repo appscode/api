@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service MailingList {
   rpc SendEmail(SendEmailRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/mail/v1beta1"
+      post: "/_appscode/api/mail/v1beta1/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -25,7 +25,7 @@ service MailingList {
 
   rpc Subscribe(SubscribeRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/mailinglist/v1beta1/subscribe"
+      put: "/_appscode/api/mailinglist/v1beta1/subscribe/json"
       body: "*"
     };
     option (appscode.api.cors) = {

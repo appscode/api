@@ -16,7 +16,7 @@ service Billing {
   // Checks current subscription of a namespace
   rpc GetSubscription(dtypes.VoidRequest) returns (GetSubscriptionResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/namespace/v1beta1/billing/subscriptions"
+      get : "/_appscode/api/namespace/v1beta1/billing/subscriptions/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -25,13 +25,13 @@ service Billing {
 
   rpc GetQuota(dtypes.VoidRequest) returns (GetQuotaResponse) {
     option (google.api.http) = {
-        get: "/_appscode/api/namespace/v1beta1/billing/quotas"
+        get: "/_appscode/api/namespace/v1beta1/billing/quotas/json"
     };
   }
 
   rpc CheckPaymentMethod(dtypes.VoidRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/namespace/v1beta1/billing/paymentmethods"
+      get: "/_appscode/api/namespace/v1beta1/billing/paymentmethods/json"
     };
     option (appscode.api.cors) = {
       enable: true

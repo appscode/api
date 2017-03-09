@@ -161,7 +161,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/namespace/v1beta1/teams": {
+    "/_appscode/api/namespace/v1beta1/teams/json": {
       "post": {
         "operationId": "Create",
         "parameters": [
@@ -188,33 +188,7 @@
         ]
       }
     },
-    "/_appscode/api/namespace/v1beta1/teams/{name}": {
-      "get": {
-        "operationId": "Get",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1GetResponse"
-            }
-          }
-        },
-        "summary": "Gets a namespace, if exists. This can be used to check existence of a namespace.",
-        "tags": [
-          "Teams"
-        ]
-      }
-    },
-    "/_appscode/api/namespace/v1beta1/teams/{name}/is-available": {
+    "/_appscode/api/namespace/v1beta1/teams/{name}/is-available/json": {
       "get": {
         "operationId": "IsAvailable",
         "parameters": [
@@ -235,6 +209,32 @@
           }
         },
         "summary": "Check if a namespace name is available meaning name is valid and no namespace with same name exists.",
+        "tags": [
+          "Teams"
+        ]
+      }
+    },
+    "/_appscode/api/namespace/v1beta1/teams/{name}/json": {
+      "get": {
+        "operationId": "Get",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1GetResponse"
+            }
+          }
+        },
+        "summary": "Gets a namespace, if exists. This can be used to check existence of a namespace.",
         "tags": [
           "Teams"
         ]

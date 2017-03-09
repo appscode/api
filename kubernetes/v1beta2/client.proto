@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Clients {
   rpc List(ListResourceRequest) returns (ListResourceResponse){
     option (google.api.http) = {
-      get : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}"
+      get : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Clients {
 
   rpc Describe(DescribeResourceRequest) returns (DescribeResourceResponse){
     option (google.api.http) = {
-      get : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
+      get : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -33,7 +33,7 @@ service Clients {
 
   rpc Create(CreateResourceRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}"
+      post: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/json"
       body : "*"
     };
     option (appscode.api.cors) = {
@@ -43,7 +43,7 @@ service Clients {
 
   rpc Delete(DeleteResourceRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
+      delete: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -52,7 +52,7 @@ service Clients {
 
   rpc Update(UpdateResourceRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
+      put : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/json"
       body : "*"
     };
     option (appscode.api.cors) = {
@@ -62,7 +62,7 @@ service Clients {
 
   rpc Copy(CopyResourceRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put : "/_appscode/api/kubernetes/v1beta2/actions/copy"
+      put : "/_appscode/api/kubernetes/v1beta2/actions/copy/json"
       body : "*"
     };
     option (appscode.api.cors) = {
@@ -74,7 +74,7 @@ service Clients {
   // TODO: (@sadlil) Consider seperating them.
   rpc EditConfigMap(ConfigMapEditRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit"
+      post : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit/json"
       body : "*"
     };
     option (appscode.api.cors) = {
@@ -84,7 +84,7 @@ service Clients {
 
   rpc EditSecret(SecretEditRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit"
+      post : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit/json"
       body : "*"
     };
     option (appscode.api.cors) = {
@@ -94,7 +94,7 @@ service Clients {
 
   rpc RegisterPersistentVolume(PersistentVolumeRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register"
+      post: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -104,7 +104,7 @@ service Clients {
 
   rpc UnregisterPersistentVolume(PersistentVolumeUnRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister"
+      delete: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -113,7 +113,7 @@ service Clients {
 
   rpc RegisterPersistentVolumeClaim(PersistentVolumeClaimRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register"
+      post: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -123,7 +123,7 @@ service Clients {
 
   rpc UnregisterPersistentVolumeClaim(PersistentVolumeClaimUnRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister"
+      delete: "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -1409,7 +1409,7 @@ message CephFSVolumeSource {
 service Disks {
   rpc List(DiskListRequest) returns (DiskListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/cloud/v1beta2/disks"
+      get: "/_appscode/api/cloud/v1beta2/disks/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -1418,7 +1418,7 @@ service Disks {
 
   rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/cloud/v1beta2/disks/{name}"
+      get: "/_appscode/api/cloud/v1beta2/disks/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -1427,7 +1427,7 @@ service Disks {
 
   rpc Create(DiskCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/cloud/v1beta2/disks"
+      post: "/_appscode/api/cloud/v1beta2/disks/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -1437,7 +1437,7 @@ service Disks {
 
   rpc Delete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/cloud/v1beta2/disks/{uid}"
+      delete: "/_appscode/api/cloud/v1beta2/disks/{uid}/json"
     };
     option (appscode.api.cors) = {
       enable: true

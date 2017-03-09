@@ -16,7 +16,7 @@ service Authentication {
   // This rpc is used to check a valid user from other applications.
   rpc Login(LoginRequest) returns (LoginResponse) {
     option (google.api.http) = {
-      post : "/_appscode/api/auth/v1beta1/login"
+      post : "/_appscode/api/auth/v1beta1/login/json"
       body : "*"
       additional_bindings {
         post : "/_appscode/api/auth/v0.1/login"
@@ -30,7 +30,7 @@ service Authentication {
 
   rpc Logout(LogoutRequest) returns (LogoutResponse) {
     option (google.api.http) = {
-      post : "/_appscode/api/auth/v1beta1/logout"
+      post : "/_appscode/api/auth/v1beta1/logout/json"
       body : "*"
       additional_bindings {
         post : "/_appscode/api/auth/v0.1/logout"
@@ -44,7 +44,7 @@ service Authentication {
   // appctl used this to validates the user token with phabricator.
   rpc Token(TokenRequest) returns (TokenResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/auth/v1beta1/token"
+      post: "/_appscode/api/auth/v1beta1/token/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -54,7 +54,7 @@ service Authentication {
 
   rpc CSRFToken(dtypes.VoidRequest) returns (CSRFTokenResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/auth/v1beta1/csrf-token"
+      get: "/_appscode/api/auth/v1beta1/csrf-token/json"
     };
     option (appscode.api.cors) = {
       enable: true

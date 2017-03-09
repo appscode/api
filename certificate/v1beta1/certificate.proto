@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Certificates {
   rpc List(CertificateListRequest) returns (CertificateListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/certificate/v1beta1/certificates"
+      get: "/_appscode/api/certificate/v1beta1/certificates/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Certificates {
 
   rpc Describe(CertificateDescribeRequest) returns (CertificateDescribeResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/certificate/v1beta1/certificates/{uid}"
+      get: "/_appscode/api/certificate/v1beta1/certificates/{uid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -33,7 +33,7 @@ service Certificates {
 
   rpc Load(CertificateLoadRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain"
+      put: "/_appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -43,7 +43,7 @@ service Certificates {
 
   rpc Delete(CertificateDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/certificate/v1beta1/certificates/{uid}"
+      delete: "/_appscode/api/certificate/v1beta1/certificates/{uid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -52,7 +52,7 @@ service Certificates {
 
   rpc Deploy(CertificateDeployRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy"
+      put: "/_appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy/json"
       body: "*"
     };
     option (appscode.api.cors) = {

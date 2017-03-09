@@ -16,7 +16,7 @@ import "appscode/api/dtypes/types.proto";
 service LoadBalancers {
   rpc List(ListRequest) returns (ListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers"
+      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -25,7 +25,7 @@ service LoadBalancers {
 
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
+      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -34,7 +34,7 @@ service LoadBalancers {
 
   rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers"
+      post: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -44,7 +44,7 @@ service LoadBalancers {
 
   rpc Update(UpdateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
+      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -54,7 +54,7 @@ service LoadBalancers {
 
   rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
+      delete: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true

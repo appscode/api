@@ -851,7 +851,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/kubernetes/v1beta1/actions/copy": {
+    "/_appscode/api/kubernetes/v1beta1/actions/copy/json": {
       "put": {
         "operationId": "Copy",
         "parameters": [
@@ -877,7 +877,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps/json": {
       "get": {
         "operationId": "Apps",
         "parameters": [
@@ -902,7 +902,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}/json": {
       "get": {
         "operationId": "App",
         "parameters": [
@@ -941,7 +941,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}/pods": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}/pods/json": {
       "get": {
         "operationId": "AppPods",
         "parameters": [
@@ -980,7 +980,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps/json": {
       "get": {
         "operationId": "ConfigMaps",
         "parameters": [
@@ -1005,7 +1005,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps/{namespace}/{name}": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps/{namespace}/{name}/json": {
       "get": {
         "operationId": "ConfigMap",
         "parameters": [
@@ -1044,7 +1044,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/jobs": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/jobs/json": {
       "get": {
         "operationId": "Jobs",
         "parameters": [
@@ -1069,7 +1069,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/namespaces": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/namespaces/json": {
       "get": {
         "operationId": "Namespaces",
         "parameters": [
@@ -1094,7 +1094,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/nodes": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/nodes/json": {
       "get": {
         "operationId": "Nodes",
         "parameters": [
@@ -1119,7 +1119,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/pods": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/pods/json": {
       "get": {
         "operationId": "Pods",
         "parameters": [
@@ -1144,7 +1144,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/rcs": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/rcs/json": {
       "get": {
         "operationId": "ReplicationControllers",
         "parameters": [
@@ -1169,7 +1169,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/secrets": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/secrets/json": {
       "get": {
         "operationId": "Secrets",
         "parameters": [
@@ -1194,7 +1194,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/secrets/{namespace}/{name}": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/secrets/{namespace}/{name}/json": {
       "get": {
         "operationId": "Secret",
         "parameters": [
@@ -1233,7 +1233,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/services": {
+    "/_appscode/api/kubernetes/v1beta1/client/{cluster}/services/json": {
       "get": {
         "operationId": "Services",
         "parameters": [

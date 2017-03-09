@@ -155,7 +155,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/cloud/v1beta1/buckets": {
+    "/_appscode/api/cloud/v1beta1/buckets/json": {
       "get": {
         "operationId": "ListBuckets",
         "responses": {
@@ -171,7 +171,7 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1beta1/regions": {
+    "/_appscode/api/cloud/v1beta1/regions/json": {
       "get": {
         "operationId": "ListRegions",
         "responses": {
@@ -187,7 +187,7 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1beta1/regions/{region}/zones": {
+    "/_appscode/api/cloud/v1beta1/regions/{region}/zones/json": {
       "get": {
         "operationId": "ListZones",
         "parameters": [

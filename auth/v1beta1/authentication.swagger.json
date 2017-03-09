@@ -220,7 +220,7 @@
         ]
       }
     },
-    "/_appscode/api/auth/v1beta1/csrf-token": {
+    "/_appscode/api/auth/v1beta1/csrf-token/json": {
       "get": {
         "operationId": "CSRFToken",
         "responses": {
@@ -236,7 +236,7 @@
         ]
       }
     },
-    "/_appscode/api/auth/v1beta1/login": {
+    "/_appscode/api/auth/v1beta1/login/json": {
       "post": {
         "operationId": "Login",
         "parameters": [
@@ -263,7 +263,7 @@
         ]
       }
     },
-    "/_appscode/api/auth/v1beta1/logout": {
+    "/_appscode/api/auth/v1beta1/logout/json": {
       "post": {
         "operationId": "Logout",
         "parameters": [
@@ -289,7 +289,7 @@
         ]
       }
     },
-    "/_appscode/api/auth/v1beta1/token": {
+    "/_appscode/api/auth/v1beta1/token/json": {
       "post": {
         "operationId": "Token",
         "parameters": [

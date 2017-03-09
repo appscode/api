@@ -16,7 +16,7 @@ import "appscode/api/version/version.proto";
 service Health {
   rpc Status(dtypes.VoidRequest) returns (StatusResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/health"
+      get : "/_appscode/api/health/json"
     };
     option (appscode.api.cors) = {
       enable: true

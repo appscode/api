@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Snapshots {
   rpc List(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots"
+      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Snapshots {
 
   rpc Describe(SnapshotDescribeRequest) returns (SnapshotDescribeResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/{phid}"
+      get: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/{phid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -33,7 +33,7 @@ service Snapshots {
 
   rpc BackupSchedule(BackupScheduleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/schedule-backup"
+      post: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/schedule-backup/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -43,7 +43,7 @@ service Snapshots {
 
   rpc BackupUnschedule(BackupUnscheduleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/unschedule-backup"
+      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/unschedule-backup/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -52,7 +52,7 @@ service Snapshots {
 
   rpc Restore(SnapshotRestoreRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/restore"
+      post: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/restore/json"
       body: "*"
     };
     option (appscode.api.cors) = {

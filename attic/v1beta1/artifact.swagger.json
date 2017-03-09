@@ -142,7 +142,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/attic/v1beta1/artifacts/{type}": {
+    "/_appscode/api/attic/v1beta1/artifacts/{type}/json": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -167,7 +167,7 @@
         ]
       }
     },
-    "/_appscode/api/attic/v1beta1/search": {
+    "/_appscode/api/attic/v1beta1/search/json": {
       "get": {
         "operationId": "Search",
         "responses": {

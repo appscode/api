@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Events {
   rpc Constructive(EventRequest) returns (EventResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/construct-event"
+      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/construct-event/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -25,7 +25,7 @@ service Events {
 
   rpc Destructive(EventRequest) returns (EventResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/destruct-event"
+      put: "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/destruct-event/json"
       body: "*"
     };
     option (appscode.api.cors) = {

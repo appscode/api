@@ -1,26 +1,26 @@
 {
-  "/_appscode/api/attic/v1beta1/artifacts/*": {
-    "get": {
-      "file": "/attic/v1beta1/artifact.proto",
-      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}"
-    }
-  },
-  "/_appscode/api/attic/v1beta1/artifacts/*/versions": {
+  "/_appscode/api/attic/v1beta1/artifacts/*/*/versions/*/json": {
     "get": {
       "file": "/attic/v1beta1/version.proto",
-      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/versions"
+      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/{name}/versions/{id}/json"
     }
   },
-  "/_appscode/api/attic/v1beta1/artifacts/*/versions/description": {
+  "/_appscode/api/attic/v1beta1/artifacts/*/*/versions/json": {
     "get": {
       "file": "/attic/v1beta1/version.proto",
-      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/versions/description"
+      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/{name}/versions/json"
     }
   },
-  "/_appscode/api/attic/v1beta1/search": {
+  "/_appscode/api/attic/v1beta1/artifacts/*/json": {
     "get": {
       "file": "/attic/v1beta1/artifact.proto",
-      "url": "/_appscode/api/attic/v1beta1/search"
+      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/json"
+    }
+  },
+  "/_appscode/api/attic/v1beta1/search/json": {
+    "get": {
+      "file": "/attic/v1beta1/artifact.proto",
+      "url": "/_appscode/api/attic/v1beta1/search/json"
     }
   },
   "/_appscode/api/auth/v0.1/login": {
@@ -35,396 +35,372 @@
       "url": "/_appscode/api/auth/v0.1/logout"
     }
   },
-  "/_appscode/api/auth/v1beta1/conduit/users": {
+  "/_appscode/api/auth/v1beta1/conduit/users/json": {
     "get": {
       "file": "/auth/v1beta1/conduit.proto",
-      "url": "/_appscode/api/auth/v1beta1/conduit/users"
+      "url": "/_appscode/api/auth/v1beta1/conduit/users/json"
     }
   },
-  "/_appscode/api/auth/v1beta1/conduit/whoami": {
+  "/_appscode/api/auth/v1beta1/conduit/whoami/json": {
     "get": {
       "file": "/auth/v1beta1/conduit.proto",
-      "url": "/_appscode/api/auth/v1beta1/conduit/whoami"
+      "url": "/_appscode/api/auth/v1beta1/conduit/whoami/json"
     }
   },
-  "/_appscode/api/auth/v1beta1/csrf-token": {
+  "/_appscode/api/auth/v1beta1/csrf-token/json": {
     "get": {
       "file": "/auth/v1beta1/authentication.proto",
-      "url": "/_appscode/api/auth/v1beta1/csrf-token"
+      "url": "/_appscode/api/auth/v1beta1/csrf-token/json"
     }
   },
-  "/_appscode/api/auth/v1beta1/login": {
+  "/_appscode/api/auth/v1beta1/login/json": {
     "post": {
       "file": "/auth/v1beta1/authentication.proto",
-      "url": "/_appscode/api/auth/v1beta1/login"
+      "url": "/_appscode/api/auth/v1beta1/login/json"
     }
   },
-  "/_appscode/api/auth/v1beta1/logout": {
+  "/_appscode/api/auth/v1beta1/logout/json": {
     "post": {
       "file": "/auth/v1beta1/authentication.proto",
-      "url": "/_appscode/api/auth/v1beta1/logout"
+      "url": "/_appscode/api/auth/v1beta1/logout/json"
     }
   },
-  "/_appscode/api/auth/v1beta1/projects": {
+  "/_appscode/api/auth/v1beta1/projects/*/members/json": {
     "get": {
       "file": "/auth/v1beta1/project.proto",
-      "url": "/_appscode/api/auth/v1beta1/projects"
+      "url": "/_appscode/api/auth/v1beta1/projects/{uid}/members/json"
     }
   },
-  "/_appscode/api/auth/v1beta1/projects/*/members": {
+  "/_appscode/api/auth/v1beta1/projects/json": {
     "get": {
       "file": "/auth/v1beta1/project.proto",
-      "url": "/_appscode/api/auth/v1beta1/projects/{uid}/members"
+      "url": "/_appscode/api/auth/v1beta1/projects/json"
     }
   },
-  "/_appscode/api/auth/v1beta1/token": {
+  "/_appscode/api/auth/v1beta1/token/json": {
     "post": {
       "file": "/auth/v1beta1/authentication.proto",
-      "url": "/_appscode/api/auth/v1beta1/token"
+      "url": "/_appscode/api/auth/v1beta1/token/json"
     }
   },
-  "/_appscode/api/certificate/v1beta1/certificates": {
-    "get": {
+  "/_appscode/api/certificate/v1beta1/certificates/*/actions/deploy/json": {
+    "put": {
       "file": "/certificate/v1beta1/certificate.proto",
-      "url": "/_appscode/api/certificate/v1beta1/certificates"
+      "url": "/_appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy/json"
     }
   },
-  "/_appscode/api/certificate/v1beta1/certificates/*": {
+  "/_appscode/api/certificate/v1beta1/certificates/*/actions/obtain/json": {
+    "put": {
+      "file": "/certificate/v1beta1/certificate.proto",
+      "url": "/_appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain/json"
+    }
+  },
+  "/_appscode/api/certificate/v1beta1/certificates/*/json": {
     "delete": {
       "file": "/certificate/v1beta1/certificate.proto",
-      "url": "/_appscode/api/certificate/v1beta1/certificates/{uid}"
+      "url": "/_appscode/api/certificate/v1beta1/certificates/{uid}/json"
     },
     "get": {
       "file": "/certificate/v1beta1/certificate.proto",
-      "url": "/_appscode/api/certificate/v1beta1/certificates/{uid}"
+      "url": "/_appscode/api/certificate/v1beta1/certificates/{uid}/json"
     }
   },
-  "/_appscode/api/certificate/v1beta1/certificates/*/actions/deploy": {
-    "put": {
+  "/_appscode/api/certificate/v1beta1/certificates/json": {
+    "get": {
       "file": "/certificate/v1beta1/certificate.proto",
-      "url": "/_appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy"
+      "url": "/_appscode/api/certificate/v1beta1/certificates/json"
     }
   },
-  "/_appscode/api/certificate/v1beta1/certificates/*/actions/obtain": {
-    "put": {
-      "file": "/certificate/v1beta1/certificate.proto",
-      "url": "/_appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/agents": {
+  "/_appscode/api/ci/v1beta1/agents/*/json": {
+    "delete": {
+      "file": "/ci/v1beta1/agent.proto",
+      "url": "/_appscode/api/ci/v1beta1/agents/{uid}/json"
+    },
     "get": {
       "file": "/ci/v1beta1/agent.proto",
-      "url": "/_appscode/api/ci/v1beta1/agents"
+      "url": "/_appscode/api/ci/v1beta1/agents/{uid}/json"
+    }
+  },
+  "/_appscode/api/ci/v1beta1/agents/json": {
+    "get": {
+      "file": "/ci/v1beta1/agent.proto",
+      "url": "/_appscode/api/ci/v1beta1/agents/json"
     },
     "post": {
       "file": "/ci/v1beta1/agent.proto",
-      "url": "/_appscode/api/ci/v1beta1/agents"
+      "url": "/_appscode/api/ci/v1beta1/agents/json"
     }
   },
-  "/_appscode/api/ci/v1beta1/agents/*": {
-    "delete": {
-      "file": "/ci/v1beta1/agent.proto",
-      "url": "/_appscode/api/ci/v1beta1/agents/{uid}"
-    },
-    "get": {
-      "file": "/ci/v1beta1/agent.proto",
-      "url": "/_appscode/api/ci/v1beta1/agents/{uid}"
-    }
-  },
-  "/_appscode/api/ci/v1beta1/metadata/server-info": {
+  "/_appscode/api/ci/v1beta1/metadata/server-info/json": {
     "get": {
       "file": "/ci/v1beta1/metadata.proto",
-      "url": "/_appscode/api/ci/v1beta1/metadata/server-info"
+      "url": "/_appscode/api/ci/v1beta1/metadata/server-info/json"
     }
   },
-  "/_appscode/api/cloud/v1beta1/buckets": {
+  "/_appscode/api/cloud/v1beta1/buckets/json": {
     "get": {
       "file": "/kubernetes/v1beta1/metadata.proto",
-      "url": "/_appscode/api/cloud/v1beta1/buckets"
+      "url": "/_appscode/api/cloud/v1beta1/buckets/json"
     }
   },
-  "/_appscode/api/cloud/v1beta1/credentials": {
-    "get": {
-      "file": "/credential/v1beta1/credential.proto",
-      "url": "/_appscode/api/cloud/v1beta1/credentials"
-    },
+  "/_appscode/api/cloud/v1beta1/credentials/*/is-authorized/json": {
     "post": {
       "file": "/credential/v1beta1/credential.proto",
-      "url": "/_appscode/api/cloud/v1beta1/credentials"
+      "url": "/_appscode/api/cloud/v1beta1/credentials/{name}/is-authorized/json"
     }
   },
-  "/_appscode/api/cloud/v1beta1/credentials/*": {
+  "/_appscode/api/cloud/v1beta1/credentials/*/json": {
     "delete": {
       "file": "/credential/v1beta1/credential.proto",
-      "url": "/_appscode/api/cloud/v1beta1/credentials/{name}"
+      "url": "/_appscode/api/cloud/v1beta1/credentials/{name}/json"
     },
     "get": {
       "file": "/credential/v1beta1/credential.proto",
-      "url": "/_appscode/api/cloud/v1beta1/credentials/{name}"
+      "url": "/_appscode/api/cloud/v1beta1/credentials/{name}/json"
     },
     "put": {
       "file": "/credential/v1beta1/credential.proto",
-      "url": "/_appscode/api/cloud/v1beta1/credentials/{name}"
+      "url": "/_appscode/api/cloud/v1beta1/credentials/{name}/json"
     }
   },
-  "/_appscode/api/cloud/v1beta1/credentials/*/is-authorized": {
+  "/_appscode/api/cloud/v1beta1/credentials/json": {
+    "get": {
+      "file": "/credential/v1beta1/credential.proto",
+      "url": "/_appscode/api/cloud/v1beta1/credentials/json"
+    },
     "post": {
       "file": "/credential/v1beta1/credential.proto",
-      "url": "/_appscode/api/cloud/v1beta1/credentials/{name}/is-authorized"
+      "url": "/_appscode/api/cloud/v1beta1/credentials/json"
     }
   },
-  "/_appscode/api/cloud/v1beta1/regions": {
+  "/_appscode/api/cloud/v1beta1/regions/*/zones/json": {
     "get": {
       "file": "/kubernetes/v1beta1/metadata.proto",
-      "url": "/_appscode/api/cloud/v1beta1/regions"
+      "url": "/_appscode/api/cloud/v1beta1/regions/{region}/zones/json"
     }
   },
-  "/_appscode/api/cloud/v1beta1/regions/*/zones": {
+  "/_appscode/api/cloud/v1beta1/regions/json": {
     "get": {
       "file": "/kubernetes/v1beta1/metadata.proto",
-      "url": "/_appscode/api/cloud/v1beta1/regions/{region}/zones"
+      "url": "/_appscode/api/cloud/v1beta1/regions/json"
     }
   },
-  "/_appscode/api/cloud/v1beta2/disks": {
+  "/_appscode/api/cloud/v1beta2/disks/*/json": {
+    "delete": {
+      "file": "/kubernetes/v1beta2/client.proto",
+      "url": "/_appscode/api/cloud/v1beta2/disks/{uid}/json"
+    },
     "get": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/cloud/v1beta2/disks"
+      "url": "/_appscode/api/cloud/v1beta2/disks/{name}/json"
+    }
+  },
+  "/_appscode/api/cloud/v1beta2/disks/json": {
+    "get": {
+      "file": "/kubernetes/v1beta2/client.proto",
+      "url": "/_appscode/api/cloud/v1beta2/disks/json"
     },
     "post": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/cloud/v1beta2/disks"
+      "url": "/_appscode/api/cloud/v1beta2/disks/json"
     }
   },
-  "/_appscode/api/cloud/v1beta2/disks/*": {
-    "delete": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/cloud/v1beta2/disks/{uid}"
-    },
-    "get": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/cloud/v1beta2/disks/{name}"
-    }
-  },
-  "/_appscode/api/health": {
+  "/_appscode/api/health/json": {
     "get": {
       "file": "/health/health.proto",
-      "url": "/_appscode/api/health"
+      "url": "/_appscode/api/health/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/actions/copy": {
+  "/_appscode/api/kubernetes/v1beta1/actions/copy/json": {
     "put": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/actions/copy"
+      "url": "/_appscode/api/kubernetes/v1beta1/actions/copy/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/apps": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/apps/*/*/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/apps/*/*": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/apps/*/*/pods/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}/pods/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/apps/*/*/pods": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/apps/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}/pods"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/apps/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/configmaps": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/configmaps/*/*/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps/{namespace}/{name}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/configmaps/*/*": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/configmaps/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps/{namespace}/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/jobs": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/jobs/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/jobs"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/jobs/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/namespaces": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/namespaces/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/namespaces"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/namespaces/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/nodes": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/nodes/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/nodes"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/nodes/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/pods": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/pods/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/pods"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/pods/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/rcs": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/rcs/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/rcs"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/rcs/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/secrets": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/secrets/*/*/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/secrets"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/secrets/{namespace}/{name}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/secrets/*/*": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/secrets/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/secrets/{namespace}/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/secrets/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/client/*/services": {
+  "/_appscode/api/kubernetes/v1beta1/client/*/services/json": {
     "get": {
       "file": "/kubernetes/v1beta1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/services"
+      "url": "/_appscode/api/kubernetes/v1beta1/client/{cluster}/services/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters": {
-    "get": {
-      "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters"
-    },
-    "post": {
-      "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*": {
-    "delete": {
-      "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}"
-    },
-    "get": {
-      "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}"
-    },
-    "put": {
-      "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/construct-event": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/construct-event/json": {
     "put": {
       "file": "/kubernetes/v1beta1/event.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/construct-event"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/construct-event/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/destruct-event": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/destruct-event/json": {
     "put": {
       "file": "/kubernetes/v1beta1/event.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/destruct-event"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/destruct-event/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/notify-incident": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/notify-incident/json": {
     "post": {
       "file": "/kubernetes/v1beta1/incident.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/scale": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/scale/json": {
     "put": {
       "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/set-version": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/set-version/json": {
     "put": {
       "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/set-version"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/set-version/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/client-config": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/client-config/json": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/client-config"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/client-config/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases": {
-    "get": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/recover/json": {
+    "put": {
       "file": "/db/v1beta1/database.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases"
-    },
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/recover/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/restore/json": {
     "post": {
-      "file": "/db/v1beta1/database.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases"
+      "file": "/db/v1beta1/snapshot.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/restore/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/scale/json": {
+    "put": {
+      "file": "/db/v1beta1/database.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/scale/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/schedule-backup/json": {
+    "post": {
+      "file": "/db/v1beta1/snapshot.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/schedule-backup/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/unschedule-backup/json": {
+    "put": {
+      "file": "/db/v1beta1/snapshot.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/unschedule-backup/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/json": {
     "delete": {
       "file": "/db/v1beta1/database.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/json"
     },
     "get": {
       "file": "/db/v1beta1/database.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/json"
     },
     "put": {
       "file": "/db/v1beta1/database.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/recover": {
-    "put": {
-      "file": "/db/v1beta1/database.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/recover"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/restore": {
-    "post": {
-      "file": "/db/v1beta1/snapshot.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/restore"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/scale": {
-    "put": {
-      "file": "/db/v1beta1/database.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/scale"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/schedule-backup": {
-    "post": {
-      "file": "/db/v1beta1/snapshot.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/schedule-backup"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/actions/unschedule-backup": {
-    "put": {
-      "file": "/db/v1beta1/snapshot.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/unschedule-backup"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/snapshots": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/snapshots/*/json": {
     "get": {
       "file": "/db/v1beta1/snapshot.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/{phid}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/snapshots/*": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/*/snapshots/json": {
     "get": {
       "file": "/db/v1beta1/snapshot.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/{phid}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/glusterfs": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/databases/json": {
+    "get": {
+      "file": "/db/v1beta1/database.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/json"
+    },
+    "post": {
+      "file": "/db/v1beta1/database.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/glusterfs/json": {
     "get": {
       "file": "/glusterfs/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs/json"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/instance-by-ip/*": {
@@ -433,56 +409,76 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/instances": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/instance-by-ip/*/json": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/loadbalancers": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/instances/json": {
     "get": {
-      "file": "/kubernetes/v1beta1/loadbalancer.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers"
-    },
-    "post": {
-      "file": "/kubernetes/v1beta1/loadbalancer.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers"
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/loadbalancers/*": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/json": {
+    "delete": {
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/json"
+    },
+    "get": {
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/json"
+    },
+    "put": {
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/loadbalancers/*/json": {
     "delete": {
       "file": "/kubernetes/v1beta1/loadbalancer.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}/json"
     },
     "get": {
       "file": "/kubernetes/v1beta1/loadbalancer.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}/json"
     },
     "put": {
       "file": "/kubernetes/v1beta1/loadbalancer.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/glusterfs": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/loadbalancers/json": {
+    "get": {
+      "file": "/kubernetes/v1beta1/loadbalancer.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/json"
+    },
     "post": {
-      "file": "/glusterfs/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs"
+      "file": "/kubernetes/v1beta1/loadbalancer.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/glusterfs/*": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/glusterfs/*/json": {
     "delete": {
       "file": "/glusterfs/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}/json"
     },
     "get": {
       "file": "/glusterfs/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/glusterfs/*/volumes": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/glusterfs/*/volumes/json": {
     "get": {
       "file": "/glusterfs/v1beta1/volume.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{glusterfs_cluster}/volumes"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{glusterfs_cluster}/volumes/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/glusterfs/json": {
+    "post": {
+      "file": "/glusterfs/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/json"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/context-versions/*": {
@@ -491,154 +487,170 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/incidents": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/context-versions/*/json": {
     "get": {
-      "file": "/kubernetes/v1beta1/incident.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/incidents"
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/incidents/*": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/json": {
     "get": {
-      "file": "/kubernetes/v1beta1/incident.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/incidents/{phid}"
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/json"
+    },
+    "post": {
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/incidents/*/events": {
+  "/_appscode/api/kubernetes/v1beta1/incidents/*/events/json": {
     "post": {
       "file": "/kubernetes/v1beta1/incident.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/incidents/{phid}/events"
+      "url": "/_appscode/api/kubernetes/v1beta1/incidents/{phid}/events/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta2/actions/copy": {
+  "/_appscode/api/kubernetes/v1beta1/incidents/*/json": {
+    "get": {
+      "file": "/kubernetes/v1beta1/incident.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/incidents/{phid}/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/incidents/json": {
+    "get": {
+      "file": "/kubernetes/v1beta1/incident.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/incidents/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta2/actions/copy/json": {
     "put": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/actions/copy"
+      "url": "/_appscode/api/kubernetes/v1beta2/actions/copy/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/*": {
-    "get": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}"
-    },
-    "post": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/*/*": {
+  "/_appscode/api/kubernetes/v1beta2/clusters/*/*/*/json": {
     "delete": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/json"
     },
     "get": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/json"
     },
     "put": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}"
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/namespaces/*/configmaps/*/actions/edit": {
+  "/_appscode/api/kubernetes/v1beta2/clusters/*/*/json": {
+    "get": {
+      "file": "/kubernetes/v1beta2/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/json"
+    },
     "post": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit"
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/namespaces/*/secrets/*/actions/edit": {
+  "/_appscode/api/kubernetes/v1beta2/clusters/*/namespaces/*/configmaps/*/actions/edit/json": {
     "post": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit"
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumeclaims/*/actions/register": {
+  "/_appscode/api/kubernetes/v1beta2/clusters/*/namespaces/*/secrets/*/actions/edit/json": {
     "post": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register"
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumeclaims/*/actions/unregister": {
+  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumeclaims/*/actions/register/json": {
+    "post": {
+      "file": "/kubernetes/v1beta2/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumeclaims/*/actions/unregister/json": {
     "delete": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister"
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumes/*/actions/register": {
+  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumes/*/actions/register/json": {
     "post": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register"
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumes/*/actions/unregister": {
+  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumes/*/actions/unregister/json": {
     "delete": {
       "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister"
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister/json"
     }
   },
-  "/_appscode/api/mail/v1beta1": {
+  "/_appscode/api/mail/v1beta1/json": {
     "post": {
       "file": "/mailinglist/v1beta1/mailinglist.proto",
-      "url": "/_appscode/api/mail/v1beta1"
+      "url": "/_appscode/api/mail/v1beta1/json"
     }
   },
-  "/_appscode/api/mailinglist/v1beta1/subscribe": {
+  "/_appscode/api/mailinglist/v1beta1/subscribe/json": {
     "put": {
       "file": "/mailinglist/v1beta1/mailinglist.proto",
-      "url": "/_appscode/api/mailinglist/v1beta1/subscribe"
+      "url": "/_appscode/api/mailinglist/v1beta1/subscribe/json"
     }
   },
-  "/_appscode/api/namespace/v1beta1/billing/paymentmethods": {
+  "/_appscode/api/namespace/v1beta1/billing/paymentmethods/json": {
     "get": {
       "file": "/namespace/v1beta1/billing.proto",
-      "url": "/_appscode/api/namespace/v1beta1/billing/paymentmethods"
+      "url": "/_appscode/api/namespace/v1beta1/billing/paymentmethods/json"
     }
   },
-  "/_appscode/api/namespace/v1beta1/billing/quotas": {
+  "/_appscode/api/namespace/v1beta1/billing/quotas/json": {
     "get": {
       "file": "/namespace/v1beta1/billing.proto",
-      "url": "/_appscode/api/namespace/v1beta1/billing/quotas"
+      "url": "/_appscode/api/namespace/v1beta1/billing/quotas/json"
     }
   },
-  "/_appscode/api/namespace/v1beta1/billing/subscriptions": {
+  "/_appscode/api/namespace/v1beta1/billing/subscriptions/json": {
     "get": {
       "file": "/namespace/v1beta1/billing.proto",
-      "url": "/_appscode/api/namespace/v1beta1/billing/subscriptions"
+      "url": "/_appscode/api/namespace/v1beta1/billing/subscriptions/json"
     }
   },
-  "/_appscode/api/namespace/v1beta1/teams": {
+  "/_appscode/api/namespace/v1beta1/teams/*/is-available/json": {
+    "get": {
+      "file": "/namespace/v1beta1/team.proto",
+      "url": "/_appscode/api/namespace/v1beta1/teams/{name}/is-available/json"
+    }
+  },
+  "/_appscode/api/namespace/v1beta1/teams/*/json": {
+    "get": {
+      "file": "/namespace/v1beta1/team.proto",
+      "url": "/_appscode/api/namespace/v1beta1/teams/{name}/json"
+    }
+  },
+  "/_appscode/api/namespace/v1beta1/teams/json": {
     "post": {
       "file": "/namespace/v1beta1/team.proto",
-      "url": "/_appscode/api/namespace/v1beta1/teams"
+      "url": "/_appscode/api/namespace/v1beta1/teams/json"
     }
   },
-  "/_appscode/api/namespace/v1beta1/teams/*": {
-    "get": {
-      "file": "/namespace/v1beta1/team.proto",
-      "url": "/_appscode/api/namespace/v1beta1/teams/{name}"
-    }
-  },
-  "/_appscode/api/namespace/v1beta1/teams/*/is-available": {
-    "get": {
-      "file": "/namespace/v1beta1/team.proto",
-      "url": "/_appscode/api/namespace/v1beta1/teams/{name}/is-available"
-    }
-  },
-  "/_appscode/api/operation/v1beta1/operations/*": {
+  "/_appscode/api/operation/v1beta1/operations/*/json": {
     "get": {
       "file": "/operation/v1beta1/operation.proto",
-      "url": "/_appscode/api/operation/v1beta1/operations/{phid}"
+      "url": "/_appscode/api/operation/v1beta1/operations/{phid}/json"
     }
   },
-  "/_appscode/api/operation/v1beta1/operations/*/logs/*": {
+  "/_appscode/api/operation/v1beta1/operations/*/logs/*/json": {
     "get": {
       "file": "/operation/v1beta1/operation.proto",
-      "url": "/_appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}"
+      "url": "/_appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}/json"
     }
   },
-  "/_appscode/api/ssh/v1beta1/ssh": {
+  "/_appscode/api/ssh/v1beta1/ssh/json": {
     "get": {
       "file": "/ssh/v1beta1/ssh.proto",
-      "url": "/_appscode/api/ssh/v1beta1/ssh"
+      "url": "/_appscode/api/ssh/v1beta1/ssh/json"
     }
   }
 }

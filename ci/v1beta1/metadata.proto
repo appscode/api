@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Metadata {
   rpc ServerInfo(dtypes.VoidRequest) returns (ServerInfoResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/ci/v1beta1/metadata/server-info"
+      get : "/_appscode/api/ci/v1beta1/metadata/server-info/json"
     };
     option (appscode.api.cors) = {
       enable: true

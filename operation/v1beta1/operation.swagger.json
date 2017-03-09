@@ -583,7 +583,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/operation/v1beta1/operations/{phid}": {
+    "/_appscode/api/operation/v1beta1/operations/{phid}/json": {
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -608,7 +608,7 @@
         ]
       }
     },
-    "/_appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}": {
+    "/_appscode/api/operation/v1beta1/operations/{phid}/logs/{log_id}/json": {
       "get": {
         "operationId": "DescribeLog",
         "parameters": [

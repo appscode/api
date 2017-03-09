@@ -250,13 +250,13 @@ func RegisterAgentsHandler(ctx context.Context, mux *runtime.ServeMux, conn *grp
 }
 
 var (
-	pattern_Agents_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"_appscode", "api", "ci", "v1beta1", "agents"}, ""))
+	pattern_Agents_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "ci", "v1beta1", "agents", "json"}, ""))
 
-	pattern_Agents_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"_appscode", "api", "ci", "v1beta1", "agents", "uid"}, ""))
+	pattern_Agents_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "ci", "v1beta1", "agents", "uid", "json"}, ""))
 
-	pattern_Agents_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"_appscode", "api", "ci", "v1beta1", "agents"}, ""))
+	pattern_Agents_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "ci", "v1beta1", "agents", "json"}, ""))
 
-	pattern_Agents_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"_appscode", "api", "ci", "v1beta1", "agents", "uid"}, ""))
+	pattern_Agents_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "ci", "v1beta1", "agents", "uid", "json"}, ""))
 )
 
 var (

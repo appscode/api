@@ -16,7 +16,7 @@ import "appscode/api/dtypes/types.proto";
 service Incidents {
   rpc List(IncidentListRequest) returns (IncidentListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/kubernetes/v1beta1/incidents"
+      get: "/_appscode/api/kubernetes/v1beta1/incidents/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -25,7 +25,7 @@ service Incidents {
 
   rpc Describe(IncidentDescribeRequest) returns (IncidentDescribeResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/kubernetes/v1beta1/incidents/{phid}"
+      get: "/_appscode/api/kubernetes/v1beta1/incidents/{phid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -34,7 +34,7 @@ service Incidents {
 
   rpc Notify(IncidentNotifyRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident"
+      post: "/_appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident/json"
       body : "*"
     };
     option (appscode.api.cors) = {
@@ -44,7 +44,7 @@ service Incidents {
 
   rpc CreateEvent(IncidentEventCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/_appscode/api/kubernetes/v1beta1/incidents/{phid}/events"
+      post : "/_appscode/api/kubernetes/v1beta1/incidents/{phid}/events/json"
       body : "*"
     };
     option (appscode.api.cors) = {

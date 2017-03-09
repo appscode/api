@@ -142,7 +142,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/ssh/v1beta1/ssh": {
+    "/_appscode/api/ssh/v1beta1/ssh/json": {
       "get": {
         "operationId": "Get",
         "responses": {

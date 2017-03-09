@@ -322,7 +322,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident/json": {
       "post": {
         "operationId": "Notify",
         "parameters": [
@@ -355,7 +355,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/incidents": {
+    "/_appscode/api/kubernetes/v1beta1/incidents/json": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -371,32 +371,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/incidents/{phid}": {
-      "get": {
-        "operationId": "Describe",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "phid",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1IncidentDescribeResponse"
-            }
-          }
-        },
-        "tags": [
-          "Incidents"
-        ]
-      }
-    },
-    "/_appscode/api/kubernetes/v1beta1/incidents/{phid}/events": {
+    "/_appscode/api/kubernetes/v1beta1/incidents/{phid}/events/json": {
       "post": {
         "operationId": "CreateEvent",
         "parameters": [
@@ -421,6 +396,31 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Incidents"
+        ]
+      }
+    },
+    "/_appscode/api/kubernetes/v1beta1/incidents/{phid}/json": {
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "phid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1IncidentDescribeResponse"
             }
           }
         },

@@ -117,7 +117,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/mail/v1beta1": {
+    "/_appscode/api/mail/v1beta1/json": {
       "post": {
         "operationId": "SendEmail",
         "parameters": [
@@ -143,7 +143,7 @@
         ]
       }
     },
-    "/_appscode/api/mailinglist/v1beta1/subscribe": {
+    "/_appscode/api/mailinglist/v1beta1/subscribe/json": {
       "put": {
         "operationId": "Subscribe",
         "parameters": [

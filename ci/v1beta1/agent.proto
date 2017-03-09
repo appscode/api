@@ -15,7 +15,7 @@ import "appscode/api/dtypes/types.proto";
 service Agents {
   rpc List(dtypes.VoidRequest) returns (AgentListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/ci/v1beta1/agents"
+      get: "/_appscode/api/ci/v1beta1/agents/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Agents {
 
   rpc Get(AgentGetRequest) returns (AgentGetResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/ci/v1beta1/agents/{uid}"
+      get: "/_appscode/api/ci/v1beta1/agents/{uid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -33,7 +33,7 @@ service Agents {
 
   rpc Create(AgentCreateRequest) returns (AgentCreateResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/ci/v1beta1/agents"
+      post: "/_appscode/api/ci/v1beta1/agents/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -43,7 +43,7 @@ service Agents {
 
   rpc Delete(AgentDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/ci/v1beta1/agents/{uid}"
+      delete: "/_appscode/api/ci/v1beta1/agents/{uid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
