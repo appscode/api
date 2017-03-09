@@ -172,7 +172,7 @@ message ClusterDescribeResponse {
   dtypes.Status status = 1;
   Cluster cluster = 2;
 
-  message Spec {
+  message ClusterSpec {
     int32 container_count = 1;
     int32 pod_count = 2;
     int32 service_count = 3;
@@ -181,7 +181,7 @@ message ClusterDescribeResponse {
     int64 total_cpu = 5;
     int64 total_memory = 6;
   }
-  Spec spec = 3;
+  ClusterSpec spec = 3;
 }
 
 message ClusterListRequest {
@@ -216,12 +216,12 @@ message ClusterCreateRequest {
   // Default access level is to allow permission to the cluster
   // when no Role matched for that specif user or group. This can
   // set as
-  //    - team-admins       // to allow ns admin access
-  //    - cluster-admins    // to allow admin access
-  //    - cluster-editors   // to allow editor access
-  //    - cluster-deployers // to allow deployer access
-  //    - cluster-viewers   // to allow viewer access
-  //    - no-access         // to allow no default access
+  //   - kubernetes:team-admin
+  //   - kubernetes:cluster-admin
+  //   - kubernetes:admin
+  //   - kubernetes:editor
+  //   - kubernetes:viewer
+  //   - deny-access
   // If not set this will set ""
   string default_access_level = 13;
   string gce_project = 15;
@@ -311,10 +311,12 @@ message ClusterUpdateRequest {
   // Default access level is to allow permission to the cluster
   // when no Role matched for that specif user or group. This can
   // set as
-  //    - v:cluster-admins    // to allow admin access
-  //    - v:cluster-deployer  // to allow deployer access
-  //    - v:cluster-viewer    // to allow viewer access
-  //    - ""                  // empty value stands for no access
+  //   - kubernetes:team-admin
+  //   - kubernetes:cluster-admin
+  //   - kubernetes:admin
+  //   - kubernetes:editor
+  //   - kubernetes:viewer
+  //   - deny-access
   string default_access_level = 4;
 }
 

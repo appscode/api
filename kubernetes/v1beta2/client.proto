@@ -131,6 +131,45 @@ service Clients {
   }
 }
 
+service Disks {
+  rpc List(DiskListRequest) returns (DiskListResponse) {
+    option (google.api.http) = {
+      get: "/_appscode/api/cloud/v1beta2/disks/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
+    option (google.api.http) = {
+      get: "/_appscode/api/cloud/v1beta2/disks/{name}/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Create(DiskCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/_appscode/api/cloud/v1beta2/disks/json"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Delete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/_appscode/api/cloud/v1beta2/disks/{uid}/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
 message ListResourceRequest {
   string cluster = 1;
   string type = 2;
@@ -417,6 +456,9 @@ message PodSpec {
     string image = 2;
     repeated string commands = 3;
     repeated VolumeMount volume_mounts = 4;
+    repeated string args = 5;
+    string working_dir = 6;
+    repeated EnvVar env = 7;
 
     message VolumeMount {
       string name = 1;
@@ -453,6 +495,7 @@ message Job {
     int32 active = 3;
     int32 succeeded = 4;
     int32 failed = 5;
+    repeated ResourceCondition conditions = 6;
   }
 }
 
@@ -460,11 +503,18 @@ message JobSpec {
     int32 parallelism = 1;
     int32 completions = 2;
     PodSpec template = 3;
+    int64 active_deadline_seconds = 4;
+
 }
 
 message Namespace {
   Meta meta = 1;
   Status status = 2;
+  NamespaceSpec spec = 3;
+
+  message NamespaceSpec {
+    repeated string finalizers = 1;
+  }
 
   message Status {
     string phase = 1;
@@ -475,32 +525,60 @@ message Node {
   Meta meta = 1;
   Spec spec = 2;
   bool is_master = 3;
-  Status status = 4;
+  NodeStatus status = 4;
   Metrics metrics = 5;
 
   message Spec {
     string external_id = 1;
     string provider_id = 2;
     bool unschedulable = 3;
+    string podCIDR = 4;
   }
 
-  message Status {
+  message NodeStatus {
     Capacity capacity = 1;
     string phase = 2;
-    NodeInfo node_info = 3;
+    NodeSystemInfo node_info = 3;
+    Capacity allocatable = 4;
+    repeated ResourceCondition conditions = 5;
+    repeated NodeAddress address = 6;
+    repeated ContainerImage images = 7;
+    repeated string volumes_in_use = 8;
+    repeated AttachedVolume volumes_attached = 9;
 
     message Capacity {
       int64 cpu = 1;
       int64 memory = 2;
       int64 pods = 3;
+      string storage = 4;
     }
 
-    message NodeInfo {
+    message NodeSystemInfo {
+      string machineID = 6;
+      string systemUUID = 7;
+      string bootID = 8;
       string kernel_version = 1;
       string os_image = 2;
       string container_runtime_version = 3;
       string kubelet_version = 4;
       string kube_proxy_version = 5;
+      string operating_system = 9;
+      string architecture = 10;
+    }
+
+    message NodeAddress {
+      string type = 1;
+      string address = 2;
+    }
+
+    message ContainerImage {
+      repeated string names = 1;
+      int64 size_bytes = 2;
+    }
+
+    message AttachedVolume {
+      string name = 1;
+      string device_path = 2;
     }
   }
 }
@@ -509,15 +587,17 @@ message Pod {
   Meta meta = 1;
   string app = 2;
   PodSpec spec = 3;
-  Status status = 4;
+  PodStatus status = 4;
   Metrics metrics = 5;
 
-  message Status {
+  message PodStatus {
     string phase = 1;
     string message = 2;
     string reason = 3;
     string hostIP = 4;
     string podIP = 5;
+    repeated ResourceCondition conditions = 6;
+    int64 start_time = 7;
   }
 }
 
@@ -586,6 +666,9 @@ message Service {
     string clusterIP = 4;
     repeated string externalIPs = 5;
     string loadbalancerIP = 6;
+    string external_name = 7;
+    string session_affinity = 8;
+    repeated string load_balancer_source_ranges = 9;
 
     message Port {
       string name = 1;
@@ -670,20 +753,41 @@ message Deployment {
   Meta meta = 1;
   string app = 2;
   Spec spec = 3;
-  Status status = 4;
+  DeploymentStatus status = 4;
 
   message Spec {
     int32 desired_replicas = 1;
     LabelSelector selector = 2;
     PodSpec pod_template = 3;
+    int32 min_ready_seconds = 4;
+    int32 revision_history_limit = 5;
+    bool paused = 6;
+    RollbackConfig rollback_to = 7;
+    int32 progress_deadline_seconds = 8;
+    DeploymentStrategy strategy = 9;
+
+    message DeploymentStrategy {
+        string type = 1;
+        RollingUpdateDeployment rolling_update = 2;
+    }
+
+    message RollingUpdateDeployment {
+      string max_unavailable = 1;
+      string max_surge = 2;
+    }
+
+    message RollbackConfig {
+      int64 revision = 1;
+    }
   }
 
-  message Status {
+  message DeploymentStatus {
     int64 observed_generation = 1;
     int32 replicas = 2;
     int32 updated_replicas = 3;
     int32 available_replicas = 4;
     int32 unavailable_replicas = 5;
+    repeated ResourceCondition conditions = 6;
   }
 }
 
@@ -1403,48 +1507,6 @@ message CephFSVolumeSource {
   bool readOnly = 6;
 }
 
-// Disk apis from disk.proto
-//-----------------------------------------------------------------------------
-
-service Disks {
-  rpc List(DiskListRequest) returns (DiskListResponse) {
-    option (google.api.http) = {
-      get: "/_appscode/api/cloud/v1beta2/disks/json"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-
-  rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
-    option (google.api.http) = {
-      get: "/_appscode/api/cloud/v1beta2/disks/{name}/json"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-
-  rpc Create(DiskCreateRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      post: "/_appscode/api/cloud/v1beta2/disks/json"
-      body: "*"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-
-  rpc Delete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
-    option (google.api.http) = {
-      delete: "/_appscode/api/cloud/v1beta2/disks/{uid}/json"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-}
-
 message DiskListRequest {
   string cluster=1;
 }
@@ -1492,4 +1554,96 @@ message Disk {
   int64 iops = 11;
   PersistentVolume persistent_volume = 12;
   PersistentVolumeClaim persistent_volume_claim = 13;
+}
+
+message EnvVar {
+  // Name of the environment variable. Must be a C_IDENTIFIER.
+  string name = 1;
+
+  // Variable references $(VAR_NAME) are expanded
+  // using the previous defined environment variables in the container and
+  // any service environment variables. If a variable cannot be resolved,
+  // the reference in the input string will be unchanged. The $(VAR_NAME)
+  // syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+  // references will never be expanded, regardless of whether the variable
+  // exists or not.
+  // Defaults to "".
+  // +optional
+  string value = 2;
+
+  // Source for the environment variable's value. Cannot be used if value is not empty.
+  // +optional
+  EnvVarSource value_from = 3;
+}
+
+// EnvVarSource represents a source for the value of an EnvVar.
+message EnvVarSource {
+  // Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations,
+  // spec.nodeName, spec.serviceAccountName, status.podIP.
+  // +optional
+  ObjectFieldSelector field_ref = 1;
+
+  // Selects a resource of the container: only resources limits and requests
+  // (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+  // +optional
+  ResourceFieldSelector resource_field_ref = 2;
+
+  // Selects a key of a ConfigMap.
+  // +optional
+  ConfigMapKeySelector config_map_key_ref = 3;
+
+  // Selects a key of a secret in the pod's namespace
+  // +optional
+  SecretKeySelector secret_key_ref = 4;
+}
+
+// ObjectFieldSelector selects an APIVersioned field of an object.
+message ObjectFieldSelector {
+  // Version of the schema the FieldPath is written in terms of, defaults to "v1".
+  // +optional
+  string api_version = 1;
+
+  // Path of the field to select in the specified API version.
+  string field_path = 2;
+}
+
+// ResourceFieldSelector represents container resources (cpu, memory) and their output format
+message ResourceFieldSelector {
+  // Container name: required for volumes, optional for env vars
+  // +optional
+  string container_name = 1;
+
+  // Required: resource to select
+  string resource = 2;
+
+  // Specifies the output format of the exposed resources, defaults to "1"
+  // +optional
+  string divisor = 3;
+}
+
+// Selects a key from a ConfigMap.
+message ConfigMapKeySelector {
+  // The ConfigMap to select from.
+  ObjectReference local_object_reference = 1;
+
+  // The key to select.
+  string key = 2;
+}
+
+// SecretKeySelector selects a key of a Secret.
+message SecretKeySelector {
+  // The name of the secret in the pod's namespace to select from.
+  ObjectReference local_object_reference = 1;
+
+  // The key of the secret to select from.  Must be a valid secret key.
+  string key = 2;
+}
+
+message ResourceCondition {
+  string type = 1;
+  string status = 2;
+  int64 last_heartbeat_time = 3;
+  int64 last_transition_time = 4;
+  string reason = 5;
+  string message = 6;
 }

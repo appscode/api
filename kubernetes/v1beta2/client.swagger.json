@@ -76,6 +76,37 @@
       },
       "type": "object"
     },
+    "DeploymentDeploymentStatus": {
+      "properties": {
+        "available_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/v1beta2ResourceCondition"
+          },
+          "type": "array"
+        },
+        "observed_generation": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "unavailable_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "updated_replicas": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListAlerts": {
       "properties": {
         "items": {
@@ -355,6 +386,175 @@
       },
       "type": "object"
     },
+    "NamespaceNamespaceSpec": {
+      "properties": {
+        "finalizers": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "NodeNodeStatus": {
+      "properties": {
+        "address": {
+          "items": {
+            "$ref": "#/definitions/NodeStatusNodeAddress"
+          },
+          "type": "array"
+        },
+        "allocatable": {
+          "$ref": "#/definitions/NodeStatusCapacity"
+        },
+        "capacity": {
+          "$ref": "#/definitions/NodeStatusCapacity"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/v1beta2ResourceCondition"
+          },
+          "type": "array"
+        },
+        "images": {
+          "items": {
+            "$ref": "#/definitions/NodeStatusContainerImage"
+          },
+          "type": "array"
+        },
+        "node_info": {
+          "$ref": "#/definitions/NodeStatusNodeSystemInfo"
+        },
+        "phase": {
+          "format": "string",
+          "type": "string"
+        },
+        "volumes_attached": {
+          "items": {
+            "$ref": "#/definitions/NodeStatusAttachedVolume"
+          },
+          "type": "array"
+        },
+        "volumes_in_use": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "NodeStatusAttachedVolume": {
+      "properties": {
+        "device_path": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "NodeStatusCapacity": {
+      "properties": {
+        "cpu": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "memory": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "pods": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "storage": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "NodeStatusContainerImage": {
+      "properties": {
+        "names": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "size_bytes": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "NodeStatusNodeAddress": {
+      "properties": {
+        "address": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "NodeStatusNodeSystemInfo": {
+      "properties": {
+        "architecture": {
+          "format": "string",
+          "type": "string"
+        },
+        "bootID": {
+          "format": "string",
+          "type": "string"
+        },
+        "container_runtime_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kernel_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_proxy_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubelet_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "machineID": {
+          "format": "string",
+          "type": "string"
+        },
+        "operating_system": {
+          "format": "string",
+          "type": "string"
+        },
+        "os_image": {
+          "format": "string",
+          "type": "string"
+        },
+        "systemUUID": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "PersistentVolumeClaimPersistentVolumeClaimSpec": {
       "properties": {
         "access_modes": {
@@ -462,12 +662,60 @@
       },
       "type": "object"
     },
+    "PodPodStatus": {
+      "properties": {
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/v1beta2ResourceCondition"
+          },
+          "type": "array"
+        },
+        "hostIP": {
+          "format": "string",
+          "type": "string"
+        },
+        "message": {
+          "format": "string",
+          "type": "string"
+        },
+        "phase": {
+          "format": "string",
+          "type": "string"
+        },
+        "podIP": {
+          "format": "string",
+          "type": "string"
+        },
+        "reason": {
+          "format": "string",
+          "type": "string"
+        },
+        "start_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "PodSpecContainer": {
       "properties": {
+        "args": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
         "commands": {
           "items": {
             "format": "string",
             "type": "string"
+          },
+          "type": "array"
+        },
+        "env": {
+          "items": {
+            "$ref": "#/definitions/v1beta2EnvVar"
           },
           "type": "array"
         },
@@ -484,6 +732,10 @@
             "$ref": "#/definitions/ContainerVolumeMount"
           },
           "type": "array"
+        },
+        "working_dir": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -495,6 +747,18 @@
           "type": "string"
         },
         "name": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SpecDeploymentStrategy": {
+      "properties": {
+        "rolling_update": {
+          "$ref": "#/definitions/SpecRollingUpdateDeployment"
+        },
+        "type": {
           "format": "string",
           "type": "string"
         }
@@ -526,6 +790,28 @@
       },
       "type": "object"
     },
+    "SpecRollbackConfig": {
+      "properties": {
+        "revision": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "SpecRollingUpdateDeployment": {
+      "properties": {
+        "max_surge": {
+          "format": "string",
+          "type": "string"
+        },
+        "max_unavailable": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "StatusACMECertificateDetails": {
       "properties": {
         "account_ref": {
@@ -547,23 +833,6 @@
       },
       "type": "object"
     },
-    "StatusCapacity": {
-      "properties": {
-        "cpu": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "memory": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "pods": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "StatusLoadBalancerIngress": {
       "properties": {
         "IP": {
@@ -571,31 +840,6 @@
           "type": "string"
         },
         "host_name": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "StatusNodeInfo": {
-      "properties": {
-        "container_runtime_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "kernel_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_proxy_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubelet_version": {
-          "format": "string",
-          "type": "string"
-        },
-        "os_image": {
           "format": "string",
           "type": "string"
         }
@@ -1030,6 +1274,21 @@
       },
       "type": "object"
     },
+    "v1beta2ConfigMapKeySelector": {
+      "description": "Selects a key from a ConfigMap.",
+      "properties": {
+        "key": {
+          "description": "The key to select.",
+          "format": "string",
+          "type": "string"
+        },
+        "local_object_reference": {
+          "$ref": "#/definitions/v1beta2ObjectReference",
+          "description": "The ConfigMap to select from."
+        }
+      },
+      "type": "object"
+    },
     "v1beta2CopyResourceRequest": {
       "properties": {
         "destination": {
@@ -1194,7 +1453,7 @@
           "$ref": "#/definitions/v1beta2DeploymentSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2DeploymentStatus"
+          "$ref": "#/definitions/DeploymentDeploymentStatus"
         }
       },
       "type": "object"
@@ -1205,36 +1464,33 @@
           "format": "int32",
           "type": "integer"
         },
+        "min_ready_seconds": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "paused": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "pod_template": {
           "$ref": "#/definitions/v1beta2PodSpec"
         },
+        "progress_deadline_seconds": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "revision_history_limit": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rollback_to": {
+          "$ref": "#/definitions/SpecRollbackConfig"
+        },
         "selector": {
           "$ref": "#/definitions/v1beta2LabelSelector"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2DeploymentStatus": {
-      "properties": {
-        "available_replicas": {
-          "format": "int32",
-          "type": "integer"
         },
-        "observed_generation": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "replicas": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "unavailable_replicas": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "updated_replicas": {
-          "format": "int32",
-          "type": "integer"
+        "strategy": {
+          "$ref": "#/definitions/SpecDeploymentStrategy"
         }
       },
       "type": "object"
@@ -1422,6 +1678,47 @@
         },
         "status": {
           "$ref": "#/definitions/appscodedtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2EnvVar": {
+      "properties": {
+        "name": {
+          "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
+          "format": "string",
+          "type": "string"
+        },
+        "value": {
+          "format": "string",
+          "title": "Variable references $(VAR_NAME) are expanded\nusing the previous defined environment variables in the container and\nany service environment variables. If a variable cannot be resolved,\nthe reference in the input string will be unchanged. The $(VAR_NAME)\nsyntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped\nreferences will never be expanded, regardless of whether the variable\nexists or not.\nDefaults to \"\".\n+optional",
+          "type": "string"
+        },
+        "value_from": {
+          "$ref": "#/definitions/v1beta2EnvVarSource",
+          "title": "Source for the environment variable's value. Cannot be used if value is not empty.\n+optional"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2EnvVarSource": {
+      "description": "EnvVarSource represents a source for the value of an EnvVar.",
+      "properties": {
+        "config_map_key_ref": {
+          "$ref": "#/definitions/v1beta2ConfigMapKeySelector",
+          "title": "Selects a key of a ConfigMap.\n+optional"
+        },
+        "field_ref": {
+          "$ref": "#/definitions/v1beta2ObjectFieldSelector",
+          "title": "Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations,\nspec.nodeName, spec.serviceAccountName, status.podIP.\n+optional"
+        },
+        "resource_field_ref": {
+          "$ref": "#/definitions/v1beta2ResourceFieldSelector",
+          "title": "Selects a resource of the container: only resources limits and requests\n(limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.\n+optional"
+        },
+        "secret_key_ref": {
+          "$ref": "#/definitions/v1beta2SecretKeySelector",
+          "title": "Selects a key of a secret in the pod's namespace\n+optional"
         }
       },
       "type": "object"
@@ -1682,6 +1979,10 @@
     },
     "v1beta2JobSpec": {
       "properties": {
+        "active_deadline_seconds": {
+          "format": "int64",
+          "type": "integer"
+        },
         "completions": {
           "format": "int32",
           "type": "integer"
@@ -1705,6 +2006,12 @@
         "completion_time": {
           "format": "int64",
           "type": "integer"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/v1beta2ResourceCondition"
+          },
+          "type": "array"
         },
         "failed": {
           "format": "int32",
@@ -2046,6 +2353,9 @@
         "meta": {
           "$ref": "#/definitions/v1beta2Meta"
         },
+        "spec": {
+          "$ref": "#/definitions/NamespaceNamespaceSpec"
+        },
         "status": {
           "$ref": "#/definitions/v1beta2NamespaceStatus"
         }
@@ -2077,7 +2387,7 @@
           "$ref": "#/definitions/v1beta2NodeSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2NodeStatus"
+          "$ref": "#/definitions/NodeNodeStatus"
         }
       },
       "type": "object"
@@ -2085,6 +2395,10 @@
     "v1beta2NodeSpec": {
       "properties": {
         "external_id": {
+          "format": "string",
+          "type": "string"
+        },
+        "podCIDR": {
           "format": "string",
           "type": "string"
         },
@@ -2099,15 +2413,16 @@
       },
       "type": "object"
     },
-    "v1beta2NodeStatus": {
+    "v1beta2ObjectFieldSelector": {
+      "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
       "properties": {
-        "capacity": {
-          "$ref": "#/definitions/StatusCapacity"
+        "api_version": {
+          "format": "string",
+          "title": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".\n+optional",
+          "type": "string"
         },
-        "node_info": {
-          "$ref": "#/definitions/StatusNodeInfo"
-        },
-        "phase": {
+        "field_path": {
+          "description": "Path of the field to select in the specified API version.",
           "format": "string",
           "type": "string"
         }
@@ -2337,7 +2652,7 @@
           "$ref": "#/definitions/v1beta2PodSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2PodStatus"
+          "$ref": "#/definitions/PodPodStatus"
         }
       },
       "type": "object"
@@ -2377,31 +2692,6 @@
             "$ref": "#/definitions/PodSpecVolume"
           },
           "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2PodStatus": {
-      "properties": {
-        "hostIP": {
-          "format": "string",
-          "type": "string"
-        },
-        "message": {
-          "format": "string",
-          "type": "string"
-        },
-        "phase": {
-          "format": "string",
-          "type": "string"
-        },
-        "podIP": {
-          "format": "string",
-          "type": "string"
-        },
-        "reason": {
-          "format": "string",
-          "type": "string"
         }
       },
       "type": "object"
@@ -2594,6 +2884,56 @@
       },
       "type": "object"
     },
+    "v1beta2ResourceCondition": {
+      "properties": {
+        "last_heartbeat_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_transition_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "message": {
+          "format": "string",
+          "type": "string"
+        },
+        "reason": {
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ResourceFieldSelector": {
+      "properties": {
+        "container_name": {
+          "format": "string",
+          "title": "Container name: required for volumes, optional for env vars\n+optional",
+          "type": "string"
+        },
+        "divisor": {
+          "format": "string",
+          "title": "Specifies the output format of the exposed resources, defaults to \"1\"\n+optional",
+          "type": "string"
+        },
+        "resource": {
+          "format": "string",
+          "title": "Required: resource to select",
+          "type": "string"
+        }
+      },
+      "title": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
+      "type": "object"
+    },
     "v1beta2Role": {
       "properties": {
         "meta": {
@@ -2722,6 +3062,21 @@
       },
       "type": "object"
     },
+    "v1beta2SecretKeySelector": {
+      "description": "SecretKeySelector selects a key of a Secret.",
+      "properties": {
+        "key": {
+          "description": "The key of the secret to select from.  Must be a valid secret key.",
+          "format": "string",
+          "type": "string"
+        },
+        "local_object_reference": {
+          "$ref": "#/definitions/v1beta2ObjectReference",
+          "description": "The name of the secret in the pod's namespace to select from."
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Service": {
       "properties": {
         "app": {
@@ -2753,6 +3108,17 @@
           },
           "type": "array"
         },
+        "external_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "load_balancer_source_ranges": {
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
         "loadbalancerIP": {
           "format": "string",
           "type": "string"
@@ -2769,6 +3135,10 @@
             "type": "string"
           },
           "type": "object"
+        },
+        "session_affinity": {
+          "format": "string",
+          "type": "string"
         },
         "type": {
           "format": "string",
