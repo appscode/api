@@ -1968,7 +1968,7 @@
         "meta": {
           "$ref": "#/definitions/v1beta2Meta"
         },
-        "space": {
+        "spec": {
           "$ref": "#/definitions/v1beta2JobSpec"
         },
         "status": {
