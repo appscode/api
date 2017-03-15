@@ -51,19 +51,9 @@ service Clusters {
     };
   }
 
-  rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
+  rpc Reconfigure(ClusterReconfigureRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale/json"
-      body: "*"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-
-  rpc SetVersion(ClusterSetVersionRequest) returns (dtypes.LongRunningResponse) {
-    option (google.api.http) = {
-       put: "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/set-version/json"
+       put: "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/reconfigure/json"
        body: "*"
     };
     option (appscode.api.cors) = {
@@ -227,13 +217,6 @@ message ClusterCreateRequest {
   string gce_project = 15;
 }
 
-message ClusterScaleRequest {
-  string name = 1;
-  // New node configuration for the cluster
-  map<string, int64> node_set = 2 [deprecated = true];
-  repeated InstanceGroup node_groups = 3;
-}
-
 message ClusterDeleteRequest {
   string name = 1;
   bool release_reserved_ip = 2;
@@ -320,13 +303,14 @@ message ClusterUpdateRequest {
   string default_access_level = 4;
 }
 
-message ClusterSetVersionRequest {
+message ClusterReconfigureRequest {
   string name = 1;
   bool apply_to_master = 2;
   string sku = 3;
-  string version = 4;
-  string kube_saltbase_version = 5;
-  string kube_starter_version = 6;
-  string kube_server_version = 7;
-  string hostfacts_version = 8;
+  int64 count = 4;
+  string version = 5;
+  string kube_saltbase_version = 6;
+  string kube_starter_version = 7;
+  string kube_server_version = 8;
+  string hostfacts_version = 9;
 }

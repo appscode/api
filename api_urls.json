@@ -313,16 +313,10 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/notify-incident/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/scale/json": {
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/reconfigure/json": {
     "put": {
       "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/set-version/json": {
-    "put": {
-      "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/set-version/json"
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/reconfigure/json"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/client-config/json": {

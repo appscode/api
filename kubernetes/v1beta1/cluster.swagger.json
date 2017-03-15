@@ -510,34 +510,15 @@
       },
       "type": "object"
     },
-    "v1beta1ClusterScaleRequest": {
-      "properties": {
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "node_groups": {
-          "items": {
-            "$ref": "#/definitions/v1beta1InstanceGroup"
-          },
-          "type": "array"
-        },
-        "node_set": {
-          "additionalProperties": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "title": "New node configuration for the cluster",
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterSetVersionRequest": {
+    "v1beta1ClusterReconfigureRequest": {
       "properties": {
         "apply_to_master": {
           "format": "boolean",
           "type": "boolean"
+        },
+        "count": {
+          "format": "int64",
+          "type": "integer"
         },
         "hostfacts_version": {
           "format": "string",
@@ -732,9 +713,9 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/reconfigure/json": {
       "put": {
-        "operationId": "Scale",
+        "operationId": "Reconfigure",
         "parameters": [
           {
             "format": "string",
@@ -748,40 +729,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1ClusterScaleRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesLongRunningResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/set-version/json": {
-      "put": {
-        "operationId": "SetVersion",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1ClusterSetVersionRequest"
+              "$ref": "#/definitions/v1beta1ClusterReconfigureRequest"
             }
           }
         ],

@@ -86,9 +86,8 @@ message Metadata {
 enum OperationType {
   UNKNOWN = 0;
   CLUSTER_CREATE = 1;
-  CLUSTER_SCALE = 2;
   CLUSTER_DELETE = 3;
-  CLUSTER_SET_VERSION = 4;
+  CLUSTER_RECONFIGURE = 4;
   DATA_BUCKET_DELETE = 9;
   BACKUP_SCHEDULE = 10;
   NAMESPACE_CREATE = 11;
@@ -102,9 +101,8 @@ enum OperationType {
 message Operation {
   oneof request {
     kubernetes.v1beta1.ClusterCreateRequest cluster_create_request = 1;
-    kubernetes.v1beta1.ClusterScaleRequest cluster_scale_request = 2;
     kubernetes.v1beta1.ClusterDeleteRequest cluster_delete_request = 3;
-    kubernetes.v1beta1.ClusterSetVersionRequest cluster_set_version_request = 4;
+    kubernetes.v1beta1.ClusterReconfigureRequest cluster_reconfigure_request = 4;
     DataBucketDeleteRequest data_bucket_delete_request = 9;
     db.v1beta1.BackupScheduleRequest backup_schedule_request = 10;
     namespace.v1beta1.CreateRequest namespace_create_request = 11;

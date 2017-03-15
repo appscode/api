@@ -222,34 +222,15 @@
       },
       "type": "object"
     },
-    "v1beta1ClusterScaleRequest": {
-      "properties": {
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "node_groups": {
-          "items": {
-            "$ref": "#/definitions/v1beta1InstanceGroup"
-          },
-          "type": "array"
-        },
-        "node_set": {
-          "additionalProperties": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "title": "New node configuration for the cluster",
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterSetVersionRequest": {
+    "v1beta1ClusterReconfigureRequest": {
       "properties": {
         "apply_to_master": {
           "format": "boolean",
           "type": "boolean"
+        },
+        "count": {
+          "format": "int64",
+          "type": "integer"
         },
         "hostfacts_version": {
           "format": "string",
@@ -501,11 +482,8 @@
         "cluster_delete_request": {
           "$ref": "#/definitions/v1beta1ClusterDeleteRequest"
         },
-        "cluster_scale_request": {
-          "$ref": "#/definitions/v1beta1ClusterScaleRequest"
-        },
-        "cluster_set_version_request": {
-          "$ref": "#/definitions/v1beta1ClusterSetVersionRequest"
+        "cluster_reconfigure_request": {
+          "$ref": "#/definitions/v1beta1ClusterReconfigureRequest"
         },
         "data_bucket_delete_request": {
           "$ref": "#/definitions/v1beta1DataBucketDeleteRequest"
@@ -544,9 +522,8 @@
       "enum": [
         "UNKNOWN",
         "CLUSTER_CREATE",
-        "CLUSTER_SCALE",
         "CLUSTER_DELETE",
-        "CLUSTER_SET_VERSION",
+        "CLUSTER_RECONFIGURE",
         "DATA_BUCKET_DELETE",
         "BACKUP_SCHEDULE",
         "NAMESPACE_CREATE",

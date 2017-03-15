@@ -107,31 +107,13 @@
       },
       "type": "object"
     },
-    "v1beta1ClusterScaleRequest": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "node_groups": {
-          "items": {
-            "$ref": "#/definitions/v1beta1InstanceGroup"
-          },
-          "type": "array"
-        },
-        "node_set": {
-          "additionalProperties": {
-            "type": "integer"
-          },
-          "title": "New node configuration for the cluster",
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterSetVersionRequest": {
+    "v1beta1ClusterReconfigureRequest": {
       "properties": {
         "apply_to_master": {
           "type": "boolean"
+        },
+        "count": {
+          "type": "integer"
         },
         "hostfacts_version": {
           "type": "string"
