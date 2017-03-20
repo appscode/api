@@ -153,10 +153,6 @@
           "format": "string",
           "type": "string"
         },
-        "kube_saltbase_version": {
-          "format": "string",
-          "type": "string"
-        },
         "kube_starter_version": {
           "format": "string",
           "type": "string"
@@ -183,6 +179,10 @@
           "type": "object"
         },
         "provider": {
+          "format": "string",
+          "type": "string"
+        },
+        "saltbase_version": {
           "format": "string",
           "type": "string"
         },
@@ -236,10 +236,6 @@
           "format": "string",
           "type": "string"
         },
-        "kube_saltbase_version": {
-          "format": "string",
-          "type": "string"
-        },
         "kube_starter_version": {
           "format": "string",
           "type": "string"
@@ -249,6 +245,10 @@
           "type": "string"
         },
         "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "saltbase_version": {
           "format": "string",
           "type": "string"
         },

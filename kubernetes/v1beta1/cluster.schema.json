@@ -34,9 +34,6 @@
         "hostfacts_version": {
           "type": "string"
         },
-        "kube_saltbase_version": {
-          "type": "string"
-        },
         "kube_starter_version": {
           "type": "string"
         },
@@ -61,6 +58,9 @@
           "type": "object"
         },
         "provider": {
+          "type": "string"
+        },
+        "saltbase_version": {
           "type": "string"
         },
         "version": {
@@ -145,9 +145,6 @@
         "hostfacts_version": {
           "type": "string"
         },
-        "kube_saltbase_version": {
-          "type": "string"
-        },
         "kube_starter_version": {
           "type": "string"
         },
@@ -157,6 +154,9 @@
         "name": {
           "maxLength": 63,
           "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "saltbase_version": {
           "type": "string"
         },
         "sku": {

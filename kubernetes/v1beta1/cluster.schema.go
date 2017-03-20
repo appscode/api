@@ -160,9 +160,6 @@ func init() {
     "hostfacts_version": {
       "type": "string"
     },
-    "kube_saltbase_version": {
-      "type": "string"
-    },
     "kube_starter_version": {
       "type": "string"
     },
@@ -187,6 +184,9 @@ func init() {
       "type": "object"
     },
     "provider": {
+      "type": "string"
+    },
+    "saltbase_version": {
       "type": "string"
     },
     "version": {
@@ -240,9 +240,6 @@ func init() {
     "hostfacts_version": {
       "type": "string"
     },
-    "kube_saltbase_version": {
-      "type": "string"
-    },
     "kube_starter_version": {
       "type": "string"
     },
@@ -252,6 +249,9 @@ func init() {
     "name": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "saltbase_version": {
       "type": "string"
     },
     "sku": {

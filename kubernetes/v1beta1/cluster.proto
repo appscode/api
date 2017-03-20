@@ -135,7 +135,7 @@ message Cluster {
   string status_cause = 11;
   string gce_project = 12;
   string kubelet_version = 13;
-  string kube_saltbase_version = 14;
+  string saltbase_version = 14;
   string kube_starter_version = 15;
 
   int32 node_count = 16;
@@ -197,7 +197,7 @@ message ClusterCreateRequest {
   map<string, string> cloud_credential_data = 5;
   map<string, int64> node_set = 6 [deprecated = true];
   repeated InstanceGroup node_groups = 14;
-  string kube_saltbase_version = 7;
+  string saltbase_version = 7;
   string kube_starter_version = 8;
   string kubelet_version = 9;
   bool do_not_delete = 10;
@@ -309,7 +309,7 @@ message ClusterReconfigureRequest {
   string sku = 3;
   int64 count = 4;
   string version = 5;
-  string kube_saltbase_version = 6;
+  string saltbase_version = 6;
   string kube_starter_version = 7;
   string kubelet_version = 8;
   string hostfacts_version = 9;
