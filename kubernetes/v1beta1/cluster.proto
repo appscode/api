@@ -134,7 +134,7 @@ message Cluster {
   string status = 10;
   string status_cause = 11;
   string gce_project = 12;
-  string kube_server_version = 13;
+  string kubelet_version = 13;
   string kube_saltbase_version = 14;
   string kube_starter_version = 15;
 
@@ -199,7 +199,7 @@ message ClusterCreateRequest {
   repeated InstanceGroup node_groups = 14;
   string kube_saltbase_version = 7;
   string kube_starter_version = 8;
-  string kube_server_version = 9;
+  string kubelet_version = 9;
   bool do_not_delete = 10;
   string hostfacts_version = 11;
   string version = 12;
@@ -311,6 +311,6 @@ message ClusterReconfigureRequest {
   string version = 5;
   string kube_saltbase_version = 6;
   string kube_starter_version = 7;
-  string kube_server_version = 8;
+  string kubelet_version = 8;
   string hostfacts_version = 9;
 }

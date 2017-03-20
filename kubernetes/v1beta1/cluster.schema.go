@@ -163,10 +163,10 @@ func init() {
     "kube_saltbase_version": {
       "type": "string"
     },
-    "kube_server_version": {
+    "kube_starter_version": {
       "type": "string"
     },
-    "kube_starter_version": {
+    "kubelet_version": {
       "type": "string"
     },
     "name": {
@@ -243,10 +243,10 @@ func init() {
     "kube_saltbase_version": {
       "type": "string"
     },
-    "kube_server_version": {
+    "kube_starter_version": {
       "type": "string"
     },
-    "kube_starter_version": {
+    "kubelet_version": {
       "type": "string"
     },
     "name": {

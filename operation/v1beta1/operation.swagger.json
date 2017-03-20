@@ -157,11 +157,11 @@
           "format": "string",
           "type": "string"
         },
-        "kube_server_version": {
+        "kube_starter_version": {
           "format": "string",
           "type": "string"
         },
-        "kube_starter_version": {
+        "kubelet_version": {
           "format": "string",
           "type": "string"
         },
@@ -240,11 +240,11 @@
           "format": "string",
           "type": "string"
         },
-        "kube_server_version": {
+        "kube_starter_version": {
           "format": "string",
           "type": "string"
         },
-        "kube_starter_version": {
+        "kubelet_version": {
           "format": "string",
           "type": "string"
         },
