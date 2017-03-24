@@ -7,7 +7,6 @@
     "IncidentEvent": {
       "properties": {
         "comment": {
-          "format": "string",
           "type": "string"
         },
         "reported_at": {
@@ -15,11 +14,9 @@
           "type": "integer"
         },
         "state": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         },
         "user": {
@@ -31,7 +28,6 @@
     "appscodedtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -48,12 +44,10 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -63,13 +57,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -79,11 +71,9 @@
     "dtypesUid": {
       "properties": {
         "name": {
-          "format": "string",
           "type": "string"
         },
         "phid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -103,7 +93,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -128,38 +117,30 @@
           "type": "array"
         },
         "icinga_host": {
-          "format": "string",
           "type": "string"
         },
         "icinga_service": {
-          "format": "string",
           "type": "string"
         },
         "icingaweb_url": {
-          "format": "string",
           "type": "string"
         },
         "kubernetes_alert_name": {
-          "format": "string",
           "type": "string"
         },
         "kubernetes_cluster": {
           "$ref": "#/definitions/dtypesUid"
         },
         "kubernetes_namespace": {
-          "format": "string",
           "type": "string"
         },
         "kubernetes_object_name": {
-          "format": "string",
           "type": "string"
         },
         "kubernetes_object_type": {
-          "format": "string",
           "type": "string"
         },
         "phid": {
-          "format": "string",
           "type": "string"
         },
         "recovered_at": {
@@ -172,11 +153,9 @@
           "type": "integer"
         },
         "state": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         },
         "user": {
@@ -188,7 +167,6 @@
     "v1beta1IncidentDescribeRequest": {
       "properties": {
         "phid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -213,11 +191,9 @@
           "type": "boolean"
         },
         "comment": {
-          "format": "string",
           "type": "string"
         },
         "phid": {
-          "format": "string",
           "title": "Incident PHID",
           "type": "string"
         }
@@ -228,24 +204,19 @@
     "v1beta1IncidentListRequest": {
       "properties": {
         "kubernetes_cluster": {
-          "format": "string",
           "type": "string"
         },
         "kubernetes_namespace": {
-          "format": "string",
           "type": "string"
         },
         "kubernetes_object_name": {
-          "format": "string",
           "type": "string"
         },
         "kubernetes_object_type": {
-          "format": "string",
           "type": "string"
         },
         "states": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -271,35 +242,27 @@
     "v1beta1IncidentNotifyRequest": {
       "properties": {
         "alert_phid": {
-          "format": "string",
           "type": "string"
         },
         "author": {
-          "format": "string",
           "type": "string"
         },
         "comment": {
-          "format": "string",
           "type": "string"
         },
         "host_name": {
-          "format": "string",
           "type": "string"
         },
         "kubernetes_alert_name": {
-          "format": "string",
           "type": "string"
         },
         "kubernetes_cluster": {
-          "format": "string",
           "type": "string"
         },
         "output": {
-          "format": "string",
           "type": "string"
         },
         "state": {
-          "format": "string",
           "type": "string"
         },
         "time": {
@@ -308,7 +271,6 @@
           "type": "integer"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -327,7 +289,6 @@
         "operationId": "Notify",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "kubernetes_cluster",
             "required": true,
@@ -358,6 +319,41 @@
     "/_appscode/api/kubernetes/v1beta1/incidents/json": {
       "get": {
         "operationId": "List",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "kubernetes_cluster",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "kubernetes_namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "kubernetes_object_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "kubernetes_object_name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "states",
+            "required": false,
+            "type": "array"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -376,7 +372,6 @@
         "operationId": "CreateEvent",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "phid",
             "required": true,
@@ -409,7 +404,6 @@
         "operationId": "Describe",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "phid",
             "required": true,

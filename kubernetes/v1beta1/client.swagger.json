@@ -24,11 +24,9 @@
     "ServiceLoadBalancerIngress": {
       "properties": {
         "host_name": {
-          "format": "string",
           "type": "string"
         },
         "ip": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -37,7 +35,6 @@
     "ServicePort": {
       "properties": {
         "name": {
-          "format": "string",
           "type": "string"
         },
         "node_port": {
@@ -49,11 +46,9 @@
           "type": "integer"
         },
         "protocol": {
-          "format": "string",
           "type": "string"
         },
         "target_port": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -62,7 +57,6 @@
     "appscodedtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -79,12 +73,10 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -94,13 +86,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -112,7 +102,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -126,7 +115,6 @@
     "v1beta1App": {
       "properties": {
         "cluster_ip": {
-          "format": "string",
           "type": "string"
         },
         "created_at": {
@@ -134,15 +122,12 @@
           "type": "integer"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -151,15 +136,12 @@
     "v1beta1AppDescribeRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -175,7 +157,6 @@
         },
         "links": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -203,7 +184,6 @@
     "v1beta1ClientRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -216,15 +196,12 @@
           "type": "integer"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "resource_version": {
-          "format": "string",
           "type": "string"
         },
         "size": {
@@ -237,19 +214,15 @@
     "v1beta1ConfigMapDescribeRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "raw": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -258,7 +231,6 @@
     "v1beta1ConfigMapDescribeResponse": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "created_at": {
@@ -267,17 +239,14 @@
         },
         "data": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "raw": {
@@ -307,17 +276,14 @@
       "properties": {
         "commands": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "image": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -370,7 +336,6 @@
           "type": "integer"
         },
         "app": {
-          "format": "string",
           "type": "string"
         },
         "completion_time": {
@@ -396,11 +361,9 @@
           "type": "integer"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "parallelism": {
@@ -435,19 +398,15 @@
     "v1beta1KubeResource": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -460,11 +419,9 @@
           "type": "integer"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "phase": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -490,7 +447,6 @@
           "$ref": "#/definitions/NodeNodeCapacity"
         },
         "container_runtime": {
-          "format": "string",
           "type": "string"
         },
         "created_at": {
@@ -498,7 +454,6 @@
           "type": "integer"
         },
         "instance_type": {
-          "format": "string",
           "type": "string"
         },
         "is_master": {
@@ -506,23 +461,18 @@
           "type": "boolean"
         },
         "kernel_version": {
-          "format": "string",
           "type": "string"
         },
         "kubelet_version": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "os_image": {
-          "format": "string",
           "type": "string"
         },
         "provider_id": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -545,7 +495,6 @@
     "v1beta1Pod": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "containers": {
@@ -560,33 +509,26 @@
         },
         "links": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "message": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "node_name": {
-          "format": "string",
           "type": "string"
         },
         "phase": {
-          "format": "string",
           "type": "string"
         },
         "service_account": {
-          "format": "string",
           "type": "string"
         },
         "start_time": {
@@ -613,11 +555,9 @@
     "v1beta1Raw": {
       "properties": {
         "data": {
-          "format": "string",
           "type": "string"
         },
         "format": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -626,7 +566,6 @@
     "v1beta1ReplicationController": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "containers": {
@@ -648,11 +587,9 @@
           "type": "integer"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "observed_generation": {
@@ -687,19 +624,15 @@
           "type": "integer"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "resource_version": {
-          "format": "string",
           "type": "string"
         },
         "secret_type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -708,19 +641,15 @@
     "v1beta1SecretDescribeRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "raw": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -729,7 +658,6 @@
     "v1beta1SecretDescribeResponse": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "created_at": {
@@ -738,31 +666,26 @@
         },
         "data": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "raw": {
           "$ref": "#/definitions/v1beta1Raw"
         },
         "resource_version": {
-          "format": "string",
           "type": "string"
         },
         "status": {
           "$ref": "#/definitions/appscodedtypesStatus"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -785,11 +708,9 @@
     "v1beta1Service": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "cluster_ip": {
-          "format": "string",
           "type": "string"
         },
         "created_at": {
@@ -798,7 +719,6 @@
         },
         "external_ips": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -810,11 +730,9 @@
           "type": "array"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "ports": {
@@ -824,7 +742,6 @@
           "type": "array"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -882,7 +799,6 @@
         "operationId": "Apps",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
@@ -907,21 +823,18 @@
         "operationId": "App",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "namespace",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -946,21 +859,18 @@
         "operationId": "AppPods",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "namespace",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -985,7 +895,6 @@
         "operationId": "ConfigMaps",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
@@ -1010,24 +919,27 @@
         "operationId": "ConfigMap",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "namespace",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "raw",
+            "required": false,
             "type": "string"
           }
         ],
@@ -1049,7 +961,6 @@
         "operationId": "Jobs",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
@@ -1074,7 +985,6 @@
         "operationId": "Namespaces",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
@@ -1099,7 +1009,6 @@
         "operationId": "Nodes",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
@@ -1124,7 +1033,6 @@
         "operationId": "Pods",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
@@ -1149,7 +1057,6 @@
         "operationId": "ReplicationControllers",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
@@ -1174,7 +1081,6 @@
         "operationId": "Secrets",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
@@ -1199,24 +1105,27 @@
         "operationId": "Secret",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "namespace",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "raw",
+            "required": false,
             "type": "string"
           }
         ],
@@ -1238,7 +1147,6 @@
         "operationId": "Services",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,

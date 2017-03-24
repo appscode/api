@@ -38,12 +38,10 @@
       "properties": {
         "description": {
           "type": "string",
-          "format": "string",
           "title": "Describe what link offers"
         },
         "url": {
           "type": "string",
-          "format": "string",
           "description": "The URL of The link."
         }
       },
@@ -54,17 +52,14 @@
       "properties": {
         "code": {
           "type": "string",
-          "format": "string",
           "title": "Response status code"
         },
         "status": {
           "type": "string",
-          "format": "string",
           "description": "Response status code string."
         },
         "message": {
           "type": "string",
-          "format": "string",
           "description": "User facing message."
         },
         "help": {
@@ -89,12 +84,10 @@
       "type": "object",
       "properties": {
         "env": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "team_id": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "net_config": {
           "$ref": "#/definitions/healthNetConfig"
@@ -105,8 +98,7 @@
       "type": "object",
       "properties": {
         "team_addr": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "public_urls": {
           "$ref": "#/definitions/healthURLBase"
@@ -146,12 +138,10 @@
       "type": "object",
       "properties": {
         "scheme": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "base_addr": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         }
       }
     },
@@ -160,7 +150,6 @@
       "properties": {
         "type_url": {
           "type": "string",
-          "format": "string",
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
         },
         "value": {
@@ -175,56 +164,43 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "version": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "version_strategy": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "os": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "arch": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "commit_hash": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "git_branch": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "git_tag": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "commit_timestamp": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "build_timestamp": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "build_host": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "build_host_os": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "build_host_arch": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         }
       }
     }

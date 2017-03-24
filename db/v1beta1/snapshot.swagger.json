@@ -7,13 +7,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -23,7 +21,6 @@
     "dtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -40,12 +37,10 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -65,7 +60,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -79,31 +73,24 @@
     "v1beta1BackupScheduleRequest": {
       "properties": {
         "auth_secret_name": {
-          "format": "string",
           "type": "string"
         },
         "bucket_name": {
-          "format": "string",
           "type": "string"
         },
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "credential_uid": {
-          "format": "string",
           "type": "string"
         },
         "schedule_cron_expr": {
-          "format": "string",
           "type": "string"
         },
         "snapshot_name": {
-          "format": "string",
           "type": "string"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -113,11 +100,9 @@
     "v1beta1BackupUnscheduleRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -127,15 +112,12 @@
     "v1beta1DatabaseInfo": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -145,11 +127,9 @@
     "v1beta1Snapshot": {
       "properties": {
         "bucket": {
-          "format": "string",
           "type": "string"
         },
         "cloud_credential": {
-          "format": "string",
           "type": "string"
         },
         "created_at": {
@@ -161,35 +141,27 @@
           "type": "integer"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "phid": {
-          "format": "string",
           "type": "string"
         },
         "process": {
-          "format": "string",
           "type": "string"
         },
         "provider": {
-          "format": "string",
           "type": "string"
         },
         "source_database": {
-          "format": "string",
           "type": "string"
         },
         "source_snapshot": {
-          "format": "string",
           "type": "string"
         },
         "status": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -199,15 +171,12 @@
     "v1beta1SnapshotDescribeRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "phid": {
-          "format": "string",
           "type": "string"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -232,11 +201,9 @@
     "v1beta1SnapshotListRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -264,19 +231,15 @@
     "v1beta1SnapshotRestoreRequest": {
       "properties": {
         "auth_secret_name": {
-          "format": "string",
           "type": "string"
         },
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "snapshot_phid": {
-          "format": "string",
           "type": "string"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -295,14 +258,12 @@
         "operationId": "Restore",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
@@ -335,14 +296,12 @@
         "operationId": "BackupSchedule",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
@@ -375,14 +334,12 @@
         "operationId": "BackupUnschedule",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
@@ -407,14 +364,12 @@
         "operationId": "List",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
@@ -439,21 +394,18 @@
         "operationId": "Describe",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "phid",
             "required": true,

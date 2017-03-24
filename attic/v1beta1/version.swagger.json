@@ -7,13 +7,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -23,7 +21,6 @@
     "dtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -40,12 +37,10 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -57,7 +52,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -74,7 +68,6 @@
           "$ref": "#/definitions/v1beta1DockerSpec"
         },
         "id": {
-          "format": "string",
           "type": "string"
         },
         "java": {
@@ -85,7 +78,6 @@
           "type": "integer"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "npm": {
@@ -95,11 +87,9 @@
           "$ref": "#/definitions/v1beta1PhpSpec"
         },
         "type": {
-          "format": "string",
           "type": "string"
         },
         "version": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -108,12 +98,10 @@
     "v1beta1DockerSpec": {
       "properties": {
         "manifest_url": {
-          "format": "string",
           "type": "string"
         },
         "tar_sums": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -124,15 +112,12 @@
     "v1beta1JavaSpec": {
       "properties": {
         "artifact_id": {
-          "format": "string",
           "type": "string"
         },
         "artifact_url": {
-          "format": "string",
           "type": "string"
         },
         "group_id": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -141,26 +126,21 @@
     "v1beta1NpmSpec": {
       "properties": {
         "artifact_id": {
-          "format": "string",
           "type": "string"
         },
         "artifact_url": {
-          "format": "string",
           "type": "string"
         },
         "description": {
-          "format": "string",
           "type": "string"
         },
         "keywords": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "shasum": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -169,11 +149,9 @@
     "v1beta1PhpSpec": {
       "properties": {
         "download_url": {
-          "format": "string",
           "type": "string"
         },
         "shasum": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -182,15 +160,12 @@
     "v1beta1VersionDescribeRequest": {
       "properties": {
         "id": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -210,11 +185,9 @@
     "v1beta1VersionListRequest": {
       "properties": {
         "name": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -246,14 +219,12 @@
         "operationId": "List",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "type",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -278,21 +249,18 @@
         "operationId": "Describe",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "type",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "id",
             "required": true,

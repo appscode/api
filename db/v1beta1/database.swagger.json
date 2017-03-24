@@ -13,7 +13,6 @@
           "$ref": "#/definitions/InitialScriptGitRepo"
         },
         "script_path": {
-          "format": "string",
           "type": "string"
         },
         "secret": {
@@ -25,7 +24,6 @@
     "InitialScriptConfigMap": {
       "properties": {
         "name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -34,15 +32,12 @@
     "InitialScriptGitRepo": {
       "properties": {
         "directory": {
-          "format": "string",
           "type": "string"
         },
         "repository": {
-          "format": "string",
           "type": "string"
         },
         "revision": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -51,7 +46,6 @@
     "InitialScriptSecret": {
       "properties": {
         "name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -60,13 +54,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -76,7 +68,6 @@
     "dtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -93,12 +84,10 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -118,7 +107,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -132,11 +120,9 @@
     "v1beta1Database": {
       "properties": {
         "auth_secret_name": {
-          "format": "string",
           "type": "string"
         },
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "created_at": {
@@ -152,7 +138,6 @@
           "type": "boolean"
         },
         "hostname": {
-          "format": "string",
           "type": "string"
         },
         "last_backup_at": {
@@ -160,7 +145,6 @@
           "type": "integer"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "node_count": {
@@ -168,7 +152,6 @@
           "type": "integer"
         },
         "phid": {
-          "format": "string",
           "type": "string"
         },
         "pv_size_gb": {
@@ -176,27 +159,21 @@
           "type": "integer"
         },
         "schedule_cron_expr": {
-          "format": "string",
           "type": "string"
         },
         "sku": {
-          "format": "string",
           "type": "string"
         },
         "status": {
-          "format": "string",
           "type": "string"
         },
         "storage_class": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         },
         "version": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -206,15 +183,12 @@
     "v1beta1DatabaseCreateRequest": {
       "properties": {
         "auth_secret_name": {
-          "format": "string",
           "type": "string"
         },
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "hostname": {
-          "format": "string",
           "type": "string"
         },
         "ignore_validation": {
@@ -225,7 +199,6 @@
           "$ref": "#/definitions/DatabaseCreateRequestInitialScript"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "node_count": {
@@ -237,23 +210,18 @@
           "type": "integer"
         },
         "sku": {
-          "format": "string",
           "type": "string"
         },
         "snapshot_phid": {
-          "format": "string",
           "type": "string"
         },
         "storage_class": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         },
         "version": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -263,7 +231,6 @@
     "v1beta1DatabaseDeleteRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "destroy": {
@@ -271,7 +238,6 @@
           "type": "boolean"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -281,11 +247,9 @@
     "v1beta1DatabaseDescribeRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -310,19 +274,16 @@
     "v1beta1DatabaseListRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "status": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  READY\n  DELETING\n  DELETED\n  DESTROYED",
           "type": "array"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -347,11 +308,9 @@
     "v1beta1DatabaseRecoverRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -361,7 +320,6 @@
     "v1beta1DatabaseScaleRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "node_count": {
@@ -369,7 +327,6 @@
           "type": "integer"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -379,7 +336,6 @@
     "v1beta1DatabaseUpdateRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "do_not_delete": {
@@ -387,7 +343,6 @@
           "type": "boolean"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -428,11 +383,26 @@
         "operationId": "List",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  READY\n  DELETING\n  DELETED\n  DESTROYED.",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "status",
+            "required": false,
+            "type": "array"
           }
         ],
         "responses": {
@@ -451,7 +421,6 @@
         "operationId": "Create",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
@@ -484,14 +453,12 @@
         "operationId": "Recover",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
@@ -524,14 +491,12 @@
         "operationId": "Scale",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
@@ -564,14 +529,12 @@
         "operationId": "Delete",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
@@ -594,14 +557,12 @@
         "operationId": "Describe",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
@@ -624,14 +585,12 @@
         "operationId": "Update",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,

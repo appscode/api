@@ -36,7 +36,6 @@
     "appscodedtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -53,12 +52,10 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -68,13 +65,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -84,7 +79,6 @@
     "dtypesLongRunningResponse": {
       "properties": {
         "job_phid": {
-          "format": "string",
           "type": "string"
         },
         "status": {
@@ -107,7 +101,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -121,11 +114,9 @@
     "v1beta1Cluster": {
       "properties": {
         "api_server_url": {
-          "format": "string",
           "type": "string"
         },
         "ca_cert": {
-          "format": "string",
           "type": "string"
         },
         "created_at": {
@@ -133,11 +124,9 @@
           "type": "integer"
         },
         "created_by": {
-          "format": "string",
           "type": "string"
         },
         "default_access_level": {
-          "format": "string",
           "type": "string"
         },
         "do_not_delete": {
@@ -145,42 +134,33 @@
           "type": "boolean"
         },
         "gce_project": {
-          "format": "string",
           "type": "string"
         },
         "instance_root_password": {
-          "format": "string",
           "type": "string"
         },
         "kube_bearer_token": {
-          "format": "string",
           "type": "string"
         },
         "kube_password": {
-          "format": "string",
           "type": "string"
         },
         "kube_starter_version": {
-          "format": "string",
           "type": "string"
         },
         "kube_user": {
-          "format": "string",
           "type": "string"
         },
         "kubelet_version": {
-          "format": "string",
           "type": "string"
         },
         "links": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "node_count": {
@@ -188,46 +168,36 @@
           "type": "integer"
         },
         "os": {
-          "format": "string",
           "type": "string"
         },
         "phid": {
-          "format": "string",
           "type": "string"
         },
         "provider": {
-          "format": "string",
           "type": "string"
         },
         "region": {
-          "format": "string",
           "type": "string"
         },
         "saltbase_version": {
-          "format": "string",
           "type": "string"
         },
         "settings": {
           "$ref": "#/definitions/v1beta1ClusterSettings"
         },
         "sku": {
-          "format": "string",
           "type": "string"
         },
         "status": {
-          "format": "string",
           "type": "string"
         },
         "status_cause": {
-          "format": "string",
           "type": "string"
         },
         "version": {
-          "format": "string",
           "type": "string"
         },
         "zone": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -236,7 +206,6 @@
     "v1beta1ClusterClientConfigRequest": {
       "properties": {
         "name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -245,42 +214,33 @@
     "v1beta1ClusterClientConfigResponse": {
       "properties": {
         "api_server_url": {
-          "format": "string",
           "type": "string"
         },
         "ca_cert": {
-          "format": "string",
           "type": "string"
         },
         "cluster_domain": {
-          "format": "string",
           "type": "string"
         },
         "cluster_user_name": {
-          "format": "string",
           "type": "string"
         },
         "context_name": {
-          "format": "string",
           "type": "string"
         },
         "password": {
-          "format": "string",
           "type": "string"
         },
         "status": {
           "$ref": "#/definitions/appscodedtypesStatus"
         },
         "user_cert": {
-          "format": "string",
           "type": "string"
         },
         "user_key": {
-          "format": "string",
           "type": "string"
         },
         "user_token": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -289,18 +249,15 @@
     "v1beta1ClusterCreateRequest": {
       "properties": {
         "cloud_credential": {
-          "format": "string",
           "type": "string"
         },
         "cloud_credential_data": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "default_access_level": {
-          "format": "string",
           "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access\nIf not set this will set \"\"",
           "type": "string"
         },
@@ -309,23 +266,18 @@
           "type": "boolean"
         },
         "gce_project": {
-          "format": "string",
           "type": "string"
         },
         "hostfacts_version": {
-          "format": "string",
           "type": "string"
         },
         "kube_starter_version": {
-          "format": "string",
           "type": "string"
         },
         "kubelet_version": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "node_groups": {
@@ -342,19 +294,15 @@
           "type": "object"
         },
         "provider": {
-          "format": "string",
           "type": "string"
         },
         "saltbase_version": {
-          "format": "string",
           "type": "string"
         },
         "version": {
-          "format": "string",
           "type": "string"
         },
         "zone": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -375,7 +323,6 @@
           "type": "boolean"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "release_reserved_ip": {
@@ -388,7 +335,6 @@
     "v1beta1ClusterDescribeRequest": {
       "properties": {
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -411,27 +357,21 @@
     "v1beta1ClusterInstance": {
       "properties": {
         "external_id": {
-          "format": "string",
           "type": "string"
         },
         "external_ip": {
-          "format": "string",
           "type": "string"
         },
         "internal_ip": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "phid": {
-          "format": "string",
           "type": "string"
         },
         "sku": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -440,11 +380,9 @@
     "v1beta1ClusterInstanceByIPRequest": {
       "properties": {
         "external_ip": {
-          "format": "string",
           "type": "string"
         },
         "phid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -453,7 +391,6 @@
     "v1beta1ClusterInstanceListRequest": {
       "properties": {
         "cluster_name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -488,7 +425,6 @@
       "properties": {
         "status": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -521,31 +457,24 @@
           "type": "integer"
         },
         "hostfacts_version": {
-          "format": "string",
           "type": "string"
         },
         "kube_starter_version": {
-          "format": "string",
           "type": "string"
         },
         "kubelet_version": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "saltbase_version": {
-          "format": "string",
           "type": "string"
         },
         "sku": {
-          "format": "string",
           "type": "string"
         },
         "version": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -554,7 +483,6 @@
     "v1beta1ClusterSettings": {
       "properties": {
         "log_index_prefix": {
-          "format": "string",
           "type": "string"
         },
         "log_storage_lifetime": {
@@ -577,11 +505,9 @@
           "type": "integer"
         },
         "role": {
-          "format": "string",
           "type": "string"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -590,11 +516,9 @@
     "v1beta1ClusterStartupConfigResponse": {
       "properties": {
         "configuration": {
-          "format": "string",
           "type": "string"
         },
         "sku": {
-          "format": "string",
           "type": "string"
         },
         "status": {
@@ -606,7 +530,6 @@
     "v1beta1ClusterUpdateRequest": {
       "properties": {
         "default_access_level": {
-          "format": "string",
           "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access",
           "type": "string"
         },
@@ -615,7 +538,6 @@
           "type": "boolean"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "settings": {
@@ -631,7 +553,6 @@
           "type": "integer"
         },
         "sku": {
-          "format": "string",
           "type": "string"
         },
         "use_spot_instances": {
@@ -651,6 +572,17 @@
     "/_appscode/api/kubernetes/v1beta1/clusters/json": {
       "get": {
         "operationId": "List",
+        "parameters": [
+          {
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "status",
+            "required": false,
+            "type": "array"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -693,7 +625,6 @@
         "operationId": "Instances",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster_name",
             "required": true,
@@ -718,7 +649,6 @@
         "operationId": "Reconfigure",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -751,7 +681,6 @@
         "operationId": "ClientConfig",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -776,7 +705,6 @@
         "operationId": "Delete",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -799,7 +727,6 @@
         "operationId": "Update",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -832,14 +759,12 @@
         "operationId": "InstanceByIP",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "phid",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "external_ip",
             "required": true,
@@ -864,14 +789,12 @@
         "operationId": "InstanceByIP",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "phid",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "external_ip",
             "required": true,
@@ -896,7 +819,6 @@
         "operationId": "Describe",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
@@ -921,14 +843,12 @@
         "operationId": "StartupConfig",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "role",
             "required": true,
@@ -960,14 +880,12 @@
         "operationId": "StartupConfig",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "role",
             "required": true,

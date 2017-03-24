@@ -7,7 +7,6 @@
     "appscodedtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -24,12 +23,10 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -39,13 +36,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -57,7 +52,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -71,11 +65,9 @@
     "v1beta1BucketListRequest": {
       "properties": {
         "cloud_credential": {
-          "format": "string",
           "type": "string"
         },
         "gce_project": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -85,7 +77,6 @@
       "properties": {
         "names": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -99,7 +90,6 @@
     "v1beta1RegionListRequest": {
       "properties": {
         "cloud_credential": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -109,7 +99,6 @@
       "properties": {
         "regions": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -123,11 +112,9 @@
     "v1beta1ZoneListRequest": {
       "properties": {
         "cloud_credential": {
-          "format": "string",
           "type": "string"
         },
         "region": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -140,7 +127,6 @@
         },
         "zones": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -158,6 +144,20 @@
     "/_appscode/api/cloud/v1beta1/buckets/json": {
       "get": {
         "operationId": "ListBuckets",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cloud_credential",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "gce_project",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -174,6 +174,14 @@
     "/_appscode/api/cloud/v1beta1/regions/json": {
       "get": {
         "operationId": "ListRegions",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cloud_credential",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -192,10 +200,15 @@
         "operationId": "ListZones",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "region",
             "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cloud_credential",
+            "required": false,
             "type": "string"
           }
         ],

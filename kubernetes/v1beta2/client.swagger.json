@@ -7,7 +7,6 @@
     "AlertAlertSpec": {
       "properties": {
         "check_command": {
-          "format": "string",
           "type": "string"
         },
         "icinga_param": {
@@ -21,7 +20,6 @@
         },
         "vars": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -45,15 +43,12 @@
     "AlertSpecNotifierParam": {
       "properties": {
         "method": {
-          "format": "string",
           "type": "string"
         },
         "state": {
-          "format": "string",
           "type": "string"
         },
         "user_uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -62,11 +57,9 @@
     "ContainerVolumeMount": {
       "properties": {
         "mount_path": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "read_only": {
@@ -363,11 +356,9 @@
     "ListResourceRequestAncestor": {
       "properties": {
         "name": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -390,7 +381,6 @@
       "properties": {
         "finalizers": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -428,7 +418,6 @@
           "$ref": "#/definitions/NodeStatusNodeSystemInfo"
         },
         "phase": {
-          "format": "string",
           "type": "string"
         },
         "volumes_attached": {
@@ -439,7 +428,6 @@
         },
         "volumes_in_use": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -450,11 +438,9 @@
     "NodeStatusAttachedVolume": {
       "properties": {
         "device_path": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -475,7 +461,6 @@
           "type": "integer"
         },
         "storage": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -485,7 +470,6 @@
       "properties": {
         "names": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -500,11 +484,9 @@
     "NodeStatusNodeAddress": {
       "properties": {
         "address": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -513,43 +495,33 @@
     "NodeStatusNodeSystemInfo": {
       "properties": {
         "architecture": {
-          "format": "string",
           "type": "string"
         },
         "bootID": {
-          "format": "string",
           "type": "string"
         },
         "container_runtime_version": {
-          "format": "string",
           "type": "string"
         },
         "kernel_version": {
-          "format": "string",
           "type": "string"
         },
         "kube_proxy_version": {
-          "format": "string",
           "type": "string"
         },
         "kubelet_version": {
-          "format": "string",
           "type": "string"
         },
         "machineID": {
-          "format": "string",
           "type": "string"
         },
         "operating_system": {
-          "format": "string",
           "type": "string"
         },
         "os_image": {
-          "format": "string",
           "type": "string"
         },
         "systemUUID": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -559,7 +531,6 @@
       "properties": {
         "access_modes": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -568,7 +539,6 @@
           "$ref": "#/definitions/PersistentVolumeClaimSpecResourceRequirements"
         },
         "volume_name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -578,20 +548,17 @@
       "properties": {
         "access_modes": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "capacity": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "phase": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -601,14 +568,12 @@
       "properties": {
         "limits": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "requests": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -620,14 +585,12 @@
       "properties": {
         "access_modes": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "capacity": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -636,7 +599,6 @@
           "$ref": "#/definitions/v1beta2ObjectReference"
         },
         "persistent_volume_reclaim_policy": {
-          "format": "string",
           "type": "string"
         },
         "persistent_volume_source": {
@@ -648,15 +610,12 @@
     "PersistentVolumePersistentVolumeStatus": {
       "properties": {
         "message": {
-          "format": "string",
           "type": "string"
         },
         "phase": {
-          "format": "string",
           "type": "string"
         },
         "reason": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -671,23 +630,18 @@
           "type": "array"
         },
         "hostIP": {
-          "format": "string",
           "type": "string"
         },
         "message": {
-          "format": "string",
           "type": "string"
         },
         "phase": {
-          "format": "string",
           "type": "string"
         },
         "podIP": {
-          "format": "string",
           "type": "string"
         },
         "reason": {
-          "format": "string",
           "type": "string"
         },
         "start_time": {
@@ -701,14 +655,12 @@
       "properties": {
         "args": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "commands": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -720,11 +672,9 @@
           "type": "array"
         },
         "image": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "volume_mounts": {
@@ -734,7 +684,6 @@
           "type": "array"
         },
         "working_dir": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -743,11 +692,9 @@
     "PodSpecVolume": {
       "properties": {
         "host_path": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -759,7 +706,6 @@
           "$ref": "#/definitions/SpecRollingUpdateDeployment"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -768,7 +714,6 @@
     "SpecPort": {
       "properties": {
         "name": {
-          "format": "string",
           "type": "string"
         },
         "node_port": {
@@ -780,11 +725,9 @@
           "type": "integer"
         },
         "protocol": {
-          "format": "string",
           "type": "string"
         },
         "target_port": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -802,11 +745,9 @@
     "SpecRollingUpdateDeployment": {
       "properties": {
         "max_surge": {
-          "format": "string",
           "type": "string"
         },
         "max_unavailable": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -815,19 +756,15 @@
     "StatusACMECertificateDetails": {
       "properties": {
         "account_ref": {
-          "format": "string",
           "type": "string"
         },
         "certURL": {
-          "format": "string",
           "type": "string"
         },
         "cert_stableURL": {
-          "format": "string",
           "type": "string"
         },
         "domain": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -836,11 +773,9 @@
     "StatusLoadBalancerIngress": {
       "properties": {
         "IP": {
-          "format": "string",
           "type": "string"
         },
         "host_name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -849,7 +784,6 @@
     "appscodedtypesStatus": {
       "properties": {
         "code": {
-          "format": "string",
           "title": "Response status code",
           "type": "string"
         },
@@ -866,12 +800,10 @@
         },
         "message": {
           "description": "User facing message.",
-          "format": "string",
           "type": "string"
         },
         "status": {
           "description": "Response status code string.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -881,13 +813,11 @@
     "dtypesHelp": {
       "properties": {
         "description": {
-          "format": "string",
           "title": "Describe what link offers",
           "type": "string"
         },
         "url": {
           "description": "The URL of The link.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -907,7 +837,6 @@
       "properties": {
         "type_url": {
           "description": "A URL/resource name whose content describes the type of the\nserialized protocol buffer message.\n\nFor URLs which use the scheme `http`, `https`, or no scheme, the\nfollowing restrictions and interpretations apply:\n\n* If no scheme is provided, `https` is assumed.\n* The last segment of the URL's path must represent the fully\n  qualified name of the type (as in `path/google.protobuf.Duration`).\n  The name should be in a canonical form (e.g., leading \".\" is\n  not accepted).\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.",
-          "format": "string",
           "type": "string"
         },
         "value": {
@@ -922,7 +851,6 @@
       "description": "Represents a Persistent Disk resource in AWS.\n\nAn AWS EBS disk must exist before mounting to a container. The disk\nmust also be in the same AWS zone as the kubelet. An AWS EBS disk\ncan only be mounted as read/write once. AWS EBS volumes support\nownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
-          "format": "string",
           "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore\nTODO: how do we prevent errors in the filesystem from compromising the machine",
           "type": "string"
         },
@@ -937,7 +865,6 @@
           "type": "boolean"
         },
         "volumeID": {
-          "format": "string",
           "title": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume).\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore",
           "type": "string"
         }
@@ -953,7 +880,6 @@
           "$ref": "#/definitions/AlertAlertSpec"
         },
         "status": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -965,11 +891,9 @@
           "$ref": "#/definitions/v1beta2Service"
         },
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "cluster_ip": {
-          "format": "string",
           "type": "string"
         },
         "created_at": {
@@ -981,21 +905,17 @@
         },
         "links": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1006,22 +926,18 @@
       "properties": {
         "cachingMode": {
           "description": "Host Caching mode: None, Read Only, Read Write.",
-          "format": "string",
           "type": "string"
         },
         "diskName": {
-          "format": "string",
           "title": "The Name of the data disk in the blob storage",
           "type": "string"
         },
         "diskURI": {
-          "format": "string",
           "title": "The URI the data disk in the blob storage",
           "type": "string"
         },
         "fsType": {
           "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
-          "format": "string",
           "type": "string"
         },
         "readOnly": {
@@ -1041,12 +957,10 @@
           "type": "boolean"
         },
         "secretName": {
-          "format": "string",
           "title": "the name of secret that contains Azure Storage Account Name and Key",
           "type": "string"
         },
         "shareName": {
-          "format": "string",
           "title": "Share Name",
           "type": "string"
         }
@@ -1058,14 +972,12 @@
       "properties": {
         "monitors": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "title": "Required: Monitors is a collection of Ceph monitors\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
           "type": "array"
         },
         "path": {
-          "format": "string",
           "title": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /",
           "type": "string"
         },
@@ -1075,7 +987,6 @@
           "type": "boolean"
         },
         "secretFile": {
-          "format": "string",
           "title": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
           "type": "string"
         },
@@ -1084,7 +995,6 @@
           "title": "Optional: SecretRef is reference to the authentication secret for User, default is empty.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it"
         },
         "user": {
-          "format": "string",
           "title": "Optional: User is the rados user name, default is admin\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
           "type": "string"
         }
@@ -1109,11 +1019,9 @@
       "properties": {
         "ACME_serverURL": {
           "description": "Provides Custom acme server url to issue certificates. If empty it\nuses let's encrypt servers.",
-          "format": "string",
           "type": "string"
         },
         "ACME_user_secret_name": {
-          "format": "string",
           "type": "string"
         },
         "HTTP_provider_ingress_reference": {
@@ -1122,23 +1030,19 @@
         "domains": {
           "description": "Obtain a single certificate for all the domains. The first Domain provided wiil\nbe counted as Name and other domains will be in SANs.",
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "email": {
-          "format": "string",
           "type": "string"
         },
         "provider": {
-          "format": "string",
           "title": "Provider to resolve challange. Valid Providers are\n\"http\":\n\"cloudflare\":\n\"digitalocean\":\n\"dnsimple\":\n\"dyn\":\n\"gandi\":\n\"googlecloud\":\n\"linode\":\n\"namecheap\":\n\"ovh\":\n\"pdns\":\n\"rfc2136\":\n\"route53\":\n\"vultr\":",
           "type": "string"
         },
         "provider_credential_secret_name": {
           "description": "http\nHTTP Provider needs an Ingress or ExtendedIngress reference in HTTP_provider_ingress_reference.\n\ncloudflare\nCLOUDFLARE_EMAIL: The email of the cloudflare user\nCLOUDFLARE_API_KEY: The API key corresponding to the email\n\ndigitalocean\nDO_AUTH_TOKEN: The digital ocean authorization token\n\ndnsimple\nDNSIMPLE_EMAIL: The email fo the DNSimple user\nDNSIMPLE_API_KEY: The API key corresponding to the email\n\ndnsmadeeasy\nDNSMADEEASY_API_KEY: The API key for DNS Made Easy\nDNSMADEEASY_API_SECRET: The api secret corresponding with the API key\nDNSMADEEASY_SANDBOX: A boolean flag, if set to true or 1, requests will be sent to the sandbox API\n\ndyn\nDYN_CUSTOMER_NAME: The customer name of the Dyn user\nDYN_USER_NAME: The user name of the Dyn user\nDYN_PASSWORD: The password of the Dyn user\n\ngandi\nGANDI_API_KEY: The API key for Gandi\n\ngooglecloud\nGCE_PROJECT: The name of the Google Cloud project to use\n\nlinode\nLINODE_API_KEY: API key for linode\n\nnamecheap\nNAMECHEAP_API_USER: The username of the namecheap user\nNAMECHEAP_API_KEY: The API key corresponding with the namecheap user\n\novh\nOVH_ENDPOINT: The URL of the API endpoint to use\nOVH_APPLICATION_KEY: The application key\nOVH_APPLICATION_SECRET: The secret corresponding to the application key\nOVH_CONSUMER_KEY: The consumer key\n\npdns\nPDNS_API_KEY: The API key to use\n\nrfc2136\nRFC2136_NAMESERVER: The network address of the provider, in the form of \"host\" or \"host:port\"\nRFC2136_TSIG_ALGORITHM: The algorithm to use for TSIG authentication.\nRFC2136_TSIG_KEY: The key to use for TSIG authentication.\nRFC2136_TSIG_SECRET: The secret to use for TSIG authentication.\n\nroute53\nAWS_ACCESS_KEY_ID: The access key ID\nAWS_SECRET_ACCESS_KEY: The secret corresponding to the access key\n\nvultr\nVULTR_API_KEY: The API key to use",
-          "format": "string",
           "title": "ProviderCredentialSecret Must Contain Secrets for that specific Providers.\nAll the Key names for DNS providers needs to maintain the following formate:",
           "type": "string"
         }
@@ -1148,7 +1052,6 @@
     "v1beta2CertificateStatus": {
       "properties": {
         "ACME_user_secret_name": {
-          "format": "string",
           "type": "string"
         },
         "certificate_obtained": {
@@ -1163,7 +1066,6 @@
           "$ref": "#/definitions/StatusACMECertificateDetails"
         },
         "message": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1173,7 +1075,6 @@
       "description": "Represents a cinder volume resource in Openstack.\nA Cinder volume must exist before mounting to a container.\nThe volume must also be in the same region as the kubelet.\nCinder volumes support ownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
-          "format": "string",
           "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md",
           "type": "string"
         },
@@ -1183,7 +1084,6 @@
           "type": "boolean"
         },
         "volumeID": {
-          "format": "string",
           "title": "volume id used to identify the volume in cinder\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md",
           "type": "string"
         }
@@ -1225,7 +1125,6 @@
       "properties": {
         "data": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -1240,33 +1139,27 @@
       "properties": {
         "add": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "deleted": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "update": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -1279,7 +1172,6 @@
       "properties": {
         "key": {
           "description": "The key to select.",
-          "format": "string",
           "type": "string"
         },
         "local_object_reference": {
@@ -1303,18 +1195,15 @@
     "v1beta2CreateResourceRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "raw": {
           "$ref": "#/definitions/v1beta2Raw"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1337,11 +1226,9 @@
     "v1beta2CronJobSpec": {
       "properties": {
         "concurrency_policy": {
-          "format": "string",
           "type": "string"
         },
         "schedule": {
-          "format": "string",
           "type": "string"
         },
         "starting_deadline_seconds": {
@@ -1376,7 +1263,6 @@
     "v1beta2DaemonSet": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "meta": {
@@ -1422,19 +1308,15 @@
     "v1beta2DeleteResourceRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1443,7 +1325,6 @@
     "v1beta2Deployment": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "meta": {
@@ -1498,7 +1379,6 @@
     "v1beta2DescribeResourceRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "include_metrics": {
@@ -1506,19 +1386,15 @@
           "type": "boolean"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "raw": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1538,11 +1414,9 @@
     "v1beta2Disk": {
       "properties": {
         "endpoint": {
-          "format": "string",
           "type": "string"
         },
         "id": {
-          "format": "string",
           "type": "string"
         },
         "iops": {
@@ -1550,11 +1424,9 @@
           "type": "integer"
         },
         "kind": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "persistent_volume": {
@@ -1564,7 +1436,6 @@
           "$ref": "#/definitions/v1beta2PersistentVolumeClaim"
         },
         "provider": {
-          "format": "string",
           "type": "string"
         },
         "size_gb": {
@@ -1572,22 +1443,18 @@
           "type": "integer"
         },
         "status": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         },
         "users": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "zone": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1596,15 +1463,12 @@
     "v1beta2DiskCreateRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "disk_type": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "size_gb": {
@@ -1612,7 +1476,6 @@
           "type": "integer"
         },
         "zone": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1621,11 +1484,9 @@
     "v1beta2DiskDeleteRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1634,15 +1495,12 @@
     "v1beta2DiskDescribeRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "provider": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1662,7 +1520,6 @@
     "v1beta2DiskListRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1686,11 +1543,9 @@
       "properties": {
         "name": {
           "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
-          "format": "string",
           "type": "string"
         },
         "value": {
-          "format": "string",
           "title": "Variable references $(VAR_NAME) are expanded\nusing the previous defined environment variables in the container and\nany service environment variables. If a variable cannot be resolved,\nthe reference in the input string will be unchanged. The $(VAR_NAME)\nsyntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped\nreferences will never be expanded, regardless of whether the variable\nexists or not.\nDefaults to \"\".\n+optional",
           "type": "string"
         },
@@ -1738,21 +1593,18 @@
           "type": "integer"
         },
         "message": {
-          "format": "string",
           "type": "string"
         },
         "meta": {
           "$ref": "#/definitions/v1beta2Meta"
         },
         "reason": {
-          "format": "string",
           "type": "string"
         },
         "source": {
           "$ref": "#/definitions/v1beta2EventSource"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1761,11 +1613,9 @@
     "v1beta2EventSource": {
       "properties": {
         "componenet": {
-          "format": "string",
           "type": "string"
         },
         "host": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -1775,7 +1625,6 @@
       "description": "Represents a Fibre Channel volume.\nFibre Channel volumes can only be mounted as read/write once.\nFibre Channel volumes support ownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
-          "format": "string",
           "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nTODO: how do we prevent errors in the filesystem from compromising the machine",
           "type": "string"
         },
@@ -1791,7 +1640,6 @@
         },
         "targetWWNs": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "title": "Required: FC target worldwide names (WWNs)",
@@ -1805,17 +1653,14 @@
       "properties": {
         "driver": {
           "description": "Driver is the name of the driver to use for this volume.",
-          "format": "string",
           "type": "string"
         },
         "fsType": {
           "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script.",
-          "format": "string",
           "type": "string"
         },
         "options": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "description": "Optional: Extra command options if any.",
@@ -1837,7 +1682,6 @@
       "description": "Represents a Flocker volume mounted by the Flocker agent.\nFlocker volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "datasetName": {
-          "format": "string",
           "title": "Required: the volume name. This is going to be store on metadata -> name on the payload for Flocker",
           "type": "string"
         }
@@ -1848,7 +1692,6 @@
       "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must\nalso be in the same GCE project and zone as the kubelet. A GCE PD\ncan only be mounted as read/write once or read-only many times. GCE\nPDs support ownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
-          "format": "string",
           "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk\nTODO: how do we prevent errors in the filesystem from compromising the machine",
           "type": "string"
         },
@@ -1858,7 +1701,6 @@
           "type": "integer"
         },
         "pdName": {
-          "format": "string",
           "title": "Unique name of the PD resource in GCE. Used to identify the disk in GCE.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk",
           "type": "string"
         },
@@ -1874,12 +1716,10 @@
       "description": "Represents a Glusterfs mount that lasts the lifetime of a pod.\nGlusterfs volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "endpoints": {
-          "format": "string",
           "title": "EndpointsName is the endpoint name that details Glusterfs topology.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod",
           "type": "string"
         },
         "path": {
-          "format": "string",
           "title": "Path is the Glusterfs volume path.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod",
           "type": "string"
         },
@@ -1895,7 +1735,6 @@
       "description": "Represents a host path mapped into a pod.\nHost path volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "path": {
-          "format": "string",
           "title": "Path of the directory on the host.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#hostpath",
           "type": "string"
         }
@@ -1906,18 +1745,15 @@
       "description": "Represents an ISCSI disk.\nISCSI volumes can only be mounted as read/write once.\nISCSI volumes support ownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
-          "format": "string",
           "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#iscsi\nTODO: how do we prevent errors in the filesystem from compromising the machine",
           "type": "string"
         },
         "iqn": {
           "description": "Target iSCSI Qualified Name.",
-          "format": "string",
           "type": "string"
         },
         "iscsiInterface": {
           "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport.",
-          "format": "string",
           "type": "string"
         },
         "lun": {
@@ -1932,7 +1768,6 @@
         },
         "targetPortal": {
           "description": "iSCSI target portal. The portal is either an IP or ip_addr:port if the port\nis other than default (typically TCP ports 860 and 3260).",
-          "format": "string",
           "type": "string"
         }
       },
@@ -1962,7 +1797,6 @@
     "v1beta2Job": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "meta": {
@@ -2031,19 +1865,15 @@
     "v1beta2KubeObject": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2131,7 +1961,6 @@
           "$ref": "#/definitions/v1beta2StorageClass"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2209,7 +2038,6 @@
           "$ref": "#/definitions/KubeResourceListStorageClasses"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2219,7 +2047,6 @@
       "properties": {
         "match_labels": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -2233,7 +2060,6 @@
           "$ref": "#/definitions/ListResourceRequestAncestor"
         },
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "include_metrics": {
@@ -2241,16 +2067,13 @@
           "type": "boolean"
         },
         "label_selector": {
-          "format": "string",
           "title": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2271,7 +2094,6 @@
       "properties": {
         "annotations": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -2286,25 +2108,20 @@
         },
         "labels": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "resource_version": {
-          "format": "string",
           "type": "string"
         },
         "self_links": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2331,7 +2148,6 @@
       "description": "Represents an NFS mount that lasts the lifetime of a pod.\nNFS volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "path": {
-          "format": "string",
           "title": "Path that is exported by the NFS server.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs",
           "type": "string"
         },
@@ -2341,7 +2157,6 @@
           "type": "boolean"
         },
         "server": {
-          "format": "string",
           "title": "Server is the hostname or IP address of the NFS server.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs",
           "type": "string"
         }
@@ -2365,7 +2180,6 @@
     "v1beta2NamespaceStatus": {
       "properties": {
         "phase": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2395,15 +2209,12 @@
     "v1beta2NodeSpec": {
       "properties": {
         "external_id": {
-          "format": "string",
           "type": "string"
         },
         "podCIDR": {
-          "format": "string",
           "type": "string"
         },
         "provider_id": {
-          "format": "string",
           "type": "string"
         },
         "unschedulable": {
@@ -2417,13 +2228,11 @@
       "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
       "properties": {
         "api_version": {
-          "format": "string",
           "title": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".\n+optional",
           "type": "string"
         },
         "field_path": {
           "description": "Path of the field to select in the specified API version.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -2432,27 +2241,21 @@
     "v1beta2ObjectReference": {
       "properties": {
         "API_version": {
-          "format": "string",
           "type": "string"
         },
         "kind": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "resource_version": {
-          "format": "string",
           "type": "string"
         },
         "uid": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2489,15 +2292,12 @@
     "v1beta2PersistentVolumeClaimRegisterRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "size_gb": {
@@ -2510,15 +2310,12 @@
     "v1beta2PersistentVolumeClaimUnRegisterRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2527,23 +2324,18 @@
     "v1beta2PersistentVolumeRegisterRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "endpoint": {
-          "format": "string",
           "type": "string"
         },
         "identifier": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "plugin": {
-          "format": "string",
           "type": "string"
         },
         "size_gb": {
@@ -2626,11 +2418,9 @@
     "v1beta2PersistentVolumeUnRegisterRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2639,7 +2429,6 @@
     "v1beta2Pod": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "meta": {
@@ -2667,24 +2456,20 @@
         },
         "image_pull_secrets": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "node_name": {
-          "format": "string",
           "type": "string"
         },
         "node_selectors": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "service_account_name": {
-          "format": "string",
           "type": "string"
         },
         "volumes": {
@@ -2700,7 +2485,6 @@
       "description": "Represents a Quobyte mount that lasts the lifetime of a pod.\nQuobyte volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "group": {
-          "format": "string",
           "title": "Group to map volume access to\nDefault is no group",
           "type": "string"
         },
@@ -2710,18 +2494,15 @@
           "type": "boolean"
         },
         "registry": {
-          "format": "string",
           "title": "Registry represents a single or multiple Quobyte Registry services\nspecified as a string as host:port pair (multiple entries are separated with commas)\nwhich acts as the central registry for volumes",
           "type": "string"
         },
         "user": {
-          "format": "string",
           "title": "User to map volume access to\nDefaults to serivceaccount user",
           "type": "string"
         },
         "volume": {
           "description": "Volume is a string that references an already created Quobyte volume by name.",
-          "format": "string",
           "type": "string"
         }
       },
@@ -2731,23 +2512,19 @@
       "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod.\nRBD volumes support ownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
-          "format": "string",
           "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#rbd\nTODO: how do we prevent errors in the filesystem from compromising the machine",
           "type": "string"
         },
         "image": {
-          "format": "string",
           "title": "The rados image name.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
           "type": "string"
         },
         "keyring": {
-          "format": "string",
           "title": "Keyring is the path to key ring for RBDUser.\nDefault is /etc/ceph/keyring.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
           "type": "string"
         },
         "monitors": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "title": "A collection of Ceph monitors.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
@@ -2755,7 +2532,6 @@
         },
         "pool": {
           "description": "The rados pool name.\nDefault is rbd.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it.",
-          "format": "string",
           "type": "string"
         },
         "readOnly": {
@@ -2768,7 +2544,6 @@
           "title": "SecretRef is name of the authentication secret for RBDUser. If provided\noverrides keyring.\nDefault is nil.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it"
         },
         "user": {
-          "format": "string",
           "title": "The rados user name.\nDefault is admin.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
           "type": "string"
         }
@@ -2778,11 +2553,9 @@
     "v1beta2Raw": {
       "properties": {
         "data": {
-          "format": "string",
           "type": "string"
         },
         "format": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2791,7 +2564,6 @@
     "v1beta2ReplicaSet": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "meta": {
@@ -2837,7 +2609,6 @@
     "v1beta2ReplicationController": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "meta": {
@@ -2863,7 +2634,6 @@
         },
         "selectors": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -2895,19 +2665,15 @@
           "type": "integer"
         },
         "message": {
-          "format": "string",
           "type": "string"
         },
         "reason": {
-          "format": "string",
           "type": "string"
         },
         "status": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -2916,17 +2682,14 @@
     "v1beta2ResourceFieldSelector": {
       "properties": {
         "container_name": {
-          "format": "string",
           "title": "Container name: required for volumes, optional for env vars\n+optional",
           "type": "string"
         },
         "divisor": {
-          "format": "string",
           "title": "Specifies the output format of the exposed resources, defaults to \"1\"\n+optional",
           "type": "string"
         },
         "resource": {
-          "format": "string",
           "title": "Required: resource to select",
           "type": "string"
         }
@@ -2969,35 +2732,30 @@
       "properties": {
         "api_groups": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "non_resource_urls": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "resource_names": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "resources": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "verbs": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
@@ -3009,7 +2767,6 @@
       "properties": {
         "data": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -3018,7 +2775,6 @@
           "$ref": "#/definitions/v1beta2Meta"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -3028,33 +2784,27 @@
       "properties": {
         "add": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "deleted": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "update": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
@@ -3067,7 +2817,6 @@
       "properties": {
         "key": {
           "description": "The key of the secret to select from.  Must be a valid secret key.",
-          "format": "string",
           "type": "string"
         },
         "local_object_reference": {
@@ -3080,7 +2829,6 @@
     "v1beta2Service": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "meta": {
@@ -3098,29 +2846,24 @@
     "v1beta2ServiceSpec": {
       "properties": {
         "clusterIP": {
-          "format": "string",
           "type": "string"
         },
         "externalIPs": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "external_name": {
-          "format": "string",
           "type": "string"
         },
         "load_balancer_source_ranges": {
           "items": {
-            "format": "string",
             "type": "string"
           },
           "type": "array"
         },
         "loadbalancerIP": {
-          "format": "string",
           "type": "string"
         },
         "ports": {
@@ -3131,17 +2874,14 @@
         },
         "selectors": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "session_affinity": {
-          "format": "string",
           "type": "string"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -3161,7 +2901,6 @@
     "v1beta2StatefulSet": {
       "properties": {
         "app": {
-          "format": "string",
           "type": "string"
         },
         "meta": {
@@ -3189,7 +2928,6 @@
           "$ref": "#/definitions/v1beta2LabelSelector"
         },
         "service_name": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -3215,13 +2953,11 @@
         },
         "parameters": {
           "additionalProperties": {
-            "format": "string",
             "type": "string"
           },
           "type": "object"
         },
         "provisioner": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -3230,19 +2966,15 @@
     "v1beta2Subject": {
       "properties": {
         "api_version": {
-          "format": "string",
           "type": "string"
         },
         "kind": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -3251,22 +2983,18 @@
     "v1beta2UpdateResourceRequest": {
       "properties": {
         "cluster": {
-          "format": "string",
           "type": "string"
         },
         "name": {
-          "format": "string",
           "type": "string"
         },
         "namespace": {
-          "format": "string",
           "type": "string"
         },
         "raw": {
           "$ref": "#/definitions/v1beta2Raw"
         },
         "type": {
-          "format": "string",
           "type": "string"
         }
       },
@@ -3277,11 +3005,9 @@
       "properties": {
         "fsType": {
           "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
-          "format": "string",
           "type": "string"
         },
         "volumePath": {
-          "format": "string",
           "title": "Path that identifies vSphere volume vmdk",
           "type": "string"
         }
@@ -3298,6 +3024,14 @@
     "/_appscode/api/cloud/v1beta2/disks/json": {
       "get": {
         "operationId": "List",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cluster",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -3340,10 +3074,21 @@
         "operationId": "Describe",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cluster",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "provider",
+            "required": false,
             "type": "string"
           }
         ],
@@ -3365,7 +3110,6 @@
         "operationId": "Delete",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "uid",
             "required": true,
@@ -3416,21 +3160,18 @@
         "operationId": "EditConfigMap",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "namespace",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -3464,21 +3205,18 @@
         "operationId": "EditSecret",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "namespace",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -3511,14 +3249,12 @@
         "operationId": "RegisterPersistentVolumeClaim",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -3551,14 +3287,12 @@
         "operationId": "UnregisterPersistentVolumeClaim",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -3583,14 +3317,12 @@
         "operationId": "RegisterPersistentVolume",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -3623,14 +3355,12 @@
         "operationId": "UnregisterPersistentVolume",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -3655,17 +3385,47 @@
         "operationId": "List",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "type",
             "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "format": "boolean",
+            "in": "query",
+            "name": "include_metrics",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "ancestor.type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "ancestor.name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend.",
+            "in": "query",
+            "name": "label_selector",
+            "required": false,
             "type": "string"
           }
         ],
@@ -3685,14 +3445,12 @@
         "operationId": "Create",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "type",
             "required": true,
@@ -3725,21 +3483,18 @@
         "operationId": "Delete",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "type",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
@@ -3762,25 +3517,41 @@
         "operationId": "Describe",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "type",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "raw",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "format": "boolean",
+            "in": "query",
+            "name": "include_metrics",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -3799,21 +3570,18 @@
         "operationId": "Update",
         "parameters": [
           {
-            "format": "string",
             "in": "path",
             "name": "cluster",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "type",
             "required": true,
             "type": "string"
           },
           {
-            "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
