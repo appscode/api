@@ -28,7 +28,7 @@ type ListRequest struct {
 func (m *ListRequest) Reset()                    { *m = ListRequest{} }
 func (m *ListRequest) String() string            { return proto.CompactTextString(m) }
 func (*ListRequest) ProtoMessage()               {}
-func (*ListRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
+func (*ListRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
 
 func (m *ListRequest) GetCluster() string {
 	if m != nil {
@@ -45,7 +45,7 @@ type ListResponse struct {
 func (m *ListResponse) Reset()                    { *m = ListResponse{} }
 func (m *ListResponse) String() string            { return proto.CompactTextString(m) }
 func (*ListResponse) ProtoMessage()               {}
-func (*ListResponse) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{1} }
+func (*ListResponse) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{1} }
 
 func (m *ListResponse) GetStatus() *appscode_dtypes.Status {
 	if m != nil {
@@ -71,7 +71,7 @@ type DescribeRequest struct {
 func (m *DescribeRequest) Reset()                    { *m = DescribeRequest{} }
 func (m *DescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*DescribeRequest) ProtoMessage()               {}
-func (*DescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{2} }
+func (*DescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{2} }
 
 func (m *DescribeRequest) GetKind() string {
 	if m != nil {
@@ -109,7 +109,7 @@ type DescribeResponse struct {
 func (m *DescribeResponse) Reset()                    { *m = DescribeResponse{} }
 func (m *DescribeResponse) String() string            { return proto.CompactTextString(m) }
 func (*DescribeResponse) ProtoMessage()               {}
-func (*DescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{3} }
+func (*DescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{3} }
 
 func (m *DescribeResponse) GetStatus() *appscode_dtypes.Status {
 	if m != nil {
@@ -135,7 +135,7 @@ type CreateRequest struct {
 func (m *CreateRequest) Reset()                    { *m = CreateRequest{} }
 func (m *CreateRequest) String() string            { return proto.CompactTextString(m) }
 func (*CreateRequest) ProtoMessage()               {}
-func (*CreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{4} }
+func (*CreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{4} }
 
 func (m *CreateRequest) GetName() string {
 	if m != nil {
@@ -174,7 +174,7 @@ type UpdateRequest struct {
 func (m *UpdateRequest) Reset()                    { *m = UpdateRequest{} }
 func (m *UpdateRequest) String() string            { return proto.CompactTextString(m) }
 func (*UpdateRequest) ProtoMessage()               {}
-func (*UpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{5} }
+func (*UpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{5} }
 
 func (m *UpdateRequest) GetName() string {
 	if m != nil {
@@ -207,7 +207,7 @@ type DeleteRequest struct {
 func (m *DeleteRequest) Reset()                    { *m = DeleteRequest{} }
 func (m *DeleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*DeleteRequest) ProtoMessage()               {}
-func (*DeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{6} }
+func (*DeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{6} }
 
 func (m *DeleteRequest) GetKind() string {
 	if m != nil {
@@ -262,7 +262,7 @@ type LoadBalancer struct {
 func (m *LoadBalancer) Reset()                    { *m = LoadBalancer{} }
 func (m *LoadBalancer) String() string            { return proto.CompactTextString(m) }
 func (*LoadBalancer) ProtoMessage()               {}
-func (*LoadBalancer) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{7} }
+func (*LoadBalancer) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{7} }
 
 func (m *LoadBalancer) GetKind() string {
 	if m != nil {
@@ -328,7 +328,7 @@ type Spec struct {
 func (m *Spec) Reset()                    { *m = Spec{} }
 func (m *Spec) String() string            { return proto.CompactTextString(m) }
 func (*Spec) ProtoMessage()               {}
-func (*Spec) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{8} }
+func (*Spec) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{8} }
 
 func (m *Spec) GetBackend() *HTTPLoadBalancerRule {
 	if m != nil {
@@ -351,7 +351,7 @@ type Status struct {
 func (m *Status) Reset()                    { *m = Status{} }
 func (m *Status) String() string            { return proto.CompactTextString(m) }
 func (*Status) ProtoMessage()               {}
-func (*Status) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{9} }
+func (*Status) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{9} }
 
 func (m *Status) GetStatus() []*LoadBalancerStatus {
 	if m != nil {
@@ -368,7 +368,7 @@ type LoadBalancerStatus struct {
 func (m *LoadBalancerStatus) Reset()                    { *m = LoadBalancerStatus{} }
 func (m *LoadBalancerStatus) String() string            { return proto.CompactTextString(m) }
 func (*LoadBalancerStatus) ProtoMessage()               {}
-func (*LoadBalancerStatus) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{10} }
+func (*LoadBalancerStatus) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{10} }
 
 func (m *LoadBalancerStatus) GetIP() string {
 	if m != nil {
@@ -392,7 +392,7 @@ type LoadBalancerBackend struct {
 func (m *LoadBalancerBackend) Reset()                    { *m = LoadBalancerBackend{} }
 func (m *LoadBalancerBackend) String() string            { return proto.CompactTextString(m) }
 func (*LoadBalancerBackend) ProtoMessage()               {}
-func (*LoadBalancerBackend) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{11} }
+func (*LoadBalancerBackend) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{11} }
 
 func (m *LoadBalancerBackend) GetServiceName() string {
 	if m != nil {
@@ -420,7 +420,7 @@ type LoadBalancerRule struct {
 func (m *LoadBalancerRule) Reset()                    { *m = LoadBalancerRule{} }
 func (m *LoadBalancerRule) String() string            { return proto.CompactTextString(m) }
 func (*LoadBalancerRule) ProtoMessage()               {}
-func (*LoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{12} }
+func (*LoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{12} }
 
 func (m *LoadBalancerRule) GetHost() string {
 	if m != nil {
@@ -460,7 +460,7 @@ type HTTPLoadBalancerRule struct {
 func (m *HTTPLoadBalancerRule) Reset()                    { *m = HTTPLoadBalancerRule{} }
 func (m *HTTPLoadBalancerRule) String() string            { return proto.CompactTextString(m) }
 func (*HTTPLoadBalancerRule) ProtoMessage()               {}
-func (*HTTPLoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{13} }
+func (*HTTPLoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{13} }
 
 func (m *HTTPLoadBalancerRule) GetPath() string {
 	if m != nil {
@@ -500,7 +500,7 @@ type TCPLoadBalancerRule struct {
 func (m *TCPLoadBalancerRule) Reset()                    { *m = TCPLoadBalancerRule{} }
 func (m *TCPLoadBalancerRule) String() string            { return proto.CompactTextString(m) }
 func (*TCPLoadBalancerRule) ProtoMessage()               {}
-func (*TCPLoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{14} }
+func (*TCPLoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{14} }
 
 func (m *TCPLoadBalancerRule) GetPort() string {
 	if m != nil {
@@ -752,9 +752,9 @@ var _LoadBalancers_serviceDesc = grpc.ServiceDesc{
 	Metadata: "loadbalancer.proto",
 }
 
-func init() { proto.RegisterFile("loadbalancer.proto", fileDescriptor4) }
+func init() { proto.RegisterFile("loadbalancer.proto", fileDescriptor3) }
 
-var fileDescriptor4 = []byte{
+var fileDescriptor3 = []byte{
 	// 1022 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x57, 0x4f, 0x6f, 0x1b, 0x45,
 	0x14, 0xd7, 0x78, 0x1d, 0x3b, 0x79, 0xb6, 0x9b, 0x74, 0x5a, 0x89, 0x95, 0x29, 0xd0, 0x6c, 0x45,
