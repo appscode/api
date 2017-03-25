@@ -307,12 +307,6 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/glusterfs/json": {
-    "get": {
-      "file": "/glusterfs/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs/json"
-    }
-  },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/instance-by-ip/*": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
@@ -367,28 +361,6 @@
     "post": {
       "file": "/kubernetes/v1beta1/loadbalancer.proto",
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/glusterfs/*/json": {
-    "delete": {
-      "file": "/glusterfs/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}/json"
-    },
-    "get": {
-      "file": "/glusterfs/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/glusterfs/*/volumes/json": {
-    "get": {
-      "file": "/glusterfs/v1beta1/volume.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{glusterfs_cluster}/volumes/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/glusterfs/json": {
-    "post": {
-      "file": "/glusterfs/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/json"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/context-versions/*": {
