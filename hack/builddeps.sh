@@ -52,6 +52,8 @@ EOF
 
 setup_proxy() {
 	echo "Setting up grpc proxy"
+	rm -rf $GOPATH/src/github.com/googleapis/googleapis
+	go get -u github.com/googleapis/googleapis || true
 	rm -rf $GOPATH/src/google.golang.org/genproto
 	go get google.golang.org/genproto || true
 	rm -rf $GOPATH/src/google.golang.org/grpc
