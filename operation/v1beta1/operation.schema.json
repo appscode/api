@@ -1,32 +1,5 @@
 {
   "definitions": {
-    "v1beta1BackupScheduleRequest": {
-      "properties": {
-        "auth_secret_name": {
-          "type": "string"
-        },
-        "bucket_name": {
-          "type": "string"
-        },
-        "cluster": {
-          "type": "string"
-        },
-        "credential_uid": {
-          "type": "string"
-        },
-        "schedule_cron_expr": {
-          "type": "string"
-        },
-        "snapshot_name": {
-          "type": "string"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 13",
-      "type": "object"
-    },
     "v1beta1ClusterCreateRequest": {
       "properties": {
         "cloud_credential": {
@@ -182,47 +155,6 @@
       },
       "type": "object"
     },
-    "v1beta1DataBucketDeleteRequest": {
-      "properties": {
-        "data_type": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "prefix": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1DatabaseCheckRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 4",
-      "type": "object"
-    },
-    "v1beta1DatabaseDeleteRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "destroy": {
-          "type": "boolean"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 4",
-      "type": "object"
-    },
     "v1beta1DescribeRequest": {
       "properties": {
         "phid": {
@@ -262,21 +194,6 @@
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "v1beta1SnapshotCheckRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        },
-        "schedule_backup": {
-          "type": "boolean"
-        }
-      },
-      "title": "Next Id: 5",
       "type": "object"
     }
   }

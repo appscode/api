@@ -79,33 +79,6 @@
       },
       "type": "object"
     },
-    "v1beta1BackupScheduleRequest": {
-      "properties": {
-        "auth_secret_name": {
-          "type": "string"
-        },
-        "bucket_name": {
-          "type": "string"
-        },
-        "cluster": {
-          "type": "string"
-        },
-        "credential_uid": {
-          "type": "string"
-        },
-        "schedule_cron_expr": {
-          "type": "string"
-        },
-        "snapshot_name": {
-          "type": "string"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 13",
-      "type": "object"
-    },
     "v1beta1ClusterCreateRequest": {
       "properties": {
         "cloud_credential": {
@@ -267,48 +240,6 @@
       },
       "type": "object"
     },
-    "v1beta1DataBucketDeleteRequest": {
-      "properties": {
-        "data_type": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "prefix": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1DatabaseCheckRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 4",
-      "type": "object"
-    },
-    "v1beta1DatabaseDeleteRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "destroy": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 4",
-      "type": "object"
-    },
     "v1beta1DescribeRequest": {
       "properties": {
         "phid": {
@@ -420,9 +351,6 @@
         "auth": {
           "$ref": "#/definitions/v1beta1Auth"
         },
-        "backup_schedule_request": {
-          "$ref": "#/definitions/v1beta1BackupScheduleRequest"
-        },
         "cluster_create_request": {
           "$ref": "#/definitions/v1beta1ClusterCreateRequest"
         },
@@ -431,15 +359,6 @@
         },
         "cluster_reconfigure_request": {
           "$ref": "#/definitions/v1beta1ClusterReconfigureRequest"
-        },
-        "data_bucket_delete_request": {
-          "$ref": "#/definitions/v1beta1DataBucketDeleteRequest"
-        },
-        "database_check_request": {
-          "$ref": "#/definitions/v1beta1DatabaseCheckRequest"
-        },
-        "database_delete_request": {
-          "$ref": "#/definitions/v1beta1DatabaseDeleteRequest"
         },
         "metadata": {
           "$ref": "#/definitions/v1beta1Metadata"
@@ -452,9 +371,6 @@
         },
         "phid": {
           "type": "string"
-        },
-        "snapshot_check_request": {
-          "$ref": "#/definitions/v1beta1SnapshotCheckRequest"
         },
         "type": {
           "$ref": "#/definitions/v1beta1OperationType"
@@ -470,32 +386,11 @@
         "CLUSTER_CREATE",
         "CLUSTER_DELETE",
         "CLUSTER_RECONFIGURE",
-        "DATA_BUCKET_DELETE",
-        "BACKUP_SCHEDULE",
         "NAMESPACE_CREATE",
-        "NAMESPACE_ADMIN_TASK",
-        "DATABASE_CHECK",
-        "SNAPSHOT_CHECK",
-        "DATABASE_DELETE"
+        "NAMESPACE_ADMIN_TASK"
       ],
       "title": "Next Id: 18",
       "type": "string"
-    },
-    "v1beta1SnapshotCheckRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "phid": {
-          "type": "string"
-        },
-        "schedule_backup": {
-          "format": "boolean",
-          "type": "boolean"
-        }
-      },
-      "title": "Next Id: 5",
-      "type": "object"
     }
   },
   "host": "api.appscode.com",
