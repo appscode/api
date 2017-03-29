@@ -23,9 +23,25 @@ service Billing {
     };
   }
 
+  rpc Subscribe(SubscribeRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/_appscode/api/namespace/v1beta1/billing/subscriptions/json"
+      body: "*"
+    };
+  }
+
   rpc GetQuota(dtypes.VoidRequest) returns (GetQuotaResponse) {
     option (google.api.http) = {
         get: "/_appscode/api/namespace/v1beta1/billing/quotas/json"
+    };
+  }
+
+  rpc CreateClientToken(dtypes.VoidRequest) returns(CreateClientTokenResponse) {
+    option(google.api.http) = {
+      get: "/_appscode/api/namespace/v1beta1/billing/client-token/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -54,8 +70,19 @@ message GetSubscriptionResponse {
   int64 date_end = 6;
 }
 
+message SubscribeRequest {
+  string product_id = 1;
+  bool auto_extend = 2;
+  int64 start_time = 3;
+}
+
 message GetQuotaResponse {
   dtypes.Status status = 1;
   map<string, int64> assigned = 2;
   map<string, int64> used = 3;
+}
+
+message CreateClientTokenResponse {
+  dtypes.Status status = 1;
+  string token = 2;
 }

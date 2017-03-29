@@ -481,6 +481,12 @@
       "url": "/_appscode/api/mailinglist/v1beta1/subscribe/json"
     }
   },
+  "/_appscode/api/namespace/v1beta1/billing/client-token/json": {
+    "get": {
+      "file": "/namespace/v1beta1/billing.proto",
+      "url": "/_appscode/api/namespace/v1beta1/billing/client-token/json"
+    }
+  },
   "/_appscode/api/namespace/v1beta1/billing/paymentmethods/json": {
     "get": {
       "file": "/namespace/v1beta1/billing.proto",
@@ -495,6 +501,10 @@
   },
   "/_appscode/api/namespace/v1beta1/billing/subscriptions/json": {
     "get": {
+      "file": "/namespace/v1beta1/billing.proto",
+      "url": "/_appscode/api/namespace/v1beta1/billing/subscriptions/json"
+    },
+    "post": {
       "file": "/namespace/v1beta1/billing.proto",
       "url": "/_appscode/api/namespace/v1beta1/billing/subscriptions/json"
     }

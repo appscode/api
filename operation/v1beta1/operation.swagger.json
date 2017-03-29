@@ -246,7 +246,16 @@
         "name": {
           "type": "string"
         },
+        "options": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
         "password": {
+          "type": "string"
+        },
+        "payment_method_nonce": {
           "type": "string"
         },
         "subscription_type": {

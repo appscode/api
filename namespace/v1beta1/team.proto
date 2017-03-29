@@ -55,6 +55,8 @@ message CreateRequest {
   repeated string invite_emails = 6;
   string subscription_type = 7;
   string client_ip = 8;
+  string payment_method_nonce = 9;
+  map<string, string> options = 10;
 }
 
 message CreateResponse {

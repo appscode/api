@@ -3,6 +3,20 @@
     "dtypesVoidRequest": {
       "description": "Void Requests and response to use with other types.",
       "type": "object"
+    },
+    "v1beta1SubscribeRequest": {
+      "properties": {
+        "auto_extend": {
+          "type": "boolean"
+        },
+        "product_id": {
+          "type": "string"
+        },
+        "start_time": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
     }
   }
 }

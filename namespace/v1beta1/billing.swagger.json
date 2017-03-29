@@ -91,6 +91,17 @@
       },
       "type": "object"
     },
+    "v1beta1CreateClientTokenResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1GetQuotaResponse": {
       "properties": {
         "assigned": {
@@ -138,6 +149,22 @@
         }
       },
       "type": "object"
+    },
+    "v1beta1SubscribeRequest": {
+      "properties": {
+        "auto_extend": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "product_id": {
+          "type": "string"
+        },
+        "start_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
     }
   },
   "host": "api.appscode.com",
@@ -146,6 +173,22 @@
     "version": "1beta1"
   },
   "paths": {
+    "/_appscode/api/namespace/v1beta1/billing/client-token/json": {
+      "get": {
+        "operationId": "CreateClientToken",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1CreateClientTokenResponse"
+            }
+          }
+        },
+        "tags": [
+          "Billing"
+        ]
+      }
+    },
     "/_appscode/api/namespace/v1beta1/billing/paymentmethods/json": {
       "get": {
         "operationId": "CheckPaymentMethod",
@@ -190,6 +233,30 @@
           }
         },
         "summary": "Checks current subscription of a namespace",
+        "tags": [
+          "Billing"
+        ]
+      },
+      "post": {
+        "operationId": "Subscribe",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1SubscribeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
         "tags": [
           "Billing"
         ]
