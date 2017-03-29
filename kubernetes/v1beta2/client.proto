@@ -280,6 +280,10 @@ message KubeResourceList {
     Certificates certificates = 23;
     CronJobs cron_jobs = 24;
     Backups backups = 25;
+    Postgreses postgreses = 26;
+    Elastics elastics = 27;
+    DeletedDatabases deleted_databases = 28;
+    DatabaseSnapshots database_snapshots = 29;
   }
 
   message Apps {
@@ -371,7 +375,23 @@ message KubeResourceList {
   }
 
   message CronJobs {
-      repeated CronJob items = 1;
+    repeated CronJob items = 1;
+  }
+
+  message Postgreses {
+    repeated Postgres items = 1;
+  }
+
+  message Elastics {
+    repeated Elastic items = 1;
+  }
+
+  message DeletedDatabases {
+    repeated DeletedDatabase items = 1;
+  }
+
+  message DatabaseSnapshots {
+    repeated DatabaseSnapshot items = 2;
   }
 
   message Backups {
@@ -407,6 +427,10 @@ message KubeResource {
     Certificate certificate = 25;
     CronJob cron_job = 26;
     Backup backup = 27;
+    Postgres postgres = 28;
+    Elastic elastic = 29;
+    DeletedDatabase deleted_database = 30;
+    DatabaseSnapshot database_snapshot = 31;
   }
   repeated Event events = 18;
   Raw raw = 19;
@@ -632,21 +656,21 @@ message PersistentVolumeClaim {
   PersistentVolumeClaimSpec spec = 2;
   PersistentVolumeClaimStatus status = 3;
 
-  message PersistentVolumeClaimSpec {
-    repeated string access_modes = 1;
-    ResourceRequirements resources = 2;
-    string volume_name = 3;
-
-    message ResourceRequirements {
-        map<string, string> limits = 1;
-        map<string, string> requests = 2;
-    }
-  }
-
   message PersistentVolumeClaimStatus {
     string phase = 1;
     repeated string access_modes = 2;
     map <string, string> capacity = 3;
+  }
+}
+
+message PersistentVolumeClaimSpec {
+  repeated string access_modes = 1;
+  ResourceRequirements resources = 2;
+  string volume_name = 3;
+
+  message ResourceRequirements {
+    map<string, string> limits = 1;
+    map<string, string> requests = 2;
   }
 }
 
@@ -986,7 +1010,7 @@ message Backup {
 
 message CronJob {
     Meta meta = 1;
-    Spec space = 2;
+    Spec spec = 2;
     Status status = 3;
 
     message Spec {
@@ -1001,6 +1025,102 @@ message CronJob {
         repeated ObjectReference active = 1;
         int64 last_schedule_time = 2;
     }
+}
+
+message Postgres {
+  Meta meta = 1;
+  Spec spec = 2;
+  DatabaseStatus status = 3;
+
+  message Spec {
+    string version = 1;
+    int32 replicas = 2;
+    StorageSpec storage = 3;
+    string service_account_name = 4;
+    SecretVolumeSource database_secret = 5;
+    map<string, string> node_selector = 6;
+    InitialScriptSpec initial_script = 7;
+    BackupScheduleSpec backup_schedule = 8;
+    bool do_not_delete = 9;
+  }
+}
+
+message Elastic {
+  Meta meta = 1;
+  Spec spec = 2;
+  DatabaseStatus status = 3;
+
+  message Spec {
+    string version = 1;
+    int32 replicas = 2;
+    StorageSpec storage = 3;
+    string service_account_name = 4;
+    map<string, string> node_selector = 5;
+    BackupScheduleSpec backup_schedule = 6;
+    bool do_not_delete = 7;
+  }
+}
+
+message DeletedDatabase {
+  Meta meta = 1;
+  Spec spec = 2;
+  Status status = 3;
+
+  message Spec {
+    string database_name = 1;
+    SecretVolumeSource auth_secret = 2;
+    bool destroy = 3;
+  }
+
+  message Status {
+    string message = 1;
+    int64 created = 2;
+    int64 success = 3;
+  }
+}
+
+message DatabaseSnapshot {
+  Meta meta = 1;
+  Spec spec = 2;
+  Status status = 3;
+
+  message Spec {
+    string database_name = 1;
+    SnapshotSpec snapshot_spec = 2;
+  }
+
+  message Status {
+    int64 start_time = 1;
+    int64 completion_time = 2;
+    string status = 3;
+    string reason = 4;
+  }
+}
+
+message DatabaseStatus {
+  int32 replicas = 1;
+  int32 available_replicas = 2;
+}
+
+message StorageSpec {
+  string class = 1;
+  PersistentVolumeClaimSpec persistent_volume_claim_spec = 2;
+}
+
+message InitialScriptSpec {
+  string script_path = 1;
+  PersistentVolumeSource volume_source = 2;
+}
+
+message BackupScheduleSpec {
+  string cron_expression = 1;
+  SnapshotSpec snapshot_spec = 2;
+}
+
+message SnapshotSpec {
+  SecretVolumeSource storage_secret = 1;
+  SecretVolumeSource database_secret = 2;
+  string bucket_name = 3;
 }
 
 message Certificate {

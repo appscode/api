@@ -199,11 +199,44 @@
       },
       "type": "object"
     },
+    "KubeResourceListDatabaseSnapshots": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2DatabaseSnapshot"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListDeletedDatabases": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2DeletedDatabase"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListDeployments": {
       "properties": {
         "items": {
           "items": {
             "$ref": "#/definitions/v1beta2Deployment"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListElastics": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Elastic"
           },
           "type": "array"
         }
@@ -270,6 +303,17 @@
         "items": {
           "items": {
             "$ref": "#/definitions/v1beta2Pod"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPostgreses": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Postgres"
           },
           "type": "array"
         }
@@ -533,23 +577,6 @@
           "type": "string"
         },
         "systemUUID": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "PersistentVolumeClaimPersistentVolumeClaimSpec": {
-      "properties": {
-        "access_modes": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "resources": {
-          "$ref": "#/definitions/PersistentVolumeClaimSpecResourceRequirements"
-        },
-        "volume_name": {
           "type": "string"
         }
       },
@@ -1061,6 +1088,17 @@
       },
       "type": "object"
     },
+    "v1beta2BackupScheduleSpec": {
+      "properties": {
+        "cron_expression": {
+          "type": "string"
+        },
+        "snapshot_spec": {
+          "$ref": "#/definitions/v1beta2SnapshotSpec"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2BackupSpec": {
       "properties": {
         "destination": {
@@ -1377,7 +1415,7 @@
         "meta": {
           "$ref": "#/definitions/v1beta2Meta"
         },
-        "space": {
+        "spec": {
           "$ref": "#/definitions/v1beta2CronJobSpec"
         },
         "status": {
@@ -1468,6 +1506,63 @@
       },
       "type": "object"
     },
+    "v1beta2DatabaseSnapshot": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2DatabaseSnapshotSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2DatabaseSnapshotStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DatabaseSnapshotSpec": {
+      "properties": {
+        "database_name": {
+          "type": "string"
+        },
+        "snapshot_spec": {
+          "$ref": "#/definitions/v1beta2SnapshotSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DatabaseSnapshotStatus": {
+      "properties": {
+        "completion_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "start_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DatabaseStatus": {
+      "properties": {
+        "available_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2DeleteResourceRequest": {
       "properties": {
         "cluster": {
@@ -1481,6 +1576,51 @@
         },
         "type": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DeletedDatabase": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2DeletedDatabaseSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2DeletedDatabaseStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DeletedDatabaseSpec": {
+      "properties": {
+        "auth_secret": {
+          "$ref": "#/definitions/v1beta2SecretVolumeSource"
+        },
+        "database_name": {
+          "type": "string"
+        },
+        "destroy": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DeletedDatabaseStatus": {
+      "properties": {
+        "created": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "success": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -1739,6 +1879,51 @@
           },
           "title": "Items is a list of downward API volume file\n+optional",
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Elastic": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2ElasticSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2DatabaseStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ElasticSpec": {
+      "properties": {
+        "backup_schedule": {
+          "$ref": "#/definitions/v1beta2BackupScheduleSpec"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "service_account_name": {
+          "type": "string"
+        },
+        "storage": {
+          "$ref": "#/definitions/v1beta2StorageSpec"
+        },
+        "version": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -2026,6 +2211,17 @@
       },
       "type": "object"
     },
+    "v1beta2InitialScriptSpec": {
+      "properties": {
+        "script_path": {
+          "type": "string"
+        },
+        "volume_source": {
+          "$ref": "#/definitions/v1beta2PersistentVolumeSource"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Job": {
       "properties": {
         "app": {
@@ -2160,8 +2356,17 @@
         "daemon_set": {
           "$ref": "#/definitions/v1beta2DaemonSet"
         },
+        "database_snapshot": {
+          "$ref": "#/definitions/v1beta2DatabaseSnapshot"
+        },
+        "deleted_database": {
+          "$ref": "#/definitions/v1beta2DeletedDatabase"
+        },
         "deployment": {
           "$ref": "#/definitions/v1beta2Deployment"
+        },
+        "elastic": {
+          "$ref": "#/definitions/v1beta2Elastic"
         },
         "events": {
           "items": {
@@ -2186,6 +2391,9 @@
         },
         "pod": {
           "$ref": "#/definitions/v1beta2Pod"
+        },
+        "postgres": {
+          "$ref": "#/definitions/v1beta2Postgres"
         },
         "raw": {
           "$ref": "#/definitions/v1beta2Raw"
@@ -2249,8 +2457,17 @@
         "daemon_sets": {
           "$ref": "#/definitions/KubeResourceListDaemonSets"
         },
+        "database_snapshots": {
+          "$ref": "#/definitions/KubeResourceListDatabaseSnapshots"
+        },
+        "deleted_databases": {
+          "$ref": "#/definitions/KubeResourceListDeletedDatabases"
+        },
         "deployments": {
           "$ref": "#/definitions/KubeResourceListDeployments"
+        },
+        "elastics": {
+          "$ref": "#/definitions/KubeResourceListElastics"
         },
         "jobs": {
           "$ref": "#/definitions/KubeResourceListJobs"
@@ -2269,6 +2486,9 @@
         },
         "pods": {
           "$ref": "#/definitions/KubeResourceListPods"
+        },
+        "postgreses": {
+          "$ref": "#/definitions/KubeResourceListPostgreses"
         },
         "replica_sets": {
           "$ref": "#/definitions/KubeResourceListReplicaSets"
@@ -2548,7 +2768,7 @@
           "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/PersistentVolumeClaimPersistentVolumeClaimSpec"
+          "$ref": "#/definitions/v1beta2PersistentVolumeClaimSpec"
         },
         "status": {
           "$ref": "#/definitions/PersistentVolumeClaimPersistentVolumeClaimStatus"
@@ -2570,6 +2790,23 @@
         "size_gb": {
           "format": "int64",
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeClaimSpec": {
+      "properties": {
+        "access_modes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resources": {
+          "$ref": "#/definitions/PersistentVolumeClaimSpecResourceRequirements"
+        },
+        "volume_name": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -2801,6 +3038,57 @@
             "$ref": "#/definitions/PodSpecVolume"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Postgres": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2PostgresSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2DatabaseStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PostgresSpec": {
+      "properties": {
+        "backup_schedule": {
+          "$ref": "#/definitions/v1beta2BackupScheduleSpec"
+        },
+        "database_secret": {
+          "$ref": "#/definitions/v1beta2SecretVolumeSource"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "initial_script": {
+          "$ref": "#/definitions/v1beta2InitialScriptSpec"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "service_account_name": {
+          "type": "string"
+        },
+        "storage": {
+          "$ref": "#/definitions/v1beta2StorageSpec"
+        },
+        "version": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -3244,6 +3532,20 @@
       },
       "type": "object"
     },
+    "v1beta2SnapshotSpec": {
+      "properties": {
+        "bucket_name": {
+          "type": "string"
+        },
+        "database_secret": {
+          "$ref": "#/definitions/v1beta2SecretVolumeSource"
+        },
+        "storage_secret": {
+          "$ref": "#/definitions/v1beta2SecretVolumeSource"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2StatefulSet": {
       "properties": {
         "app": {
@@ -3305,6 +3607,17 @@
         },
         "provisioner": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2StorageSpec": {
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "persistent_volume_claim_spec": {
+          "$ref": "#/definitions/v1beta2PersistentVolumeClaimSpec"
         }
       },
       "type": "object"
