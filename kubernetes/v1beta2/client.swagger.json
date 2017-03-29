@@ -122,6 +122,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListBackups": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Backup"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListCertificates": {
       "properties": {
         "items": {
@@ -700,6 +711,31 @@
       },
       "type": "object"
     },
+    "SpecBackupDestination": {
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "repository_secret_name": {
+          "type": "string"
+        },
+        "volume": {
+          "$ref": "#/definitions/v1beta2PersistentVolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "SpecBackupSource": {
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "volume_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "SpecDeploymentStrategy": {
       "properties": {
         "rolling_update": {
@@ -729,6 +765,50 @@
         },
         "target_port": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SpecRetentionPolicy": {
+      "properties": {
+        "keep_daily_snapshots": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keep_hourly_snapshots": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keep_last_snapshots": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keep_monthly_snapshots": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keep_tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "keep_weekly_snapshots": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keep_yearly_snapshots": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "retain_host_name": {
+          "type": "string"
+        },
+        "retain_tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -967,6 +1047,67 @@
       },
       "type": "object"
     },
+    "v1beta2Backup": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2BackupSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2BackupStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2BackupSpec": {
+      "properties": {
+        "destination": {
+          "$ref": "#/definitions/SpecBackupDestination"
+        },
+        "retention_policy": {
+          "$ref": "#/definitions/SpecRetentionPolicy"
+        },
+        "schedule": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/SpecBackupSource"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2BackupStatus": {
+      "properties": {
+        "backup_count": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "first_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_backup_duration": {
+          "type": "string"
+        },
+        "last_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_successful_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2CephFSVolumeSource": {
       "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod\nCephfs volumes do not support ownership management or SELinux relabeling.",
       "properties": {
@@ -1177,6 +1318,28 @@
         "local_object_reference": {
           "$ref": "#/definitions/v1beta2ObjectReference",
           "description": "The ConfigMap to select from."
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ConfigMapVolumeSource": {
+      "properties": {
+        "defaultMode": {
+          "format": "int32",
+          "title": "Optional: mode bits to use on created files by default. Must be a\nvalue between 0 and 0777. Defaults to 0644.\nDirectories within the path are not affected by this setting.\nThis might be in conflict with other options that affect the file\nmode, like fsGroup, and the result can be other mode bits set.\n+optional",
+          "type": "integer"
+        },
+        "items": {
+          "$ref": "#/definitions/v1beta2KeyToPath",
+          "title": "If unspecified, each key-value pair in the Data field of the referenced\nConfigMap will be projected into the volume as a file whose name is the\nkey and content is the value. If specified, the listed keys will be\nprojected into the specified paths, and unlisted keys will not be\npresent. If a key is specified which is not present in the ConfigMap,\nthe volume setup will error unless it is marked optional. Paths must be\nrelative and may not contain the '..' path or start with '..'.\n+optional"
+        },
+        "localObjectReference": {
+          "$ref": "#/definitions/v1beta2LocalObjectReference"
+        },
+        "optional": {
+          "format": "boolean",
+          "title": "Specify whether the ConfigMap or it's keys must be defined\n+optional",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -1539,6 +1702,57 @@
       },
       "type": "object"
     },
+    "v1beta2DownwardAPIVolumeFile": {
+      "properties": {
+        "fieldRef": {
+          "$ref": "#/definitions/v1beta2ObjectFieldSelector",
+          "title": "Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.\n+optional"
+        },
+        "mode": {
+          "format": "int32",
+          "title": "Optional: mode bits to use on this file, must be a value between 0\nand 0777. If not specified, the volume defaultMode will be used.\nThis might be in conflict with other options that affect the file\nmode, like fsGroup, and the result can be other mode bits set.\n+optional",
+          "type": "integer"
+        },
+        "path": {
+          "title": "Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'",
+          "type": "string"
+        },
+        "resourceFieldRef": {
+          "$ref": "#/definitions/v1beta2ResourceFieldSelector",
+          "title": "Selects a resource of the container: only resources limits and requests\n(limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.\n+optional"
+        }
+      },
+      "title": "DownwardAPIVolumeFile represents information to create the file containing the pod field",
+      "type": "object"
+    },
+    "v1beta2DownwardAPIVolumeSource": {
+      "description": "DownwardAPIVolumeSource represents a volume containing downward API info.\nDownward API volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "defaultMode": {
+          "format": "int32",
+          "title": "Optional: mode bits to use on created files by default. Must be a\nvalue between 0 and 0777. Defaults to 0644.\nDirectories within the path are not affected by this setting.\nThis might be in conflict with other options that affect the file\nmode, like fsGroup, and the result can be other mode bits set.\n+optional",
+          "type": "integer"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2DownwardAPIVolumeFile"
+          },
+          "title": "Items is a list of downward API volume file\n+optional",
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2EmptyDirVolumeSource": {
+      "description": "Represents an empty directory for a pod.\nEmpty directory volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "medium": {
+          "title": "What type of storage medium should back this directory.\nThe default is \"\" which means to use the node's default medium.\nMust be an empty string (default) or Memory.\nMore info: http://kubernetes.io/docs/user-guide/volumes#emptydir",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2EnvVar": {
       "properties": {
         "name": {
@@ -1712,6 +1926,24 @@
       },
       "type": "object"
     },
+    "v1beta2GitRepoVolumeSource": {
+      "description": "Represents a volume that is populated with the contents of a git repository.\nGit repo volumes do not support ownership management.\nGit repo volumes support SELinux relabeling.",
+      "properties": {
+        "directory": {
+          "description": "Target directory name.\nMust not contain or start with '..'.  If '.' is supplied, the volume directory will be the\ngit repository.  Otherwise, if specified, the volume will contain the git repository in\nthe subdirectory with the given name.",
+          "type": "string"
+        },
+        "repository": {
+          "title": "Repository URL",
+          "type": "string"
+        },
+        "revision": {
+          "description": "Commit hash for the specified revision.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2GlusterfsVolumeSource": {
       "description": "Represents a Glusterfs mount that lasts the lifetime of a pod.\nGlusterfs volumes do not support ownership management or SELinux relabeling.",
       "properties": {
@@ -1862,6 +2094,25 @@
       },
       "type": "object"
     },
+    "v1beta2KeyToPath": {
+      "description": "Maps a string key to a path within a volume.",
+      "properties": {
+        "key": {
+          "description": "The key to project.",
+          "type": "string"
+        },
+        "mode": {
+          "format": "int32",
+          "title": "Optional: mode bits to use on this file, must be a value between 0\nand 0777. If not specified, the volume defaultMode will be used.\nThis might be in conflict with other options that affect the file\nmode, like fsGroup, and the result can be other mode bits set.\n+optional",
+          "type": "integer"
+        },
+        "path": {
+          "description": "The relative path of the file to map the key to.\nMay not be an absolute path.\nMay not contain the path element '..'.\nMay not start with the string '..'.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2KubeObject": {
       "properties": {
         "cluster": {
@@ -1887,6 +2138,9 @@
         },
         "app": {
           "$ref": "#/definitions/v1beta2App"
+        },
+        "backup": {
+          "$ref": "#/definitions/v1beta2Backup"
         },
         "certificate": {
           "$ref": "#/definitions/v1beta2Certificate"
@@ -1973,6 +2227,9 @@
         },
         "apps": {
           "$ref": "#/definitions/KubeResourceListApps"
+        },
+        "backups": {
+          "$ref": "#/definitions/KubeResourceListBackups"
         },
         "certificates": {
           "$ref": "#/definitions/KubeResourceListCertificates"
@@ -2086,6 +2343,16 @@
         },
         "status": {
           "$ref": "#/definitions/appscodedtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2LocalObjectReference": {
+      "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
+      "properties": {
+        "name": {
+          "title": "Name of the referent.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#names\nTODO: Add other useful fields. apiVersion, kind, uid?\n+optional",
+          "type": "string"
         }
       },
       "type": "object"
@@ -2321,6 +2588,21 @@
       },
       "type": "object"
     },
+    "v1beta2PersistentVolumeClaimVolumeSource": {
+      "description": "PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace.\nThis volume finds the bound PV and mounts that volume for the pod. A\nPersistentVolumeClaimVolumeSource is, essentially, a wrapper around another\ntype of volume that is owned by someone else (the system).",
+      "properties": {
+        "claimName": {
+          "title": "ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume.\nMore info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Will force the ReadOnly setting in VolumeMounts.\nDefault false.\n+optional",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2PersistentVolumeRegisterRequest": {
       "properties": {
         "cluster": {
@@ -2368,6 +2650,18 @@
           "$ref": "#/definitions/v1beta2CinderVolumeSource",
           "title": "Cinder represents a cinder volume attached and mounted on kubelets host machine\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md"
         },
+        "configMap": {
+          "$ref": "#/definitions/v1beta2ConfigMapVolumeSource",
+          "title": "ConfigMap represents a configMap that should populate this volume\n+optional"
+        },
+        "downwardAPI": {
+          "$ref": "#/definitions/v1beta2DownwardAPIVolumeSource",
+          "title": "DownwardAPI represents downward API about the pod that should populate this volume\n+optional"
+        },
+        "emptyDir": {
+          "$ref": "#/definitions/v1beta2EmptyDirVolumeSource",
+          "title": "EmptyDir represents a temporary directory that shares a pod's lifetime.\nMore info: http://kubernetes.io/docs/user-guide/volumes#emptydir\n+optional"
+        },
         "fc": {
           "$ref": "#/definitions/v1beta2FCVolumeSource",
           "description": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod."
@@ -2383,6 +2677,10 @@
         "gcePersistentDisk": {
           "$ref": "#/definitions/v1beta2GCEPersistentDiskVolumeSource",
           "title": "GCEPersistentDisk represents a GCE Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod. Provisioned by an admin.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk"
+        },
+        "gitRepo": {
+          "$ref": "#/definitions/v1beta2GitRepoVolumeSource",
+          "title": "GitRepo represents a git repository at a particular revision.\n+optional"
         },
         "glusterfs": {
           "$ref": "#/definitions/v1beta2GlusterfsVolumeSource",
@@ -2400,6 +2698,14 @@
           "$ref": "#/definitions/v1beta2NFSVolumeSource",
           "title": "NFS represents an NFS mount on the host. Provisioned by an admin.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs"
         },
+        "persistentVolumeClaim": {
+          "$ref": "#/definitions/v1beta2PersistentVolumeClaimVolumeSource",
+          "title": "PersistentVolumeClaimVolumeSource represents a reference to a\nPersistentVolumeClaim in the same namespace.\nMore info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims\n+optional"
+        },
+        "photonPersistentDisk": {
+          "$ref": "#/definitions/v1beta2PhotonPersistentDiskVolumeSource",
+          "title": "PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine"
+        },
         "quobyte": {
           "$ref": "#/definitions/v1beta2QuobyteVolumeSource",
           "title": "Quobyte represents a Quobyte mount on the host that shares a pod's lifetime"
@@ -2407,6 +2713,10 @@
         "rbd": {
           "$ref": "#/definitions/v1beta2RBDVolumeSource",
           "title": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md"
+        },
+        "secret": {
+          "$ref": "#/definitions/v1beta2SecretVolumeSource",
+          "title": "Secret represents a secret that should populate this volume.\nMore info: http://kubernetes.io/docs/user-guide/volumes#secrets\n+optional"
         },
         "vsphereVolume": {
           "$ref": "#/definitions/v1beta2VsphereVirtualDiskVolumeSource",
@@ -2421,6 +2731,20 @@
           "type": "string"
         },
         "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PhotonPersistentDiskVolumeSource": {
+      "description": "Represents a Photon Controller persistent disk resource.",
+      "properties": {
+        "fsType": {
+          "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
+          "type": "string"
+        },
+        "pdID": {
+          "title": "ID that identifies Photon Controller persistent disk",
           "type": "string"
         }
       },
@@ -2822,6 +3146,28 @@
         "local_object_reference": {
           "$ref": "#/definitions/v1beta2ObjectReference",
           "description": "The name of the secret in the pod's namespace to select from."
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2SecretVolumeSource": {
+      "description": "Adapts a Secret into a volume.\n\nThe contents of the target Secret's Data field will be presented in a volume\nas files using the keys in the Data field as the file names.\nSecret volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "defaultMode": {
+          "description": "Optional: mode bits to use on created files by default. Must be a\nvalue between 0 and 0777. Defaults to 0644.\nDirectories within the path are not affected by this setting.\nThis might be in conflict with other options that affect the file\nmode, like fsGroup, and the result can be other mode bits set.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "items": {
+          "description": "If unspecified, each key-value pair in the Data field of the referenced\nSecret will be projected into the volume as a file whose name is the\nkey and content is the value. If specified, the listed keys will be\nprojected into the specified paths, and unlisted keys will not be\npresent. If a key is specified which is not present in the Secret,\nthe volume setup will error unless it is marked optional. Paths must be\nrelative and may not contain the '..' path or start with '..'.",
+          "items": {
+            "$ref": "#/definitions/v1beta2KeyToPath"
+          },
+          "type": "array"
+        },
+        "secretName": {
+          "title": "Name of the secret in the pod's namespace to use.\nMore info: http://kubernetes.io/docs/user-guide/volumes#secrets",
+          "type": "string"
         }
       },
       "type": "object"

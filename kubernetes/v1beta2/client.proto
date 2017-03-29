@@ -279,6 +279,7 @@ message KubeResourceList {
     ClusterRoleBindings cluster_role_bindings = 22;
     Certificates certificates = 23;
     CronJobs cron_jobs = 24;
+    Backups backups = 25;
   }
 
   message Apps {
@@ -372,6 +373,10 @@ message KubeResourceList {
   message CronJobs {
       repeated CronJob items = 1;
   }
+
+  message Backups {
+    repeated Backup items = 1;
+  }
 }
 
 // TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
@@ -401,6 +406,7 @@ message KubeResource {
     ClusterRoleBinding cluster_role_binding = 24;
     Certificate certificate = 25;
     CronJob cron_job = 26;
+    Backup backup = 27;
   }
   repeated Event events = 18;
   Raw raw = 19;
@@ -934,6 +940,50 @@ message Subject {
   string namespace = 4;
 }
 
+message Backup {
+  Meta meta = 1;
+  Spec spec = 2;
+  Status status = 3;
+  message Spec {
+    string schedule = 1;
+    repeated string tags = 2;
+    BackupSource source = 3;
+    BackupDestination destination = 4;
+    RetentionPolicy retention_policy = 5;
+
+    message BackupSource {
+      string volume_name = 1;
+      string path = 2;
+    }
+
+    message BackupDestination {
+      string path = 1;
+      string  repository_secret_name = 2;
+      PersistentVolumeSource volume = 3;
+    }
+
+    message RetentionPolicy {
+      int32 keep_last_snapshots = 1;
+      int32 keep_hourly_snapshots = 2;
+      int32 keep_daily_snapshots = 3;
+      int32 keep_weekly_snapshots = 4;
+      int32 keep_monthly_snapshots = 5;
+      int32 keep_yearly_snapshots = 6;
+      repeated string keep_tags = 7;
+      string retain_host_name = 8;
+      repeated string retain_tags = 9;
+    }
+  }
+
+  message Status {
+    int64 first_backup_time = 1;
+    int64 last_backup_time = 2;
+    int64 last_successful_backup_time = 3;
+    string last_backup_duration = 4;
+    int64 backup_count = 5;
+  }
+}
+
 message CronJob {
     Meta meta = 1;
     Spec space = 2;
@@ -1196,6 +1246,38 @@ message PersistentVolumeSource {
 
   // AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
   AzureDiskVolumeSource azureDisk = 16;
+
+  // EmptyDir represents a temporary directory that shares a pod's lifetime.
+  // More info: http://kubernetes.io/docs/user-guide/volumes#emptydir
+  // +optional
+  EmptyDirVolumeSource emptyDir = 17;
+
+  // GitRepo represents a git repository at a particular revision.
+  // +optional
+  GitRepoVolumeSource gitRepo = 18;
+
+  // Secret represents a secret that should populate this volume.
+  // More info: http://kubernetes.io/docs/user-guide/volumes#secrets
+  // +optional
+  SecretVolumeSource secret = 19;
+
+  // PersistentVolumeClaimVolumeSource represents a reference to a
+  // PersistentVolumeClaim in the same namespace.
+  // More info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims
+  // +optional
+  PersistentVolumeClaimVolumeSource persistentVolumeClaim = 20;
+
+  // DownwardAPI represents downward API about the pod that should populate this volume
+  // +optional
+  DownwardAPIVolumeSource downwardAPI = 21;
+
+  // ConfigMap represents a configMap that should populate this volume
+  // +optional
+  ConfigMapVolumeSource configMap = 22;
+
+  // PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
+  PhotonPersistentDiskVolumeSource photonPersistentDisk = 23;
+
 }
 
 // Represents a Persistent Disk resource in AWS.
@@ -1234,6 +1316,162 @@ message HostPathVolumeSource {
   // Path of the directory on the host.
   // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#hostpath
   string path = 1;
+}
+
+// Adapts a Secret into a volume.
+//
+// The contents of the target Secret's Data field will be presented in a volume
+// as files using the keys in the Data field as the file names.
+// Secret volumes support ownership management and SELinux relabeling.
+message SecretVolumeSource {
+  // Name of the secret in the pod's namespace to use.
+  // More info: http://kubernetes.io/docs/user-guide/volumes#secrets
+  string secretName = 1;
+
+  // If unspecified, each key-value pair in the Data field of the referenced
+  // Secret will be projected into the volume as a file whose name is the
+  // key and content is the value. If specified, the listed keys will be
+  // projected into the specified paths, and unlisted keys will not be
+  // present. If a key is specified which is not present in the Secret,
+  // the volume setup will error unless it is marked optional. Paths must be
+  // relative and may not contain the '..' path or start with '..'.
+  repeated KeyToPath items = 2;
+
+  // Optional: mode bits to use on created files by default. Must be a
+  // value between 0 and 0777. Defaults to 0644.
+  // Directories within the path are not affected by this setting.
+  // This might be in conflict with other options that affect the file
+  // mode, like fsGroup, and the result can be other mode bits set.
+  int32 defaultMode = 3;
+}
+
+// Maps a string key to a path within a volume.
+message KeyToPath {
+  // The key to project.
+  string key = 1;
+
+  // The relative path of the file to map the key to.
+  // May not be an absolute path.
+  // May not contain the path element '..'.
+  // May not start with the string '..'.
+  string path = 2;
+
+  // Optional: mode bits to use on this file, must be a value between 0
+  // and 0777. If not specified, the volume defaultMode will be used.
+  // This might be in conflict with other options that affect the file
+  // mode, like fsGroup, and the result can be other mode bits set.
+  // +optional
+  int32 mode = 3;
+}
+
+// Represents an empty directory for a pod.
+// Empty directory volumes support ownership management and SELinux relabeling.
+message EmptyDirVolumeSource {
+  // What type of storage medium should back this directory.
+  // The default is "" which means to use the node's default medium.
+  // Must be an empty string (default) or Memory.
+  // More info: http://kubernetes.io/docs/user-guide/volumes#emptydir
+  string medium = 1;
+}
+
+// PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace.
+// This volume finds the bound PV and mounts that volume for the pod. A
+// PersistentVolumeClaimVolumeSource is, essentially, a wrapper around another
+// type of volume that is owned by someone else (the system).
+message PersistentVolumeClaimVolumeSource {
+  // ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume.
+  // More info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims
+  string claimName = 1;
+
+  // Will force the ReadOnly setting in VolumeMounts.
+  // Default false.
+  // +optional
+  bool readOnly = 2;
+}
+
+// DownwardAPIVolumeSource represents a volume containing downward API info.
+// Downward API volumes support ownership management and SELinux relabeling.
+message DownwardAPIVolumeSource {
+  // Items is a list of downward API volume file
+  // +optional
+  repeated DownwardAPIVolumeFile items = 1;
+
+  // Optional: mode bits to use on created files by default. Must be a
+  // value between 0 and 0777. Defaults to 0644.
+  // Directories within the path are not affected by this setting.
+  // This might be in conflict with other options that affect the file
+  // mode, like fsGroup, and the result can be other mode bits set.
+  // +optional
+  int32 defaultMode = 2;
+}
+
+// DownwardAPIVolumeFile represents information to create the file containing the pod field
+message DownwardAPIVolumeFile {
+  // Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+  string path = 1;
+
+  // Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+  // +optional
+  ObjectFieldSelector fieldRef = 2;
+
+  // Selects a resource of the container: only resources limits and requests
+  // (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+  // +optional
+  ResourceFieldSelector resourceFieldRef = 3;
+
+  // Optional: mode bits to use on this file, must be a value between 0
+  // and 0777. If not specified, the volume defaultMode will be used.
+  // This might be in conflict with other options that affect the file
+  // mode, like fsGroup, and the result can be other mode bits set.
+  // +optional
+  int32 mode = 4;
+}
+
+message ConfigMapVolumeSource {
+  LocalObjectReference localObjectReference = 1;
+
+  // If unspecified, each key-value pair in the Data field of the referenced
+  // ConfigMap will be projected into the volume as a file whose name is the
+  // key and content is the value. If specified, the listed keys will be
+  // projected into the specified paths, and unlisted keys will not be
+  // present. If a key is specified which is not present in the ConfigMap,
+  // the volume setup will error unless it is marked optional. Paths must be
+  // relative and may not contain the '..' path or start with '..'.
+  // +optional
+  KeyToPath items = 2;
+
+  // Optional: mode bits to use on created files by default. Must be a
+  // value between 0 and 0777. Defaults to 0644.
+  // Directories within the path are not affected by this setting.
+  // This might be in conflict with other options that affect the file
+  // mode, like fsGroup, and the result can be other mode bits set.
+  // +optional
+  int32 defaultMode = 3;
+
+  // Specify whether the ConfigMap or it's keys must be defined
+  // +optional
+  bool optional = 4;
+}
+
+// Represents a Photon Controller persistent disk resource.
+message PhotonPersistentDiskVolumeSource {
+  // ID that identifies Photon Controller persistent disk
+  string pdID = 1;
+
+  // Filesystem type to mount.
+  // Must be a filesystem type supported by the host operating system.
+  // Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+  string fsType = 2;
+}
+
+// LocalObjectReference contains enough information to let you locate the
+// referenced object inside the same namespace.
+message LocalObjectReference {
+  // Name of the referent.
+  // More info: http://kubernetes.io/docs/user-guide/identifiers#names
+  // TODO: Add other useful fields. apiVersion, kind, uid?
+  // +optional
+  string name = 1;
 }
 
 // Represents an NFS mount that lasts the lifetime of a pod.
