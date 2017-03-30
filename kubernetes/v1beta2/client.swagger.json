@@ -2610,6 +2610,9 @@
         },
         "self_links": {
           "type": "string"
+        },
+        "uid": {
+          "type": "string"
         }
       },
       "type": "object"
