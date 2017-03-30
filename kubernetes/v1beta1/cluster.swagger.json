@@ -388,29 +388,7 @@
       },
       "type": "object"
     },
-    "v1beta1ClusterInstanceListRequest": {
-      "properties": {
-        "cluster_name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterInstanceListResponse": {
-      "properties": {
-        "instances": {
-          "items": {
-            "$ref": "#/definitions/v1beta1ClusterInstance"
-          },
-          "type": "array"
-        },
-        "status": {
-          "$ref": "#/definitions/appscodedtypesStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterInstanceResponse": {
+    "v1beta1ClusterInstanceByIPResponse": {
       "properties": {
         "instance": {
           "$ref": "#/definitions/v1beta1ClusterInstance"
@@ -620,30 +598,6 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances/json": {
-      "get": {
-        "operationId": "Instances",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "cluster_name",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1ClusterInstanceListResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
     "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/reconfigure/json": {
       "put": {
         "operationId": "Reconfigure",
@@ -775,7 +729,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1ClusterInstanceResponse"
+              "$ref": "#/definitions/v1beta1ClusterInstanceByIPResponse"
             }
           }
         },
@@ -805,7 +759,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1ClusterInstanceResponse"
+              "$ref": "#/definitions/v1beta1ClusterInstanceByIPResponse"
             }
           }
         },

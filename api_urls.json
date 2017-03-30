@@ -253,12 +253,6 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/instances/json": {
-    "get": {
-      "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances/json"
-    }
-  },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/json": {
     "delete": {
       "file": "/kubernetes/v1beta1/cluster.proto",

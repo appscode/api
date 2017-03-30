@@ -79,15 +79,6 @@ service Clusters {
     };
   }
 
-  rpc Instances(ClusterInstanceListRequest) returns (ClusterInstanceListResponse) {
-    option (google.api.http) = {
-      get : "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances/json"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-
   rpc StartupConfig(ClusterStartupConfigRequest) returns (ClusterStartupConfigResponse) {
     option (google.api.http) = {
       get : "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}/json"
@@ -100,7 +91,7 @@ service Clusters {
     };
   }
 
-  rpc InstanceByIP(ClusterInstanceByIPRequest) returns (ClusterInstanceResponse) {
+  rpc InstanceByIP(ClusterInstanceByIPRequest) returns (ClusterInstanceByIPResponse) {
     option (google.api.http) = {
       get : "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}/json"
       additional_bindings {
@@ -242,7 +233,7 @@ message ClusterInstanceByIPRequest {
   string external_ip = 2;
 }
 
-message ClusterInstanceResponse {
+message ClusterInstanceByIPResponse {
   dtypes.Status status = 1;
   ClusterInstance instance = 2;
 }
@@ -269,10 +260,6 @@ message ClusterClientContainerRequest {
   string disk_name = 2;
 }
 
-message ClusterInstanceListRequest {
-  string cluster_name = 1;
-}
-
 message ClusterInstance {
   string phid = 1;
   string external_id = 2;
@@ -280,11 +267,6 @@ message ClusterInstance {
   string external_ip = 4;
   string internal_ip = 5;
   string sku = 6;
-}
-
-message ClusterInstanceListResponse {
-  dtypes.Status status = 1;
-  repeated ClusterInstance instances = 2;
 }
 
 message ClusterUpdateRequest {
