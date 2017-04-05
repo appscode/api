@@ -214,7 +214,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/attic/v1beta1/artifacts/{type}/{name}/versions/json": {
+    "/_appscode/api/attic/v1beta1/artifacts/{type}/versions/json": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -225,9 +225,9 @@
             "type": "string"
           },
           {
-            "in": "path",
+            "in": "query",
             "name": "name",
-            "required": true,
+            "required": false,
             "type": "string"
           }
         ],
@@ -244,7 +244,7 @@
         ]
       }
     },
-    "/_appscode/api/attic/v1beta1/artifacts/{type}/{name}/versions/{id}/json": {
+    "/_appscode/api/attic/v1beta1/artifacts/{type}/versions/{id}/json": {
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -256,14 +256,14 @@
           },
           {
             "in": "path",
-            "name": "name",
+            "name": "id",
             "required": true,
             "type": "string"
           },
           {
-            "in": "path",
-            "name": "id",
-            "required": true,
+            "in": "query",
+            "name": "name",
+            "required": false,
             "type": "string"
           }
         ],

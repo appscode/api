@@ -1,20 +1,20 @@
 {
-  "/_appscode/api/attic/v1beta1/artifacts/*/*/versions/*/json": {
-    "get": {
-      "file": "/attic/v1beta1/version.proto",
-      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/{name}/versions/{id}/json"
-    }
-  },
-  "/_appscode/api/attic/v1beta1/artifacts/*/*/versions/json": {
-    "get": {
-      "file": "/attic/v1beta1/version.proto",
-      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/{name}/versions/json"
-    }
-  },
   "/_appscode/api/attic/v1beta1/artifacts/*/json": {
     "get": {
       "file": "/attic/v1beta1/artifact.proto",
       "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/json"
+    }
+  },
+  "/_appscode/api/attic/v1beta1/artifacts/*/versions/*/json": {
+    "get": {
+      "file": "/attic/v1beta1/version.proto",
+      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/versions/{id}/json"
+    }
+  },
+  "/_appscode/api/attic/v1beta1/artifacts/*/versions/json": {
+    "get": {
+      "file": "/attic/v1beta1/version.proto",
+      "url": "/_appscode/api/attic/v1beta1/artifacts/{type}/versions/json"
     }
   },
   "/_appscode/api/attic/v1beta1/search/json": {
