@@ -1550,19 +1550,6 @@
       },
       "type": "object"
     },
-    "v1beta2DatabaseStatus": {
-      "properties": {
-        "available_replicas": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "replicas": {
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "v1beta2DeleteResourceRequest": {
       "properties": {
         "cluster": {
@@ -1599,9 +1586,6 @@
         "auth_secret": {
           "$ref": "#/definitions/v1beta2SecretVolumeSource"
         },
-        "database_name": {
-          "type": "string"
-        },
         "destroy": {
           "format": "boolean",
           "type": "boolean"
@@ -1615,12 +1599,19 @@
           "format": "int64",
           "type": "integer"
         },
-        "message": {
-          "type": "string"
-        },
-        "success": {
+        "deleted": {
           "format": "int64",
           "type": "integer"
+        },
+        "destroyed": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1892,7 +1883,7 @@
           "$ref": "#/definitions/v1beta2ElasticSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2DatabaseStatus"
+          "$ref": "#/definitions/v1beta2ElasticStatus"
         }
       },
       "type": "object"
@@ -1923,6 +1914,21 @@
           "$ref": "#/definitions/v1beta2StorageSpec"
         },
         "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ElasticStatus": {
+      "properties": {
+        "created": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "database_status": {
+          "type": "string"
+        },
+        "reason": {
           "type": "string"
         }
       },
@@ -3054,7 +3060,7 @@
           "$ref": "#/definitions/v1beta2PostgresSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2DatabaseStatus"
+          "$ref": "#/definitions/v1beta2PostgresStatus"
         }
       },
       "type": "object"
@@ -3091,6 +3097,21 @@
           "$ref": "#/definitions/v1beta2StorageSpec"
         },
         "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PostgresStatus": {
+      "properties": {
+        "created": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "database_status": {
+          "type": "string"
+        },
+        "reason": {
           "type": "string"
         }
       },
