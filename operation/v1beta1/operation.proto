@@ -41,6 +41,7 @@ message Log {
 
 message DescribeRequest {
   string phid = 1;
+  int64 timestamp = 2;
 }
 
 message DescribeResponse {

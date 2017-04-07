@@ -244,6 +244,10 @@
       "properties": {
         "phid": {
           "type": "string"
+        },
+        "timestamp": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -408,6 +412,13 @@
             "name": "phid",
             "required": true,
             "type": "string"
+          },
+          {
+            "format": "int64",
+            "in": "query",
+            "name": "timestamp",
+            "required": false,
+            "type": "integer"
           }
         ],
         "responses": {
