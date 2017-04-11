@@ -94,6 +94,9 @@
         },
         "namespace": {
           "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/v1beta1Raw"
         }
       },
       "type": "object"
@@ -128,6 +131,9 @@
         },
         "namespace": {
           "type": "string"
+        },
+        "raw": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -136,6 +142,9 @@
       "properties": {
         "load_balancer": {
           "$ref": "#/definitions/v1beta1LoadBalancer"
+        },
+        "raw": {
+          "$ref": "#/definitions/v1beta1Raw"
         },
         "status": {
           "$ref": "#/definitions/appscodedtypesStatus"
@@ -170,6 +179,9 @@
       "properties": {
         "cluster": {
           "type": "string"
+        },
+        "namespace": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -193,9 +205,6 @@
         "creation_timestamp": {
           "format": "int64",
           "type": "integer"
-        },
-        "json": {
-          "type": "string"
         },
         "kind": {
           "description": "'kind' defines is it the regular kubernetes instance or the\nappscode superset called Extended Ingress. This field will\nstrictly contains only those two values\n'ingress' - default kubernetes ingress object.\n'extendedIngress' - appscode superset of ingress.\nwhen creating a Loadbalancer from UI this field will always\nbe only 'extendedIngress.' List, Describe, Update and Delete\nwill support both two modes.\nCreate will support only extendedIngress.\nFor Creating or Updating an regular ingress one must use the\nkubectl or direct API calls directly to kubernetes.",
@@ -268,6 +277,17 @@
       },
       "type": "object"
     },
+    "v1beta1Raw": {
+      "properties": {
+        "data": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1Spec": {
       "properties": {
         "backend": {
@@ -309,6 +329,9 @@
         },
         "name": {
           "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/v1beta1Raw"
         }
       },
       "type": "object"
@@ -328,6 +351,12 @@
             "in": "path",
             "name": "cluster",
             "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "namespace",
+            "required": false,
             "type": "string"
           }
         ],
@@ -427,6 +456,12 @@
           {
             "in": "query",
             "name": "namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "raw",
             "required": false,
             "type": "string"
           }
