@@ -342,14 +342,6 @@
       },
       "type": "object"
     },
-    "v1beta1NamespaceAdminTaskRequest": {
-      "properties": {
-        "namespace": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1Operation": {
       "properties": {
         "auth": {
@@ -366,9 +358,6 @@
         },
         "metadata": {
           "$ref": "#/definitions/v1beta1Metadata"
-        },
-        "namespace_admin_task_request": {
-          "$ref": "#/definitions/v1beta1NamespaceAdminTaskRequest"
         },
         "namespace_create_request": {
           "$ref": "#/definitions/v1beta1CreateRequest"
@@ -390,8 +379,7 @@
         "CLUSTER_CREATE",
         "CLUSTER_DELETE",
         "CLUSTER_RECONFIGURE",
-        "NAMESPACE_CREATE",
-        "NAMESPACE_ADMIN_TASK"
+        "NAMESPACE_CREATE"
       ],
       "title": "Next Id: 18",
       "type": "string"

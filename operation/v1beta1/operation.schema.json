@@ -190,14 +190,6 @@
         }
       },
       "type": "object"
-    },
-    "v1beta1NamespaceAdminTaskRequest": {
-      "properties": {
-        "namespace": {
-          "type": "string"
-        }
-      },
-      "type": "object"
     }
   }
 }

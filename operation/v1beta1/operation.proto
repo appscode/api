@@ -88,7 +88,6 @@ enum OperationType {
   CLUSTER_DELETE = 3;
   CLUSTER_RECONFIGURE = 4;
   NAMESPACE_CREATE = 11;
-  NAMESPACE_ADMIN_TASK = 12;
 }
 
 // Next Id: 22
@@ -98,14 +97,9 @@ message Operation {
     kubernetes.v1beta1.ClusterDeleteRequest cluster_delete_request = 3;
     kubernetes.v1beta1.ClusterReconfigureRequest cluster_reconfigure_request = 4;
     namespace.v1beta1.CreateRequest namespace_create_request = 11;
-    NamespaceAdminTaskRequest namespace_admin_task_request = 12;
   }
   OperationType type = 14;
   string phid = 15;
   Auth auth = 16;
   Metadata metadata = 17;
-}
-
-message NamespaceAdminTaskRequest {
-	string namespace = 1;
 }
