@@ -211,18 +211,6 @@
       "url": "/_appscode/api/health/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/construct-event/json": {
-    "put": {
-      "file": "/kubernetes/v1beta1/event.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/construct-event/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/destruct-event/json": {
-    "put": {
-      "file": "/kubernetes/v1beta1/event.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/destruct-event/json"
-    }
-  },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/notify-incident/json": {
     "post": {
       "file": "/kubernetes/v1beta1/incident.proto",
