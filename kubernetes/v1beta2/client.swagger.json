@@ -1897,6 +1897,9 @@
           "format": "boolean",
           "type": "boolean"
         },
+        "init_script": {
+          "$ref": "#/definitions/v1beta2InitSpec"
+        },
         "node_selector": {
           "additionalProperties": {
             "type": "string"
@@ -2217,13 +2220,13 @@
       },
       "type": "object"
     },
-    "v1beta2InitialScriptSpec": {
+    "v1beta2InitSpec": {
       "properties": {
-        "script_path": {
-          "type": "string"
+        "script_source": {
+          "$ref": "#/definitions/v1beta2ScriptSourceSpec"
         },
-        "volume_source": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeSource"
+        "snapshot_source": {
+          "$ref": "#/definitions/v1beta2SnapshotSourceSpec"
         }
       },
       "type": "object"
@@ -3077,8 +3080,8 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "initial_script": {
-          "$ref": "#/definitions/v1beta2InitialScriptSpec"
+        "init_script": {
+          "$ref": "#/definitions/v1beta2InitSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3399,6 +3402,17 @@
       },
       "type": "object"
     },
+    "v1beta2ScriptSourceSpec": {
+      "properties": {
+        "script_path": {
+          "type": "string"
+        },
+        "volume_source": {
+          "$ref": "#/definitions/v1beta2PersistentVolumeSource"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Secret": {
       "properties": {
         "data": {
@@ -3552,6 +3566,17 @@
             "$ref": "#/definitions/StatusLoadBalancerIngress"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2SnapshotSourceSpec": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
         }
       },
       "type": "object"

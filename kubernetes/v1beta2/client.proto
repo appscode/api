@@ -1040,7 +1040,7 @@ message Postgres {
     string service_account_name = 4;
     SecretVolumeSource database_secret = 5;
     map<string, string> node_selector = 6;
-    InitialScriptSpec initial_script = 7;
+    InitSpec init_script = 7;
     BackupScheduleSpec backup_schedule = 8;
     bool do_not_delete = 9;
   }
@@ -1063,8 +1063,9 @@ message Elastic {
     StorageSpec storage = 3;
     string service_account_name = 4;
     map<string, string> node_selector = 5;
-    BackupScheduleSpec backup_schedule = 6;
-    bool do_not_delete = 7;
+    InitSpec init_script = 6;
+    BackupScheduleSpec backup_schedule = 7;
+    bool do_not_delete = 8;
   }
 
   message Status {
@@ -1116,9 +1117,19 @@ message StorageSpec {
   PersistentVolumeClaimSpec persistent_volume_claim_spec = 2;
 }
 
-message InitialScriptSpec {
+message InitSpec {
+  ScriptSourceSpec script_source = 1;
+  SnapshotSourceSpec snapshot_source = 2;
+}
+
+message ScriptSourceSpec {
   string script_path = 1;
   PersistentVolumeSource volume_source = 2;
+}
+
+message SnapshotSourceSpec {
+	string namespace = 1;
+	string name = 2;
 }
 
 message BackupScheduleSpec {
