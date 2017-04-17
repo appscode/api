@@ -1897,7 +1897,7 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "init_script": {
+        "init": {
           "$ref": "#/definitions/v1beta2InitSpec"
         },
         "node_selector": {
@@ -3080,7 +3080,7 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "init_script": {
+        "init": {
           "$ref": "#/definitions/v1beta2InitSpec"
         },
         "node_selector": {
