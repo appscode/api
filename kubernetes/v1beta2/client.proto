@@ -475,8 +475,8 @@ message App {
 }
 
 message PodSpec {
-  repeated  Volume  volumes = 1;
-  repeated  Container containers = 2;
+  repeated Volume volumes = 1;
+  repeated Container containers = 2;
   map<string, string> node_selectors = 3;
   string service_account_name = 4;
   string node_name = 5;
@@ -500,7 +500,7 @@ message PodSpec {
 
   message Volume {
     string name = 1;
-    string host_path = 2;
+    VolumeSource volumeSource = 2;
   }
 }
 
@@ -642,7 +642,7 @@ message PersistentVolume {
     repeated string access_modes = 2;
     string persistent_volume_reclaim_policy = 3;
     ObjectReference claim_ref = 4;
-    PersistentVolumeSource persistent_volume_source = 5;
+    VolumeSource persistent_volume_source = 5;
   }
 
   message PersistentVolumeStatus {
@@ -984,7 +984,7 @@ message Backup {
     message BackupDestination {
       string path = 1;
       string  repository_secret_name = 2;
-      PersistentVolumeSource volume = 3;
+      VolumeSource volume = 3;
     }
 
     message RetentionPolicy {
@@ -1124,7 +1124,7 @@ message InitSpec {
 
 message ScriptSourceSpec {
   string script_path = 1;
-  PersistentVolumeSource volume_source = 2;
+  VolumeSource volume_source = 2;
 }
 
 message SnapshotSourceSpec {
@@ -1320,104 +1320,122 @@ message ResourceCondition {
 // Those values should be removed and use by importing those protobuf
 // while kubernetes completely moved to protobuf.
 
-// PersistentVolumeSource is similar to VolumeSource but meant for the
-// administrator who creates PVs. Exactly one of its members must be set.
-message PersistentVolumeSource {
-  // GCEPersistentDisk represents a GCE Disk resource that is attached to a
-  // kubelet's host machine and then exposed to the pod. Provisioned by an admin.
-  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk
-  GCEPersistentDiskVolumeSource gcePersistentDisk = 1;
-
-  // AWSElasticBlockStore represents an AWS Disk resource that is attached to a
-  // kubelet's host machine and then exposed to the pod.
-  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore
-  AWSElasticBlockStoreVolumeSource awsElasticBlockStore = 2;
-
-  // HostPath represents a directory on the host.
-  // Provisioned by a developer or tester.
-  // This is useful for single-node development and testing only!
-  // On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster.
-  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#hostpath
-  HostPathVolumeSource hostPath = 3;
-
-  // Glusterfs represents a Glusterfs volume that is attached to a host and
-  // exposed to the pod. Provisioned by an admin.
-  // More info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md
-  GlusterfsVolumeSource glusterfs = 4;
-
-  // NFS represents an NFS mount on the host. Provisioned by an admin.
-  // More info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs
-  NFSVolumeSource nfs = 5;
-
-  // RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.
-  // More info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md
-  RBDVolumeSource rbd = 6;
-
-  // ISCSI represents an ISCSI Disk resource that is attached to a
-  // kubelet's host machine and then exposed to the pod. Provisioned by an admin.
-  ISCSIVolumeSource iscsi = 7;
-
-  // Cinder represents a cinder volume attached and mounted on kubelets host machine
-  // More info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md
-  CinderVolumeSource cinder = 8;
-
-  // CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
-  CephFSVolumeSource cephfs = 9;
-
-  // FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
-  FCVolumeSource fc = 10;
-
-  // Flocker represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
-  FlockerVolumeSource flocker = 11;
-
-  // FlexVolume represents a generic volume resource that is
-  // provisioned/attached using an exec based plugin. This is an
-  // alpha feature and may change in future.
-  FlexVolumeSource flexVolume = 12;
-
-  // AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
-  AzureFileVolumeSource azureFile = 13;
-
-  // VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
-  VsphereVirtualDiskVolumeSource vsphereVolume = 14;
-
-  // Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
-  QuobyteVolumeSource quobyte = 15;
-
-  // AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
-  AzureDiskVolumeSource azureDisk = 16;
+// Represents the source of a volume to mount.
+// Only one of its members may be specified.
+message VolumeSource {
+  // HostPath represents a pre-existing file or directory on the host
+  // machine that is directly exposed to the container. This is generally
+  // used for system agents or other privileged things that are allowed
+  // to see the host machine. Most containers will NOT need this.
+  // More info: http://kubernetes.io/docs/user-guide/volumes#hostpath
+  // ---
+  // TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not
+  // mount host directories as read/write.
+  // +optional
+  HostPathVolumeSource hostPath = 1;
 
   // EmptyDir represents a temporary directory that shares a pod's lifetime.
   // More info: http://kubernetes.io/docs/user-guide/volumes#emptydir
   // +optional
-  EmptyDirVolumeSource emptyDir = 17;
+  EmptyDirVolumeSource emptyDir = 2;
+
+  // GCEPersistentDisk represents a GCE Disk resource that is attached to a
+  // kubelet's host machine and then exposed to the pod.
+  // More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk
+  // +optional
+  GCEPersistentDiskVolumeSource gcePersistentDisk = 3;
+
+  // AWSElasticBlockStore represents an AWS Disk resource that is attached to a
+  // kubelet's host machine and then exposed to the pod.
+  // More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore
+  // +optional
+  AWSElasticBlockStoreVolumeSource awsElasticBlockStore = 4;
 
   // GitRepo represents a git repository at a particular revision.
   // +optional
-  GitRepoVolumeSource gitRepo = 18;
+  GitRepoVolumeSource gitRepo = 5;
 
   // Secret represents a secret that should populate this volume.
   // More info: http://kubernetes.io/docs/user-guide/volumes#secrets
   // +optional
-  SecretVolumeSource secret = 19;
+  SecretVolumeSource secret = 6;
+
+  // NFS represents an NFS mount on the host that shares a pod's lifetime
+  // More info: http://kubernetes.io/docs/user-guide/volumes#nfs
+  // +optional
+  NFSVolumeSource nfs = 7;
+
+  // ISCSI represents an ISCSI Disk resource that is attached to a
+  // kubelet's host machine and then exposed to the pod.
+  // More info: http://releases.k8s.io/HEAD/examples/volumes/iscsi/README.md
+  // +optional
+  ISCSIVolumeSource iscsi = 8;
+
+  // Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.
+  // More info: http://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md
+  // +optional
+  GlusterfsVolumeSource glusterfs = 9;
 
   // PersistentVolumeClaimVolumeSource represents a reference to a
   // PersistentVolumeClaim in the same namespace.
   // More info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims
   // +optional
-  PersistentVolumeClaimVolumeSource persistentVolumeClaim = 20;
+  PersistentVolumeClaimVolumeSource persistentVolumeClaim = 10;
+
+  // RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.
+  // More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md
+  // +optional
+  RBDVolumeSource rbd = 11;
+
+  // FlexVolume represents a generic volume resource that is
+  // provisioned/attached using an exec based plugin. This is an
+  // alpha feature and may change in future.
+  // +optional
+  FlexVolumeSource flexVolume = 12;
+
+  // Cinder represents a cinder volume attached and mounted on kubelets host machine
+  // More info: http://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md
+  // +optional
+  CinderVolumeSource cinder = 13;
+
+  // CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+  // +optional
+  CephFSVolumeSource cephfs = 14;
+
+  // Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
+  // +optional
+  FlockerVolumeSource flocker = 15;
 
   // DownwardAPI represents downward API about the pod that should populate this volume
   // +optional
-  DownwardAPIVolumeSource downwardAPI = 21;
+  DownwardAPIVolumeSource downwardAPI = 16;
+
+  // FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+  // +optional
+  FCVolumeSource fc = 17;
+
+  // AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
+  // +optional
+  AzureFileVolumeSource azureFile = 18;
 
   // ConfigMap represents a configMap that should populate this volume
   // +optional
-  ConfigMapVolumeSource configMap = 22;
+  ConfigMapVolumeSource configMap = 19;
+
+  // VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
+  // +optional
+  VsphereVirtualDiskVolumeSource vsphereVolume = 20;
+
+  // Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+  // +optional
+  QuobyteVolumeSource quobyte = 21;
+
+  // AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+  // +optional
+  AzureDiskVolumeSource azureDisk = 22;
 
   // PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
   PhotonPersistentDiskVolumeSource photonPersistentDisk = 23;
-
 }
 
 // Represents a Persistent Disk resource in AWS.

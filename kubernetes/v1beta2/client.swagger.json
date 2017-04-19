@@ -640,7 +640,7 @@
           "type": "string"
         },
         "persistent_volume_source": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeSource"
+          "$ref": "#/definitions/v1beta2VolumeSource"
         }
       },
       "type": "object"
@@ -729,11 +729,11 @@
     },
     "PodSpecVolume": {
       "properties": {
-        "host_path": {
-          "type": "string"
-        },
         "name": {
           "type": "string"
+        },
+        "volumeSource": {
+          "$ref": "#/definitions/v1beta2VolumeSource"
         }
       },
       "type": "object"
@@ -747,7 +747,7 @@
           "type": "string"
         },
         "volume": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeSource"
+          "$ref": "#/definitions/v1beta2VolumeSource"
         }
       },
       "type": "object"
@@ -2876,104 +2876,6 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeSource": {
-      "description": "PersistentVolumeSource is similar to VolumeSource but meant for the\nadministrator who creates PVs. Exactly one of its members must be set.",
-      "properties": {
-        "awsElasticBlockStore": {
-          "$ref": "#/definitions/v1beta2AWSElasticBlockStoreVolumeSource",
-          "title": "AWSElasticBlockStore represents an AWS Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore"
-        },
-        "azureDisk": {
-          "$ref": "#/definitions/v1beta2AzureDiskVolumeSource",
-          "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod."
-        },
-        "azureFile": {
-          "$ref": "#/definitions/v1beta2AzureFileVolumeSource",
-          "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod."
-        },
-        "cephfs": {
-          "$ref": "#/definitions/v1beta2CephFSVolumeSource",
-          "title": "CephFS represents a Ceph FS mount on the host that shares a pod's lifetime"
-        },
-        "cinder": {
-          "$ref": "#/definitions/v1beta2CinderVolumeSource",
-          "title": "Cinder represents a cinder volume attached and mounted on kubelets host machine\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md"
-        },
-        "configMap": {
-          "$ref": "#/definitions/v1beta2ConfigMapVolumeSource",
-          "title": "ConfigMap represents a configMap that should populate this volume\n+optional"
-        },
-        "downwardAPI": {
-          "$ref": "#/definitions/v1beta2DownwardAPIVolumeSource",
-          "title": "DownwardAPI represents downward API about the pod that should populate this volume\n+optional"
-        },
-        "emptyDir": {
-          "$ref": "#/definitions/v1beta2EmptyDirVolumeSource",
-          "title": "EmptyDir represents a temporary directory that shares a pod's lifetime.\nMore info: http://kubernetes.io/docs/user-guide/volumes#emptydir\n+optional"
-        },
-        "fc": {
-          "$ref": "#/definitions/v1beta2FCVolumeSource",
-          "description": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod."
-        },
-        "flexVolume": {
-          "$ref": "#/definitions/v1beta2FlexVolumeSource",
-          "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future."
-        },
-        "flocker": {
-          "$ref": "#/definitions/v1beta2FlockerVolumeSource",
-          "title": "Flocker represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running"
-        },
-        "gcePersistentDisk": {
-          "$ref": "#/definitions/v1beta2GCEPersistentDiskVolumeSource",
-          "title": "GCEPersistentDisk represents a GCE Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod. Provisioned by an admin.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk"
-        },
-        "gitRepo": {
-          "$ref": "#/definitions/v1beta2GitRepoVolumeSource",
-          "title": "GitRepo represents a git repository at a particular revision.\n+optional"
-        },
-        "glusterfs": {
-          "$ref": "#/definitions/v1beta2GlusterfsVolumeSource",
-          "title": "Glusterfs represents a Glusterfs volume that is attached to a host and\nexposed to the pod. Provisioned by an admin.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md"
-        },
-        "hostPath": {
-          "$ref": "#/definitions/v1beta2HostPathVolumeSource",
-          "title": "HostPath represents a directory on the host.\nProvisioned by a developer or tester.\nThis is useful for single-node development and testing only!\nOn-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#hostpath"
-        },
-        "iscsi": {
-          "$ref": "#/definitions/v1beta2ISCSIVolumeSource",
-          "description": "ISCSI represents an ISCSI Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod. Provisioned by an admin."
-        },
-        "nfs": {
-          "$ref": "#/definitions/v1beta2NFSVolumeSource",
-          "title": "NFS represents an NFS mount on the host. Provisioned by an admin.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs"
-        },
-        "persistentVolumeClaim": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeClaimVolumeSource",
-          "title": "PersistentVolumeClaimVolumeSource represents a reference to a\nPersistentVolumeClaim in the same namespace.\nMore info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims\n+optional"
-        },
-        "photonPersistentDisk": {
-          "$ref": "#/definitions/v1beta2PhotonPersistentDiskVolumeSource",
-          "title": "PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine"
-        },
-        "quobyte": {
-          "$ref": "#/definitions/v1beta2QuobyteVolumeSource",
-          "title": "Quobyte represents a Quobyte mount on the host that shares a pod's lifetime"
-        },
-        "rbd": {
-          "$ref": "#/definitions/v1beta2RBDVolumeSource",
-          "title": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md"
-        },
-        "secret": {
-          "$ref": "#/definitions/v1beta2SecretVolumeSource",
-          "title": "Secret represents a secret that should populate this volume.\nMore info: http://kubernetes.io/docs/user-guide/volumes#secrets\n+optional"
-        },
-        "vsphereVolume": {
-          "$ref": "#/definitions/v1beta2VsphereVirtualDiskVolumeSource",
-          "title": "VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine"
-        }
-      },
-      "type": "object"
-    },
     "v1beta2PersistentVolumeUnRegisterRequest": {
       "properties": {
         "cluster": {
@@ -3408,7 +3310,7 @@
           "type": "string"
         },
         "volume_source": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeSource"
+          "$ref": "#/definitions/v1beta2VolumeSource"
         }
       },
       "type": "object"
@@ -3704,6 +3606,104 @@
         },
         "type": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2VolumeSource": {
+      "description": "Represents the source of a volume to mount.\nOnly one of its members may be specified.",
+      "properties": {
+        "awsElasticBlockStore": {
+          "$ref": "#/definitions/v1beta2AWSElasticBlockStoreVolumeSource",
+          "title": "AWSElasticBlockStore represents an AWS Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore\n+optional"
+        },
+        "azureDisk": {
+          "$ref": "#/definitions/v1beta2AzureDiskVolumeSource",
+          "title": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.\n+optional"
+        },
+        "azureFile": {
+          "$ref": "#/definitions/v1beta2AzureFileVolumeSource",
+          "title": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.\n+optional"
+        },
+        "cephfs": {
+          "$ref": "#/definitions/v1beta2CephFSVolumeSource",
+          "title": "CephFS represents a Ceph FS mount on the host that shares a pod's lifetime\n+optional"
+        },
+        "cinder": {
+          "$ref": "#/definitions/v1beta2CinderVolumeSource",
+          "title": "Cinder represents a cinder volume attached and mounted on kubelets host machine\nMore info: http://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md\n+optional"
+        },
+        "configMap": {
+          "$ref": "#/definitions/v1beta2ConfigMapVolumeSource",
+          "title": "ConfigMap represents a configMap that should populate this volume\n+optional"
+        },
+        "downwardAPI": {
+          "$ref": "#/definitions/v1beta2DownwardAPIVolumeSource",
+          "title": "DownwardAPI represents downward API about the pod that should populate this volume\n+optional"
+        },
+        "emptyDir": {
+          "$ref": "#/definitions/v1beta2EmptyDirVolumeSource",
+          "title": "EmptyDir represents a temporary directory that shares a pod's lifetime.\nMore info: http://kubernetes.io/docs/user-guide/volumes#emptydir\n+optional"
+        },
+        "fc": {
+          "$ref": "#/definitions/v1beta2FCVolumeSource",
+          "title": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.\n+optional"
+        },
+        "flexVolume": {
+          "$ref": "#/definitions/v1beta2FlexVolumeSource",
+          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future.\n+optional"
+        },
+        "flocker": {
+          "$ref": "#/definitions/v1beta2FlockerVolumeSource",
+          "title": "Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running\n+optional"
+        },
+        "gcePersistentDisk": {
+          "$ref": "#/definitions/v1beta2GCEPersistentDiskVolumeSource",
+          "title": "GCEPersistentDisk represents a GCE Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk\n+optional"
+        },
+        "gitRepo": {
+          "$ref": "#/definitions/v1beta2GitRepoVolumeSource",
+          "title": "GitRepo represents a git repository at a particular revision.\n+optional"
+        },
+        "glusterfs": {
+          "$ref": "#/definitions/v1beta2GlusterfsVolumeSource",
+          "title": "Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.\nMore info: http://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md\n+optional"
+        },
+        "hostPath": {
+          "$ref": "#/definitions/v1beta2HostPathVolumeSource",
+          "title": "HostPath represents a pre-existing file or directory on the host\nmachine that is directly exposed to the container. This is generally\nused for system agents or other privileged things that are allowed\nto see the host machine. Most containers will NOT need this.\nMore info: http://kubernetes.io/docs/user-guide/volumes#hostpath\n---\nTODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not\nmount host directories as read/write.\n+optional"
+        },
+        "iscsi": {
+          "$ref": "#/definitions/v1beta2ISCSIVolumeSource",
+          "title": "ISCSI represents an ISCSI Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://releases.k8s.io/HEAD/examples/volumes/iscsi/README.md\n+optional"
+        },
+        "nfs": {
+          "$ref": "#/definitions/v1beta2NFSVolumeSource",
+          "title": "NFS represents an NFS mount on the host that shares a pod's lifetime\nMore info: http://kubernetes.io/docs/user-guide/volumes#nfs\n+optional"
+        },
+        "persistentVolumeClaim": {
+          "$ref": "#/definitions/v1beta2PersistentVolumeClaimVolumeSource",
+          "title": "PersistentVolumeClaimVolumeSource represents a reference to a\nPersistentVolumeClaim in the same namespace.\nMore info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims\n+optional"
+        },
+        "photonPersistentDisk": {
+          "$ref": "#/definitions/v1beta2PhotonPersistentDiskVolumeSource",
+          "title": "PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine"
+        },
+        "quobyte": {
+          "$ref": "#/definitions/v1beta2QuobyteVolumeSource",
+          "title": "Quobyte represents a Quobyte mount on the host that shares a pod's lifetime\n+optional"
+        },
+        "rbd": {
+          "$ref": "#/definitions/v1beta2RBDVolumeSource",
+          "title": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.\nMore info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md\n+optional"
+        },
+        "secret": {
+          "$ref": "#/definitions/v1beta2SecretVolumeSource",
+          "title": "Secret represents a secret that should populate this volume.\nMore info: http://kubernetes.io/docs/user-guide/volumes#secrets\n+optional"
+        },
+        "vsphereVolume": {
+          "$ref": "#/definitions/v1beta2VsphereVirtualDiskVolumeSource",
+          "title": "VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine\n+optional"
         }
       },
       "type": "object"
