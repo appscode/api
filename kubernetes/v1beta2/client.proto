@@ -256,38 +256,33 @@ message DeleteResourceRequest {
 message KubeResourceList {
   string type = 1;
   oneof  resource {
-    Apps apps = 2;
-    ConfigMaps config_maps = 3;
-    DaemonSets daemon_sets = 4;
-    Deployments deployments = 5;
-    Jobs jobs = 6;
-    Namespaces namespaces = 7;
-    Nodes nodes = 8;
-    StatefulSets stateful_sets = 9;
-    Pods pods = 10;
-    ReplicaSets replica_sets = 11;
-    Services services = 12;
-    Secrets secrets = 13;
-    ReplicationControllers replication_controllers = 14;
-    StorageClasses storage_classes = 15;
-    PersistentVolumes persistent_volumes = 16;
-    PersistentVolumeClaims persistent_volume_claims = 17;
-    Alerts alerts = 18;
-    Roles roles = 19;
-    ClusterRoles cluster_roles = 20;
-    RoleBindings role_bindings = 21;
-    ClusterRoleBindings cluster_role_bindings = 22;
-    Certificates certificates = 23;
-    CronJobs cron_jobs = 24;
-    Backups backups = 25;
-    Postgreses postgreses = 26;
-    Elastics elastics = 27;
-    DeletedDatabases deleted_databases = 28;
-    DatabaseSnapshots database_snapshots = 29;
-  }
-
-  message Apps {
-    repeated App items = 1;
+    ConfigMaps config_maps = 2;
+    DaemonSets daemon_sets = 3;
+    Deployments deployments = 4;
+    Jobs jobs = 5;
+    Namespaces namespaces = 6;
+    Nodes nodes = 7;
+    StatefulSets stateful_sets = 8;
+    Pods pods = 9;
+    ReplicaSets replica_sets = 10;
+    Services services = 11;
+    Secrets secrets = 12;
+    ReplicationControllers replication_controllers = 13;
+    StorageClasses storage_classes = 14;
+    PersistentVolumes persistent_volumes = 15;
+    PersistentVolumeClaims persistent_volume_claims = 16;
+    Alerts alerts = 17;
+    Roles roles = 18;
+    ClusterRoles cluster_roles = 19;
+    RoleBindings role_bindings = 20;
+    ClusterRoleBindings cluster_role_bindings = 21;
+    Certificates certificates = 22;
+    CronJobs cron_jobs = 23;
+    Backups backups = 24;
+    Postgreses postgreses = 25;
+    Elastics elastics = 26;
+    DeletedDatabases deleted_databases = 27;
+    DatabaseSnapshots database_snapshots = 28;
   }
 
   message ConfigMaps {
@@ -402,38 +397,37 @@ message KubeResourceList {
 // TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
 message KubeResource {
   string type = 1;
+  Raw raw = 2;
+  repeated Event events = 3;
   oneof  resource {
-    App app = 2;
-    ConfigMap config_map = 3;
-    DaemonSet daemon_set = 4;
-    Deployment deployment = 5;
-    Job job = 6;
-    Namespace namespace = 7;
-    Node node = 8;
-    StatefulSet stateful_set = 9;
-    Pod pod = 10;
-    ReplicaSet replica_set = 11;
-    Service service = 12;
-    Secret secret = 13;
-    ReplicationController replication_controller = 14;
-    StorageClass storage_class = 15;
-    PersistentVolume persistent_volume = 16;
-    PersistentVolumeClaim persistent_volume_claim = 17;
-    Alert alert = 20;
-    Role role = 21;
-    ClusterRole cluster_role = 22;
-    RoleBinding role_binding = 23;
-    ClusterRoleBinding cluster_role_binding = 24;
-    Certificate certificate = 25;
-    CronJob cron_job = 26;
-    Backup backup = 27;
-    Postgres postgres = 28;
-    Elastic elastic = 29;
-    DeletedDatabase deleted_database = 30;
-    DatabaseSnapshot database_snapshot = 31;
+    ConfigMap config_map = 4;
+    DaemonSet daemon_set = 5;
+    Deployment deployment = 6;
+    Job job = 7;
+    Namespace namespace = 8;
+    Node node = 9;
+    StatefulSet stateful_set = 10;
+    Pod pod = 11;
+    ReplicaSet replica_set = 12;
+    Service service = 13;
+    Secret secret = 14;
+    ReplicationController replication_controller = 15;
+    StorageClass storage_class = 16;
+    PersistentVolume persistent_volume = 17;
+    PersistentVolumeClaim persistent_volume_claim = 18;
+    Alert alert = 19;
+    Role role = 20;
+    ClusterRole cluster_role = 21;
+    RoleBinding role_binding = 22;
+    ClusterRoleBinding cluster_role_binding = 23;
+    Certificate certificate = 24;
+    CronJob cron_job = 25;
+    Backup backup = 26;
+    Postgres postgres = 27;
+    Elastic elastic = 28;
+    DeletedDatabase deleted_database = 29;
+    DatabaseSnapshot database_snapshot = 30;
   }
-  repeated Event events = 18;
-  Raw raw = 19;
 }
 
 message Meta {
@@ -441,7 +435,7 @@ message Meta {
   string namespace = 2;
   string self_links = 3;
   string resource_version = 4;
-  int64 created_at = 5;
+  int64 creation_timestamp = 5;
   int64 generation = 6;
   map<string, string> labels = 7;
   map<string, string> annotations = 8;
@@ -460,18 +454,6 @@ message IcingaState {
     int32 Warning = 2;
     int32 Critical = 3;
     int32 Unknown = 4;
-}
-
-message App {
-  string cluster = 1;
-  string type = 2;
-  string namespace = 3;
-  string name = 4;
-  Service app = 5;
-  map<string, string> links = 6;
-  int64 created_at = 7;
-  string cluster_ip = 8;
-  IcingaState icinga_state = 9;
 }
 
 message PodSpec {
@@ -928,8 +910,8 @@ message Alert {
     }
 
     message AlertStatus {
-        int64 created_at = 1;
-        int64 updated_at = 2;
+        int64 creation_time = 1;
+        int64 update_time = 2;
         string phase = 3;
         string reason = 4;
     }
@@ -1053,7 +1035,7 @@ message Postgres {
   }
 
   message Status {
-    int64 created = 1;
+    int64 creation_time = 1;
     string database_status = 2;
     string reason  = 3;
   }
@@ -1076,7 +1058,7 @@ message Elastic {
   }
 
   message Status {
-    int64 created = 1;
+    int64 creation_time = 1;
     string database_status = 2;
     string reason  = 3;
   }
@@ -1093,9 +1075,9 @@ message DeletedDatabase {
   }
 
   message Status {
-    int64 created = 1;
-    int64 deleted = 2;
-    int64 destroyed = 3;
+    int64 creation_time = 1;
+    int64 deletion_time = 2;
+    int64 destroy_time = 3;
     string phase = 4;
     string reason = 5;
   }
@@ -1251,7 +1233,7 @@ message Certificate {
   message Status {
     bool certificate_obtained = 1;
     string message = 2;
-    int64 created_at = 3;
+    int64 creation_time = 3;
     string ACME_user_secret_name = 4;
     ACMECertificateDetails details = 5;
 

@@ -29,7 +29,7 @@
     },
     "AlertAlertStatus": {
       "properties": {
-        "created_at": {
+        "creation_time": {
           "format": "int64",
           "type": "integer"
         },
@@ -39,7 +39,7 @@
         "reason": {
           "type": "string"
         },
-        "updated_at": {
+        "update_time": {
           "format": "int64",
           "type": "integer"
         }
@@ -124,17 +124,6 @@
         "items": {
           "items": {
             "$ref": "#/definitions/v1beta2Alert"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "KubeResourceListApps": {
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1beta2App"
           },
           "type": "array"
         }
@@ -1011,42 +1000,6 @@
       },
       "type": "object"
     },
-    "v1beta2App": {
-      "properties": {
-        "app": {
-          "$ref": "#/definitions/v1beta2Service"
-        },
-        "cluster": {
-          "type": "string"
-        },
-        "cluster_ip": {
-          "type": "string"
-        },
-        "created_at": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "icinga_state": {
-          "$ref": "#/definitions/v1beta2IcingaState"
-        },
-        "links": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta2AzureDiskVolumeSource": {
       "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.",
       "properties": {
@@ -1256,7 +1209,7 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "created_at": {
+        "creation_time": {
           "format": "int64",
           "type": "integer"
         },
@@ -1614,15 +1567,15 @@
     },
     "v1beta2DeletedDatabaseStatus": {
       "properties": {
-        "created": {
+        "creation_time": {
           "format": "int64",
           "type": "integer"
         },
-        "deleted": {
+        "deletion_time": {
           "format": "int64",
           "type": "integer"
         },
-        "destroyed": {
+        "destroy_time": {
           "format": "int64",
           "type": "integer"
         },
@@ -1943,7 +1896,7 @@
     },
     "v1beta2ElasticStatus": {
       "properties": {
-        "created": {
+        "creation_time": {
           "format": "int64",
           "type": "integer"
         },
@@ -2218,27 +2171,6 @@
       },
       "type": "object"
     },
-    "v1beta2IcingaState": {
-      "properties": {
-        "Critical": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "OK": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "Unknown": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "Warning": {
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "v1beta2InitSpec": {
       "properties": {
         "script_source": {
@@ -2360,9 +2292,6 @@
         "alert": {
           "$ref": "#/definitions/v1beta2Alert"
         },
-        "app": {
-          "$ref": "#/definitions/v1beta2App"
-        },
         "backup": {
           "$ref": "#/definitions/v1beta2Backup"
         },
@@ -2460,9 +2389,6 @@
       "properties": {
         "alerts": {
           "$ref": "#/definitions/KubeResourceListAlerts"
-        },
-        "apps": {
-          "$ref": "#/definitions/KubeResourceListApps"
         },
         "backups": {
           "$ref": "#/definitions/KubeResourceListBackups"
@@ -2613,7 +2539,7 @@
           },
           "type": "object"
         },
-        "created_at": {
+        "creation_timestamp": {
           "format": "int64",
           "type": "integer"
         },
@@ -3028,7 +2954,7 @@
     },
     "v1beta2PostgresStatus": {
       "properties": {
-        "created": {
+        "creation_time": {
           "format": "int64",
           "type": "integer"
         },
