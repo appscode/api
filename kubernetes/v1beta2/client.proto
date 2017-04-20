@@ -907,7 +907,7 @@ message PersistentVolumeClaimUnRegisterRequest {
 message Alert {
     Meta meta = 1;
     AlertSpec spec = 2;
-    string status = 3;
+    AlertStatus status = 3;
 
     message AlertSpec {
         IcingaParam icinga_param = 1;
@@ -925,6 +925,13 @@ message Alert {
             string user_uid = 2;
             string method = 3;
         }
+    }
+
+    message AlertStatus {
+        int64 created_at = 1;
+        int64 updated_at = 2;
+        string phase = 3;
+        string reason = 4;
     }
 }
 

@@ -27,6 +27,25 @@
       },
       "type": "object"
     },
+    "AlertAlertStatus": {
+      "properties": {
+        "created_at": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "AlertSpecIcingaParam": {
       "properties": {
         "alert_interval_sec": {
@@ -987,7 +1006,7 @@
           "$ref": "#/definitions/AlertAlertSpec"
         },
         "status": {
-          "type": "string"
+          "$ref": "#/definitions/AlertAlertStatus"
         }
       },
       "type": "object"
