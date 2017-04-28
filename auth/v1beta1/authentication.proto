@@ -18,10 +18,6 @@ service Authentication {
     option (google.api.http) = {
       post : "/_appscode/api/auth/v1beta1/login/json"
       body : "*"
-      additional_bindings {
-        post : "/_appscode/api/auth/v0.1/login"
-        body : "*"
-      }
     };
     option (appscode.api.cors) = {
       enable: true
@@ -32,20 +28,6 @@ service Authentication {
     option (google.api.http) = {
       post : "/_appscode/api/auth/v1beta1/logout/json"
       body : "*"
-      additional_bindings {
-        post : "/_appscode/api/auth/v0.1/logout"
-        body : "*"
-      }
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-  // appctl used this to validates the user token with phabricator.
-  rpc Token(TokenRequest) returns (TokenResponse) {
-    option (google.api.http) = {
-      post: "/_appscode/api/auth/v1beta1/token/json"
-      body: "*"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -62,26 +44,12 @@ service Authentication {
   }
 }
 
-message CSRFTokenResponse {
-  dtypes.Status status = 1;
-  string csrf_token = 2;
-}
-
-//Next Id 4
-message TokenRequest {
-  string namespace = 1;
-  string token = 2;
-}
-
-message TokenResponse {
-  dtypes.Status status = 1;
-}
-
 message LoginRequest {
   string namespace = 1;
   string username = 2;
-  string secret = 3;
-  bool issue_token = 4;
+  string password = 3;
+  string token = 4;
+  bool issue_token = 5;
 }
 
 message LoginResponse {
@@ -96,4 +64,9 @@ message LogoutRequest {
 
 message LogoutResponse {
   dtypes.Status status = 1;
+}
+
+message CSRFTokenResponse {
+  dtypes.Status status = 1;
+  string csrf_token = 2;
 }

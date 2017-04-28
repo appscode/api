@@ -23,18 +23,6 @@
       "url": "/_appscode/api/attic/v1beta1/search/json"
     }
   },
-  "/_appscode/api/auth/v0.1/login": {
-    "post": {
-      "file": "/auth/v1beta1/authentication.proto",
-      "url": "/_appscode/api/auth/v0.1/login"
-    }
-  },
-  "/_appscode/api/auth/v0.1/logout": {
-    "post": {
-      "file": "/auth/v1beta1/authentication.proto",
-      "url": "/_appscode/api/auth/v0.1/logout"
-    }
-  },
   "/_appscode/api/auth/v1beta1/conduit/users/json": {
     "get": {
       "file": "/auth/v1beta1/conduit.proto",
@@ -75,12 +63,6 @@
     "get": {
       "file": "/auth/v1beta1/project.proto",
       "url": "/_appscode/api/auth/v1beta1/projects/json"
-    }
-  },
-  "/_appscode/api/auth/v1beta1/token/json": {
-    "post": {
-      "file": "/auth/v1beta1/authentication.proto",
-      "url": "/_appscode/api/auth/v1beta1/token/json"
     }
   },
   "/_appscode/api/certificate/v1beta1/certificates/*/actions/deploy/json": {
