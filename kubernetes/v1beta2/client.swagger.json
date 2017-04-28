@@ -1555,10 +1555,14 @@
     },
     "v1beta2DeletedDatabaseSpec": {
       "properties": {
-        "auth_secret": {
-          "$ref": "#/definitions/v1beta2SecretVolumeSource"
+        "origin": {
+          "$ref": "#/definitions/v1beta2Origin"
         },
-        "destroy": {
+        "recover": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "wipe_out": {
           "format": "boolean",
           "type": "boolean"
         }
@@ -1575,15 +1579,15 @@
           "format": "int64",
           "type": "integer"
         },
-        "destroy_time": {
-          "format": "int64",
-          "type": "integer"
-        },
         "phase": {
           "type": "string"
         },
         "reason": {
           "type": "string"
+        },
+        "wipe_out_time": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -2701,6 +2705,28 @@
         },
         "uid": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Origin": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2OriginSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2OriginSpec": {
+      "properties": {
+        "elastic": {
+          "$ref": "#/definitions/v1beta2ElasticSpec"
+        },
+        "postgres": {
+          "$ref": "#/definitions/v1beta2PostgresSpec"
         }
       },
       "type": "object"

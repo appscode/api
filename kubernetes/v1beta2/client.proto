@@ -1019,20 +1019,8 @@ message CronJob {
 
 message Postgres {
   Meta meta = 1;
-  Spec spec = 2;
+  PostgresSpec spec = 2;
   Status status = 3;
-
-  message Spec {
-    string version = 1;
-    int32 replicas = 2;
-    StorageSpec storage = 3;
-    string service_account_name = 4;
-    SecretVolumeSource database_secret = 5;
-    map<string, string> node_selector = 6;
-    InitSpec init = 7;
-    BackupScheduleSpec backup_schedule = 8;
-    bool do_not_delete = 9;
-  }
 
   message Status {
     int64 creation_time = 1;
@@ -1041,27 +1029,39 @@ message Postgres {
   }
 }
 
+message PostgresSpec {
+  string version = 1;
+  int32 replicas = 2;
+  StorageSpec storage = 3;
+  string service_account_name = 4;
+  SecretVolumeSource database_secret = 5;
+  map<string, string> node_selector = 6;
+  InitSpec init = 7;
+  BackupScheduleSpec backup_schedule = 8;
+  bool do_not_delete = 9;
+}
+
 message Elastic {
   Meta meta = 1;
-  Spec spec = 2;
+  ElasticSpec spec = 2;
   Status status = 3;
-
-  message Spec {
-    string version = 1;
-    int32 replicas = 2;
-    StorageSpec storage = 3;
-    string service_account_name = 4;
-    map<string, string> node_selector = 5;
-    InitSpec init = 6;
-    BackupScheduleSpec backup_schedule = 7;
-    bool do_not_delete = 8;
-  }
 
   message Status {
     int64 creation_time = 1;
     string database_status = 2;
     string reason  = 3;
   }
+}
+
+message ElasticSpec {
+  string version = 1;
+  int32 replicas = 2;
+  StorageSpec storage = 3;
+  string service_account_name = 4;
+  map<string, string> node_selector = 5;
+  InitSpec init = 6;
+  BackupScheduleSpec backup_schedule = 7;
+  bool do_not_delete = 8;
 }
 
 message DeletedDatabase {
@@ -1070,16 +1070,27 @@ message DeletedDatabase {
   Status status = 3;
 
   message Spec {
-    SecretVolumeSource auth_secret = 1;
-    bool destroy = 2;
+    bool wipe_out = 1;
+    bool recover = 2;
+    Origin origin = 3;
   }
 
   message Status {
     int64 creation_time = 1;
     int64 deletion_time = 2;
-    int64 destroy_time = 3;
+    int64 wipe_out_time = 3;
     string phase = 4;
     string reason = 5;
+  }
+}
+
+message Origin {
+  Meta meta = 1;
+  Spec spec = 2;
+
+  message Spec {
+    ElasticSpec elastic = 1;
+    PostgresSpec postgres = 2;
   }
 }
 
