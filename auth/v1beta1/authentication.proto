@@ -24,7 +24,7 @@ service Authentication {
     };
   }
 
-  rpc Logout(LogoutRequest) returns (LogoutResponse) {
+  rpc Logout(dtypes.VoidRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post : "/_appscode/api/auth/v1beta1/logout/json"
       body : "*"
@@ -55,15 +55,6 @@ message LoginRequest {
 message LoginResponse {
   dtypes.Status status = 1;
   string token = 2;
-}
-
-message LogoutRequest {
-  string namespace = 1;
-  string token = 2;
-}
-
-message LogoutResponse {
-  dtypes.Status status = 1;
 }
 
 message CSRFTokenResponse {
