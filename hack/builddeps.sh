@@ -59,7 +59,7 @@ setup_proxy() {
 	rm -rf $GOPATH/src/google.golang.org/grpc
 	go get -u google.golang.org/grpc
 	pushd $GOPATH/src/google.golang.org/grpc
-	git checkout v1.2.0
+	git checkout v1.3.0
 	popd
 	rm -rf $GOPATH/src/github.com/golang/protobuf
 	go get -u github.com/golang/protobuf/protoc-gen-go
@@ -69,9 +69,11 @@ setup_proxy() {
 		git clone git@github.com:appscode/grpc-gateway.git
 	fi
 	cd grpc-gateway
+	git fetch origin
+	git checkout v1.2.2-ac
 	git reset --soft HEAD~20
 	git reset HEAD --hard
-	git pull origin master
+	git pull origin v1.2.2-ac
 	go install ./protoc-gen-grpc-gateway/...
 	go install ./protoc-gen-grpc-gateway-cors/...
 	go install ./protoc-gen-grpc-js-client/...
