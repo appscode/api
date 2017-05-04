@@ -1024,7 +1024,7 @@ message Postgres {
 
   message Status {
     int64 creation_time = 1;
-    string database_status = 2;
+    string phase = 2;
     string reason  = 3;
   }
 }
@@ -1048,7 +1048,7 @@ message Elastic {
 
   message Status {
     int64 creation_time = 1;
-    string database_status = 2;
+    string phase = 2;
     string reason  = 3;
   }
 }
@@ -1107,7 +1107,7 @@ message DatabaseSnapshot {
   message Status {
     int64 start_time = 1;
     int64 completion_time = 2;
-    string status = 3;
+    string phase = 3;
     string reason = 4;
   }
 }

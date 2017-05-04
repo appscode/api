@@ -1509,15 +1509,15 @@
           "format": "int64",
           "type": "integer"
         },
+        "phase": {
+          "type": "string"
+        },
         "reason": {
           "type": "string"
         },
         "start_time": {
           "format": "int64",
           "type": "integer"
-        },
-        "status": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -1904,7 +1904,7 @@
           "format": "int64",
           "type": "integer"
         },
-        "database_status": {
+        "phase": {
           "type": "string"
         },
         "reason": {
@@ -2984,7 +2984,7 @@
           "format": "int64",
           "type": "integer"
         },
-        "database_status": {
+        "phase": {
           "type": "string"
         },
         "reason": {
