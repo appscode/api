@@ -53,11 +53,9 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  dtypes.Status status = 1;
-  string token = 2;
+  string token = 1;
 }
 
 message CSRFTokenResponse {
-  dtypes.Status status = 1;
-  string csrf_token = 2;
+  string csrf_token = 1;
 }

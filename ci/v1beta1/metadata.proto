@@ -24,8 +24,7 @@ service Metadata {
 }
 
 message ServerInfoResponse {
-  dtypes.Status status = 1;
-  string provider = 2;
-  string server_url = 3;
-  string ca_cert = 4;
+  string provider = 1;
+  string server_url = 2;
+  string ca_cert = 3;
 }

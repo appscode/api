@@ -150,8 +150,7 @@ message ClusterDescribeRequest {
 }
 
 message ClusterDescribeResponse {
-  dtypes.Status status = 1;
-  Cluster cluster = 2;
+  Cluster cluster = 1;
 
   message ClusterSpec {
     int32 container_count = 1;
@@ -162,7 +161,7 @@ message ClusterDescribeResponse {
     int64 total_cpu = 5;
     int64 total_memory = 6;
   }
-  ClusterSpec spec = 3;
+  ClusterSpec spec = 2;
 }
 
 message ClusterListRequest {
@@ -170,8 +169,7 @@ message ClusterListRequest {
 }
 
 message ClusterListResponse {
-  dtypes.Status status = 1;
-  repeated Cluster clusters = 2;
+  repeated Cluster clusters = 1;
 }
 
 message InstanceGroup {
@@ -223,9 +221,8 @@ message ClusterStartupConfigRequest {
 }
 
 message ClusterStartupConfigResponse {
-  dtypes.Status status = 1;
-  string configuration = 2;
-  string sku = 3;
+  string configuration = 1;
+  string sku = 2;
 }
 
 message ClusterInstanceByIPRequest {
@@ -234,8 +231,7 @@ message ClusterInstanceByIPRequest {
 }
 
 message ClusterInstanceByIPResponse {
-  dtypes.Status status = 1;
-  ClusterInstance instance = 2;
+  ClusterInstance instance = 1;
 }
 
 message ClusterClientConfigRequest {
@@ -243,16 +239,15 @@ message ClusterClientConfigRequest {
 }
 
 message ClusterClientConfigResponse {
-  dtypes.Status status = 1;
-  string cluster_domain = 3;
-  string ca_cert = 4;
-  string api_server_url = 5;
-  string cluster_user_name = 6;
-  string user_cert = 7;
-  string user_key = 8;
-  string context_name = 9;
-  string user_token = 10;
-  string password = 11;
+  string cluster_domain = 1;
+  string ca_cert = 2;
+  string api_server_url = 3;
+  string cluster_user_name = 4;
+  string user_cert = 5;
+  string user_key = 6;
+  string context_name = 7;
+  string user_token = 8;
+  string password = 9;
 }
 
 message ClusterClientContainerRequest {

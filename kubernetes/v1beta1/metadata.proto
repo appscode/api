@@ -10,7 +10,6 @@ option java_package = "com.appscode.api.kubernetes.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "appscode/api/dtypes/types.proto";
 
 service Metadata {
   rpc ListRegions(RegionListRequest) returns (RegionListResponse) {
@@ -46,8 +45,7 @@ message RegionListRequest {
 }
 
 message RegionListResponse {
-  dtypes.Status status = 1;
-  repeated string regions = 2;
+  repeated string regions = 1;
 }
 
 message ZoneListRequest {
@@ -56,8 +54,7 @@ message ZoneListRequest {
 }
 
 message ZoneListResponse {
-  dtypes.Status status = 1;
-  repeated string zones = 2;
+  repeated string zones = 1;
 }
 
 message BucketListRequest {
@@ -66,6 +63,5 @@ message BucketListRequest {
 }
 
 message BucketListResponse {
-  dtypes.Status status = 1;
-  repeated string names = 2;
+  repeated string names = 1;
 }

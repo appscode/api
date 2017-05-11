@@ -10,7 +10,6 @@ option java_package = "com.appscode.api.auth.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "appscode/api/dtypes/types.proto";
 
 service Projects {
   rpc List(ProjectListRequest) returns (ProjectListResponse) {
@@ -38,8 +37,7 @@ message ProjectListRequest {
 }
 
 message ProjectListResponse {
-    dtypes.Status status = 1;
-    repeated Project projets = 2;
+    repeated Project projects = 1;
 }
 
 message ProjectMemberListRequest {
@@ -47,8 +45,7 @@ message ProjectMemberListRequest {
 }
 
 message ProjectMemberListResponse {
-    dtypes.Status status = 1;
-    Project projet = 2;
+    Project project = 1;
 }
 
 message Project {

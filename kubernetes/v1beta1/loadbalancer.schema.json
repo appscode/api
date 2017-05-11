@@ -1,16 +1,5 @@
 {
   "definitions": {
-    "kubernetesv1beta1Status": {
-      "properties": {
-        "status": {
-          "items": {
-            "$ref": "#/definitions/v1beta1LoadBalancerStatus"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1CreateRequest": {
       "properties": {
         "cluster": {
@@ -129,7 +118,7 @@
           "$ref": "#/definitions/v1beta1Spec"
         },
         "status": {
-          "$ref": "#/definitions/kubernetesv1beta1Status"
+          "$ref": "#/definitions/v1beta1Status"
         }
       },
       "type": "object"
@@ -199,6 +188,17 @@
         "rules": {
           "items": {
             "$ref": "#/definitions/v1beta1LoadBalancerRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1Status": {
+      "properties": {
+        "status": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LoadBalancerStatus"
           },
           "type": "array"
         }

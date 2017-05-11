@@ -221,8 +221,6 @@ def render_schema_go(pkg, schemas):
     if schemas['requests']:
         imports.append("github.com/xeipuuv/gojsonschema")
         imports.append("github.com/golang/glog")
-    if schemas['responses']:
-        imports.append("github.com/appscode/api/dtypes")
     imports.sort()
     if imports:
         contents += 'import (\n'
@@ -255,11 +253,6 @@ def render_schema_go(pkg, schemas):
         contents += '	return {}Schema.Validate(gojsonschema.NewGoLoader(m))\n'.format(key[0:1].lower() + key[1:])
         contents += '}\n'
         contents += 'func (m *' + key + ') IsRequest() {}\n\n'
-
-    for key in schemas['responses'].keys():
-        contents += 'func (m *' + key + ') SetStatus(s *dtypes.Status) {\n'
-        contents += '	m.Status = s\n'
-        contents += '}\n'
 
     return contents
 

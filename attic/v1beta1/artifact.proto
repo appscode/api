@@ -10,7 +10,6 @@ option java_package = "com.appscode.api.attic.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "appscode/api/dtypes/types.proto";
 
 service Artifacts {
   rpc Search(ArtifactSearchRequest) returns(ArtifactSearchResponse) {
@@ -41,8 +40,7 @@ message ArtifactSearchRequest {
 }
 
 message ArtifactSearchResponse {
-  dtypes.Status status = 1;
-  repeated Artifact artifacts = 2;
+  repeated Artifact artifacts = 1;
 }
 
 message ArtifactListRequest {
@@ -50,8 +48,7 @@ message ArtifactListRequest {
 }
 
 message ArtifactListResponse {
-  dtypes.Status status = 1;
-  repeated Artifact artifacts = 2;
+  repeated Artifact artifacts = 1;
 }
 
 message Artifact {

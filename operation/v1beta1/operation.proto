@@ -45,9 +45,8 @@ message DescribeRequest {
 }
 
 message DescribeResponse {
-  dtypes.Status status = 1;
-  Operation op = 2;
-  repeated Log logs = 3;
+  Operation op = 1;
+  repeated Log logs = 2;
 }
 
 message LogDescribeRequest {
@@ -56,8 +55,7 @@ message LogDescribeRequest {
 }
 
 message LogDescribeResponse {
-  dtypes.Status status = 1;
-  Log log = 2;
+  Log log = 1;
 }
 
 message Auth {

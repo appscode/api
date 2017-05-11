@@ -10,7 +10,6 @@ option java_package = "com.appscode.api.attic.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "appscode/api/dtypes/types.proto";
 
 service Versions {
   rpc List(VersionListRequest) returns (VersionListResponse) {
@@ -44,8 +43,7 @@ message VersionListRequest {
 }
 
 message VersionListResponse {
-  dtypes.Status status = 1;
-  repeated ArtifactVersion versions = 2;
+  repeated ArtifactVersion versions = 1;
 }
 
 message VersionDescribeRequest {
@@ -55,8 +53,7 @@ message VersionDescribeRequest {
 }
 
 message VersionDescribeResponse {
-  dtypes.Status status = 1;
-  ArtifactVersion version = 2;
+  ArtifactVersion version = 1;
 }
 
 message ArtifactVersion {

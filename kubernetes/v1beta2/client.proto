@@ -190,8 +190,7 @@ message ListResourceRequest {
 }
 
 message ListResourceResponse {
-  dtypes.Status status = 1;
-  KubeResourceList resources = 2;
+  KubeResourceList resources = 1;
 }
 
 message DescribeResourceRequest {
@@ -204,8 +203,7 @@ message DescribeResourceRequest {
 }
 
 message DescribeResourceResponse {
-  dtypes.Status status = 1;
-  KubeResource resource = 2;
+  KubeResource resource = 1;
 }
 
 message UpdateResourceRequest {
@@ -1262,8 +1260,7 @@ message DiskListRequest {
 }
 
 message DiskListResponse {
-  dtypes.Status status = 1;
-  repeated Disk disks = 2;
+  repeated Disk disks = 1;
 }
 
 message DiskDescribeRequest {
@@ -1273,8 +1270,7 @@ message DiskDescribeRequest {
 }
 
 message DiskDescribeResponse {
-  dtypes.Status status = 1;
-  Disk disk = 2;
+  Disk disk = 1;
 }
 
 message DiskCreateRequest {

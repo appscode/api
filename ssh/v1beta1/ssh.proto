@@ -28,12 +28,11 @@ message SSHGetRequest {
 
 // return phid ?
 message SSHGetResponse {
-  dtypes.Status status = 1;
-  SSHKey ssh_key = 2;
-  string instance_addr = 3;
-  int32 instance_port = 4;
-  string user = 5;
-  string command = 6;
+  SSHKey ssh_key = 1;
+  string instance_addr = 2;
+  int32 instance_port = 3;
+  string user = 4;
+  string command = 5;
 }
 
 message SSHKey {

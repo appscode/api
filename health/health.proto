@@ -25,9 +25,8 @@ service Health {
 }
 
 message StatusResponse {
-  dtypes.Status status = 1;
-  version.Version version = 2;
-  Metadata metadata = 3;
+  version.Version version = 1;
+  Metadata metadata = 2;
 }
 
 message URLBase {

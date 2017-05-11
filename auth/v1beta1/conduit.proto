@@ -35,13 +35,11 @@ service Conduit {
 }
 
 message ConduitWhoAmIResponse {
-  dtypes.Status status = 1;
-  ConduitUser user = 2;
+  ConduitUser user = 1;
 }
 
 message ConduitUsersResponse {
-  dtypes.Status status = 1;
-  repeated ConduitUser users = 2;
+  repeated ConduitUser users = 1;
 }
 
 message ConduitUser {

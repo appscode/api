@@ -68,8 +68,7 @@ message ListRequest {
 }
 
 message ListResponse {
-  dtypes.Status status = 1;
-  repeated LoadBalancer load_balancers = 2;
+  repeated LoadBalancer load_balancers = 1;
 }
 
 message DescribeRequest {
@@ -81,9 +80,8 @@ message DescribeRequest {
 }
 
 message DescribeResponse {
-  dtypes.Status status = 1;
-  LoadBalancer load_balancer = 2;
-  Raw raw = 3;
+  LoadBalancer load_balancer = 1;
+  Raw raw = 2;
 }
 
 message CreateRequest {

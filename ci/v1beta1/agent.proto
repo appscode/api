@@ -52,8 +52,7 @@ service Agents {
 }
 
 message AgentListResponse {
-  dtypes.Status status = 1;
-  repeated Agent agents = 2;
+  repeated Agent agents = 1;
 }
 
 message AgentGetRequest {
@@ -61,8 +60,7 @@ message AgentGetRequest {
 }
 
 message AgentGetResponse {
-  dtypes.Status status = 1;
-  Agent agent = 2;
+  Agent agent = 1;
 }
 
 message Agent {
@@ -90,18 +88,17 @@ message AgentCreateRequest {
 }
 
 message AgentCreateResponse {
-  dtypes.Status status = 1;
-  string namespace = 2;
-  string ssh_authorized_public_key = 3; // authorized to ssh
-  string git_hostname = 4;
-  string git_host_public_key = 5; // known_host
+  string namespace = 1;
+  string ssh_authorized_public_key = 2; // authorized to ssh
+  string git_hostname = 3;
+  string git_host_public_key = 4; // known_host
   message ConduitUser {
     string phid = 1;
     string user_name = 2;
     string token = 3;
     string email = 4;
   }
-  ConduitUser git_user = 6;
+  ConduitUser git_user = 5;
 }
 
 message AgentDeleteRequest {
