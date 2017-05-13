@@ -13,8 +13,11 @@ import "google/protobuf/any.proto";
 // Basic Error details message to send in response. Application specific
 // error messages can be provided.
 message ErrorDetails {
-    string requested_resource = 1;
-    string stacktrace = 2;
+    string cause = 1;
+    message StackTrace {
+        repeated string frames = 1;
+    }
+    StackTrace stack_trace = 2;
 }
 
 // Types for long running operation. usually called as jobs.

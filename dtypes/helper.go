@@ -9,6 +9,7 @@ import (
 	spb "google.golang.org/genproto/googleapis/rpc/status"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"strings"
 )
 
 func statusErr(c codes.Code, err error) error {
@@ -28,20 +29,21 @@ func statusErr(c codes.Code, err error) error {
 		Code:    int32(c),
 		Message: e.Message(),
 	}
-	if e.Trace() != nil {
-		if !_env.FromHost().IsPublic() {
-			details := &ErrorDetails{
-				RequestedResource: e.Error(),
-				Stacktrace:        e.TraceString(),
-			}
-			data, err := proto.Marshal(details)
-			if err == nil {
-				s.Details = []*any.Any{{
-					TypeUrl: proto.MessageName(details),
-					Value:   data,
-				}}
-			}
+	var details ErrorDetails
+	if e.Cause() != nil {
+		details.Cause = e.Cause().Error()
+	}
+	if !_env.FromHost().IsPublic() && e.Trace() != nil {
+		details.StackTrace = &ErrorDetails_StackTrace{
+			Frames: strings.Split(e.Trace().String(), "\n"),
 		}
+	}
+	data, err := proto.Marshal(&details)
+	if err == nil {
+		s.Details = []*any.Any{{
+			TypeUrl: proto.MessageName(&details),
+			Value:   data,
+		}}
 	}
 	return status.FromProto(s).Err()
 }
