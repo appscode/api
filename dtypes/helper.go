@@ -1,6 +1,8 @@
 package dtypes
 
 import (
+	"strings"
+
 	"github.com/appscode/errors"
 	_env "github.com/appscode/go/env"
 	"github.com/golang/protobuf/proto"
@@ -9,7 +11,6 @@ import (
 	spb "google.golang.org/genproto/googleapis/rpc/status"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"strings"
 )
 
 func statusErr(c codes.Code, err error) error {
