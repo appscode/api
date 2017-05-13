@@ -10,7 +10,6 @@ option java_package = "com.appscode.api.operation.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "appscode/api/dtypes/types.proto";
 import "appscode/api/kubernetes/v1beta1/cluster.proto";
 import "appscode/api/namespace/v1beta1/team.proto";
 

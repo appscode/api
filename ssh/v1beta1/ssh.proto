@@ -9,7 +9,6 @@ option java_outer_classname = "SSHProto";
 option java_package = "com.appscode.api.ssh.v1beta1";
 
 import "google/api/annotations.proto";
-import "appscode/api/dtypes/types.proto";
 
 service SSH {
   rpc Get(SSHGetRequest) returns (SSHGetResponse) {
