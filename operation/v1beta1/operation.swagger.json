@@ -143,9 +143,6 @@
     },
     "v1beta1CreateRequest": {
       "properties": {
-        "client_ip": {
-          "type": "string"
-        },
         "display_name": {
           "type": "string"
         },
@@ -161,19 +158,13 @@
         "name": {
           "type": "string"
         },
-        "options": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
         "password": {
           "type": "string"
         },
         "payment_method_nonce": {
           "type": "string"
         },
-        "subscription_type": {
+        "subscription": {
           "type": "string"
         },
         "user_name": {

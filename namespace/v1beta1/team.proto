@@ -53,10 +53,8 @@ message CreateRequest {
   string user_name = 4;
   string password = 5;
   repeated string invite_emails = 6;
-  string subscription_type = 7;
-  string client_ip = 8;
-  string payment_method_nonce = 9;
-  map<string, string> options = 10;
+  string subscription = 7;
+  string payment_method_nonce = 8;
 }
 
 message GetRequest {
