@@ -15,6 +15,10 @@
         "email": {
           "type": "string"
         },
+        "initial_units": {
+          "format": "int64",
+          "type": "integer"
+        },
         "invite_emails": {
           "items": {
             "type": "string"

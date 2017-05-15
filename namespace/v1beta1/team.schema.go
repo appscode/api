@@ -21,6 +21,9 @@ func init() {
     "email": {
       "type": "string"
     },
+    "initial_units": {
+      "type": "integer"
+    },
     "invite_emails": {
       "items": {
         "type": "string"

@@ -54,7 +54,8 @@ message CreateRequest {
   string password = 5;
   repeated string invite_emails = 6;
   string subscription = 7;
-  string payment_method_nonce = 8;
+  int64 initial_units = 8;
+  string payment_method_nonce = 9;
 }
 
 message GetRequest {
