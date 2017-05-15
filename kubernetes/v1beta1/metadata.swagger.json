@@ -9,7 +9,16 @@
         "cloud_credential": {
           "type": "string"
         },
+        "cluster_uid": {
+          "type": "string"
+        },
         "gce_project": {
+          "type": "string"
+        },
+        "secret_name": {
+          "type": "string"
+        },
+        "secret_namespace": {
           "type": "string"
         }
       },
@@ -87,6 +96,24 @@
           {
             "in": "query",
             "name": "gce_project",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cluster_uid",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "secret_namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "secret_name",
             "required": false,
             "type": "string"
           }
