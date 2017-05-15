@@ -3398,9 +3398,6 @@
         "bucket_name": {
           "type": "string"
         },
-        "database_secret": {
-          "$ref": "#/definitions/v1beta2SecretVolumeSource"
-        },
         "storage_secret": {
           "$ref": "#/definitions/v1beta2SecretVolumeSource"
         }

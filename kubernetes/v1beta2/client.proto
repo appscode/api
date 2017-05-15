@@ -1142,8 +1142,7 @@ message BackupScheduleSpec {
 
 message SnapshotSpec {
   SecretVolumeSource storage_secret = 1;
-  SecretVolumeSource database_secret = 2;
-  string bucket_name = 3;
+  string bucket_name = 2;
 }
 
 message Certificate {
