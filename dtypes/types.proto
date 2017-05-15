@@ -8,8 +8,6 @@ option java_multiple_files = true;
 option java_outer_classname = "TypeProto";
 option java_package = "com.appscode.api.dtypes";
 
-import "google/protobuf/any.proto";
-
 // Basic Error details message to send in response. Application specific
 // error messages can be provided.
 message ErrorDetails {
