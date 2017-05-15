@@ -251,6 +251,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListEvents": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Event"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListJobs": {
       "properties": {
         "items": {
@@ -2354,6 +2365,9 @@
         },
         "elastics": {
           "$ref": "#/definitions/KubeResourceListElastics"
+        },
+        "events": {
+          "$ref": "#/definitions/KubeResourceListEvents"
         },
         "jobs": {
           "$ref": "#/definitions/KubeResourceListJobs"

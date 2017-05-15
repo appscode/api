@@ -184,8 +184,8 @@ message ListResourceRequest {
   string label_selector = 7;
 
   message Ancestor {
-      string type = 1;
-      string name = 2;
+    string type = 1;
+    string name = 2;
   }
 }
 
@@ -281,6 +281,11 @@ message KubeResourceList {
     Elastics elastics = 26;
     DeletedDatabases deleted_databases = 27;
     DatabaseSnapshots database_snapshots = 28;
+    Events events = 29;
+  }
+
+  message Events {
+    repeated Event items = 1;
   }
 
   message ConfigMaps {
@@ -332,7 +337,7 @@ message KubeResourceList {
   }
 
   message StorageClasses {
-      repeated StorageClass items = 1;
+    repeated StorageClass items = 1;
   }
 
   message PersistentVolumes {
@@ -448,10 +453,10 @@ message KubeObject {
 }
 
 message IcingaState {
-    int32 OK = 1;
-    int32 Warning = 2;
-    int32 Critical = 3;
-    int32 Unknown = 4;
+  int32 OK = 1;
+  int32 Warning = 2;
+  int32 Critical = 3;
+  int32 Unknown = 4;
 }
 
 message PodSpec {
@@ -511,10 +516,10 @@ message Job {
 }
 
 message JobSpec {
-    int32 parallelism = 1;
-    int32 completions = 2;
-    PodSpec template = 3;
-    int64 active_deadline_seconds = 4;
+  int32 parallelism = 1;
+  int32 completions = 2;
+  PodSpec template = 3;
+  int64 active_deadline_seconds = 4;
 
 }
 
@@ -778,8 +783,8 @@ message Deployment {
     DeploymentStrategy strategy = 9;
 
     message DeploymentStrategy {
-        string type = 1;
-        RollingUpdateDeployment rolling_update = 2;
+      string type = 1;
+      RollingUpdateDeployment rolling_update = 2;
     }
 
     message RollingUpdateDeployment {
@@ -822,9 +827,9 @@ message StatefulSet {
 }
 
 message StorageClass {
-    Meta meta = 1;
-    string provisioner = 2;
-    map<string, string> parameters = 3;
+  Meta meta = 1;
+  string provisioner = 2;
+  map<string, string> parameters = 3;
 }
 
 message LabelSelector {
@@ -885,34 +890,34 @@ message PersistentVolumeClaimUnRegisterRequest {
 }
 
 message Alert {
-    Meta meta = 1;
-    AlertSpec spec = 2;
-    AlertStatus status = 3;
+  Meta meta = 1;
+  AlertSpec spec = 2;
+  AlertStatus status = 3;
 
-    message AlertSpec {
-        IcingaParam icinga_param = 1;
-        string check_command = 2;
-        repeated NotifierParam notifier_params= 3;
-        map<string, string> vars = 4;
+  message AlertSpec {
+    IcingaParam icinga_param = 1;
+    string check_command = 2;
+    repeated NotifierParam notifier_params= 3;
+    map<string, string> vars = 4;
 
-        message IcingaParam {
-           int64 check_interval_sec = 1;
-           int64 alert_interval_sec = 2;
-        }
-
-        message NotifierParam {
-            string state = 1;
-            string user_uid = 2;
-            string method = 3;
-        }
+    message IcingaParam {
+      int64 check_interval_sec = 1;
+      int64 alert_interval_sec = 2;
     }
 
-    message AlertStatus {
-        int64 creation_time = 1;
-        int64 update_time = 2;
-        string phase = 3;
-        string reason = 4;
+    message NotifierParam {
+      string state = 1;
+      string user_uid = 2;
+      string method = 3;
     }
+  }
+
+  message AlertStatus {
+    int64 creation_time = 1;
+    int64 update_time = 2;
+    string phase = 3;
+    string reason = 4;
+  }
 }
 
 message Role {
@@ -997,22 +1002,22 @@ message Backup {
 }
 
 message CronJob {
-    Meta meta = 1;
-    Spec spec = 2;
-    Status status = 3;
+  Meta meta = 1;
+  Spec spec = 2;
+  Status status = 3;
 
-    message Spec {
-        string schedule = 1;
-        int64 starting_deadline_seconds = 2;
-        string concurrency_policy = 3;
-        bool suspend = 4;
-        JobSpec template = 5;
-    }
+  message Spec {
+    string schedule = 1;
+    int64 starting_deadline_seconds = 2;
+    string concurrency_policy = 3;
+    bool suspend = 4;
+    JobSpec template = 5;
+  }
 
-    message Status {
-        repeated ObjectReference active = 1;
-        int64 last_schedule_time = 2;
-    }
+  message Status {
+    repeated ObjectReference active = 1;
+    int64 last_schedule_time = 2;
+  }
 }
 
 message Postgres {
@@ -1126,8 +1131,8 @@ message ScriptSourceSpec {
 }
 
 message SnapshotSourceSpec {
-	string namespace = 1;
-	string name = 2;
+  string namespace = 1;
+  string name = 2;
 }
 
 message BackupScheduleSpec {
