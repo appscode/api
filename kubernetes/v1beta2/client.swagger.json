@@ -1825,9 +1825,6 @@
           "format": "int32",
           "type": "integer"
         },
-        "service_account_name": {
-          "type": "string"
-        },
         "storage": {
           "$ref": "#/definitions/v1beta2StorageSpec"
         },
@@ -2900,13 +2897,6 @@
             "type": "string"
           },
           "type": "object"
-        },
-        "replicas": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "service_account_name": {
-          "type": "string"
         },
         "storage": {
           "$ref": "#/definitions/v1beta2StorageSpec"
