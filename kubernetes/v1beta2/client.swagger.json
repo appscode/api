@@ -1638,9 +1638,6 @@
           "format": "int64",
           "type": "integer"
         },
-        "kind": {
-          "type": "string"
-        },
         "name": {
           "type": "string"
         },
@@ -1662,12 +1659,6 @@
         },
         "type": {
           "type": "string"
-        },
-        "users": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
         },
         "zone": {
           "type": "string"
@@ -1932,7 +1923,7 @@
     },
     "v1beta2EventSource": {
       "properties": {
-        "componenet": {
+        "component": {
           "type": "string"
         },
         "host": {

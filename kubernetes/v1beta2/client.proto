@@ -848,7 +848,7 @@ message Event {
 }
 
 message EventSource {
-  string componenet = 1;
+  string component = 1;
   string host = 2;
 }
 
@@ -1295,12 +1295,10 @@ message Disk {
   string type = 5;
   string zone = 6;
   string status = 7;
-  repeated string users = 8;
-  string kind = 9;
-  string endpoint = 10;
-  int64 iops = 11;
-  PersistentVolume persistent_volume = 12;
-  PersistentVolumeClaim persistent_volume_claim = 13;
+  string endpoint = 8;
+  int64 iops = 9;
+  PersistentVolume persistent_volume = 10;
+  PersistentVolumeClaim persistent_volume_claim = 11;
 }
 
 message ResourceCondition {
