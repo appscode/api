@@ -207,17 +207,6 @@
       },
       "type": "object"
     },
-    "KubeResourceListDatabaseSnapshots": {
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1beta2DatabaseSnapshot"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
     "KubeResourceListDeletedDatabases": {
       "properties": {
         "items": {
@@ -399,6 +388,17 @@
         "items": {
           "items": {
             "$ref": "#/definitions/v1beta2Service"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListSnapshots": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Snapshot"
           },
           "type": "array"
         }
@@ -1426,50 +1426,6 @@
       },
       "type": "object"
     },
-    "v1beta2DatabaseSnapshot": {
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1beta2DatabaseSnapshotSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1beta2DatabaseSnapshotStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2DatabaseSnapshotSpec": {
-      "properties": {
-        "database_name": {
-          "type": "string"
-        },
-        "snapshot_spec": {
-          "$ref": "#/definitions/v1beta2SnapshotSpec"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2DatabaseSnapshotStatus": {
-      "properties": {
-        "completion_time": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "phase": {
-          "type": "string"
-        },
-        "reason": {
-          "type": "string"
-        },
-        "start_time": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "v1beta2DeleteResourceRequest": {
       "properties": {
         "cluster": {
@@ -2244,9 +2200,6 @@
         "daemon_set": {
           "$ref": "#/definitions/v1beta2DaemonSet"
         },
-        "database_snapshot": {
-          "$ref": "#/definitions/v1beta2DatabaseSnapshot"
-        },
         "deleted_database": {
           "$ref": "#/definitions/v1beta2DeletedDatabase"
         },
@@ -2304,6 +2257,9 @@
         "service": {
           "$ref": "#/definitions/v1beta2Service"
         },
+        "snapshot": {
+          "$ref": "#/definitions/v1beta2Snapshot"
+        },
         "stateful_set": {
           "$ref": "#/definitions/v1beta2StatefulSet"
         },
@@ -2341,9 +2297,6 @@
         },
         "daemon_sets": {
           "$ref": "#/definitions/KubeResourceListDaemonSets"
-        },
-        "database_snapshots": {
-          "$ref": "#/definitions/KubeResourceListDatabaseSnapshots"
         },
         "deleted_databases": {
           "$ref": "#/definitions/KubeResourceListDeletedDatabases"
@@ -2395,6 +2348,9 @@
         },
         "services": {
           "$ref": "#/definitions/KubeResourceListServices"
+        },
+        "snapshots": {
+          "$ref": "#/definitions/KubeResourceListSnapshots"
         },
         "stateful_sets": {
           "$ref": "#/definitions/KubeResourceListStatefulSets"
@@ -3363,6 +3319,20 @@
       },
       "type": "object"
     },
+    "v1beta2Snapshot": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2SnapshotSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2SnapshotStatus"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2SnapshotSourceSpec": {
       "properties": {
         "name": {
@@ -3381,6 +3351,25 @@
         },
         "storage_secret": {
           "$ref": "#/definitions/v1beta2SecretVolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2SnapshotStatus": {
+      "properties": {
+        "completion_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "start_time": {
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"

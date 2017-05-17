@@ -280,7 +280,7 @@ message KubeResourceList {
     Postgreses postgreses = 25;
     Elastics elastics = 26;
     DeletedDatabases deleted_databases = 27;
-    DatabaseSnapshots database_snapshots = 28;
+    Snapshots snapshots = 28;
     Events events = 29;
   }
 
@@ -388,8 +388,8 @@ message KubeResourceList {
     repeated DeletedDatabase items = 1;
   }
 
-  message DatabaseSnapshots {
-    repeated DatabaseSnapshot items = 2;
+  message Snapshots {
+    repeated Snapshot items = 2;
   }
 
   message Backups {
@@ -429,7 +429,7 @@ message KubeResource {
     Postgres postgres = 27;
     Elastic elastic = 28;
     DeletedDatabase deleted_database = 29;
-    DatabaseSnapshot database_snapshot = 30;
+    Snapshot snapshot = 30;
   }
 }
 
@@ -1094,7 +1094,7 @@ message Origin {
   }
 }
 
-message DatabaseSnapshot {
+message Snapshot {
   Meta meta = 1;
   Spec spec = 2;
   Status status = 3;
