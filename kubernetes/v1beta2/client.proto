@@ -1101,7 +1101,7 @@ message Snapshot {
 
   message Spec {
     string database_name = 1;
-    SnapshotSpec snapshot_spec = 2;
+    SnapshotStorageSpec snapshot_storage_spec = 2;
   }
 
   message Status {
@@ -1134,10 +1134,10 @@ message SnapshotSourceSpec {
 
 message BackupScheduleSpec {
   string cron_expression = 1;
-  SnapshotSpec snapshot_spec = 2;
+  SnapshotStorageSpec snapshot_storage_spec = 2;
 }
 
-message SnapshotSpec {
+message SnapshotStorageSpec {
   SecretVolumeSource storage_secret = 1;
   string bucket_name = 2;
 }

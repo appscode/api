@@ -1013,8 +1013,8 @@
         "cron_expression": {
           "type": "string"
         },
-        "snapshot_spec": {
-          "$ref": "#/definitions/v1beta2SnapshotSpec"
+        "snapshot_storage_spec": {
+          "$ref": "#/definitions/v1beta2SnapshotStorageSpec"
         }
       },
       "type": "object"
@@ -3346,11 +3346,11 @@
     },
     "v1beta2SnapshotSpec": {
       "properties": {
-        "bucket_name": {
+        "database_name": {
           "type": "string"
         },
-        "storage_secret": {
-          "$ref": "#/definitions/v1beta2SecretVolumeSource"
+        "snapshot_storage_spec": {
+          "$ref": "#/definitions/v1beta2SnapshotStorageSpec"
         }
       },
       "type": "object"
@@ -3370,6 +3370,17 @@
         "start_time": {
           "format": "int64",
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2SnapshotStorageSpec": {
+      "properties": {
+        "bucket_name": {
+          "type": "string"
+        },
+        "storage_secret": {
+          "$ref": "#/definitions/v1beta2SecretVolumeSource"
         }
       },
       "type": "object"
