@@ -279,7 +279,7 @@ message KubeResourceList {
     Backups backups = 24;
     Postgreses postgreses = 25;
     Elastics elastics = 26;
-    DeletedDatabases deleted_databases = 27;
+    DormantDatabases dormant_databases = 27;
     Snapshots snapshots = 28;
     Events events = 29;
   }
@@ -384,8 +384,8 @@ message KubeResourceList {
     repeated Elastic items = 1;
   }
 
-  message DeletedDatabases {
-    repeated DeletedDatabase items = 1;
+  message DormantDatabases {
+    repeated DormantDatabase items = 1;
   }
 
   message Snapshots {
@@ -428,7 +428,7 @@ message KubeResource {
     Backup backup = 26;
     Postgres postgres = 27;
     Elastic elastic = 28;
-    DeletedDatabase deleted_database = 29;
+    DormantDatabase dormant_database = 29;
     Snapshot snapshot = 30;
   }
 }
@@ -1039,7 +1039,7 @@ message PostgresSpec {
   map<string, string> node_selector = 4;
   InitSpec init = 5;
   BackupScheduleSpec backup_schedule = 6;
-  bool do_not_delete = 7;
+  bool do_not_pause = 7;
 }
 
 message Elastic {
@@ -1061,23 +1061,23 @@ message ElasticSpec {
   map<string, string> node_selector = 4;
   InitSpec init = 5;
   BackupScheduleSpec backup_schedule = 6;
-  bool do_not_delete = 7;
+  bool do_not_pause = 7;
 }
 
-message DeletedDatabase {
+message DormantDatabase {
   Meta meta = 1;
   Spec spec = 2;
   Status status = 3;
 
   message Spec {
     bool wipe_out = 1;
-    bool recover = 2;
+    bool resume = 2;
     Origin origin = 3;
   }
 
   message Status {
     int64 creation_time = 1;
-    int64 deletion_time = 2;
+    int64 pausing_time = 2;
     int64 wipe_out_time = 3;
     string phase = 4;
     string reason = 5;

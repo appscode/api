@@ -207,22 +207,22 @@
       },
       "type": "object"
     },
-    "KubeResourceListDeletedDatabases": {
+    "KubeResourceListDeployments": {
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2DeletedDatabase"
+            "$ref": "#/definitions/v1beta2Deployment"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "KubeResourceListDeployments": {
+    "KubeResourceListDormantDatabases": {
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Deployment"
+            "$ref": "#/definitions/v1beta2DormantDatabase"
           },
           "type": "array"
         }
@@ -1443,59 +1443,6 @@
       },
       "type": "object"
     },
-    "v1beta2DeletedDatabase": {
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1beta2DeletedDatabaseSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1beta2DeletedDatabaseStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2DeletedDatabaseSpec": {
-      "properties": {
-        "origin": {
-          "$ref": "#/definitions/v1beta2Origin"
-        },
-        "recover": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "wipe_out": {
-          "format": "boolean",
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2DeletedDatabaseStatus": {
-      "properties": {
-        "creation_time": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "deletion_time": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "phase": {
-          "type": "string"
-        },
-        "reason": {
-          "type": "string"
-        },
-        "wipe_out_time": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "v1beta2Deployment": {
       "properties": {
         "app": {
@@ -1695,6 +1642,59 @@
       },
       "type": "object"
     },
+    "v1beta2DormantDatabase": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2DormantDatabaseSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2DormantDatabaseStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DormantDatabaseSpec": {
+      "properties": {
+        "origin": {
+          "$ref": "#/definitions/v1beta2Origin"
+        },
+        "resume": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "wipe_out": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2DormantDatabaseStatus": {
+      "properties": {
+        "creation_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "pausing_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "wipe_out_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2DownwardAPIVolumeFile": {
       "properties": {
         "fieldRef": {
@@ -1755,7 +1755,7 @@
         "backup_schedule": {
           "$ref": "#/definitions/v1beta2BackupScheduleSpec"
         },
-        "do_not_delete": {
+        "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
         },
@@ -2200,11 +2200,11 @@
         "daemon_set": {
           "$ref": "#/definitions/v1beta2DaemonSet"
         },
-        "deleted_database": {
-          "$ref": "#/definitions/v1beta2DeletedDatabase"
-        },
         "deployment": {
           "$ref": "#/definitions/v1beta2Deployment"
+        },
+        "dormant_database": {
+          "$ref": "#/definitions/v1beta2DormantDatabase"
         },
         "elastic": {
           "$ref": "#/definitions/v1beta2Elastic"
@@ -2298,11 +2298,11 @@
         "daemon_sets": {
           "$ref": "#/definitions/KubeResourceListDaemonSets"
         },
-        "deleted_databases": {
-          "$ref": "#/definitions/KubeResourceListDeletedDatabases"
-        },
         "deployments": {
           "$ref": "#/definitions/KubeResourceListDeployments"
+        },
+        "dormant_databases": {
+          "$ref": "#/definitions/KubeResourceListDormantDatabases"
         },
         "elastics": {
           "$ref": "#/definitions/KubeResourceListElastics"
@@ -2832,7 +2832,7 @@
         "database_secret": {
           "$ref": "#/definitions/v1beta2SecretVolumeSource"
         },
-        "do_not_delete": {
+        "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
         },
