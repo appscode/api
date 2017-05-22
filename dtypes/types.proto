@@ -21,7 +21,7 @@ message ErrorDetails {
 // Types for long running operation. usually called as jobs.
 // Next Id = 3
 message LongRunningResponse {
-    string job_phid = 1;
+    string operation_phid = 1;
 }
 
 // Void Requests and response to use with other types.

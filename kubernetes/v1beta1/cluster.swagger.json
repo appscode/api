@@ -35,7 +35,7 @@
     },
     "dtypesLongRunningResponse": {
       "properties": {
-        "job_phid": {
+        "operation_phid": {
           "type": "string"
         }
       },
