@@ -162,6 +162,7 @@ message ClusterDescribeResponse {
     int64 total_memory = 6;
   }
   ClusterSpec spec = 2;
+  string operation_phid = 3;
 }
 
 message ClusterListRequest {

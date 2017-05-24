@@ -276,6 +276,9 @@
         "cluster": {
           "$ref": "#/definitions/v1beta1Cluster"
         },
+        "operation_phid": {
+          "type": "string"
+        },
         "spec": {
           "$ref": "#/definitions/ClusterDescribeResponseClusterSpec"
         }
