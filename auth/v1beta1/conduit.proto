@@ -51,6 +51,12 @@ message ConduitUser {
   repeated string roles = 6;
   string primary_email = 7;
   Preferences preferences = 8;
+  bool is_bot = 9;
+  bool is_disabled = 10;
+  bool is_admin = 11;
+  bool is_email_verified = 12;
+  bool is_approved = 13;
+  bool is_mailing_list = 14;
 }
 
 message Preferences {

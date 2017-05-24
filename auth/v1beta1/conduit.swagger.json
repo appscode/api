@@ -13,6 +13,30 @@
         "image": {
           "type": "string"
         },
+        "is_admin": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "is_approved": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "is_bot": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "is_disabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "is_email_verified": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "is_mailing_list": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "phid": {
           "type": "string"
         },
