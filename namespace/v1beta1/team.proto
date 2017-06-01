@@ -56,6 +56,7 @@ message CreateRequest {
   string subscription = 7;
   int64 initial_units = 8;
   string payment_method_nonce = 9;
+  Address billing_address = 10;
 }
 
 message GetRequest {
@@ -68,4 +69,29 @@ message GetResponse {
 
 message IsAvailableRequest {
   string name = 1;
+}
+
+// Example
+// result = Braintree::Address.create(
+//   :first_name          => 'Jenna',
+//   :last_name           => 'Smith',
+//   :company             => 'Braintree',
+//   :street_address      => '1 E Main St',
+//   :extended_address    => 'Suite 403',
+//   :locality            => 'Chicago',
+//   :region              => 'Illinois',
+//   :postal_code         => '60622',
+//   :country_code_numeric => '840'
+// )
+message Address {
+    string first_name = 1;
+    string last_name = 2;
+    string company = 3;
+    string street_address = 4;
+    string extended_address = 5;
+    string locality = 6;
+    string region = 7;
+    string postal_code = 8;
+    // Ref https://developers.braintreepayments.com/reference/general/countries/ruby
+    string country_code_numeric = 9;
 }
