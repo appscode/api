@@ -130,17 +130,6 @@
       },
       "type": "object"
     },
-    "KubeResourceListBackups": {
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1beta2Backup"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
     "KubeResourceListCertificates": {
       "properties": {
         "items": {
@@ -344,6 +333,17 @@
         "items": {
           "items": {
             "$ref": "#/definitions/v1beta2ReplicationController"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListRestiks": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Restik"
           },
           "type": "array"
         }
@@ -757,7 +757,18 @@
       },
       "type": "object"
     },
-    "SpecBackupDestination": {
+    "SpecDeploymentStrategy": {
+      "properties": {
+        "rolling_update": {
+          "$ref": "#/definitions/SpecRollingUpdateDeployment"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SpecDestination": {
       "properties": {
         "path": {
           "type": "string"
@@ -767,28 +778,6 @@
         },
         "volume": {
           "$ref": "#/definitions/v1beta2VolumeSource"
-        }
-      },
-      "type": "object"
-    },
-    "SpecBackupSource": {
-      "properties": {
-        "path": {
-          "type": "string"
-        },
-        "volume_name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "SpecDeploymentStrategy": {
-      "properties": {
-        "rolling_update": {
-          "$ref": "#/definitions/SpecRollingUpdateDeployment"
-        },
-        "type": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -874,6 +863,17 @@
           "type": "string"
         },
         "max_unavailable": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SpecSource": {
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "volume_name": {
           "type": "string"
         }
       },
@@ -994,20 +994,6 @@
       },
       "type": "object"
     },
-    "v1beta2Backup": {
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1beta2BackupSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1beta2BackupStatus"
-        }
-      },
-      "type": "object"
-    },
     "v1beta2BackupScheduleSpec": {
       "properties": {
         "cron_expression": {
@@ -1015,53 +1001,6 @@
         },
         "snapshot_storage_spec": {
           "$ref": "#/definitions/v1beta2SnapshotStorageSpec"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2BackupSpec": {
-      "properties": {
-        "destination": {
-          "$ref": "#/definitions/SpecBackupDestination"
-        },
-        "retention_policy": {
-          "$ref": "#/definitions/SpecRetentionPolicy"
-        },
-        "schedule": {
-          "type": "string"
-        },
-        "source": {
-          "$ref": "#/definitions/SpecBackupSource"
-        },
-        "tags": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2BackupStatus": {
-      "properties": {
-        "backup_count": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "first_backup_time": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "last_backup_duration": {
-          "type": "string"
-        },
-        "last_backup_time": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "last_successful_backup_time": {
-          "format": "int64",
-          "type": "integer"
         }
       },
       "type": "object"
@@ -2179,9 +2118,6 @@
         "alert": {
           "$ref": "#/definitions/v1beta2Alert"
         },
-        "backup": {
-          "$ref": "#/definitions/v1beta2Backup"
-        },
         "certificate": {
           "$ref": "#/definitions/v1beta2Certificate"
         },
@@ -2245,6 +2181,9 @@
         "replication_controller": {
           "$ref": "#/definitions/v1beta2ReplicationController"
         },
+        "restik": {
+          "$ref": "#/definitions/v1beta2Restik"
+        },
         "role": {
           "$ref": "#/definitions/v1beta2Role"
         },
@@ -2276,9 +2215,6 @@
       "properties": {
         "alerts": {
           "$ref": "#/definitions/KubeResourceListAlerts"
-        },
-        "backups": {
-          "$ref": "#/definitions/KubeResourceListBackups"
         },
         "certificates": {
           "$ref": "#/definitions/KubeResourceListCertificates"
@@ -2336,6 +2272,9 @@
         },
         "replication_controllers": {
           "$ref": "#/definitions/KubeResourceListReplicationControllers"
+        },
+        "restiks": {
+          "$ref": "#/definitions/KubeResourceListRestiks"
         },
         "role_bindings": {
           "$ref": "#/definitions/KubeResourceListRoleBindings"
@@ -3083,6 +3022,67 @@
         }
       },
       "title": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
+      "type": "object"
+    },
+    "v1beta2Restik": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2RestikSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2RestikStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2RestikSpec": {
+      "properties": {
+        "destination": {
+          "$ref": "#/definitions/SpecDestination"
+        },
+        "retention_policy": {
+          "$ref": "#/definitions/SpecRetentionPolicy"
+        },
+        "schedule": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/SpecSource"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2RestikStatus": {
+      "properties": {
+        "backup_count": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "first_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_backup_duration": {
+          "type": "string"
+        },
+        "last_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_successful_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
       "type": "object"
     },
     "v1beta2Role": {

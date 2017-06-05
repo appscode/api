@@ -20,12 +20,10 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/grpclog"
-	"google.golang.org/grpc/status"
 )
 
 var _ codes.Code
 var _ io.Reader
-var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
@@ -38,7 +36,7 @@ func request_Incidents_List_0(ctx context.Context, marshaler runtime.Marshaler, 
 	var metadata runtime.ServerMetadata
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Incidents_List_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -59,7 +57,7 @@ func request_Incidents_Describe_0(ctx context.Context, marshaler runtime.Marshal
 
 	val, ok = pathParams["phid"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "phid")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "phid")
 	}
 
 	protoReq.Phid, err = runtime.String(val)
@@ -78,7 +76,7 @@ func request_Incidents_Notify_0(ctx context.Context, marshaler runtime.Marshaler
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -90,7 +88,7 @@ func request_Incidents_Notify_0(ctx context.Context, marshaler runtime.Marshaler
 
 	val, ok = pathParams["kubernetes_cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "kubernetes_cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "kubernetes_cluster")
 	}
 
 	protoReq.KubernetesCluster, err = runtime.String(val)
@@ -109,7 +107,7 @@ func request_Incidents_CreateEvent_0(ctx context.Context, marshaler runtime.Mars
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -121,7 +119,7 @@ func request_Incidents_CreateEvent_0(ctx context.Context, marshaler runtime.Mars
 
 	val, ok = pathParams["phid"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "phid")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "phid")
 	}
 
 	protoReq.Phid, err = runtime.String(val)
@@ -181,7 +179,6 @@ func RegisterIncidentsHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Incidents_List_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -210,7 +207,6 @@ func RegisterIncidentsHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Incidents_Describe_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -239,7 +235,6 @@ func RegisterIncidentsHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Incidents_Notify_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -268,7 +263,6 @@ func RegisterIncidentsHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Incidents_CreateEvent_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)

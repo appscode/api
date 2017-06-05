@@ -20,12 +20,10 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/grpclog"
-	"google.golang.org/grpc/status"
 )
 
 var _ codes.Code
 var _ io.Reader
-var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
@@ -51,7 +49,7 @@ func request_Certificates_Describe_0(ctx context.Context, marshaler runtime.Mars
 
 	val, ok = pathParams["uid"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
 	}
 
 	protoReq.Uid, err = runtime.String(val)
@@ -70,7 +68,7 @@ func request_Certificates_Load_0(ctx context.Context, marshaler runtime.Marshale
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -82,7 +80,7 @@ func request_Certificates_Load_0(ctx context.Context, marshaler runtime.Marshale
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -109,7 +107,7 @@ func request_Certificates_Delete_0(ctx context.Context, marshaler runtime.Marsha
 
 	val, ok = pathParams["uid"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
 	}
 
 	protoReq.Uid, err = runtime.String(val)
@@ -128,7 +126,7 @@ func request_Certificates_Deploy_0(ctx context.Context, marshaler runtime.Marsha
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -140,7 +138,7 @@ func request_Certificates_Deploy_0(ctx context.Context, marshaler runtime.Marsha
 
 	val, ok = pathParams["uid"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
 	}
 
 	protoReq.Uid, err = runtime.String(val)
@@ -200,7 +198,6 @@ func RegisterCertificatesHandler(ctx context.Context, mux *runtime.ServeMux, con
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Certificates_List_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -229,7 +226,6 @@ func RegisterCertificatesHandler(ctx context.Context, mux *runtime.ServeMux, con
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Certificates_Describe_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -258,7 +254,6 @@ func RegisterCertificatesHandler(ctx context.Context, mux *runtime.ServeMux, con
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Certificates_Load_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -287,7 +282,6 @@ func RegisterCertificatesHandler(ctx context.Context, mux *runtime.ServeMux, con
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Certificates_Delete_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -316,7 +310,6 @@ func RegisterCertificatesHandler(ctx context.Context, mux *runtime.ServeMux, con
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Certificates_Deploy_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)

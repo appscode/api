@@ -20,12 +20,10 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/grpclog"
-	"google.golang.org/grpc/status"
 )
 
 var _ codes.Code
 var _ io.Reader
-var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
@@ -46,7 +44,7 @@ func request_Clients_List_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -57,7 +55,7 @@ func request_Clients_List_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 	val, ok = pathParams["type"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
 	}
 
 	protoReq.Type, err = runtime.String(val)
@@ -67,7 +65,7 @@ func request_Clients_List_0(ctx context.Context, marshaler runtime.Marshaler, cl
 	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Clients_List_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -92,7 +90,7 @@ func request_Clients_Describe_0(ctx context.Context, marshaler runtime.Marshaler
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -103,7 +101,7 @@ func request_Clients_Describe_0(ctx context.Context, marshaler runtime.Marshaler
 
 	val, ok = pathParams["type"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
 	}
 
 	protoReq.Type, err = runtime.String(val)
@@ -114,7 +112,7 @@ func request_Clients_Describe_0(ctx context.Context, marshaler runtime.Marshaler
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -124,7 +122,7 @@ func request_Clients_Describe_0(ctx context.Context, marshaler runtime.Marshaler
 	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Clients_Describe_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Describe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -137,7 +135,7 @@ func request_Clients_Create_0(ctx context.Context, marshaler runtime.Marshaler, 
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -149,7 +147,7 @@ func request_Clients_Create_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -160,7 +158,7 @@ func request_Clients_Create_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	val, ok = pathParams["type"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
 	}
 
 	protoReq.Type, err = runtime.String(val)
@@ -191,7 +189,7 @@ func request_Clients_Delete_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -202,7 +200,7 @@ func request_Clients_Delete_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	val, ok = pathParams["type"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
 	}
 
 	protoReq.Type, err = runtime.String(val)
@@ -213,7 +211,7 @@ func request_Clients_Delete_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -223,7 +221,7 @@ func request_Clients_Delete_0(ctx context.Context, marshaler runtime.Marshaler, 
 	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Clients_Delete_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -236,7 +234,7 @@ func request_Clients_Update_0(ctx context.Context, marshaler runtime.Marshaler, 
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -248,7 +246,7 @@ func request_Clients_Update_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -259,7 +257,7 @@ func request_Clients_Update_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	val, ok = pathParams["type"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "type")
 	}
 
 	protoReq.Type, err = runtime.String(val)
@@ -270,7 +268,7 @@ func request_Clients_Update_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -289,7 +287,7 @@ func request_Clients_Copy_0(ctx context.Context, marshaler runtime.Marshaler, cl
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Copy(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -302,7 +300,7 @@ func request_Clients_EditConfigMap_0(ctx context.Context, marshaler runtime.Mars
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -314,7 +312,7 @@ func request_Clients_EditConfigMap_0(ctx context.Context, marshaler runtime.Mars
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -325,7 +323,7 @@ func request_Clients_EditConfigMap_0(ctx context.Context, marshaler runtime.Mars
 
 	val, ok = pathParams["namespace"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
 	}
 
 	protoReq.Namespace, err = runtime.String(val)
@@ -336,7 +334,7 @@ func request_Clients_EditConfigMap_0(ctx context.Context, marshaler runtime.Mars
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -355,7 +353,7 @@ func request_Clients_EditSecret_0(ctx context.Context, marshaler runtime.Marshal
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -367,7 +365,7 @@ func request_Clients_EditSecret_0(ctx context.Context, marshaler runtime.Marshal
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -378,7 +376,7 @@ func request_Clients_EditSecret_0(ctx context.Context, marshaler runtime.Marshal
 
 	val, ok = pathParams["namespace"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
 	}
 
 	protoReq.Namespace, err = runtime.String(val)
@@ -389,7 +387,7 @@ func request_Clients_EditSecret_0(ctx context.Context, marshaler runtime.Marshal
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -408,7 +406,7 @@ func request_Clients_RegisterPersistentVolume_0(ctx context.Context, marshaler r
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -420,7 +418,7 @@ func request_Clients_RegisterPersistentVolume_0(ctx context.Context, marshaler r
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -431,7 +429,7 @@ func request_Clients_RegisterPersistentVolume_0(ctx context.Context, marshaler r
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -458,7 +456,7 @@ func request_Clients_UnregisterPersistentVolume_0(ctx context.Context, marshaler
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -469,7 +467,7 @@ func request_Clients_UnregisterPersistentVolume_0(ctx context.Context, marshaler
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -488,7 +486,7 @@ func request_Clients_RegisterPersistentVolumeClaim_0(ctx context.Context, marsha
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -500,7 +498,7 @@ func request_Clients_RegisterPersistentVolumeClaim_0(ctx context.Context, marsha
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -511,7 +509,7 @@ func request_Clients_RegisterPersistentVolumeClaim_0(ctx context.Context, marsha
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -542,7 +540,7 @@ func request_Clients_UnregisterPersistentVolumeClaim_0(ctx context.Context, mars
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -553,7 +551,7 @@ func request_Clients_UnregisterPersistentVolumeClaim_0(ctx context.Context, mars
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -563,7 +561,7 @@ func request_Clients_UnregisterPersistentVolumeClaim_0(ctx context.Context, mars
 	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Clients_UnregisterPersistentVolumeClaim_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.UnregisterPersistentVolumeClaim(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -580,7 +578,7 @@ func request_Disks_List_0(ctx context.Context, marshaler runtime.Marshaler, clie
 	var metadata runtime.ServerMetadata
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Disks_List_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -605,7 +603,7 @@ func request_Disks_Describe_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -615,7 +613,7 @@ func request_Disks_Describe_0(ctx context.Context, marshaler runtime.Marshaler, 
 	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Disks_Describe_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Describe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -628,7 +626,7 @@ func request_Disks_Create_0(ctx context.Context, marshaler runtime.Marshaler, cl
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -653,7 +651,7 @@ func request_Disks_Delete_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 	val, ok = pathParams["uid"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
 	}
 
 	protoReq.Uid, err = runtime.String(val)
@@ -663,7 +661,7 @@ func request_Disks_Delete_0(ctx context.Context, marshaler runtime.Marshaler, cl
 	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Disks_Delete_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -717,7 +715,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_List_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -746,7 +743,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_Describe_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -775,7 +771,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_Create_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -804,7 +799,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_Delete_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -833,7 +827,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_Update_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -862,7 +855,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_Copy_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -891,7 +883,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_EditConfigMap_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -920,7 +911,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_EditSecret_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -949,7 +939,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_RegisterPersistentVolume_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -978,7 +967,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_UnregisterPersistentVolume_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -1007,7 +995,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_RegisterPersistentVolumeClaim_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -1036,7 +1023,6 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Clients_UnregisterPersistentVolumeClaim_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -1150,7 +1136,6 @@ func RegisterDisksHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Disks_List_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -1179,7 +1164,6 @@ func RegisterDisksHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Disks_Describe_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -1208,7 +1192,6 @@ func RegisterDisksHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Disks_Create_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -1237,7 +1220,6 @@ func RegisterDisksHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_Disks_Delete_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)

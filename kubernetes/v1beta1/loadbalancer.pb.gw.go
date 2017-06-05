@@ -20,12 +20,10 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/grpclog"
-	"google.golang.org/grpc/status"
 )
 
 var _ codes.Code
 var _ io.Reader
-var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
@@ -46,7 +44,7 @@ func request_LoadBalancers_List_0(ctx context.Context, marshaler runtime.Marshal
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -56,7 +54,7 @@ func request_LoadBalancers_List_0(ctx context.Context, marshaler runtime.Marshal
 	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_LoadBalancers_List_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -81,7 +79,7 @@ func request_LoadBalancers_Describe_0(ctx context.Context, marshaler runtime.Mar
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -92,7 +90,7 @@ func request_LoadBalancers_Describe_0(ctx context.Context, marshaler runtime.Mar
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -102,7 +100,7 @@ func request_LoadBalancers_Describe_0(ctx context.Context, marshaler runtime.Mar
 	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_LoadBalancers_Describe_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Describe(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -115,7 +113,7 @@ func request_LoadBalancers_Create_0(ctx context.Context, marshaler runtime.Marsh
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -127,7 +125,7 @@ func request_LoadBalancers_Create_0(ctx context.Context, marshaler runtime.Marsh
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -146,7 +144,7 @@ func request_LoadBalancers_Update_0(ctx context.Context, marshaler runtime.Marsh
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	var (
@@ -158,7 +156,7 @@ func request_LoadBalancers_Update_0(ctx context.Context, marshaler runtime.Marsh
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -169,7 +167,7 @@ func request_LoadBalancers_Update_0(ctx context.Context, marshaler runtime.Marsh
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -200,7 +198,7 @@ func request_LoadBalancers_Delete_0(ctx context.Context, marshaler runtime.Marsh
 
 	val, ok = pathParams["cluster"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
@@ -211,7 +209,7 @@ func request_LoadBalancers_Delete_0(ctx context.Context, marshaler runtime.Marsh
 
 	val, ok = pathParams["name"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
 	protoReq.Name, err = runtime.String(val)
@@ -221,7 +219,7 @@ func request_LoadBalancers_Delete_0(ctx context.Context, marshaler runtime.Marsh
 	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_LoadBalancers_Delete_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -275,7 +273,6 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_LoadBalancers_List_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -304,7 +301,6 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_LoadBalancers_Describe_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -333,7 +329,6 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_LoadBalancers_Create_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -362,7 +357,6 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_LoadBalancers_Update_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
@@ -391,7 +385,6 @@ func RegisterLoadBalancersHandler(ctx context.Context, mux *runtime.ServeMux, co
 		rctx, err := runtime.AnnotateContext(ctx, mux, req)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
 		}
 		resp, md, err := request_LoadBalancers_Delete_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
