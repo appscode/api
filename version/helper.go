@@ -6,28 +6,14 @@ func (m *Version) Print() {
 	if m.Name != "" {
 		fmt.Printf("Name = %v\n", m.Name)
 	}
-	if m.Version != "" {
-		fmt.Printf("Version = %v\n", m.Version)
-	}
-	if m.VersionStrategy != "" {
-		fmt.Printf("VersionStrategy = %v\n", m.VersionStrategy)
-	}
-	if m.Os != "" {
-		fmt.Printf("Os = %v\n", m.Os)
-	}
-	if m.Arch != "" {
-		fmt.Printf("Arch = %v\n", m.Arch)
-	}
+	fmt.Printf("Version = %v\n", m.Version)
+	fmt.Printf("VersionStrategy = %v\n", m.VersionStrategy)
+	fmt.Printf("Os = %v\n", m.Os)
+	fmt.Printf("Arch = %v\n", m.Arch)
 
-	if m.CommitHash != "" {
-		fmt.Printf("CommitHash = %v\n", m.CommitHash)
-	}
-	if m.GitBranch != "" {
-		fmt.Printf("GitBranch = %v\n", m.GitBranch)
-	}
-	if m.GitTag != "" {
-		fmt.Printf("GitTag = %v\n", m.GitTag)
-	}
+	fmt.Printf("CommitHash = %v\n", m.CommitHash)
+	fmt.Printf("GitBranch = %v\n", m.GitBranch)
+	fmt.Printf("GitTag = %v\n", m.GitTag)
 	if m.CommitTimestamp != "" {
 		fmt.Printf("CommitTimestamp = %v\n", m.CommitTimestamp)
 	}
