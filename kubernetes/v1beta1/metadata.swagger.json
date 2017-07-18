@@ -15,6 +15,9 @@
         "gce_project": {
           "type": "string"
         },
+        "provider": {
+          "type": "string"
+        },
         "secret_name": {
           "type": "string"
         },
@@ -114,6 +117,12 @@
           {
             "in": "query",
             "name": "secret_name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "provider",
             "required": false,
             "type": "string"
           }

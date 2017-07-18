@@ -174,23 +174,20 @@ message ListResourceRequest {
   string cluster = 1;
   string type = 2;
   string namespace = 3;
-  bool include_metrics = 4;
-  Ancestor ancestor = 5;
+  string api_version = 4;
+  bool include_metrics = 5;
   // map type is not supported by grpc-gateway as query params.
   // https://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57
   // https://github.com/grpc-ecosystem/grpc-gateway/issues/316
   // map<string, string> label_selector = 6;
   // example label_selector=environment=production,tier=frontend
-  string label_selector = 7;
-
-  message Ancestor {
-    string type = 1;
-    string name = 2;
-  }
+  string selector = 6;
 }
 
 message ListResourceResponse {
   KubeResourceList resources = 1;
+  repeated string available_versions = 2;
+  string preferred_version = 3;
 }
 
 message DescribeResourceRequest {
@@ -200,6 +197,7 @@ message DescribeResourceRequest {
   string name = 4;
   string raw = 5;
   bool include_metrics = 6;
+  string api_version = 7;
 }
 
 message DescribeResourceResponse {
@@ -212,6 +210,7 @@ message UpdateResourceRequest {
   string namespace = 3;
   string name = 4;
   Raw raw = 5;
+  string api_version = 6;
 }
 
 message ConfigMapEditRequest {
@@ -235,6 +234,7 @@ message SecretEditRequest {
 message CopyResourceRequest {
   KubeObject source = 1;
   KubeObject destination = 2;
+  string api_version = 3;
 }
 
 message CreateResourceRequest {
@@ -242,6 +242,7 @@ message CreateResourceRequest {
   string type = 2;
   string name = 4;
   Raw raw = 5;
+  string api_version = 6;
 }
 
 message DeleteResourceRequest {
@@ -249,39 +250,42 @@ message DeleteResourceRequest {
   string type = 2;
   string namespace = 3;
   string name = 4;
+  string api_version = 5;
 }
 
 message KubeResourceList {
-  string type = 1;
+  string api_version = 1;
+  string kind = 2;
+  string type = 3 [deprecated=true];
   oneof  resource {
-    ConfigMaps config_maps = 2;
-    DaemonSets daemon_sets = 3;
-    Deployments deployments = 4;
-    Jobs jobs = 5;
-    Namespaces namespaces = 6;
-    Nodes nodes = 7;
-    StatefulSets stateful_sets = 8;
-    Pods pods = 9;
-    ReplicaSets replica_sets = 10;
-    Services services = 11;
-    Secrets secrets = 12;
-    ReplicationControllers replication_controllers = 13;
-    StorageClasses storage_classes = 14;
-    PersistentVolumes persistent_volumes = 15;
-    PersistentVolumeClaims persistent_volume_claims = 16;
-    Alerts alerts = 17;
-    Roles roles = 18;
-    ClusterRoles cluster_roles = 19;
-    RoleBindings role_bindings = 20;
-    ClusterRoleBindings cluster_role_bindings = 21;
-    Certificates certificates = 22;
-    CronJobs cron_jobs = 23;
-    Restiks restiks = 24;
-    Postgreses postgreses = 25;
-    Elastics elastics = 26;
-    DormantDatabases dormant_databases = 27;
-    Snapshots snapshots = 28;
-    Events events = 29;
+    ConfigMaps config_maps = 4;
+    DaemonSets daemon_sets = 5;
+    Deployments deployments = 6;
+    Jobs jobs = 7;
+    Namespaces namespaces = 8;
+    Nodes nodes = 9;
+    StatefulSets stateful_sets = 10;
+    Pods pods = 11;
+    ReplicaSets replica_sets = 12;
+    Services services = 13;
+    Secrets secrets = 14;
+    ReplicationControllers replication_controllers = 15;
+    StorageClasses storage_classes = 16;
+    PersistentVolumes persistent_volumes = 17;
+    PersistentVolumeClaims persistent_volume_claims = 18;
+    Alerts alerts = 19;
+    Roles roles = 20;
+    ClusterRoles cluster_roles = 21;
+    RoleBindings role_bindings = 22;
+    ClusterRoleBindings cluster_role_bindings = 23;
+    Certificates certificates = 24;
+    CronJobs cron_jobs = 25;
+    Restics restics = 26;
+    Postgreses postgreses = 27;
+    Elastics elastics = 28;
+    DormantDatabases dormant_databases = 29;
+    Snapshots snapshots = 30;
+    Events events = 31;
   }
 
   message Events {
@@ -392,51 +396,53 @@ message KubeResourceList {
     repeated Snapshot items = 2;
   }
 
-  message Restiks {
-    repeated Restik items = 1;
+  message Restics {
+    repeated Restic items = 1;
   }
 }
 
 // TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
 message KubeResource {
-  string type = 1;
-  Raw raw = 2;
-  repeated Event events = 3;
+  string api_version = 1;
+  string kind = 2;
+  string type = 3 [deprecated=true];
+  Raw raw = 4;
+  repeated Event events = 5;
   oneof  resource {
-    ConfigMap config_map = 4;
-    DaemonSet daemon_set = 5;
-    Deployment deployment = 6;
-    Job job = 7;
-    Namespace namespace = 8;
-    Node node = 9;
-    StatefulSet stateful_set = 10;
-    Pod pod = 11;
-    ReplicaSet replica_set = 12;
-    Service service = 13;
-    Secret secret = 14;
-    ReplicationController replication_controller = 15;
-    StorageClass storage_class = 16;
-    PersistentVolume persistent_volume = 17;
-    PersistentVolumeClaim persistent_volume_claim = 18;
-    Alert alert = 19;
-    Role role = 20;
-    ClusterRole cluster_role = 21;
-    RoleBinding role_binding = 22;
-    ClusterRoleBinding cluster_role_binding = 23;
-    Certificate certificate = 24;
-    CronJob cron_job = 25;
-    Restik restik = 26;
-    Postgres postgres = 27;
-    Elastic elastic = 28;
-    DormantDatabase dormant_database = 29;
-    Snapshot snapshot = 30;
+    ConfigMap config_map = 6;
+    DaemonSet daemon_set = 7;
+    Deployment deployment = 8;
+    Job job = 9;
+    Namespace namespace = 10;
+    Node node = 11;
+    StatefulSet stateful_set = 12;
+    Pod pod = 13;
+    ReplicaSet replica_set = 14;
+    Service service = 15;
+    Secret secret = 16;
+    ReplicationController replication_controller = 17;
+    StorageClass storage_class = 18;
+    PersistentVolume persistent_volume = 19;
+    PersistentVolumeClaim persistent_volume_claim = 20;
+    Alert alert = 21;
+    Role role = 22;
+    ClusterRole cluster_role = 23;
+    RoleBinding role_binding = 24;
+    ClusterRoleBinding cluster_role_binding = 25;
+    Certificate certificate = 26;
+    CronJob cron_job = 27;
+    Restic restic = 28;
+    Postgres postgres = 29;
+    Elastic elastic = 30;
+    DormantDatabase dormant_database = 31;
+    Snapshot snapshot = 32;
   }
 }
 
 message Meta {
   string name = 1;
   string namespace = 2;
-  string self_links = 3;
+  string self_link = 3;
   string resource_version = 4;
   int64 creation_timestamp = 5;
   int64 generation = 6;
@@ -462,7 +468,7 @@ message IcingaState {
 message PodSpec {
   repeated Volume volumes = 1;
   repeated Container containers = 2;
-  map<string, string> node_selectors = 3;
+  map<string, string> node_selector = 3;
   string service_account_name = 4;
   string node_name = 5;
   repeated string image_pull_secrets = 6;
@@ -475,18 +481,18 @@ message PodSpec {
     repeated string args = 5;
     string working_dir = 6;
     repeated EnvVar env = 7;
-
-    message VolumeMount {
-      string name = 1;
-      bool read_only = 2;
-      string mount_path = 3;
-    }
   }
+}
 
-  message Volume {
-    string name = 1;
-    VolumeSource volumeSource = 2;
-  }
+message Volume {
+  string name = 1;
+  VolumeSource volumeSource = 2;
+}
+
+message VolumeMount {
+  string name = 1;
+  bool read_only = 2;
+  string mount_path = 3;
 }
 
 message Raw {
@@ -665,7 +671,7 @@ message ObjectReference {
   string namespace = 2;
   string name = 3;
   string uid = 4;
-  string API_version = 5;
+  string api_version = 5;
   string resource_version = 6;
 }
 
@@ -678,7 +684,7 @@ message Service {
   message Spec {
     string type = 1;
     repeated Port ports = 2;
-    map<string, string> selectors = 3;
+    string selector = 3;
     string clusterIP = 4;
     repeated string externalIPs = 5;
     string loadbalancerIP = 6;
@@ -719,7 +725,7 @@ message ReplicationController {
 
   message Spec {
     int32 desired_replicas = 1;
-    map<string, string> selectors = 2;
+    string selector = 2;
     PodSpec pod_template = 3;
   }
 
@@ -737,7 +743,7 @@ message ReplicaSet {
 
   message Spec {
     int32 desired_replicas = 1;
-    LabelSelector selector = 2;
+    string selector = 2;
     PodSpec pod_template = 3;
   }
 
@@ -754,7 +760,7 @@ message DaemonSet {
   Status status = 4;
 
   message Spec {
-    LabelSelector selector = 1;
+    string selector = 1;
     PodSpec pod_template = 2;
   }
 
@@ -773,7 +779,7 @@ message Deployment {
 
   message Spec {
     int32 desired_replicas = 1;
-    LabelSelector selector = 2;
+    string selector = 2;
     PodSpec pod_template = 3;
     int32 min_ready_seconds = 4;
     int32 revision_history_limit = 5;
@@ -815,7 +821,7 @@ message StatefulSet {
 
   message Spec {
     int32 desired_replicas = 1;
-    LabelSelector selector = 2;
+    string selector = 2;
     PodSpec pod_template = 3;
     string service_name = 4;
   }
@@ -830,10 +836,6 @@ message StorageClass {
   Meta meta = 1;
   string provisioner = 2;
   map<string, string> parameters = 3;
-}
-
-message LabelSelector {
-  map<string, string> match_labels = 1;
 }
 
 message Event {
@@ -952,43 +954,75 @@ message Rule {
 
 message Subject {
   string kind = 1;
-  string api_version = 2;
+  string api_group = 2;
   string name = 3;
   string namespace = 4;
 }
 
-message Restik {
+message Restic {
   Meta meta = 1;
   Spec spec = 2;
   Status status = 3;
   message Spec {
-    string schedule = 1;
-    repeated string tags = 2;
-    Source source = 3;
-    Destination destination = 4;
-    RetentionPolicy retention_policy = 5;
+    string selector = 1;
+    repeated FileGroup file_groups = 2;
+    Backend backend = 3;
+    string schedule = 4;
+    string use_auto_prefix = 5;
+    repeated VolumeMount volume_mounts = 6;
 
-    message Source {
-      string volume_name = 1;
-      string path = 2;
-    }
-
-    message Destination {
+    message FileGroup {
       string path = 1;
-      string  repository_secret_name = 2;
-      VolumeSource volume = 3;
+      repeated string tags = 2;
+      RetentionPolicy retention_policy = 3;
+    }
+    message RetentionPolicy {
+      int32 keep_last = 1;
+      int32 keep_hourly = 2;
+      int32 keep_daily = 3;
+      int32 keep_weekly = 4;
+      int32 keep_monthly = 5;
+      int32 keep_yearly = 6;
+      repeated string keep_tags = 7;
+      bool prune = 8;
+      bool dry_run = 9;
     }
 
-    message RetentionPolicy {
-      int32 keep_last_snapshots = 1;
-      int32 keep_hourly_snapshots = 2;
-      int32 keep_daily_snapshots = 3;
-      int32 keep_weekly_snapshots = 4;
-      int32 keep_monthly_snapshots = 5;
-      int32 keep_yearly_snapshots = 6;
-      repeated string keep_tags = 7;
-      string retain_host_name = 8;
-      repeated string retain_tags = 9;
+    message Backend {
+      string  storage_secret_name = 1;
+      oneof storage {
+        LocalSpec Local = 2;
+        S3Spec S3 = 3;
+        GCSSpec GCS = 4;
+        AzureSpec Azure = 5;
+        SwiftSpec Swift = 6;
+      }
+    }
+
+    message LocalSpec {
+        VolumeSource volumeSource = 1;
+        string path = 2;
+    }
+
+    message S3Spec {
+        string endpoint = 1;
+        string bucket = 2;
+        string prefix = 3;
+    }
+
+    message GCSSpec {
+        string bucket = 1;
+        string prefix = 2;
+    }
+
+    message AzureSpec {
+        string container = 1;
+        string prefix = 2;
+    }
+
+    message SwiftSpec {
+        string container = 1;
+        string prefix = 2;
     }
   }
 
@@ -1138,8 +1172,40 @@ message BackupScheduleSpec {
 }
 
 message SnapshotStorageSpec {
-  SecretVolumeSource storage_secret = 1;
-  string bucket_name = 2;
+  string storage_secret_name = 1;
+  oneof storage {
+    LocalSpec Local = 2;
+    S3Spec S3 = 3;
+    GCSSpec GCS = 4;
+    AzureSpec Azure = 5;
+    SwiftSpec Swift = 6;
+  }
+
+  message LocalSpec {
+    VolumeSource volumeSource = 1;
+    string path = 2;
+  }
+
+  message S3Spec {
+    string endpoint = 1;
+    string bucket = 2;
+    string prefix = 3;
+  }
+
+  message GCSSpec {
+    string bucket = 1;
+    string prefix = 2;
+  }
+
+  message AzureSpec {
+    string container = 1;
+    string prefix = 2;
+  }
+
+  message SwiftSpec {
+    string container = 1;
+    string prefix = 2;
+  }
 }
 
 message Certificate {

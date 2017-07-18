@@ -63,6 +63,7 @@ message BucketListRequest {
   string cluster_uid = 3;
   string secret_namespace = 4;
   string secret_name = 5;
+  string provider = 6;
 }
 
 message BucketListResponse {

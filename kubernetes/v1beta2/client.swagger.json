@@ -73,21 +73,6 @@
       },
       "type": "object"
     },
-    "ContainerVolumeMount": {
-      "properties": {
-        "mount_path": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "read_only": {
-          "format": "boolean",
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
     "DeploymentDeploymentStatus": {
       "properties": {
         "available_replicas": {
@@ -339,11 +324,11 @@
       },
       "type": "object"
     },
-    "KubeResourceListRestiks": {
+    "KubeResourceListRestics": {
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Restik"
+            "$ref": "#/definitions/v1beta2Restic"
           },
           "type": "array"
         }
@@ -423,17 +408,6 @@
             "$ref": "#/definitions/v1beta2StorageClass"
           },
           "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "ListResourceRequestAncestor": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -736,7 +710,7 @@
         },
         "volume_mounts": {
           "items": {
-            "$ref": "#/definitions/ContainerVolumeMount"
+            "$ref": "#/definitions/v1beta2VolumeMount"
           },
           "type": "array"
         },
@@ -746,13 +720,83 @@
       },
       "type": "object"
     },
-    "PodSpecVolume": {
+    "ResticSpecAzureSpec": {
       "properties": {
-        "name": {
+        "container": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ResticSpecGCSSpec": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ResticSpecLocalSpec": {
+      "properties": {
+        "path": {
           "type": "string"
         },
         "volumeSource": {
           "$ref": "#/definitions/v1beta2VolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "ResticSpecS3Spec": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ResticSpecSwiftSpec": {
+      "properties": {
+        "container": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SpecBackend": {
+      "properties": {
+        "Azure": {
+          "$ref": "#/definitions/ResticSpecAzureSpec"
+        },
+        "GCS": {
+          "$ref": "#/definitions/ResticSpecGCSSpec"
+        },
+        "Local": {
+          "$ref": "#/definitions/ResticSpecLocalSpec"
+        },
+        "S3": {
+          "$ref": "#/definitions/ResticSpecS3Spec"
+        },
+        "Swift": {
+          "$ref": "#/definitions/ResticSpecSwiftSpec"
+        },
+        "storage_secret_name": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -768,16 +812,19 @@
       },
       "type": "object"
     },
-    "SpecDestination": {
+    "SpecFileGroup": {
       "properties": {
         "path": {
           "type": "string"
         },
-        "repository_secret_name": {
-          "type": "string"
+        "retention_policy": {
+          "$ref": "#/definitions/SpecRetentionPolicy"
         },
-        "volume": {
-          "$ref": "#/definitions/v1beta2VolumeSource"
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -806,19 +853,23 @@
     },
     "SpecRetentionPolicy": {
       "properties": {
-        "keep_daily_snapshots": {
+        "dry_run": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "keep_daily": {
           "format": "int32",
           "type": "integer"
         },
-        "keep_hourly_snapshots": {
+        "keep_hourly": {
           "format": "int32",
           "type": "integer"
         },
-        "keep_last_snapshots": {
+        "keep_last": {
           "format": "int32",
           "type": "integer"
         },
-        "keep_monthly_snapshots": {
+        "keep_monthly": {
           "format": "int32",
           "type": "integer"
         },
@@ -828,22 +879,17 @@
           },
           "type": "array"
         },
-        "keep_weekly_snapshots": {
+        "keep_weekly": {
           "format": "int32",
           "type": "integer"
         },
-        "keep_yearly_snapshots": {
+        "keep_yearly": {
           "format": "int32",
           "type": "integer"
         },
-        "retain_host_name": {
-          "type": "string"
-        },
-        "retain_tags": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
+        "prune": {
+          "format": "boolean",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -863,17 +909,6 @@
           "type": "string"
         },
         "max_unavailable": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "SpecSource": {
-      "properties": {
-        "path": {
-          "type": "string"
-        },
-        "volume_name": {
           "type": "string"
         }
       },
@@ -1243,6 +1278,9 @@
     },
     "v1beta2CopyResourceRequest": {
       "properties": {
+        "api_version": {
+          "type": "string"
+        },
         "destination": {
           "$ref": "#/definitions/v1beta2KubeObject"
         },
@@ -1254,6 +1292,9 @@
     },
     "v1beta2CreateResourceRequest": {
       "properties": {
+        "api_version": {
+          "type": "string"
+        },
         "cluster": {
           "type": "string"
         },
@@ -1343,7 +1384,7 @@
           "$ref": "#/definitions/v1beta2PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/v1beta2LabelSelector"
+          "type": "string"
         }
       },
       "type": "object"
@@ -1367,6 +1408,9 @@
     },
     "v1beta2DeleteResourceRequest": {
       "properties": {
+        "api_version": {
+          "type": "string"
+        },
         "cluster": {
           "type": "string"
         },
@@ -1428,7 +1472,7 @@
           "$ref": "#/definitions/SpecRollbackConfig"
         },
         "selector": {
-          "$ref": "#/definitions/v1beta2LabelSelector"
+          "type": "string"
         },
         "strategy": {
           "$ref": "#/definitions/SpecDeploymentStrategy"
@@ -1438,6 +1482,9 @@
     },
     "v1beta2DescribeResourceRequest": {
       "properties": {
+        "api_version": {
+          "type": "string"
+        },
         "cluster": {
           "type": "string"
         },
@@ -2118,6 +2165,9 @@
         "alert": {
           "$ref": "#/definitions/v1beta2Alert"
         },
+        "api_version": {
+          "type": "string"
+        },
         "certificate": {
           "$ref": "#/definitions/v1beta2Certificate"
         },
@@ -2154,6 +2204,9 @@
         "job": {
           "$ref": "#/definitions/v1beta2Job"
         },
+        "kind": {
+          "type": "string"
+        },
         "namespace": {
           "$ref": "#/definitions/v1beta2Namespace"
         },
@@ -2181,8 +2234,8 @@
         "replication_controller": {
           "$ref": "#/definitions/v1beta2ReplicationController"
         },
-        "restik": {
-          "$ref": "#/definitions/v1beta2Restik"
+        "restic": {
+          "$ref": "#/definitions/v1beta2Restic"
         },
         "role": {
           "$ref": "#/definitions/v1beta2Role"
@@ -2215,6 +2268,9 @@
       "properties": {
         "alerts": {
           "$ref": "#/definitions/KubeResourceListAlerts"
+        },
+        "api_version": {
+          "type": "string"
         },
         "certificates": {
           "$ref": "#/definitions/KubeResourceListCertificates"
@@ -2249,6 +2305,9 @@
         "jobs": {
           "$ref": "#/definitions/KubeResourceListJobs"
         },
+        "kind": {
+          "type": "string"
+        },
         "namespaces": {
           "$ref": "#/definitions/KubeResourceListNamespaces"
         },
@@ -2273,8 +2332,8 @@
         "replication_controllers": {
           "$ref": "#/definitions/KubeResourceListReplicationControllers"
         },
-        "restiks": {
-          "$ref": "#/definitions/KubeResourceListRestiks"
+        "restics": {
+          "$ref": "#/definitions/KubeResourceListRestics"
         },
         "role_bindings": {
           "$ref": "#/definitions/KubeResourceListRoleBindings"
@@ -2303,21 +2362,10 @@
       },
       "type": "object"
     },
-    "v1beta2LabelSelector": {
-      "properties": {
-        "match_labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
     "v1beta2ListResourceRequest": {
       "properties": {
-        "ancestor": {
-          "$ref": "#/definitions/ListResourceRequestAncestor"
+        "api_version": {
+          "type": "string"
         },
         "cluster": {
           "type": "string"
@@ -2326,11 +2374,11 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "label_selector": {
-          "title": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend",
+        "namespace": {
           "type": "string"
         },
-        "namespace": {
+        "selector": {
+          "title": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend",
           "type": "string"
         },
         "type": {
@@ -2341,6 +2389,15 @@
     },
     "v1beta2ListResourceResponse": {
       "properties": {
+        "available_versions": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "preferred_version": {
+          "type": "string"
+        },
         "resources": {
           "$ref": "#/definitions/v1beta2KubeResourceList"
         }
@@ -2388,7 +2445,7 @@
         "resource_version": {
           "type": "string"
         },
-        "self_links": {
+        "self_link": {
           "type": "string"
         },
         "uid": {
@@ -2510,7 +2567,7 @@
     },
     "v1beta2ObjectReference": {
       "properties": {
-        "API_version": {
+        "api_version": {
           "type": "string"
         },
         "kind": {
@@ -2731,7 +2788,7 @@
         "node_name": {
           "type": "string"
         },
-        "node_selectors": {
+        "node_selector": {
           "additionalProperties": {
             "type": "string"
           },
@@ -2742,7 +2799,7 @@
         },
         "volumes": {
           "items": {
-            "$ref": "#/definitions/PodSpecVolume"
+            "$ref": "#/definitions/v1beta2Volume"
           },
           "type": "array"
         }
@@ -2915,7 +2972,7 @@
           "$ref": "#/definitions/v1beta2PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/v1beta2LabelSelector"
+          "type": "string"
         }
       },
       "type": "object"
@@ -2959,11 +3016,8 @@
         "pod_template": {
           "$ref": "#/definitions/v1beta2PodSpec"
         },
-        "selectors": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
+        "selector": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -3024,44 +3078,50 @@
       "title": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
       "type": "object"
     },
-    "v1beta2Restik": {
+    "v1beta2Restic": {
       "properties": {
         "meta": {
           "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2RestikSpec"
+          "$ref": "#/definitions/v1beta2ResticSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2RestikStatus"
+          "$ref": "#/definitions/v1beta2ResticStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2RestikSpec": {
+    "v1beta2ResticSpec": {
       "properties": {
-        "destination": {
-          "$ref": "#/definitions/SpecDestination"
+        "backend": {
+          "$ref": "#/definitions/SpecBackend"
         },
-        "retention_policy": {
-          "$ref": "#/definitions/SpecRetentionPolicy"
+        "file_groups": {
+          "items": {
+            "$ref": "#/definitions/SpecFileGroup"
+          },
+          "type": "array"
         },
         "schedule": {
           "type": "string"
         },
-        "source": {
-          "$ref": "#/definitions/SpecSource"
+        "selector": {
+          "type": "string"
         },
-        "tags": {
+        "use_auto_prefix": {
+          "type": "string"
+        },
+        "volume_mounts": {
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/v1beta2VolumeMount"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta2RestikStatus": {
+    "v1beta2ResticStatus": {
       "properties": {
         "backup_count": {
           "format": "int64",
@@ -3293,11 +3353,8 @@
           },
           "type": "array"
         },
-        "selectors": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
+        "selector": {
+          "type": "string"
         },
         "session_affinity": {
           "type": "string"
@@ -3376,11 +3433,81 @@
     },
     "v1beta2SnapshotStorageSpec": {
       "properties": {
-        "bucket_name": {
+        "Azure": {
+          "$ref": "#/definitions/v1beta2SnapshotStorageSpecAzureSpec"
+        },
+        "GCS": {
+          "$ref": "#/definitions/v1beta2SnapshotStorageSpecGCSSpec"
+        },
+        "Local": {
+          "$ref": "#/definitions/v1beta2SnapshotStorageSpecLocalSpec"
+        },
+        "S3": {
+          "$ref": "#/definitions/v1beta2SnapshotStorageSpecS3Spec"
+        },
+        "Swift": {
+          "$ref": "#/definitions/v1beta2SnapshotStorageSpecSwiftSpec"
+        },
+        "storage_secret_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2SnapshotStorageSpecAzureSpec": {
+      "properties": {
+        "container": {
           "type": "string"
         },
-        "storage_secret": {
-          "$ref": "#/definitions/v1beta2SecretVolumeSource"
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2SnapshotStorageSpecGCSSpec": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2SnapshotStorageSpecLocalSpec": {
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "volumeSource": {
+          "$ref": "#/definitions/v1beta2VolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2SnapshotStorageSpecS3Spec": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2SnapshotStorageSpecSwiftSpec": {
+      "properties": {
+        "container": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -3412,7 +3539,7 @@
           "$ref": "#/definitions/v1beta2PodSpec"
         },
         "selector": {
-          "$ref": "#/definitions/v1beta2LabelSelector"
+          "type": "string"
         },
         "service_name": {
           "type": "string"
@@ -3463,7 +3590,7 @@
     },
     "v1beta2Subject": {
       "properties": {
-        "api_version": {
+        "api_group": {
           "type": "string"
         },
         "kind": {
@@ -3480,6 +3607,9 @@
     },
     "v1beta2UpdateResourceRequest": {
       "properties": {
+        "api_version": {
+          "type": "string"
+        },
         "cluster": {
           "type": "string"
         },
@@ -3494,6 +3624,32 @@
         },
         "type": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2Volume": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "volumeSource": {
+          "$ref": "#/definitions/v1beta2VolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2VolumeMount": {
+      "properties": {
+        "mount_path": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "read_only": {
+          "format": "boolean",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -3999,6 +4155,12 @@
             "type": "string"
           },
           {
+            "in": "query",
+            "name": "api_version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "format": "boolean",
             "in": "query",
             "name": "include_metrics",
@@ -4006,21 +4168,9 @@
             "type": "boolean"
           },
           {
-            "in": "query",
-            "name": "ancestor.type",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "ancestor.name",
-            "required": false,
-            "type": "string"
-          },
-          {
             "description": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend.",
             "in": "query",
-            "name": "label_selector",
+            "name": "selector",
             "required": false,
             "type": "string"
           }
@@ -4148,6 +4298,12 @@
             "name": "include_metrics",
             "required": false,
             "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "api_version",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {

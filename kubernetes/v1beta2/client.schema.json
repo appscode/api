@@ -1,17 +1,5 @@
 {
   "definitions": {
-    "ListResourceRequestAncestor": {
-      "properties": {
-        "name": {
-          "maxLength": 63,
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta2ConfigMapEditRequest": {
       "properties": {
         "add": {
@@ -31,7 +19,6 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
@@ -50,6 +37,9 @@
     },
     "v1beta2CopyResourceRequest": {
       "properties": {
+        "api_version": {
+          "type": "string"
+        },
         "destination": {
           "$ref": "#/definitions/v1beta2KubeObject"
         },
@@ -61,12 +51,14 @@
     },
     "v1beta2CreateResourceRequest": {
       "properties": {
+        "api_version": {
+          "type": "string"
+        },
         "cluster": {
           "type": "string"
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "raw": {
@@ -80,6 +72,9 @@
     },
     "v1beta2DeleteResourceRequest": {
       "properties": {
+        "api_version": {
+          "type": "string"
+        },
         "cluster": {
           "type": "string"
         },
@@ -99,6 +94,9 @@
     },
     "v1beta2DescribeResourceRequest": {
       "properties": {
+        "api_version": {
+          "type": "string"
+        },
         "cluster": {
           "type": "string"
         },
@@ -133,7 +131,6 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "size_gb": {
@@ -201,8 +198,8 @@
     },
     "v1beta2ListResourceRequest": {
       "properties": {
-        "ancestor": {
-          "$ref": "#/definitions/ListResourceRequestAncestor"
+        "api_version": {
+          "type": "string"
         },
         "cluster": {
           "type": "string"
@@ -210,14 +207,13 @@
         "include_metrics": {
           "type": "boolean"
         },
-        "label_selector": {
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
         "namespace": {
           "maxLength": 63,
           "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "selector": {
+          "title": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend",
           "type": "string"
         },
         "type": {
@@ -233,7 +229,6 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
@@ -254,7 +249,6 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
@@ -278,7 +272,6 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "plugin": {
@@ -297,7 +290,6 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -333,7 +325,6 @@
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
@@ -352,12 +343,14 @@
     },
     "v1beta2UpdateResourceRequest": {
       "properties": {
+        "api_version": {
+          "type": "string"
+        },
         "cluster": {
           "type": "string"
         },
         "name": {
           "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {

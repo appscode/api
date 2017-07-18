@@ -45,7 +45,6 @@ func init() {
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
@@ -73,7 +72,6 @@ func init() {
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
@@ -118,12 +116,14 @@ func init() {
     }
   },
   "properties": {
+    "api_version": {
+      "type": "string"
+    },
     "cluster": {
       "type": "string"
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "raw": {
@@ -154,12 +154,14 @@ func init() {
     }
   },
   "properties": {
+    "api_version": {
+      "type": "string"
+    },
     "cluster": {
       "type": "string"
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
@@ -206,7 +208,6 @@ func init() {
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -240,6 +241,9 @@ func init() {
     }
   },
   "properties": {
+    "api_version": {
+      "type": "string"
+    },
     "destination": {
       "$ref": "#/definitions/v1beta2KubeObject"
     },
@@ -255,6 +259,9 @@ func init() {
 	describeResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "api_version": {
+      "type": "string"
+    },
     "cluster": {
       "type": "string"
     },
@@ -302,7 +309,6 @@ func init() {
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
@@ -324,23 +330,9 @@ func init() {
 	}
 	listResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "definitions": {
-    "ListResourceRequestAncestor": {
-      "properties": {
-        "name": {
-          "maxLength": 63,
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    }
-  },
   "properties": {
-    "ancestor": {
-      "$ref": "#/definitions/ListResourceRequestAncestor"
+    "api_version": {
+      "type": "string"
     },
     "cluster": {
       "type": "string"
@@ -348,14 +340,13 @@ func init() {
     "include_metrics": {
       "type": "boolean"
     },
-    "label_selector": {
-      "additionalProperties": {
-        "type": "string"
-      }
-    },
     "namespace": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "type": "string"
+    },
+    "selector": {
+      "title": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend",
       "type": "string"
     },
     "type": {
@@ -375,7 +366,6 @@ func init() {
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
@@ -400,7 +390,6 @@ func init() {
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "size_gb": {
@@ -444,7 +433,6 @@ func init() {
     },
     "name": {
       "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "plugin": {
@@ -462,6 +450,9 @@ func init() {
 	deleteResourceRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "api_version": {
+      "type": "string"
+    },
     "cluster": {
       "type": "string"
     },
