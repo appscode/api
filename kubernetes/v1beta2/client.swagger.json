@@ -203,11 +203,11 @@
       },
       "type": "object"
     },
-    "KubeResourceListElastics": {
+    "KubeResourceListElasticsearches": {
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Elastic"
+            "$ref": "#/definitions/v1beta2Elasticsearch"
           },
           "type": "array"
         }
@@ -1722,21 +1722,21 @@
       },
       "type": "object"
     },
-    "v1beta2Elastic": {
+    "v1beta2Elasticsearch": {
       "properties": {
         "meta": {
           "$ref": "#/definitions/v1beta2Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2ElasticSpec"
+          "$ref": "#/definitions/v1beta2ElasticsearchSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2ElasticStatus"
+          "$ref": "#/definitions/v1beta2ElasticsearchStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2ElasticSpec": {
+    "v1beta2ElasticsearchSpec": {
       "properties": {
         "backup_schedule": {
           "$ref": "#/definitions/v1beta2BackupScheduleSpec"
@@ -1767,7 +1767,7 @@
       },
       "type": "object"
     },
-    "v1beta2ElasticStatus": {
+    "v1beta2ElasticsearchStatus": {
       "properties": {
         "creation_time": {
           "format": "int64",
@@ -2192,8 +2192,8 @@
         "dormant_database": {
           "$ref": "#/definitions/v1beta2DormantDatabase"
         },
-        "elastic": {
-          "$ref": "#/definitions/v1beta2Elastic"
+        "elasticsearch": {
+          "$ref": "#/definitions/v1beta2Elasticsearch"
         },
         "events": {
           "items": {
@@ -2296,8 +2296,9 @@
         "dormant_databases": {
           "$ref": "#/definitions/KubeResourceListDormantDatabases"
         },
-        "elastics": {
-          "$ref": "#/definitions/KubeResourceListElastics"
+        "elasticsearchs": {
+          "$ref": "#/definitions/KubeResourceListElasticsearches",
+          "description": "`elasticsearchs` is spelled incorrectly. This is intentional, since Kubernetes itself uses has a pluralization bug."
         },
         "events": {
           "$ref": "#/definitions/KubeResourceListEvents"
@@ -2601,8 +2602,8 @@
     },
     "v1beta2OriginSpec": {
       "properties": {
-        "elastic": {
-          "$ref": "#/definitions/v1beta2ElasticSpec"
+        "elasticsearch": {
+          "$ref": "#/definitions/v1beta2ElasticsearchSpec"
         },
         "postgres": {
           "$ref": "#/definitions/v1beta2PostgresSpec"

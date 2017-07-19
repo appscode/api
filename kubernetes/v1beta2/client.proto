@@ -282,7 +282,8 @@ message KubeResourceList {
     CronJobs cron_jobs = 25;
     Restics restics = 26;
     Postgreses postgreses = 27;
-    Elastics elastics = 28;
+    // `elasticsearchs` is spelled incorrectly. This is intentional, since Kubernetes itself uses has a pluralization bug.
+    Elasticsearches elasticsearchs = 28;
     DormantDatabases dormant_databases = 29;
     Snapshots snapshots = 30;
     Events events = 31;
@@ -384,8 +385,8 @@ message KubeResourceList {
     repeated Postgres items = 1;
   }
 
-  message Elastics {
-    repeated Elastic items = 1;
+  message Elasticsearches {
+    repeated Elasticsearch items = 1;
   }
 
   message DormantDatabases {
@@ -433,7 +434,7 @@ message KubeResource {
     CronJob cron_job = 27;
     Restic restic = 28;
     Postgres postgres = 29;
-    Elastic elastic = 30;
+    Elasticsearch elasticsearch = 30;
     DormantDatabase dormant_database = 31;
     Snapshot snapshot = 32;
   }
@@ -1076,9 +1077,9 @@ message PostgresSpec {
   bool do_not_pause = 7;
 }
 
-message Elastic {
+message Elasticsearch {
   Meta meta = 1;
-  ElasticSpec spec = 2;
+  ElasticsearchSpec spec = 2;
   Status status = 3;
 
   message Status {
@@ -1088,7 +1089,7 @@ message Elastic {
   }
 }
 
-message ElasticSpec {
+message ElasticsearchSpec {
   string version = 1;
   int32 replicas = 2;
   StorageSpec storage = 3;
@@ -1123,7 +1124,7 @@ message Origin {
   Spec spec = 2;
 
   message Spec {
-    ElasticSpec elastic = 1;
+    ElasticsearchSpec elasticsearch = 1;
     PostgresSpec postgres = 2;
   }
 }
