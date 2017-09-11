@@ -273,7 +273,11 @@ message KubeResourceList {
     StorageClasses storage_classes = 16;
     PersistentVolumes persistent_volumes = 17;
     PersistentVolumeClaims persistent_volume_claims = 18;
-    Alerts alerts = 19;
+
+    ClusterAlerts cluster_alerts = 34;
+    NodeAlerts node_alerts = 35;
+    PodAlerts pod_alerts = 36;
+
     Roles roles = 20;
     ClusterRoles cluster_roles = 21;
     RoleBindings role_bindings = 22;
@@ -354,8 +358,16 @@ message KubeResourceList {
     repeated PersistentVolumeClaim items = 1;
   }
 
-  message Alerts {
-    repeated Alert items = 1;
+  message ClusterAlerts {
+    repeated ClusterAlert items = 1;
+  }
+
+  message NodeAlerts {
+    repeated NodeAlert items = 1;
+  }
+
+  message PodAlerts {
+    repeated PodAlert items = 1;
   }
 
   message Roles {
@@ -430,7 +442,11 @@ message KubeResource {
     StorageClass storage_class = 18;
     PersistentVolume persistent_volume = 19;
     PersistentVolumeClaim persistent_volume_claim = 20;
-    Alert alert = 21;
+
+    ClusterAlert cluster_alert = 35;
+    NodeAlert node_alert = 36;
+    PodAlert pod_alert = 37;
+
     Role role = 22;
     ClusterRole cluster_role = 23;
     RoleBinding role_binding = 24;
@@ -899,35 +915,78 @@ message PersistentVolumeClaimUnRegisterRequest {
   string namespace = 3;
 }
 
-message Alert {
+message ClusterAlert {
   Meta meta = 1;
-  AlertSpec spec = 2;
-  AlertStatus status = 3;
+  ClusterAlertSpec spec = 2;
 
-  message AlertSpec {
-    IcingaParam icinga_param = 1;
-    string check_command = 2;
-    repeated NotifierParam notifier_params= 3;
-    map<string, string> vars = 4;
-
-    message IcingaParam {
-      int64 check_interval_sec = 1;
-      int64 alert_interval_sec = 2;
-    }
-
-    message NotifierParam {
-      string state = 1;
-      string user_uid = 2;
-      string method = 3;
-    }
+  message ClusterAlertSpec {
+    // Icinga CheckCommand name
+    // Values are in
+    //    any_http
+    //    component_status
+    //    json_path
+    //    node_exists
+    //    pod_exists
+    //    kube_event
+    //    certificate_expiry
+    //    hello_icinga
+    //    dig
+    //    dns
+    //    dummy
+    //    icmp
+    string check = 1;
+    string check_interval = 2;
+    string alert_interval = 3;
+    repeated AlertReceiver receivers = 4;
+    map<string, string> vars = 5;
   }
+}
 
-  message AlertStatus {
-    int64 creation_time = 1;
-    int64 update_time = 2;
-    string phase = 3;
-    string reason = 4;
+message NodeAlert {
+  Meta meta = 1;
+  NodeAlertSpec spec = 2;
+
+  message NodeAlertSpec {
+    map<string, string> selector = 1;
+    string node_name = 2;
+    // Icinga CheckCommand name
+    // Values are in
+    //    influx_query
+    //    node_disk
+    //    node_status
+    string check = 3;
+    string check_interval = 4;
+    string alert_interval = 5;
+    repeated AlertReceiver receivers = 6;
+    map<string, string> vars = 7;
   }
+}
+
+message PodAlert {
+  Meta meta = 1;
+  PodAlertSpec spec = 2;
+
+  message PodAlertSpec {
+    string selector = 1;
+    string pod_name = 2;
+    // Icinga CheckCommand name
+    // Values are in
+    //    influx_query
+    //    pod_status
+    //    volume
+    //    kube_exec
+    string check = 3;
+    string check_interval = 4;
+    string alert_interval = 5;
+    repeated AlertReceiver receivers = 6;
+    map<string, string> vars = 7;
+  }
+}
+
+message AlertReceiver {
+  string state = 1;
+  repeated string to = 2;
+  string notifier = 3;
 }
 
 message Role {

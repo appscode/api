@@ -4,17 +4,21 @@
     "application/json"
   ],
   "definitions": {
-    "AlertAlertSpec": {
+    "ClusterAlertClusterAlertSpec": {
       "properties": {
-        "check_command": {
+        "alert_interval": {
           "type": "string"
         },
-        "icinga_param": {
-          "$ref": "#/definitions/AlertSpecIcingaParam"
+        "check": {
+          "title": "Icinga CheckCommand name\nValues are in\n   any_http\n   component_status\n   json_path\n   node_exists\n   pod_exists\n   kube_event\n   certificate_expiry\n   hello_icinga\n   dig\n   dns\n   dummy\n   icmp",
+          "type": "string"
         },
-        "notifier_params": {
+        "check_interval": {
+          "type": "string"
+        },
+        "receivers": {
           "items": {
-            "$ref": "#/definitions/AlertSpecNotifierParam"
+            "$ref": "#/definitions/v1beta2AlertReceiver"
           },
           "type": "array"
         },
@@ -23,52 +27,6 @@
             "type": "string"
           },
           "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "AlertAlertStatus": {
-      "properties": {
-        "creation_time": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "phase": {
-          "type": "string"
-        },
-        "reason": {
-          "type": "string"
-        },
-        "update_time": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "AlertSpecIcingaParam": {
-      "properties": {
-        "alert_interval_sec": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "check_interval_sec": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "AlertSpecNotifierParam": {
-      "properties": {
-        "method": {
-          "type": "string"
-        },
-        "state": {
-          "type": "string"
-        },
-        "user_uid": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -236,22 +194,22 @@
       },
       "type": "object"
     },
-    "KubeResourceListAlerts": {
+    "KubeResourceListCertificates": {
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Alert"
+            "$ref": "#/definitions/v1beta2Certificate"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "KubeResourceListCertificates": {
+    "KubeResourceListClusterAlerts": {
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Certificate"
+            "$ref": "#/definitions/v1beta2ClusterAlert"
           },
           "type": "array"
         }
@@ -390,6 +348,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListNodeAlerts": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2NodeAlert"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListNodes": {
       "properties": {
         "items": {
@@ -417,6 +386,17 @@
         "items": {
           "items": {
             "$ref": "#/definitions/v1beta2PersistentVolume"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPodAlerts": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2PodAlert"
           },
           "type": "array"
         }
@@ -575,6 +555,42 @@
             "type": "string"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "NodeAlertNodeAlertSpec": {
+      "properties": {
+        "alert_interval": {
+          "type": "string"
+        },
+        "check": {
+          "title": "Icinga CheckCommand name\nValues are in\n   influx_query\n   node_disk\n   node_status",
+          "type": "string"
+        },
+        "check_interval": {
+          "type": "string"
+        },
+        "node_name": {
+          "type": "string"
+        },
+        "receivers": {
+          "items": {
+            "$ref": "#/definitions/v1beta2AlertReceiver"
+          },
+          "type": "array"
+        },
+        "selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
         }
       },
       "type": "object"
@@ -774,6 +790,39 @@
         },
         "reason": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PodAlertPodAlertSpec": {
+      "properties": {
+        "alert_interval": {
+          "type": "string"
+        },
+        "check": {
+          "title": "Icinga CheckCommand name\nValues are in\n   influx_query\n   pod_status\n   volume\n   kube_exec",
+          "type": "string"
+        },
+        "check_interval": {
+          "type": "string"
+        },
+        "pod_name": {
+          "type": "string"
+        },
+        "receivers": {
+          "items": {
+            "$ref": "#/definitions/v1beta2AlertReceiver"
+          },
+          "type": "array"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
         }
       },
       "type": "object"
@@ -1112,16 +1161,19 @@
       },
       "type": "object"
     },
-    "v1beta2Alert": {
+    "v1beta2AlertReceiver": {
       "properties": {
-        "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+        "notifier": {
+          "type": "string"
         },
-        "spec": {
-          "$ref": "#/definitions/AlertAlertSpec"
+        "state": {
+          "type": "string"
         },
-        "status": {
-          "$ref": "#/definitions/AlertAlertStatus"
+        "to": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -1302,6 +1354,17 @@
         "volumeID": {
           "title": "volume id used to identify the volume in cinder\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2ClusterAlert": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/ClusterAlertClusterAlertSpec"
         }
       },
       "type": "object"
@@ -2370,14 +2433,14 @@
     "v1beta2KubeResource": {
       "description": "TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.",
       "properties": {
-        "alert": {
-          "$ref": "#/definitions/v1beta2Alert"
-        },
         "api_version": {
           "type": "string"
         },
         "certificate": {
           "$ref": "#/definitions/v1beta2Certificate"
+        },
+        "cluster_alert": {
+          "$ref": "#/definitions/v1beta2ClusterAlert"
         },
         "cluster_role": {
           "$ref": "#/definitions/v1beta2ClusterRole"
@@ -2424,6 +2487,9 @@
         "node": {
           "$ref": "#/definitions/v1beta2Node"
         },
+        "node_alert": {
+          "$ref": "#/definitions/v1beta2NodeAlert"
+        },
         "persistent_volume": {
           "$ref": "#/definitions/v1beta2PersistentVolume"
         },
@@ -2432,6 +2498,9 @@
         },
         "pod": {
           "$ref": "#/definitions/v1beta2Pod"
+        },
+        "pod_alert": {
+          "$ref": "#/definitions/v1beta2PodAlert"
         },
         "postgres": {
           "$ref": "#/definitions/v1beta2Postgres"
@@ -2477,14 +2546,14 @@
     },
     "v1beta2KubeResourceList": {
       "properties": {
-        "alerts": {
-          "$ref": "#/definitions/KubeResourceListAlerts"
-        },
         "api_version": {
           "type": "string"
         },
         "certificates": {
           "$ref": "#/definitions/KubeResourceListCertificates"
+        },
+        "cluster_alerts": {
+          "$ref": "#/definitions/KubeResourceListClusterAlerts"
         },
         "cluster_role_bindings": {
           "$ref": "#/definitions/KubeResourceListClusterRoleBindings"
@@ -2526,6 +2595,9 @@
         "namespaces": {
           "$ref": "#/definitions/KubeResourceListNamespaces"
         },
+        "node_alerts": {
+          "$ref": "#/definitions/KubeResourceListNodeAlerts"
+        },
         "nodes": {
           "$ref": "#/definitions/KubeResourceListNodes"
         },
@@ -2534,6 +2606,9 @@
         },
         "persistent_volumes": {
           "$ref": "#/definitions/KubeResourceListPersistentVolumes"
+        },
+        "pod_alerts": {
+          "$ref": "#/definitions/KubeResourceListPodAlerts"
         },
         "pods": {
           "$ref": "#/definitions/KubeResourceListPods"
@@ -2744,6 +2819,17 @@
         },
         "status": {
           "$ref": "#/definitions/NodeNodeStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2NodeAlert": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/NodeAlertNodeAlertSpec"
         }
       },
       "type": "object"
@@ -3002,6 +3088,17 @@
         },
         "status": {
           "$ref": "#/definitions/PodPodStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PodAlert": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/PodAlertPodAlertSpec"
         }
       },
       "type": "object"
