@@ -33,6 +33,29 @@
       },
       "type": "object"
     },
+    "ClusterMetadataResponseKubedConfig": {
+      "properties": {
+        "analytics_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "operator_namespace": {
+          "type": "string"
+        },
+        "reverse_index_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "search_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "version": {
+          "$ref": "#/definitions/versionVersion"
+        }
+      },
+      "type": "object"
+    },
     "dtypesLongRunningResponse": {
       "properties": {
         "operation_phid": {
@@ -349,6 +372,28 @@
       },
       "type": "object"
     },
+    "v1beta1ClusterMetadataRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterMetadataResponse": {
+      "properties": {
+        "custom_resources": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "kubed_config": {
+          "$ref": "#/definitions/ClusterMetadataResponseKubedConfig"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1ClusterReconfigureRequest": {
       "properties": {
         "apply_to_master": {
@@ -458,6 +503,50 @@
         "use_spot_instances": {
           "format": "boolean",
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "versionVersion": {
+      "properties": {
+        "arch": {
+          "type": "string"
+        },
+        "build_host": {
+          "type": "string"
+        },
+        "build_host_arch": {
+          "type": "string"
+        },
+        "build_host_os": {
+          "type": "string"
+        },
+        "build_timestamp": {
+          "type": "string"
+        },
+        "commit_hash": {
+          "type": "string"
+        },
+        "commit_timestamp": {
+          "type": "string"
+        },
+        "git_branch": {
+          "type": "string"
+        },
+        "git_tag": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "version_strategy": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -706,6 +795,30 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/v1beta1ClusterDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/metadata/json": {
+      "get": {
+        "operationId": "Metadata",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1ClusterMetadataResponse"
             }
           }
         },

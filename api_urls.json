@@ -261,6 +261,12 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/json"
     }
   },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/metadata/json": {
+    "get": {
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/metadata/json"
+    }
+  },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/context-versions/*": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",

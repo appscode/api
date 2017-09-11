@@ -124,6 +124,14 @@
       },
       "type": "object"
     },
+    "v1beta1ClusterMetadataRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1ClusterReconfigureRequest": {
       "properties": {
         "apply_to_master": {

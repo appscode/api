@@ -11,6 +11,7 @@ option java_package = "com.appscode.api.kubernetes.v1beta1";
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
 import "appscode/api/dtypes/types.proto";
+import "appscode/api/version/version.proto";
 
 service Clusters {
   rpc List(ClusterListRequest) returns (ClusterListResponse) {
@@ -97,6 +98,15 @@ service Clusters {
       additional_bindings {
         get : "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}"
       }
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Metadata(ClusterMetadataRequest) returns (ClusterMetadataResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/metadata/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -291,4 +301,21 @@ message ClusterReconfigureRequest {
   string kube_starter_version = 7;
   string kubelet_version = 8;
   string hostfacts_version = 9;
+}
+
+message ClusterMetadataRequest {
+  string uid = 1;
+}
+
+message ClusterMetadataResponse {
+  KubedConfig kubed_config = 1;
+  repeated string custom_resources = 2;
+
+  message KubedConfig {
+    version.Version version = 1;
+    string operator_namespace = 2;
+    bool search_enabled = 3;
+    bool reverse_index_enabled = 4;
+    bool analytics_enabled = 5;
+  }
 }
