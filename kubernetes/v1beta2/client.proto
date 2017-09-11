@@ -287,6 +287,7 @@ message KubeResourceList {
     DormantDatabases dormant_databases = 29;
     Snapshots snapshots = 30;
     Events events = 31;
+    Ingresses ingresses = 32;
   }
 
   message Events {
@@ -400,6 +401,10 @@ message KubeResourceList {
   message Restics {
     repeated Restic items = 1;
   }
+
+  message Ingresses {
+    repeated Ingress items = 1;
+  }
 }
 
 // TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
@@ -437,6 +442,7 @@ message KubeResource {
     Elasticsearch elasticsearch = 30;
     DormantDatabase dormant_database = 31;
     Snapshot snapshot = 32;
+    Ingress ingress = 33;
   }
 }
 
@@ -1371,6 +1377,78 @@ message ResourceCondition {
   int64 last_transition_time = 4;
   string reason = 5;
   string message = 6;
+}
+
+message ResourceRequirements {
+  map<string, string> limits = 1;
+  map<string, string> requests = 2;
+}
+
+message Ingress {
+  Meta meta = 1;
+  Spec spec = 2;
+  Status status = 3;
+
+  message Spec {
+    HTTPIngressBackend backend = 1;
+    repeated IngressTLS TLS = 2;
+    repeated IngressRule rules = 3;
+    repeated string load_balancer_source_ranges = 4;
+    ResourceRequirements resources = 5;
+  }
+
+  message HTTPIngressBackend {
+    IngressBackend ingress_backend = 1;
+    repeated string rewrite_rule = 2;
+    repeated string header_rule = 3;
+  }
+
+  message Status {
+    repeated LoadBalancerIngress load_balancer = 1;
+  }
+
+  message LoadBalancerIngress {
+    string host_name = 1;
+    string IP = 2;
+  }
+
+  message IngressTLS {
+    repeated string hosts = 1;
+    string secret_name = 2;
+  }
+
+  message IngressRule {
+    string host = 1;
+    HTTPIngressRuleValue HTTP = 2;
+    TCPIngressRuleValue TCP = 3;
+  }
+
+  message HTTPIngressRuleValue {
+    int32 port = 1;
+    bool no_TLS = 2;
+    int32 node_port = 3;
+    repeated HTTPIngressPath paths = 4;
+  }
+
+  message TCPIngressRuleValue {
+    int32 port = 1;
+    bool no_TLS = 2;
+    int32 node_port = 3;
+    IngressBackend backend = 4;
+    repeated string ALPN = 5;
+  }
+
+  message HTTPIngressPath {
+    string path = 1;
+    HTTPIngressBackend backend = 2;
+  }
+
+  message IngressBackend {
+    repeated string host_names = 1;
+    string service_name = 2;
+    int32 service_port = 3;
+    repeated string backend_rule = 4;
+  }
 }
 
 // TODO

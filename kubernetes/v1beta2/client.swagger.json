@@ -104,6 +104,138 @@
       },
       "type": "object"
     },
+    "IngressHTTPIngressBackend": {
+      "properties": {
+        "header_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ingress_backend": {
+          "$ref": "#/definitions/IngressIngressBackend"
+        },
+        "rewrite_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "IngressHTTPIngressPath": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/IngressHTTPIngressBackend"
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IngressHTTPIngressRuleValue": {
+      "properties": {
+        "no_TLS": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "node_port": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "paths": {
+          "items": {
+            "$ref": "#/definitions/IngressHTTPIngressPath"
+          },
+          "type": "array"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "IngressIngressBackend": {
+      "properties": {
+        "backend_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "host_names": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "service_name": {
+          "type": "string"
+        },
+        "service_port": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "IngressIngressRule": {
+      "properties": {
+        "HTTP": {
+          "$ref": "#/definitions/IngressHTTPIngressRuleValue"
+        },
+        "TCP": {
+          "$ref": "#/definitions/IngressTCPIngressRuleValue"
+        },
+        "host": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IngressIngressTLS": {
+      "properties": {
+        "hosts": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "secret_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IngressTCPIngressRuleValue": {
+      "properties": {
+        "ALPN": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "backend": {
+          "$ref": "#/definitions/IngressIngressBackend"
+        },
+        "no_TLS": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "node_port": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListAlerts": {
       "properties": {
         "items": {
@@ -219,6 +351,17 @@
         "items": {
           "items": {
             "$ref": "#/definitions/v1beta2Event"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListIngresses": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta2Ingress"
           },
           "type": "array"
         }
@@ -595,23 +738,6 @@
       },
       "type": "object"
     },
-    "PersistentVolumeClaimSpecResourceRequirements": {
-      "properties": {
-        "limits": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "requests": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
     "PersistentVolumePersistentVolumeSpec": {
       "properties": {
         "access_modes": {
@@ -778,6 +904,17 @@
       },
       "type": "object"
     },
+    "ServiceStatusLoadBalancerIngress": {
+      "properties": {
+        "IP": {
+          "type": "string"
+        },
+        "host_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "SpecBackend": {
       "properties": {
         "Azure": {
@@ -931,18 +1068,24 @@
       },
       "type": "object"
     },
-    "StatusLoadBalancerIngress": {
-      "properties": {
-        "IP": {
-          "type": "string"
-        },
-        "host_name": {
-          "type": "string"
-        }
-      },
+    "dtypesVoidResponse": {
       "type": "object"
     },
-    "dtypesVoidResponse": {
+    "kubernetesv1beta2ResourceRequirements": {
+      "properties": {
+        "limits": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "requests": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
       "type": "object"
     },
     "v1beta2AWSElasticBlockStoreVolumeSource": {
@@ -2044,6 +2187,71 @@
       },
       "type": "object"
     },
+    "v1beta2Ingress": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta2Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta2IngressSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta2IngressStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2IngressLoadBalancerIngress": {
+      "properties": {
+        "IP": {
+          "type": "string"
+        },
+        "host_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2IngressSpec": {
+      "properties": {
+        "TLS": {
+          "items": {
+            "$ref": "#/definitions/IngressIngressTLS"
+          },
+          "type": "array"
+        },
+        "backend": {
+          "$ref": "#/definitions/IngressHTTPIngressBackend"
+        },
+        "load_balancer_source_ranges": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta2ResourceRequirements"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/IngressIngressRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2IngressStatus": {
+      "properties": {
+        "load_balancer": {
+          "items": {
+            "$ref": "#/definitions/v1beta2IngressLoadBalancerIngress"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2InitSpec": {
       "properties": {
         "script_source": {
@@ -2201,6 +2409,9 @@
           },
           "type": "array"
         },
+        "ingress": {
+          "$ref": "#/definitions/v1beta2Ingress"
+        },
         "job": {
           "$ref": "#/definitions/v1beta2Job"
         },
@@ -2302,6 +2513,9 @@
         },
         "events": {
           "$ref": "#/definitions/KubeResourceListEvents"
+        },
+        "ingresses": {
+          "$ref": "#/definitions/KubeResourceListIngresses"
         },
         "jobs": {
           "$ref": "#/definitions/KubeResourceListJobs"
@@ -2666,13 +2880,30 @@
           "type": "array"
         },
         "resources": {
-          "$ref": "#/definitions/PersistentVolumeClaimSpecResourceRequirements"
+          "$ref": "#/definitions/v1beta2PersistentVolumeClaimSpecResourceRequirements"
         },
         "storage_class_name": {
           "type": "string"
         },
         "volume_name": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta2PersistentVolumeClaimSpecResourceRequirements": {
+      "properties": {
+        "limits": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "requests": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
         }
       },
       "type": "object"
@@ -3373,7 +3604,7 @@
       "properties": {
         "loadbalancer_ingresses": {
           "items": {
-            "$ref": "#/definitions/StatusLoadBalancerIngress"
+            "$ref": "#/definitions/ServiceStatusLoadBalancerIngress"
           },
           "type": "array"
         }
