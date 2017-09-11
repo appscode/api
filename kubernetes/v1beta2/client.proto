@@ -273,25 +273,25 @@ message KubeResourceList {
     StorageClasses storage_classes = 16;
     PersistentVolumes persistent_volumes = 17;
     PersistentVolumeClaims persistent_volume_claims = 18;
-
+    Roles roles = 19;
+    ClusterRoles cluster_roles = 20;
+    RoleBindings role_bindings = 21;
+    ClusterRoleBindings cluster_role_bindings = 22;
+    Certificates certificates = 23;
+    CronJobs cron_jobs = 24;
+    Restics restics = 25;
+    Postgreses postgreses = 26;
+    // `elasticsearchs` is spelled incorrectly. This is intentional, since Kubernetes itself uses has a pluralization bug.
+    Elasticsearches elasticsearchs = 27;
+    DormantDatabases dormant_databases = 28;
+    Snapshots snapshots = 29;
+    Events events = 30;
+    Ingresses ingresses = 31;
+    Prometheuses prometheuses = 32;
+    ServiceMonitors service_monitors = 33;
     ClusterAlerts cluster_alerts = 34;
     NodeAlerts node_alerts = 35;
     PodAlerts pod_alerts = 36;
-
-    Roles roles = 20;
-    ClusterRoles cluster_roles = 21;
-    RoleBindings role_bindings = 22;
-    ClusterRoleBindings cluster_role_bindings = 23;
-    Certificates certificates = 24;
-    CronJobs cron_jobs = 25;
-    Restics restics = 26;
-    Postgreses postgreses = 27;
-    // `elasticsearchs` is spelled incorrectly. This is intentional, since Kubernetes itself uses has a pluralization bug.
-    Elasticsearches elasticsearchs = 28;
-    DormantDatabases dormant_databases = 29;
-    Snapshots snapshots = 30;
-    Events events = 31;
-    Ingresses ingresses = 32;
   }
 
   message Events {
@@ -417,6 +417,14 @@ message KubeResourceList {
   message Ingresses {
     repeated Ingress items = 1;
   }
+
+  message Prometheuses {
+    repeated Prometheus items = 1;
+  }
+
+  message ServiceMonitors {
+    repeated ServiceMonitor items = 1;
+  }
 }
 
 // TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
@@ -442,23 +450,23 @@ message KubeResource {
     StorageClass storage_class = 18;
     PersistentVolume persistent_volume = 19;
     PersistentVolumeClaim persistent_volume_claim = 20;
-
+    Role role = 21;
+    ClusterRole cluster_role = 22;
+    RoleBinding role_binding = 23;
+    ClusterRoleBinding cluster_role_binding = 24;
+    Certificate certificate = 25;
+    CronJob cron_job = 26;
+    Restic restic = 27;
+    Postgres postgres = 28;
+    Elasticsearch elasticsearch = 29;
+    DormantDatabase dormant_database = 30;
+    Snapshot snapshot = 31;
+    Ingress ingress = 32;
+    Prometheus prometheus = 33;
+    ServiceMonitor service_monitors = 34;
     ClusterAlert cluster_alert = 35;
     NodeAlert node_alert = 36;
     PodAlert pod_alert = 37;
-
-    Role role = 22;
-    ClusterRole cluster_role = 23;
-    RoleBinding role_binding = 24;
-    ClusterRoleBinding cluster_role_binding = 25;
-    Certificate certificate = 26;
-    CronJob cron_job = 27;
-    Restic restic = 28;
-    Postgres postgres = 29;
-    Elasticsearch elasticsearch = 30;
-    DormantDatabase dormant_database = 31;
-    Snapshot snapshot = 32;
-    Ingress ingress = 33;
   }
 }
 
@@ -1436,6 +1444,129 @@ message ResourceCondition {
   int64 last_transition_time = 4;
   string reason = 5;
   string message = 6;
+}
+
+// Prometheus defines a Prometheus deployment.
+message Prometheus {
+  Meta meta = 1;
+  PrometheusSpec spec = 2;
+  PrometheusStatus status = 3;
+
+  // Specification of the desired behavior of the Prometheus cluster.
+  message PrometheusSpec {
+    // ServiceMonitors to be selected for target discovery.
+    string service_monitor_selector = 1;
+    // Version of Prometheus to be deployed.
+    string version = 2;
+    // When a Prometheus deployment is paused, no actions except for deletion
+    // will be performed on the underlying objects.
+    bool paused = 3;
+    // Base image to use for a Prometheus deployment.
+    string base_image = 4;
+    // An optional list of references to secrets in the same namespace
+    // to use for pulling prometheus and alertmanager images from registries
+    repeated LocalObjectReference image_pull_secrets = 5;
+    // Number of instances to deploy for a Prometheus deployment.
+    int32 replicas = 6;
+    // Time duration Prometheus shall retain data for.
+    string retention = 7;
+    // The labels to add to any time series or alerts when communicating with
+    // external systems (federation, remote storage, Alertmanager).
+    map<string, string> external_labels = 8;
+    // The external URL the Prometheus instances will be available under. This is
+    // necessary to generate correct URLs. This is necessary if Prometheus is not
+    // served from root of a DNS name.
+    string external_url = 9;
+    // The route prefix Prometheus registers HTTP handlers for. This is useful,
+    // if using ExternalURL and a proxy is rewriting HTTP routes of a request,
+    // and the actual ExternalURL is still true, but the server serves requests
+    // under a different route prefix. For example for use with `kubectl proxy`.
+    string route_prefix = 10;
+    // A selector to select which ConfigMaps to mount for loading rule files from.
+    string rule_selector = 11;
+    // Define which Nodes the Pods are scheduled on.
+    map<string, string> node_selector = 12;
+    // ServiceAccountName is the name of the ServiceAccount to use to run the
+    // Prometheus Pods.
+    string service_account_name = 13;
+    // Secrets is a list of Secrets in the same namespace as the Prometheus
+    // object, which shall be mounted into the Prometheus Pods.
+    // The Secrets are mounted into /etc/prometheus/secrets/<secret-name>.
+    // Secrets changes after initial creation of a Prometheus object are not
+    // reflected in the running Pods. To change the secrets mounted into the
+    // Prometheus Pods, the object must be deleted and recreated with the new list
+    // of secrets.
+    repeated string secrets = 14;
+    // Define details regarding alerting.
+    AlertSpec alerting = 15;
+  }
+
+  message PrometheusStatus {
+    // Represents whether any actions on the underlaying managed objects are
+    // being performed. Only delete actions will be performed.
+    bool paused = 1;
+    // Total number of non-terminated pods targeted by this Prometheus deployment
+    // (their labels match the selector).
+    int32 replicas = 2;
+    int32 updated_replicas = 3;
+    int32 available_replicas = 4;
+    int32 unavailable_replicas = 5;
+  }
+}
+
+// AlertingSpec defines parameters for alerting configuration of Prometheus servers.
+message AlertSpec {
+  // AlertmanagerEndpoints Prometheus should fire alerts against.
+  repeated PrometheusAlertmanagerEndpoint alertmanager = 1;
+}
+
+// AlertmanagerEndpoints defines a selection of a single Endpoints object
+// containing alertmanager IPs to fire alerts against.
+message PrometheusAlertmanagerEndpoint {
+  string namespace = 1;
+  string name = 2;
+  int32 port = 3;
+  string scheme = 4;
+  string path_prefix = 5;
+}
+
+// ServiceMonitor defines monitoring for a set of services.
+message ServiceMonitor {
+  Meta meta = 1;
+  ServiceMonitorSpec spec = 2;
+
+  // ServiceMonitorSpec contains specification parameters for a ServiceMonitor.
+  message ServiceMonitorSpec {
+    // The label to use to retrieve the job name from.
+    string job_label = 1;
+    repeated Endpoint endpoints = 2;
+    // Selector to select Endpoints objects.
+    string selector = 3;
+    // Selector to select which namespaces the Endpoints objects are discovered from.
+    NamespaceSelector namespace_selector = 4;
+  }
+
+  // Endpoint defines a scrapeable endpoint serving Prometheus metrics.
+  message Endpoint {
+    // Name of the service port this endpoint refers to. Mutually exclusive with targetPort.
+    string port = 1;
+    // Name or number of the target port of the endpoint. Mutually exclusive with port.
+    string target_port = 2;
+    // HTTP path to scrape for metrics.
+    string path = 3;
+    // HTTP scheme to use for scraping.
+    string scheme = 4;
+    // Interval at which metrics should be scraped
+    string interval = 5;
+  }
+
+  message NamespaceSelector {
+    // Boolean describing whether all namespaces are selected in contrast to a
+    // list restricting them.
+    bool any = 1;
+    // List of namespace names.
+    repeated string match_names = 2;
+  }
 }
 
 message ResourceRequirements {
