@@ -3735,6 +3735,29 @@
       },
       "type": "object"
     },
+    "v1beta2ReverseIndexResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "targetType": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta2Role": {
       "properties": {
         "meta": {
@@ -4944,6 +4967,60 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json": {
+      "get": {
+        "operationId": "ReverseIndex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "targetType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api_version",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta2ListResourceResponse"
             }
           }
         },

@@ -129,6 +129,15 @@ service Clients {
       enable: true
     };
   }
+
+  rpc ReverseIndex(ReverseIndexResourceRequest) returns (ListResourceResponse){
+    option (google.api.http) = {
+      get : "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
 }
 
 service Disks {
@@ -182,6 +191,15 @@ message ListResourceRequest {
   // map<string, string> label_selector = 6;
   // example label_selector=environment=production,tier=frontend
   string selector = 6;
+}
+
+message ReverseIndexResourceRequest {
+  string cluster = 1;
+  string type = 2;
+  string name = 3;
+  string namespace = 4;
+  string api_version = 5;
+  string targetType = 7;
 }
 
 message ListResourceResponse {

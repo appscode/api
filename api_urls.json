@@ -295,6 +295,12 @@
       "url": "/_appscode/api/kubernetes/v1beta2/actions/copy/json"
     }
   },
+  "/_appscode/api/kubernetes/v1beta2/clusters/*/*/*/*/reverseindex/json": {
+    "get": {
+      "file": "/kubernetes/v1beta2/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json"
+    }
+  },
   "/_appscode/api/kubernetes/v1beta2/clusters/*/*/*/json": {
     "delete": {
       "file": "/kubernetes/v1beta2/client.proto",
