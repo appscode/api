@@ -1600,15 +1600,24 @@ message Ingress {
   message Spec {
     HTTPIngressBackend backend = 1;
     repeated IngressTLS TLS = 2;
-    repeated IngressRule rules = 3;
-    repeated string load_balancer_source_ranges = 4;
-    ResourceRequirements resources = 5;
+    repeated FrontendRule frontend_rules = 3;
+    repeated IngressRule rules = 4;
+    repeated string load_balancer_source_ranges = 5;
+    ResourceRequirements resources = 6;
+  }
+
+  message FrontendRule {
+    int32 port = 1;
+    repeated string rules = 2;
   }
 
   message HTTPIngressBackend {
-    IngressBackend ingress_backend = 1;
-    repeated string rewrite_rule = 2;
-    repeated string header_rule = 3;
+    repeated string host_names = 1;
+    string service_name = 2;
+    int32 service_port = 3;
+    repeated string backend_rule = 4;
+    repeated string rewrite_rule = 5;
+    repeated string header_rule = 6;
   }
 
   message Status {

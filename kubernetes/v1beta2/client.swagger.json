@@ -62,22 +62,53 @@
       },
       "type": "object"
     },
+    "IngressFrontendRule": {
+      "properties": {
+        "port": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rules": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "IngressHTTPIngressBackend": {
       "properties": {
+        "backend_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "header_rule": {
           "items": {
             "type": "string"
           },
           "type": "array"
         },
-        "ingress_backend": {
-          "$ref": "#/definitions/IngressIngressBackend"
+        "host_names": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "rewrite_rule": {
           "items": {
             "type": "string"
           },
           "type": "array"
+        },
+        "service_name": {
+          "type": "string"
+        },
+        "service_port": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -2494,6 +2525,12 @@
         },
         "backend": {
           "$ref": "#/definitions/IngressHTTPIngressBackend"
+        },
+        "frontend_rules": {
+          "items": {
+            "$ref": "#/definitions/IngressFrontendRule"
+          },
+          "type": "array"
         },
         "load_balancer_source_ranges": {
           "items": {
