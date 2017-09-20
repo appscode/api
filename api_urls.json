@@ -193,12 +193,6 @@
       "url": "/_appscode/api/health/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/apply/json": {
-    "put": {
-      "file": "/kubernetes/v1beta1/cluster.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/apply/json"
-    }
-  },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/notify-incident/json": {
     "post": {
       "file": "/kubernetes/v1beta1/incident.proto",
@@ -215,6 +209,18 @@
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/client-config/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/instance-by-ip/*": {
+    "get": {
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/instance-by-ip/*/json": {
+    "get": {
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}/json"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/json": {
@@ -259,6 +265,18 @@
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/metadata/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/context-versions/*": {
+    "get": {
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/context-versions/*/json": {
+    "get": {
+      "file": "/kubernetes/v1beta1/cluster.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}/json"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/json": {

@@ -62,16 +62,6 @@ service Clusters {
     };
   }
 
-  rpc Apply(ClusterApplyRequest) returns (dtypes.LongRunningResponse) {
-    option (google.api.http) = {
-       put: "/_appscode/api/kubernetes/v1beta1/clusters/{name}/actions/apply/json"
-       body: "*"
-    };
-    option (appscode.api.cors) = {
-      enable: true
-    };
-  }
-
   rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
       delete : "/_appscode/api/kubernetes/v1beta1/clusters/{name}/json"
@@ -84,6 +74,30 @@ service Clusters {
   rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
     option (google.api.http) = {
       get : "/_appscode/api/kubernetes/v1beta1/clusters/{name}/client-config/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc StartupConfig(ClusterStartupConfigRequest) returns (ClusterStartupConfigResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}/json"
+      additional_bindings {
+        get : "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-config/{role}/context-versions/{context_version}"
+      }
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc InstanceByIP(ClusterInstanceByIPRequest) returns (ClusterInstanceByIPResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}/json"
+      additional_bindings {
+        get : "/_appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}"
+      }
     };
     option (appscode.api.cors) = {
       enable: true
@@ -109,7 +123,7 @@ message ClusterSettings {
 }
 
 message Cluster {
-  string uid = 1;
+  string phid = 1;
   string name = 2;
   string provider = 3;
   string os = 4;
@@ -158,7 +172,7 @@ message ClusterDescribeResponse {
     int64 total_memory = 6;
   }
   ClusterSpec spec = 2;
-  string operation_uid = 3;
+  string operation_phid = 3;
 }
 
 message ClusterListRequest {
@@ -179,10 +193,16 @@ message ClusterCreateRequest {
   string name = 1;
   string provider = 2;
   string zone = 3;
-  string credential_uid = 4;
-  repeated InstanceGroup node_groups = 5;
-  string kubernetes_version = 6;
-  bool do_not_delete = 7;
+  string cloud_credential = 4;
+  map<string, string> cloud_credential_data = 5;
+  map<string, int64> node_set = 6 [deprecated = true];
+  repeated InstanceGroup node_groups = 14;
+  string saltbase_version = 7;
+  string kube_starter_version = 8;
+  string kubelet_version = 9;
+  bool do_not_delete = 10;
+  string hostfacts_version = 11;
+  string version = 12;
   // Default access level is to allow permission to the cluster
   // when no Role matched for that specif user or group. This can
   // set as
@@ -193,8 +213,8 @@ message ClusterCreateRequest {
   //   - kubernetes:viewer
   //   - deny-access
   // If not set this will set ""
-  string default_access_level = 8;
-  string gce_project = 9;
+  string default_access_level = 13;
+  string gce_project = 15;
 }
 
 message ClusterDeleteRequest {
@@ -203,6 +223,26 @@ message ClusterDeleteRequest {
   bool force = 3;
   bool keep_lodabalancers = 4;
   bool delete_dynamic_volumes = 5;
+}
+
+message ClusterStartupConfigRequest {
+  string uid = 1;
+  string role = 2;
+  int64 context_version = 3;
+}
+
+message ClusterStartupConfigResponse {
+  string configuration = 1;
+  string sku = 2;
+}
+
+message ClusterInstanceByIPRequest {
+  string phid = 1;
+  string external_ip = 2;
+}
+
+message ClusterInstanceByIPResponse {
+  ClusterInstance instance = 1;
 }
 
 message ClusterClientConfigRequest {
@@ -227,7 +267,7 @@ message ClusterClientContainerRequest {
 }
 
 message ClusterInstance {
-  string uid = 1;
+  string phid = 1;
   string external_id = 2;
   string name = 3;
   string external_ip = 4;
@@ -256,11 +296,11 @@ message ClusterReconfigureRequest {
   bool apply_to_master = 2;
   string sku = 3;
   int64 count = 4;
-  string kubernetes_version = 5;
-}
-
-message ClusterApplyRequest {
-  string name = 1;
+  string version = 5;
+  string saltbase_version = 6;
+  string kube_starter_version = 7;
+  string kubelet_version = 8;
+  string hostfacts_version = 9;
 }
 
 message ClusterMetadataRequest {
