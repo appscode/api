@@ -62,6 +62,20 @@
       },
       "type": "object"
     },
+    "IngressAffinity": {
+      "properties": {
+        "node_affinity": {
+          "$ref": "#/definitions/IngressNodeAffinity"
+        },
+        "pod_affinity": {
+          "$ref": "#/definitions/IngressPodAffinity"
+        },
+        "pod_anti_affinity": {
+          "$ref": "#/definitions/IngressPodAntiAffinity"
+        }
+      },
+      "type": "object"
+    },
     "IngressFrontendRule": {
       "properties": {
         "port": {
@@ -199,6 +213,156 @@
       },
       "type": "object"
     },
+    "IngressLabelSelector": {
+      "properties": {
+        "match_expressions": {
+          "items": {
+            "$ref": "#/definitions/IngressLabelSelectorRequirement"
+          },
+          "type": "array"
+        },
+        "match_labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "IngressLabelSelectorRequirement": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "IngressNodeAffinity": {
+      "properties": {
+        "preferred_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/IngressPreferredSchedulingTerm"
+          },
+          "type": "array"
+        },
+        "required_during_scheduling_ignored_during_execution": {
+          "$ref": "#/definitions/IngressNodeSelector"
+        }
+      },
+      "type": "object"
+    },
+    "IngressNodeSelector": {
+      "properties": {
+        "node_selector_terms": {
+          "items": {
+            "$ref": "#/definitions/IngressNodeSelectorTerm"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "IngressNodeSelectorRequirement": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "IngressNodeSelectorTerm": {
+      "properties": {
+        "match_expressions": {
+          "items": {
+            "$ref": "#/definitions/IngressNodeSelectorRequirement"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "IngressPodAffinity": {
+      "properties": {
+        "preferred_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/IngressWeightedPodAffinityTerm"
+          },
+          "type": "array"
+        },
+        "required_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/IngressPodAffinityTerm"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "IngressPodAffinityTerm": {
+      "properties": {
+        "label_selector": {
+          "$ref": "#/definitions/IngressLabelSelector"
+        },
+        "namespaces": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "topology_key": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IngressPodAntiAffinity": {
+      "properties": {
+        "preferred_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/IngressWeightedPodAffinityTerm"
+          },
+          "type": "array"
+        },
+        "required_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/IngressPodAffinityTerm"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "IngressPreferredSchedulingTerm": {
+      "properties": {
+        "preference": {
+          "$ref": "#/definitions/IngressNodeSelectorTerm"
+        },
+        "weight": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "IngressTCPIngressRuleValue": {
       "properties": {
         "ALPN": {
@@ -219,6 +383,39 @@
           "type": "integer"
         },
         "port": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "IngressToleration": {
+      "properties": {
+        "effect": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "toleration_seconds": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IngressWeightedPodAffinityTerm": {
+      "properties": {
+        "pod_affinity_term": {
+          "$ref": "#/definitions/IngressPodAffinityTerm"
+        },
+        "weight": {
           "format": "int32",
           "type": "integer"
         }
@@ -2523,6 +2720,9 @@
           },
           "type": "array"
         },
+        "affinity": {
+          "$ref": "#/definitions/IngressAffinity"
+        },
         "backend": {
           "$ref": "#/definitions/IngressHTTPIngressBackend"
         },
@@ -2544,6 +2744,15 @@
         "rules": {
           "items": {
             "$ref": "#/definitions/IngressIngressRule"
+          },
+          "type": "array"
+        },
+        "scheduler_name": {
+          "type": "string"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/IngressToleration"
           },
           "type": "array"
         }

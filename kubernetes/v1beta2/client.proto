@@ -1604,11 +1604,84 @@ message Ingress {
     repeated IngressRule rules = 4;
     repeated string load_balancer_source_ranges = 5;
     ResourceRequirements resources = 6;
+    Affinity affinity = 7;
+    string scheduler_name = 8;
+    repeated Toleration tolerations = 9;
   }
 
   message FrontendRule {
     int32 port = 1;
     repeated string rules = 2;
+  }
+
+  message Toleration {
+    string key = 1;
+    string operator = 2;
+    string value = 3;
+    string effect = 4;
+    int64 toleration_seconds = 5;
+  }
+
+  message Affinity {
+    NodeAffinity node_affinity = 1;
+    PodAffinity pod_affinity = 2;
+    PodAntiAffinity pod_anti_affinity = 3;
+  }
+
+  message NodeAffinity {
+    NodeSelector required_during_scheduling_ignored_during_execution = 1;
+    repeated PreferredSchedulingTerm preferred_during_scheduling_ignored_during_execution = 2;
+  }
+
+  message PreferredSchedulingTerm {
+    int32 weight = 1;
+    NodeSelectorTerm preference = 2;
+  }
+
+  message NodeSelector {
+    repeated NodeSelectorTerm node_selector_terms = 1;
+  }
+
+  message NodeSelectorTerm {
+    repeated NodeSelectorRequirement match_expressions = 1;
+  }
+
+  message NodeSelectorRequirement {
+    string key = 1;
+    string operator = 2;
+    repeated string values = 3;
+  }
+
+  message PodAffinity {
+    repeated PodAffinityTerm required_during_scheduling_ignored_during_execution = 1;
+    repeated WeightedPodAffinityTerm preferred_during_scheduling_ignored_during_execution = 2;
+  }
+
+  message PodAffinityTerm {
+    LabelSelector label_selector = 1;
+    repeated string namespaces = 2;
+    string topology_key = 3;
+  }
+
+  message LabelSelector {
+    map<string, string> match_labels = 1;
+    repeated LabelSelectorRequirement match_expressions = 2;
+  }
+
+  message LabelSelectorRequirement {
+    string key = 1;
+    string operator = 2;
+    repeated string values = 3;
+  }
+
+  message WeightedPodAffinityTerm {
+    int32 weight = 1;
+    PodAffinityTerm pod_affinity_term = 2;
+  }
+
+  message PodAntiAffinity {
+    repeated PodAffinityTerm required_during_scheduling_ignored_during_execution = 1;
+    repeated WeightedPodAffinityTerm preferred_during_scheduling_ignored_during_execution = 2;
   }
 
   message HTTPIngressBackend {
