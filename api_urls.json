@@ -155,6 +155,26 @@
       "url": "/_appscode/api/cloud/v1beta1/credentials/json"
     }
   },
+  "/_appscode/api/cloud/v1beta1/disks/*/json": {
+    "delete": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/cloud/v1beta1/disks/{uid}/json"
+    },
+    "get": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/cloud/v1beta1/disks/{name}/json"
+    }
+  },
+  "/_appscode/api/cloud/v1beta1/disks/json": {
+    "get": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/cloud/v1beta1/disks/json"
+    },
+    "post": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/cloud/v1beta1/disks/json"
+    }
+  },
   "/_appscode/api/cloud/v1beta1/regions/*/zones/json": {
     "get": {
       "file": "/kubernetes/v1beta1/metadata.proto",
@@ -167,30 +187,46 @@
       "url": "/_appscode/api/cloud/v1beta1/regions/json"
     }
   },
-  "/_appscode/api/cloud/v1beta2/disks/*/json": {
-    "delete": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/cloud/v1beta2/disks/{uid}/json"
-    },
-    "get": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/cloud/v1beta2/disks/{name}/json"
-    }
-  },
-  "/_appscode/api/cloud/v1beta2/disks/json": {
-    "get": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/cloud/v1beta2/disks/json"
-    },
-    "post": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/cloud/v1beta2/disks/json"
-    }
-  },
   "/_appscode/api/health/json": {
     "get": {
       "file": "/health/health.proto",
       "url": "/_appscode/api/health/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/actions/copy/json": {
+    "put": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/actions/copy/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/*/*/*/reverseindex/json": {
+    "get": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/*/*/json": {
+    "delete": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/{type}/{name}/json"
+    },
+    "get": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/{type}/{name}/json"
+    },
+    "put": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/{type}/{name}/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/*/json": {
+    "get": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/{type}/json"
+    },
+    "post": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/{type}/json"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/actions/notify-incident/json": {
@@ -237,34 +273,46 @@
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{name}/json"
     }
   },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/loadbalancers/*/json": {
-    "delete": {
-      "file": "/kubernetes/v1beta1/loadbalancer.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}/json"
-    },
-    "get": {
-      "file": "/kubernetes/v1beta1/loadbalancer.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}/json"
-    },
-    "put": {
-      "file": "/kubernetes/v1beta1/loadbalancer.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta1/clusters/*/loadbalancers/json": {
-    "get": {
-      "file": "/kubernetes/v1beta1/loadbalancer.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/json"
-    },
-    "post": {
-      "file": "/kubernetes/v1beta1/loadbalancer.proto",
-      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/json"
-    }
-  },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/metadata/json": {
     "get": {
       "file": "/kubernetes/v1beta1/cluster.proto",
       "url": "/_appscode/api/kubernetes/v1beta1/clusters/{uid}/metadata/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/configmaps/*/actions/edit/json": {
+    "post": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/namespaces/*/secrets/*/actions/edit/json": {
+    "post": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/persistentvolumeclaims/*/actions/register/json": {
+    "post": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/persistentvolumeclaims/*/actions/unregister/json": {
+    "delete": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/persistentvolumes/*/actions/register/json": {
+    "post": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}/actions/register/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1beta1/clusters/*/persistentvolumes/*/actions/unregister/json": {
+    "delete": {
+      "file": "/kubernetes/v1beta1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}/actions/unregister/json"
     }
   },
   "/_appscode/api/kubernetes/v1beta1/clusters/*/startup-config/*/context-versions/*": {
@@ -305,78 +353,6 @@
     "get": {
       "file": "/kubernetes/v1beta1/incident.proto",
       "url": "/_appscode/api/kubernetes/v1beta1/incidents/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/actions/copy/json": {
-    "put": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/actions/copy/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/*/*/*/reverseindex/json": {
-    "get": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/*/*/json": {
-    "delete": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/json"
-    },
-    "get": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/json"
-    },
-    "put": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/*/json": {
-    "get": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/json"
-    },
-    "post": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/namespaces/*/configmaps/*/actions/edit/json": {
-    "post": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/namespaces/*/secrets/*/actions/edit/json": {
-    "post": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumeclaims/*/actions/register/json": {
-    "post": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumeclaims/*/actions/unregister/json": {
-    "delete": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumes/*/actions/register/json": {
-    "post": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register/json"
-    }
-  },
-  "/_appscode/api/kubernetes/v1beta2/clusters/*/persistentvolumes/*/actions/unregister/json": {
-    "delete": {
-      "file": "/kubernetes/v1beta2/client.proto",
-      "url": "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister/json"
     }
   },
   "/_appscode/api/mail/v1beta1/json": {

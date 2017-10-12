@@ -4,27 +4,6 @@
     "application/json"
   ],
   "definitions": {
-    "IncidentEvent": {
-      "properties": {
-        "comment": {
-          "type": "string"
-        },
-        "reported_at": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "state": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "user": {
-          "$ref": "#/definitions/dtypesUid"
-        }
-      },
-      "type": "object"
-    },
     "dtypesUid": {
       "properties": {
         "name": {
@@ -49,7 +28,7 @@
         },
         "events": {
           "items": {
-            "$ref": "#/definitions/IncidentEvent"
+            "$ref": "#/definitions/v1beta1IncidentEvent"
           },
           "type": "array"
         },
@@ -114,6 +93,27 @@
       "properties": {
         "incident": {
           "$ref": "#/definitions/v1beta1Incident"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1IncidentEvent": {
+      "properties": {
+        "comment": {
+          "type": "string"
+        },
+        "reported_at": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/dtypesUid"
         }
       },
       "type": "object"

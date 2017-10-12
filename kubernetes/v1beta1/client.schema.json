@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "v1beta2ConfigMapEditRequest": {
+    "v1beta1ConfigMapEditRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -35,21 +35,21 @@
       },
       "type": "object"
     },
-    "v1beta2CopyResourceRequest": {
+    "v1beta1CopyResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
         },
         "destination": {
-          "$ref": "#/definitions/v1beta2KubeObject"
+          "$ref": "#/definitions/v1beta1KubeObject"
         },
         "source": {
-          "$ref": "#/definitions/v1beta2KubeObject"
+          "$ref": "#/definitions/v1beta1KubeObject"
         }
       },
       "type": "object"
     },
-    "v1beta2CreateResourceRequest": {
+    "v1beta1CreateResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -62,7 +62,7 @@
           "type": "string"
         },
         "raw": {
-          "$ref": "#/definitions/v1beta2Raw"
+          "$ref": "#/definitions/v1beta1Raw"
         },
         "type": {
           "type": "string"
@@ -70,7 +70,7 @@
       },
       "type": "object"
     },
-    "v1beta2DeleteResourceRequest": {
+    "v1beta1DeleteResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -92,7 +92,7 @@
       },
       "type": "object"
     },
-    "v1beta2DescribeResourceRequest": {
+    "v1beta1DescribeResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -121,7 +121,7 @@
       },
       "type": "object"
     },
-    "v1beta2DiskCreateRequest": {
+    "v1beta1DiskCreateRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -142,7 +142,7 @@
       },
       "type": "object"
     },
-    "v1beta2DiskDeleteRequest": {
+    "v1beta1DiskDeleteRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -153,7 +153,7 @@
       },
       "type": "object"
     },
-    "v1beta2DiskDescribeRequest": {
+    "v1beta1DiskDescribeRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -168,7 +168,7 @@
       },
       "type": "object"
     },
-    "v1beta2DiskListRequest": {
+    "v1beta1DiskListRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -176,7 +176,7 @@
       },
       "type": "object"
     },
-    "v1beta2KubeObject": {
+    "v1beta1KubeObject": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -196,7 +196,7 @@
       },
       "type": "object"
     },
-    "v1beta2ListResourceRequest": {
+    "v1beta1ListResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -222,7 +222,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeClaimRegisterRequest": {
+    "v1beta1PersistentVolumeClaimRegisterRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -242,7 +242,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeClaimUnRegisterRequest": {
+    "v1beta1PersistentVolumeClaimUnRegisterRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -259,7 +259,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeRegisterRequest": {
+    "v1beta1PersistentVolumeRegisterRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -283,7 +283,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeUnRegisterRequest": {
+    "v1beta1PersistentVolumeUnRegisterRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -295,7 +295,7 @@
       },
       "type": "object"
     },
-    "v1beta2Raw": {
+    "v1beta1Raw": {
       "properties": {
         "data": {
           "type": "string"
@@ -306,7 +306,7 @@
       },
       "type": "object"
     },
-    "v1beta2ReverseIndexResourceRequest": {
+    "v1beta1ReverseIndexResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -333,7 +333,7 @@
       },
       "type": "object"
     },
-    "v1beta2SecretEditRequest": {
+    "v1beta1SecretEditRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -368,7 +368,7 @@
       },
       "type": "object"
     },
-    "v1beta2UpdateResourceRequest": {
+    "v1beta1UpdateResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -386,7 +386,7 @@
           "type": "string"
         },
         "raw": {
-          "$ref": "#/definitions/v1beta2Raw"
+          "$ref": "#/definitions/v1beta1Raw"
         },
         "type": {
           "type": "string"

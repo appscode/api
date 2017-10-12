@@ -18,7 +18,7 @@
         },
         "receivers": {
           "items": {
-            "$ref": "#/definitions/v1beta2AlertReceiver"
+            "$ref": "#/definitions/v1beta1AlertReceiver"
           },
           "type": "array"
         },
@@ -39,7 +39,7 @@
         },
         "conditions": {
           "items": {
-            "$ref": "#/definitions/v1beta2ResourceCondition"
+            "$ref": "#/definitions/v1beta1ResourceCondition"
           },
           "type": "array"
         },
@@ -426,7 +426,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Certificate"
+            "$ref": "#/definitions/v1beta1Certificate"
           },
           "type": "array"
         }
@@ -437,7 +437,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2ClusterAlert"
+            "$ref": "#/definitions/v1beta1ClusterAlert"
           },
           "type": "array"
         }
@@ -448,7 +448,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2ClusterRoleBinding"
+            "$ref": "#/definitions/v1beta1ClusterRoleBinding"
           },
           "type": "array"
         }
@@ -459,7 +459,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2ClusterRole"
+            "$ref": "#/definitions/v1beta1ClusterRole"
           },
           "type": "array"
         }
@@ -470,7 +470,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2ConfigMap"
+            "$ref": "#/definitions/v1beta1ConfigMap"
           },
           "type": "array"
         }
@@ -481,7 +481,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2CronJob"
+            "$ref": "#/definitions/v1beta1CronJob"
           },
           "type": "array"
         }
@@ -492,7 +492,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2DaemonSet"
+            "$ref": "#/definitions/v1beta1DaemonSet"
           },
           "type": "array"
         }
@@ -503,7 +503,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Deployment"
+            "$ref": "#/definitions/v1beta1Deployment"
           },
           "type": "array"
         }
@@ -514,7 +514,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2DormantDatabase"
+            "$ref": "#/definitions/v1beta1DormantDatabase"
           },
           "type": "array"
         }
@@ -525,7 +525,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Elasticsearch"
+            "$ref": "#/definitions/v1beta1Elasticsearch"
           },
           "type": "array"
         }
@@ -536,7 +536,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Event"
+            "$ref": "#/definitions/kubernetesv1beta1Event"
           },
           "type": "array"
         }
@@ -547,7 +547,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Ingress"
+            "$ref": "#/definitions/v1beta1Ingress"
           },
           "type": "array"
         }
@@ -558,7 +558,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Job"
+            "$ref": "#/definitions/v1beta1Job"
           },
           "type": "array"
         }
@@ -569,7 +569,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Namespace"
+            "$ref": "#/definitions/v1beta1Namespace"
           },
           "type": "array"
         }
@@ -580,7 +580,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2NodeAlert"
+            "$ref": "#/definitions/v1beta1NodeAlert"
           },
           "type": "array"
         }
@@ -591,7 +591,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Node"
+            "$ref": "#/definitions/v1beta1Node"
           },
           "type": "array"
         }
@@ -602,7 +602,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2PersistentVolumeClaim"
+            "$ref": "#/definitions/v1beta1PersistentVolumeClaim"
           },
           "type": "array"
         }
@@ -613,7 +613,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2PersistentVolume"
+            "$ref": "#/definitions/v1beta1PersistentVolume"
           },
           "type": "array"
         }
@@ -624,7 +624,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2PodAlert"
+            "$ref": "#/definitions/v1beta1PodAlert"
           },
           "type": "array"
         }
@@ -635,7 +635,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Pod"
+            "$ref": "#/definitions/v1beta1Pod"
           },
           "type": "array"
         }
@@ -646,7 +646,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Postgres"
+            "$ref": "#/definitions/v1beta1Postgres"
           },
           "type": "array"
         }
@@ -657,7 +657,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Prometheus"
+            "$ref": "#/definitions/v1beta1Prometheus"
           },
           "type": "array"
         }
@@ -668,7 +668,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2ReplicaSet"
+            "$ref": "#/definitions/v1beta1ReplicaSet"
           },
           "type": "array"
         }
@@ -679,7 +679,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2ReplicationController"
+            "$ref": "#/definitions/v1beta1ReplicationController"
           },
           "type": "array"
         }
@@ -690,7 +690,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Restic"
+            "$ref": "#/definitions/v1beta1Restic"
           },
           "type": "array"
         }
@@ -701,7 +701,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2RoleBinding"
+            "$ref": "#/definitions/v1beta1RoleBinding"
           },
           "type": "array"
         }
@@ -712,7 +712,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Role"
+            "$ref": "#/definitions/v1beta1Role"
           },
           "type": "array"
         }
@@ -723,7 +723,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Secret"
+            "$ref": "#/definitions/v1beta1Secret"
           },
           "type": "array"
         }
@@ -734,7 +734,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2ServiceMonitor"
+            "$ref": "#/definitions/v1beta1ServiceMonitor"
           },
           "type": "array"
         }
@@ -745,7 +745,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Service"
+            "$ref": "#/definitions/v1beta1Service"
           },
           "type": "array"
         }
@@ -756,7 +756,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2Snapshot"
+            "$ref": "#/definitions/v1beta1Snapshot"
           },
           "type": "array"
         }
@@ -767,7 +767,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2StatefulSet"
+            "$ref": "#/definitions/v1beta1StatefulSet"
           },
           "type": "array"
         }
@@ -778,7 +778,7 @@
       "properties": {
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2StorageClass"
+            "$ref": "#/definitions/v1beta1StorageClass"
           },
           "type": "array"
         }
@@ -826,7 +826,7 @@
         },
         "receivers": {
           "items": {
-            "$ref": "#/definitions/v1beta2AlertReceiver"
+            "$ref": "#/definitions/v1beta1AlertReceiver"
           },
           "type": "array"
         },
@@ -861,7 +861,7 @@
         },
         "conditions": {
           "items": {
-            "$ref": "#/definitions/v1beta2ResourceCondition"
+            "$ref": "#/definitions/v1beta1ResourceCondition"
           },
           "type": "array"
         },
@@ -1019,13 +1019,13 @@
           "type": "object"
         },
         "claim_ref": {
-          "$ref": "#/definitions/v1beta2ObjectReference"
+          "$ref": "#/definitions/v1beta1ObjectReference"
         },
         "persistent_volume_reclaim_policy": {
           "type": "string"
         },
         "persistent_volume_source": {
-          "$ref": "#/definitions/v1beta2VolumeSource"
+          "$ref": "#/definitions/v1beta1VolumeSource"
         }
       },
       "type": "object"
@@ -1061,7 +1061,7 @@
         },
         "receivers": {
           "items": {
-            "$ref": "#/definitions/v1beta2AlertReceiver"
+            "$ref": "#/definitions/v1beta1AlertReceiver"
           },
           "type": "array"
         },
@@ -1081,7 +1081,7 @@
       "properties": {
         "conditions": {
           "items": {
-            "$ref": "#/definitions/v1beta2ResourceCondition"
+            "$ref": "#/definitions/v1beta1ResourceCondition"
           },
           "type": "array"
         },
@@ -1099,6 +1099,12 @@
         },
         "reason": {
           "type": "string"
+        },
+        "service_info": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Service"
+          },
+          "type": "array"
         },
         "start_time": {
           "format": "int64",
@@ -1123,7 +1129,7 @@
         },
         "env": {
           "items": {
-            "$ref": "#/definitions/v1beta2EnvVar"
+            "$ref": "#/definitions/v1beta1EnvVar"
           },
           "type": "array"
         },
@@ -1135,7 +1141,7 @@
         },
         "volume_mounts": {
           "items": {
-            "$ref": "#/definitions/v1beta2VolumeMount"
+            "$ref": "#/definitions/v1beta1VolumeMount"
           },
           "type": "array"
         },
@@ -1149,7 +1155,7 @@
       "description": "Specification of the desired behavior of the Prometheus cluster.",
       "properties": {
         "alerting": {
-          "$ref": "#/definitions/v1beta2AlertSpec",
+          "$ref": "#/definitions/v1beta1AlertSpec",
           "description": "Define details regarding alerting."
         },
         "base_image": {
@@ -1169,7 +1175,7 @@
         },
         "image_pull_secrets": {
           "items": {
-            "$ref": "#/definitions/v1beta2LocalObjectReference"
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
           },
           "title": "An optional list of references to secrets in the same namespace\nto use for pulling prometheus and alertmanager images from registries",
           "type": "array"
@@ -1280,7 +1286,7 @@
           "type": "string"
         },
         "volumeSource": {
-          "$ref": "#/definitions/v1beta2VolumeSource"
+          "$ref": "#/definitions/v1beta1VolumeSource"
         }
       },
       "type": "object"
@@ -1544,7 +1550,39 @@
     "dtypesVoidResponse": {
       "type": "object"
     },
-    "kubernetesv1beta2ResourceRequirements": {
+    "kubernetesv1beta1Event": {
+      "properties": {
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "first_timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1beta1Meta"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/v1beta1EventSource"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesv1beta1ResourceRequirements": {
       "properties": {
         "limits": {
           "additionalProperties": {
@@ -1561,7 +1599,7 @@
       },
       "type": "object"
     },
-    "v1beta2AWSElasticBlockStoreVolumeSource": {
+    "v1beta1AWSElasticBlockStoreVolumeSource": {
       "description": "Represents a Persistent Disk resource in AWS.\n\nAn AWS EBS disk must exist before mounting to a container. The disk\nmust also be in the same AWS zone as the kubelet. An AWS EBS disk\ncan only be mounted as read/write once. AWS EBS volumes support\nownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
@@ -1585,7 +1623,7 @@
       },
       "type": "object"
     },
-    "v1beta2AlertReceiver": {
+    "v1beta1AlertReceiver": {
       "properties": {
         "notifier": {
           "type": "string"
@@ -1602,20 +1640,20 @@
       },
       "type": "object"
     },
-    "v1beta2AlertSpec": {
+    "v1beta1AlertSpec": {
       "description": "AlertingSpec defines parameters for alerting configuration of Prometheus servers.",
       "properties": {
         "alertmanager": {
           "description": "AlertmanagerEndpoints Prometheus should fire alerts against.",
           "items": {
-            "$ref": "#/definitions/v1beta2PrometheusAlertmanagerEndpoint"
+            "$ref": "#/definitions/v1beta1PrometheusAlertmanagerEndpoint"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta2AzureDiskVolumeSource": {
+    "v1beta1AzureDiskVolumeSource": {
       "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.",
       "properties": {
         "cachingMode": {
@@ -1642,7 +1680,7 @@
       },
       "type": "object"
     },
-    "v1beta2AzureFileVolumeSource": {
+    "v1beta1AzureFileVolumeSource": {
       "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.",
       "properties": {
         "readOnly": {
@@ -1661,18 +1699,18 @@
       },
       "type": "object"
     },
-    "v1beta2BackupScheduleSpec": {
+    "v1beta1BackupScheduleSpec": {
       "properties": {
         "cron_expression": {
           "type": "string"
         },
         "snapshot_storage_spec": {
-          "$ref": "#/definitions/v1beta2SnapshotStorageSpec"
+          "$ref": "#/definitions/v1beta1SnapshotStorageSpec"
         }
       },
       "type": "object"
     },
-    "v1beta2CephFSVolumeSource": {
+    "v1beta1CephFSVolumeSource": {
       "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod\nCephfs volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "monitors": {
@@ -1696,7 +1734,7 @@
           "type": "string"
         },
         "secretRef": {
-          "$ref": "#/definitions/v1beta2ObjectReference",
+          "$ref": "#/definitions/v1beta1ObjectReference",
           "title": "Optional: SecretRef is reference to the authentication secret for User, default is empty.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it"
         },
         "user": {
@@ -1706,21 +1744,21 @@
       },
       "type": "object"
     },
-    "v1beta2Certificate": {
+    "v1beta1Certificate": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2CertificateSpec"
+          "$ref": "#/definitions/v1beta1CertificateSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2CertificateStatus"
+          "$ref": "#/definitions/v1beta1CertificateStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2CertificateSpec": {
+    "v1beta1CertificateSpec": {
       "properties": {
         "ACME_serverURL": {
           "description": "Provides Custom acme server url to issue certificates. If empty it\nuses let's encrypt servers.",
@@ -1730,7 +1768,7 @@
           "type": "string"
         },
         "HTTP_provider_ingress_reference": {
-          "$ref": "#/definitions/v1beta2ObjectReference"
+          "$ref": "#/definitions/v1beta1ObjectReference"
         },
         "domains": {
           "description": "Obtain a single certificate for all the domains. The first Domain provided wiil\nbe counted as Name and other domains will be in SANs.",
@@ -1754,7 +1792,7 @@
       },
       "type": "object"
     },
-    "v1beta2CertificateStatus": {
+    "v1beta1CertificateStatus": {
       "properties": {
         "ACME_user_secret_name": {
           "type": "string"
@@ -1776,7 +1814,7 @@
       },
       "type": "object"
     },
-    "v1beta2CinderVolumeSource": {
+    "v1beta1CinderVolumeSource": {
       "description": "Represents a cinder volume resource in Openstack.\nA Cinder volume must exist before mounting to a container.\nThe volume must also be in the same region as the kubelet.\nCinder volumes support ownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
@@ -1795,10 +1833,10 @@
       },
       "type": "object"
     },
-    "v1beta2ClusterAlert": {
+    "v1beta1ClusterAlert": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
           "$ref": "#/definitions/ClusterAlertClusterAlertSpec"
@@ -1806,38 +1844,38 @@
       },
       "type": "object"
     },
-    "v1beta2ClusterRole": {
+    "v1beta1ClusterRole": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "rules": {
           "items": {
-            "$ref": "#/definitions/v1beta2Rule"
+            "$ref": "#/definitions/v1beta1Rule"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta2ClusterRoleBinding": {
+    "v1beta1ClusterRoleBinding": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "role_ref": {
-          "$ref": "#/definitions/v1beta2ObjectReference"
+          "$ref": "#/definitions/v1beta1ObjectReference"
         },
         "subjects": {
           "items": {
-            "$ref": "#/definitions/v1beta2Subject"
+            "$ref": "#/definitions/v1beta1Subject"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta2ConfigMap": {
+    "v1beta1ConfigMap": {
       "properties": {
         "data": {
           "additionalProperties": {
@@ -1846,12 +1884,12 @@
           "type": "object"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         }
       },
       "type": "object"
     },
-    "v1beta2ConfigMapEditRequest": {
+    "v1beta1ConfigMapEditRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -1883,7 +1921,7 @@
       },
       "type": "object"
     },
-    "v1beta2ConfigMapKeySelector": {
+    "v1beta1ConfigMapKeySelector": {
       "description": "Selects a key from a ConfigMap.",
       "properties": {
         "key": {
@@ -1891,13 +1929,13 @@
           "type": "string"
         },
         "local_object_reference": {
-          "$ref": "#/definitions/v1beta2ObjectReference",
+          "$ref": "#/definitions/v1beta1ObjectReference",
           "description": "The ConfigMap to select from."
         }
       },
       "type": "object"
     },
-    "v1beta2ConfigMapVolumeSource": {
+    "v1beta1ConfigMapVolumeSource": {
       "properties": {
         "defaultMode": {
           "format": "int32",
@@ -1905,11 +1943,11 @@
           "type": "integer"
         },
         "items": {
-          "$ref": "#/definitions/v1beta2KeyToPath",
+          "$ref": "#/definitions/v1beta1KeyToPath",
           "title": "If unspecified, each key-value pair in the Data field of the referenced\nConfigMap will be projected into the volume as a file whose name is the\nkey and content is the value. If specified, the listed keys will be\nprojected into the specified paths, and unlisted keys will not be\npresent. If a key is specified which is not present in the ConfigMap,\nthe volume setup will error unless it is marked optional. Paths must be\nrelative and may not contain the '..' path or start with '..'.\n+optional"
         },
         "localObjectReference": {
-          "$ref": "#/definitions/v1beta2LocalObjectReference"
+          "$ref": "#/definitions/v1beta1LocalObjectReference"
         },
         "optional": {
           "format": "boolean",
@@ -1919,21 +1957,21 @@
       },
       "type": "object"
     },
-    "v1beta2CopyResourceRequest": {
+    "v1beta1CopyResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
         },
         "destination": {
-          "$ref": "#/definitions/v1beta2KubeObject"
+          "$ref": "#/definitions/v1beta1KubeObject"
         },
         "source": {
-          "$ref": "#/definitions/v1beta2KubeObject"
+          "$ref": "#/definitions/v1beta1KubeObject"
         }
       },
       "type": "object"
     },
-    "v1beta2CreateResourceRequest": {
+    "v1beta1CreateResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -1945,7 +1983,7 @@
           "type": "string"
         },
         "raw": {
-          "$ref": "#/definitions/v1beta2Raw"
+          "$ref": "#/definitions/v1beta1Raw"
         },
         "type": {
           "type": "string"
@@ -1953,21 +1991,21 @@
       },
       "type": "object"
     },
-    "v1beta2CronJob": {
+    "v1beta1CronJob": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2CronJobSpec"
+          "$ref": "#/definitions/v1beta1CronJobSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2CronJobStatus"
+          "$ref": "#/definitions/v1beta1CronJobStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2CronJobSpec": {
+    "v1beta1CronJobSpec": {
       "properties": {
         "concurrency_policy": {
           "type": "string"
@@ -1984,16 +2022,16 @@
           "type": "boolean"
         },
         "template": {
-          "$ref": "#/definitions/v1beta2JobSpec"
+          "$ref": "#/definitions/v1beta1JobSpec"
         }
       },
       "type": "object"
     },
-    "v1beta2CronJobStatus": {
+    "v1beta1CronJobStatus": {
       "properties": {
         "active": {
           "items": {
-            "$ref": "#/definitions/v1beta2ObjectReference"
+            "$ref": "#/definitions/v1beta1ObjectReference"
           },
           "type": "array"
         },
@@ -2004,27 +2042,27 @@
       },
       "type": "object"
     },
-    "v1beta2DaemonSet": {
+    "v1beta1DaemonSet": {
       "properties": {
         "app": {
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2DaemonSetSpec"
+          "$ref": "#/definitions/v1beta1DaemonSetSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2DaemonSetStatus"
+          "$ref": "#/definitions/v1beta1DaemonSetStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2DaemonSetSpec": {
+    "v1beta1DaemonSetSpec": {
       "properties": {
         "pod_template": {
-          "$ref": "#/definitions/v1beta2PodSpec"
+          "$ref": "#/definitions/v1beta1PodSpec"
         },
         "selector": {
           "type": "string"
@@ -2032,7 +2070,7 @@
       },
       "type": "object"
     },
-    "v1beta2DaemonSetStatus": {
+    "v1beta1DaemonSetStatus": {
       "properties": {
         "current_number_scheduled": {
           "format": "int32",
@@ -2049,7 +2087,7 @@
       },
       "type": "object"
     },
-    "v1beta2DeleteResourceRequest": {
+    "v1beta1DeleteResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -2069,16 +2107,16 @@
       },
       "type": "object"
     },
-    "v1beta2Deployment": {
+    "v1beta1Deployment": {
       "properties": {
         "app": {
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2DeploymentSpec"
+          "$ref": "#/definitions/v1beta1DeploymentSpec"
         },
         "status": {
           "$ref": "#/definitions/DeploymentDeploymentStatus"
@@ -2086,7 +2124,7 @@
       },
       "type": "object"
     },
-    "v1beta2DeploymentSpec": {
+    "v1beta1DeploymentSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
@@ -2101,7 +2139,7 @@
           "type": "boolean"
         },
         "pod_template": {
-          "$ref": "#/definitions/v1beta2PodSpec"
+          "$ref": "#/definitions/v1beta1PodSpec"
         },
         "progress_deadline_seconds": {
           "format": "int32",
@@ -2123,7 +2161,7 @@
       },
       "type": "object"
     },
-    "v1beta2DescribeResourceRequest": {
+    "v1beta1DescribeResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -2150,15 +2188,15 @@
       },
       "type": "object"
     },
-    "v1beta2DescribeResourceResponse": {
+    "v1beta1DescribeResourceResponse": {
       "properties": {
         "resource": {
-          "$ref": "#/definitions/v1beta2KubeResource"
+          "$ref": "#/definitions/v1beta1KubeResource"
         }
       },
       "type": "object"
     },
-    "v1beta2Disk": {
+    "v1beta1Disk": {
       "properties": {
         "endpoint": {
           "type": "string"
@@ -2174,10 +2212,10 @@
           "type": "string"
         },
         "persistent_volume": {
-          "$ref": "#/definitions/v1beta2PersistentVolume"
+          "$ref": "#/definitions/v1beta1PersistentVolume"
         },
         "persistent_volume_claim": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeClaim"
+          "$ref": "#/definitions/v1beta1PersistentVolumeClaim"
         },
         "provider": {
           "type": "string"
@@ -2198,7 +2236,7 @@
       },
       "type": "object"
     },
-    "v1beta2DiskCreateRequest": {
+    "v1beta1DiskCreateRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -2219,7 +2257,7 @@
       },
       "type": "object"
     },
-    "v1beta2DiskDeleteRequest": {
+    "v1beta1DiskDeleteRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -2230,7 +2268,7 @@
       },
       "type": "object"
     },
-    "v1beta2DiskDescribeRequest": {
+    "v1beta1DiskDescribeRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -2244,15 +2282,15 @@
       },
       "type": "object"
     },
-    "v1beta2DiskDescribeResponse": {
+    "v1beta1DiskDescribeResponse": {
       "properties": {
         "disk": {
-          "$ref": "#/definitions/v1beta2Disk"
+          "$ref": "#/definitions/v1beta1Disk"
         }
       },
       "type": "object"
     },
-    "v1beta2DiskListRequest": {
+    "v1beta1DiskListRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -2260,35 +2298,35 @@
       },
       "type": "object"
     },
-    "v1beta2DiskListResponse": {
+    "v1beta1DiskListResponse": {
       "properties": {
         "disks": {
           "items": {
-            "$ref": "#/definitions/v1beta2Disk"
+            "$ref": "#/definitions/v1beta1Disk"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta2DormantDatabase": {
+    "v1beta1DormantDatabase": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2DormantDatabaseSpec"
+          "$ref": "#/definitions/v1beta1DormantDatabaseSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2DormantDatabaseStatus"
+          "$ref": "#/definitions/v1beta1DormantDatabaseStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2DormantDatabaseSpec": {
+    "v1beta1DormantDatabaseSpec": {
       "properties": {
         "origin": {
-          "$ref": "#/definitions/v1beta2Origin"
+          "$ref": "#/definitions/v1beta1Origin"
         },
         "resume": {
           "format": "boolean",
@@ -2301,7 +2339,7 @@
       },
       "type": "object"
     },
-    "v1beta2DormantDatabaseStatus": {
+    "v1beta1DormantDatabaseStatus": {
       "properties": {
         "creation_time": {
           "format": "int64",
@@ -2324,10 +2362,10 @@
       },
       "type": "object"
     },
-    "v1beta2DownwardAPIVolumeFile": {
+    "v1beta1DownwardAPIVolumeFile": {
       "properties": {
         "fieldRef": {
-          "$ref": "#/definitions/v1beta2ObjectFieldSelector",
+          "$ref": "#/definitions/v1beta1ObjectFieldSelector",
           "title": "Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.\n+optional"
         },
         "mode": {
@@ -2340,14 +2378,14 @@
           "type": "string"
         },
         "resourceFieldRef": {
-          "$ref": "#/definitions/v1beta2ResourceFieldSelector",
+          "$ref": "#/definitions/v1beta1ResourceFieldSelector",
           "title": "Selects a resource of the container: only resources limits and requests\n(limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.\n+optional"
         }
       },
       "title": "DownwardAPIVolumeFile represents information to create the file containing the pod field",
       "type": "object"
     },
-    "v1beta2DownwardAPIVolumeSource": {
+    "v1beta1DownwardAPIVolumeSource": {
       "description": "DownwardAPIVolumeSource represents a volume containing downward API info.\nDownward API volumes support ownership management and SELinux relabeling.",
       "properties": {
         "defaultMode": {
@@ -2357,7 +2395,7 @@
         },
         "items": {
           "items": {
-            "$ref": "#/definitions/v1beta2DownwardAPIVolumeFile"
+            "$ref": "#/definitions/v1beta1DownwardAPIVolumeFile"
           },
           "title": "Items is a list of downward API volume file\n+optional",
           "type": "array"
@@ -2365,31 +2403,31 @@
       },
       "type": "object"
     },
-    "v1beta2Elasticsearch": {
+    "v1beta1Elasticsearch": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2ElasticsearchSpec"
+          "$ref": "#/definitions/v1beta1ElasticsearchSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2ElasticsearchStatus"
+          "$ref": "#/definitions/v1beta1ElasticsearchStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2ElasticsearchSpec": {
+    "v1beta1ElasticsearchSpec": {
       "properties": {
         "backup_schedule": {
-          "$ref": "#/definitions/v1beta2BackupScheduleSpec"
+          "$ref": "#/definitions/v1beta1BackupScheduleSpec"
         },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
         },
         "init": {
-          "$ref": "#/definitions/v1beta2InitSpec"
+          "$ref": "#/definitions/v1beta1InitSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -2402,7 +2440,7 @@
           "type": "integer"
         },
         "storage": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeClaimSpec"
+          "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
         },
         "version": {
           "type": "string"
@@ -2410,7 +2448,7 @@
       },
       "type": "object"
     },
-    "v1beta2ElasticsearchStatus": {
+    "v1beta1ElasticsearchStatus": {
       "properties": {
         "creation_time": {
           "format": "int64",
@@ -2425,7 +2463,7 @@
       },
       "type": "object"
     },
-    "v1beta2EmptyDirVolumeSource": {
+    "v1beta1EmptyDirVolumeSource": {
       "description": "Represents an empty directory for a pod.\nEmpty directory volumes support ownership management and SELinux relabeling.",
       "properties": {
         "medium": {
@@ -2435,7 +2473,7 @@
       },
       "type": "object"
     },
-    "v1beta2EnvVar": {
+    "v1beta1EnvVar": {
       "properties": {
         "name": {
           "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
@@ -2446,67 +2484,35 @@
           "type": "string"
         },
         "value_from": {
-          "$ref": "#/definitions/v1beta2EnvVarSource",
+          "$ref": "#/definitions/v1beta1EnvVarSource",
           "title": "Source for the environment variable's value. Cannot be used if value is not empty.\n+optional"
         }
       },
       "type": "object"
     },
-    "v1beta2EnvVarSource": {
+    "v1beta1EnvVarSource": {
       "description": "EnvVarSource represents a source for the value of an EnvVar.",
       "properties": {
         "config_map_key_ref": {
-          "$ref": "#/definitions/v1beta2ConfigMapKeySelector",
+          "$ref": "#/definitions/v1beta1ConfigMapKeySelector",
           "title": "Selects a key of a ConfigMap.\n+optional"
         },
         "field_ref": {
-          "$ref": "#/definitions/v1beta2ObjectFieldSelector",
+          "$ref": "#/definitions/v1beta1ObjectFieldSelector",
           "title": "Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations,\nspec.nodeName, spec.serviceAccountName, status.podIP.\n+optional"
         },
         "resource_field_ref": {
-          "$ref": "#/definitions/v1beta2ResourceFieldSelector",
+          "$ref": "#/definitions/v1beta1ResourceFieldSelector",
           "title": "Selects a resource of the container: only resources limits and requests\n(limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.\n+optional"
         },
         "secret_key_ref": {
-          "$ref": "#/definitions/v1beta2SecretKeySelector",
+          "$ref": "#/definitions/v1beta1SecretKeySelector",
           "title": "Selects a key of a secret in the pod's namespace\n+optional"
         }
       },
       "type": "object"
     },
-    "v1beta2Event": {
-      "properties": {
-        "count": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "first_timestamp": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "last_timestamp": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "message": {
-          "type": "string"
-        },
-        "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
-        },
-        "reason": {
-          "type": "string"
-        },
-        "source": {
-          "$ref": "#/definitions/v1beta2EventSource"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta2EventSource": {
+    "v1beta1EventSource": {
       "properties": {
         "component": {
           "type": "string"
@@ -2517,7 +2523,7 @@
       },
       "type": "object"
     },
-    "v1beta2FCVolumeSource": {
+    "v1beta1FCVolumeSource": {
       "description": "Represents a Fibre Channel volume.\nFibre Channel volumes can only be mounted as read/write once.\nFibre Channel volumes support ownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
@@ -2544,7 +2550,7 @@
       },
       "type": "object"
     },
-    "v1beta2FlexVolumeSource": {
+    "v1beta1FlexVolumeSource": {
       "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an alpha feature and may change in future.",
       "properties": {
         "driver": {
@@ -2568,13 +2574,13 @@
           "type": "boolean"
         },
         "secretRef": {
-          "$ref": "#/definitions/v1beta2ObjectReference",
+          "$ref": "#/definitions/v1beta1ObjectReference",
           "description": "Optional: SecretRef is reference to the secret object containing\nsensitive information to pass to the plugin scripts. This may be\nempty if no secret object is specified. If the secret object\ncontains more than one secret, all secrets are passed to the plugin\nscripts."
         }
       },
       "type": "object"
     },
-    "v1beta2FlockerVolumeSource": {
+    "v1beta1FlockerVolumeSource": {
       "description": "Represents a Flocker volume mounted by the Flocker agent.\nFlocker volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "datasetName": {
@@ -2584,7 +2590,7 @@
       },
       "type": "object"
     },
-    "v1beta2GCEPersistentDiskVolumeSource": {
+    "v1beta1GCEPersistentDiskVolumeSource": {
       "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must\nalso be in the same GCE project and zone as the kubelet. A GCE PD\ncan only be mounted as read/write once or read-only many times. GCE\nPDs support ownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
@@ -2608,7 +2614,7 @@
       },
       "type": "object"
     },
-    "v1beta2GitRepoVolumeSource": {
+    "v1beta1GitRepoVolumeSource": {
       "description": "Represents a volume that is populated with the contents of a git repository.\nGit repo volumes do not support ownership management.\nGit repo volumes support SELinux relabeling.",
       "properties": {
         "directory": {
@@ -2626,7 +2632,7 @@
       },
       "type": "object"
     },
-    "v1beta2GlusterfsVolumeSource": {
+    "v1beta1GlusterfsVolumeSource": {
       "description": "Represents a Glusterfs mount that lasts the lifetime of a pod.\nGlusterfs volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "endpoints": {
@@ -2645,7 +2651,7 @@
       },
       "type": "object"
     },
-    "v1beta2HostPathVolumeSource": {
+    "v1beta1HostPathVolumeSource": {
       "description": "Represents a host path mapped into a pod.\nHost path volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "path": {
@@ -2655,7 +2661,7 @@
       },
       "type": "object"
     },
-    "v1beta2ISCSIVolumeSource": {
+    "v1beta1ISCSIVolumeSource": {
       "description": "Represents an ISCSI disk.\nISCSI volumes can only be mounted as read/write once.\nISCSI volumes support ownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
@@ -2687,21 +2693,21 @@
       },
       "type": "object"
     },
-    "v1beta2Ingress": {
+    "v1beta1Ingress": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2IngressSpec"
+          "$ref": "#/definitions/v1beta1IngressSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2IngressStatus"
+          "$ref": "#/definitions/v1beta1IngressStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2IngressLoadBalancerIngress": {
+    "v1beta1IngressLoadBalancerIngress": {
       "properties": {
         "IP": {
           "type": "string"
@@ -2712,7 +2718,7 @@
       },
       "type": "object"
     },
-    "v1beta2IngressSpec": {
+    "v1beta1IngressSpec": {
       "properties": {
         "TLS": {
           "items": {
@@ -2739,7 +2745,7 @@
           "type": "array"
         },
         "resources": {
-          "$ref": "#/definitions/kubernetesv1beta2ResourceRequirements"
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
         },
         "rules": {
           "items": {
@@ -2759,46 +2765,46 @@
       },
       "type": "object"
     },
-    "v1beta2IngressStatus": {
+    "v1beta1IngressStatus": {
       "properties": {
         "load_balancer": {
           "items": {
-            "$ref": "#/definitions/v1beta2IngressLoadBalancerIngress"
+            "$ref": "#/definitions/v1beta1IngressLoadBalancerIngress"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta2InitSpec": {
+    "v1beta1InitSpec": {
       "properties": {
         "script_source": {
-          "$ref": "#/definitions/v1beta2ScriptSourceSpec"
+          "$ref": "#/definitions/v1beta1ScriptSourceSpec"
         },
         "snapshot_source": {
-          "$ref": "#/definitions/v1beta2SnapshotSourceSpec"
+          "$ref": "#/definitions/v1beta1SnapshotSourceSpec"
         }
       },
       "type": "object"
     },
-    "v1beta2Job": {
+    "v1beta1Job": {
       "properties": {
         "app": {
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2JobSpec"
+          "$ref": "#/definitions/v1beta1JobSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2JobStatus"
+          "$ref": "#/definitions/v1beta1JobStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2JobSpec": {
+    "v1beta1JobSpec": {
       "properties": {
         "active_deadline_seconds": {
           "format": "int64",
@@ -2813,12 +2819,12 @@
           "type": "integer"
         },
         "template": {
-          "$ref": "#/definitions/v1beta2PodSpec"
+          "$ref": "#/definitions/v1beta1PodSpec"
         }
       },
       "type": "object"
     },
-    "v1beta2JobStatus": {
+    "v1beta1JobStatus": {
       "properties": {
         "active": {
           "format": "int32",
@@ -2830,7 +2836,7 @@
         },
         "conditions": {
           "items": {
-            "$ref": "#/definitions/v1beta2ResourceCondition"
+            "$ref": "#/definitions/v1beta1ResourceCondition"
           },
           "type": "array"
         },
@@ -2849,7 +2855,7 @@
       },
       "type": "object"
     },
-    "v1beta2KeyToPath": {
+    "v1beta1KeyToPath": {
       "description": "Maps a string key to a path within a volume.",
       "properties": {
         "key": {
@@ -2868,7 +2874,7 @@
       },
       "type": "object"
     },
-    "v1beta2KubeObject": {
+    "v1beta1KubeObject": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -2885,119 +2891,119 @@
       },
       "type": "object"
     },
-    "v1beta2KubeResource": {
+    "v1beta1KubeResource": {
       "description": "TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.",
       "properties": {
         "api_version": {
           "type": "string"
         },
         "certificate": {
-          "$ref": "#/definitions/v1beta2Certificate"
+          "$ref": "#/definitions/v1beta1Certificate"
         },
         "cluster_alert": {
-          "$ref": "#/definitions/v1beta2ClusterAlert"
+          "$ref": "#/definitions/v1beta1ClusterAlert"
         },
         "cluster_role": {
-          "$ref": "#/definitions/v1beta2ClusterRole"
+          "$ref": "#/definitions/v1beta1ClusterRole"
         },
         "cluster_role_binding": {
-          "$ref": "#/definitions/v1beta2ClusterRoleBinding"
+          "$ref": "#/definitions/v1beta1ClusterRoleBinding"
         },
         "config_map": {
-          "$ref": "#/definitions/v1beta2ConfigMap"
+          "$ref": "#/definitions/v1beta1ConfigMap"
         },
         "cron_job": {
-          "$ref": "#/definitions/v1beta2CronJob"
+          "$ref": "#/definitions/v1beta1CronJob"
         },
         "daemon_set": {
-          "$ref": "#/definitions/v1beta2DaemonSet"
+          "$ref": "#/definitions/v1beta1DaemonSet"
         },
         "deployment": {
-          "$ref": "#/definitions/v1beta2Deployment"
+          "$ref": "#/definitions/v1beta1Deployment"
         },
         "dormant_database": {
-          "$ref": "#/definitions/v1beta2DormantDatabase"
+          "$ref": "#/definitions/v1beta1DormantDatabase"
         },
         "elasticsearch": {
-          "$ref": "#/definitions/v1beta2Elasticsearch"
+          "$ref": "#/definitions/v1beta1Elasticsearch"
         },
         "events": {
           "items": {
-            "$ref": "#/definitions/v1beta2Event"
+            "$ref": "#/definitions/kubernetesv1beta1Event"
           },
           "type": "array"
         },
         "ingress": {
-          "$ref": "#/definitions/v1beta2Ingress"
+          "$ref": "#/definitions/v1beta1Ingress"
         },
         "job": {
-          "$ref": "#/definitions/v1beta2Job"
+          "$ref": "#/definitions/v1beta1Job"
         },
         "kind": {
           "type": "string"
         },
         "namespace": {
-          "$ref": "#/definitions/v1beta2Namespace"
+          "$ref": "#/definitions/v1beta1Namespace"
         },
         "node": {
-          "$ref": "#/definitions/v1beta2Node"
+          "$ref": "#/definitions/v1beta1Node"
         },
         "node_alert": {
-          "$ref": "#/definitions/v1beta2NodeAlert"
+          "$ref": "#/definitions/v1beta1NodeAlert"
         },
         "persistent_volume": {
-          "$ref": "#/definitions/v1beta2PersistentVolume"
+          "$ref": "#/definitions/v1beta1PersistentVolume"
         },
         "persistent_volume_claim": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeClaim"
+          "$ref": "#/definitions/v1beta1PersistentVolumeClaim"
         },
         "pod": {
-          "$ref": "#/definitions/v1beta2Pod"
+          "$ref": "#/definitions/v1beta1Pod"
         },
         "pod_alert": {
-          "$ref": "#/definitions/v1beta2PodAlert"
+          "$ref": "#/definitions/v1beta1PodAlert"
         },
         "postgres": {
-          "$ref": "#/definitions/v1beta2Postgres"
+          "$ref": "#/definitions/v1beta1Postgres"
         },
         "prometheus": {
-          "$ref": "#/definitions/v1beta2Prometheus"
+          "$ref": "#/definitions/v1beta1Prometheus"
         },
         "raw": {
-          "$ref": "#/definitions/v1beta2Raw"
+          "$ref": "#/definitions/v1beta1Raw"
         },
         "replica_set": {
-          "$ref": "#/definitions/v1beta2ReplicaSet"
+          "$ref": "#/definitions/v1beta1ReplicaSet"
         },
         "replication_controller": {
-          "$ref": "#/definitions/v1beta2ReplicationController"
+          "$ref": "#/definitions/v1beta1ReplicationController"
         },
         "restic": {
-          "$ref": "#/definitions/v1beta2Restic"
+          "$ref": "#/definitions/v1beta1Restic"
         },
         "role": {
-          "$ref": "#/definitions/v1beta2Role"
+          "$ref": "#/definitions/v1beta1Role"
         },
         "role_binding": {
-          "$ref": "#/definitions/v1beta2RoleBinding"
+          "$ref": "#/definitions/v1beta1RoleBinding"
         },
         "secret": {
-          "$ref": "#/definitions/v1beta2Secret"
+          "$ref": "#/definitions/v1beta1Secret"
         },
         "service": {
-          "$ref": "#/definitions/v1beta2Service"
+          "$ref": "#/definitions/v1beta1Service"
         },
         "service_monitors": {
-          "$ref": "#/definitions/v1beta2ServiceMonitor"
+          "$ref": "#/definitions/v1beta1ServiceMonitor"
         },
         "snapshot": {
-          "$ref": "#/definitions/v1beta2Snapshot"
+          "$ref": "#/definitions/v1beta1Snapshot"
         },
         "stateful_set": {
-          "$ref": "#/definitions/v1beta2StatefulSet"
+          "$ref": "#/definitions/v1beta1StatefulSet"
         },
         "storage_class": {
-          "$ref": "#/definitions/v1beta2StorageClass"
+          "$ref": "#/definitions/v1beta1StorageClass"
         },
         "type": {
           "type": "string"
@@ -3005,7 +3011,7 @@
       },
       "type": "object"
     },
-    "v1beta2KubeResourceList": {
+    "v1beta1KubeResourceList": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -3119,7 +3125,7 @@
       },
       "type": "object"
     },
-    "v1beta2ListResourceRequest": {
+    "v1beta1ListResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -3144,7 +3150,7 @@
       },
       "type": "object"
     },
-    "v1beta2ListResourceResponse": {
+    "v1beta1ListResourceResponse": {
       "properties": {
         "available_versions": {
           "items": {
@@ -3156,12 +3162,12 @@
           "type": "string"
         },
         "resources": {
-          "$ref": "#/definitions/v1beta2KubeResourceList"
+          "$ref": "#/definitions/v1beta1KubeResourceList"
         }
       },
       "type": "object"
     },
-    "v1beta2LocalObjectReference": {
+    "v1beta1LocalObjectReference": {
       "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
       "properties": {
         "name": {
@@ -3171,7 +3177,7 @@
       },
       "type": "object"
     },
-    "v1beta2Meta": {
+    "v1beta1Meta": {
       "properties": {
         "annotations": {
           "additionalProperties": {
@@ -3211,7 +3217,7 @@
       },
       "type": "object"
     },
-    "v1beta2Metrics": {
+    "v1beta1Metrics": {
       "properties": {
         "cpu_usage": {
           "items": {
@@ -3228,7 +3234,7 @@
       },
       "type": "object"
     },
-    "v1beta2NFSVolumeSource": {
+    "v1beta1NFSVolumeSource": {
       "description": "Represents an NFS mount that lasts the lifetime of a pod.\nNFS volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "path": {
@@ -3247,21 +3253,21 @@
       },
       "type": "object"
     },
-    "v1beta2Namespace": {
+    "v1beta1Namespace": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
           "$ref": "#/definitions/NamespaceNamespaceSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2NamespaceStatus"
+          "$ref": "#/definitions/v1beta1NamespaceStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2NamespaceStatus": {
+    "v1beta1NamespaceStatus": {
       "properties": {
         "phase": {
           "type": "string"
@@ -3269,20 +3275,20 @@
       },
       "type": "object"
     },
-    "v1beta2Node": {
+    "v1beta1Node": {
       "properties": {
         "is_master": {
           "format": "boolean",
           "type": "boolean"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "metrics": {
-          "$ref": "#/definitions/v1beta2Metrics"
+          "$ref": "#/definitions/v1beta1Metrics"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2NodeSpec"
+          "$ref": "#/definitions/v1beta1NodeSpec"
         },
         "status": {
           "$ref": "#/definitions/NodeNodeStatus"
@@ -3290,10 +3296,10 @@
       },
       "type": "object"
     },
-    "v1beta2NodeAlert": {
+    "v1beta1NodeAlert": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
           "$ref": "#/definitions/NodeAlertNodeAlertSpec"
@@ -3301,7 +3307,7 @@
       },
       "type": "object"
     },
-    "v1beta2NodeSpec": {
+    "v1beta1NodeSpec": {
       "properties": {
         "external_id": {
           "type": "string"
@@ -3319,7 +3325,7 @@
       },
       "type": "object"
     },
-    "v1beta2ObjectFieldSelector": {
+    "v1beta1ObjectFieldSelector": {
       "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
       "properties": {
         "api_version": {
@@ -3333,7 +3339,7 @@
       },
       "type": "object"
     },
-    "v1beta2ObjectReference": {
+    "v1beta1ObjectReference": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -3356,32 +3362,32 @@
       },
       "type": "object"
     },
-    "v1beta2Origin": {
+    "v1beta1Origin": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2OriginSpec"
+          "$ref": "#/definitions/v1beta1OriginSpec"
         }
       },
       "type": "object"
     },
-    "v1beta2OriginSpec": {
+    "v1beta1OriginSpec": {
       "properties": {
         "elasticsearch": {
-          "$ref": "#/definitions/v1beta2ElasticsearchSpec"
+          "$ref": "#/definitions/v1beta1ElasticsearchSpec"
         },
         "postgres": {
-          "$ref": "#/definitions/v1beta2PostgresSpec"
+          "$ref": "#/definitions/v1beta1PostgresSpec"
         }
       },
       "type": "object"
     },
-    "v1beta2PersistentVolume": {
+    "v1beta1PersistentVolume": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
           "$ref": "#/definitions/PersistentVolumePersistentVolumeSpec"
@@ -3392,13 +3398,13 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeClaim": {
+    "v1beta1PersistentVolumeClaim": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeClaimSpec"
+          "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
         },
         "status": {
           "$ref": "#/definitions/PersistentVolumeClaimPersistentVolumeClaimStatus"
@@ -3406,7 +3412,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeClaimRegisterRequest": {
+    "v1beta1PersistentVolumeClaimRegisterRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -3424,7 +3430,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeClaimSpec": {
+    "v1beta1PersistentVolumeClaimSpec": {
       "properties": {
         "access_modes": {
           "items": {
@@ -3433,7 +3439,7 @@
           "type": "array"
         },
         "resources": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeClaimSpecResourceRequirements"
+          "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpecResourceRequirements"
         },
         "storage_class_name": {
           "type": "string"
@@ -3444,7 +3450,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeClaimSpecResourceRequirements": {
+    "v1beta1PersistentVolumeClaimSpecResourceRequirements": {
       "properties": {
         "limits": {
           "additionalProperties": {
@@ -3461,7 +3467,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeClaimUnRegisterRequest": {
+    "v1beta1PersistentVolumeClaimUnRegisterRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -3475,7 +3481,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeClaimVolumeSource": {
+    "v1beta1PersistentVolumeClaimVolumeSource": {
       "description": "PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace.\nThis volume finds the bound PV and mounts that volume for the pod. A\nPersistentVolumeClaimVolumeSource is, essentially, a wrapper around another\ntype of volume that is owned by someone else (the system).",
       "properties": {
         "claimName": {
@@ -3490,7 +3496,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeRegisterRequest": {
+    "v1beta1PersistentVolumeRegisterRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -3514,7 +3520,7 @@
       },
       "type": "object"
     },
-    "v1beta2PersistentVolumeUnRegisterRequest": {
+    "v1beta1PersistentVolumeUnRegisterRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -3525,7 +3531,7 @@
       },
       "type": "object"
     },
-    "v1beta2PhotonPersistentDiskVolumeSource": {
+    "v1beta1PhotonPersistentDiskVolumeSource": {
       "description": "Represents a Photon Controller persistent disk resource.",
       "properties": {
         "fsType": {
@@ -3539,19 +3545,19 @@
       },
       "type": "object"
     },
-    "v1beta2Pod": {
+    "v1beta1Pod": {
       "properties": {
         "app": {
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "metrics": {
-          "$ref": "#/definitions/v1beta2Metrics"
+          "$ref": "#/definitions/v1beta1Metrics"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2PodSpec"
+          "$ref": "#/definitions/v1beta1PodSpec"
         },
         "status": {
           "$ref": "#/definitions/PodPodStatus"
@@ -3559,10 +3565,10 @@
       },
       "type": "object"
     },
-    "v1beta2PodAlert": {
+    "v1beta1PodAlert": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
           "$ref": "#/definitions/PodAlertPodAlertSpec"
@@ -3570,7 +3576,7 @@
       },
       "type": "object"
     },
-    "v1beta2PodSpec": {
+    "v1beta1PodSpec": {
       "properties": {
         "containers": {
           "items": {
@@ -3598,41 +3604,41 @@
         },
         "volumes": {
           "items": {
-            "$ref": "#/definitions/v1beta2Volume"
+            "$ref": "#/definitions/v1beta1Volume"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta2Postgres": {
+    "v1beta1Postgres": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2PostgresSpec"
+          "$ref": "#/definitions/v1beta1PostgresSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2PostgresStatus"
+          "$ref": "#/definitions/v1beta1PostgresStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2PostgresSpec": {
+    "v1beta1PostgresSpec": {
       "properties": {
         "backup_schedule": {
-          "$ref": "#/definitions/v1beta2BackupScheduleSpec"
+          "$ref": "#/definitions/v1beta1BackupScheduleSpec"
         },
         "database_secret": {
-          "$ref": "#/definitions/v1beta2SecretVolumeSource"
+          "$ref": "#/definitions/v1beta1SecretVolumeSource"
         },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
         },
         "init": {
-          "$ref": "#/definitions/v1beta2InitSpec"
+          "$ref": "#/definitions/v1beta1InitSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3641,7 +3647,7 @@
           "type": "object"
         },
         "storage": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeClaimSpec"
+          "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
         },
         "version": {
           "type": "string"
@@ -3649,7 +3655,7 @@
       },
       "type": "object"
     },
-    "v1beta2PostgresStatus": {
+    "v1beta1PostgresStatus": {
       "properties": {
         "creation_time": {
           "format": "int64",
@@ -3664,11 +3670,11 @@
       },
       "type": "object"
     },
-    "v1beta2Prometheus": {
+    "v1beta1Prometheus": {
       "description": "Prometheus defines a Prometheus deployment.",
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
           "$ref": "#/definitions/PrometheusPrometheusSpec"
@@ -3679,7 +3685,7 @@
       },
       "type": "object"
     },
-    "v1beta2PrometheusAlertmanagerEndpoint": {
+    "v1beta1PrometheusAlertmanagerEndpoint": {
       "description": "AlertmanagerEndpoints defines a selection of a single Endpoints object\ncontaining alertmanager IPs to fire alerts against.",
       "properties": {
         "name": {
@@ -3701,7 +3707,7 @@
       },
       "type": "object"
     },
-    "v1beta2QuobyteVolumeSource": {
+    "v1beta1QuobyteVolumeSource": {
       "description": "Represents a Quobyte mount that lasts the lifetime of a pod.\nQuobyte volumes do not support ownership management or SELinux relabeling.",
       "properties": {
         "group": {
@@ -3728,7 +3734,7 @@
       },
       "type": "object"
     },
-    "v1beta2RBDVolumeSource": {
+    "v1beta1RBDVolumeSource": {
       "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod.\nRBD volumes support ownership management and SELinux relabeling.",
       "properties": {
         "fsType": {
@@ -3760,7 +3766,7 @@
           "type": "boolean"
         },
         "secretRef": {
-          "$ref": "#/definitions/v1beta2ObjectReference",
+          "$ref": "#/definitions/v1beta1ObjectReference",
           "title": "SecretRef is name of the authentication secret for RBDUser. If provided\noverrides keyring.\nDefault is nil.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it"
         },
         "user": {
@@ -3770,7 +3776,7 @@
       },
       "type": "object"
     },
-    "v1beta2Raw": {
+    "v1beta1Raw": {
       "properties": {
         "data": {
           "type": "string"
@@ -3781,31 +3787,31 @@
       },
       "type": "object"
     },
-    "v1beta2ReplicaSet": {
+    "v1beta1ReplicaSet": {
       "properties": {
         "app": {
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2ReplicaSetSpec"
+          "$ref": "#/definitions/v1beta1ReplicaSetSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2ReplicaSetStatus"
+          "$ref": "#/definitions/v1beta1ReplicaSetStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2ReplicaSetSpec": {
+    "v1beta1ReplicaSetSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/v1beta2PodSpec"
+          "$ref": "#/definitions/v1beta1PodSpec"
         },
         "selector": {
           "type": "string"
@@ -3813,7 +3819,7 @@
       },
       "type": "object"
     },
-    "v1beta2ReplicaSetStatus": {
+    "v1beta1ReplicaSetStatus": {
       "properties": {
         "current_replicas": {
           "format": "int32",
@@ -3826,31 +3832,31 @@
       },
       "type": "object"
     },
-    "v1beta2ReplicationController": {
+    "v1beta1ReplicationController": {
       "properties": {
         "app": {
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2ReplicationControllerSpec"
+          "$ref": "#/definitions/v1beta1ReplicationControllerSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2ReplicationControllerStatus"
+          "$ref": "#/definitions/v1beta1ReplicationControllerStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2ReplicationControllerSpec": {
+    "v1beta1ReplicationControllerSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/v1beta2PodSpec"
+          "$ref": "#/definitions/v1beta1PodSpec"
         },
         "selector": {
           "type": "string"
@@ -3858,7 +3864,7 @@
       },
       "type": "object"
     },
-    "v1beta2ReplicationControllerStatus": {
+    "v1beta1ReplicationControllerStatus": {
       "properties": {
         "current_replicas": {
           "format": "int32",
@@ -3871,7 +3877,7 @@
       },
       "type": "object"
     },
-    "v1beta2ResourceCondition": {
+    "v1beta1ResourceCondition": {
       "properties": {
         "last_heartbeat_time": {
           "format": "int64",
@@ -3896,7 +3902,7 @@
       },
       "type": "object"
     },
-    "v1beta2ResourceFieldSelector": {
+    "v1beta1ResourceFieldSelector": {
       "properties": {
         "container_name": {
           "title": "Container name: required for volumes, optional for env vars\n+optional",
@@ -3914,21 +3920,21 @@
       "title": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
       "type": "object"
     },
-    "v1beta2Restic": {
+    "v1beta1Restic": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2ResticSpec"
+          "$ref": "#/definitions/v1beta1ResticSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2ResticStatus"
+          "$ref": "#/definitions/v1beta1ResticStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2ResticSpec": {
+    "v1beta1ResticSpec": {
       "properties": {
         "backend": {
           "$ref": "#/definitions/SpecBackend"
@@ -3950,14 +3956,14 @@
         },
         "volume_mounts": {
           "items": {
-            "$ref": "#/definitions/v1beta2VolumeMount"
+            "$ref": "#/definitions/v1beta1VolumeMount"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta2ResticStatus": {
+    "v1beta1ResticStatus": {
       "properties": {
         "backup_count": {
           "format": "int64",
@@ -3981,7 +3987,7 @@
       },
       "type": "object"
     },
-    "v1beta2ReverseIndexResourceRequest": {
+    "v1beta1ReverseIndexResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -4004,38 +4010,38 @@
       },
       "type": "object"
     },
-    "v1beta2Role": {
+    "v1beta1Role": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "rules": {
           "items": {
-            "$ref": "#/definitions/v1beta2Rule"
+            "$ref": "#/definitions/v1beta1Rule"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta2RoleBinding": {
+    "v1beta1RoleBinding": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "role_ref": {
-          "$ref": "#/definitions/v1beta2ObjectReference"
+          "$ref": "#/definitions/v1beta1ObjectReference"
         },
         "subjects": {
           "items": {
-            "$ref": "#/definitions/v1beta2Subject"
+            "$ref": "#/definitions/v1beta1Subject"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta2Rule": {
+    "v1beta1Rule": {
       "properties": {
         "api_groups": {
           "items": {
@@ -4070,18 +4076,18 @@
       },
       "type": "object"
     },
-    "v1beta2ScriptSourceSpec": {
+    "v1beta1ScriptSourceSpec": {
       "properties": {
         "script_path": {
           "type": "string"
         },
         "volume_source": {
-          "$ref": "#/definitions/v1beta2VolumeSource"
+          "$ref": "#/definitions/v1beta1VolumeSource"
         }
       },
       "type": "object"
     },
-    "v1beta2Secret": {
+    "v1beta1Secret": {
       "properties": {
         "data": {
           "additionalProperties": {
@@ -4090,7 +4096,7 @@
           "type": "object"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "type": {
           "type": "string"
@@ -4098,7 +4104,7 @@
       },
       "type": "object"
     },
-    "v1beta2SecretEditRequest": {
+    "v1beta1SecretEditRequest": {
       "properties": {
         "add": {
           "additionalProperties": {
@@ -4130,7 +4136,7 @@
       },
       "type": "object"
     },
-    "v1beta2SecretKeySelector": {
+    "v1beta1SecretKeySelector": {
       "description": "SecretKeySelector selects a key of a Secret.",
       "properties": {
         "key": {
@@ -4138,13 +4144,13 @@
           "type": "string"
         },
         "local_object_reference": {
-          "$ref": "#/definitions/v1beta2ObjectReference",
+          "$ref": "#/definitions/v1beta1ObjectReference",
           "description": "The name of the secret in the pod's namespace to select from."
         }
       },
       "type": "object"
     },
-    "v1beta2SecretVolumeSource": {
+    "v1beta1SecretVolumeSource": {
       "description": "Adapts a Secret into a volume.\n\nThe contents of the target Secret's Data field will be presented in a volume\nas files using the keys in the Data field as the file names.\nSecret volumes support ownership management and SELinux relabeling.",
       "properties": {
         "defaultMode": {
@@ -4155,7 +4161,7 @@
         "items": {
           "description": "If unspecified, each key-value pair in the Data field of the referenced\nSecret will be projected into the volume as a file whose name is the\nkey and content is the value. If specified, the listed keys will be\nprojected into the specified paths, and unlisted keys will not be\npresent. If a key is specified which is not present in the Secret,\nthe volume setup will error unless it is marked optional. Paths must be\nrelative and may not contain the '..' path or start with '..'.",
           "items": {
-            "$ref": "#/definitions/v1beta2KeyToPath"
+            "$ref": "#/definitions/v1beta1KeyToPath"
           },
           "type": "array"
         },
@@ -4166,28 +4172,28 @@
       },
       "type": "object"
     },
-    "v1beta2Service": {
+    "v1beta1Service": {
       "properties": {
         "app": {
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2ServiceSpec"
+          "$ref": "#/definitions/v1beta1ServiceSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2ServiceStatus"
+          "$ref": "#/definitions/v1beta1ServiceStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2ServiceMonitor": {
+    "v1beta1ServiceMonitor": {
       "description": "ServiceMonitor defines monitoring for a set of services.",
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
           "$ref": "#/definitions/ServiceMonitorServiceMonitorSpec"
@@ -4195,7 +4201,7 @@
       },
       "type": "object"
     },
-    "v1beta2ServiceSpec": {
+    "v1beta1ServiceSpec": {
       "properties": {
         "clusterIP": {
           "type": "string"
@@ -4236,7 +4242,7 @@
       },
       "type": "object"
     },
-    "v1beta2ServiceStatus": {
+    "v1beta1ServiceStatus": {
       "properties": {
         "loadbalancer_ingresses": {
           "items": {
@@ -4247,21 +4253,21 @@
       },
       "type": "object"
     },
-    "v1beta2Snapshot": {
+    "v1beta1Snapshot": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2SnapshotSpec"
+          "$ref": "#/definitions/v1beta1SnapshotSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2SnapshotStatus"
+          "$ref": "#/definitions/v1beta1SnapshotStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2SnapshotSourceSpec": {
+    "v1beta1SnapshotSourceSpec": {
       "properties": {
         "name": {
           "type": "string"
@@ -4272,18 +4278,18 @@
       },
       "type": "object"
     },
-    "v1beta2SnapshotSpec": {
+    "v1beta1SnapshotSpec": {
       "properties": {
         "database_name": {
           "type": "string"
         },
         "snapshot_storage_spec": {
-          "$ref": "#/definitions/v1beta2SnapshotStorageSpec"
+          "$ref": "#/definitions/v1beta1SnapshotStorageSpec"
         }
       },
       "type": "object"
     },
-    "v1beta2SnapshotStatus": {
+    "v1beta1SnapshotStatus": {
       "properties": {
         "completion_time": {
           "format": "int64",
@@ -4302,22 +4308,22 @@
       },
       "type": "object"
     },
-    "v1beta2SnapshotStorageSpec": {
+    "v1beta1SnapshotStorageSpec": {
       "properties": {
         "Azure": {
-          "$ref": "#/definitions/v1beta2SnapshotStorageSpecAzureSpec"
+          "$ref": "#/definitions/v1beta1SnapshotStorageSpecAzureSpec"
         },
         "GCS": {
-          "$ref": "#/definitions/v1beta2SnapshotStorageSpecGCSSpec"
+          "$ref": "#/definitions/v1beta1SnapshotStorageSpecGCSSpec"
         },
         "Local": {
-          "$ref": "#/definitions/v1beta2SnapshotStorageSpecLocalSpec"
+          "$ref": "#/definitions/v1beta1SnapshotStorageSpecLocalSpec"
         },
         "S3": {
-          "$ref": "#/definitions/v1beta2SnapshotStorageSpecS3Spec"
+          "$ref": "#/definitions/v1beta1SnapshotStorageSpecS3Spec"
         },
         "Swift": {
-          "$ref": "#/definitions/v1beta2SnapshotStorageSpecSwiftSpec"
+          "$ref": "#/definitions/v1beta1SnapshotStorageSpecSwiftSpec"
         },
         "storage_secret_name": {
           "type": "string"
@@ -4325,7 +4331,7 @@
       },
       "type": "object"
     },
-    "v1beta2SnapshotStorageSpecAzureSpec": {
+    "v1beta1SnapshotStorageSpecAzureSpec": {
       "properties": {
         "container": {
           "type": "string"
@@ -4336,7 +4342,7 @@
       },
       "type": "object"
     },
-    "v1beta2SnapshotStorageSpecGCSSpec": {
+    "v1beta1SnapshotStorageSpecGCSSpec": {
       "properties": {
         "bucket": {
           "type": "string"
@@ -4347,18 +4353,18 @@
       },
       "type": "object"
     },
-    "v1beta2SnapshotStorageSpecLocalSpec": {
+    "v1beta1SnapshotStorageSpecLocalSpec": {
       "properties": {
         "path": {
           "type": "string"
         },
         "volumeSource": {
-          "$ref": "#/definitions/v1beta2VolumeSource"
+          "$ref": "#/definitions/v1beta1VolumeSource"
         }
       },
       "type": "object"
     },
-    "v1beta2SnapshotStorageSpecS3Spec": {
+    "v1beta1SnapshotStorageSpecS3Spec": {
       "properties": {
         "bucket": {
           "type": "string"
@@ -4372,7 +4378,7 @@
       },
       "type": "object"
     },
-    "v1beta2SnapshotStorageSpecSwiftSpec": {
+    "v1beta1SnapshotStorageSpecSwiftSpec": {
       "properties": {
         "container": {
           "type": "string"
@@ -4383,31 +4389,31 @@
       },
       "type": "object"
     },
-    "v1beta2StatefulSet": {
+    "v1beta1StatefulSet": {
       "properties": {
         "app": {
           "type": "string"
         },
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta2StatefulSetSpec"
+          "$ref": "#/definitions/v1beta1StatefulSetSpec"
         },
         "status": {
-          "$ref": "#/definitions/v1beta2StatefulSetStatus"
+          "$ref": "#/definitions/v1beta1StatefulSetStatus"
         }
       },
       "type": "object"
     },
-    "v1beta2StatefulSetSpec": {
+    "v1beta1StatefulSetSpec": {
       "properties": {
         "desired_replicas": {
           "format": "int32",
           "type": "integer"
         },
         "pod_template": {
-          "$ref": "#/definitions/v1beta2PodSpec"
+          "$ref": "#/definitions/v1beta1PodSpec"
         },
         "selector": {
           "type": "string"
@@ -4418,7 +4424,7 @@
       },
       "type": "object"
     },
-    "v1beta2StatefulSetStatus": {
+    "v1beta1StatefulSetStatus": {
       "properties": {
         "current_replicas": {
           "format": "int32",
@@ -4431,10 +4437,10 @@
       },
       "type": "object"
     },
-    "v1beta2StorageClass": {
+    "v1beta1StorageClass": {
       "properties": {
         "meta": {
-          "$ref": "#/definitions/v1beta2Meta"
+          "$ref": "#/definitions/v1beta1Meta"
         },
         "parameters": {
           "additionalProperties": {
@@ -4448,7 +4454,7 @@
       },
       "type": "object"
     },
-    "v1beta2Subject": {
+    "v1beta1Subject": {
       "properties": {
         "api_group": {
           "type": "string"
@@ -4465,7 +4471,7 @@
       },
       "type": "object"
     },
-    "v1beta2UpdateResourceRequest": {
+    "v1beta1UpdateResourceRequest": {
       "properties": {
         "api_version": {
           "type": "string"
@@ -4480,7 +4486,7 @@
           "type": "string"
         },
         "raw": {
-          "$ref": "#/definitions/v1beta2Raw"
+          "$ref": "#/definitions/v1beta1Raw"
         },
         "type": {
           "type": "string"
@@ -4488,18 +4494,18 @@
       },
       "type": "object"
     },
-    "v1beta2Volume": {
+    "v1beta1Volume": {
       "properties": {
         "name": {
           "type": "string"
         },
         "volumeSource": {
-          "$ref": "#/definitions/v1beta2VolumeSource"
+          "$ref": "#/definitions/v1beta1VolumeSource"
         }
       },
       "type": "object"
     },
-    "v1beta2VolumeMount": {
+    "v1beta1VolumeMount": {
       "properties": {
         "mount_path": {
           "type": "string"
@@ -4514,105 +4520,105 @@
       },
       "type": "object"
     },
-    "v1beta2VolumeSource": {
+    "v1beta1VolumeSource": {
       "description": "Represents the source of a volume to mount.\nOnly one of its members may be specified.",
       "properties": {
         "awsElasticBlockStore": {
-          "$ref": "#/definitions/v1beta2AWSElasticBlockStoreVolumeSource",
+          "$ref": "#/definitions/v1beta1AWSElasticBlockStoreVolumeSource",
           "title": "AWSElasticBlockStore represents an AWS Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore\n+optional"
         },
         "azureDisk": {
-          "$ref": "#/definitions/v1beta2AzureDiskVolumeSource",
+          "$ref": "#/definitions/v1beta1AzureDiskVolumeSource",
           "title": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.\n+optional"
         },
         "azureFile": {
-          "$ref": "#/definitions/v1beta2AzureFileVolumeSource",
+          "$ref": "#/definitions/v1beta1AzureFileVolumeSource",
           "title": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.\n+optional"
         },
         "cephfs": {
-          "$ref": "#/definitions/v1beta2CephFSVolumeSource",
+          "$ref": "#/definitions/v1beta1CephFSVolumeSource",
           "title": "CephFS represents a Ceph FS mount on the host that shares a pod's lifetime\n+optional"
         },
         "cinder": {
-          "$ref": "#/definitions/v1beta2CinderVolumeSource",
+          "$ref": "#/definitions/v1beta1CinderVolumeSource",
           "title": "Cinder represents a cinder volume attached and mounted on kubelets host machine\nMore info: http://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md\n+optional"
         },
         "configMap": {
-          "$ref": "#/definitions/v1beta2ConfigMapVolumeSource",
+          "$ref": "#/definitions/v1beta1ConfigMapVolumeSource",
           "title": "ConfigMap represents a configMap that should populate this volume\n+optional"
         },
         "downwardAPI": {
-          "$ref": "#/definitions/v1beta2DownwardAPIVolumeSource",
+          "$ref": "#/definitions/v1beta1DownwardAPIVolumeSource",
           "title": "DownwardAPI represents downward API about the pod that should populate this volume\n+optional"
         },
         "emptyDir": {
-          "$ref": "#/definitions/v1beta2EmptyDirVolumeSource",
+          "$ref": "#/definitions/v1beta1EmptyDirVolumeSource",
           "title": "EmptyDir represents a temporary directory that shares a pod's lifetime.\nMore info: http://kubernetes.io/docs/user-guide/volumes#emptydir\n+optional"
         },
         "fc": {
-          "$ref": "#/definitions/v1beta2FCVolumeSource",
+          "$ref": "#/definitions/v1beta1FCVolumeSource",
           "title": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.\n+optional"
         },
         "flexVolume": {
-          "$ref": "#/definitions/v1beta2FlexVolumeSource",
+          "$ref": "#/definitions/v1beta1FlexVolumeSource",
           "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future.\n+optional"
         },
         "flocker": {
-          "$ref": "#/definitions/v1beta2FlockerVolumeSource",
+          "$ref": "#/definitions/v1beta1FlockerVolumeSource",
           "title": "Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running\n+optional"
         },
         "gcePersistentDisk": {
-          "$ref": "#/definitions/v1beta2GCEPersistentDiskVolumeSource",
+          "$ref": "#/definitions/v1beta1GCEPersistentDiskVolumeSource",
           "title": "GCEPersistentDisk represents a GCE Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk\n+optional"
         },
         "gitRepo": {
-          "$ref": "#/definitions/v1beta2GitRepoVolumeSource",
+          "$ref": "#/definitions/v1beta1GitRepoVolumeSource",
           "title": "GitRepo represents a git repository at a particular revision.\n+optional"
         },
         "glusterfs": {
-          "$ref": "#/definitions/v1beta2GlusterfsVolumeSource",
+          "$ref": "#/definitions/v1beta1GlusterfsVolumeSource",
           "title": "Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.\nMore info: http://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md\n+optional"
         },
         "hostPath": {
-          "$ref": "#/definitions/v1beta2HostPathVolumeSource",
+          "$ref": "#/definitions/v1beta1HostPathVolumeSource",
           "title": "HostPath represents a pre-existing file or directory on the host\nmachine that is directly exposed to the container. This is generally\nused for system agents or other privileged things that are allowed\nto see the host machine. Most containers will NOT need this.\nMore info: http://kubernetes.io/docs/user-guide/volumes#hostpath\n---\nTODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not\nmount host directories as read/write.\n+optional"
         },
         "iscsi": {
-          "$ref": "#/definitions/v1beta2ISCSIVolumeSource",
+          "$ref": "#/definitions/v1beta1ISCSIVolumeSource",
           "title": "ISCSI represents an ISCSI Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://releases.k8s.io/HEAD/examples/volumes/iscsi/README.md\n+optional"
         },
         "nfs": {
-          "$ref": "#/definitions/v1beta2NFSVolumeSource",
+          "$ref": "#/definitions/v1beta1NFSVolumeSource",
           "title": "NFS represents an NFS mount on the host that shares a pod's lifetime\nMore info: http://kubernetes.io/docs/user-guide/volumes#nfs\n+optional"
         },
         "persistentVolumeClaim": {
-          "$ref": "#/definitions/v1beta2PersistentVolumeClaimVolumeSource",
+          "$ref": "#/definitions/v1beta1PersistentVolumeClaimVolumeSource",
           "title": "PersistentVolumeClaimVolumeSource represents a reference to a\nPersistentVolumeClaim in the same namespace.\nMore info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims\n+optional"
         },
         "photonPersistentDisk": {
-          "$ref": "#/definitions/v1beta2PhotonPersistentDiskVolumeSource",
+          "$ref": "#/definitions/v1beta1PhotonPersistentDiskVolumeSource",
           "title": "PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine"
         },
         "quobyte": {
-          "$ref": "#/definitions/v1beta2QuobyteVolumeSource",
+          "$ref": "#/definitions/v1beta1QuobyteVolumeSource",
           "title": "Quobyte represents a Quobyte mount on the host that shares a pod's lifetime\n+optional"
         },
         "rbd": {
-          "$ref": "#/definitions/v1beta2RBDVolumeSource",
+          "$ref": "#/definitions/v1beta1RBDVolumeSource",
           "title": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.\nMore info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md\n+optional"
         },
         "secret": {
-          "$ref": "#/definitions/v1beta2SecretVolumeSource",
+          "$ref": "#/definitions/v1beta1SecretVolumeSource",
           "title": "Secret represents a secret that should populate this volume.\nMore info: http://kubernetes.io/docs/user-guide/volumes#secrets\n+optional"
         },
         "vsphereVolume": {
-          "$ref": "#/definitions/v1beta2VsphereVirtualDiskVolumeSource",
+          "$ref": "#/definitions/v1beta1VsphereVirtualDiskVolumeSource",
           "title": "VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine\n+optional"
         }
       },
       "type": "object"
     },
-    "v1beta2VsphereVirtualDiskVolumeSource": {
+    "v1beta1VsphereVirtualDiskVolumeSource": {
       "description": "Represents a vSphere volume resource.",
       "properties": {
         "fsType": {
@@ -4630,10 +4636,10 @@
   "host": "api.appscode.com",
   "info": {
     "title": "client.proto",
-    "version": "1beta2"
+    "version": "1beta1"
   },
   "paths": {
-    "/_appscode/api/cloud/v1beta2/disks/json": {
+    "/_appscode/api/cloud/v1beta1/disks/json": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -4648,7 +4654,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta2DiskListResponse"
+              "$ref": "#/definitions/v1beta1DiskListResponse"
             }
           }
         },
@@ -4664,7 +4670,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta2DiskCreateRequest"
+              "$ref": "#/definitions/v1beta1DiskCreateRequest"
             }
           }
         ],
@@ -4681,7 +4687,7 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1beta2/disks/{name}/json": {
+    "/_appscode/api/cloud/v1beta1/disks/{name}/json": {
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -4708,7 +4714,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta2DiskDescribeResponse"
+              "$ref": "#/definitions/v1beta1DiskDescribeResponse"
             }
           }
         },
@@ -4717,7 +4723,7 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1beta2/disks/{uid}/json": {
+    "/_appscode/api/cloud/v1beta1/disks/{uid}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -4741,7 +4747,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/actions/copy/json": {
+    "/_appscode/api/kubernetes/v1beta1/actions/copy/json": {
       "put": {
         "operationId": "Copy",
         "parameters": [
@@ -4750,7 +4756,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta2CopyResourceRequest"
+              "$ref": "#/definitions/v1beta1CopyResourceRequest"
             }
           }
         ],
@@ -4767,7 +4773,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit/json": {
       "post": {
         "operationId": "EditConfigMap",
         "parameters": [
@@ -4794,7 +4800,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta2ConfigMapEditRequest"
+              "$ref": "#/definitions/v1beta1ConfigMapEditRequest"
             }
           }
         ],
@@ -4812,7 +4818,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit/json": {
       "post": {
         "operationId": "EditSecret",
         "parameters": [
@@ -4839,7 +4845,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta2SecretEditRequest"
+              "$ref": "#/definitions/v1beta1SecretEditRequest"
             }
           }
         ],
@@ -4856,7 +4862,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register/json": {
       "post": {
         "operationId": "RegisterPersistentVolumeClaim",
         "parameters": [
@@ -4877,7 +4883,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta2PersistentVolumeClaimRegisterRequest"
+              "$ref": "#/definitions/v1beta1PersistentVolumeClaimRegisterRequest"
             }
           }
         ],
@@ -4894,7 +4900,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister/json": {
       "delete": {
         "operationId": "UnregisterPersistentVolumeClaim",
         "parameters": [
@@ -4924,7 +4930,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/register/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}/actions/register/json": {
       "post": {
         "operationId": "RegisterPersistentVolume",
         "parameters": [
@@ -4945,7 +4951,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta2PersistentVolumeRegisterRequest"
+              "$ref": "#/definitions/v1beta1PersistentVolumeRegisterRequest"
             }
           }
         ],
@@ -4962,7 +4968,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/persistentvolumes/{name}/actions/unregister/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}/actions/unregister/json": {
       "delete": {
         "operationId": "UnregisterPersistentVolume",
         "parameters": [
@@ -4992,7 +4998,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/{type}/json": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -5039,7 +5045,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta2ListResourceResponse"
+              "$ref": "#/definitions/v1beta1ListResourceResponse"
             }
           }
         },
@@ -5067,7 +5073,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta2CreateResourceRequest"
+              "$ref": "#/definitions/v1beta1CreateResourceRequest"
             }
           }
         ],
@@ -5084,7 +5090,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/{type}/{name}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -5170,7 +5176,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta2DescribeResourceResponse"
+              "$ref": "#/definitions/v1beta1DescribeResourceResponse"
             }
           }
         },
@@ -5204,7 +5210,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta2UpdateResourceRequest"
+              "$ref": "#/definitions/v1beta1UpdateResourceRequest"
             }
           }
         ],
@@ -5221,7 +5227,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1beta2/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json": {
+    "/_appscode/api/kubernetes/v1beta1/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json": {
       "get": {
         "operationId": "ReverseIndex",
         "parameters": [
@@ -5266,7 +5272,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta2ListResourceResponse"
+              "$ref": "#/definitions/v1beta1ListResourceResponse"
             }
           }
         },

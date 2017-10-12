@@ -12,7 +12,7 @@ ALIAS="Mappscode/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/th
 ALIAS+="Mappscode/api/dtypes/types.proto=github.com/appscode/api/dtypes,"
 ALIAS+="Mappscode/api/certificate/v1beta1/certificate.proto=github.com/appscode/api/certificate/v1beta1,"
 ALIAS+="Mappscode/api/kubernetes/v1beta1/cluster.proto=github.com/appscode/api/kubernetes/v1beta1,"
-ALIAS+="Mappscode/api/kubernetes/v1beta2/client.proto=github.com/appscode/api/kubernetes/v1beta2,"
+ALIAS+="Mappscode/api/kubernetes/v1beta1/client.proto=github.com/appscode/api/kubernetes/v1beta1,"
 ALIAS+="Mappscode/api/ssh/v1beta1/ssh.proto=github.com/appscode/api/ssh/v1beta1,"
 ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any,"
 ALIAS+="Mappscode/api/attic/artifacts.proto=github.com/appscode/api/attic,"
