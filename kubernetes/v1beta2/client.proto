@@ -669,6 +669,7 @@ message Pod {
     string podIP = 5;
     repeated ResourceCondition conditions = 6;
     int64 start_time = 7;
+    repeated Service service_info = 8;
   }
 }
 
