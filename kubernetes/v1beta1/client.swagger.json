@@ -3004,9 +3004,6 @@
         },
         "storage_class": {
           "$ref": "#/definitions/v1beta1StorageClass"
-        },
-        "type": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -3118,9 +3115,6 @@
         },
         "storage_classes": {
           "$ref": "#/definitions/KubeResourceListStorageClasses"
-        },
-        "type": {
-          "type": "string"
         }
       },
       "type": "object"
