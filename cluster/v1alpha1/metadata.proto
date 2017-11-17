@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package appscode.kubernetes.v1beta1;
+package appscode.cluster.v1alpha1;
 
-option go_package = "v1beta1";
+option go_package = "v1alpha1";
 
 option java_multiple_files = true;
 option java_outer_classname = "MetadataProto";
-option java_package = "com.appscode.api.kubernetes.v1beta1";
+option java_package = "com.appscode.api.cluster.v1alpha1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
@@ -14,7 +14,7 @@ import "appscode/api/annotations.proto";
 service Metadata {
   rpc ListRegions(RegionListRequest) returns (RegionListResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cloud/v1beta1/regions/json"
+      get : "/_appscode/api/cloud/v1alpha1/regions/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -23,7 +23,7 @@ service Metadata {
 
   rpc ListZones(ZoneListRequest) returns (ZoneListResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cloud/v1beta1/regions/{region}/zones/json"
+      get : "/_appscode/api/cloud/v1alpha1/regions/{region}/zones/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -32,7 +32,7 @@ service Metadata {
 
   rpc ListBuckets(BucketListRequest) returns (BucketListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/cloud/v1beta1/buckets/json"
+      get: "/_appscode/api/cloud/v1alpha1/buckets/json"
     };
     option (appscode.api.cors) = {
       enable: true

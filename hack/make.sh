@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-set -o errexit
-set -o nounset
-set -o pipefail
+set -eou pipefail
 
 RETVAL=0
 ROOT=$PWD
@@ -11,7 +9,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ALIAS="Mappscode/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis/appscode/api,"
 ALIAS+="Mappscode/api/dtypes/types.proto=github.com/appscode/api/dtypes,"
 ALIAS+="Mappscode/api/certificate/v1beta1/certificate.proto=github.com/appscode/api/certificate/v1beta1,"
-ALIAS+="Mappscode/api/kubernetes/v1beta1/cluster.proto=github.com/appscode/api/kubernetes/v1beta1,"
+ALIAS+="Mappscode/api/cluster/v1alpha1/cluster.proto=github.com/appscode/api/cluster/v1alpha1,"
 ALIAS+="Mappscode/api/kubernetes/v1beta1/client.proto=github.com/appscode/api/kubernetes/v1beta1,"
 ALIAS+="Mappscode/api/ssh/v1beta1/ssh.proto=github.com/appscode/api/ssh/v1beta1,"
 ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any,"
@@ -21,7 +19,8 @@ ALIAS+="Mappscode/api/db/v1beta1/snapshot.proto=github.com/appscode/api/db/v1bet
 ALIAS+="Mappscode/api/namespace/v1beta1/team.proto=github.com/appscode/api/namespace/v1beta1,"
 ALIAS+="Mappscode/api/alert/v1beta1/incident.proto=github.com/appscode/api/alert/v1beta1,"
 ALIAS+="Mappscode/api/operation/operation.proto=github.com/appscode/api/operation,"
-ALIAS+="Mappscode/api/version/version.proto=github.com/appscode/api/version"
+ALIAS+="Mappscode/api/version/version.proto=github.com/appscode/api/version,"
+ALIAS+="Mgithub.com/appscode/pharmer/apis/v1alpha1/generated.proto=github.com/appscode/pharmer/apis/v1alpha1"
 
 clean() {
 	(find . | grep pb.go | xargs rm) || true
@@ -43,8 +42,10 @@ gen_proto() {
   fi
   rm -rf *.pb.go
   protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src \
          -I ${GOPATH}/src/github.com \
-         -I ${GOPATH}/src/github.com/googleapis/googleapis/ \
+         -I ${GOPATH}/src/github.com/appscode/pharmer/vendor \
+         -I ${GOPATH}/src/github.com/googleapis/googleapis \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
          --go_out=plugins=grpc,${ALIAS}:. *.proto
 }
@@ -55,8 +56,10 @@ gen_gateway_proto() {
   fi
   rm -rf *.pb.gw.go
   protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src \
          -I ${GOPATH}/src/github.com \
-         -I ${GOPATH}/src/github.com/googleapis/googleapis/ \
+         -I ${GOPATH}/src/github.com/appscode/pharmer/vendor \
+         -I ${GOPATH}/src/github.com/googleapis/googleapis \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
          --grpc-gateway_out=logtostderr=true,${ALIAS}:. *.proto
 }
@@ -67,8 +70,10 @@ gen_cors_pattern() {
   fi
   rm -rf *.gw.cors.go
   protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src \
          -I ${GOPATH}/src/github.com \
-         -I ${GOPATH}/src/github.com/googleapis/googleapis/ \
+         -I ${GOPATH}/src/github.com/appscode/pharmer/vendor \
+         -I ${GOPATH}/src/github.com/googleapis/googleapis \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
          --grpc-gateway-cors_out=logtostderr=true,${ALIAS}:. *.proto
 }
@@ -79,8 +84,10 @@ gen_js_client() {
   fi
   rm -rf *.gw.js
   protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src \
          -I ${GOPATH}/src/github.com \
-         -I ${GOPATH}/src/github.com/googleapis/googleapis/ \
+         -I ${GOPATH}/src/github.com/appscode/pharmer/vendor \
+         -I ${GOPATH}/src/github.com/googleapis/googleapis \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
          --grpc-js-client_out=logtostderr=true,remove_prefix=/_appscode/api,${ALIAS}:. *.proto
 }
@@ -89,12 +96,14 @@ gen_swagger_def() {
   if [ $(ls -1 *.proto 2>/dev/null | wc -l) = 0 ]; then
     return
   fi
-   rm -rf *.swagger.json
-   protoc -I /usr/local/include -I . \
-          -I ${GOPATH}/src/github.com \
-          -I ${GOPATH}/src/github.com/googleapis/googleapis/ \
-          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
-          --swagger_out=logtostderr=true,${ALIAS}:. *.proto
+  rm -rf *.swagger.json
+  protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src \
+         -I ${GOPATH}/src/github.com \
+         -I ${GOPATH}/src/github.com/appscode/pharmer/vendor \
+         -I ${GOPATH}/src/github.com/googleapis/googleapis \
+         -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
+         --swagger_out=logtostderr=true,${ALIAS}:. *.proto
 }
 
 gen_server_protos() {
@@ -185,9 +194,10 @@ gen_py() {
   fi
   rm -rf *.py
   python -m grpc.tools.protoc \
-         -I /usr/local/include -I . \
+         -I ${GOPATH}/src \
          -I ${GOPATH}/src/github.com \
-         -I ${GOPATH}/src/github.com/googleapis/googleapis/ \
+         -I ${GOPATH}/src/github.com/appscode/pharmer/vendor \
+         -I ${GOPATH}/src/github.com/googleapis/googleapis \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
          --python_out=':.' --grpc_python_out=':.' *.proto
 }
@@ -214,8 +224,10 @@ gen_php() {
   fi
   rm -rf *.php
   protoc -I /usr/local/include -I . \
+         -I ${GOPATH}/src \
          -I ${GOPATH}/src/github.com \
-         -I ${GOPATH}/src/github.com/googleapis/googleapis/ \
+         -I ${GOPATH}/src/github.com/appscode/pharmer/vendor \
+         -I ${GOPATH}/src/github.com/googleapis/googleapis \
          -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis \
          --plugin=protoc-gen-grpc="$(which grpc_php_plugin)" \
          --php_out=':.' --grpc_out=':.' *.proto

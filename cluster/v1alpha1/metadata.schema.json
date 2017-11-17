@@ -1,10 +1,8 @@
 {
   "definitions": {
-    "v1beta1BucketListRequest": {
+    "v1alpha1BucketListRequest": {
       "properties": {
         "cloud_credential": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "cluster_uid": {
@@ -17,8 +15,6 @@
           "type": "string"
         },
         "secret_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "secret_namespace": {
@@ -27,21 +23,17 @@
       },
       "type": "object"
     },
-    "v1beta1RegionListRequest": {
+    "v1alpha1RegionListRequest": {
       "properties": {
         "cloud_credential": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1beta1ZoneListRequest": {
+    "v1alpha1ZoneListRequest": {
       "properties": {
         "cloud_credential": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "region": {

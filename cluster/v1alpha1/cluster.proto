@@ -1,0 +1,368 @@
+syntax = "proto3";
+
+package appscode.cluster.v1alpha1;
+
+option go_package = "v1alpha1";
+
+option java_multiple_files = true;
+option java_outer_classname = "ClusterProto";
+option java_package = "com.appscode.api.cluster.v1alpha1";
+
+import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
+import "appscode/api/dtypes/types.proto";
+import "appscode/api/version/version.proto";
+import "github.com/appscode/pharmer/apis/v1alpha1/generated.proto";
+
+
+service Credentials {
+  rpc List(dtypes.VoidRequest) returns (CredentialListResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/cluster/v1alpha1/credentials/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Describe(CredentialDescribeRequest) returns (CredentialDescribeResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/cluster/v1alpha1/credentials/{name}/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Create(CredentialCreateRequest) returns (CredentialCreateResponse) {
+    option (google.api.http) = {
+      post: "/_appscode/api/cluster/v1alpha1/credentials/json"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Update(CredentialUpdateRequest) returns (CredentialUpdateResponse) {
+    option (google.api.http) = {
+      put: "/_appscode/api/cluster/v1alpha1/credentials/{credential.metadata.name}/json"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Delete(CredentialDeleteRequest) returns (CredentialDeleteResponse) {
+    option (google.api.http) = {
+      delete : "/_appscode/api/cluster/v1alpha1/credentials/{name}/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
+message CredentialListResponse {
+  repeated github.com.appscode.pharmer.apis.v1alpha1.Credential credentials = 1;
+}
+
+message CredentialDescribeRequest {
+  string name = 1;
+}
+
+message CredentialDescribeResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+}
+
+message CredentialCreateRequest {
+  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+}
+
+message CredentialCreateResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+}
+
+message CredentialUpdateRequest {
+  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+}
+
+message CredentialUpdateResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+}
+
+message CredentialDeleteRequest {
+  string name = 1;
+  bool release_reserved_ip = 2;
+  bool force = 3;
+  bool keep_lodabalancers = 4;
+  bool delete_dynamic_volumes = 5;
+}
+
+message CredentialDeleteResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+}
+
+// -------------------------------------------------------------------------------------
+
+service Clusters {
+  rpc List(ClusterListRequest) returns (ClusterListResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/cluster/v1alpha1/clusters/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/cluster/v1alpha1/clusters/{name}/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Create(ClusterCreateRequest) returns (ClusterCreateResponse) {
+    option (google.api.http) = {
+      post: "/_appscode/api/cluster/v1alpha1/clusters/json"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Update(ClusterUpdateRequest) returns (ClusterUpdateResponse) {
+    option (google.api.http) = {
+      put: "/_appscode/api/cluster/v1alpha1/clusters/{cluster.metadata.name}/json"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Delete(ClusterDeleteRequest) returns (ClusterDeleteResponse) {
+    option (google.api.http) = {
+      delete : "/_appscode/api/cluster/v1alpha1/clusters/{name}/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Apply(ClusterApplyRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+       put: "/_appscode/api/cluster/v1alpha1/clusters/{name}/actions/apply/json"
+       body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+// rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
+//   option (google.api.http) = {
+//     get : "/_appscode/api/cluster/v1alpha1/clusters/{name}/client-config/json"
+//   };
+//   option (appscode.api.cors) = {
+//     enable: true
+//   };
+// }
+
+  rpc Metadata(ClusterMetadataRequest) returns (ClusterMetadataResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/cluster/v1alpha1/clusters/{uid}/metadata/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
+message ClusterListRequest {
+  repeated string status = 1;
+}
+
+message ClusterListResponse {
+  repeated github.com.appscode.pharmer.apis.v1alpha1.Cluster clusters = 1;
+}
+
+message ClusterDescribeRequest {
+  string name = 1;
+}
+
+message ClusterDescribeResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+}
+
+message ClusterCreateRequest {
+  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+}
+
+message ClusterCreateResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+}
+
+message ClusterUpdateRequest {
+  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+}
+
+message ClusterUpdateResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+}
+
+message ClusterDeleteRequest {
+  string name = 1;
+  bool release_reserved_ip = 2;
+  bool force = 3;
+  bool keep_lodabalancers = 4;
+  bool delete_dynamic_volumes = 5;
+}
+
+message ClusterDeleteResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+}
+
+message ClusterApplyRequest {
+  string name = 1;
+}
+
+message ClusterMetadataRequest {
+  string uid = 1;
+}
+
+message ClusterMetadataResponse {
+  KubedConfig kubed_config = 1;
+  repeated string custom_resources = 2;
+
+  message KubedConfig {
+    version.Version version = 1;
+    string operator_namespace = 2;
+    bool search_enabled = 3;
+    bool reverse_index_enabled = 4;
+    bool analytics_enabled = 5;
+  }
+}
+
+
+// --------------------------------------------------------------------------------------------
+
+
+service NodeGroups {
+  rpc List(NodeGroupListRequest) returns (NodeGroupListResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/cluster/v1alpha1/clusters/{clusterName}/nodegroups/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Describe(NodeGroupDescribeRequest) returns (NodeGroupDescribeResponse) {
+    option (google.api.http) = {
+      get : "/_appscode/api/cluster/v1alpha1/clusters/{clusterName}/nodegroups/{name}/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Create(NodeGroupCreateRequest) returns (NodeGroupCreateResponse) {
+    option (google.api.http) = {
+      post: "/_appscode/api/cluster/v1alpha1/clusters/{nodeGroup.metadata.clusterName}/nodegroups/json"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Update(NodeGroupUpdateRequest) returns (NodeGroupUpdateResponse) {
+    option (google.api.http) = {
+      put: "/_appscode/api/cluster/v1alpha1/clusters/{nodeGroup.metadata.clusterName}/nodegroups/{nodeGroup.metadata.name}/json"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+
+  rpc Delete(NodeGroupDeleteRequest) returns (NodeGroupDeleteResponse) {
+    option (google.api.http) = {
+      delete : "/_appscode/api/cluster/v1alpha1/clusters/{clusterName}/nodegroups/{name}/json"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
+  }
+}
+
+message NodeGroupListRequest {
+  string clusterName = 1;
+  repeated string status = 2;
+}
+
+message NodeGroupListResponse {
+  repeated github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroups = 1;
+}
+
+message NodeGroupDescribeRequest {
+  string clusterName = 1;
+  string name = 2;
+}
+
+message NodeGroupDescribeResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+}
+
+message NodeGroupCreateRequest {
+  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+}
+
+message NodeGroupCreateResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+}
+
+message NodeGroupUpdateRequest {
+  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+}
+
+message NodeGroupUpdateResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+}
+
+message NodeGroupDeleteRequest {
+  string clusterName = 1;
+  string name = 2;
+  bool releaseReservedIP = 3;
+  bool force = 4;
+  bool keepLodabalancers = 5;
+  bool deleteDynamicVolumes = 6;
+}
+
+message NodeGroupDeleteResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+}
+
+// -------------------------------------------------------------------------
+
+service SSHConfig {
+  rpc Get(SSHConfigGetRequest) returns (SSHConfigGetResponse) {
+    option (google.api.http) = {
+      get: "/_appscode/api/cluster/v1alpha1/clusters/{clusterName}/ssh/json"
+    };
+  }
+}
+
+message SSHConfigGetRequest {
+  string clusterName = 1;
+  string nodeName = 2;
+}
+
+message SSHConfigGetResponse {
+  github.com.appscode.pharmer.apis.v1alpha1.SSHConfig config = 1;
+}

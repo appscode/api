@@ -4,6 +4,14 @@
     "application/json"
   ],
   "definitions": {
+    "v1alpha1ClusterApplyRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1Address": {
       "properties": {
         "company": {
@@ -50,126 +58,6 @@
           "type": "string"
         },
         "username": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterCreateRequest": {
-      "properties": {
-        "cloud_credential": {
-          "type": "string"
-        },
-        "cloud_credential_data": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "default_access_level": {
-          "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access\nIf not set this will set \"\"",
-          "type": "string"
-        },
-        "do_not_delete": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "gce_project": {
-          "type": "string"
-        },
-        "hostfacts_version": {
-          "type": "string"
-        },
-        "kube_starter_version": {
-          "type": "string"
-        },
-        "kubelet_version": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "node_groups": {
-          "items": {
-            "$ref": "#/definitions/v1beta1InstanceGroup"
-          },
-          "type": "array"
-        },
-        "node_set": {
-          "additionalProperties": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "type": "object"
-        },
-        "provider": {
-          "type": "string"
-        },
-        "saltbase_version": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        },
-        "zone": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterDeleteRequest": {
-      "properties": {
-        "delete_dynamic_volumes": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "force": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "keep_lodabalancers": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "name": {
-          "type": "string"
-        },
-        "release_reserved_ip": {
-          "format": "boolean",
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1ClusterReconfigureRequest": {
-      "properties": {
-        "apply_to_master": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "count": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "hostfacts_version": {
-          "type": "string"
-        },
-        "kube_starter_version": {
-          "type": "string"
-        },
-        "kubelet_version": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "saltbase_version": {
-          "type": "string"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "version": {
           "type": "string"
         }
       },
@@ -240,22 +128,6 @@
       },
       "type": "object"
     },
-    "v1beta1InstanceGroup": {
-      "properties": {
-        "count": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "sku": {
-          "type": "string"
-        },
-        "use_spot_instances": {
-          "format": "boolean",
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1Log": {
       "properties": {
         "id": {
@@ -315,14 +187,8 @@
         "auth": {
           "$ref": "#/definitions/v1beta1Auth"
         },
-        "cluster_create_request": {
-          "$ref": "#/definitions/v1beta1ClusterCreateRequest"
-        },
-        "cluster_delete_request": {
-          "$ref": "#/definitions/v1beta1ClusterDeleteRequest"
-        },
-        "cluster_reconfigure_request": {
-          "$ref": "#/definitions/v1beta1ClusterReconfigureRequest"
+        "cluster_apply_request": {
+          "$ref": "#/definitions/v1alpha1ClusterApplyRequest"
         },
         "metadata": {
           "$ref": "#/definitions/v1beta1Metadata"
@@ -344,9 +210,7 @@
       "default": "UNKNOWN",
       "enum": [
         "UNKNOWN",
-        "CLUSTER_CREATE",
-        "CLUSTER_DELETE",
-        "CLUSTER_RECONFIGURE",
+        "CLUSTER_APPLY",
         "NAMESPACE_CREATE"
       ],
       "title": "Next Id: 18",
