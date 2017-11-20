@@ -1185,7 +1185,7 @@
   },
   "host": "api.appscode.com",
   "info": {
-    "title": "cluster.proto",
+    "title": "cloud.proto",
     "version": "1alpha1"
   },
   "paths": {

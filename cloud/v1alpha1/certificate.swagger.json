@@ -7,7 +7,7 @@
     "dtypesVoidResponse": {
       "type": "object"
     },
-    "v1beta1Certificate": {
+    "valphaa1Certificate": {
       "properties": {
         "cert": {
           "type": "string"
@@ -52,7 +52,7 @@
       },
       "type": "object"
     },
-    "v1beta1CertificateDeleteRequest": {
+    "valphaa1CertificateDeleteRequest": {
       "properties": {
         "uid": {
           "type": "string"
@@ -60,7 +60,7 @@
       },
       "type": "object"
     },
-    "v1beta1CertificateDeployRequest": {
+    "valphaa1CertificateDeployRequest": {
       "properties": {
         "cluster_name": {
           "type": "string"
@@ -77,7 +77,7 @@
       },
       "type": "object"
     },
-    "v1beta1CertificateDescribeRequest": {
+    "valphaa1CertificateDescribeRequest": {
       "properties": {
         "uid": {
           "type": "string"
@@ -85,29 +85,29 @@
       },
       "type": "object"
     },
-    "v1beta1CertificateDescribeResponse": {
+    "valphaa1CertificateDescribeResponse": {
       "properties": {
         "certificate": {
-          "$ref": "#/definitions/v1beta1Certificate"
+          "$ref": "#/definitions/valphaa1Certificate"
         }
       },
       "type": "object"
     },
-    "v1beta1CertificateListRequest": {
+    "valphaa1CertificateListRequest": {
       "type": "object"
     },
-    "v1beta1CertificateListResponse": {
+    "valphaa1CertificateListResponse": {
       "properties": {
         "certificates": {
           "items": {
-            "$ref": "#/definitions/v1beta1Certificate"
+            "$ref": "#/definitions/valphaa1Certificate"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1beta1CertificateLoadRequest": {
+    "valphaa1CertificateLoadRequest": {
       "properties": {
         "cert_data": {
           "type": "string"
@@ -125,17 +125,17 @@
   "host": "api.appscode.com",
   "info": {
     "title": "certificate.proto",
-    "version": "1beta1"
+    "version": "1alpha1"
   },
   "paths": {
-    "/_appscode/api/certificate/v1beta1/certificates/json": {
+    "/_appscode/api/cloud/v1alpha1/certificates/json": {
       "get": {
         "operationId": "List",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1CertificateListResponse"
+              "$ref": "#/definitions/valphaa1CertificateListResponse"
             }
           }
         },
@@ -144,7 +144,7 @@
         ]
       }
     },
-    "/_appscode/api/certificate/v1beta1/certificates/{name}/actions/obtain/json": {
+    "/_appscode/api/cloud/v1alpha1/certificates/{name}/actions/obtain/json": {
       "put": {
         "operationId": "Load",
         "parameters": [
@@ -159,7 +159,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1CertificateLoadRequest"
+              "$ref": "#/definitions/valphaa1CertificateLoadRequest"
             }
           }
         ],
@@ -176,7 +176,7 @@
         ]
       }
     },
-    "/_appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy/json": {
+    "/_appscode/api/cloud/v1alpha1/certificates/{uid}/actions/deploy/json": {
       "put": {
         "operationId": "Deploy",
         "parameters": [
@@ -191,7 +191,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1CertificateDeployRequest"
+              "$ref": "#/definitions/valphaa1CertificateDeployRequest"
             }
           }
         ],
@@ -208,7 +208,7 @@
         ]
       }
     },
-    "/_appscode/api/certificate/v1beta1/certificates/{uid}/json": {
+    "/_appscode/api/cloud/v1alpha1/certificates/{uid}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -245,7 +245,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1CertificateDescribeResponse"
+              "$ref": "#/definitions/valphaa1CertificateDescribeResponse"
             }
           }
         },
