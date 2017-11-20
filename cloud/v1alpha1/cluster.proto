@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package appscode.cluster.v1alpha1;
+package appscode.cloud.v1alpha1;
 
 option go_package = "v1alpha1";
 
 option java_multiple_files = true;
 option java_outer_classname = "ClusterProto";
-option java_package = "com.appscode.api.cluster.v1alpha1";
+option java_package = "com.appscode.api.cloud.v1alpha1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
@@ -18,7 +18,7 @@ import "github.com/appscode/pharmer/apis/v1alpha1/generated.proto";
 service Credentials {
   rpc List(dtypes.VoidRequest) returns (CredentialListResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cluster/v1alpha1/credentials/json"
+      get : "/_appscode/api/cloud/v1alpha1/credentials/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -27,7 +27,7 @@ service Credentials {
 
   rpc Describe(CredentialDescribeRequest) returns (CredentialDescribeResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cluster/v1alpha1/credentials/{name}/json"
+      get : "/_appscode/api/cloud/v1alpha1/credentials/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -36,7 +36,7 @@ service Credentials {
 
   rpc Create(CredentialCreateRequest) returns (CredentialCreateResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/cluster/v1alpha1/credentials/json"
+      post: "/_appscode/api/cloud/v1alpha1/credentials/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -46,7 +46,7 @@ service Credentials {
 
   rpc Update(CredentialUpdateRequest) returns (CredentialUpdateResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/cluster/v1alpha1/credentials/{credential.metadata.name}/json"
+      put: "/_appscode/api/cloud/v1alpha1/credentials/{credential.metadata.name}/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -56,7 +56,7 @@ service Credentials {
 
   rpc Delete(CredentialDeleteRequest) returns (CredentialDeleteResponse) {
     option (google.api.http) = {
-      delete : "/_appscode/api/cluster/v1alpha1/credentials/{name}/json"
+      delete : "/_appscode/api/cloud/v1alpha1/credentials/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -109,7 +109,7 @@ message CredentialDeleteResponse {
 service Clusters {
   rpc List(ClusterListRequest) returns (ClusterListResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cluster/v1alpha1/clusters/json"
+      get : "/_appscode/api/cloud/v1alpha1/clusters/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -118,7 +118,7 @@ service Clusters {
 
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cluster/v1alpha1/clusters/{name}/json"
+      get : "/_appscode/api/cloud/v1alpha1/clusters/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -127,7 +127,7 @@ service Clusters {
 
   rpc Create(ClusterCreateRequest) returns (ClusterCreateResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/cluster/v1alpha1/clusters/json"
+      post: "/_appscode/api/cloud/v1alpha1/clusters/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -137,7 +137,7 @@ service Clusters {
 
   rpc Update(ClusterUpdateRequest) returns (ClusterUpdateResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/cluster/v1alpha1/clusters/{cluster.metadata.name}/json"
+      put: "/_appscode/api/cloud/v1alpha1/clusters/{cluster.metadata.name}/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -147,7 +147,7 @@ service Clusters {
 
   rpc Delete(ClusterDeleteRequest) returns (ClusterDeleteResponse) {
     option (google.api.http) = {
-      delete : "/_appscode/api/cluster/v1alpha1/clusters/{name}/json"
+      delete : "/_appscode/api/cloud/v1alpha1/clusters/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -156,7 +156,7 @@ service Clusters {
 
   rpc Apply(ClusterApplyRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-       put: "/_appscode/api/cluster/v1alpha1/clusters/{name}/actions/apply/json"
+       put: "/_appscode/api/cloud/v1alpha1/clusters/{name}/actions/apply/json"
        body: "*"
     };
     option (appscode.api.cors) = {
@@ -166,7 +166,7 @@ service Clusters {
 
 // rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
 //   option (google.api.http) = {
-//     get : "/_appscode/api/cluster/v1alpha1/clusters/{name}/client-config/json"
+//     get : "/_appscode/api/cloud/v1alpha1/clusters/{name}/client-config/json"
 //   };
 //   option (appscode.api.cors) = {
 //     enable: true
@@ -175,7 +175,7 @@ service Clusters {
 
   rpc Metadata(ClusterMetadataRequest) returns (ClusterMetadataResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cluster/v1alpha1/clusters/{uid}/metadata/json"
+      get : "/_appscode/api/cloud/v1alpha1/clusters/{uid}/metadata/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -255,7 +255,7 @@ message ClusterMetadataResponse {
 service NodeGroups {
   rpc List(NodeGroupListRequest) returns (NodeGroupListResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cluster/v1alpha1/clusters/{clusterName}/nodegroups/json"
+      get : "/_appscode/api/cloud/v1alpha1/clusters/{clusterName}/nodegroups/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -264,7 +264,7 @@ service NodeGroups {
 
   rpc Describe(NodeGroupDescribeRequest) returns (NodeGroupDescribeResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cluster/v1alpha1/clusters/{clusterName}/nodegroups/{name}/json"
+      get : "/_appscode/api/cloud/v1alpha1/clusters/{clusterName}/nodegroups/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -273,7 +273,7 @@ service NodeGroups {
 
   rpc Create(NodeGroupCreateRequest) returns (NodeGroupCreateResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/cluster/v1alpha1/clusters/{nodeGroup.metadata.clusterName}/nodegroups/json"
+      post: "/_appscode/api/cloud/v1alpha1/clusters/{nodeGroup.metadata.clusterName}/nodegroups/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -283,7 +283,7 @@ service NodeGroups {
 
   rpc Update(NodeGroupUpdateRequest) returns (NodeGroupUpdateResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/cluster/v1alpha1/clusters/{nodeGroup.metadata.clusterName}/nodegroups/{nodeGroup.metadata.name}/json"
+      put: "/_appscode/api/cloud/v1alpha1/clusters/{nodeGroup.metadata.clusterName}/nodegroups/{nodeGroup.metadata.name}/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -293,7 +293,7 @@ service NodeGroups {
 
   rpc Delete(NodeGroupDeleteRequest) returns (NodeGroupDeleteResponse) {
     option (google.api.http) = {
-      delete : "/_appscode/api/cluster/v1alpha1/clusters/{clusterName}/nodegroups/{name}/json"
+      delete : "/_appscode/api/cloud/v1alpha1/clusters/{clusterName}/nodegroups/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -353,7 +353,7 @@ message NodeGroupDeleteResponse {
 service SSHConfig {
   rpc Get(SSHConfigGetRequest) returns (SSHConfigGetResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/cluster/v1alpha1/clusters/{clusterName}/ssh/json"
+      get: "/_appscode/api/cloud/v1alpha1/clusters/{clusterName}/ssh/json"
     };
   }
 }

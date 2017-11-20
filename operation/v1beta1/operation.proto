@@ -10,7 +10,7 @@ option java_package = "com.appscode.api.operation.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "appscode/api/cluster/v1alpha1/cluster.proto";
+import "appscode/api/cloud/v1alpha1/cluster.proto";
 import "appscode/api/namespace/v1beta1/team.proto";
 
 service Operations {
@@ -88,7 +88,7 @@ enum OperationType {
 // Next Id: 22
 message Operation {
   oneof request {
-    cluster.v1alpha1.ClusterApplyRequest cluster_apply_request = 1;
+    cloud.v1alpha1.ClusterApplyRequest cluster_apply_request = 1;
     namespace.v1beta1.CreateRequest namespace_create_request = 11;
   }
   OperationType type = 14;
