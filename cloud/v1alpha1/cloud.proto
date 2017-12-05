@@ -12,7 +12,7 @@ import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
 import "appscode/api/dtypes/types.proto";
 import "appscode/api/version/version.proto";
-import "github.com/appscode/pharmer/apis/v1alpha1/generated.proto";
+import "github.com/pharmer/pharmer/apis/v1alpha1/generated.proto";
 
 
 service Credentials {
@@ -65,7 +65,7 @@ service Credentials {
 }
 
 message CredentialListResponse {
-  repeated github.com.appscode.pharmer.apis.v1alpha1.Credential credentials = 1;
+  repeated github.com.pharmer.pharmer.apis.v1alpha1.Credential credentials = 1;
 }
 
 message CredentialDescribeRequest {
@@ -73,23 +73,23 @@ message CredentialDescribeRequest {
 }
 
 message CredentialDescribeResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Credential credential = 1;
 }
 
 message CredentialCreateRequest {
-  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Credential credential = 1;
 }
 
 message CredentialCreateResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Credential credential = 1;
 }
 
 message CredentialUpdateRequest {
-  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Credential credential = 1;
 }
 
 message CredentialUpdateResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Credential credential = 1;
 }
 
 message CredentialDeleteRequest {
@@ -101,7 +101,7 @@ message CredentialDeleteRequest {
 }
 
 message CredentialDeleteResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.Credential credential = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Credential credential = 1;
 }
 
 // -------------------------------------------------------------------------------------
@@ -188,7 +188,7 @@ message ClusterListRequest {
 }
 
 message ClusterListResponse {
-  repeated github.com.appscode.pharmer.apis.v1alpha1.Cluster clusters = 1;
+  repeated github.com.pharmer.pharmer.apis.v1alpha1.Cluster clusters = 1;
 }
 
 message ClusterDescribeRequest {
@@ -196,23 +196,23 @@ message ClusterDescribeRequest {
 }
 
 message ClusterDescribeResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Cluster cluster = 1;
 }
 
 message ClusterCreateRequest {
-  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Cluster cluster = 1;
 }
 
 message ClusterCreateResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Cluster cluster = 1;
 }
 
 message ClusterUpdateRequest {
-  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Cluster cluster = 1;
 }
 
 message ClusterUpdateResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Cluster cluster = 1;
 }
 
 message ClusterDeleteRequest {
@@ -224,7 +224,7 @@ message ClusterDeleteRequest {
 }
 
 message ClusterDeleteResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.Cluster cluster = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.Cluster cluster = 1;
 }
 
 message ClusterApplyRequest {
@@ -307,7 +307,7 @@ message NodeGroupListRequest {
 }
 
 message NodeGroupListResponse {
-  repeated github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroups = 1;
+  repeated github.com.pharmer.pharmer.apis.v1alpha1.NodeGroup nodeGroups = 1;
 }
 
 message NodeGroupDescribeRequest {
@@ -316,23 +316,23 @@ message NodeGroupDescribeRequest {
 }
 
 message NodeGroupDescribeResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
 }
 
 message NodeGroupCreateRequest {
-  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
 }
 
 message NodeGroupCreateResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
 }
 
 message NodeGroupUpdateRequest {
-  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
 }
 
 message NodeGroupUpdateResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
 }
 
 message NodeGroupDeleteRequest {
@@ -345,7 +345,7 @@ message NodeGroupDeleteRequest {
 }
 
 message NodeGroupDeleteResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
 }
 
 // -------------------------------------------------------------------------
@@ -364,5 +364,5 @@ message SSHConfigGetRequest {
 }
 
 message SSHConfigGetResponse {
-  github.com.appscode.pharmer.apis.v1alpha1.SSHConfig config = 1;
+  github.com.pharmer.pharmer.apis.v1alpha1.SSHConfig config = 1;
 }

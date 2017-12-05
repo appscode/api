@@ -102,8 +102,11 @@
         "sku": {
           "type": "string"
         },
-        "spotInstances": {
-          "type": "boolean"
+        "spotPriceMax": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -436,6 +439,9 @@
         "region": {
           "type": "string"
         },
+        "sshKeyName": {
+          "type": "string"
+        },
         "zone": {
           "type": "string"
         }
@@ -446,6 +452,9 @@
       "properties": {
         "aws": {
           "$ref": "#/definitions/v1alpha1AWSStatus"
+        },
+        "sshKeyExternalID": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -620,9 +629,6 @@
             "$ref": "#/definitions/v1alpha1ReservedIP"
           },
           "type": "array"
-        },
-        "sshKeyExternalID": {
-          "type": "string"
         }
       },
       "type": "object"
