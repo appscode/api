@@ -7,7 +7,7 @@
     "dtypesVoidResponse": {
       "type": "object"
     },
-    "valphaa1Certificate": {
+    "v1alpha1Certificate": {
       "properties": {
         "cert": {
           "type": "string"
@@ -52,7 +52,7 @@
       },
       "type": "object"
     },
-    "valphaa1CertificateDeleteRequest": {
+    "v1alpha1CertificateDeleteRequest": {
       "properties": {
         "uid": {
           "type": "string"
@@ -60,7 +60,7 @@
       },
       "type": "object"
     },
-    "valphaa1CertificateDeployRequest": {
+    "v1alpha1CertificateDeployRequest": {
       "properties": {
         "cluster_name": {
           "type": "string"
@@ -77,7 +77,7 @@
       },
       "type": "object"
     },
-    "valphaa1CertificateDescribeRequest": {
+    "v1alpha1CertificateDescribeRequest": {
       "properties": {
         "uid": {
           "type": "string"
@@ -85,29 +85,29 @@
       },
       "type": "object"
     },
-    "valphaa1CertificateDescribeResponse": {
+    "v1alpha1CertificateDescribeResponse": {
       "properties": {
         "certificate": {
-          "$ref": "#/definitions/valphaa1Certificate"
+          "$ref": "#/definitions/v1alpha1Certificate"
         }
       },
       "type": "object"
     },
-    "valphaa1CertificateListRequest": {
+    "v1alpha1CertificateListRequest": {
       "type": "object"
     },
-    "valphaa1CertificateListResponse": {
+    "v1alpha1CertificateListResponse": {
       "properties": {
         "certificates": {
           "items": {
-            "$ref": "#/definitions/valphaa1Certificate"
+            "$ref": "#/definitions/v1alpha1Certificate"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "valphaa1CertificateLoadRequest": {
+    "v1alpha1CertificateLoadRequest": {
       "properties": {
         "cert_data": {
           "type": "string"
@@ -135,7 +135,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/valphaa1CertificateListResponse"
+              "$ref": "#/definitions/v1alpha1CertificateListResponse"
             }
           }
         },
@@ -159,7 +159,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/valphaa1CertificateLoadRequest"
+              "$ref": "#/definitions/v1alpha1CertificateLoadRequest"
             }
           }
         ],
@@ -191,7 +191,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/valphaa1CertificateDeployRequest"
+              "$ref": "#/definitions/v1alpha1CertificateDeployRequest"
             }
           }
         ],
@@ -245,7 +245,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/valphaa1CertificateDescribeResponse"
+              "$ref": "#/definitions/v1alpha1CertificateDescribeResponse"
             }
           }
         },
