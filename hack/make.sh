@@ -7,18 +7,18 @@ ROOT=$PWD
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ALIAS="Mappscode/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis/appscode/api,"
-ALIAS+="Mappscode/api/dtypes/types.proto=github.com/appscode/api/dtypes,"
-ALIAS+="Mappscode/api/cloud/v1alpha1/cloud.proto=github.com/appscode/api/cloud/v1alpha1,"
-ALIAS+="Mappscode/api/kubernetes/v1beta1/client.proto=github.com/appscode/api/kubernetes/v1beta1,"
-ALIAS+="Mappscode/api/ssh/v1beta1/ssh.proto=github.com/appscode/api/ssh/v1beta1,"
+ALIAS+="Mappscode.com/api/dtypes/types.proto=appscode.com/api/dtypes,"
+ALIAS+="Mappscode.com/api/cloud/v1alpha1/cloud.proto=appscode.com/api/cloud/v1alpha1,"
+ALIAS+="Mappscode/api/kubernetes/v1beta1/client.proto=appscode.com/api/kubernetes/v1beta1,"
+ALIAS+="Mappscode/api/ssh/v1beta1/ssh.proto=appscode.com/api/ssh/v1beta1,"
 ALIAS+="Mgoogle/protobuf/any.proto=github.com/golang/protobuf/ptypes/any,"
-ALIAS+="Mappscode/api/attic/artifacts.proto=github.com/appscode/api/attic,"
-ALIAS+="Mappscode/api/db/v1beta1/database.proto=github.com/appscode/api/db/v1beta1,"
-ALIAS+="Mappscode/api/db/v1beta1/snapshot.proto=github.com/appscode/api/db/v1beta1,"
-ALIAS+="Mappscode/api/namespace/v1beta1/team.proto=github.com/appscode/api/namespace/v1beta1,"
-ALIAS+="Mappscode/api/alert/v1beta1/incident.proto=github.com/appscode/api/alert/v1beta1,"
-ALIAS+="Mappscode/api/operation/operation.proto=github.com/appscode/api/operation,"
-ALIAS+="Mappscode/api/version/version.proto=github.com/appscode/api/version,"
+ALIAS+="Mappscode/api/attic/artifacts.proto=appscode.com/api/attic,"
+ALIAS+="Mappscode/api/db/v1beta1/database.proto=appscode.com/api/db/v1beta1,"
+ALIAS+="Mappscode/api/db/v1beta1/snapshot.proto=appscode.com/api/db/v1beta1,"
+ALIAS+="Mappscode.com/api/namespace/v1beta1/team.proto=appscode.com/api/namespace/v1beta1,"
+ALIAS+="Mappscode/api/alert/v1beta1/incident.proto=appscode.com/api/alert/v1beta1,"
+ALIAS+="Mappscode/api/operation/operation.proto=appscode.com/api/operation,"
+ALIAS+="Mappscode.com/api/version/version.proto=appscode.com/api/version,"
 ALIAS+="Mgithub.com/pharmer/pharmer/apis/v1alpha1/generated.proto=github.com/pharmer/pharmer/apis/v1alpha1"
 
 clean() {
@@ -42,6 +42,7 @@ gen_proto() {
   rm -rf *.pb.go
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src \
+         -I ${GOPATH}/src/appscode.com \
          -I ${GOPATH}/src/github.com \
          -I ${GOPATH}/src/github.com/pharmer/pharmer/vendor \
          -I ${GOPATH}/src/github.com/googleapis/googleapis \
@@ -56,6 +57,7 @@ gen_gateway_proto() {
   rm -rf *.pb.gw.go
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src \
+         -I ${GOPATH}/src/appscode.com \
          -I ${GOPATH}/src/github.com \
          -I ${GOPATH}/src/github.com/pharmer/pharmer/vendor \
          -I ${GOPATH}/src/github.com/googleapis/googleapis \
@@ -70,6 +72,7 @@ gen_cors_pattern() {
   rm -rf *.gw.cors.go
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src \
+         -I ${GOPATH}/src/appscode.com \
          -I ${GOPATH}/src/github.com \
          -I ${GOPATH}/src/github.com/pharmer/pharmer/vendor \
          -I ${GOPATH}/src/github.com/googleapis/googleapis \
@@ -84,6 +87,7 @@ gen_js_client() {
   rm -rf *.gw.js
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src \
+         -I ${GOPATH}/src/appscode.com \
          -I ${GOPATH}/src/github.com \
          -I ${GOPATH}/src/github.com/pharmer/pharmer/vendor \
          -I ${GOPATH}/src/github.com/googleapis/googleapis \
@@ -98,6 +102,7 @@ gen_swagger_def() {
   rm -rf *.swagger.json
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src \
+         -I ${GOPATH}/src/appscode.com \
          -I ${GOPATH}/src/github.com \
          -I ${GOPATH}/src/github.com/pharmer/pharmer/vendor \
          -I ${GOPATH}/src/github.com/googleapis/googleapis \
@@ -194,6 +199,7 @@ gen_py() {
   rm -rf *.py
   python -m grpc.tools.protoc \
          -I ${GOPATH}/src \
+         -I ${GOPATH}/src/appscode.com \
          -I ${GOPATH}/src/github.com \
          -I ${GOPATH}/src/github.com/pharmer/pharmer/vendor \
          -I ${GOPATH}/src/github.com/googleapis/googleapis \
@@ -224,6 +230,7 @@ gen_php() {
   rm -rf *.php
   protoc -I /usr/local/include -I . \
          -I ${GOPATH}/src \
+         -I ${GOPATH}/src/appscode.com \
          -I ${GOPATH}/src/github.com \
          -I ${GOPATH}/src/github.com/pharmer/pharmer/vendor \
          -I ${GOPATH}/src/github.com/googleapis/googleapis \

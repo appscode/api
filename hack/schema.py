@@ -16,7 +16,7 @@ from os.path import expandvars
 # Debian package
 # https://gist.github.com/rcrowley/3728417
 
-REPO_ROOT = expandvars("$GOPATH/src/github.com/appscode/api")
+REPO_ROOT = expandvars("$GOPATH/src/appscode.com/api")
 VALID_FORMATS = ['date-time',
                  'email',
                  'hostname',
@@ -371,7 +371,7 @@ def generate_url_summary():
     for root, dirnames, filenames in os.walk(REPO_ROOT):
         for filename in fnmatch.filter(filenames, '*.proto'):
             proto = os.path.join(root, filename)
-            rel_proto = proto[proto.index('github.com/appscode/api') + len('github.com/appscode/api'):]
+            rel_proto = proto[proto.index('appscode.com/api') + len('appscode.com/api'):]
             with open(proto) as f:
                 content = f.read()
                 apis = re.findall(URL_REGREX, content, re.MULTILINE)

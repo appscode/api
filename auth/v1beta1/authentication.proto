@@ -10,7 +10,7 @@ option java_package = "com.appscode.api.auth.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "appscode/api/dtypes/types.proto";
+import "appscode.com/api/dtypes/types.proto";
 
 service Authentication {
   // This rpc is used to check a valid user from other applications.

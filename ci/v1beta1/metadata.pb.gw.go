@@ -13,7 +13,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/appscode/api/dtypes"
+	"appscode.com/api/dtypes"
 	"github.com/golang/protobuf/proto"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/utilities"

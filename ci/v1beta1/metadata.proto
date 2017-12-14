@@ -10,7 +10,7 @@ option java_package = "com.appscode.api.ci.v1beta1";
 
 import "google/api/annotations.proto";
 import "appscode/api/annotations.proto";
-import "appscode/api/dtypes/types.proto";
+import "appscode.com/api/dtypes/types.proto";
 
 service Metadata {
   rpc ServerInfo(dtypes.VoidRequest) returns (ServerInfoResponse) {

@@ -5,12 +5,12 @@ Protocol buffer specification of AppsCode.com gRPC services.
 ## Installing
 Using AppsCode apis is easy. First, use `go get` to install the latest version of the library.
 
-    > go get -v github.com/appscode/api
+    > go get -v appscode.com/api
 
 Next, include AppsCode apis in your application:
 
 ```go
-import "github.com/appcode/api"
+import "appcode.com/api"
 ```
 
 ## Stability
