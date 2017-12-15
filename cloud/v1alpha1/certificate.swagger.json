@@ -128,7 +128,7 @@
     "version": "1alpha1"
   },
   "paths": {
-    "/_appscode.com/api/cloud/v1alpha1/certificates/json": {
+    "/_appscode/api/cloud/v1alpha1/certificates/json": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -144,7 +144,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/certificates/{name}/actions/obtain/json": {
+    "/_appscode/api/cloud/v1alpha1/certificates/{name}/actions/obtain/json": {
       "put": {
         "operationId": "Load",
         "parameters": [
@@ -176,7 +176,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/certificates/{uid}/actions/deploy/json": {
+    "/_appscode/api/cloud/v1alpha1/certificates/{uid}/actions/deploy/json": {
       "put": {
         "operationId": "Deploy",
         "parameters": [
@@ -208,7 +208,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/certificates/{uid}/json": {
+    "/_appscode/api/cloud/v1alpha1/certificates/{uid}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [

@@ -111,7 +111,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/_appscode.com/api/namespace/v1beta1/teams/json": {
+    "/_appscode/api/namespace/v1beta1/teams/json": {
       "post": {
         "operationId": "Create",
         "parameters": [
@@ -138,7 +138,7 @@
         ]
       }
     },
-    "/_appscode.com/api/namespace/v1beta1/teams/{name}/is-available/json": {
+    "/_appscode/api/namespace/v1beta1/teams/{name}/is-available/json": {
       "get": {
         "operationId": "IsAvailable",
         "parameters": [
@@ -163,7 +163,7 @@
         ]
       }
     },
-    "/_appscode.com/api/namespace/v1beta1/teams/{name}/json": {
+    "/_appscode/api/namespace/v1beta1/teams/{name}/json": {
       "get": {
         "operationId": "Get",
         "parameters": [

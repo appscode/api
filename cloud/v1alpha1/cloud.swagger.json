@@ -1195,7 +1195,7 @@
     "version": "1alpha1"
   },
   "paths": {
-    "/_appscode.com/api/cloud/v1alpha1/clusters/json": {
+    "/_appscode/api/cloud/v1alpha1/clusters/json": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -1246,7 +1246,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/clusters/{cluster.metadata.name}/json": {
+    "/_appscode/api/cloud/v1alpha1/clusters/{cluster.metadata.name}/json": {
       "put": {
         "operationId": "Update",
         "parameters": [
@@ -1278,7 +1278,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/clusters/{clusterName}/nodegroups/json": {
+    "/_appscode/api/cloud/v1alpha1/clusters/{clusterName}/nodegroups/json": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -1311,7 +1311,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/clusters/{clusterName}/nodegroups/{name}/json": {
+    "/_appscode/api/cloud/v1alpha1/clusters/{clusterName}/nodegroups/{name}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -1369,7 +1369,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/clusters/{clusterName}/ssh/json": {
+    "/_appscode/api/cloud/v1alpha1/clusters/{clusterName}/ssh/json": {
       "get": {
         "operationId": "Get",
         "parameters": [
@@ -1399,7 +1399,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/clusters/{name}/actions/apply/json": {
+    "/_appscode/api/cloud/v1alpha1/clusters/{name}/actions/apply/json": {
       "put": {
         "operationId": "Apply",
         "parameters": [
@@ -1431,7 +1431,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/clusters/{name}/json": {
+    "/_appscode/api/cloud/v1alpha1/clusters/{name}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -1477,7 +1477,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/clusters/{nodeGroup.metadata.clusterName}/nodegroups/json": {
+    "/_appscode/api/cloud/v1alpha1/clusters/{nodeGroup.metadata.clusterName}/nodegroups/json": {
       "post": {
         "operationId": "Create",
         "parameters": [
@@ -1509,7 +1509,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/clusters/{nodeGroup.metadata.clusterName}/nodegroups/{nodeGroup.metadata.name}/json": {
+    "/_appscode/api/cloud/v1alpha1/clusters/{nodeGroup.metadata.clusterName}/nodegroups/{nodeGroup.metadata.name}/json": {
       "put": {
         "operationId": "Update",
         "parameters": [
@@ -1547,7 +1547,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/clusters/{uid}/metadata/json": {
+    "/_appscode/api/cloud/v1alpha1/clusters/{uid}/metadata/json": {
       "get": {
         "operationId": "Metadata",
         "parameters": [
@@ -1571,7 +1571,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/credentials/json": {
+    "/_appscode/api/cloud/v1alpha1/credentials/json": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -1611,7 +1611,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/credentials/{credential.metadata.name}/json": {
+    "/_appscode/api/cloud/v1alpha1/credentials/{credential.metadata.name}/json": {
       "put": {
         "operationId": "Update",
         "parameters": [
@@ -1643,7 +1643,7 @@
         ]
       }
     },
-    "/_appscode.com/api/cloud/v1alpha1/credentials/{name}/json": {
+    "/_appscode/api/cloud/v1alpha1/credentials/{name}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
