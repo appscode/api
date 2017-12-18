@@ -525,6 +525,22 @@
       },
       "type": "object"
     },
+    "v1alpha1ClusterClientConfigRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterClientConfigResponse": {
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/v1alpha1KubeConfig"
+        }
+      },
+      "type": "object"
+    },
     "v1alpha1ClusterCreateRequest": {
       "properties": {
         "cluster": {
@@ -884,6 +900,28 @@
       },
       "type": "object"
     },
+    "v1alpha1KubeConfig": {
+      "properties": {
+        "cluster": {
+          "$ref": "#/definitions/v1alpha1NamedCluster",
+          "title": "Clusters is a map of referencable names to cluster configs"
+        },
+        "context": {
+          "$ref": "#/definitions/v1alpha1NamedContext",
+          "title": "Contexts is a map of referencable names to context configs"
+        },
+        "preferences": {
+          "$ref": "#/definitions/v1alpha1Preferences",
+          "title": "Preferences holds general information to be use for cli interactions"
+        },
+        "user": {
+          "$ref": "#/definitions/v1alpha1NamedAuthInfo",
+          "title": "AuthInfos is a map of referencable names to user configs"
+        }
+      },
+      "title": "Config holds the information needed to build connect to remote kubernetes clusters as a given user\n+k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object",
+      "type": "object"
+    },
     "v1alpha1LinodeSpec": {
       "properties": {
         "kernelId": {
@@ -895,6 +933,67 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "v1alpha1NamedAuthInfo": {
+      "properties": {
+        "clientCertificateData": {
+          "format": "byte",
+          "title": "ClientCertificateData contains PEM-encoded data from a client cert file for TLS.\n+optional",
+          "type": "string"
+        },
+        "clientKeyData": {
+          "format": "byte",
+          "title": "ClientKeyData contains PEM-encoded data from a client key file for TLS.\n+optional",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name is the nickname for this AuthInfo",
+          "type": "string"
+        },
+        "token": {
+          "title": "Token is the bearer token for authentication to the kubernetes cluster.\n+optional",
+          "type": "string"
+        }
+      },
+      "title": "NamedAuthInfo relates nicknames to auth information",
+      "type": "object"
+    },
+    "v1alpha1NamedCluster": {
+      "properties": {
+        "certificateAuthorityData": {
+          "format": "byte",
+          "title": "CertificateAuthorityData contains PEM-encoded certificate authority certificates. Overrides CertificateAuthorityData\n+optional",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name is the nickname for this Cluster",
+          "type": "string"
+        },
+        "server": {
+          "description": "Server is the address of the kubernetes cluster (https://hostname:port).",
+          "type": "string"
+        }
+      },
+      "title": "NamedCluster relates nicknames to cluster information",
+      "type": "object"
+    },
+    "v1alpha1NamedContext": {
+      "properties": {
+        "cluster": {
+          "title": "Cluster is the name of the cluster for this context",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name is the nickname for this Context",
+          "type": "string"
+        },
+        "user": {
+          "title": "AuthInfo is the name of the authInfo for this context",
+          "type": "string"
+        }
+      },
+      "title": "NamedContext relates nicknames to context information",
       "type": "object"
     },
     "v1alpha1Networking": {
@@ -1071,6 +1170,16 @@
         }
       },
       "title": "PodTemplateSpec describes the data a pod should have when created from a template",
+      "type": "object"
+    },
+    "v1alpha1Preferences": {
+      "properties": {
+        "colors": {
+          "format": "boolean",
+          "title": "+optional",
+          "type": "boolean"
+        }
+      },
       "type": "object"
     },
     "v1alpha1ReservedIP": {
@@ -1404,6 +1513,30 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/_appscode/api/cloud/v1alpha1/clusters/{name}/client-config/json": {
+      "get": {
+        "operationId": "ClientConfig",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ClusterClientConfigResponse"
             }
           }
         },

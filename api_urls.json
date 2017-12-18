@@ -131,6 +131,12 @@
       "url": "/_appscode/api/cloud/v1alpha1/clusters/{name}/actions/apply/json"
     }
   },
+  "/_appscode/api/cloud/v1alpha1/clusters/*/client-config/json": {
+    "get": {
+      "file": "/cloud/v1alpha1/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha1/clusters/{name}/client-config/json"
+    }
+  },
   "/_appscode/api/cloud/v1alpha1/clusters/*/json": {
     "delete": {
       "file": "/cloud/v1alpha1/cloud.proto",
