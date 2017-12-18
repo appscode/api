@@ -472,10 +472,6 @@ func request_NodeGroups_Update_0(ctx context.Context, marshaler runtime.Marshale
 
 }
 
-var (
-	filter_NodeGroups_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"clusterName": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
-)
-
 func request_NodeGroups_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client NodeGroupsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq NodeGroupDeleteRequest
 	var metadata runtime.ServerMetadata
@@ -507,10 +503,6 @@ func request_NodeGroups_Delete_0(ctx context.Context, marshaler runtime.Marshale
 
 	if err != nil {
 		return nil, metadata, err
-	}
-
-	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_NodeGroups_Delete_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))

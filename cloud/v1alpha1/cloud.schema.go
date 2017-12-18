@@ -991,19 +991,19 @@ func init() {
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "delete_dynamic_volumes": {
+    "deleteDynamicVolumes": {
       "type": "boolean"
     },
     "force": {
       "type": "boolean"
     },
-    "keep_lodabalancers": {
+    "keepLodabalancers": {
       "type": "boolean"
     },
     "name": {
       "type": "string"
     },
-    "release_reserved_ip": {
+    "releaseReservedIP": {
       "type": "boolean"
     }
   },
@@ -1045,20 +1045,8 @@ func init() {
     "clusterName": {
       "type": "string"
     },
-    "deleteDynamicVolumes": {
-      "type": "boolean"
-    },
-    "force": {
-      "type": "boolean"
-    },
-    "keepLodabalancers": {
-      "type": "boolean"
-    },
     "name": {
       "type": "string"
-    },
-    "releaseReservedIP": {
-      "type": "boolean"
     }
   },
   "type": "object"

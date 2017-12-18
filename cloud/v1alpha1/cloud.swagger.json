@@ -6,18 +6,15 @@
   "definitions": {
     "ClusterMetadataResponseKubedConfig": {
       "properties": {
-        "analytics_enabled": {
+        "analyticsEnabled": {
           "format": "boolean",
           "type": "boolean"
         },
-        "operator_namespace": {
-          "type": "string"
-        },
-        "reverse_index_enabled": {
+        "reverseIndexEnabled": {
           "format": "boolean",
           "type": "boolean"
         },
-        "search_enabled": {
+        "searchEnabled": {
           "format": "boolean",
           "type": "boolean"
         },
@@ -546,7 +543,7 @@
     },
     "v1alpha1ClusterDeleteRequest": {
       "properties": {
-        "delete_dynamic_volumes": {
+        "deleteDynamicVolumes": {
           "format": "boolean",
           "type": "boolean"
         },
@@ -554,14 +551,14 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "keep_lodabalancers": {
+        "keepLodabalancers": {
           "format": "boolean",
           "type": "boolean"
         },
         "name": {
           "type": "string"
         },
-        "release_reserved_ip": {
+        "releaseReservedIP": {
           "format": "boolean",
           "type": "boolean"
         }
@@ -624,14 +621,14 @@
     },
     "v1alpha1ClusterMetadataResponse": {
       "properties": {
-        "custom_resources": {
+        "config": {
+          "$ref": "#/definitions/ClusterMetadataResponseKubedConfig"
+        },
+        "customResourceDefinitions": {
           "items": {
             "type": "string"
           },
           "type": "array"
-        },
-        "kubed_config": {
-          "$ref": "#/definitions/ClusterMetadataResponseKubedConfig"
         }
       },
       "type": "object"
@@ -963,24 +960,8 @@
         "clusterName": {
           "type": "string"
         },
-        "deleteDynamicVolumes": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "force": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "keepLodabalancers": {
-          "format": "boolean",
-          "type": "boolean"
-        },
         "name": {
           "type": "string"
-        },
-        "releaseReservedIP": {
-          "format": "boolean",
-          "type": "boolean"
         }
       },
       "type": "object"
