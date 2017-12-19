@@ -246,6 +246,7 @@ message ClusterClientConfigResponse {
 message ClusterMetadataResponse {
   KubedConfig config = 1;
   repeated string customResourceDefinitions = 2;
+  repeated github.com.pharmer.pharmer.apis.v1alpha1.Upgrade upgrades = 3;
 
   message KubedConfig {
     version.Version version = 1;

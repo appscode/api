@@ -645,6 +645,12 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "upgrades": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Upgrade"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -719,6 +725,32 @@
           "type": "object"
         }
       },
+      "type": "object"
+    },
+    "v1alpha1ClusterState": {
+      "properties": {
+        "dnsVersion": {
+          "title": "DNSVersion describes the version of the kube-dns images used and manifest version",
+          "type": "string"
+        },
+        "kubeVersion": {
+          "description": "KubeVersion describes the version of the Kubernetes API Server, Controller Manager, Scheduler and Proxy.",
+          "type": "string"
+        },
+        "kubeadmVersion": {
+          "title": "MasterKubeadmVersion describes the version of the kubeadm CLI",
+          "type": "string"
+        },
+        "kubeletVersions": {
+          "additionalProperties": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "title": "KubeletVersions is a map with a version number linked to the amount of kubelets running that version in the cluster",
+          "type": "object"
+        }
+      },
+      "title": "ClusterState describes the state of certain versions for a cluster",
       "type": "object"
     },
     "v1alpha1ClusterStatus": {
@@ -1232,6 +1264,21 @@
           "$ref": "#/definitions/v1alpha1SSHConfig"
         }
       },
+      "type": "object"
+    },
+    "v1alpha1Upgrade": {
+      "properties": {
+        "after": {
+          "$ref": "#/definitions/v1alpha1ClusterState"
+        },
+        "before": {
+          "$ref": "#/definitions/v1alpha1ClusterState"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "title": "https://github.com/kubernetes/kubernetes/blob/aa1dc9db3532dfbf09e45c8e3786a648cd217417/cmd/kubeadm/app/phases/upgrade/compute.go#L28",
       "type": "object"
     },
     "versionVersion": {
