@@ -1093,7 +1093,8 @@ message Restic {
 
     message LocalSpec {
         VolumeSource volumeSource = 1;
-        string path = 2;
+        string mountPath = 2;
+        string subPath = 3;
     }
 
     message S3Spec {
@@ -1270,7 +1271,8 @@ message SnapshotStorageSpec {
 
   message LocalSpec {
     VolumeSource volumeSource = 1;
-    string path = 2;
+    string mountPath = 2;
+    string subPath = 3;
   }
 
   message S3Spec {
