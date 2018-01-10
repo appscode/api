@@ -613,6 +613,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListMongodbs": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Mongodb"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListMysqls": {
       "properties": {
         "items": {
@@ -717,6 +728,17 @@
         "items": {
           "items": {
             "$ref": "#/definitions/v1beta1Prometheus"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListRedises": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Redis"
           },
           "type": "array"
         }
@@ -3065,6 +3087,9 @@
         "kind": {
           "type": "string"
         },
+        "mongodb": {
+          "$ref": "#/definitions/v1beta1Mongodb"
+        },
         "mysql": {
           "$ref": "#/definitions/v1beta1Mysql"
         },
@@ -3097,6 +3122,9 @@
         },
         "raw": {
           "$ref": "#/definitions/v1beta1Raw"
+        },
+        "redis": {
+          "$ref": "#/definitions/v1beta1Redis"
         },
         "replica_set": {
           "$ref": "#/definitions/v1beta1ReplicaSet"
@@ -3182,6 +3210,9 @@
         "kind": {
           "type": "string"
         },
+        "mongodbs": {
+          "$ref": "#/definitions/KubeResourceListMongodbs"
+        },
         "mysqls": {
           "$ref": "#/definitions/KubeResourceListMysqls"
         },
@@ -3211,6 +3242,9 @@
         },
         "prometheuses": {
           "$ref": "#/definitions/KubeResourceListPrometheuses"
+        },
+        "redises": {
+          "$ref": "#/definitions/KubeResourceListRedises"
         },
         "replica_sets": {
           "$ref": "#/definitions/KubeResourceListReplicaSets"
@@ -3353,6 +3387,66 @@
             "$ref": "#/definitions/MetricsDataPoint"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1Mongodb": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta1MongodbSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta1MongodbStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1MongodbSpec": {
+      "properties": {
+        "backup_schedule": {
+          "$ref": "#/definitions/v1beta1BackupScheduleSpec"
+        },
+        "do_not_pause": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "init": {
+          "$ref": "#/definitions/v1beta1InitSpec"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "storage": {
+          "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1MongodbStatus": {
+      "properties": {
+        "creation_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -3965,6 +4059,60 @@
           "type": "string"
         },
         "format": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1Redis": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta1RedisSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta1RedisStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1RedisSpec": {
+      "properties": {
+        "do_not_pause": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "storage": {
+          "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1RedisStatus": {
+      "properties": {
+        "creation_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
           "type": "string"
         }
       },

@@ -310,6 +310,8 @@ message KubeResourceList {
     NodeAlerts node_alerts = 34;
     PodAlerts pod_alerts = 35;
     Mysqls mysqls = 36;
+    Redises redises = 37;
+    Mongodbs mongodbs = 38;
   }
 
   message Events {
@@ -428,6 +430,14 @@ message KubeResourceList {
     repeated Mysql items = 1;
   }
 
+  message Redises {
+    repeated Redis items = 1;
+  }
+
+  message Mongodbs {
+    repeated Mongodb items = 1;
+  }
+
   message Snapshots {
     repeated Snapshot items = 2;
   }
@@ -489,6 +499,8 @@ message KubeResource {
     NodeAlert node_alert = 35;
     PodAlert pod_alert = 36;
     Mysql mysql = 37;
+    Redis redis = 38;
+    Mongodb mongodb = 39;
   }
 }
 
@@ -1229,6 +1241,48 @@ message Mysql {
 }
 
 message MysqlSpec {
+  string version = 1;
+  int32 replicas = 2;
+  PersistentVolumeClaimSpec storage = 3;
+  map<string, string> node_selector = 4;
+  InitSpec init = 5;
+  BackupScheduleSpec backup_schedule = 6;
+  bool do_not_pause = 7;
+}
+
+message Redis {
+  Meta meta = 1;
+  RedisSpec spec = 2;
+  Status status = 3;
+
+  message Status {
+    int64 creation_time = 1;
+    string phase = 2;
+    string reason  = 3;
+  }
+}
+
+message RedisSpec {
+  string version = 1;
+  int32 replicas = 2;
+  PersistentVolumeClaimSpec storage = 3;
+  map<string, string> node_selector = 4;
+  bool do_not_pause = 7;
+}
+
+message Mongodb {
+  Meta meta = 1;
+  MongodbSpec spec = 2;
+  Status status = 3;
+
+  message Status {
+    int64 creation_time = 1;
+    string phase = 2;
+    string reason  = 3;
+  }
+}
+
+message MongodbSpec {
   string version = 1;
   int32 replicas = 2;
   PersistentVolumeClaimSpec storage = 3;
