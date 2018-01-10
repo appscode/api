@@ -3258,15 +3258,6 @@
     },
     "v1beta1ListResourceResponse": {
       "properties": {
-        "available_versions": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "preferred_version": {
-          "type": "string"
-        },
         "resources": {
           "$ref": "#/definitions/v1beta1KubeResourceList"
         }
