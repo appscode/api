@@ -613,6 +613,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListMemcacheds": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Memcached"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListMongodbs": {
       "properties": {
         "items": {
@@ -3087,6 +3098,9 @@
         "kind": {
           "type": "string"
         },
+        "memcached": {
+          "$ref": "#/definitions/v1beta1Memcached"
+        },
         "mongodb": {
           "$ref": "#/definitions/v1beta1Mongodb"
         },
@@ -3210,6 +3224,9 @@
         "kind": {
           "type": "string"
         },
+        "memcacheds": {
+          "$ref": "#/definitions/KubeResourceListMemcacheds"
+        },
         "mongodbs": {
           "$ref": "#/definitions/KubeResourceListMongodbs"
         },
@@ -3329,6 +3346,57 @@
       "properties": {
         "name": {
           "title": "Name of the referent.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#names\nTODO: Add other useful fields. apiVersion, kind, uid?\n+optional",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1Memcached": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta1MemcachedSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta1MemcachedStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1MemcachedSpec": {
+      "properties": {
+        "do_not_pause": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1MemcachedStatus": {
+      "properties": {
+        "creation_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
           "type": "string"
         }
       },

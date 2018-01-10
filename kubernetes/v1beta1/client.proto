@@ -312,6 +312,7 @@ message KubeResourceList {
     Mysqls mysqls = 36;
     Redises redises = 37;
     Mongodbs mongodbs = 38;
+    Memcacheds memcacheds = 39;
   }
 
   message Events {
@@ -438,6 +439,10 @@ message KubeResourceList {
     repeated Mongodb items = 1;
   }
 
+  message Memcacheds {
+    repeated Memcached items = 1;
+  }
+
   message Snapshots {
     repeated Snapshot items = 2;
   }
@@ -501,6 +506,7 @@ message KubeResource {
     Mysql mysql = 37;
     Redis redis = 38;
     Mongodb mongodb = 39;
+    Memcached memcached = 40;
   }
 }
 
@@ -1267,7 +1273,7 @@ message RedisSpec {
   int32 replicas = 2;
   PersistentVolumeClaimSpec storage = 3;
   map<string, string> node_selector = 4;
-  bool do_not_pause = 7;
+  bool do_not_pause = 5;
 }
 
 message Mongodb {
@@ -1290,6 +1296,25 @@ message MongodbSpec {
   InitSpec init = 5;
   BackupScheduleSpec backup_schedule = 6;
   bool do_not_pause = 7;
+}
+
+message Memcached {
+  Meta meta = 1;
+  MemcachedSpec spec = 2;
+  Status status = 3;
+
+  message Status {
+    int64 creation_time = 1;
+    string phase = 2;
+    string reason  = 3;
+  }
+}
+
+message MemcachedSpec {
+  string version = 1;
+  int32 replicas = 2;
+  map<string, string> node_selector = 3;
+  bool do_not_pause = 4;
 }
 
 message Origin {
