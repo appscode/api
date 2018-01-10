@@ -309,6 +309,7 @@ message KubeResourceList {
     ClusterAlerts cluster_alerts = 33;
     NodeAlerts node_alerts = 34;
     PodAlerts pod_alerts = 35;
+    Mysqls mysqls = 36;
   }
 
   message Events {
@@ -423,6 +424,10 @@ message KubeResourceList {
     repeated DormantDatabase items = 1;
   }
 
+  message Mysqls {
+    repeated Mysql items = 1;
+  }
+
   message Snapshots {
     repeated Snapshot items = 2;
   }
@@ -483,6 +488,7 @@ message KubeResource {
     ClusterAlert cluster_alert = 34;
     NodeAlert node_alert = 35;
     PodAlert pod_alert = 36;
+    Mysql mysql = 37;
   }
 }
 
@@ -1092,30 +1098,30 @@ message Restic {
     }
 
     message LocalSpec {
-        VolumeSource volumeSource = 1;
-        string mountPath = 2;
-        string subPath = 3;
+      VolumeSource volumeSource = 1;
+      string mountPath = 2;
+      string subPath = 3;
     }
 
     message S3Spec {
-        string endpoint = 1;
-        string bucket = 2;
-        string prefix = 3;
+      string endpoint = 1;
+      string bucket = 2;
+      string prefix = 3;
     }
 
     message GCSSpec {
-        string bucket = 1;
-        string prefix = 2;
+      string bucket = 1;
+      string prefix = 2;
     }
 
     message AzureSpec {
-        string container = 1;
-        string prefix = 2;
+      string container = 1;
+      string prefix = 2;
     }
 
     message SwiftSpec {
-        string container = 1;
-        string prefix = 2;
+      string container = 1;
+      string prefix = 2;
     }
   }
 
@@ -1209,6 +1215,27 @@ message DormantDatabase {
     string phase = 4;
     string reason = 5;
   }
+}
+
+message Mysql {
+  Meta meta = 1;
+  MysqlSpec spec = 2;
+  Status status = 3;
+  message Status {
+    int64 creation_time = 1;
+    string phase = 2;
+    string reason  = 3;
+  }
+}
+
+message MysqlSpec {
+  string version = 1;
+  int32 replicas = 2;
+  PersistentVolumeClaimSpec storage = 3;
+  map<string, string> node_selector = 4;
+  InitSpec init = 5;
+  BackupScheduleSpec backup_schedule = 6;
+  bool do_not_pause = 7;
 }
 
 message Origin {

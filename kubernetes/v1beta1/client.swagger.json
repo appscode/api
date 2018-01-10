@@ -613,6 +613,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListMysqls": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Mysql"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListNamespaces": {
       "properties": {
         "items": {
@@ -3054,6 +3065,9 @@
         "kind": {
           "type": "string"
         },
+        "mysql": {
+          "$ref": "#/definitions/v1beta1Mysql"
+        },
         "namespace": {
           "$ref": "#/definitions/v1beta1Namespace"
         },
@@ -3167,6 +3181,9 @@
         },
         "kind": {
           "type": "string"
+        },
+        "mysqls": {
+          "$ref": "#/definitions/KubeResourceListMysqls"
         },
         "namespaces": {
           "$ref": "#/definitions/KubeResourceListNamespaces"
@@ -3336,6 +3353,66 @@
             "$ref": "#/definitions/MetricsDataPoint"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1Mysql": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta1MysqlSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta1MysqlStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1MysqlSpec": {
+      "properties": {
+        "backup_schedule": {
+          "$ref": "#/definitions/v1beta1BackupScheduleSpec"
+        },
+        "do_not_pause": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "init": {
+          "$ref": "#/definitions/v1beta1InitSpec"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "storage": {
+          "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1MysqlStatus": {
+      "properties": {
+        "creation_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
         }
       },
       "type": "object"
