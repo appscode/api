@@ -204,8 +204,6 @@ message ReverseIndexResourceRequest {
 
 message ListResourceResponse {
   KubeResourceList resources = 1;
-  repeated string available_versions = 2;
-  string preferred_version = 3;
 }
 
 message DescribeResourceRequest {
