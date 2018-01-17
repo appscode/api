@@ -62,20 +62,6 @@
       },
       "type": "object"
     },
-    "IngressAffinity": {
-      "properties": {
-        "node_affinity": {
-          "$ref": "#/definitions/IngressNodeAffinity"
-        },
-        "pod_affinity": {
-          "$ref": "#/definitions/IngressPodAffinity"
-        },
-        "pod_anti_affinity": {
-          "$ref": "#/definitions/IngressPodAntiAffinity"
-        }
-      },
-      "type": "object"
-    },
     "IngressAuthOption": {
       "properties": {
         "basic": {
@@ -241,156 +227,6 @@
       },
       "type": "object"
     },
-    "IngressLabelSelector": {
-      "properties": {
-        "match_expressions": {
-          "items": {
-            "$ref": "#/definitions/IngressLabelSelectorRequirement"
-          },
-          "type": "array"
-        },
-        "match_labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "IngressLabelSelectorRequirement": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "operator": {
-          "type": "string"
-        },
-        "values": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressNodeAffinity": {
-      "properties": {
-        "preferred_during_scheduling_ignored_during_execution": {
-          "items": {
-            "$ref": "#/definitions/IngressPreferredSchedulingTerm"
-          },
-          "type": "array"
-        },
-        "required_during_scheduling_ignored_during_execution": {
-          "$ref": "#/definitions/IngressNodeSelector"
-        }
-      },
-      "type": "object"
-    },
-    "IngressNodeSelector": {
-      "properties": {
-        "node_selector_terms": {
-          "items": {
-            "$ref": "#/definitions/IngressNodeSelectorTerm"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressNodeSelectorRequirement": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "operator": {
-          "type": "string"
-        },
-        "values": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressNodeSelectorTerm": {
-      "properties": {
-        "match_expressions": {
-          "items": {
-            "$ref": "#/definitions/IngressNodeSelectorRequirement"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressPodAffinity": {
-      "properties": {
-        "preferred_during_scheduling_ignored_during_execution": {
-          "items": {
-            "$ref": "#/definitions/IngressWeightedPodAffinityTerm"
-          },
-          "type": "array"
-        },
-        "required_during_scheduling_ignored_during_execution": {
-          "items": {
-            "$ref": "#/definitions/IngressPodAffinityTerm"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressPodAffinityTerm": {
-      "properties": {
-        "label_selector": {
-          "$ref": "#/definitions/IngressLabelSelector"
-        },
-        "namespaces": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "topology_key": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "IngressPodAntiAffinity": {
-      "properties": {
-        "preferred_during_scheduling_ignored_during_execution": {
-          "items": {
-            "$ref": "#/definitions/IngressWeightedPodAffinityTerm"
-          },
-          "type": "array"
-        },
-        "required_during_scheduling_ignored_during_execution": {
-          "items": {
-            "$ref": "#/definitions/IngressPodAffinityTerm"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressPreferredSchedulingTerm": {
-      "properties": {
-        "preference": {
-          "$ref": "#/definitions/IngressNodeSelectorTerm"
-        },
-        "weight": {
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "IngressTCPIngressRuleValue": {
       "properties": {
         "ALPN": {
@@ -433,39 +269,6 @@
         },
         "verify_client": {
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "IngressToleration": {
-      "properties": {
-        "effect": {
-          "type": "string"
-        },
-        "key": {
-          "type": "string"
-        },
-        "operator": {
-          "type": "string"
-        },
-        "toleration_seconds": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "IngressWeightedPodAffinityTerm": {
-      "properties": {
-        "pod_affinity_term": {
-          "$ref": "#/definitions/IngressPodAffinityTerm"
-        },
-        "weight": {
-          "format": "int32",
-          "type": "integer"
         }
       },
       "type": "object"
@@ -1254,82 +1057,21 @@
       },
       "type": "object"
     },
-    "PrometheusPrometheusSpec": {
-      "description": "Specification of the desired behavior of the Prometheus cluster.",
+    "PostgresSpecAgentSpec": {
       "properties": {
-        "alerting": {
-          "$ref": "#/definitions/v1beta1AlertSpec",
-          "description": "Define details regarding alerting."
-        },
-        "base_image": {
-          "description": "Base image to use for a Prometheus deployment.",
+        "agent": {
           "type": "string"
         },
-        "external_labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "The labels to add to any time series or alerts when communicating with\nexternal systems (federation, remote storage, Alertmanager).",
-          "type": "object"
-        },
-        "external_url": {
-          "description": "The external URL the Prometheus instances will be available under. This is\nnecessary to generate correct URLs. This is necessary if Prometheus is not\nserved from root of a DNS name.",
-          "type": "string"
-        },
-        "image_pull_secrets": {
-          "items": {
-            "$ref": "#/definitions/v1beta1LocalObjectReference"
-          },
-          "title": "An optional list of references to secrets in the same namespace\nto use for pulling prometheus and alertmanager images from registries",
-          "type": "array"
-        },
-        "node_selector": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Define which Nodes the Pods are scheduled on.",
-          "type": "object"
-        },
-        "paused": {
-          "description": "When a Prometheus deployment is paused, no actions except for deletion\nwill be performed on the underlying objects.",
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "replicas": {
-          "description": "Number of instances to deploy for a Prometheus deployment.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "retention": {
-          "description": "Time duration Prometheus shall retain data for.",
-          "type": "string"
-        },
-        "route_prefix": {
-          "description": "The route prefix Prometheus registers HTTP handlers for. This is useful,\nif using ExternalURL and a proxy is rewriting HTTP routes of a request,\nand the actual ExternalURL is still true, but the server serves requests\nunder a different route prefix. For example for use with `kubectl proxy`.",
-          "type": "string"
-        },
-        "rule_selector": {
-          "description": "A selector to select which ConfigMaps to mount for loading rule files from.",
-          "type": "string"
-        },
-        "secrets": {
-          "description": "Secrets is a list of Secrets in the same namespace as the Prometheus\nobject, which shall be mounted into the Prometheus Pods.\nThe Secrets are mounted into /etc/prometheus/secrets/<secret-name>.\nSecrets changes after initial creation of a Prometheus object are not\nreflected in the running Pods. To change the secrets mounted into the\nPrometheus Pods, the object must be deleted and recreated with the new list\nof secrets.",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "service_account_name": {
-          "description": "ServiceAccountName is the name of the ServiceAccount to use to run the\nPrometheus Pods.",
-          "type": "string"
-        },
-        "service_monitor_selector": {
-          "description": "ServiceMonitors to be selected for target discovery.",
-          "type": "string"
-        },
-        "version": {
-          "description": "Version of Prometheus to be deployed.",
-          "type": "string"
+        "prometheus": {
+          "$ref": "#/definitions/v1beta1PostgresSpecPrometheusSpec"
+        }
+      },
+      "type": "object"
+    },
+    "PostgresSpecPostgresArchiverSpec": {
+      "properties": {
+        "storage": {
+          "$ref": "#/definitions/v1beta1SnapshotStorageSpec"
         }
       },
       "type": "object"
@@ -1761,6 +1503,20 @@
         "volumeID": {
           "title": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume).\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1Affinity": {
+      "properties": {
+        "node_affinity": {
+          "$ref": "#/definitions/v1beta1NodeAffinity"
+        },
+        "pod_affinity": {
+          "$ref": "#/definitions/v1beta1PodAffinity"
+        },
+        "pod_anti_affinity": {
+          "$ref": "#/definitions/v1beta1PodAntiAffinity"
         }
       },
       "type": "object"
@@ -2852,7 +2608,7 @@
           "type": "array"
         },
         "affinity": {
-          "$ref": "#/definitions/IngressAffinity"
+          "$ref": "#/definitions/v1beta1Affinity"
         },
         "backend": {
           "$ref": "#/definitions/IngressHTTPIngressBackend"
@@ -2883,7 +2639,7 @@
         },
         "tolerations": {
           "items": {
-            "$ref": "#/definitions/IngressToleration"
+            "$ref": "#/definitions/v1beta1Toleration"
           },
           "type": "array"
         }
@@ -3274,6 +3030,40 @@
       },
       "type": "object"
     },
+    "v1beta1LabelSelector": {
+      "properties": {
+        "match_expressions": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LabelSelectorRequirement"
+          },
+          "type": "array"
+        },
+        "match_labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1LabelSelectorRequirement": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1ListResourceRequest": {
       "properties": {
         "api_version": {
@@ -3607,6 +3397,20 @@
       },
       "type": "object"
     },
+    "v1beta1NodeAffinity": {
+      "properties": {
+        "preferred_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/v1beta1PreferredSchedulingTerm"
+          },
+          "type": "array"
+        },
+        "required_during_scheduling_ignored_during_execution": {
+          "$ref": "#/definitions/v1beta1NodeSelector"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1NodeAlert": {
       "properties": {
         "meta": {
@@ -3614,6 +3418,45 @@
         },
         "spec": {
           "$ref": "#/definitions/NodeAlertNodeAlertSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1NodeSelector": {
+      "properties": {
+        "node_selector_terms": {
+          "items": {
+            "$ref": "#/definitions/v1beta1NodeSelectorTerm"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1NodeSelectorRequirement": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1NodeSelectorTerm": {
+      "properties": {
+        "match_expressions": {
+          "items": {
+            "$ref": "#/definitions/v1beta1NodeSelectorRequirement"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -3876,6 +3719,40 @@
       },
       "type": "object"
     },
+    "v1beta1PodAffinity": {
+      "properties": {
+        "preferred_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/v1beta1WeightedPodAffinityTerm"
+          },
+          "type": "array"
+        },
+        "required_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/v1beta1PodAffinityTerm"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1PodAffinityTerm": {
+      "properties": {
+        "label_selector": {
+          "$ref": "#/definitions/v1beta1LabelSelector"
+        },
+        "namespaces": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "topology_key": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1PodAlert": {
       "properties": {
         "meta": {
@@ -3883,6 +3760,23 @@
         },
         "spec": {
           "$ref": "#/definitions/PodAlertPodAlertSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1PodAntiAffinity": {
+      "properties": {
+        "preferred_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/v1beta1WeightedPodAffinityTerm"
+          },
+          "type": "array"
+        },
+        "required_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/v1beta1PodAffinityTerm"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -3938,6 +3832,12 @@
     },
     "v1beta1PostgresSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
+        "archiver": {
+          "$ref": "#/definitions/PostgresSpecPostgresArchiverSpec"
+        },
         "backup_schedule": {
           "$ref": "#/definitions/v1beta1BackupScheduleSpec"
         },
@@ -3948,8 +3848,17 @@
           "format": "boolean",
           "type": "boolean"
         },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
         "init": {
           "$ref": "#/definitions/v1beta1InitSpec"
+        },
+        "monitor": {
+          "$ref": "#/definitions/PostgresSpecAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3957,11 +3866,54 @@
           },
           "type": "object"
         },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
+        "standby": {
+          "type": "string"
+        },
         "storage": {
           "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
         },
+        "streaming": {
+          "type": "string"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
+        },
         "version": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1PostgresSpecPrometheusSpec": {
+      "properties": {
+        "intervals": {
+          "type": "string"
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -3981,6 +3933,18 @@
       },
       "type": "object"
     },
+    "v1beta1PreferredSchedulingTerm": {
+      "properties": {
+        "preference": {
+          "$ref": "#/definitions/v1beta1NodeSelectorTerm"
+        },
+        "weight": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1Prometheus": {
       "description": "Prometheus defines a Prometheus deployment.",
       "properties": {
@@ -3988,7 +3952,7 @@
           "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/PrometheusPrometheusSpec"
+          "$ref": "#/definitions/v1beta1PrometheusPrometheusSpec"
         },
         "status": {
           "$ref": "#/definitions/PrometheusPrometheusStatus"
@@ -4013,6 +3977,86 @@
           "type": "integer"
         },
         "scheme": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1PrometheusPrometheusSpec": {
+      "description": "Specification of the desired behavior of the Prometheus cluster.",
+      "properties": {
+        "alerting": {
+          "$ref": "#/definitions/v1beta1AlertSpec",
+          "description": "Define details regarding alerting."
+        },
+        "base_image": {
+          "description": "Base image to use for a Prometheus deployment.",
+          "type": "string"
+        },
+        "external_labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "The labels to add to any time series or alerts when communicating with\nexternal systems (federation, remote storage, Alertmanager).",
+          "type": "object"
+        },
+        "external_url": {
+          "description": "The external URL the Prometheus instances will be available under. This is\nnecessary to generate correct URLs. This is necessary if Prometheus is not\nserved from root of a DNS name.",
+          "type": "string"
+        },
+        "image_pull_secrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "title": "An optional list of references to secrets in the same namespace\nto use for pulling prometheus and alertmanager images from registries",
+          "type": "array"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Define which Nodes the Pods are scheduled on.",
+          "type": "object"
+        },
+        "paused": {
+          "description": "When a Prometheus deployment is paused, no actions except for deletion\nwill be performed on the underlying objects.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "replicas": {
+          "description": "Number of instances to deploy for a Prometheus deployment.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "retention": {
+          "description": "Time duration Prometheus shall retain data for.",
+          "type": "string"
+        },
+        "route_prefix": {
+          "description": "The route prefix Prometheus registers HTTP handlers for. This is useful,\nif using ExternalURL and a proxy is rewriting HTTP routes of a request,\nand the actual ExternalURL is still true, but the server serves requests\nunder a different route prefix. For example for use with `kubectl proxy`.",
+          "type": "string"
+        },
+        "rule_selector": {
+          "description": "A selector to select which ConfigMaps to mount for loading rule files from.",
+          "type": "string"
+        },
+        "secrets": {
+          "description": "Secrets is a list of Secrets in the same namespace as the Prometheus\nobject, which shall be mounted into the Prometheus Pods.\nThe Secrets are mounted into /etc/prometheus/secrets/<secret-name>.\nSecrets changes after initial creation of a Prometheus object are not\nreflected in the running Pods. To change the secrets mounted into the\nPrometheus Pods, the object must be deleted and recreated with the new list\nof secrets.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "service_account_name": {
+          "description": "ServiceAccountName is the name of the ServiceAccount to use to run the\nPrometheus Pods.",
+          "type": "string"
+        },
+        "service_monitor_selector": {
+          "description": "ServiceMonitors to be selected for target discovery.",
+          "type": "string"
+        },
+        "version": {
+          "description": "Version of Prometheus to be deployed.",
           "type": "string"
         }
       },
@@ -4980,6 +5024,27 @@
       },
       "type": "object"
     },
+    "v1beta1Toleration": {
+      "properties": {
+        "effect": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "toleration_seconds": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1UpdateResourceRequest": {
       "properties": {
         "api_version": {
@@ -5137,6 +5202,18 @@
         "volumePath": {
           "title": "Path that identifies vSphere volume vmdk",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1WeightedPodAffinityTerm": {
+      "properties": {
+        "pod_affinity_term": {
+          "$ref": "#/definitions/v1beta1PodAffinityTerm"
+        },
+        "weight": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
