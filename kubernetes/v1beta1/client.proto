@@ -311,6 +311,7 @@ message KubeResourceList {
     Redises redises = 37;
     Mongodbs mongodbs = 38;
     Memcacheds memcacheds = 39;
+    Recoveries recoveries = 40;
   }
 
   message Events {
@@ -441,6 +442,10 @@ message KubeResourceList {
     repeated Memcached items = 1;
   }
 
+  message Recoveries {
+    repeated Recovery items = 1;
+  }
+
   message Snapshots {
     repeated Snapshot items = 2;
   }
@@ -505,6 +510,7 @@ message KubeResource {
     Redis redis = 38;
     Mongodb mongodb = 39;
     Memcached memcached = 40;
+    Recovery recovery = 41;
   }
 }
 
@@ -1080,7 +1086,7 @@ message Restic {
   message Spec {
     string selector = 1;
     repeated FileGroup file_groups = 2;
-    Backend backend = 3;
+    StashBackend backend = 3;
     string schedule = 4;
     string use_auto_prefix = 5;
     repeated VolumeMount volume_mounts = 6;
@@ -1101,44 +1107,6 @@ message Restic {
       bool prune = 8;
       bool dry_run = 9;
     }
-
-    message Backend {
-      string  storage_secret_name = 1;
-      oneof storage {
-        LocalSpec Local = 2;
-        S3Spec S3 = 3;
-        GCSSpec GCS = 4;
-        AzureSpec Azure = 5;
-        SwiftSpec Swift = 6;
-      }
-    }
-
-    message LocalSpec {
-      VolumeSource volumeSource = 1;
-      string mountPath = 2;
-      string subPath = 3;
-    }
-
-    message S3Spec {
-      string endpoint = 1;
-      string bucket = 2;
-      string prefix = 3;
-    }
-
-    message GCSSpec {
-      string bucket = 1;
-      string prefix = 2;
-    }
-
-    message AzureSpec {
-      string container = 1;
-      string prefix = 2;
-    }
-
-    message SwiftSpec {
-      string container = 1;
-      string prefix = 2;
-    }
   }
 
   message Status {
@@ -1147,6 +1115,44 @@ message Restic {
     int64 last_successful_backup_time = 3;
     string last_backup_duration = 4;
     int64 backup_count = 5;
+  }
+}
+
+message StashBackend {
+  string  storage_secret_name = 1;
+  oneof storage {
+    LocalSpec Local = 2;
+    S3Spec S3 = 3;
+    GCSSpec GCS = 4;
+    AzureSpec Azure = 5;
+    SwiftSpec Swift = 6;
+  }
+
+  message LocalSpec {
+    VolumeSource volumeSource = 1;
+    string mountPath = 2;
+    string subPath = 3;
+  }
+
+  message S3Spec {
+    string endpoint = 1;
+    string bucket = 2;
+    string prefix = 3;
+  }
+
+  message GCSSpec {
+    string bucket = 1;
+    string prefix = 2;
+  }
+
+  message AzureSpec {
+    string container = 1;
+    string prefix = 2;
+  }
+
+  message SwiftSpec {
+    string container = 1;
+    string prefix = 2;
   }
 }
 
@@ -1313,6 +1319,44 @@ message MemcachedSpec {
   int32 replicas = 2;
   map<string, string> node_selector = 3;
   bool do_not_pause = 4;
+}
+
+message Recovery {
+  Meta meta = 1;
+  Spec spec = 2;
+  Status status = 3;
+
+  message Spec {
+    StashBackend backend = 1;
+    repeated string paths = 2;
+    LocalTypedReference workload = 3;
+    string podOrdinal = 4;
+    string nodeName = 5;
+    repeated LocalSpec recoveredVolumes = 6;
+
+    message LocalTypedReference {
+      string kind = 1;
+      string name = 2;
+      string apiVersion = 3;
+    }
+
+    message LocalSpec {
+      VolumeSource volumeSource = 1;
+      string mountPath = 2;
+      string subPath = 3;
+    }
+  }
+
+  message Status {
+    string phase = 1;
+    repeated RestoreStats stats = 2;
+
+    message RestoreStats {
+      string path = 1;
+      string phase = 2;
+      string duration = 3;
+    }
+  }
 }
 
 message Origin {
