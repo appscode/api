@@ -745,6 +745,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListRecoveries": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Recovery"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListRedises": {
       "properties": {
         "items": {
@@ -1350,29 +1361,7 @@
       },
       "type": "object"
     },
-    "ResticSpecAzureSpec": {
-      "properties": {
-        "container": {
-          "type": "string"
-        },
-        "prefix": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ResticSpecGCSSpec": {
-      "properties": {
-        "bucket": {
-          "type": "string"
-        },
-        "prefix": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ResticSpecLocalSpec": {
+    "RecoverySpecLocalSpec": {
       "properties": {
         "mountPath": {
           "type": "string"
@@ -1382,31 +1371,6 @@
         },
         "volumeSource": {
           "$ref": "#/definitions/v1beta1VolumeSource"
-        }
-      },
-      "type": "object"
-    },
-    "ResticSpecS3Spec": {
-      "properties": {
-        "bucket": {
-          "type": "string"
-        },
-        "endpoint": {
-          "type": "string"
-        },
-        "prefix": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ResticSpecSwiftSpec": {
-      "properties": {
-        "container": {
-          "type": "string"
-        },
-        "prefix": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -1489,29 +1453,6 @@
       },
       "type": "object"
     },
-    "SpecBackend": {
-      "properties": {
-        "Azure": {
-          "$ref": "#/definitions/ResticSpecAzureSpec"
-        },
-        "GCS": {
-          "$ref": "#/definitions/ResticSpecGCSSpec"
-        },
-        "Local": {
-          "$ref": "#/definitions/ResticSpecLocalSpec"
-        },
-        "S3": {
-          "$ref": "#/definitions/ResticSpecS3Spec"
-        },
-        "Swift": {
-          "$ref": "#/definitions/ResticSpecSwiftSpec"
-        },
-        "storage_secret_name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "SpecCertificateStorage": {
       "properties": {
         "secret": {
@@ -1577,6 +1518,20 @@
       "properties": {
         "ingress": {
           "$ref": "#/definitions/v1beta1ObjectReference"
+        }
+      },
+      "type": "object"
+    },
+    "SpecLocalTypedReference": {
+      "properties": {
+        "apiVersion": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1715,6 +1670,20 @@
           "type": "integer"
         },
         "serial_number": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "StatusRestoreStats": {
+      "properties": {
+        "duration": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "phase": {
           "type": "string"
         }
       },
@@ -3137,6 +3106,9 @@
         "raw": {
           "$ref": "#/definitions/v1beta1Raw"
         },
+        "recovery": {
+          "$ref": "#/definitions/v1beta1Recovery"
+        },
         "redis": {
           "$ref": "#/definitions/v1beta1Redis"
         },
@@ -3259,6 +3231,9 @@
         },
         "prometheuses": {
           "$ref": "#/definitions/KubeResourceListPrometheuses"
+        },
+        "recoveries": {
+          "$ref": "#/definitions/KubeResourceListRecoveries"
         },
         "redises": {
           "$ref": "#/definitions/KubeResourceListRedises"
@@ -4123,6 +4098,63 @@
       },
       "type": "object"
     },
+    "v1beta1Recovery": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1beta1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1beta1RecoverySpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1beta1RecoveryStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1RecoverySpec": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/v1beta1StashBackend"
+        },
+        "nodeName": {
+          "type": "string"
+        },
+        "paths": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "podOrdinal": {
+          "type": "string"
+        },
+        "recoveredVolumes": {
+          "items": {
+            "$ref": "#/definitions/RecoverySpecLocalSpec"
+          },
+          "type": "array"
+        },
+        "workload": {
+          "$ref": "#/definitions/SpecLocalTypedReference"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1RecoveryStatus": {
+      "properties": {
+        "phase": {
+          "type": "string"
+        },
+        "stats": {
+          "items": {
+            "$ref": "#/definitions/StatusRestoreStats"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1Redis": {
       "properties": {
         "meta": {
@@ -4327,7 +4359,7 @@
     "v1beta1ResticSpec": {
       "properties": {
         "backend": {
-          "$ref": "#/definitions/SpecBackend"
+          "$ref": "#/definitions/v1beta1StashBackend"
         },
         "file_groups": {
           "items": {
@@ -4772,6 +4804,90 @@
       "type": "object"
     },
     "v1beta1SnapshotStorageSpecSwiftSpec": {
+      "properties": {
+        "container": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1StashBackend": {
+      "properties": {
+        "Azure": {
+          "$ref": "#/definitions/v1beta1StashBackendAzureSpec"
+        },
+        "GCS": {
+          "$ref": "#/definitions/v1beta1StashBackendGCSSpec"
+        },
+        "Local": {
+          "$ref": "#/definitions/v1beta1StashBackendLocalSpec"
+        },
+        "S3": {
+          "$ref": "#/definitions/v1beta1StashBackendS3Spec"
+        },
+        "Swift": {
+          "$ref": "#/definitions/v1beta1StashBackendSwiftSpec"
+        },
+        "storage_secret_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1StashBackendAzureSpec": {
+      "properties": {
+        "container": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1StashBackendGCSSpec": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1StashBackendLocalSpec": {
+      "properties": {
+        "mountPath": {
+          "type": "string"
+        },
+        "subPath": {
+          "type": "string"
+        },
+        "volumeSource": {
+          "$ref": "#/definitions/v1beta1VolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1StashBackendS3Spec": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1StashBackendSwiftSpec": {
       "properties": {
         "container": {
           "type": "string"
