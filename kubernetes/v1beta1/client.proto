@@ -1374,6 +1374,12 @@ message MemcachedSpec {
   int32 replicas = 2;
   map<string, string> node_selector = 3;
   bool do_not_pause = 4;
+  KubedbAgentSpec monitor = 5;
+  ResourceRequirements resources = 6;
+  Affinity affinity = 7;
+  string schedulerName = 8;
+  repeated Toleration tolerations = 9;
+  repeated LocalObjectReference imagePullSecrets = 10;
 }
 
 message Recovery {
@@ -1421,6 +1427,10 @@ message Origin {
   message Spec {
     ElasticsearchSpec elasticsearch = 1;
     PostgresSpec postgres = 2;
+    MysqlSpec mysql = 3;
+    MongodbSpec mongodb = 4;
+    RedisSpec redis = 5;
+    MemcachedSpec memcached = 6;
   }
 }
 
