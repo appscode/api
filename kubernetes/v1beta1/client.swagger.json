@@ -1091,6 +1091,86 @@
       },
       "type": "object"
     },
+    "PrometheusPrometheusSpec": {
+      "description": "Specification of the desired behavior of the Prometheus cluster.",
+      "properties": {
+        "alerting": {
+          "$ref": "#/definitions/v1beta1AlertSpec",
+          "description": "Define details regarding alerting."
+        },
+        "base_image": {
+          "description": "Base image to use for a Prometheus deployment.",
+          "type": "string"
+        },
+        "external_labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "The labels to add to any time series or alerts when communicating with\nexternal systems (federation, remote storage, Alertmanager).",
+          "type": "object"
+        },
+        "external_url": {
+          "description": "The external URL the Prometheus instances will be available under. This is\nnecessary to generate correct URLs. This is necessary if Prometheus is not\nserved from root of a DNS name.",
+          "type": "string"
+        },
+        "image_pull_secrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "title": "An optional list of references to secrets in the same namespace\nto use for pulling prometheus and alertmanager images from registries",
+          "type": "array"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Define which Nodes the Pods are scheduled on.",
+          "type": "object"
+        },
+        "paused": {
+          "description": "When a Prometheus deployment is paused, no actions except for deletion\nwill be performed on the underlying objects.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "replicas": {
+          "description": "Number of instances to deploy for a Prometheus deployment.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "retention": {
+          "description": "Time duration Prometheus shall retain data for.",
+          "type": "string"
+        },
+        "route_prefix": {
+          "description": "The route prefix Prometheus registers HTTP handlers for. This is useful,\nif using ExternalURL and a proxy is rewriting HTTP routes of a request,\nand the actual ExternalURL is still true, but the server serves requests\nunder a different route prefix. For example for use with `kubectl proxy`.",
+          "type": "string"
+        },
+        "rule_selector": {
+          "description": "A selector to select which ConfigMaps to mount for loading rule files from.",
+          "type": "string"
+        },
+        "secrets": {
+          "description": "Secrets is a list of Secrets in the same namespace as the Prometheus\nobject, which shall be mounted into the Prometheus Pods.\nThe Secrets are mounted into /etc/prometheus/secrets/<secret-name>.\nSecrets changes after initial creation of a Prometheus object are not\nreflected in the running Pods. To change the secrets mounted into the\nPrometheus Pods, the object must be deleted and recreated with the new list\nof secrets.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "service_account_name": {
+          "description": "ServiceAccountName is the name of the ServiceAccount to use to run the\nPrometheus Pods.",
+          "type": "string"
+        },
+        "service_monitor_selector": {
+          "description": "ServiceMonitors to be selected for target discovery.",
+          "type": "string"
+        },
+        "version": {
+          "description": "Version of Prometheus to be deployed.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "PrometheusPrometheusStatus": {
       "properties": {
         "available_replicas": {
@@ -1477,27 +1557,6 @@
         },
         "type": {
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "kubernetesv1beta1PrometheusSpec": {
-      "properties": {
-        "intervals": {
-          "type": "string"
-        },
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "port": {
-          "format": "int32",
-          "type": "integer"
         }
       },
       "type": "object"
@@ -3115,7 +3174,28 @@
           "type": "string"
         },
         "prometheus": {
-          "$ref": "#/definitions/kubernetesv1beta1PrometheusSpec"
+          "$ref": "#/definitions/v1beta1KubedbPrometheusSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1KubedbPrometheusSpec": {
+      "properties": {
+        "intervals": {
+          "type": "string"
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -3213,9 +3293,21 @@
     },
     "v1beta1MemcachedSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
+        },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3226,6 +3318,18 @@
         "replicas": {
           "format": "int32",
           "type": "integer"
+        },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
         },
         "version": {
           "type": "string"
@@ -3321,15 +3425,30 @@
     },
     "v1beta1MongodbSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
         "backup_schedule": {
           "$ref": "#/definitions/v1beta1BackupScheduleSpec"
+        },
+        "databaseSecret": {
+          "$ref": "#/definitions/v1beta1SecretVolumeSource"
         },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
         },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
         "init": {
           "$ref": "#/definitions/v1beta1InitSpec"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3341,8 +3460,20 @@
           "format": "int32",
           "type": "integer"
         },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
         "storage": {
           "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
         },
         "version": {
           "type": "string"
@@ -3381,15 +3512,30 @@
     },
     "v1beta1MysqlSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
         "backup_schedule": {
           "$ref": "#/definitions/v1beta1BackupScheduleSpec"
+        },
+        "databaseSecret": {
+          "$ref": "#/definitions/v1beta1SecretVolumeSource"
         },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
         },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
         "init": {
           "$ref": "#/definitions/v1beta1InitSpec"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3401,8 +3547,20 @@
           "format": "int32",
           "type": "integer"
         },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
         "storage": {
           "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
         },
         "version": {
           "type": "string"
@@ -3622,8 +3780,20 @@
         "elasticsearch": {
           "$ref": "#/definitions/v1beta1ElasticsearchSpec"
         },
+        "memcached": {
+          "$ref": "#/definitions/v1beta1MemcachedSpec"
+        },
+        "mongodb": {
+          "$ref": "#/definitions/v1beta1MongodbSpec"
+        },
+        "mysql": {
+          "$ref": "#/definitions/v1beta1MysqlSpec"
+        },
         "postgres": {
           "$ref": "#/definitions/v1beta1PostgresSpec"
+        },
+        "redis": {
+          "$ref": "#/definitions/v1beta1RedisSpec"
         }
       },
       "type": "object"
@@ -4021,7 +4191,7 @@
           "$ref": "#/definitions/v1beta1Meta"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta1PrometheusPrometheusSpec"
+          "$ref": "#/definitions/PrometheusPrometheusSpec"
         },
         "status": {
           "$ref": "#/definitions/PrometheusPrometheusStatus"
@@ -4046,86 +4216,6 @@
           "type": "integer"
         },
         "scheme": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1PrometheusPrometheusSpec": {
-      "description": "Specification of the desired behavior of the Prometheus cluster.",
-      "properties": {
-        "alerting": {
-          "$ref": "#/definitions/v1beta1AlertSpec",
-          "description": "Define details regarding alerting."
-        },
-        "base_image": {
-          "description": "Base image to use for a Prometheus deployment.",
-          "type": "string"
-        },
-        "external_labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "The labels to add to any time series or alerts when communicating with\nexternal systems (federation, remote storage, Alertmanager).",
-          "type": "object"
-        },
-        "external_url": {
-          "description": "The external URL the Prometheus instances will be available under. This is\nnecessary to generate correct URLs. This is necessary if Prometheus is not\nserved from root of a DNS name.",
-          "type": "string"
-        },
-        "image_pull_secrets": {
-          "items": {
-            "$ref": "#/definitions/v1beta1LocalObjectReference"
-          },
-          "title": "An optional list of references to secrets in the same namespace\nto use for pulling prometheus and alertmanager images from registries",
-          "type": "array"
-        },
-        "node_selector": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Define which Nodes the Pods are scheduled on.",
-          "type": "object"
-        },
-        "paused": {
-          "description": "When a Prometheus deployment is paused, no actions except for deletion\nwill be performed on the underlying objects.",
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "replicas": {
-          "description": "Number of instances to deploy for a Prometheus deployment.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "retention": {
-          "description": "Time duration Prometheus shall retain data for.",
-          "type": "string"
-        },
-        "route_prefix": {
-          "description": "The route prefix Prometheus registers HTTP handlers for. This is useful,\nif using ExternalURL and a proxy is rewriting HTTP routes of a request,\nand the actual ExternalURL is still true, but the server serves requests\nunder a different route prefix. For example for use with `kubectl proxy`.",
-          "type": "string"
-        },
-        "rule_selector": {
-          "description": "A selector to select which ConfigMaps to mount for loading rule files from.",
-          "type": "string"
-        },
-        "secrets": {
-          "description": "Secrets is a list of Secrets in the same namespace as the Prometheus\nobject, which shall be mounted into the Prometheus Pods.\nThe Secrets are mounted into /etc/prometheus/secrets/<secret-name>.\nSecrets changes after initial creation of a Prometheus object are not\nreflected in the running Pods. To change the secrets mounted into the\nPrometheus Pods, the object must be deleted and recreated with the new list\nof secrets.",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "service_account_name": {
-          "description": "ServiceAccountName is the name of the ServiceAccount to use to run the\nPrometheus Pods.",
-          "type": "string"
-        },
-        "service_monitor_selector": {
-          "description": "ServiceMonitors to be selected for target discovery.",
-          "type": "string"
-        },
-        "version": {
-          "description": "Version of Prometheus to be deployed.",
           "type": "string"
         }
       },
@@ -4284,9 +4374,21 @@
     },
     "v1beta1RedisSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
+        },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -4298,8 +4400,20 @@
           "format": "int32",
           "type": "integer"
         },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
         "storage": {
           "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
         },
         "version": {
           "type": "string"

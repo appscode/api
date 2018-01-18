@@ -1862,10 +1862,10 @@ message Ingress {
 
 message KubedbAgentSpec {
   string agent = 1;
-  PrometheusSpec prometheus = 2;
+  KubedbPrometheusSpec prometheus = 2;
 }
 
-message PrometheusSpec {
+message KubedbPrometheusSpec {
   int32 port = 1;
   string namespace = 2;
   map<string, string> labels = 3;
