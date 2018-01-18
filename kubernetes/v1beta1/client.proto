@@ -1199,27 +1199,15 @@ message PostgresSpec {
   string standby = 9;
   string streaming = 10;
   PostgresArchiverSpec archiver = 11;
-  AgentSpec monitor = 12;
+  KubedbAgentSpec monitor = 12;
   ResourceRequirements resources = 13;
   Affinity affinity = 14;
   string schedulerName = 15;
   repeated Toleration tolerations = 16;
   repeated LocalObjectReference imagePullSecrets = 17;
 
-  message AgentSpec {
-    string agent = 1;
-    PrometheusSpec prometheus = 2;
-  }
-
   message PostgresArchiverSpec {
     SnapshotStorageSpec storage = 1;
-  }
-
-  message PrometheusSpec {
-    int32 port = 1;
-    string namespace = 2;
-    map<string, string> labels = 3;
-    string intervals = 4;
   }
 }
 
@@ -1243,6 +1231,27 @@ message ElasticsearchSpec {
   InitSpec init = 5;
   BackupScheduleSpec backup_schedule = 6;
   bool do_not_pause = 7;
+  ElasticsearchClusterTopology topology = 8;
+  bool enableSSL = 9;
+  SecretVolumeSource certificateSecret = 10;
+  SecretVolumeSource databaseSecret = 11;
+  KubedbAgentSpec monitor = 12;
+  ResourceRequirements resources = 13;
+  Affinity affinity = 14;
+  string schedulerName = 15;
+  repeated Toleration tolerations = 16;
+  repeated LocalObjectReference imagePullSecrets = 17;
+
+  message ElasticsearchClusterTopology {
+    ElasticsearchNode master = 1;
+    ElasticsearchNode data = 2;
+    ElasticsearchNode client = 3;
+  }
+
+  message ElasticsearchNode {
+    int32 replicas = 1;
+    string prefix = 2;
+  }
 }
 
 message DormantDatabase {
@@ -1737,6 +1746,7 @@ message Ingress {
     Affinity affinity = 7;
     string scheduler_name = 8;
     repeated Toleration tolerations = 9;
+    repeated LocalObjectReference imagePullSecrets = 10;
   }
 
   message FrontendRule {
@@ -1818,6 +1828,18 @@ message Ingress {
     map<string, string> headers = 3;
     string error_page = 4;
   }
+}
+
+message KubedbAgentSpec {
+  string agent = 1;
+  PrometheusSpec prometheus = 2;
+}
+
+message PrometheusSpec {
+  int32 port = 1;
+  string namespace = 2;
+  map<string, string> labels = 3;
+  string intervals = 4;
 }
 
 message Toleration {

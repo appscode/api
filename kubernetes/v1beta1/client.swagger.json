@@ -62,6 +62,32 @@
       },
       "type": "object"
     },
+    "ElasticsearchSpecElasticsearchClusterTopology": {
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/ElasticsearchSpecElasticsearchNode"
+        },
+        "data": {
+          "$ref": "#/definitions/ElasticsearchSpecElasticsearchNode"
+        },
+        "master": {
+          "$ref": "#/definitions/ElasticsearchSpecElasticsearchNode"
+        }
+      },
+      "type": "object"
+    },
+    "ElasticsearchSpecElasticsearchNode": {
+      "properties": {
+        "prefix": {
+          "type": "string"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "IngressAuthOption": {
       "properties": {
         "basic": {
@@ -1057,17 +1083,6 @@
       },
       "type": "object"
     },
-    "PostgresSpecAgentSpec": {
-      "properties": {
-        "agent": {
-          "type": "string"
-        },
-        "prometheus": {
-          "$ref": "#/definitions/v1beta1PostgresSpecPrometheusSpec"
-        }
-      },
-      "type": "object"
-    },
     "PostgresSpecPostgresArchiverSpec": {
       "properties": {
         "storage": {
@@ -1462,6 +1477,27 @@
         },
         "type": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesv1beta1PrometheusSpec": {
+      "properties": {
+        "intervals": {
+          "type": "string"
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -2300,15 +2336,37 @@
     },
     "v1beta1ElasticsearchSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
         "backup_schedule": {
           "$ref": "#/definitions/v1beta1BackupScheduleSpec"
+        },
+        "certificateSecret": {
+          "$ref": "#/definitions/v1beta1SecretVolumeSource"
+        },
+        "databaseSecret": {
+          "$ref": "#/definitions/v1beta1SecretVolumeSource"
         },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
         },
+        "enableSSL": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
         "init": {
           "$ref": "#/definitions/v1beta1InitSpec"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -2320,8 +2378,23 @@
           "format": "int32",
           "type": "integer"
         },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
         "storage": {
           "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
+        },
+        "topology": {
+          "$ref": "#/definitions/ElasticsearchSpecElasticsearchClusterTopology"
         },
         "version": {
           "type": "string"
@@ -2616,6 +2689,12 @@
         "frontend_rules": {
           "items": {
             "$ref": "#/definitions/IngressFrontendRule"
+          },
+          "type": "array"
+        },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
           },
           "type": "array"
         },
@@ -3026,6 +3105,17 @@
         },
         "storage_classes": {
           "$ref": "#/definitions/KubeResourceListStorageClasses"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1KubedbAgentSpec": {
+      "properties": {
+        "agent": {
+          "type": "string"
+        },
+        "prometheus": {
+          "$ref": "#/definitions/kubernetesv1beta1PrometheusSpec"
         }
       },
       "type": "object"
@@ -3858,7 +3948,7 @@
           "$ref": "#/definitions/v1beta1InitSpec"
         },
         "monitor": {
-          "$ref": "#/definitions/PostgresSpecAgentSpec"
+          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3893,27 +3983,6 @@
         },
         "version": {
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1beta1PostgresSpecPrometheusSpec": {
-      "properties": {
-        "intervals": {
-          "type": "string"
-        },
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "port": {
-          "format": "int32",
-          "type": "integer"
         }
       },
       "type": "object"
