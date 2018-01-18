@@ -1293,6 +1293,13 @@ message MysqlSpec {
   InitSpec init = 5;
   BackupScheduleSpec backup_schedule = 6;
   bool do_not_pause = 7;
+  SecretVolumeSource databaseSecret = 8;
+  KubedbAgentSpec monitor = 9;
+  ResourceRequirements resources = 10;
+  Affinity affinity = 11;
+  string schedulerName = 12;
+  repeated Toleration tolerations = 13;
+  repeated LocalObjectReference imagePullSecrets = 14;
 }
 
 message Redis {
@@ -1313,6 +1320,12 @@ message RedisSpec {
   PersistentVolumeClaimSpec storage = 3;
   map<string, string> node_selector = 4;
   bool do_not_pause = 5;
+  KubedbAgentSpec monitor = 6;
+  ResourceRequirements resources = 7;
+  Affinity affinity = 8;
+  string schedulerName = 9;
+  repeated Toleration tolerations = 10;
+  repeated LocalObjectReference imagePullSecrets = 11;
 }
 
 message Mongodb {
