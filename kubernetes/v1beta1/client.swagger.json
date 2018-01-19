@@ -62,16 +62,28 @@
       },
       "type": "object"
     },
-    "IngressAffinity": {
+    "ElasticsearchSpecElasticsearchClusterTopology": {
       "properties": {
-        "node_affinity": {
-          "$ref": "#/definitions/IngressNodeAffinity"
+        "client": {
+          "$ref": "#/definitions/ElasticsearchSpecElasticsearchNode"
         },
-        "pod_affinity": {
-          "$ref": "#/definitions/IngressPodAffinity"
+        "data": {
+          "$ref": "#/definitions/ElasticsearchSpecElasticsearchNode"
         },
-        "pod_anti_affinity": {
-          "$ref": "#/definitions/IngressPodAntiAffinity"
+        "master": {
+          "$ref": "#/definitions/ElasticsearchSpecElasticsearchNode"
+        }
+      },
+      "type": "object"
+    },
+    "ElasticsearchSpecElasticsearchNode": {
+      "properties": {
+        "prefix": {
+          "type": "string"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -241,156 +253,6 @@
       },
       "type": "object"
     },
-    "IngressLabelSelector": {
-      "properties": {
-        "match_expressions": {
-          "items": {
-            "$ref": "#/definitions/IngressLabelSelectorRequirement"
-          },
-          "type": "array"
-        },
-        "match_labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "IngressLabelSelectorRequirement": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "operator": {
-          "type": "string"
-        },
-        "values": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressNodeAffinity": {
-      "properties": {
-        "preferred_during_scheduling_ignored_during_execution": {
-          "items": {
-            "$ref": "#/definitions/IngressPreferredSchedulingTerm"
-          },
-          "type": "array"
-        },
-        "required_during_scheduling_ignored_during_execution": {
-          "$ref": "#/definitions/IngressNodeSelector"
-        }
-      },
-      "type": "object"
-    },
-    "IngressNodeSelector": {
-      "properties": {
-        "node_selector_terms": {
-          "items": {
-            "$ref": "#/definitions/IngressNodeSelectorTerm"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressNodeSelectorRequirement": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "operator": {
-          "type": "string"
-        },
-        "values": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressNodeSelectorTerm": {
-      "properties": {
-        "match_expressions": {
-          "items": {
-            "$ref": "#/definitions/IngressNodeSelectorRequirement"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressPodAffinity": {
-      "properties": {
-        "preferred_during_scheduling_ignored_during_execution": {
-          "items": {
-            "$ref": "#/definitions/IngressWeightedPodAffinityTerm"
-          },
-          "type": "array"
-        },
-        "required_during_scheduling_ignored_during_execution": {
-          "items": {
-            "$ref": "#/definitions/IngressPodAffinityTerm"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressPodAffinityTerm": {
-      "properties": {
-        "label_selector": {
-          "$ref": "#/definitions/IngressLabelSelector"
-        },
-        "namespaces": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "topology_key": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "IngressPodAntiAffinity": {
-      "properties": {
-        "preferred_during_scheduling_ignored_during_execution": {
-          "items": {
-            "$ref": "#/definitions/IngressWeightedPodAffinityTerm"
-          },
-          "type": "array"
-        },
-        "required_during_scheduling_ignored_during_execution": {
-          "items": {
-            "$ref": "#/definitions/IngressPodAffinityTerm"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "IngressPreferredSchedulingTerm": {
-      "properties": {
-        "preference": {
-          "$ref": "#/definitions/IngressNodeSelectorTerm"
-        },
-        "weight": {
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "IngressTCPIngressRuleValue": {
       "properties": {
         "ALPN": {
@@ -433,39 +295,6 @@
         },
         "verify_client": {
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "IngressToleration": {
-      "properties": {
-        "effect": {
-          "type": "string"
-        },
-        "key": {
-          "type": "string"
-        },
-        "operator": {
-          "type": "string"
-        },
-        "toleration_seconds": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "IngressWeightedPodAffinityTerm": {
-      "properties": {
-        "pod_affinity_term": {
-          "$ref": "#/definitions/IngressPodAffinityTerm"
-        },
-        "weight": {
-          "format": "int32",
-          "type": "integer"
         }
       },
       "type": "object"
@@ -1254,6 +1083,14 @@
       },
       "type": "object"
     },
+    "PostgresSpecPostgresArchiverSpec": {
+      "properties": {
+        "storage": {
+          "$ref": "#/definitions/v1beta1SnapshotStorageSpec"
+        }
+      },
+      "type": "object"
+    },
     "PrometheusPrometheusSpec": {
       "description": "Specification of the desired behavior of the Prometheus cluster.",
       "properties": {
@@ -1761,6 +1598,20 @@
         "volumeID": {
           "title": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume).\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1Affinity": {
+      "properties": {
+        "node_affinity": {
+          "$ref": "#/definitions/v1beta1NodeAffinity"
+        },
+        "pod_affinity": {
+          "$ref": "#/definitions/v1beta1PodAffinity"
+        },
+        "pod_anti_affinity": {
+          "$ref": "#/definitions/v1beta1PodAntiAffinity"
         }
       },
       "type": "object"
@@ -2544,15 +2395,37 @@
     },
     "v1beta1ElasticsearchSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
         "backup_schedule": {
           "$ref": "#/definitions/v1beta1BackupScheduleSpec"
+        },
+        "certificateSecret": {
+          "$ref": "#/definitions/v1beta1SecretVolumeSource"
+        },
+        "databaseSecret": {
+          "$ref": "#/definitions/v1beta1SecretVolumeSource"
         },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
         },
+        "enableSSL": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
         "init": {
           "$ref": "#/definitions/v1beta1InitSpec"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -2564,8 +2437,23 @@
           "format": "int32",
           "type": "integer"
         },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
         "storage": {
           "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
+        },
+        "topology": {
+          "$ref": "#/definitions/ElasticsearchSpecElasticsearchClusterTopology"
         },
         "version": {
           "type": "string"
@@ -2852,7 +2740,7 @@
           "type": "array"
         },
         "affinity": {
-          "$ref": "#/definitions/IngressAffinity"
+          "$ref": "#/definitions/v1beta1Affinity"
         },
         "backend": {
           "$ref": "#/definitions/IngressHTTPIngressBackend"
@@ -2860,6 +2748,12 @@
         "frontend_rules": {
           "items": {
             "$ref": "#/definitions/IngressFrontendRule"
+          },
+          "type": "array"
+        },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
           },
           "type": "array"
         },
@@ -2883,7 +2777,7 @@
         },
         "tolerations": {
           "items": {
-            "$ref": "#/definitions/IngressToleration"
+            "$ref": "#/definitions/v1beta1Toleration"
           },
           "type": "array"
         }
@@ -3274,6 +3168,72 @@
       },
       "type": "object"
     },
+    "v1beta1KubemonAgentSpec": {
+      "properties": {
+        "agent": {
+          "type": "string"
+        },
+        "prometheus": {
+          "$ref": "#/definitions/v1beta1KubemonPrometheusSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1KubemonPrometheusSpec": {
+      "properties": {
+        "intervals": {
+          "type": "string"
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1LabelSelector": {
+      "properties": {
+        "match_expressions": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LabelSelectorRequirement"
+          },
+          "type": "array"
+        },
+        "match_labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1LabelSelectorRequirement": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1ListResourceRequest": {
       "properties": {
         "api_version": {
@@ -3333,9 +3293,21 @@
     },
     "v1beta1MemcachedSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
+        },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3346,6 +3318,18 @@
         "replicas": {
           "format": "int32",
           "type": "integer"
+        },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
         },
         "version": {
           "type": "string"
@@ -3441,15 +3425,30 @@
     },
     "v1beta1MongodbSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
         "backup_schedule": {
           "$ref": "#/definitions/v1beta1BackupScheduleSpec"
+        },
+        "databaseSecret": {
+          "$ref": "#/definitions/v1beta1SecretVolumeSource"
         },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
         },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
         "init": {
           "$ref": "#/definitions/v1beta1InitSpec"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3461,8 +3460,20 @@
           "format": "int32",
           "type": "integer"
         },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
         "storage": {
           "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
         },
         "version": {
           "type": "string"
@@ -3501,15 +3512,30 @@
     },
     "v1beta1MysqlSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
         "backup_schedule": {
           "$ref": "#/definitions/v1beta1BackupScheduleSpec"
+        },
+        "databaseSecret": {
+          "$ref": "#/definitions/v1beta1SecretVolumeSource"
         },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
         },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
         "init": {
           "$ref": "#/definitions/v1beta1InitSpec"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3521,8 +3547,20 @@
           "format": "int32",
           "type": "integer"
         },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
         "storage": {
           "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
         },
         "version": {
           "type": "string"
@@ -3607,6 +3645,20 @@
       },
       "type": "object"
     },
+    "v1beta1NodeAffinity": {
+      "properties": {
+        "preferred_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/v1beta1PreferredSchedulingTerm"
+          },
+          "type": "array"
+        },
+        "required_during_scheduling_ignored_during_execution": {
+          "$ref": "#/definitions/v1beta1NodeSelector"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1NodeAlert": {
       "properties": {
         "meta": {
@@ -3614,6 +3666,45 @@
         },
         "spec": {
           "$ref": "#/definitions/NodeAlertNodeAlertSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1NodeSelector": {
+      "properties": {
+        "node_selector_terms": {
+          "items": {
+            "$ref": "#/definitions/v1beta1NodeSelectorTerm"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1NodeSelectorRequirement": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1NodeSelectorTerm": {
+      "properties": {
+        "match_expressions": {
+          "items": {
+            "$ref": "#/definitions/v1beta1NodeSelectorRequirement"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -3689,8 +3780,20 @@
         "elasticsearch": {
           "$ref": "#/definitions/v1beta1ElasticsearchSpec"
         },
+        "memcached": {
+          "$ref": "#/definitions/v1beta1MemcachedSpec"
+        },
+        "mongodb": {
+          "$ref": "#/definitions/v1beta1MongodbSpec"
+        },
+        "mysql": {
+          "$ref": "#/definitions/v1beta1MysqlSpec"
+        },
         "postgres": {
           "$ref": "#/definitions/v1beta1PostgresSpec"
+        },
+        "redis": {
+          "$ref": "#/definitions/v1beta1RedisSpec"
         }
       },
       "type": "object"
@@ -3876,6 +3979,40 @@
       },
       "type": "object"
     },
+    "v1beta1PodAffinity": {
+      "properties": {
+        "preferred_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/v1beta1WeightedPodAffinityTerm"
+          },
+          "type": "array"
+        },
+        "required_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/v1beta1PodAffinityTerm"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1PodAffinityTerm": {
+      "properties": {
+        "label_selector": {
+          "$ref": "#/definitions/v1beta1LabelSelector"
+        },
+        "namespaces": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "topology_key": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1PodAlert": {
       "properties": {
         "meta": {
@@ -3883,6 +4020,23 @@
         },
         "spec": {
           "$ref": "#/definitions/PodAlertPodAlertSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1PodAntiAffinity": {
+      "properties": {
+        "preferred_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/v1beta1WeightedPodAffinityTerm"
+          },
+          "type": "array"
+        },
+        "required_during_scheduling_ignored_during_execution": {
+          "items": {
+            "$ref": "#/definitions/v1beta1PodAffinityTerm"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -3938,6 +4092,12 @@
     },
     "v1beta1PostgresSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
+        "archiver": {
+          "$ref": "#/definitions/PostgresSpecPostgresArchiverSpec"
+        },
         "backup_schedule": {
           "$ref": "#/definitions/v1beta1BackupScheduleSpec"
         },
@@ -3948,8 +4108,17 @@
           "format": "boolean",
           "type": "boolean"
         },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
         "init": {
           "$ref": "#/definitions/v1beta1InitSpec"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3957,8 +4126,30 @@
           },
           "type": "object"
         },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
+        "standby": {
+          "type": "string"
+        },
         "storage": {
           "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "streaming": {
+          "type": "string"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
         },
         "version": {
           "type": "string"
@@ -3977,6 +4168,18 @@
         },
         "reason": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1PreferredSchedulingTerm": {
+      "properties": {
+        "preference": {
+          "$ref": "#/definitions/v1beta1NodeSelectorTerm"
+        },
+        "weight": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -4171,9 +4374,21 @@
     },
     "v1beta1RedisSpec": {
       "properties": {
+        "affinity": {
+          "$ref": "#/definitions/v1beta1Affinity"
+        },
         "do_not_pause": {
           "format": "boolean",
           "type": "boolean"
+        },
+        "imagePullSecrets": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LocalObjectReference"
+          },
+          "type": "array"
+        },
+        "monitor": {
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -4185,8 +4400,20 @@
           "format": "int32",
           "type": "integer"
         },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
+        "schedulerName": {
+          "type": "string"
+        },
         "storage": {
           "$ref": "#/definitions/v1beta1PersistentVolumeClaimSpec"
+        },
+        "tolerations": {
+          "items": {
+            "$ref": "#/definitions/v1beta1Toleration"
+          },
+          "type": "array"
         },
         "version": {
           "type": "string"
@@ -4980,6 +5207,27 @@
       },
       "type": "object"
     },
+    "v1beta1Toleration": {
+      "properties": {
+        "effect": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "toleration_seconds": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1UpdateResourceRequest": {
       "properties": {
         "api_version": {
@@ -5137,6 +5385,18 @@
         "volumePath": {
           "title": "Path that identifies vSphere volume vmdk",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1WeightedPodAffinityTerm": {
+      "properties": {
+        "pod_affinity_term": {
+          "$ref": "#/definitions/v1beta1PodAffinityTerm"
+        },
+        "weight": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"

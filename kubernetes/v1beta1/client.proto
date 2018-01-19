@@ -1189,12 +1189,26 @@ message Postgres {
 
 message PostgresSpec {
   string version = 1;
-  PersistentVolumeClaimSpec storage = 2;
-  SecretVolumeSource database_secret = 3;
-  map<string, string> node_selector = 4;
-  InitSpec init = 5;
-  BackupScheduleSpec backup_schedule = 6;
-  bool do_not_pause = 7;
+  int32 replicas = 2;
+  PersistentVolumeClaimSpec storage = 3;
+  SecretVolumeSource database_secret = 4;
+  map<string, string> node_selector = 5;
+  InitSpec init = 6;
+  BackupScheduleSpec backup_schedule = 7;
+  bool do_not_pause = 8;
+  string standby = 9;
+  string streaming = 10;
+  PostgresArchiverSpec archiver = 11;
+  KubemonAgentSpec monitor = 12;
+  ResourceRequirements resources = 13;
+  Affinity affinity = 14;
+  string schedulerName = 15;
+  repeated Toleration tolerations = 16;
+  repeated LocalObjectReference imagePullSecrets = 17;
+
+  message PostgresArchiverSpec {
+    SnapshotStorageSpec storage = 1;
+  }
 }
 
 message Elasticsearch {
@@ -1217,6 +1231,27 @@ message ElasticsearchSpec {
   InitSpec init = 5;
   BackupScheduleSpec backup_schedule = 6;
   bool do_not_pause = 7;
+  ElasticsearchClusterTopology topology = 8;
+  bool enableSSL = 9;
+  SecretVolumeSource certificateSecret = 10;
+  SecretVolumeSource databaseSecret = 11;
+  KubemonAgentSpec monitor = 12;
+  ResourceRequirements resources = 13;
+  Affinity affinity = 14;
+  string schedulerName = 15;
+  repeated Toleration tolerations = 16;
+  repeated LocalObjectReference imagePullSecrets = 17;
+
+  message ElasticsearchClusterTopology {
+    ElasticsearchNode master = 1;
+    ElasticsearchNode data = 2;
+    ElasticsearchNode client = 3;
+  }
+
+  message ElasticsearchNode {
+    int32 replicas = 1;
+    string prefix = 2;
+  }
 }
 
 message DormantDatabase {
@@ -1258,6 +1293,13 @@ message MysqlSpec {
   InitSpec init = 5;
   BackupScheduleSpec backup_schedule = 6;
   bool do_not_pause = 7;
+  SecretVolumeSource databaseSecret = 8;
+  KubemonAgentSpec monitor = 9;
+  ResourceRequirements resources = 10;
+  Affinity affinity = 11;
+  string schedulerName = 12;
+  repeated Toleration tolerations = 13;
+  repeated LocalObjectReference imagePullSecrets = 14;
 }
 
 message Redis {
@@ -1278,6 +1320,12 @@ message RedisSpec {
   PersistentVolumeClaimSpec storage = 3;
   map<string, string> node_selector = 4;
   bool do_not_pause = 5;
+  KubemonAgentSpec monitor = 6;
+  ResourceRequirements resources = 7;
+  Affinity affinity = 8;
+  string schedulerName = 9;
+  repeated Toleration tolerations = 10;
+  repeated LocalObjectReference imagePullSecrets = 11;
 }
 
 message Mongodb {
@@ -1300,6 +1348,13 @@ message MongodbSpec {
   InitSpec init = 5;
   BackupScheduleSpec backup_schedule = 6;
   bool do_not_pause = 7;
+  SecretVolumeSource databaseSecret = 8;
+  KubemonAgentSpec monitor = 9;
+  ResourceRequirements resources = 10;
+  Affinity affinity = 11;
+  string schedulerName = 12;
+  repeated Toleration tolerations = 13;
+  repeated LocalObjectReference imagePullSecrets = 14;
 }
 
 message Memcached {
@@ -1319,6 +1374,12 @@ message MemcachedSpec {
   int32 replicas = 2;
   map<string, string> node_selector = 3;
   bool do_not_pause = 4;
+  KubemonAgentSpec monitor = 5;
+  ResourceRequirements resources = 6;
+  Affinity affinity = 7;
+  string schedulerName = 8;
+  repeated Toleration tolerations = 9;
+  repeated LocalObjectReference imagePullSecrets = 10;
 }
 
 message Recovery {
@@ -1366,6 +1427,10 @@ message Origin {
   message Spec {
     ElasticsearchSpec elasticsearch = 1;
     PostgresSpec postgres = 2;
+    MysqlSpec mysql = 3;
+    MongodbSpec mongodb = 4;
+    RedisSpec redis = 5;
+    MemcachedSpec memcached = 6;
   }
 }
 
@@ -1711,82 +1776,13 @@ message Ingress {
     Affinity affinity = 7;
     string scheduler_name = 8;
     repeated Toleration tolerations = 9;
+    repeated LocalObjectReference imagePullSecrets = 10;
   }
 
   message FrontendRule {
     int32 port = 1;
     repeated string rules = 2;
     AuthOption auth = 3;
-  }
-
-  message Toleration {
-    string key = 1;
-    string operator = 2;
-    string value = 3;
-    string effect = 4;
-    int64 toleration_seconds = 5;
-  }
-
-  message Affinity {
-    NodeAffinity node_affinity = 1;
-    PodAffinity pod_affinity = 2;
-    PodAntiAffinity pod_anti_affinity = 3;
-  }
-
-  message NodeAffinity {
-    NodeSelector required_during_scheduling_ignored_during_execution = 1;
-    repeated PreferredSchedulingTerm preferred_during_scheduling_ignored_during_execution = 2;
-  }
-
-  message PreferredSchedulingTerm {
-    int32 weight = 1;
-    NodeSelectorTerm preference = 2;
-  }
-
-  message NodeSelector {
-    repeated NodeSelectorTerm node_selector_terms = 1;
-  }
-
-  message NodeSelectorTerm {
-    repeated NodeSelectorRequirement match_expressions = 1;
-  }
-
-  message NodeSelectorRequirement {
-    string key = 1;
-    string operator = 2;
-    repeated string values = 3;
-  }
-
-  message PodAffinity {
-    repeated PodAffinityTerm required_during_scheduling_ignored_during_execution = 1;
-    repeated WeightedPodAffinityTerm preferred_during_scheduling_ignored_during_execution = 2;
-  }
-
-  message PodAffinityTerm {
-    LabelSelector label_selector = 1;
-    repeated string namespaces = 2;
-    string topology_key = 3;
-  }
-
-  message LabelSelector {
-    map<string, string> match_labels = 1;
-    repeated LabelSelectorRequirement match_expressions = 2;
-  }
-
-  message LabelSelectorRequirement {
-    string key = 1;
-    string operator = 2;
-    repeated string values = 3;
-  }
-
-  message WeightedPodAffinityTerm {
-    int32 weight = 1;
-    PodAffinityTerm pod_affinity_term = 2;
-  }
-
-  message PodAntiAffinity {
-    repeated PodAffinityTerm required_during_scheduling_ignored_during_execution = 1;
-    repeated WeightedPodAffinityTerm preferred_during_scheduling_ignored_during_execution = 2;
   }
 
   message HTTPIngressBackend {
@@ -1862,6 +1858,88 @@ message Ingress {
     map<string, string> headers = 3;
     string error_page = 4;
   }
+}
+
+message KubemonAgentSpec {
+  string agent = 1;
+  KubemonPrometheusSpec prometheus = 2;
+}
+
+message KubemonPrometheusSpec {
+  int32 port = 1;
+  string namespace = 2;
+  map<string, string> labels = 3;
+  string intervals = 4;
+}
+
+message Toleration {
+  string key = 1;
+  string operator = 2;
+  string value = 3;
+  string effect = 4;
+  int64 toleration_seconds = 5;
+}
+
+message Affinity {
+  NodeAffinity node_affinity = 1;
+  PodAffinity pod_affinity = 2;
+  PodAntiAffinity pod_anti_affinity = 3;
+}
+
+message NodeAffinity {
+  NodeSelector required_during_scheduling_ignored_during_execution = 1;
+  repeated PreferredSchedulingTerm preferred_during_scheduling_ignored_during_execution = 2;
+}
+
+message PreferredSchedulingTerm {
+  int32 weight = 1;
+  NodeSelectorTerm preference = 2;
+}
+
+message NodeSelector {
+  repeated NodeSelectorTerm node_selector_terms = 1;
+}
+
+message NodeSelectorTerm {
+  repeated NodeSelectorRequirement match_expressions = 1;
+}
+
+message NodeSelectorRequirement {
+  string key = 1;
+  string operator = 2;
+  repeated string values = 3;
+}
+
+message PodAffinity {
+  repeated PodAffinityTerm required_during_scheduling_ignored_during_execution = 1;
+  repeated WeightedPodAffinityTerm preferred_during_scheduling_ignored_during_execution = 2;
+}
+
+message PodAffinityTerm {
+  LabelSelector label_selector = 1;
+  repeated string namespaces = 2;
+  string topology_key = 3;
+}
+
+message LabelSelector {
+  map<string, string> match_labels = 1;
+  repeated LabelSelectorRequirement match_expressions = 2;
+}
+
+message LabelSelectorRequirement {
+  string key = 1;
+  string operator = 2;
+  repeated string values = 3;
+}
+
+message WeightedPodAffinityTerm {
+  int32 weight = 1;
+  PodAffinityTerm pod_affinity_term = 2;
+}
+
+message PodAntiAffinity {
+  repeated PodAffinityTerm required_during_scheduling_ignored_during_execution = 1;
+  repeated WeightedPodAffinityTerm preferred_during_scheduling_ignored_during_execution = 2;
 }
 
 // TODO
