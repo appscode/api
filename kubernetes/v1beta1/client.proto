@@ -1199,7 +1199,7 @@ message PostgresSpec {
   string standby = 9;
   string streaming = 10;
   PostgresArchiverSpec archiver = 11;
-  KubedbAgentSpec monitor = 12;
+  KubemonAgentSpec monitor = 12;
   ResourceRequirements resources = 13;
   Affinity affinity = 14;
   string schedulerName = 15;
@@ -1235,7 +1235,7 @@ message ElasticsearchSpec {
   bool enableSSL = 9;
   SecretVolumeSource certificateSecret = 10;
   SecretVolumeSource databaseSecret = 11;
-  KubedbAgentSpec monitor = 12;
+  KubemonAgentSpec monitor = 12;
   ResourceRequirements resources = 13;
   Affinity affinity = 14;
   string schedulerName = 15;
@@ -1294,7 +1294,7 @@ message MysqlSpec {
   BackupScheduleSpec backup_schedule = 6;
   bool do_not_pause = 7;
   SecretVolumeSource databaseSecret = 8;
-  KubedbAgentSpec monitor = 9;
+  KubemonAgentSpec monitor = 9;
   ResourceRequirements resources = 10;
   Affinity affinity = 11;
   string schedulerName = 12;
@@ -1320,7 +1320,7 @@ message RedisSpec {
   PersistentVolumeClaimSpec storage = 3;
   map<string, string> node_selector = 4;
   bool do_not_pause = 5;
-  KubedbAgentSpec monitor = 6;
+  KubemonAgentSpec monitor = 6;
   ResourceRequirements resources = 7;
   Affinity affinity = 8;
   string schedulerName = 9;
@@ -1349,7 +1349,7 @@ message MongodbSpec {
   BackupScheduleSpec backup_schedule = 6;
   bool do_not_pause = 7;
   SecretVolumeSource databaseSecret = 8;
-  KubedbAgentSpec monitor = 9;
+  KubemonAgentSpec monitor = 9;
   ResourceRequirements resources = 10;
   Affinity affinity = 11;
   string schedulerName = 12;
@@ -1374,7 +1374,7 @@ message MemcachedSpec {
   int32 replicas = 2;
   map<string, string> node_selector = 3;
   bool do_not_pause = 4;
-  KubedbAgentSpec monitor = 5;
+  KubemonAgentSpec monitor = 5;
   ResourceRequirements resources = 6;
   Affinity affinity = 7;
   string schedulerName = 8;
@@ -1860,12 +1860,12 @@ message Ingress {
   }
 }
 
-message KubedbAgentSpec {
+message KubemonAgentSpec {
   string agent = 1;
-  KubedbPrometheusSpec prometheus = 2;
+  KubemonPrometheusSpec prometheus = 2;
 }
 
-message KubedbPrometheusSpec {
+message KubemonPrometheusSpec {
   int32 port = 1;
   string namespace = 2;
   map<string, string> labels = 3;

@@ -2425,7 +2425,7 @@
           "$ref": "#/definitions/v1beta1InitSpec"
         },
         "monitor": {
-          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3168,18 +3168,18 @@
       },
       "type": "object"
     },
-    "v1beta1KubedbAgentSpec": {
+    "v1beta1KubemonAgentSpec": {
       "properties": {
         "agent": {
           "type": "string"
         },
         "prometheus": {
-          "$ref": "#/definitions/v1beta1KubedbPrometheusSpec"
+          "$ref": "#/definitions/v1beta1KubemonPrometheusSpec"
         }
       },
       "type": "object"
     },
-    "v1beta1KubedbPrometheusSpec": {
+    "v1beta1KubemonPrometheusSpec": {
       "properties": {
         "intervals": {
           "type": "string"
@@ -3307,7 +3307,7 @@
           "type": "array"
         },
         "monitor": {
-          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3448,7 +3448,7 @@
           "$ref": "#/definitions/v1beta1InitSpec"
         },
         "monitor": {
-          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -3535,7 +3535,7 @@
           "$ref": "#/definitions/v1beta1InitSpec"
         },
         "monitor": {
-          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -4118,7 +4118,7 @@
           "$ref": "#/definitions/v1beta1InitSpec"
         },
         "monitor": {
-          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
@@ -4388,7 +4388,7 @@
           "type": "array"
         },
         "monitor": {
-          "$ref": "#/definitions/v1beta1KubedbAgentSpec"
+          "$ref": "#/definitions/v1beta1KubemonAgentSpec"
         },
         "node_selector": {
           "additionalProperties": {
