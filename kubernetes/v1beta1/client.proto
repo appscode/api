@@ -1090,22 +1090,25 @@ message Restic {
     string schedule = 4;
     string use_auto_prefix = 5;
     repeated VolumeMount volume_mounts = 6;
+    repeated RetentionPolicy retentionPolicies = 7;
+    string type = 8;
 
     message FileGroup {
       string path = 1;
       repeated string tags = 2;
-      RetentionPolicy retention_policy = 3;
+      string retentionPolicyName = 3;
     }
     message RetentionPolicy {
-      int32 keep_last = 1;
-      int32 keep_hourly = 2;
-      int32 keep_daily = 3;
-      int32 keep_weekly = 4;
-      int32 keep_monthly = 5;
-      int32 keep_yearly = 6;
-      repeated string keep_tags = 7;
-      bool prune = 8;
-      bool dry_run = 9;
+      string name = 1;
+      int32 keep_last = 2;
+      int32 keep_hourly = 3;
+      int32 keep_daily = 4;
+      int32 keep_weekly = 5;
+      int32 keep_monthly = 6;
+      int32 keep_yearly = 7;
+      repeated string keep_tags = 8;
+      bool prune = 9;
+      bool dry_run = 10;
     }
   }
 

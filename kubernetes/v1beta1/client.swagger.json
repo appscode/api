@@ -1339,8 +1339,8 @@
         "path": {
           "type": "string"
         },
-        "retention_policy": {
-          "$ref": "#/definitions/SpecRetentionPolicy"
+        "retentionPolicyName": {
+          "type": "string"
         },
         "tags": {
           "items": {
@@ -1430,6 +1430,9 @@
         "keep_yearly": {
           "format": "int32",
           "type": "integer"
+        },
+        "name": {
+          "type": "string"
         },
         "prune": {
           "format": "boolean",
@@ -4594,10 +4597,19 @@
           },
           "type": "array"
         },
+        "retentionPolicies": {
+          "items": {
+            "$ref": "#/definitions/SpecRetentionPolicy"
+          },
+          "type": "array"
+        },
         "schedule": {
           "type": "string"
         },
         "selector": {
+          "type": "string"
+        },
+        "type": {
           "type": "string"
         },
         "use_auto_prefix": {
