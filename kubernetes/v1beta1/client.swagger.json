@@ -4944,6 +4944,9 @@
         "database_name": {
           "type": "string"
         },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
+        },
         "snapshot_storage_spec": {
           "$ref": "#/definitions/v1beta1SnapshotStorageSpec"
         }
