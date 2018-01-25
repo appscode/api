@@ -338,17 +338,11 @@ func init() {
     "cluster": {
       "type": "string"
     },
+    "fieldSelector": {
+      "type": "string"
+    },
     "include_metrics": {
       "type": "boolean"
-    },
-    "involvedObjectKind": {
-      "type": "string"
-    },
-    "involvedObjectName": {
-      "type": "string"
-    },
-    "involvedObjectUID": {
-      "type": "string"
     },
     "namespace": {
       "maxLength": 63,

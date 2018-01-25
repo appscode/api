@@ -3245,18 +3245,12 @@
         "cluster": {
           "type": "string"
         },
+        "fieldSelector": {
+          "type": "string"
+        },
         "include_metrics": {
           "format": "boolean",
           "type": "boolean"
-        },
-        "involvedObjectKind": {
-          "type": "string"
-        },
-        "involvedObjectName": {
-          "type": "string"
-        },
-        "involvedObjectUID": {
-          "type": "string"
         },
         "namespace": {
           "type": "string"
@@ -5835,19 +5829,7 @@
           },
           {
             "in": "query",
-            "name": "involvedObjectName",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "involvedObjectKind",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "involvedObjectUID",
+            "name": "fieldSelector",
             "required": false,
             "type": "string"
           }
