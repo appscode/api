@@ -191,6 +191,9 @@ message ListResourceRequest {
   // map<string, string> label_selector = 6;
   // example label_selector=environment=production,tier=frontend
   string selector = 6;
+  string involvedObjectName = 7;
+  string involvedObjectKind = 8;
+  string involvedObjectUID = 9;
 }
 
 message ReverseIndexResourceRequest {

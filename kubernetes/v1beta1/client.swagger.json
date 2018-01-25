@@ -3249,6 +3249,15 @@
           "format": "boolean",
           "type": "boolean"
         },
+        "involvedObjectKind": {
+          "type": "string"
+        },
+        "involvedObjectName": {
+          "type": "string"
+        },
+        "involvedObjectUID": {
+          "type": "string"
+        },
         "namespace": {
           "type": "string"
         },
@@ -5821,6 +5830,24 @@
             "description": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend.",
             "in": "query",
             "name": "selector",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "involvedObjectName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "involvedObjectKind",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "involvedObjectUID",
             "required": false,
             "type": "string"
           }
