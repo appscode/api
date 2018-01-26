@@ -1339,8 +1339,8 @@
         "path": {
           "type": "string"
         },
-        "retention_policy": {
-          "$ref": "#/definitions/SpecRetentionPolicy"
+        "retentionPolicyName": {
+          "type": "string"
         },
         "tags": {
           "items": {
@@ -1430,6 +1430,9 @@
         "keep_yearly": {
           "format": "int32",
           "type": "integer"
+        },
+        "name": {
+          "type": "string"
         },
         "prune": {
           "format": "boolean",
@@ -3242,6 +3245,9 @@
         "cluster": {
           "type": "string"
         },
+        "fieldSelector": {
+          "type": "string"
+        },
         "include_metrics": {
           "format": "boolean",
           "type": "boolean"
@@ -4594,10 +4600,19 @@
           },
           "type": "array"
         },
+        "retentionPolicies": {
+          "items": {
+            "$ref": "#/definitions/SpecRetentionPolicy"
+          },
+          "type": "array"
+        },
         "schedule": {
           "type": "string"
         },
         "selector": {
+          "type": "string"
+        },
+        "type": {
           "type": "string"
         },
         "use_auto_prefix": {
@@ -4931,6 +4946,9 @@
       "properties": {
         "database_name": {
           "type": "string"
+        },
+        "resources": {
+          "$ref": "#/definitions/kubernetesv1beta1ResourceRequirements"
         },
         "snapshot_storage_spec": {
           "$ref": "#/definitions/v1beta1SnapshotStorageSpec"
@@ -5806,6 +5824,12 @@
             "description": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend.",
             "in": "query",
             "name": "selector",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "fieldSelector",
             "required": false,
             "type": "string"
           }
