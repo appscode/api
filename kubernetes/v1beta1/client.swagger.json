@@ -1361,6 +1361,40 @@
       },
       "type": "object"
     },
+    "corev1ObjectReference": {
+      "properties": {
+        "apiVersion": {
+          "title": "API version of the referent.\n+optional",
+          "type": "string"
+        },
+        "fieldPath": {
+          "title": "If referring to a piece of an object instead of an entire object, this string\nshould contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].\nFor example, if the object reference is to a container within a pod, this would take on a value like:\n\"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered\nthe event) or if no container name is specified \"spec.containers[2]\" (container with\nindex 2 in this pod). This syntax is chosen only to have some well-defined way of\nreferencing a part of an object.\nTODO: this design is not final and this field is subject to change in the future.\n+optional",
+          "type": "string"
+        },
+        "kind": {
+          "title": "Kind of the referent.\nMore info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds\n+optional",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names\n+optional",
+          "type": "string"
+        },
+        "namespace": {
+          "title": "Namespace of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/\n+optional",
+          "type": "string"
+        },
+        "resourceVersion": {
+          "title": "Specific resourceVersion to which this reference is made, if any.\nMore info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency\n+optional",
+          "type": "string"
+        },
+        "uid": {
+          "title": "UID of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids\n+optional",
+          "type": "string"
+        }
+      },
+      "title": "ObjectReference contains enough information to let you inspect or modify the referred object.\n+k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object",
+      "type": "object"
+    },
     "corev1ResourceFieldSelector": {
       "properties": {
         "containerName": {
@@ -2064,6 +2098,29 @@
       },
       "type": "object"
     },
+    "v1AzureFilePersistentVolumeSource": {
+      "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.",
+      "properties": {
+        "readOnly": {
+          "format": "boolean",
+          "title": "Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\n+optional",
+          "type": "boolean"
+        },
+        "secretName": {
+          "title": "the name of secret that contains Azure Storage Account Name and Key",
+          "type": "string"
+        },
+        "secretNamespace": {
+          "title": "the namespace of the secret that contains Azure Storage Account Name and Key\ndefault is the same as the Pod\n+optional",
+          "type": "string"
+        },
+        "shareName": {
+          "title": "Share Name",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1AzureFileVolumeSource": {
       "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.",
       "properties": {
@@ -2078,6 +2135,40 @@
         },
         "shareName": {
           "title": "Share Name",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1CephFSPersistentVolumeSource": {
+      "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod\nCephfs volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "monitors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required: Monitors is a collection of Ceph monitors\nMore info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
+          "type": "array"
+        },
+        "path": {
+          "title": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /\n+optional",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it\n+optional",
+          "type": "boolean"
+        },
+        "secretFile": {
+          "title": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret\nMore info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it\n+optional",
+          "type": "string"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1SecretReference",
+          "title": "Optional: SecretRef is reference to the authentication secret for User, default is empty.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it\n+optional"
+        },
+        "user": {
+          "title": "Optional: User is the rados user name, default is admin\nMore info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it\n+optional",
           "type": "string"
         }
       },
@@ -2480,6 +2571,16 @@
       },
       "type": "object"
     },
+    "v1LocalVolumeSource": {
+      "properties": {
+        "path": {
+          "title": "The full path to the volume on the node\nFor alpha, this path must be a directory\nOnce block as a source is supported, then this path can point to a block device",
+          "type": "string"
+        }
+      },
+      "title": "Local represents directly-attached storage with node affinity",
+      "type": "object"
+    },
     "v1NFSVolumeSource": {
       "description": "Represents an NFS mount that lasts the lifetime of a pod.\nNFS volumes do not support ownership management or SELinux relabeling.",
       "properties": {
@@ -2510,6 +2611,96 @@
           "format": "boolean",
           "title": "Will force the ReadOnly setting in VolumeMounts.\nDefault false.\n+optional",
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1PersistentVolumeSource": {
+      "description": "PersistentVolumeSource is similar to VolumeSource but meant for the\nadministrator who creates PVs. Exactly one of its members must be set.",
+      "properties": {
+        "awsElasticBlockStore": {
+          "$ref": "#/definitions/v1AWSElasticBlockStoreVolumeSource",
+          "title": "AWSElasticBlockStore represents an AWS Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore\n+optional"
+        },
+        "azureDisk": {
+          "$ref": "#/definitions/v1AzureDiskVolumeSource",
+          "title": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.\n+optional"
+        },
+        "azureFile": {
+          "$ref": "#/definitions/v1AzureFilePersistentVolumeSource",
+          "title": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.\n+optional"
+        },
+        "cephfs": {
+          "$ref": "#/definitions/v1CephFSPersistentVolumeSource",
+          "title": "CephFS represents a Ceph FS mount on the host that shares a pod's lifetime\n+optional"
+        },
+        "cinder": {
+          "$ref": "#/definitions/v1CinderVolumeSource",
+          "title": "Cinder represents a cinder volume attached and mounted on kubelets host machine\nMore info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md\n+optional"
+        },
+        "fc": {
+          "$ref": "#/definitions/v1FCVolumeSource",
+          "title": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.\n+optional"
+        },
+        "flexVolume": {
+          "$ref": "#/definitions/v1FlexVolumeSource",
+          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future.\n+optional"
+        },
+        "flocker": {
+          "$ref": "#/definitions/v1FlockerVolumeSource",
+          "title": "Flocker represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running\n+optional"
+        },
+        "gcePersistentDisk": {
+          "$ref": "#/definitions/v1GCEPersistentDiskVolumeSource",
+          "title": "GCEPersistentDisk represents a GCE Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod. Provisioned by an admin.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk\n+optional"
+        },
+        "glusterfs": {
+          "$ref": "#/definitions/v1GlusterfsVolumeSource",
+          "title": "Glusterfs represents a Glusterfs volume that is attached to a host and\nexposed to the pod. Provisioned by an admin.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md\n+optional"
+        },
+        "hostPath": {
+          "$ref": "#/definitions/v1HostPathVolumeSource",
+          "title": "HostPath represents a directory on the host.\nProvisioned by a developer or tester.\nThis is useful for single-node development and testing only!\nOn-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath\n+optional"
+        },
+        "iscsi": {
+          "$ref": "#/definitions/v1ISCSIVolumeSource",
+          "title": "ISCSI represents an ISCSI Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod. Provisioned by an admin.\n+optional"
+        },
+        "local": {
+          "$ref": "#/definitions/v1LocalVolumeSource",
+          "title": "Local represents directly-attached storage with node affinity\n+optional"
+        },
+        "nfs": {
+          "$ref": "#/definitions/v1NFSVolumeSource",
+          "title": "NFS represents an NFS mount on the host. Provisioned by an admin.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#nfs\n+optional"
+        },
+        "photonPersistentDisk": {
+          "$ref": "#/definitions/v1PhotonPersistentDiskVolumeSource",
+          "title": "PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine"
+        },
+        "portworxVolume": {
+          "$ref": "#/definitions/v1PortworxVolumeSource",
+          "title": "PortworxVolume represents a portworx volume attached and mounted on kubelets host machine\n+optional"
+        },
+        "quobyte": {
+          "$ref": "#/definitions/v1QuobyteVolumeSource",
+          "title": "Quobyte represents a Quobyte mount on the host that shares a pod's lifetime\n+optional"
+        },
+        "rbd": {
+          "$ref": "#/definitions/v1RBDVolumeSource",
+          "title": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md\n+optional"
+        },
+        "scaleIO": {
+          "$ref": "#/definitions/v1ScaleIOPersistentVolumeSource",
+          "title": "ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.\n+optional"
+        },
+        "storageos": {
+          "$ref": "#/definitions/v1StorageOSPersistentVolumeSource",
+          "title": "StorageOS represents a StorageOS volume that is attached to the kubelet's host machine and mounted into the pod\nMore info: https://releases.k8s.io/HEAD/examples/volumes/storageos/README.md\n+optional"
+        },
+        "vsphereVolume": {
+          "$ref": "#/definitions/v1VsphereVirtualDiskVolumeSource",
+          "title": "VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine\n+optional"
         }
       },
       "type": "object"
@@ -2634,6 +2825,54 @@
       },
       "type": "object"
     },
+    "v1ScaleIOPersistentVolumeSource": {
+      "properties": {
+        "fsType": {
+          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\n+optional",
+          "type": "string"
+        },
+        "gateway": {
+          "description": "The host address of the ScaleIO API Gateway.",
+          "type": "string"
+        },
+        "protectionDomain": {
+          "title": "The name of the ScaleIO Protection Domain for the configured storage.\n+optional",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\n+optional",
+          "type": "boolean"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1SecretReference",
+          "description": "SecretRef references to the secret for ScaleIO user and other\nsensitive information. If this is not provided, Login operation will fail."
+        },
+        "sslEnabled": {
+          "format": "boolean",
+          "title": "Flag to enable/disable SSL communication with Gateway, default false\n+optional",
+          "type": "boolean"
+        },
+        "storageMode": {
+          "title": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned.\n+optional",
+          "type": "string"
+        },
+        "storagePool": {
+          "title": "The ScaleIO Storage Pool associated with the protection domain.\n+optional",
+          "type": "string"
+        },
+        "system": {
+          "description": "The name of the storage system as configured in ScaleIO.",
+          "type": "string"
+        },
+        "volumeName": {
+          "description": "The name of a volume already created in the ScaleIO system\nthat is associated with this volume source.",
+          "type": "string"
+        }
+      },
+      "title": "ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume",
+      "type": "object"
+    },
     "v1ScaleIOVolumeSource": {
       "properties": {
         "fsType": {
@@ -2703,6 +2942,20 @@
       },
       "type": "object"
     },
+    "v1SecretReference": {
+      "properties": {
+        "name": {
+          "title": "Name is unique within a namespace to reference a secret resource.\n+optional",
+          "type": "string"
+        },
+        "namespace": {
+          "title": "Namespace defines the space within which the secret name must be unique.\n+optional",
+          "type": "string"
+        }
+      },
+      "title": "SecretReference represents a Secret Reference. It has enough information to retrieve secret\nin any namespace",
+      "type": "object"
+    },
     "v1SecretVolumeSource": {
       "description": "Adapts a Secret into a volume.\n\nThe contents of the target Secret's Data field will be presented in a volume\nas files using the keys in the Data field as the file names.\nSecret volumes support ownership management and SELinux relabeling.",
       "properties": {
@@ -2725,6 +2978,33 @@
         },
         "secretName": {
           "title": "Name of the secret in the pod's namespace to use.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#secret\n+optional",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1StorageOSPersistentVolumeSource": {
+      "description": "Represents a StorageOS persistent volume resource.",
+      "properties": {
+        "fsType": {
+          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\n+optional",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\n+optional",
+          "type": "boolean"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/corev1ObjectReference",
+          "title": "SecretRef specifies the secret to use for obtaining the StorageOS API\ncredentials.  If not specified, default values will be attempted.\n+optional"
+        },
+        "volumeName": {
+          "description": "VolumeName is the human-readable name of the StorageOS volume.  Volume\nnames are only unique within a namespace.",
+          "type": "string"
+        },
+        "volumeNamespace": {
+          "title": "VolumeNamespace specifies the scope of the volume within StorageOS.  If no\nnamespace is specified then the Pod's namespace will be used.  This allows the\nKubernetes name scoping to be mirrored within StorageOS for tighter integration.\nSet VolumeName to any name to override the default behaviour.\nSet to \"default\" if you are not using namespaces within StorageOS.\nNamespaces that do not pre-exist within StorageOS will be created.\n+optional",
           "type": "string"
         }
       },
@@ -4617,7 +4897,7 @@
           "type": "string"
         },
         "persistent_volume_source": {
-          "$ref": "#/definitions/v1VolumeSource"
+          "$ref": "#/definitions/v1PersistentVolumeSource"
         }
       },
       "type": "object"
