@@ -711,7 +711,7 @@ message PersistentVolume {
     repeated string access_modes = 2;
     string persistent_volume_reclaim_policy = 3;
     ObjectReference claim_ref = 4;
-    k8s.io.api.core.v1.VolumeSource persistent_volume_source = 5;
+    k8s.io.api.core.v1.PersistentVolumeSource persistent_volume_source = 5;
   }
 
   message PersistentVolumeStatus {
