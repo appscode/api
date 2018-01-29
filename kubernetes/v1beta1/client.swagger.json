@@ -2035,7 +2035,7 @@
       "type": "object"
     },
     "resourceQuantity": {
-      "description": "Quantity is a fixed-point representation of a number.\nIt provides convenient marshaling/unmarshaling in JSON and YAML,\nin addition to String() and Int64() accessors.\n\nThe serialization format is:\n\n<quantity>        ::= <signedNumber><suffix>\n  (Note that <suffix> may be empty, from the \"\" case in <decimalSI>.)\n<digit>           ::= 0 | 1 | ... | 9\n<digits>          ::= <digit> | <digit><digits>\n<number>          ::= <digits> | <digits>.<digits> | <digits>. | .<digits>\n<sign>            ::= \"+\" | \"-\"\n<signedNumber>    ::= <number> | <sign><number>\n<suffix>          ::= <binarySI> | <decimalExponent> | <decimalSI>\n<binarySI>        ::= Ki | Mi | Gi | Ti | Pi | Ei\n  (International System of units; See: http://physics.nist.gov/cuu/Units/binary.html)\n<decimalSI>       ::= m | \"\" | k | M | G | T | P | E\n  (Note that 1024 = 1Ki but 1000 = 1k; I didn't choose the capitalization.)\n<decimalExponent> ::= \"e\" <signedNumber> | \"E\" <signedNumber>\n\nNo matter which of the three exponent forms is used, no quantity may represent\na number greater than 2^63-1 in magnitude, nor may it have more than 3 decimal\nplaces. Numbers larger or more precise will be capped or rounded up.\n(E.g.: 0.1m will rounded up to 1m.)\nThis may be extended in the future if we require larger or smaller quantities.\n\nWhen a Quantity is parsed from a string, it will remember the type of suffix\nit had, and will use the same type again when it is serialized.\n\nBefore serializing, Quantity will be put in \"canonical form\".\nThis means that Exponent/suffix will be adjusted up or down (with a\ncorresponding increase or decrease in Mantissa) such that:\n  a. No precision is lost\n  b. No fractional digits will be emitted\n  c. The exponent (or suffix) is as large as possible.\nThe sign will be omitted unless the number is negative.\n\nExamples:\n  1.5 will be serialized as \"1500m\"\n  1.5Gi will be serialized as \"1536Mi\"\n\nNOTE: We reserve the right to amend this canonical format, perhaps to\n  allow 1.5 to be canonical.\nTODO: Remove above disclaimer after all bikeshedding about format is over,\n  or after March 2015.\n\nNote that the quantity will NEVER be internally represented by a\nfloating point number. That is the whole point of this exercise.\n\nNon-canonical values will still parse as long as they are well formed,\nbut will be re-emitted in their canonical form. (So always use canonical\nform, or don't diff.)\n\nThis format is intended to make it difficult to use these numbers without\nwriting some sort of special handling code in the hopes that that will\ncause implementors to also use a fixed point implementation.\n\n+protobuf=true\n+protobuf.embed=string\n+protobuf.options.marshal=false\n+protobuf.options.(gogoproto.goproto_stringer)=false\n+k8s:openapi-gen=true",
+      "description": "Quantity is a fixed-point representation of a number.\nIt provides convenient marshaling/unmarshaling in JSON and YAML,\nin addition to String() and Int64() accessors.\n\nThe serialization format is:\n\n<quantity>        ::= <signedNumber><suffix>\n  (Note that <suffix> may be empty, from the \"\" case in <decimalSI>.)\n<digit>           ::= 0 | 1 | ... | 9\n<digits>          ::= <digit> | <digit><digits>\n<number>          ::= <digits> | <digits>.<digits> | <digits>. | .<digits>\n<sign>            ::= \"+\" | \"-\"\n<signedNumber>    ::= <number> | <sign><number>\n<suffix>          ::= <binarySI> | <decimalExponent> | <decimalSI>\n<binarySI>        ::= Ki | Mi | Gi | Ti | Pi | Ei\n  (International System of units; See: http://physics.nist.gov/cuu/Units/binary.html)\n<decimalSI>       ::= m | \"\" | k | M | G | T | P | E\n  (Note that 1024 = 1Ki but 1000 = 1k; I didn't choose the capitalization.)\n<decimalExponent> ::= \"e\" <signedNumber> | \"E\" <signedNumber>\n\nNo matter which of the three exponent forms is used, no quantity may represent\na number greater than 2^63-1 in magnitude, nor may it have more than 3 decimal\nplaces. Numbers larger or more precise will be capped or rounded up.\n(E.g.: 0.1m will rounded up to 1m.)\nThis may be extended in the future if we require larger or smaller quantities.\n\nWhen a Quantity is parsed from a string, it will remember the type of suffix\nit had, and will use the same type again when it is serialized.\n\nBefore serializing, Quantity will be put in \"canonical form\".\nThis means that Exponent/suffix will be adjusted up or down (with a\ncorresponding increase or decrease in Mantissa) such that:\n  a. No precision is lost\n  b. No fractional digits will be emitted\n  c. The exponent (or suffix) is as large as possible.\nThe sign will be omitted unless the number is negative.\n\nExamples:\n  1.5 will be serialized as \"1500m\"\n  1.5Gi will be serialized as \"1536Mi\"\n\nNOTE: We reserve the right to amend this canonical format, perhaps to\n  allow 1.5 to be canonical.\nTODO: Remove above disclaimer after all bikeshedding about format is over,\n  or after March 2015.\n\nNote that the quantity will NEVER be internally represented by a\nfloating point number. That is the whole point of this exercise.\n\nNon-canonical values will still parse as long as they are well formed,\nbut will be re-emitted in their canonical form. (So always use canonical\nform, or don't diff.)\n\nThis format is intended to make it difficult to use these numbers without\nwriting some sort of special handling code in the hopes that that will\ncause implementors to also use a fixed point implementation.\n\n+protobuf=true\n+protobuf.embed=string\n+protobuf.options.marshal=false\n+protobuf.options.(gogoproto.goproto_stringer)=false\n+k8s:deepcopy-gen=true\n+k8s:openapi-gen=true",
       "properties": {
         "string": {
           "type": "string"
@@ -2087,7 +2087,7 @@
           "type": "string"
         },
         "kind": {
-          "title": "Expected values Shared: mulitple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared",
+          "title": "Expected values Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared",
           "type": "string"
         },
         "readOnly": {
@@ -2138,6 +2138,25 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "v1CSIPersistentVolumeSource": {
+      "properties": {
+        "driver": {
+          "description": "Driver is the name of the driver to use for this volume.\nRequired.",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Optional: The value to pass to ControllerPublishVolumeRequest.\nDefaults to false (read/write).\n+optional",
+          "type": "boolean"
+        },
+        "volumeHandle": {
+          "description": "VolumeHandle is the unique volume name returned by the CSI volume\nplugin\u2019s CreateVolume to refer to the volume on all subsequent calls.\nRequired.",
+          "type": "string"
+        }
+      },
+      "title": "Represents storage that is managed by an external CSI volume driver",
       "type": "object"
     },
     "v1CephFSPersistentVolumeSource": {
@@ -2377,7 +2396,7 @@
       "type": "object"
     },
     "v1FlexVolumeSource": {
-      "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an alpha feature and may change in future.",
+      "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.",
       "properties": {
         "driver": {
           "description": "Driver is the name of the driver to use for this volume.",
@@ -2495,6 +2514,63 @@
       },
       "type": "object"
     },
+    "v1ISCSIPersistentVolumeSource": {
+      "description": "ISCSIPersistentVolumeSource represents an ISCSI disk.\nISCSI volumes can only be mounted as read/write once.\nISCSI volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "chapAuthDiscovery": {
+          "format": "boolean",
+          "title": "whether support iSCSI Discovery CHAP authentication\n+optional",
+          "type": "boolean"
+        },
+        "chapAuthSession": {
+          "format": "boolean",
+          "title": "whether support iSCSI Session CHAP authentication\n+optional",
+          "type": "boolean"
+        },
+        "fsType": {
+          "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi\nTODO: how do we prevent errors in the filesystem from compromising the machine\n+optional",
+          "type": "string"
+        },
+        "initiatorName": {
+          "title": "Custom iSCSI Initiator Name.\nIf initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface\n<target portal>:<volume name> will be created for the connection.\n+optional",
+          "type": "string"
+        },
+        "iqn": {
+          "description": "Target iSCSI Qualified Name.",
+          "type": "string"
+        },
+        "iscsiInterface": {
+          "title": "iSCSI Interface Name that uses an iSCSI transport.\nDefaults to 'default' (tcp).\n+optional",
+          "type": "string"
+        },
+        "lun": {
+          "description": "iSCSI Target Lun number.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "portals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port\nis other than default (typically TCP ports 860 and 3260).\n+optional",
+          "type": "array"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "ReadOnly here will force the ReadOnly setting in VolumeMounts.\nDefaults to false.\n+optional",
+          "type": "boolean"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1SecretReference",
+          "title": "CHAP Secret for iSCSI target and initiator authentication\n+optional"
+        },
+        "targetPortal": {
+          "description": "iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port\nis other than default (typically TCP ports 860 and 3260).",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1ISCSIVolumeSource": {
       "description": "Represents an ISCSI disk.\nISCSI volumes can only be mounted as read/write once.\nISCSI volumes support ownership management and SELinux relabeling.",
       "properties": {
@@ -2513,7 +2589,7 @@
           "type": "string"
         },
         "initiatorName": {
-          "title": "Custom iSCSI initiator name.\nIf initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface\n<target portal>:<volume name> will be created for the connection.\n+optional",
+          "title": "Custom iSCSI Initiator Name.\nIf initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface\n<target portal>:<volume name> will be created for the connection.\n+optional",
           "type": "string"
         },
         "iqn": {
@@ -2521,11 +2597,11 @@
           "type": "string"
         },
         "iscsiInterface": {
-          "title": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport.\n+optional",
+          "title": "iSCSI Interface Name that uses an iSCSI transport.\nDefaults to 'default' (tcp).\n+optional",
           "type": "string"
         },
         "lun": {
-          "description": "iSCSI target lun number.",
+          "description": "iSCSI Target Lun number.",
           "format": "int32",
           "type": "integer"
         },
@@ -2533,7 +2609,7 @@
           "items": {
             "type": "string"
           },
-          "title": "iSCSI target portal List. The portal is either an IP or ip_addr:port if the port\nis other than default (typically TCP ports 860 and 3260).\n+optional",
+          "title": "iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port\nis other than default (typically TCP ports 860 and 3260).\n+optional",
           "type": "array"
         },
         "readOnly": {
@@ -2543,10 +2619,10 @@
         },
         "secretRef": {
           "$ref": "#/definitions/corev1LocalObjectReference",
-          "title": "CHAP secret for iSCSI target and initiator authentication\n+optional"
+          "title": "CHAP Secret for iSCSI target and initiator authentication\n+optional"
         },
         "targetPortal": {
-          "description": "iSCSI target portal. The portal is either an IP or ip_addr:port if the port\nis other than default (typically TCP ports 860 and 3260).",
+          "description": "iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port\nis other than default (typically TCP ports 860 and 3260).",
           "type": "string"
         }
       },
@@ -2638,13 +2714,17 @@
           "$ref": "#/definitions/v1CinderVolumeSource",
           "title": "Cinder represents a cinder volume attached and mounted on kubelets host machine\nMore info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md\n+optional"
         },
+        "csi": {
+          "$ref": "#/definitions/v1CSIPersistentVolumeSource",
+          "title": "CSI represents storage that handled by an external CSI driver\n+optional"
+        },
         "fc": {
           "$ref": "#/definitions/v1FCVolumeSource",
           "title": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.\n+optional"
         },
         "flexVolume": {
           "$ref": "#/definitions/v1FlexVolumeSource",
-          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future.\n+optional"
+          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.\n+optional"
         },
         "flocker": {
           "$ref": "#/definitions/v1FlockerVolumeSource",
@@ -2663,7 +2743,7 @@
           "title": "HostPath represents a directory on the host.\nProvisioned by a developer or tester.\nThis is useful for single-node development and testing only!\nOn-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath\n+optional"
         },
         "iscsi": {
-          "$ref": "#/definitions/v1ISCSIVolumeSource",
+          "$ref": "#/definitions/v1ISCSIPersistentVolumeSource",
           "title": "ISCSI represents an ISCSI Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod. Provisioned by an admin.\n+optional"
         },
         "local": {
@@ -2687,7 +2767,7 @@
           "title": "Quobyte represents a Quobyte mount on the host that shares a pod's lifetime\n+optional"
         },
         "rbd": {
-          "$ref": "#/definitions/v1RBDVolumeSource",
+          "$ref": "#/definitions/v1RBDPersistentVolumeSource",
           "title": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md\n+optional"
         },
         "scaleIO": {
@@ -2778,6 +2858,48 @@
         },
         "volume": {
           "description": "Volume is a string that references an already created Quobyte volume by name.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1RBDPersistentVolumeSource": {
+      "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod.\nRBD volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://kubernetes.io/docs/concepts/storage/volumes#rbd\nTODO: how do we prevent errors in the filesystem from compromising the machine\n+optional",
+          "type": "string"
+        },
+        "image": {
+          "title": "The rados image name.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "string"
+        },
+        "keyring": {
+          "title": "Keyring is the path to key ring for RBDUser.\nDefault is /etc/ceph/keyring.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it\n+optional",
+          "type": "string"
+        },
+        "monitors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "A collection of Ceph monitors.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "array"
+        },
+        "pool": {
+          "title": "The rados pool name.\nDefault is rbd.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it\n+optional",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "ReadOnly here will force the ReadOnly setting in VolumeMounts.\nDefaults to false.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it\n+optional",
+          "type": "boolean"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1SecretReference",
+          "title": "SecretRef is name of the authentication secret for RBDUser. If provided\noverrides keyring.\nDefault is nil.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it\n+optional"
+        },
+        "user": {
+          "title": "The rados user name.\nDefault is admin.\nMore info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it\n+optional",
           "type": "string"
         }
       },
@@ -3096,7 +3218,7 @@
         },
         "flexVolume": {
           "$ref": "#/definitions/v1FlexVolumeSource",
-          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future.\n+optional"
+          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.\n+optional"
         },
         "flocker": {
           "$ref": "#/definitions/v1FlockerVolumeSource",
