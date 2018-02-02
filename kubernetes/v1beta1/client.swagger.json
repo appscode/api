@@ -5867,23 +5867,23 @@
     },
     "v1beta1SnapshotStorageSpec": {
       "properties": {
-        "Azure": {
+        "azure": {
           "$ref": "#/definitions/v1beta1SnapshotStorageSpecAzureSpec"
         },
-        "GCS": {
+        "gcs": {
           "$ref": "#/definitions/v1beta1SnapshotStorageSpecGCSSpec"
         },
-        "Local": {
+        "local": {
           "$ref": "#/definitions/v1beta1SnapshotStorageSpecLocalSpec"
         },
-        "S3": {
+        "s3": {
           "$ref": "#/definitions/v1beta1SnapshotStorageSpecS3Spec"
-        },
-        "Swift": {
-          "$ref": "#/definitions/v1beta1SnapshotStorageSpecSwiftSpec"
         },
         "storage_secret_name": {
           "type": "string"
+        },
+        "swift": {
+          "$ref": "#/definitions/v1beta1SnapshotStorageSpecSwiftSpec"
         }
       },
       "type": "object"
@@ -5951,23 +5951,23 @@
     },
     "v1beta1StashBackend": {
       "properties": {
-        "Azure": {
+        "azure": {
           "$ref": "#/definitions/v1beta1StashBackendAzureSpec"
         },
-        "GCS": {
+        "gcs": {
           "$ref": "#/definitions/v1beta1StashBackendGCSSpec"
         },
-        "Local": {
+        "local": {
           "$ref": "#/definitions/v1beta1StashBackendLocalSpec"
         },
-        "S3": {
+        "s3": {
           "$ref": "#/definitions/v1beta1StashBackendS3Spec"
-        },
-        "Swift": {
-          "$ref": "#/definitions/v1beta1StashBackendSwiftSpec"
         },
         "storage_secret_name": {
           "type": "string"
+        },
+        "swift": {
+          "$ref": "#/definitions/v1beta1StashBackendSwiftSpec"
         }
       },
       "type": "object"
