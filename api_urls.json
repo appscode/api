@@ -355,18 +355,6 @@
       "url": "/_appscode/api/kubernetes/v1beta1/incidents/json"
     }
   },
-  "/_appscode/api/mail/v1beta1/json": {
-    "post": {
-      "file": "/mailinglist/v1beta1/mailinglist.proto",
-      "url": "/_appscode/api/mail/v1beta1/json"
-    }
-  },
-  "/_appscode/api/mailinglist/v1beta1/subscribe/json": {
-    "put": {
-      "file": "/mailinglist/v1beta1/mailinglist.proto",
-      "url": "/_appscode/api/mailinglist/v1beta1/subscribe/json"
-    }
-  },
   "/_appscode/api/namespace/v1beta1/teams/*/is-available/json": {
     "get": {
       "file": "/namespace/v1beta1/team.proto",
