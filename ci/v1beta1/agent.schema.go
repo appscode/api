@@ -77,17 +77,17 @@ func init() {
 	}
 }
 
-func (m *AgentCreateRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *AgentCreateRequest) Valid() (*gojsonschema.Result, error) {
 	return agentCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *AgentCreateRequest) IsRequest() {}
 
-func (m *AgentDeleteRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *AgentDeleteRequest) Valid() (*gojsonschema.Result, error) {
 	return agentDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *AgentDeleteRequest) IsRequest() {}
 
-func (m *AgentGetRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *AgentGetRequest) Valid() (*gojsonschema.Result, error) {
 	return agentGetRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *AgentGetRequest) IsRequest() {}

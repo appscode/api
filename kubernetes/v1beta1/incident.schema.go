@@ -117,22 +117,22 @@ func init() {
 	}
 }
 
-func (m *IncidentNotifyRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *IncidentNotifyRequest) Valid() (*gojsonschema.Result, error) {
 	return incidentNotifyRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *IncidentNotifyRequest) IsRequest() {}
 
-func (m *IncidentEventCreateRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *IncidentEventCreateRequest) Valid() (*gojsonschema.Result, error) {
 	return incidentEventCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *IncidentEventCreateRequest) IsRequest() {}
 
-func (m *IncidentListRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *IncidentListRequest) Valid() (*gojsonschema.Result, error) {
 	return incidentListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *IncidentListRequest) IsRequest() {}
 
-func (m *IncidentDescribeRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *IncidentDescribeRequest) Valid() (*gojsonschema.Result, error) {
 	return incidentDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *IncidentDescribeRequest) IsRequest() {}

@@ -464,6 +464,9 @@
         "gce": {
           "$ref": "#/definitions/v1alpha1GoogleSpec"
         },
+        "gke": {
+          "$ref": "#/definitions/v1alpha1GKESpec"
+        },
         "instanceImage": {
           "title": "master needs it for ossec",
           "type": "string"
@@ -901,6 +904,20 @@
       "properties": {
         "credential": {
           "$ref": "#/definitions/v1alpha1Credential"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1GKESpec": {
+      "properties": {
+        "networkName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
         }
       },
       "type": "object"
