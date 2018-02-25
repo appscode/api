@@ -4332,9 +4332,8 @@
         "dormant_databases": {
           "$ref": "#/definitions/KubeResourceListDormantDatabases"
         },
-        "elasticsearchs": {
-          "$ref": "#/definitions/KubeResourceListElasticsearches",
-          "description": "`elasticsearchs` is spelled incorrectly. This is intentional, since Kubernetes itself uses has a pluralization bug."
+        "elasticsearches": {
+          "$ref": "#/definitions/KubeResourceListElasticsearches"
         },
         "events": {
           "$ref": "#/definitions/KubeResourceListEvents"

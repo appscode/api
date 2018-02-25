@@ -298,8 +298,7 @@ message KubeResourceList {
     CronJobs cron_jobs = 23;
     Restics restics = 24;
     Postgreses postgreses = 25;
-    // `elasticsearchs` is spelled incorrectly. This is intentional, since Kubernetes itself uses has a pluralization bug.
-    Elasticsearches elasticsearchs = 26;
+    Elasticsearches elasticsearches = 26;
     DormantDatabases dormant_databases = 27;
     Snapshots snapshots = 28;
     Events events = 29;
