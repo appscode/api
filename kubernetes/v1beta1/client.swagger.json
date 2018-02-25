@@ -5217,13 +5217,13 @@
         "schedulerName": {
           "type": "string"
         },
-        "standby": {
+        "standbyMode": {
           "type": "string"
         },
         "storage": {
           "$ref": "#/definitions/kubernetesv1beta1PersistentVolumeClaimSpec"
         },
-        "streaming": {
+        "streamingMode": {
           "type": "string"
         },
         "tolerations": {

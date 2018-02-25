@@ -1200,8 +1200,8 @@ message PostgresSpec {
   InitSpec init = 6;
   BackupScheduleSpec backup_schedule = 7;
   bool do_not_pause = 8;
-  string standby = 9;
-  string streaming = 10;
+  string standbyMode = 9;
+  string streamingMode = 10;
   PostgresArchiverSpec archiver = 11;
   KubemonAgentSpec monitor = 12;
   ResourceRequirements resources = 13;
