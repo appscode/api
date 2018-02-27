@@ -1,0 +1,26 @@
+{
+  "definitions": {
+    "v1alpha1ProjectListRequest": {
+      "properties": {
+        "members": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "with_member": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ProjectMemberListRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
