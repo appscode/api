@@ -215,12 +215,6 @@
       "url": "/_appscode/api/kubernetes/v1alpha1/actions/copy/json"
     }
   },
-  "/_appscode/api/kubernetes/v1alpha1/clusters/*/*/*/*/reverseindex/json": {
-    "get": {
-      "file": "/kubernetes/v1alpha1/client.proto",
-      "url": "/_appscode/api/kubernetes/v1alpha1/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json"
-    }
-  },
   "/_appscode/api/kubernetes/v1alpha1/clusters/*/*/*/json": {
     "delete": {
       "file": "/kubernetes/v1alpha1/client.proto",
@@ -233,6 +227,12 @@
     "put": {
       "file": "/kubernetes/v1alpha1/client.proto",
       "url": "/_appscode/api/kubernetes/v1alpha1/clusters/{cluster}/{type}/{name}/json"
+    }
+  },
+  "/_appscode/api/kubernetes/v1alpha1/clusters/*/*/*/reverse/*/json": {
+    "get": {
+      "file": "/kubernetes/v1alpha1/client.proto",
+      "url": "/_appscode/api/kubernetes/v1alpha1/clusters/{cluster}/{type}/{name}/reverse/{targetType}/json"
     }
   },
   "/_appscode/api/kubernetes/v1alpha1/clusters/*/*/json": {

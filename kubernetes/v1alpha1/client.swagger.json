@@ -1540,6 +1540,20 @@
       },
       "type": "object"
     },
+    "kubernetesv1alpha1GroupVersionResource": {
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "resource": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesv1alpha1LabelSelector": {
       "properties": {
         "match_expressions": {
@@ -3497,9 +3511,6 @@
     },
     "v1alpha1CreateResourceRequest": {
       "properties": {
-        "api_version": {
-          "type": "string"
-        },
         "cluster": {
           "type": "string"
         },
@@ -4169,36 +4180,32 @@
       "type": "object"
     },
     "v1alpha1KubeResource": {
-      "description": "TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.",
       "properties": {
-        "api_version": {
-          "type": "string"
-        },
         "certificate": {
           "$ref": "#/definitions/v1alpha1Certificate"
         },
-        "cluster_alert": {
+        "clusteralert": {
           "$ref": "#/definitions/v1alpha1ClusterAlert"
         },
-        "cluster_role": {
+        "clusterrole": {
           "$ref": "#/definitions/v1alpha1ClusterRole"
         },
-        "cluster_role_binding": {
+        "clusterrolebinding": {
           "$ref": "#/definitions/v1alpha1ClusterRoleBinding"
         },
-        "config_map": {
+        "configmap": {
           "$ref": "#/definitions/kubernetesv1alpha1ConfigMap"
         },
-        "cron_job": {
+        "cronjob": {
           "$ref": "#/definitions/v1alpha1CronJob"
         },
-        "daemon_set": {
+        "daemonset": {
           "$ref": "#/definitions/v1alpha1DaemonSet"
         },
         "deployment": {
           "$ref": "#/definitions/v1alpha1Deployment"
         },
-        "dormant_database": {
+        "dormantdatabase": {
           "$ref": "#/definitions/v1alpha1DormantDatabase"
         },
         "elasticsearch": {
@@ -4209,6 +4216,9 @@
             "$ref": "#/definitions/kubernetesv1alpha1Event"
           },
           "type": "array"
+        },
+        "gvr": {
+          "$ref": "#/definitions/kubernetesv1alpha1GroupVersionResource"
         },
         "ingress": {
           "$ref": "#/definitions/v1alpha1Ingress"
@@ -4234,13 +4244,13 @@
         "node": {
           "$ref": "#/definitions/kubernetesv1alpha1Node"
         },
-        "node_alert": {
+        "nodealert": {
           "$ref": "#/definitions/v1alpha1NodeAlert"
         },
-        "persistent_volume": {
+        "persistentvolume": {
           "$ref": "#/definitions/kubernetesv1alpha1PersistentVolume"
         },
-        "persistent_volume_claim": {
+        "persistentvolumeclaim": {
           "$ref": "#/definitions/kubernetesv1alpha1PersistentVolumeClaim"
         },
         "pod": {
@@ -4267,7 +4277,7 @@
         "replica_set": {
           "$ref": "#/definitions/v1alpha1ReplicaSet"
         },
-        "replication_controller": {
+        "replicationcontroller": {
           "$ref": "#/definitions/kubernetesv1alpha1ReplicationController"
         },
         "restic": {
@@ -4276,7 +4286,7 @@
         "role": {
           "$ref": "#/definitions/v1alpha1Role"
         },
-        "role_binding": {
+        "rolebinding": {
           "$ref": "#/definitions/v1alpha1RoleBinding"
         },
         "secret": {
@@ -4285,16 +4295,16 @@
         "service": {
           "$ref": "#/definitions/kubernetesv1alpha1Service"
         },
-        "service_monitors": {
+        "servicemonitors": {
           "$ref": "#/definitions/v1alpha1ServiceMonitor"
         },
         "snapshot": {
           "$ref": "#/definitions/v1alpha1Snapshot"
         },
-        "stateful_set": {
+        "statefulset": {
           "$ref": "#/definitions/v1alpha1StatefulSet"
         },
-        "storage_class": {
+        "storageclass": {
           "$ref": "#/definitions/v1alpha1StorageClass"
         }
       },
@@ -4302,34 +4312,31 @@
     },
     "v1alpha1KubeResourceList": {
       "properties": {
-        "api_version": {
-          "type": "string"
-        },
         "certificates": {
           "$ref": "#/definitions/KubeResourceListCertificates"
         },
-        "cluster_alerts": {
+        "clusteralerts": {
           "$ref": "#/definitions/KubeResourceListClusterAlerts"
         },
-        "cluster_role_bindings": {
+        "clusterrolebindings": {
           "$ref": "#/definitions/KubeResourceListClusterRoleBindings"
         },
-        "cluster_roles": {
+        "clusterroles": {
           "$ref": "#/definitions/KubeResourceListClusterRoles"
         },
-        "config_maps": {
+        "configmaps": {
           "$ref": "#/definitions/KubeResourceListConfigMaps"
         },
-        "cron_jobs": {
+        "cronjobs": {
           "$ref": "#/definitions/KubeResourceListCronJobs"
         },
-        "daemon_sets": {
+        "daemonsets": {
           "$ref": "#/definitions/KubeResourceListDaemonSets"
         },
         "deployments": {
           "$ref": "#/definitions/KubeResourceListDeployments"
         },
-        "dormant_databases": {
+        "dormantdatabases": {
           "$ref": "#/definitions/KubeResourceListDormantDatabases"
         },
         "elasticsearches": {
@@ -4337,6 +4344,9 @@
         },
         "events": {
           "$ref": "#/definitions/KubeResourceListEvents"
+        },
+        "gvr": {
+          "$ref": "#/definitions/kubernetesv1alpha1GroupVersionResource"
         },
         "ingresses": {
           "$ref": "#/definitions/KubeResourceListIngresses"
@@ -4359,19 +4369,19 @@
         "namespaces": {
           "$ref": "#/definitions/KubeResourceListNamespaces"
         },
-        "node_alerts": {
+        "nodealerts": {
           "$ref": "#/definitions/KubeResourceListNodeAlerts"
         },
         "nodes": {
           "$ref": "#/definitions/KubeResourceListNodes"
         },
-        "persistent_volume_claims": {
+        "persistentvolumeclaims": {
           "$ref": "#/definitions/KubeResourceListPersistentVolumeClaims"
         },
-        "persistent_volumes": {
+        "persistentvolumes": {
           "$ref": "#/definitions/KubeResourceListPersistentVolumes"
         },
-        "pod_alerts": {
+        "podalerts": {
           "$ref": "#/definitions/KubeResourceListPodAlerts"
         },
         "pods": {
@@ -4389,16 +4399,16 @@
         "redises": {
           "$ref": "#/definitions/KubeResourceListRedises"
         },
-        "replica_sets": {
+        "replicasets": {
           "$ref": "#/definitions/KubeResourceListReplicaSets"
         },
-        "replication_controllers": {
+        "replicationcontrollers": {
           "$ref": "#/definitions/KubeResourceListReplicationControllers"
         },
         "restics": {
           "$ref": "#/definitions/KubeResourceListRestics"
         },
-        "role_bindings": {
+        "rolebindings": {
           "$ref": "#/definitions/KubeResourceListRoleBindings"
         },
         "roles": {
@@ -4407,7 +4417,7 @@
         "secrets": {
           "$ref": "#/definitions/KubeResourceListSecrets"
         },
-        "service_monitors": {
+        "servicemonitors": {
           "$ref": "#/definitions/KubeResourceListServiceMonitors"
         },
         "services": {
@@ -4416,10 +4426,10 @@
         "snapshots": {
           "$ref": "#/definitions/KubeResourceListSnapshots"
         },
-        "stateful_sets": {
+        "statefulsets": {
           "$ref": "#/definitions/KubeResourceListStatefulSets"
         },
-        "storage_classes": {
+        "storageclasses": {
           "$ref": "#/definitions/KubeResourceListStorageClasses"
         }
       },
@@ -6116,16 +6126,10 @@
     },
     "v1alpha1UpdateResourceRequest": {
       "properties": {
-        "api_version": {
-          "type": "string"
-        },
         "cluster": {
           "type": "string"
         },
         "name": {
-          "type": "string"
-        },
-        "namespace": {
           "type": "string"
         },
         "raw": {
@@ -6317,7 +6321,7 @@
             }
           }
         },
-        "summary": "Followings are type specific actions api, that can be applied upon fixed resources.\nTODO: (@sadlil) Consider seperating them.",
+        "summary": "Followings are type specific actions api, that can be applied upon fixed resources.",
         "tags": [
           "Clients"
         ]
@@ -6738,7 +6742,7 @@
         ]
       }
     },
-    "/_appscode/api/kubernetes/v1alpha1/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json": {
+    "/_appscode/api/kubernetes/v1alpha1/clusters/{cluster}/{type}/{name}/reverse/{targetType}/json": {
       "get": {
         "operationId": "ReverseIndex",
         "parameters": [

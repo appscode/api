@@ -72,7 +72,6 @@ service Clients {
   }
 
   // Followings are type specific actions api, that can be applied upon fixed resources.
-  // TODO: (@sadlil) Consider seperating them.
   rpc EditConfigMap(ConfigMapEditRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post : "/_appscode/api/kubernetes/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit/json"
@@ -133,7 +132,7 @@ service Clients {
 
   rpc ReverseIndex(ReverseIndexResourceRequest) returns (ListResourceResponse){
     option (google.api.http) = {
-      get : "/_appscode/api/kubernetes/v1alpha1/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json"
+      get : "/_appscode/api/kubernetes/v1alpha1/clusters/{cluster}/{type}/{name}/reverse/{targetType}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -225,10 +224,8 @@ message DescribeResourceResponse {
 message UpdateResourceRequest {
   string cluster = 1;
   string type = 2;
-  string namespace = 3;
-  string name = 4;
-  Raw raw = 5;
-  string api_version = 6;
+  string name = 3;
+  Raw raw = 4;
 }
 
 message ConfigMapEditRequest {
@@ -260,7 +257,6 @@ message CreateResourceRequest {
   string type = 2;
   string name = 4;
   Raw raw = 5;
-  string api_version = 6;
 }
 
 message DeleteResourceRequest {
@@ -271,48 +267,54 @@ message DeleteResourceRequest {
   string api_version = 5;
 }
 
+message GroupVersionResource {
+  string group = 1;
+  string version = 2;
+  string resource = 3;
+}
+
 message KubeResourceList {
-  string api_version = 1;
+  GroupVersionResource gvr = 1; // plural
   string kind = 2;
   oneof  resource {
-    ConfigMaps config_maps = 3;
-    DaemonSets daemon_sets = 4;
-    Deployments deployments = 5;
-    Jobs jobs = 6;
-    Namespaces namespaces = 7;
-    Nodes nodes = 8;
-    StatefulSets stateful_sets = 9;
-    Pods pods = 10;
-    ReplicaSets replica_sets = 11;
-    Services services = 12;
-    Secrets secrets = 13;
-    ReplicationControllers replication_controllers = 14;
-    StorageClasses storage_classes = 15;
-    PersistentVolumes persistent_volumes = 16;
-    PersistentVolumeClaims persistent_volume_claims = 17;
-    Roles roles = 18;
-    ClusterRoles cluster_roles = 19;
-    RoleBindings role_bindings = 20;
-    ClusterRoleBindings cluster_role_bindings = 21;
-    Certificates certificates = 22;
-    CronJobs cron_jobs = 23;
-    Restics restics = 24;
-    Postgreses postgreses = 25;
-    Elasticsearches elasticsearches = 26;
-    DormantDatabases dormant_databases = 27;
-    Snapshots snapshots = 28;
-    Events events = 29;
-    Ingresses ingresses = 30;
-    Prometheuses prometheuses = 31;
-    ServiceMonitors service_monitors = 32;
-    ClusterAlerts cluster_alerts = 33;
-    NodeAlerts node_alerts = 34;
-    PodAlerts pod_alerts = 35;
-    Mysqls mysqls = 36;
-    Redises redises = 37;
-    Mongodbs mongodbs = 38;
-    Memcacheds memcacheds = 39;
-    Recoveries recoveries = 40;
+    Certificates certificates = 3;
+    ClusterAlerts clusteralerts = 4;
+    ClusterRoleBindings clusterrolebindings = 5;
+    ClusterRoles clusterroles = 6;
+    ConfigMaps configmaps = 7;
+    CronJobs cronjobs = 8;
+    DaemonSets daemonsets = 9;
+    Deployments deployments = 10;
+    DormantDatabases dormantdatabases = 11;
+    Elasticsearches elasticsearches = 12;
+    Events events = 13;
+    Ingresses ingresses = 14;
+    Jobs jobs = 15;
+    Memcacheds memcacheds = 16;
+    Mongodbs mongodbs = 17;
+    Mysqls mysqls = 18;
+    Namespaces namespaces = 19;
+    NodeAlerts nodealerts = 20;
+    Nodes nodes = 21;
+    PersistentVolumeClaims persistentvolumeclaims = 22;
+    PersistentVolumes persistentvolumes = 23;
+    PodAlerts podalerts = 24;
+    Pods pods = 25;
+    Postgreses postgreses = 26;
+    Prometheuses prometheuses = 27;
+    Recoveries recoveries = 28;
+    Redises redises = 29;
+    ReplicaSets replicasets = 30;
+    ReplicationControllers replicationcontrollers = 31;
+    Restics restics = 32;
+    RoleBindings rolebindings = 33;
+    Roles roles = 34;
+    Secrets secrets = 35;
+    ServiceMonitors servicemonitors = 36;
+    Services services = 37;
+    Snapshots snapshots = 38;
+    StatefulSets statefulsets = 39;
+    StorageClasses storageclasses = 40;
   }
 
   message Events {
@@ -468,50 +470,49 @@ message KubeResourceList {
   }
 }
 
-// TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.
 message KubeResource {
-  string api_version = 1;
+  GroupVersionResource gvr = 1; // singular
   string kind = 2;
   Raw raw = 3;
   repeated Event events = 4;
   oneof  resource {
-    ConfigMap config_map = 5;
-    DaemonSet daemon_set = 6;
-    Deployment deployment = 7;
-    Job job = 8;
-    Namespace namespace = 9;
-    Node node = 10;
-    StatefulSet stateful_set = 11;
-    Pod pod = 12;
-    ReplicaSet replica_set = 13;
-    Service service = 14;
-    Secret secret = 15;
-    ReplicationController replication_controller = 16;
-    StorageClass storage_class = 17;
-    PersistentVolume persistent_volume = 18;
-    PersistentVolumeClaim persistent_volume_claim = 19;
-    Role role = 20;
-    ClusterRole cluster_role = 21;
-    RoleBinding role_binding = 22;
-    ClusterRoleBinding cluster_role_binding = 23;
-    Certificate certificate = 24;
-    CronJob cron_job = 25;
-    Restic restic = 26;
+    Certificate certificate = 5;
+    ClusterAlert clusteralert = 6;
+    ClusterRole clusterrole = 7;
+    ClusterRoleBinding clusterrolebinding = 8;
+    ConfigMap configmap = 9;
+    CronJob cronjob = 10;
+    DaemonSet daemonset = 11;
+    Deployment deployment = 12;
+    DormantDatabase dormantdatabase = 13;
+    Elasticsearch elasticsearch = 14;
+    Ingress ingress = 15;
+    Job job = 16;
+    Memcached memcached = 17;
+    Mongodb mongodb = 18;
+    Mysql mysql = 19;
+    Namespace namespace = 20;
+    Node node = 21;
+    NodeAlert nodealert = 22;
+    PersistentVolume persistentvolume = 23;
+    PersistentVolumeClaim persistentvolumeclaim = 24;
+    Pod pod = 25;
+    PodAlert pod_alert = 26;
     Postgres postgres = 27;
-    Elasticsearch elasticsearch = 28;
-    DormantDatabase dormant_database = 29;
-    Snapshot snapshot = 30;
-    Ingress ingress = 31;
-    Prometheus prometheus = 32;
-    ServiceMonitor service_monitors = 33;
-    ClusterAlert cluster_alert = 34;
-    NodeAlert node_alert = 35;
-    PodAlert pod_alert = 36;
-    Mysql mysql = 37;
-    Redis redis = 38;
-    Mongodb mongodb = 39;
-    Memcached memcached = 40;
-    Recovery recovery = 41;
+    Prometheus prometheus = 28;
+    Recovery recovery = 29;
+    Redis redis = 30;
+    ReplicaSet replica_set = 31;
+    ReplicationController replicationcontroller = 32;
+    Restic restic = 33;
+    Role role = 34;
+    RoleBinding rolebinding = 35;
+    Secret secret = 36;
+    Service service = 37;
+    ServiceMonitor servicemonitors = 38;
+    Snapshot snapshot = 39;
+    StatefulSet statefulset = 40;
+    StorageClass storageclass = 41;
   }
 }
 

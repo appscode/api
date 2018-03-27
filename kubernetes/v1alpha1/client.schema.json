@@ -51,9 +51,6 @@
     },
     "v1alpha1CreateResourceRequest": {
       "properties": {
-        "api_version": {
-          "type": "string"
-        },
         "cluster": {
           "type": "string"
         },
@@ -373,19 +370,11 @@
     },
     "v1alpha1UpdateResourceRequest": {
       "properties": {
-        "api_version": {
-          "type": "string"
-        },
         "cluster": {
           "type": "string"
         },
         "name": {
           "maxLength": 63,
-          "type": "string"
-        },
-        "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "raw": {
