@@ -4256,7 +4256,7 @@
         "pod": {
           "$ref": "#/definitions/kubernetesv1alpha1Pod"
         },
-        "pod_alert": {
+        "podalert": {
           "$ref": "#/definitions/v1alpha1PodAlert"
         },
         "postgres": {
@@ -4274,7 +4274,7 @@
         "redis": {
           "$ref": "#/definitions/v1alpha1Redis"
         },
-        "replica_set": {
+        "replicaset": {
           "$ref": "#/definitions/v1alpha1ReplicaSet"
         },
         "replicationcontroller": {

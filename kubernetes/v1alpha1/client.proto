@@ -497,12 +497,12 @@ message KubeResource {
     PersistentVolume persistentvolume = 23;
     PersistentVolumeClaim persistentvolumeclaim = 24;
     Pod pod = 25;
-    PodAlert pod_alert = 26;
+    PodAlert podalert = 26;
     Postgres postgres = 27;
     Prometheus prometheus = 28;
     Recovery recovery = 29;
     Redis redis = 30;
-    ReplicaSet replica_set = 31;
+    ReplicaSet replicaset = 31;
     ReplicationController replicationcontroller = 32;
     Restic restic = 33;
     Role role = 34;
