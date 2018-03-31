@@ -618,6 +618,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListRepositories": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Repository"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListRestics": {
       "properties": {
         "items": {
@@ -4280,6 +4291,9 @@
         "replicationcontroller": {
           "$ref": "#/definitions/kubernetesv1alpha1ReplicationController"
         },
+        "repository": {
+          "$ref": "#/definitions/v1alpha1Repository"
+        },
         "restic": {
           "$ref": "#/definitions/v1alpha1Restic"
         },
@@ -4404,6 +4418,9 @@
         },
         "replicationcontrollers": {
           "$ref": "#/definitions/KubeResourceListReplicationControllers"
+        },
+        "repositories": {
+          "$ref": "#/definitions/KubeResourceListRepositories"
         },
         "restics": {
           "$ref": "#/definitions/KubeResourceListRestics"
@@ -5519,6 +5536,52 @@
       },
       "type": "object"
     },
+    "v1alpha1Repository": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1RepositorySpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1RepositoryStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1RepositorySpec": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/v1alpha1StashBackend"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1RepositoryStatus": {
+      "properties": {
+        "backup_count": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "first_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_backup_duration": {
+          "type": "string"
+        },
+        "last_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_successful_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "v1alpha1ResourceCondition": {
       "properties": {
         "last_heartbeat_time": {
@@ -5551,9 +5614,6 @@
         },
         "spec": {
           "$ref": "#/definitions/v1alpha1ResticSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1alpha1ResticStatus"
         }
       },
       "type": "object"
@@ -5592,30 +5652,6 @@
             "$ref": "#/definitions/kubernetesv1alpha1VolumeMount"
           },
           "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1ResticStatus": {
-      "properties": {
-        "backup_count": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "first_backup_time": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "last_backup_duration": {
-          "type": "string"
-        },
-        "last_backup_time": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "last_successful_backup_time": {
-          "format": "int64",
-          "type": "integer"
         }
       },
       "type": "object"

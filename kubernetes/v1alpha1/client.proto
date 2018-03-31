@@ -306,15 +306,16 @@ message KubeResourceList {
     Redises redises = 29;
     ReplicaSets replicasets = 30;
     ReplicationControllers replicationcontrollers = 31;
-    Restics restics = 32;
-    RoleBindings rolebindings = 33;
-    Roles roles = 34;
-    Secrets secrets = 35;
-    ServiceMonitors servicemonitors = 36;
-    Services services = 37;
-    Snapshots snapshots = 38;
-    StatefulSets statefulsets = 39;
-    StorageClasses storageclasses = 40;
+    Repositories repositories = 32;
+    Restics restics = 33;
+    RoleBindings rolebindings = 34;
+    Roles roles = 35;
+    Secrets secrets = 36;
+    ServiceMonitors servicemonitors = 37;
+    Services services = 38;
+    Snapshots snapshots = 39;
+    StatefulSets statefulsets = 40;
+    StorageClasses storageclasses = 41;
   }
 
   message Events {
@@ -453,6 +454,10 @@ message KubeResourceList {
     repeated Snapshot items = 2;
   }
 
+  message Repositories {
+    repeated Repository items = 1;
+  }
+
   message Restics {
     repeated Restic items = 1;
   }
@@ -504,15 +509,16 @@ message KubeResource {
     Redis redis = 30;
     ReplicaSet replicaset = 31;
     ReplicationController replicationcontroller = 32;
-    Restic restic = 33;
-    Role role = 34;
-    RoleBinding rolebinding = 35;
-    Secret secret = 36;
-    Service service = 37;
-    ServiceMonitor servicemonitors = 38;
-    Snapshot snapshot = 39;
-    StatefulSet statefulset = 40;
-    StorageClass storageclass = 41;
+    Repository repository = 33;
+    Restic restic = 34;
+    Role role = 35;
+    RoleBinding rolebinding = 36;
+    Secret secret = 37;
+    Service service = 38;
+    ServiceMonitor servicemonitors = 39;
+    Snapshot snapshot = 40;
+    StatefulSet statefulset = 41;
+    StorageClass storageclass = 42;
   }
 }
 
@@ -1084,7 +1090,6 @@ message Subject {
 message Restic {
   Meta meta = 1;
   Spec spec = 2;
-  Status status = 3;
   message Spec {
     string selector = 1;
     repeated FileGroup file_groups = 2;
@@ -1113,7 +1118,15 @@ message Restic {
       bool dry_run = 10;
     }
   }
+}
 
+message Repository {
+  Meta meta = 1;
+  Spec spec = 2;
+  Status status = 3;
+  message Spec {
+    StashBackend backend = 3;
+  }
   message Status {
     int64 first_backup_time = 1;
     int64 last_backup_time = 2;
