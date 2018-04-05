@@ -515,7 +515,7 @@ message KubeResource {
     RoleBinding rolebinding = 36;
     Secret secret = 37;
     Service service = 38;
-    ServiceMonitor servicemonitors = 39;
+    ServiceMonitor servicemonitor = 39;
     Snapshot snapshot = 40;
     StatefulSet statefulset = 41;
     StorageClass storageclass = 42;

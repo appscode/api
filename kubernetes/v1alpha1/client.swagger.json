@@ -4309,7 +4309,7 @@
         "service": {
           "$ref": "#/definitions/kubernetesv1alpha1Service"
         },
-        "servicemonitors": {
+        "servicemonitor": {
           "$ref": "#/definitions/v1alpha1ServiceMonitor"
         },
         "snapshot": {
