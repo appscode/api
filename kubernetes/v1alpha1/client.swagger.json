@@ -420,6 +420,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListIncidents": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Incident"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListIngresses": {
       "properties": {
         "items": {
@@ -656,6 +667,17 @@
         "items": {
           "items": {
             "$ref": "#/definitions/v1alpha1Role"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListSearchResults": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1SearchResult"
           },
           "type": "array"
         }
@@ -1031,6 +1053,18 @@
       },
       "type": "object"
     },
+    "SearchResultResultEntry": {
+      "properties": {
+        "raw": {
+          "type": "string"
+        },
+        "score": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
     "ServiceMonitorEndpoint": {
       "description": "Endpoint defines a scrapeable endpoint serving Prometheus metrics.",
       "properties": {
@@ -1329,6 +1363,34 @@
           "type": "integer"
         },
         "serial_number": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "StatusIncidentNotification": {
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "checkOutput": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "firstTimestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "lastTimestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
           "type": "string"
         }
       },
@@ -3874,10 +3936,6 @@
         "origin": {
           "$ref": "#/definitions/v1alpha1Origin"
         },
-        "resume": {
-          "format": "boolean",
-          "type": "boolean"
-        },
         "wipe_out": {
           "format": "boolean",
           "type": "boolean"
@@ -4001,6 +4059,31 @@
         },
         "reason": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Incident": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1IncidentStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1IncidentStatus": {
+      "properties": {
+        "lastNotificationType": {
+          "type": "string"
+        },
+        "notifications": {
+          "items": {
+            "$ref": "#/definitions/StatusIncidentNotification"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -4231,6 +4314,9 @@
         "gvr": {
           "$ref": "#/definitions/kubernetesv1alpha1GroupVersionResource"
         },
+        "incident": {
+          "$ref": "#/definitions/v1alpha1Incident"
+        },
         "ingress": {
           "$ref": "#/definitions/v1alpha1Ingress"
         },
@@ -4303,6 +4389,9 @@
         "rolebinding": {
           "$ref": "#/definitions/v1alpha1RoleBinding"
         },
+        "searchresult": {
+          "$ref": "#/definitions/v1alpha1SearchResult"
+        },
         "secret": {
           "$ref": "#/definitions/kubernetesv1alpha1Secret"
         },
@@ -4361,6 +4450,9 @@
         },
         "gvr": {
           "$ref": "#/definitions/kubernetesv1alpha1GroupVersionResource"
+        },
+        "incidents": {
+          "$ref": "#/definitions/KubeResourceListIncidents"
         },
         "ingresses": {
           "$ref": "#/definitions/KubeResourceListIngresses"
@@ -4430,6 +4522,9 @@
         },
         "roles": {
           "$ref": "#/definitions/KubeResourceListRoles"
+        },
+        "searchresults": {
+          "$ref": "#/definitions/KubeResourceListSearchResults"
         },
         "secrets": {
           "$ref": "#/definitions/KubeResourceListSecrets"
@@ -5752,6 +5847,32 @@
         },
         "volume_source": {
           "$ref": "#/definitions/v1VolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SearchResult": {
+      "properties": {
+        "hits": {
+          "items": {
+            "$ref": "#/definitions/SearchResultResultEntry"
+          },
+          "type": "array"
+        },
+        "maxScore": {
+          "format": "double",
+          "type": "number"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "took": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "totalHits": {
+          "format": "uint64",
+          "type": "integer"
         }
       },
       "type": "object"

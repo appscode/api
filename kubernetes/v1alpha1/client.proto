@@ -316,6 +316,8 @@ message KubeResourceList {
     Snapshots snapshots = 39;
     StatefulSets statefulsets = 40;
     StorageClasses storageclasses = 41;
+    Incidents incidents = 42;
+    SearchResults searchresults = 43;
   }
 
   message Events {
@@ -372,6 +374,14 @@ message KubeResourceList {
 
   message StorageClasses {
     repeated StorageClass items = 1;
+  }
+
+  message Incidents {
+    repeated Incident items = 1;
+  }
+
+  message SearchResults {
+    repeated SearchResult items = 1;
   }
 
   message PersistentVolumes {
@@ -519,6 +529,8 @@ message KubeResource {
     Snapshot snapshot = 40;
     StatefulSet statefulset = 41;
     StorageClass storageclass = 42;
+    Incident incident = 43;
+    SearchResult searchresult = 44;
   }
 }
 
@@ -923,6 +935,39 @@ message StorageClass {
   map<string, string> parameters = 3;
 }
 
+message Incident {
+  Meta meta = 1;
+  Status status = 2;
+
+  message Status {
+    string lastNotificationType = 1;
+    repeated IncidentNotification notifications = 2;
+
+    message IncidentNotification {
+      string type = 1;
+      string checkOutput = 2;
+      string author = 3;
+      string comment = 4;
+      int64 firstTimestamp = 5;
+      int64 lastTimestamp = 6;
+      string state = 7;
+    }
+  }
+}
+
+message SearchResult {
+    Meta meta = 1;
+    repeated ResultEntry hits = 2;
+    uint64 totalHits = 3;
+    double maxScore = 4;
+    int64 took = 5;
+
+    message ResultEntry {
+      double score = 1;
+      string raw = 2;
+    }
+}
+
 message Event {
   Meta meta = 1;
   string reason = 2;
@@ -1279,7 +1324,6 @@ message DormantDatabase {
 
   message Spec {
     bool wipe_out = 1;
-    bool resume = 2;
     Origin origin = 3;
   }
 
