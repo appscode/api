@@ -318,6 +318,7 @@ message KubeResourceList {
     StorageClasses storageclasses = 41;
     Incidents incidents = 42;
     SearchResults searchresults = 43;
+    StashSnapshots stashsnapshots = 44;
   }
 
   message Events {
@@ -382,6 +383,10 @@ message KubeResourceList {
 
   message SearchResults {
     repeated SearchResult items = 1;
+  }
+
+  message StashSnapshots {
+    repeated StashSnapshot items = 1;
   }
 
   message PersistentVolumes {
@@ -531,6 +536,7 @@ message KubeResource {
     StorageClass storageclass = 42;
     Incident incident = 43;
     SearchResult searchresult = 44;
+    StashSnapshot stashsnapshot = 45;
   }
 }
 
@@ -966,6 +972,21 @@ message SearchResult {
       double score = 1;
       string raw = 2;
     }
+}
+
+message StashSnapshot {
+  Meta meta = 1;
+  Status status = 2;
+
+  message Status {
+    string tree = 1;
+    repeated string paths = 2;
+    string hostname = 3;
+    string username = 4;
+    int32 uid = 5;
+    int32 gid = 6;
+    repeated string tags = 7;
+  }
 }
 
 message Event {

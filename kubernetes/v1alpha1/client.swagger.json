@@ -728,6 +728,17 @@
       },
       "type": "object"
     },
+    "KubeResourceListStashSnapshots": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1StashSnapshot"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "KubeResourceListStatefulSets": {
       "properties": {
         "items": {
@@ -2233,6 +2244,10 @@
           "description": "Driver is the name of the driver to use for this volume.\nRequired.",
           "type": "string"
         },
+        "fsType": {
+          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\n+optional",
+          "type": "string"
+        },
         "readOnly": {
           "format": "boolean",
           "title": "Optional: The value to pass to ControllerPublishVolumeRequest.\nDefaults to false (read/write).\n+optional",
@@ -2478,6 +2493,36 @@
           },
           "title": "Optional: FC volume world wide identifiers (wwids)\nEither wwids or combination of targetWWNs and lun must be set, but not both simultaneously.\n+optional",
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1FlexPersistentVolumeSource": {
+      "description": "FlexPersistentVolumeSource represents a generic persistent volume resource that is\nprovisioned/attached using an exec based plugin.",
+      "properties": {
+        "driver": {
+          "description": "Driver is the name of the driver to use for this volume.",
+          "type": "string"
+        },
+        "fsType": {
+          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script.\n+optional",
+          "type": "string"
+        },
+        "options": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Optional: Extra command options if any.\n+optional",
+          "type": "object"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\n+optional",
+          "type": "boolean"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1SecretReference",
+          "title": "Optional: SecretRef is reference to the secret object containing\nsensitive information to pass to the plugin scripts. This may be\nempty if no secret object is specified. If the secret object\ncontains more than one secret, all secrets are passed to the plugin\nscripts.\n+optional"
         }
       },
       "type": "object"
@@ -2810,7 +2855,7 @@
           "title": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.\n+optional"
         },
         "flexVolume": {
-          "$ref": "#/definitions/v1FlexVolumeSource",
+          "$ref": "#/definitions/v1FlexPersistentVolumeSource",
           "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.\n+optional"
         },
         "flocker": {
@@ -4404,6 +4449,9 @@
         "snapshot": {
           "$ref": "#/definitions/v1alpha1Snapshot"
         },
+        "stashsnapshot": {
+          "$ref": "#/definitions/v1alpha1StashSnapshot"
+        },
         "statefulset": {
           "$ref": "#/definitions/v1alpha1StatefulSet"
         },
@@ -4537,6 +4585,9 @@
         },
         "snapshots": {
           "$ref": "#/definitions/KubeResourceListSnapshots"
+        },
+        "stashsnapshots": {
+          "$ref": "#/definitions/KubeResourceListStashSnapshots"
         },
         "statefulsets": {
           "$ref": "#/definitions/KubeResourceListStatefulSets"
@@ -6194,6 +6245,51 @@
           "type": "string"
         },
         "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1StashSnapshot": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1StashSnapshotStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1StashSnapshotStatus": {
+      "properties": {
+        "gid": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "paths": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "tree": {
+          "type": "string"
+        },
+        "uid": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "username": {
           "type": "string"
         }
       },
