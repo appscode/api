@@ -1471,24 +1471,16 @@ message Recovery {
   Status status = 3;
 
   message Spec {
-    StashBackend backend = 1;
-    repeated string paths = 2;
-    LocalTypedReference workload = 3;
-    string podOrdinal = 4;
-    string nodeName = 5;
-    repeated LocalSpec recoveredVolumes = 6;
-
-    message LocalTypedReference {
-      string kind = 1;
-      string name = 2;
-      string apiVersion = 3;
-    }
-
+    string repository = 1;
+    string snapshot = 2;
+    repeated string paths = 3;
+    repeated LocalSpec recoveredVolumes = 4;
     message LocalSpec {
       k8s.io.api.core.v1.VolumeSource volumeSource = 1;
       string mountPath = 2;
       string subPath = 3;
     }
+    repeated LocalObjectReference imagePullSecrets = 5;
   }
 
   message Status {
