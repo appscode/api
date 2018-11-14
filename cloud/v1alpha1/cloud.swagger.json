@@ -500,6 +500,9 @@
         "aws": {
           "$ref": "#/definitions/v1alpha1AWSStatus"
         },
+        "eks": {
+          "$ref": "#/definitions/v1alpha1EKSStatus"
+        },
         "sshKeyExternalID": {
           "type": "string"
         }
@@ -726,6 +729,10 @@
     },
     "v1alpha1ClusterState": {
       "properties": {
+        "dnsType": {
+          "title": "DNSType",
+          "type": "string"
+        },
         "dnsVersion": {
           "title": "DNSVersion describes the version of the kube-dns images used and manifest version",
           "type": "string"
@@ -908,6 +915,63 @@
       },
       "type": "object"
     },
+    "v1alpha1EKSStatus": {
+      "properties": {
+        "roleArn": {
+          "type": "string"
+        },
+        "securityGroup": {
+          "type": "string"
+        },
+        "subnetID": {
+          "type": "string"
+        },
+        "vpcID": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ExecConfig": {
+      "description": "ExecConfig specifies a command to provide client credentials. The command is exec'd\nand outputs structured stdout holding credentials.\n\nSee the client.authentiction.k8s.io API group for specifications of the exact input\nand output format",
+      "properties": {
+        "apiVersion": {
+          "description": "Preferred input version of the ExecInfo. The returned ExecCredentials MUST use\nthe same encoding version as the input.",
+          "type": "string"
+        },
+        "args": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Arguments to pass to the command when executing it.\n+optional",
+          "type": "array"
+        },
+        "command": {
+          "description": "Command to execute.",
+          "type": "string"
+        },
+        "env": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ExecEnvVar"
+          },
+          "title": "Env defines additional environment variables to expose to the process. These\nare unioned with the host's environment, as well as variables client-go uses\nto pass argument to the plugin.\n+optional",
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ExecEnvVar": {
+      "description": "ExecEnvVar is used for setting environment variables when executing an exec-based\ncredential plugin.",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1alpha1GKESpec": {
       "properties": {
         "networkName": {
@@ -990,12 +1054,24 @@
           "title": "ClientKeyData contains PEM-encoded data from a client key file for TLS.\n+optional",
           "type": "string"
         },
+        "exec": {
+          "$ref": "#/definitions/v1alpha1ExecConfig",
+          "title": "+optional"
+        },
         "name": {
           "title": "Name is the nickname for this AuthInfo",
           "type": "string"
         },
+        "password": {
+          "title": "Password is the password for basic authentication to the kubernetes cluster.\n+optional",
+          "type": "string"
+        },
         "token": {
           "title": "Token is the bearer token for authentication to the kubernetes cluster.\n+optional",
+          "type": "string"
+        },
+        "username": {
+          "title": "Username is the username for basic authentication to the kubernetes cluster.\n+optional",
           "type": "string"
         }
       },

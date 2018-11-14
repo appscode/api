@@ -456,6 +456,9 @@
         "aws": {
           "$ref": "#/definitions/v1alpha1AWSStatus"
         },
+        "eks": {
+          "$ref": "#/definitions/v1alpha1EKSStatus"
+        },
         "sshKeyExternalID": {
           "type": "string"
         }
@@ -713,6 +716,23 @@
       "properties": {
         "credential": {
           "$ref": "#/definitions/v1alpha1Credential"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1EKSStatus": {
+      "properties": {
+        "roleArn": {
+          "type": "string"
+        },
+        "securityGroup": {
+          "type": "string"
+        },
+        "subnetID": {
+          "type": "string"
+        },
+        "vpcID": {
+          "type": "string"
         }
       },
       "type": "object"

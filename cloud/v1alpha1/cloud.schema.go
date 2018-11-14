@@ -786,6 +786,9 @@ func init() {
         "aws": {
           "$ref": "#/definitions/v1alpha1AWSStatus"
         },
+        "eks": {
+          "$ref": "#/definitions/v1alpha1EKSStatus"
+        },
         "sshKeyExternalID": {
           "type": "string"
         }
@@ -893,6 +896,23 @@ func init() {
             "$ref": "#/definitions/v1alpha1ReservedIP"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1EKSStatus": {
+      "properties": {
+        "roleArn": {
+          "type": "string"
+        },
+        "securityGroup": {
+          "type": "string"
+        },
+        "subnetID": {
+          "type": "string"
+        },
+        "vpcID": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -2538,6 +2558,9 @@ func init() {
         "aws": {
           "$ref": "#/definitions/v1alpha1AWSStatus"
         },
+        "eks": {
+          "$ref": "#/definitions/v1alpha1EKSStatus"
+        },
         "sshKeyExternalID": {
           "type": "string"
         }
@@ -2645,6 +2668,23 @@ func init() {
             "$ref": "#/definitions/v1alpha1ReservedIP"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1EKSStatus": {
+      "properties": {
+        "roleArn": {
+          "type": "string"
+        },
+        "securityGroup": {
+          "type": "string"
+        },
+        "subnetID": {
+          "type": "string"
+        },
+        "vpcID": {
+          "type": "string"
         }
       },
       "type": "object"

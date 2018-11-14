@@ -10,53 +10,27 @@
     },
     "v1alpha1ConduitUser": {
       "properties": {
-        "image": {
+        "avatar_url": {
           "type": "string"
         },
-        "is_admin": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "is_approved": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "is_bot": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "is_disabled": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "is_email_verified": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "is_mailing_list": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "phid": {
+        "email": {
           "type": "string"
         },
-        "preferences": {
-          "$ref": "#/definitions/v1alpha1Preferences"
-        },
-        "primary_email": {
+        "full_name": {
           "type": "string"
         },
-        "real_name": {
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "language": {
           "type": "string"
         },
-        "roles": {
+        "organizations": {
           "items": {
             "type": "string"
           },
           "type": "array"
-        },
-        "uri": {
-          "type": "string"
         },
         "user_name": {
           "type": "string"
@@ -79,20 +53,6 @@
       "properties": {
         "user": {
           "$ref": "#/definitions/v1alpha1ConduitUser"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1Preferences": {
-      "properties": {
-        "date_formate": {
-          "type": "string"
-        },
-        "time_format": {
-          "type": "string"
-        },
-        "time_zone": {
-          "type": "string"
         }
       },
       "type": "object"

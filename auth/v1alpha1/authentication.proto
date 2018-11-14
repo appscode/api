@@ -45,7 +45,6 @@ service Authentication {
 }
 
 message LoginRequest {
-  string namespace = 1;
   string username = 2;
   string password = 3;
   string token = 4;

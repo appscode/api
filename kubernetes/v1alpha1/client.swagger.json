@@ -2480,7 +2480,7 @@
       "type": "object"
     },
     "v1FlexVolumeSource": {
-      "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.",
+      "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an alpha feature and may change in future.",
       "properties": {
         "driver": {
           "description": "Driver is the name of the driver to use for this volume.",
@@ -2808,7 +2808,7 @@
         },
         "flexVolume": {
           "$ref": "#/definitions/v1FlexVolumeSource",
-          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.\n+optional"
+          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future.\n+optional"
         },
         "flocker": {
           "$ref": "#/definitions/v1FlockerVolumeSource",
@@ -3302,7 +3302,7 @@
         },
         "flexVolume": {
           "$ref": "#/definitions/v1FlexVolumeSource",
-          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.\n+optional"
+          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future.\n+optional"
         },
         "flocker": {
           "$ref": "#/definitions/v1FlockerVolumeSource",
