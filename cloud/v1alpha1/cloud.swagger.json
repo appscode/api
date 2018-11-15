@@ -814,6 +814,9 @@
       "properties": {
         "credential": {
           "$ref": "#/definitions/v1alpha1Credential"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1833,30 +1836,6 @@
         "tags": [
           "Credentials"
         ]
-      },
-      "post": {
-        "operationId": "Create",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1alpha1CredentialCreateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1alpha1CredentialCreateResponse"
-            }
-          }
-        },
-        "tags": [
-          "Credentials"
-        ]
       }
     },
     "/_appscode/api/cloud/v1alpha1/credentials/{credential.metadata.name}/json": {
@@ -1929,6 +1908,38 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/v1alpha1CredentialDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Credentials"
+        ]
+      }
+    },
+    "/_appscode/api/cloud/v1alpha1/{owner}/credentials/json": {
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1CredentialCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1CredentialCreateResponse"
             }
           }
         },

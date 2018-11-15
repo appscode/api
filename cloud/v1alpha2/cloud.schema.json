@@ -479,79 +479,6 @@
       },
       "type": "object"
     },
-    "v1alpha1ClusterApplyRequest": {
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1ClusterClientConfigRequest": {
-      "properties": {
-        "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1ClusterCreateRequest": {
-      "properties": {
-        "cluster": {
-          "$ref": "#/definitions/v1alpha1Cluster"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1ClusterDeleteRequest": {
-      "properties": {
-        "deleteDynamicVolumes": {
-          "type": "boolean"
-        },
-        "force": {
-          "type": "boolean"
-        },
-        "keepLodabalancers": {
-          "type": "boolean"
-        },
-        "name": {
-          "type": "string"
-        },
-        "releaseReservedIP": {
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1ClusterDescribeRequest": {
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1ClusterListRequest": {
-      "properties": {
-        "status": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1ClusterMetadataRequest": {
-      "properties": {
-        "uid": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1alpha1ClusterSpec": {
       "properties": {
         "api": {
@@ -643,14 +570,6 @@
       },
       "type": "object"
     },
-    "v1alpha1ClusterUpdateRequest": {
-      "properties": {
-        "cluster": {
-          "$ref": "#/definitions/v1alpha1Cluster"
-        }
-      },
-      "type": "object"
-    },
     "v1alpha1Credential": {
       "properties": {
         "metadata": {
@@ -658,45 +577,6 @@
         },
         "spec": {
           "$ref": "#/definitions/v1alpha1CredentialSpec"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1CredentialCreateRequest": {
-      "properties": {
-        "credential": {
-          "$ref": "#/definitions/v1alpha1Credential"
-        },
-        "owner": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1CredentialDeleteRequest": {
-      "properties": {
-        "delete_dynamic_volumes": {
-          "type": "boolean"
-        },
-        "force": {
-          "type": "boolean"
-        },
-        "keep_lodabalancers": {
-          "type": "boolean"
-        },
-        "name": {
-          "type": "string"
-        },
-        "release_reserved_ip": {
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1CredentialDescribeRequest": {
-      "properties": {
-        "name": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -711,14 +591,6 @@
         },
         "provider": {
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1CredentialUpdateRequest": {
-      "properties": {
-        "credential": {
-          "$ref": "#/definitions/v1alpha1Credential"
         }
       },
       "type": "object"
@@ -829,50 +701,6 @@
       },
       "type": "object"
     },
-    "v1alpha1NodeGroupCreateRequest": {
-      "properties": {
-        "nodeGroup": {
-          "$ref": "#/definitions/v1alpha1NodeGroup"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1NodeGroupDeleteRequest": {
-      "properties": {
-        "clusterName": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1NodeGroupDescribeRequest": {
-      "properties": {
-        "clusterName": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1NodeGroupListRequest": {
-      "properties": {
-        "clusterName": {
-          "type": "string"
-        },
-        "status": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
     "v1alpha1NodeGroupSpec": {
       "properties": {
         "nodes": {
@@ -895,14 +723,6 @@
         "observedGeneration": {
           "title": "ObservedGeneration reflects the generation of the most recently observed node group.\n+optional",
           "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "v1alpha1NodeGroupUpdateRequest": {
-      "properties": {
-        "nodeGroup": {
-          "$ref": "#/definitions/v1alpha1NodeGroup"
         }
       },
       "type": "object"
@@ -931,7 +751,185 @@
       },
       "type": "object"
     },
-    "v1alpha1SSHConfigGetRequest": {
+    "v1alpha2ClusterApplyRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2ClusterClientConfigRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2ClusterCreateRequest": {
+      "properties": {
+        "cluster": {
+          "$ref": "#/definitions/v1alpha1Cluster"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2ClusterDeleteRequest": {
+      "properties": {
+        "deleteDynamicVolumes": {
+          "type": "boolean"
+        },
+        "force": {
+          "type": "boolean"
+        },
+        "keepLodabalancers": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "releaseReservedIP": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2ClusterDescribeRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2ClusterListRequest": {
+      "properties": {
+        "status": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2ClusterMetadataRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2ClusterUpdateRequest": {
+      "properties": {
+        "cluster": {
+          "$ref": "#/definitions/v1alpha1Cluster"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2CredentialCreateRequest": {
+      "properties": {
+        "credential": {
+          "$ref": "#/definitions/v1alpha1Credential"
+        },
+        "owner": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2CredentialDeleteRequest": {
+      "properties": {
+        "delete_dynamic_volumes": {
+          "type": "boolean"
+        },
+        "force": {
+          "type": "boolean"
+        },
+        "keep_lodabalancers": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "release_reserved_ip": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2CredentialDescribeRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2CredentialUpdateRequest": {
+      "properties": {
+        "credential": {
+          "$ref": "#/definitions/v1alpha1Credential"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2NodeGroupCreateRequest": {
+      "properties": {
+        "nodeGroup": {
+          "$ref": "#/definitions/v1alpha1NodeGroup"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2NodeGroupDeleteRequest": {
+      "properties": {
+        "clusterName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2NodeGroupDescribeRequest": {
+      "properties": {
+        "clusterName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2NodeGroupListRequest": {
+      "properties": {
+        "clusterName": {
+          "type": "string"
+        },
+        "status": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2NodeGroupUpdateRequest": {
+      "properties": {
+        "nodeGroup": {
+          "$ref": "#/definitions/v1alpha1NodeGroup"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2SSHConfigGetRequest": {
       "properties": {
         "clusterName": {
           "type": "string"

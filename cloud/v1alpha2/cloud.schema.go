@@ -1,4 +1,4 @@
-package v1alpha1
+package v1alpha2
 
 // Auto-generated. DO NOT EDIT.
 import (
@@ -7,6 +7,7 @@ import (
 )
 
 var sSHConfigGetRequestSchema *gojsonschema.Schema
+var credentialDescribeRequestSchema *gojsonschema.Schema
 var clusterApplyRequestSchema *gojsonschema.Schema
 var credentialCreateRequestSchema *gojsonschema.Schema
 var nodeGroupDeleteRequestSchema *gojsonschema.Schema
@@ -14,16 +15,15 @@ var clusterUpdateRequestSchema *gojsonschema.Schema
 var nodeGroupListRequestSchema *gojsonschema.Schema
 var clusterDeleteRequestSchema *gojsonschema.Schema
 var nodeGroupDescribeRequestSchema *gojsonschema.Schema
-var credentialDescribeRequestSchema *gojsonschema.Schema
+var nodeGroupCreateRequestSchema *gojsonschema.Schema
 var credentialDeleteRequestSchema *gojsonschema.Schema
 var clusterDescribeRequestSchema *gojsonschema.Schema
 var clusterListRequestSchema *gojsonschema.Schema
-var clusterClientConfigRequestSchema *gojsonschema.Schema
+var clusterMetadataRequestSchema *gojsonschema.Schema
 var nodeGroupUpdateRequestSchema *gojsonschema.Schema
-var nodeGroupCreateRequestSchema *gojsonschema.Schema
 var credentialUpdateRequestSchema *gojsonschema.Schema
 var clusterCreateRequestSchema *gojsonschema.Schema
-var clusterMetadataRequestSchema *gojsonschema.Schema
+var clusterClientConfigRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
@@ -34,6 +34,18 @@ func init() {
       "type": "string"
     },
     "nodeName": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	credentialDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
       "type": "string"
     }
   },
@@ -1077,84 +1089,7 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	credentialDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "name": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	credentialDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "delete_dynamic_volumes": {
-      "type": "boolean"
-    },
-    "force": {
-      "type": "boolean"
-    },
-    "keep_lodabalancers": {
-      "type": "boolean"
-    },
-    "name": {
-      "type": "string"
-    },
-    "release_reserved_ip": {
-      "type": "boolean"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	clusterDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "name": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	clusterListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "status": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	clusterClientConfigRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	nodeGroupUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	nodeGroupCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "apismetav1ObjectMeta": {
@@ -1499,7 +1434,70 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	nodeGroupCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	credentialDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "delete_dynamic_volumes": {
+      "type": "boolean"
+    },
+    "force": {
+      "type": "boolean"
+    },
+    "keep_lodabalancers": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string"
+    },
+    "release_reserved_ip": {
+      "type": "boolean"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	clusterDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	clusterListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "status": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	clusterMetadataRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "uid": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	nodeGroupUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
     "apismetav1ObjectMeta": {
@@ -2792,10 +2790,10 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	clusterMetadataRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	clusterClientConfigRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "uid": {
+    "name": {
       "type": "string"
     }
   },
@@ -2810,6 +2808,11 @@ func (m *SSHConfigGetRequest) Valid() (*gojsonschema.Result, error) {
 	return sSHConfigGetRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SSHConfigGetRequest) IsRequest() {}
+
+func (m *CredentialDescribeRequest) Valid() (*gojsonschema.Result, error) {
+	return credentialDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *CredentialDescribeRequest) IsRequest() {}
 
 func (m *ClusterApplyRequest) Valid() (*gojsonschema.Result, error) {
 	return clusterApplyRequestSchema.Validate(gojsonschema.NewGoLoader(m))
@@ -2846,10 +2849,10 @@ func (m *NodeGroupDescribeRequest) Valid() (*gojsonschema.Result, error) {
 }
 func (m *NodeGroupDescribeRequest) IsRequest() {}
 
-func (m *CredentialDescribeRequest) Valid() (*gojsonschema.Result, error) {
-	return credentialDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *NodeGroupCreateRequest) Valid() (*gojsonschema.Result, error) {
+	return nodeGroupCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *CredentialDescribeRequest) IsRequest() {}
+func (m *NodeGroupCreateRequest) IsRequest() {}
 
 func (m *CredentialDeleteRequest) Valid() (*gojsonschema.Result, error) {
 	return credentialDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
@@ -2866,20 +2869,15 @@ func (m *ClusterListRequest) Valid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterListRequest) IsRequest() {}
 
-func (m *ClusterClientConfigRequest) Valid() (*gojsonschema.Result, error) {
-	return clusterClientConfigRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *ClusterMetadataRequest) Valid() (*gojsonschema.Result, error) {
+	return clusterMetadataRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterClientConfigRequest) IsRequest() {}
+func (m *ClusterMetadataRequest) IsRequest() {}
 
 func (m *NodeGroupUpdateRequest) Valid() (*gojsonschema.Result, error) {
 	return nodeGroupUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *NodeGroupUpdateRequest) IsRequest() {}
-
-func (m *NodeGroupCreateRequest) Valid() (*gojsonschema.Result, error) {
-	return nodeGroupCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *NodeGroupCreateRequest) IsRequest() {}
 
 func (m *CredentialUpdateRequest) Valid() (*gojsonschema.Result, error) {
 	return credentialUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
@@ -2891,8 +2889,8 @@ func (m *ClusterCreateRequest) Valid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterCreateRequest) IsRequest() {}
 
-func (m *ClusterMetadataRequest) Valid() (*gojsonschema.Result, error) {
-	return clusterMetadataRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *ClusterClientConfigRequest) Valid() (*gojsonschema.Result, error) {
+	return clusterClientConfigRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ClusterMetadataRequest) IsRequest() {}
+func (m *ClusterClientConfigRequest) IsRequest() {}
 

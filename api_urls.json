@@ -41,6 +41,12 @@
       "url": "/_appscode/api/auth/v1alpha1/projects/json"
     }
   },
+  "/_appscode/api/cloud/v1alpha1/*/credentials/json": {
+    "post": {
+      "file": "/cloud/v1alpha1/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha1/{owner}/credentials/json"
+    }
+  },
   "/_appscode/api/cloud/v1alpha1/buckets/json": {
     "get": {
       "file": "/cloud/v1alpha1/metadata.proto",
@@ -165,10 +171,6 @@
     "get": {
       "file": "/cloud/v1alpha1/cloud.proto",
       "url": "/_appscode/api/cloud/v1alpha1/credentials/json"
-    },
-    "post": {
-      "file": "/cloud/v1alpha1/cloud.proto",
-      "url": "/_appscode/api/cloud/v1alpha1/credentials/json"
     }
   },
   "/_appscode/api/cloud/v1alpha1/disks/*/json": {
@@ -201,6 +203,150 @@
     "get": {
       "file": "/cloud/v1alpha1/metadata.proto",
       "url": "/_appscode/api/cloud/v1alpha1/regions/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/*/credentials/json": {
+    "post": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/{owner}/credentials/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/buckets/json": {
+    "get": {
+      "file": "/cloud/v1alpha2/metadata.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/buckets/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/certificates/*/actions/deploy/json": {
+    "put": {
+      "file": "/cloud/v1alpha2/certificate.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/certificates/{uid}/actions/deploy/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/certificates/*/actions/obtain/json": {
+    "put": {
+      "file": "/cloud/v1alpha2/certificate.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/certificates/{name}/actions/obtain/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/certificates/*/json": {
+    "delete": {
+      "file": "/cloud/v1alpha2/certificate.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/certificates/{uid}/json"
+    },
+    "get": {
+      "file": "/cloud/v1alpha2/certificate.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/certificates/{uid}/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/certificates/json": {
+    "get": {
+      "file": "/cloud/v1alpha2/certificate.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/certificates/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/clusters/*/actions/apply/json": {
+    "put": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{name}/actions/apply/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/clusters/*/client-config/json": {
+    "get": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{name}/client-config/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/clusters/*/json": {
+    "delete": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{name}/json"
+    },
+    "get": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{name}/json"
+    },
+    "put": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{cluster.metadata.name}/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/clusters/*/metadata/json": {
+    "get": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{uid}/metadata/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/clusters/*/nodegroups/*/json": {
+    "delete": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/nodegroups/{name}/json"
+    },
+    "get": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/nodegroups/{name}/json"
+    },
+    "put": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{nodeGroup.metadata.clusterName}/nodegroups/{nodeGroup.metadata.name}/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/clusters/*/nodegroups/json": {
+    "get": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/nodegroups/json"
+    },
+    "post": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{nodeGroup.metadata.clusterName}/nodegroups/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/clusters/*/ssh/json": {
+    "get": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/ssh/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/clusters/json": {
+    "get": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/json"
+    },
+    "post": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/clusters/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/credentials/*/json": {
+    "delete": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/credentials/{name}/json"
+    },
+    "get": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/credentials/{name}/json"
+    },
+    "put": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/credentials/{credential.metadata.name}/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/credentials/json": {
+    "get": {
+      "file": "/cloud/v1alpha2/cloud.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/credentials/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/regions/*/zones/json": {
+    "get": {
+      "file": "/cloud/v1alpha2/metadata.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/regions/{region}/zones/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/regions/json": {
+    "get": {
+      "file": "/cloud/v1alpha2/metadata.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/regions/json"
     }
   },
   "/_appscode/api/health/json": {
