@@ -3,16 +3,15 @@
 
 package v1alpha1
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
-import _ "google.golang.org/genproto/googleapis/api/annotations"
-import _ "github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis/appscode/api"
-import appscode_dtypes "appscode.com/api/dtypes"
-
 import (
-	context "golang.org/x/net/context"
+	dtypes "appscode.com/api/dtypes"
+	context "context"
+	fmt "fmt"
+	proto "github.com/golang/protobuf/proto"
+	_ "github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis/appscode/api"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -20,14 +19,43 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type ConduitWhoAmIResponse struct {
-	User *ConduitUser `protobuf:"bytes,1,opt,name=user" json:"user,omitempty"`
+	User                 *ConduitUser `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *ConduitWhoAmIResponse) Reset()                    { *m = ConduitWhoAmIResponse{} }
-func (m *ConduitWhoAmIResponse) String() string            { return proto.CompactTextString(m) }
-func (*ConduitWhoAmIResponse) ProtoMessage()               {}
-func (*ConduitWhoAmIResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (m *ConduitWhoAmIResponse) Reset()         { *m = ConduitWhoAmIResponse{} }
+func (m *ConduitWhoAmIResponse) String() string { return proto.CompactTextString(m) }
+func (*ConduitWhoAmIResponse) ProtoMessage()    {}
+func (*ConduitWhoAmIResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_76b5d3f9df18a73c, []int{0}
+}
+
+func (m *ConduitWhoAmIResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ConduitWhoAmIResponse.Unmarshal(m, b)
+}
+func (m *ConduitWhoAmIResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ConduitWhoAmIResponse.Marshal(b, m, deterministic)
+}
+func (m *ConduitWhoAmIResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConduitWhoAmIResponse.Merge(m, src)
+}
+func (m *ConduitWhoAmIResponse) XXX_Size() int {
+	return xxx_messageInfo_ConduitWhoAmIResponse.Size(m)
+}
+func (m *ConduitWhoAmIResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ConduitWhoAmIResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ConduitWhoAmIResponse proto.InternalMessageInfo
 
 func (m *ConduitWhoAmIResponse) GetUser() *ConduitUser {
 	if m != nil {
@@ -37,13 +65,36 @@ func (m *ConduitWhoAmIResponse) GetUser() *ConduitUser {
 }
 
 type ConduitUsersResponse struct {
-	Users []*ConduitUser `protobuf:"bytes,1,rep,name=users" json:"users,omitempty"`
+	Users                []*ConduitUser `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
-func (m *ConduitUsersResponse) Reset()                    { *m = ConduitUsersResponse{} }
-func (m *ConduitUsersResponse) String() string            { return proto.CompactTextString(m) }
-func (*ConduitUsersResponse) ProtoMessage()               {}
-func (*ConduitUsersResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (m *ConduitUsersResponse) Reset()         { *m = ConduitUsersResponse{} }
+func (m *ConduitUsersResponse) String() string { return proto.CompactTextString(m) }
+func (*ConduitUsersResponse) ProtoMessage()    {}
+func (*ConduitUsersResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_76b5d3f9df18a73c, []int{1}
+}
+
+func (m *ConduitUsersResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ConduitUsersResponse.Unmarshal(m, b)
+}
+func (m *ConduitUsersResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ConduitUsersResponse.Marshal(b, m, deterministic)
+}
+func (m *ConduitUsersResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConduitUsersResponse.Merge(m, src)
+}
+func (m *ConduitUsersResponse) XXX_Size() int {
+	return xxx_messageInfo_ConduitUsersResponse.Size(m)
+}
+func (m *ConduitUsersResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ConduitUsersResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ConduitUsersResponse proto.InternalMessageInfo
 
 func (m *ConduitUsersResponse) GetUsers() []*ConduitUser {
 	if m != nil {
@@ -53,19 +104,42 @@ func (m *ConduitUsersResponse) GetUsers() []*ConduitUser {
 }
 
 type ConduitUser struct {
-	Id            int64    `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	UserName      string   `protobuf:"bytes,2,opt,name=user_name,json=userName" json:"user_name,omitempty"`
-	FullName      string   `protobuf:"bytes,3,opt,name=full_name,json=fullName" json:"full_name,omitempty"`
-	Email         string   `protobuf:"bytes,4,opt,name=email" json:"email,omitempty"`
-	AvatarUrl     string   `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl" json:"avatar_url,omitempty"`
-	Language      string   `protobuf:"bytes,6,opt,name=language" json:"language,omitempty"`
-	Organizations []string `protobuf:"bytes,7,rep,name=organizations" json:"organizations,omitempty"`
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserName             string   `protobuf:"bytes,2,opt,name=user_name,json=userName,proto3" json:"user_name,omitempty"`
+	FullName             string   `protobuf:"bytes,3,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
+	Email                string   `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	AvatarUrl            string   `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
+	Language             string   `protobuf:"bytes,6,opt,name=language,proto3" json:"language,omitempty"`
+	Organizations        []string `protobuf:"bytes,7,rep,name=organizations,proto3" json:"organizations,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ConduitUser) Reset()                    { *m = ConduitUser{} }
-func (m *ConduitUser) String() string            { return proto.CompactTextString(m) }
-func (*ConduitUser) ProtoMessage()               {}
-func (*ConduitUser) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+func (m *ConduitUser) Reset()         { *m = ConduitUser{} }
+func (m *ConduitUser) String() string { return proto.CompactTextString(m) }
+func (*ConduitUser) ProtoMessage()    {}
+func (*ConduitUser) Descriptor() ([]byte, []int) {
+	return fileDescriptor_76b5d3f9df18a73c, []int{2}
+}
+
+func (m *ConduitUser) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ConduitUser.Unmarshal(m, b)
+}
+func (m *ConduitUser) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ConduitUser.Marshal(b, m, deterministic)
+}
+func (m *ConduitUser) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConduitUser.Merge(m, src)
+}
+func (m *ConduitUser) XXX_Size() int {
+	return xxx_messageInfo_ConduitUser.Size(m)
+}
+func (m *ConduitUser) XXX_DiscardUnknown() {
+	xxx_messageInfo_ConduitUser.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ConduitUser proto.InternalMessageInfo
 
 func (m *ConduitUser) GetId() int64 {
 	if m != nil {
@@ -122,118 +196,9 @@ func init() {
 	proto.RegisterType((*ConduitUser)(nil), "appscode.auth.v1alpha1.ConduitUser")
 }
 
-// Reference imports to suppress errors if they are not otherwise used.
-var _ context.Context
-var _ grpc.ClientConn
+func init() { proto.RegisterFile("conduit.proto", fileDescriptor_76b5d3f9df18a73c) }
 
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
-
-// Client API for Conduit service
-
-type ConduitClient interface {
-	// This rpc is used to check a valid user from other applications.
-	WhoAmI(ctx context.Context, in *appscode_dtypes.VoidRequest, opts ...grpc.CallOption) (*ConduitWhoAmIResponse, error)
-	// appctl used this to validates the user token with phabricator.
-	Users(ctx context.Context, in *appscode_dtypes.VoidRequest, opts ...grpc.CallOption) (*ConduitUsersResponse, error)
-}
-
-type conduitClient struct {
-	cc *grpc.ClientConn
-}
-
-func NewConduitClient(cc *grpc.ClientConn) ConduitClient {
-	return &conduitClient{cc}
-}
-
-func (c *conduitClient) WhoAmI(ctx context.Context, in *appscode_dtypes.VoidRequest, opts ...grpc.CallOption) (*ConduitWhoAmIResponse, error) {
-	out := new(ConduitWhoAmIResponse)
-	err := grpc.Invoke(ctx, "/appscode.auth.v1alpha1.Conduit/WhoAmI", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *conduitClient) Users(ctx context.Context, in *appscode_dtypes.VoidRequest, opts ...grpc.CallOption) (*ConduitUsersResponse, error) {
-	out := new(ConduitUsersResponse)
-	err := grpc.Invoke(ctx, "/appscode.auth.v1alpha1.Conduit/Users", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// Server API for Conduit service
-
-type ConduitServer interface {
-	// This rpc is used to check a valid user from other applications.
-	WhoAmI(context.Context, *appscode_dtypes.VoidRequest) (*ConduitWhoAmIResponse, error)
-	// appctl used this to validates the user token with phabricator.
-	Users(context.Context, *appscode_dtypes.VoidRequest) (*ConduitUsersResponse, error)
-}
-
-func RegisterConduitServer(s *grpc.Server, srv ConduitServer) {
-	s.RegisterService(&_Conduit_serviceDesc, srv)
-}
-
-func _Conduit_WhoAmI_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(appscode_dtypes.VoidRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ConduitServer).WhoAmI(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/appscode.auth.v1alpha1.Conduit/WhoAmI",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConduitServer).WhoAmI(ctx, req.(*appscode_dtypes.VoidRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Conduit_Users_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(appscode_dtypes.VoidRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ConduitServer).Users(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/appscode.auth.v1alpha1.Conduit/Users",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConduitServer).Users(ctx, req.(*appscode_dtypes.VoidRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-var _Conduit_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "appscode.auth.v1alpha1.Conduit",
-	HandlerType: (*ConduitServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "WhoAmI",
-			Handler:    _Conduit_WhoAmI_Handler,
-		},
-		{
-			MethodName: "Users",
-			Handler:    _Conduit_Users_Handler,
-		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "conduit.proto",
-}
-
-func init() { proto.RegisterFile("conduit.proto", fileDescriptor1) }
-
-var fileDescriptor1 = []byte{
+var fileDescriptor_76b5d3f9df18a73c = []byte{
 	// 453 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0x4d, 0x6e, 0xd3, 0x40,
 	0x18, 0xd5, 0x38, 0x4d, 0x9a, 0x7c, 0xa5, 0x2c, 0x46, 0x05, 0x59, 0xa1, 0x54, 0x91, 0xcb, 0x22,
@@ -264,4 +229,113 @@ var fileDescriptor1 = []byte{
 	0xc6, 0xc6, 0x4a, 0xb4, 0xb7, 0x9e, 0x5d, 0x5b, 0xae, 0x9d, 0x35, 0xf1, 0x9e, 0x91, 0xb7, 0xfd,
 	0x15, 0xf3, 0xae, 0xe7, 0x12, 0xff, 0xe0, 0x6f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xc5, 0x0e, 0xd5,
 	0xe5, 0x7d, 0x03, 0x00, 0x00,
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// ConduitClient is the client API for Conduit service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type ConduitClient interface {
+	// This rpc is used to check a valid user from other applications.
+	WhoAmI(ctx context.Context, in *dtypes.VoidRequest, opts ...grpc.CallOption) (*ConduitWhoAmIResponse, error)
+	// appctl used this to validates the user token with phabricator.
+	Users(ctx context.Context, in *dtypes.VoidRequest, opts ...grpc.CallOption) (*ConduitUsersResponse, error)
+}
+
+type conduitClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewConduitClient(cc *grpc.ClientConn) ConduitClient {
+	return &conduitClient{cc}
+}
+
+func (c *conduitClient) WhoAmI(ctx context.Context, in *dtypes.VoidRequest, opts ...grpc.CallOption) (*ConduitWhoAmIResponse, error) {
+	out := new(ConduitWhoAmIResponse)
+	err := c.cc.Invoke(ctx, "/appscode.auth.v1alpha1.Conduit/WhoAmI", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *conduitClient) Users(ctx context.Context, in *dtypes.VoidRequest, opts ...grpc.CallOption) (*ConduitUsersResponse, error) {
+	out := new(ConduitUsersResponse)
+	err := c.cc.Invoke(ctx, "/appscode.auth.v1alpha1.Conduit/Users", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ConduitServer is the server API for Conduit service.
+type ConduitServer interface {
+	// This rpc is used to check a valid user from other applications.
+	WhoAmI(context.Context, *dtypes.VoidRequest) (*ConduitWhoAmIResponse, error)
+	// appctl used this to validates the user token with phabricator.
+	Users(context.Context, *dtypes.VoidRequest) (*ConduitUsersResponse, error)
+}
+
+func RegisterConduitServer(s *grpc.Server, srv ConduitServer) {
+	s.RegisterService(&_Conduit_serviceDesc, srv)
+}
+
+func _Conduit_WhoAmI_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(dtypes.VoidRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConduitServer).WhoAmI(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/appscode.auth.v1alpha1.Conduit/WhoAmI",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConduitServer).WhoAmI(ctx, req.(*dtypes.VoidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Conduit_Users_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(dtypes.VoidRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConduitServer).Users(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/appscode.auth.v1alpha1.Conduit/Users",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConduitServer).Users(ctx, req.(*dtypes.VoidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _Conduit_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "appscode.auth.v1alpha1.Conduit",
+	HandlerType: (*ConduitServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "WhoAmI",
+			Handler:    _Conduit_WhoAmI_Handler,
+		},
+		{
+			MethodName: "Users",
+			Handler:    _Conduit_Users_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "conduit.proto",
 }

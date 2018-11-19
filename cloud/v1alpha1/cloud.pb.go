@@ -3,18 +3,17 @@
 
 package v1alpha1
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
-import _ "google.golang.org/genproto/googleapis/api/annotations"
-import _ "github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis/appscode/api"
-import appscode_dtypes "appscode.com/api/dtypes"
-import appscode_version "appscode.com/api/version"
-import github_com_pharmer_pharmer_apis_v1alpha1 "github.com/pharmer/pharmer/apis/v1alpha1"
-
 import (
-	context "golang.org/x/net/context"
+	dtypes "appscode.com/api/dtypes"
+	version "appscode.com/api/version"
+	context "context"
+	fmt "fmt"
+	proto "github.com/golang/protobuf/proto"
+	_ "github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis/appscode/api"
+	v1alpha1 "github.com/pharmer/pharmer/apis/v1alpha1"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -22,16 +21,45 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type CredentialListResponse struct {
-	Credentials []*github_com_pharmer_pharmer_apis_v1alpha1.Credential `protobuf:"bytes,1,rep,name=credentials" json:"credentials,omitempty"`
+	Credentials          []*v1alpha1.Credential `protobuf:"bytes,1,rep,name=credentials,proto3" json:"credentials,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
-func (m *CredentialListResponse) Reset()                    { *m = CredentialListResponse{} }
-func (m *CredentialListResponse) String() string            { return proto.CompactTextString(m) }
-func (*CredentialListResponse) ProtoMessage()               {}
-func (*CredentialListResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (m *CredentialListResponse) Reset()         { *m = CredentialListResponse{} }
+func (m *CredentialListResponse) String() string { return proto.CompactTextString(m) }
+func (*CredentialListResponse) ProtoMessage()    {}
+func (*CredentialListResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{0}
+}
 
-func (m *CredentialListResponse) GetCredentials() []*github_com_pharmer_pharmer_apis_v1alpha1.Credential {
+func (m *CredentialListResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CredentialListResponse.Unmarshal(m, b)
+}
+func (m *CredentialListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CredentialListResponse.Marshal(b, m, deterministic)
+}
+func (m *CredentialListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CredentialListResponse.Merge(m, src)
+}
+func (m *CredentialListResponse) XXX_Size() int {
+	return xxx_messageInfo_CredentialListResponse.Size(m)
+}
+func (m *CredentialListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CredentialListResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CredentialListResponse proto.InternalMessageInfo
+
+func (m *CredentialListResponse) GetCredentials() []*v1alpha1.Credential {
 	if m != nil {
 		return m.Credentials
 	}
@@ -39,13 +67,36 @@ func (m *CredentialListResponse) GetCredentials() []*github_com_pharmer_pharmer_
 }
 
 type CredentialDescribeRequest struct {
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CredentialDescribeRequest) Reset()                    { *m = CredentialDescribeRequest{} }
-func (m *CredentialDescribeRequest) String() string            { return proto.CompactTextString(m) }
-func (*CredentialDescribeRequest) ProtoMessage()               {}
-func (*CredentialDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (m *CredentialDescribeRequest) Reset()         { *m = CredentialDescribeRequest{} }
+func (m *CredentialDescribeRequest) String() string { return proto.CompactTextString(m) }
+func (*CredentialDescribeRequest) ProtoMessage()    {}
+func (*CredentialDescribeRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{1}
+}
+
+func (m *CredentialDescribeRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CredentialDescribeRequest.Unmarshal(m, b)
+}
+func (m *CredentialDescribeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CredentialDescribeRequest.Marshal(b, m, deterministic)
+}
+func (m *CredentialDescribeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CredentialDescribeRequest.Merge(m, src)
+}
+func (m *CredentialDescribeRequest) XXX_Size() int {
+	return xxx_messageInfo_CredentialDescribeRequest.Size(m)
+}
+func (m *CredentialDescribeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CredentialDescribeRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CredentialDescribeRequest proto.InternalMessageInfo
 
 func (m *CredentialDescribeRequest) GetName() string {
 	if m != nil {
@@ -55,15 +106,38 @@ func (m *CredentialDescribeRequest) GetName() string {
 }
 
 type CredentialDescribeResponse struct {
-	Credential *github_com_pharmer_pharmer_apis_v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential" json:"credential,omitempty"`
+	Credential           *v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential,proto3" json:"credential,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CredentialDescribeResponse) Reset()                    { *m = CredentialDescribeResponse{} }
-func (m *CredentialDescribeResponse) String() string            { return proto.CompactTextString(m) }
-func (*CredentialDescribeResponse) ProtoMessage()               {}
-func (*CredentialDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+func (m *CredentialDescribeResponse) Reset()         { *m = CredentialDescribeResponse{} }
+func (m *CredentialDescribeResponse) String() string { return proto.CompactTextString(m) }
+func (*CredentialDescribeResponse) ProtoMessage()    {}
+func (*CredentialDescribeResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{2}
+}
 
-func (m *CredentialDescribeResponse) GetCredential() *github_com_pharmer_pharmer_apis_v1alpha1.Credential {
+func (m *CredentialDescribeResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CredentialDescribeResponse.Unmarshal(m, b)
+}
+func (m *CredentialDescribeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CredentialDescribeResponse.Marshal(b, m, deterministic)
+}
+func (m *CredentialDescribeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CredentialDescribeResponse.Merge(m, src)
+}
+func (m *CredentialDescribeResponse) XXX_Size() int {
+	return xxx_messageInfo_CredentialDescribeResponse.Size(m)
+}
+func (m *CredentialDescribeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CredentialDescribeResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CredentialDescribeResponse proto.InternalMessageInfo
+
+func (m *CredentialDescribeResponse) GetCredential() *v1alpha1.Credential {
 	if m != nil {
 		return m.Credential
 	}
@@ -71,16 +145,39 @@ func (m *CredentialDescribeResponse) GetCredential() *github_com_pharmer_pharmer
 }
 
 type CredentialCreateRequest struct {
-	Credential *github_com_pharmer_pharmer_apis_v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential" json:"credential,omitempty"`
-	Owner      string                                               `protobuf:"bytes,2,opt,name=owner" json:"owner,omitempty"`
+	Credential           *v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential,proto3" json:"credential,omitempty"`
+	Owner                string               `protobuf:"bytes,2,opt,name=owner,proto3" json:"owner,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CredentialCreateRequest) Reset()                    { *m = CredentialCreateRequest{} }
-func (m *CredentialCreateRequest) String() string            { return proto.CompactTextString(m) }
-func (*CredentialCreateRequest) ProtoMessage()               {}
-func (*CredentialCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
+func (m *CredentialCreateRequest) Reset()         { *m = CredentialCreateRequest{} }
+func (m *CredentialCreateRequest) String() string { return proto.CompactTextString(m) }
+func (*CredentialCreateRequest) ProtoMessage()    {}
+func (*CredentialCreateRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{3}
+}
 
-func (m *CredentialCreateRequest) GetCredential() *github_com_pharmer_pharmer_apis_v1alpha1.Credential {
+func (m *CredentialCreateRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CredentialCreateRequest.Unmarshal(m, b)
+}
+func (m *CredentialCreateRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CredentialCreateRequest.Marshal(b, m, deterministic)
+}
+func (m *CredentialCreateRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CredentialCreateRequest.Merge(m, src)
+}
+func (m *CredentialCreateRequest) XXX_Size() int {
+	return xxx_messageInfo_CredentialCreateRequest.Size(m)
+}
+func (m *CredentialCreateRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CredentialCreateRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CredentialCreateRequest proto.InternalMessageInfo
+
+func (m *CredentialCreateRequest) GetCredential() *v1alpha1.Credential {
 	if m != nil {
 		return m.Credential
 	}
@@ -95,15 +192,38 @@ func (m *CredentialCreateRequest) GetOwner() string {
 }
 
 type CredentialCreateResponse struct {
-	Credential *github_com_pharmer_pharmer_apis_v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential" json:"credential,omitempty"`
+	Credential           *v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential,proto3" json:"credential,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CredentialCreateResponse) Reset()                    { *m = CredentialCreateResponse{} }
-func (m *CredentialCreateResponse) String() string            { return proto.CompactTextString(m) }
-func (*CredentialCreateResponse) ProtoMessage()               {}
-func (*CredentialCreateResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
+func (m *CredentialCreateResponse) Reset()         { *m = CredentialCreateResponse{} }
+func (m *CredentialCreateResponse) String() string { return proto.CompactTextString(m) }
+func (*CredentialCreateResponse) ProtoMessage()    {}
+func (*CredentialCreateResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{4}
+}
 
-func (m *CredentialCreateResponse) GetCredential() *github_com_pharmer_pharmer_apis_v1alpha1.Credential {
+func (m *CredentialCreateResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CredentialCreateResponse.Unmarshal(m, b)
+}
+func (m *CredentialCreateResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CredentialCreateResponse.Marshal(b, m, deterministic)
+}
+func (m *CredentialCreateResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CredentialCreateResponse.Merge(m, src)
+}
+func (m *CredentialCreateResponse) XXX_Size() int {
+	return xxx_messageInfo_CredentialCreateResponse.Size(m)
+}
+func (m *CredentialCreateResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CredentialCreateResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CredentialCreateResponse proto.InternalMessageInfo
+
+func (m *CredentialCreateResponse) GetCredential() *v1alpha1.Credential {
 	if m != nil {
 		return m.Credential
 	}
@@ -111,15 +231,38 @@ func (m *CredentialCreateResponse) GetCredential() *github_com_pharmer_pharmer_a
 }
 
 type CredentialUpdateRequest struct {
-	Credential *github_com_pharmer_pharmer_apis_v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential" json:"credential,omitempty"`
+	Credential           *v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential,proto3" json:"credential,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CredentialUpdateRequest) Reset()                    { *m = CredentialUpdateRequest{} }
-func (m *CredentialUpdateRequest) String() string            { return proto.CompactTextString(m) }
-func (*CredentialUpdateRequest) ProtoMessage()               {}
-func (*CredentialUpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{5} }
+func (m *CredentialUpdateRequest) Reset()         { *m = CredentialUpdateRequest{} }
+func (m *CredentialUpdateRequest) String() string { return proto.CompactTextString(m) }
+func (*CredentialUpdateRequest) ProtoMessage()    {}
+func (*CredentialUpdateRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{5}
+}
 
-func (m *CredentialUpdateRequest) GetCredential() *github_com_pharmer_pharmer_apis_v1alpha1.Credential {
+func (m *CredentialUpdateRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CredentialUpdateRequest.Unmarshal(m, b)
+}
+func (m *CredentialUpdateRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CredentialUpdateRequest.Marshal(b, m, deterministic)
+}
+func (m *CredentialUpdateRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CredentialUpdateRequest.Merge(m, src)
+}
+func (m *CredentialUpdateRequest) XXX_Size() int {
+	return xxx_messageInfo_CredentialUpdateRequest.Size(m)
+}
+func (m *CredentialUpdateRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CredentialUpdateRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CredentialUpdateRequest proto.InternalMessageInfo
+
+func (m *CredentialUpdateRequest) GetCredential() *v1alpha1.Credential {
 	if m != nil {
 		return m.Credential
 	}
@@ -127,15 +270,38 @@ func (m *CredentialUpdateRequest) GetCredential() *github_com_pharmer_pharmer_ap
 }
 
 type CredentialUpdateResponse struct {
-	Credential *github_com_pharmer_pharmer_apis_v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential" json:"credential,omitempty"`
+	Credential           *v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential,proto3" json:"credential,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CredentialUpdateResponse) Reset()                    { *m = CredentialUpdateResponse{} }
-func (m *CredentialUpdateResponse) String() string            { return proto.CompactTextString(m) }
-func (*CredentialUpdateResponse) ProtoMessage()               {}
-func (*CredentialUpdateResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{6} }
+func (m *CredentialUpdateResponse) Reset()         { *m = CredentialUpdateResponse{} }
+func (m *CredentialUpdateResponse) String() string { return proto.CompactTextString(m) }
+func (*CredentialUpdateResponse) ProtoMessage()    {}
+func (*CredentialUpdateResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{6}
+}
 
-func (m *CredentialUpdateResponse) GetCredential() *github_com_pharmer_pharmer_apis_v1alpha1.Credential {
+func (m *CredentialUpdateResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CredentialUpdateResponse.Unmarshal(m, b)
+}
+func (m *CredentialUpdateResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CredentialUpdateResponse.Marshal(b, m, deterministic)
+}
+func (m *CredentialUpdateResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CredentialUpdateResponse.Merge(m, src)
+}
+func (m *CredentialUpdateResponse) XXX_Size() int {
+	return xxx_messageInfo_CredentialUpdateResponse.Size(m)
+}
+func (m *CredentialUpdateResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CredentialUpdateResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CredentialUpdateResponse proto.InternalMessageInfo
+
+func (m *CredentialUpdateResponse) GetCredential() *v1alpha1.Credential {
 	if m != nil {
 		return m.Credential
 	}
@@ -143,17 +309,40 @@ func (m *CredentialUpdateResponse) GetCredential() *github_com_pharmer_pharmer_a
 }
 
 type CredentialDeleteRequest struct {
-	Name                 string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	ReleaseReservedIp    bool   `protobuf:"varint,2,opt,name=release_reserved_ip,json=releaseReservedIp" json:"release_reserved_ip,omitempty"`
-	Force                bool   `protobuf:"varint,3,opt,name=force" json:"force,omitempty"`
-	KeepLodabalancers    bool   `protobuf:"varint,4,opt,name=keep_lodabalancers,json=keepLodabalancers" json:"keep_lodabalancers,omitempty"`
-	DeleteDynamicVolumes bool   `protobuf:"varint,5,opt,name=delete_dynamic_volumes,json=deleteDynamicVolumes" json:"delete_dynamic_volumes,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	ReleaseReservedIp    bool     `protobuf:"varint,2,opt,name=release_reserved_ip,json=releaseReservedIp,proto3" json:"release_reserved_ip,omitempty"`
+	Force                bool     `protobuf:"varint,3,opt,name=force,proto3" json:"force,omitempty"`
+	KeepLodabalancers    bool     `protobuf:"varint,4,opt,name=keep_lodabalancers,json=keepLodabalancers,proto3" json:"keep_lodabalancers,omitempty"`
+	DeleteDynamicVolumes bool     `protobuf:"varint,5,opt,name=delete_dynamic_volumes,json=deleteDynamicVolumes,proto3" json:"delete_dynamic_volumes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CredentialDeleteRequest) Reset()                    { *m = CredentialDeleteRequest{} }
-func (m *CredentialDeleteRequest) String() string            { return proto.CompactTextString(m) }
-func (*CredentialDeleteRequest) ProtoMessage()               {}
-func (*CredentialDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{7} }
+func (m *CredentialDeleteRequest) Reset()         { *m = CredentialDeleteRequest{} }
+func (m *CredentialDeleteRequest) String() string { return proto.CompactTextString(m) }
+func (*CredentialDeleteRequest) ProtoMessage()    {}
+func (*CredentialDeleteRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{7}
+}
+
+func (m *CredentialDeleteRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CredentialDeleteRequest.Unmarshal(m, b)
+}
+func (m *CredentialDeleteRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CredentialDeleteRequest.Marshal(b, m, deterministic)
+}
+func (m *CredentialDeleteRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CredentialDeleteRequest.Merge(m, src)
+}
+func (m *CredentialDeleteRequest) XXX_Size() int {
+	return xxx_messageInfo_CredentialDeleteRequest.Size(m)
+}
+func (m *CredentialDeleteRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CredentialDeleteRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CredentialDeleteRequest proto.InternalMessageInfo
 
 func (m *CredentialDeleteRequest) GetName() string {
 	if m != nil {
@@ -191,15 +380,38 @@ func (m *CredentialDeleteRequest) GetDeleteDynamicVolumes() bool {
 }
 
 type CredentialDeleteResponse struct {
-	Credential *github_com_pharmer_pharmer_apis_v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential" json:"credential,omitempty"`
+	Credential           *v1alpha1.Credential `protobuf:"bytes,1,opt,name=credential,proto3" json:"credential,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CredentialDeleteResponse) Reset()                    { *m = CredentialDeleteResponse{} }
-func (m *CredentialDeleteResponse) String() string            { return proto.CompactTextString(m) }
-func (*CredentialDeleteResponse) ProtoMessage()               {}
-func (*CredentialDeleteResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{8} }
+func (m *CredentialDeleteResponse) Reset()         { *m = CredentialDeleteResponse{} }
+func (m *CredentialDeleteResponse) String() string { return proto.CompactTextString(m) }
+func (*CredentialDeleteResponse) ProtoMessage()    {}
+func (*CredentialDeleteResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{8}
+}
 
-func (m *CredentialDeleteResponse) GetCredential() *github_com_pharmer_pharmer_apis_v1alpha1.Credential {
+func (m *CredentialDeleteResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CredentialDeleteResponse.Unmarshal(m, b)
+}
+func (m *CredentialDeleteResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CredentialDeleteResponse.Marshal(b, m, deterministic)
+}
+func (m *CredentialDeleteResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CredentialDeleteResponse.Merge(m, src)
+}
+func (m *CredentialDeleteResponse) XXX_Size() int {
+	return xxx_messageInfo_CredentialDeleteResponse.Size(m)
+}
+func (m *CredentialDeleteResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CredentialDeleteResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CredentialDeleteResponse proto.InternalMessageInfo
+
+func (m *CredentialDeleteResponse) GetCredential() *v1alpha1.Credential {
 	if m != nil {
 		return m.Credential
 	}
@@ -207,13 +419,36 @@ func (m *CredentialDeleteResponse) GetCredential() *github_com_pharmer_pharmer_a
 }
 
 type ClusterListRequest struct {
-	Status []string `protobuf:"bytes,1,rep,name=status" json:"status,omitempty"`
+	Status               []string `protobuf:"bytes,1,rep,name=status,proto3" json:"status,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ClusterListRequest) Reset()                    { *m = ClusterListRequest{} }
-func (m *ClusterListRequest) String() string            { return proto.CompactTextString(m) }
-func (*ClusterListRequest) ProtoMessage()               {}
-func (*ClusterListRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{9} }
+func (m *ClusterListRequest) Reset()         { *m = ClusterListRequest{} }
+func (m *ClusterListRequest) String() string { return proto.CompactTextString(m) }
+func (*ClusterListRequest) ProtoMessage()    {}
+func (*ClusterListRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{9}
+}
+
+func (m *ClusterListRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterListRequest.Unmarshal(m, b)
+}
+func (m *ClusterListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterListRequest.Marshal(b, m, deterministic)
+}
+func (m *ClusterListRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterListRequest.Merge(m, src)
+}
+func (m *ClusterListRequest) XXX_Size() int {
+	return xxx_messageInfo_ClusterListRequest.Size(m)
+}
+func (m *ClusterListRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterListRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterListRequest proto.InternalMessageInfo
 
 func (m *ClusterListRequest) GetStatus() []string {
 	if m != nil {
@@ -223,15 +458,38 @@ func (m *ClusterListRequest) GetStatus() []string {
 }
 
 type ClusterListResponse struct {
-	Clusters []*github_com_pharmer_pharmer_apis_v1alpha1.Cluster `protobuf:"bytes,1,rep,name=clusters" json:"clusters,omitempty"`
+	Clusters             []*v1alpha1.Cluster `protobuf:"bytes,1,rep,name=clusters,proto3" json:"clusters,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *ClusterListResponse) Reset()                    { *m = ClusterListResponse{} }
-func (m *ClusterListResponse) String() string            { return proto.CompactTextString(m) }
-func (*ClusterListResponse) ProtoMessage()               {}
-func (*ClusterListResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{10} }
+func (m *ClusterListResponse) Reset()         { *m = ClusterListResponse{} }
+func (m *ClusterListResponse) String() string { return proto.CompactTextString(m) }
+func (*ClusterListResponse) ProtoMessage()    {}
+func (*ClusterListResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{10}
+}
 
-func (m *ClusterListResponse) GetClusters() []*github_com_pharmer_pharmer_apis_v1alpha1.Cluster {
+func (m *ClusterListResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterListResponse.Unmarshal(m, b)
+}
+func (m *ClusterListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterListResponse.Marshal(b, m, deterministic)
+}
+func (m *ClusterListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterListResponse.Merge(m, src)
+}
+func (m *ClusterListResponse) XXX_Size() int {
+	return xxx_messageInfo_ClusterListResponse.Size(m)
+}
+func (m *ClusterListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterListResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterListResponse proto.InternalMessageInfo
+
+func (m *ClusterListResponse) GetClusters() []*v1alpha1.Cluster {
 	if m != nil {
 		return m.Clusters
 	}
@@ -239,13 +497,36 @@ func (m *ClusterListResponse) GetClusters() []*github_com_pharmer_pharmer_apis_v
 }
 
 type ClusterDescribeRequest struct {
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ClusterDescribeRequest) Reset()                    { *m = ClusterDescribeRequest{} }
-func (m *ClusterDescribeRequest) String() string            { return proto.CompactTextString(m) }
-func (*ClusterDescribeRequest) ProtoMessage()               {}
-func (*ClusterDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{11} }
+func (m *ClusterDescribeRequest) Reset()         { *m = ClusterDescribeRequest{} }
+func (m *ClusterDescribeRequest) String() string { return proto.CompactTextString(m) }
+func (*ClusterDescribeRequest) ProtoMessage()    {}
+func (*ClusterDescribeRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{11}
+}
+
+func (m *ClusterDescribeRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterDescribeRequest.Unmarshal(m, b)
+}
+func (m *ClusterDescribeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterDescribeRequest.Marshal(b, m, deterministic)
+}
+func (m *ClusterDescribeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterDescribeRequest.Merge(m, src)
+}
+func (m *ClusterDescribeRequest) XXX_Size() int {
+	return xxx_messageInfo_ClusterDescribeRequest.Size(m)
+}
+func (m *ClusterDescribeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterDescribeRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterDescribeRequest proto.InternalMessageInfo
 
 func (m *ClusterDescribeRequest) GetName() string {
 	if m != nil {
@@ -255,15 +536,38 @@ func (m *ClusterDescribeRequest) GetName() string {
 }
 
 type ClusterDescribeResponse struct {
-	Cluster *github_com_pharmer_pharmer_apis_v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
+	Cluster              *v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *ClusterDescribeResponse) Reset()                    { *m = ClusterDescribeResponse{} }
-func (m *ClusterDescribeResponse) String() string            { return proto.CompactTextString(m) }
-func (*ClusterDescribeResponse) ProtoMessage()               {}
-func (*ClusterDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{12} }
+func (m *ClusterDescribeResponse) Reset()         { *m = ClusterDescribeResponse{} }
+func (m *ClusterDescribeResponse) String() string { return proto.CompactTextString(m) }
+func (*ClusterDescribeResponse) ProtoMessage()    {}
+func (*ClusterDescribeResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{12}
+}
 
-func (m *ClusterDescribeResponse) GetCluster() *github_com_pharmer_pharmer_apis_v1alpha1.Cluster {
+func (m *ClusterDescribeResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterDescribeResponse.Unmarshal(m, b)
+}
+func (m *ClusterDescribeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterDescribeResponse.Marshal(b, m, deterministic)
+}
+func (m *ClusterDescribeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterDescribeResponse.Merge(m, src)
+}
+func (m *ClusterDescribeResponse) XXX_Size() int {
+	return xxx_messageInfo_ClusterDescribeResponse.Size(m)
+}
+func (m *ClusterDescribeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterDescribeResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterDescribeResponse proto.InternalMessageInfo
+
+func (m *ClusterDescribeResponse) GetCluster() *v1alpha1.Cluster {
 	if m != nil {
 		return m.Cluster
 	}
@@ -271,15 +575,38 @@ func (m *ClusterDescribeResponse) GetCluster() *github_com_pharmer_pharmer_apis_
 }
 
 type ClusterCreateRequest struct {
-	Cluster *github_com_pharmer_pharmer_apis_v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
+	Cluster              *v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *ClusterCreateRequest) Reset()                    { *m = ClusterCreateRequest{} }
-func (m *ClusterCreateRequest) String() string            { return proto.CompactTextString(m) }
-func (*ClusterCreateRequest) ProtoMessage()               {}
-func (*ClusterCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{13} }
+func (m *ClusterCreateRequest) Reset()         { *m = ClusterCreateRequest{} }
+func (m *ClusterCreateRequest) String() string { return proto.CompactTextString(m) }
+func (*ClusterCreateRequest) ProtoMessage()    {}
+func (*ClusterCreateRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{13}
+}
 
-func (m *ClusterCreateRequest) GetCluster() *github_com_pharmer_pharmer_apis_v1alpha1.Cluster {
+func (m *ClusterCreateRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterCreateRequest.Unmarshal(m, b)
+}
+func (m *ClusterCreateRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterCreateRequest.Marshal(b, m, deterministic)
+}
+func (m *ClusterCreateRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterCreateRequest.Merge(m, src)
+}
+func (m *ClusterCreateRequest) XXX_Size() int {
+	return xxx_messageInfo_ClusterCreateRequest.Size(m)
+}
+func (m *ClusterCreateRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterCreateRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterCreateRequest proto.InternalMessageInfo
+
+func (m *ClusterCreateRequest) GetCluster() *v1alpha1.Cluster {
 	if m != nil {
 		return m.Cluster
 	}
@@ -287,15 +614,38 @@ func (m *ClusterCreateRequest) GetCluster() *github_com_pharmer_pharmer_apis_v1a
 }
 
 type ClusterCreateResponse struct {
-	Cluster *github_com_pharmer_pharmer_apis_v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
+	Cluster              *v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *ClusterCreateResponse) Reset()                    { *m = ClusterCreateResponse{} }
-func (m *ClusterCreateResponse) String() string            { return proto.CompactTextString(m) }
-func (*ClusterCreateResponse) ProtoMessage()               {}
-func (*ClusterCreateResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{14} }
+func (m *ClusterCreateResponse) Reset()         { *m = ClusterCreateResponse{} }
+func (m *ClusterCreateResponse) String() string { return proto.CompactTextString(m) }
+func (*ClusterCreateResponse) ProtoMessage()    {}
+func (*ClusterCreateResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{14}
+}
 
-func (m *ClusterCreateResponse) GetCluster() *github_com_pharmer_pharmer_apis_v1alpha1.Cluster {
+func (m *ClusterCreateResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterCreateResponse.Unmarshal(m, b)
+}
+func (m *ClusterCreateResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterCreateResponse.Marshal(b, m, deterministic)
+}
+func (m *ClusterCreateResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterCreateResponse.Merge(m, src)
+}
+func (m *ClusterCreateResponse) XXX_Size() int {
+	return xxx_messageInfo_ClusterCreateResponse.Size(m)
+}
+func (m *ClusterCreateResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterCreateResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterCreateResponse proto.InternalMessageInfo
+
+func (m *ClusterCreateResponse) GetCluster() *v1alpha1.Cluster {
 	if m != nil {
 		return m.Cluster
 	}
@@ -303,15 +653,38 @@ func (m *ClusterCreateResponse) GetCluster() *github_com_pharmer_pharmer_apis_v1
 }
 
 type ClusterUpdateRequest struct {
-	Cluster *github_com_pharmer_pharmer_apis_v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
+	Cluster              *v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *ClusterUpdateRequest) Reset()                    { *m = ClusterUpdateRequest{} }
-func (m *ClusterUpdateRequest) String() string            { return proto.CompactTextString(m) }
-func (*ClusterUpdateRequest) ProtoMessage()               {}
-func (*ClusterUpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{15} }
+func (m *ClusterUpdateRequest) Reset()         { *m = ClusterUpdateRequest{} }
+func (m *ClusterUpdateRequest) String() string { return proto.CompactTextString(m) }
+func (*ClusterUpdateRequest) ProtoMessage()    {}
+func (*ClusterUpdateRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{15}
+}
 
-func (m *ClusterUpdateRequest) GetCluster() *github_com_pharmer_pharmer_apis_v1alpha1.Cluster {
+func (m *ClusterUpdateRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterUpdateRequest.Unmarshal(m, b)
+}
+func (m *ClusterUpdateRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterUpdateRequest.Marshal(b, m, deterministic)
+}
+func (m *ClusterUpdateRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterUpdateRequest.Merge(m, src)
+}
+func (m *ClusterUpdateRequest) XXX_Size() int {
+	return xxx_messageInfo_ClusterUpdateRequest.Size(m)
+}
+func (m *ClusterUpdateRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterUpdateRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterUpdateRequest proto.InternalMessageInfo
+
+func (m *ClusterUpdateRequest) GetCluster() *v1alpha1.Cluster {
 	if m != nil {
 		return m.Cluster
 	}
@@ -319,15 +692,38 @@ func (m *ClusterUpdateRequest) GetCluster() *github_com_pharmer_pharmer_apis_v1a
 }
 
 type ClusterUpdateResponse struct {
-	Cluster *github_com_pharmer_pharmer_apis_v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
+	Cluster              *v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *ClusterUpdateResponse) Reset()                    { *m = ClusterUpdateResponse{} }
-func (m *ClusterUpdateResponse) String() string            { return proto.CompactTextString(m) }
-func (*ClusterUpdateResponse) ProtoMessage()               {}
-func (*ClusterUpdateResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{16} }
+func (m *ClusterUpdateResponse) Reset()         { *m = ClusterUpdateResponse{} }
+func (m *ClusterUpdateResponse) String() string { return proto.CompactTextString(m) }
+func (*ClusterUpdateResponse) ProtoMessage()    {}
+func (*ClusterUpdateResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{16}
+}
 
-func (m *ClusterUpdateResponse) GetCluster() *github_com_pharmer_pharmer_apis_v1alpha1.Cluster {
+func (m *ClusterUpdateResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterUpdateResponse.Unmarshal(m, b)
+}
+func (m *ClusterUpdateResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterUpdateResponse.Marshal(b, m, deterministic)
+}
+func (m *ClusterUpdateResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterUpdateResponse.Merge(m, src)
+}
+func (m *ClusterUpdateResponse) XXX_Size() int {
+	return xxx_messageInfo_ClusterUpdateResponse.Size(m)
+}
+func (m *ClusterUpdateResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterUpdateResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterUpdateResponse proto.InternalMessageInfo
+
+func (m *ClusterUpdateResponse) GetCluster() *v1alpha1.Cluster {
 	if m != nil {
 		return m.Cluster
 	}
@@ -335,17 +731,40 @@ func (m *ClusterUpdateResponse) GetCluster() *github_com_pharmer_pharmer_apis_v1
 }
 
 type ClusterDeleteRequest struct {
-	Name                 string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	ReleaseReservedIP    bool   `protobuf:"varint,2,opt,name=releaseReservedIP" json:"releaseReservedIP,omitempty"`
-	Force                bool   `protobuf:"varint,3,opt,name=force" json:"force,omitempty"`
-	KeepLodabalancers    bool   `protobuf:"varint,4,opt,name=keepLodabalancers" json:"keepLodabalancers,omitempty"`
-	DeleteDynamicVolumes bool   `protobuf:"varint,5,opt,name=deleteDynamicVolumes" json:"deleteDynamicVolumes,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	ReleaseReservedIP    bool     `protobuf:"varint,2,opt,name=releaseReservedIP,proto3" json:"releaseReservedIP,omitempty"`
+	Force                bool     `protobuf:"varint,3,opt,name=force,proto3" json:"force,omitempty"`
+	KeepLodabalancers    bool     `protobuf:"varint,4,opt,name=keepLodabalancers,proto3" json:"keepLodabalancers,omitempty"`
+	DeleteDynamicVolumes bool     `protobuf:"varint,5,opt,name=deleteDynamicVolumes,proto3" json:"deleteDynamicVolumes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ClusterDeleteRequest) Reset()                    { *m = ClusterDeleteRequest{} }
-func (m *ClusterDeleteRequest) String() string            { return proto.CompactTextString(m) }
-func (*ClusterDeleteRequest) ProtoMessage()               {}
-func (*ClusterDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{17} }
+func (m *ClusterDeleteRequest) Reset()         { *m = ClusterDeleteRequest{} }
+func (m *ClusterDeleteRequest) String() string { return proto.CompactTextString(m) }
+func (*ClusterDeleteRequest) ProtoMessage()    {}
+func (*ClusterDeleteRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{17}
+}
+
+func (m *ClusterDeleteRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterDeleteRequest.Unmarshal(m, b)
+}
+func (m *ClusterDeleteRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterDeleteRequest.Marshal(b, m, deterministic)
+}
+func (m *ClusterDeleteRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterDeleteRequest.Merge(m, src)
+}
+func (m *ClusterDeleteRequest) XXX_Size() int {
+	return xxx_messageInfo_ClusterDeleteRequest.Size(m)
+}
+func (m *ClusterDeleteRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterDeleteRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterDeleteRequest proto.InternalMessageInfo
 
 func (m *ClusterDeleteRequest) GetName() string {
 	if m != nil {
@@ -383,15 +802,38 @@ func (m *ClusterDeleteRequest) GetDeleteDynamicVolumes() bool {
 }
 
 type ClusterDeleteResponse struct {
-	Cluster *github_com_pharmer_pharmer_apis_v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
+	Cluster              *v1alpha1.Cluster `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *ClusterDeleteResponse) Reset()                    { *m = ClusterDeleteResponse{} }
-func (m *ClusterDeleteResponse) String() string            { return proto.CompactTextString(m) }
-func (*ClusterDeleteResponse) ProtoMessage()               {}
-func (*ClusterDeleteResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{18} }
+func (m *ClusterDeleteResponse) Reset()         { *m = ClusterDeleteResponse{} }
+func (m *ClusterDeleteResponse) String() string { return proto.CompactTextString(m) }
+func (*ClusterDeleteResponse) ProtoMessage()    {}
+func (*ClusterDeleteResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{18}
+}
 
-func (m *ClusterDeleteResponse) GetCluster() *github_com_pharmer_pharmer_apis_v1alpha1.Cluster {
+func (m *ClusterDeleteResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterDeleteResponse.Unmarshal(m, b)
+}
+func (m *ClusterDeleteResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterDeleteResponse.Marshal(b, m, deterministic)
+}
+func (m *ClusterDeleteResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterDeleteResponse.Merge(m, src)
+}
+func (m *ClusterDeleteResponse) XXX_Size() int {
+	return xxx_messageInfo_ClusterDeleteResponse.Size(m)
+}
+func (m *ClusterDeleteResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterDeleteResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterDeleteResponse proto.InternalMessageInfo
+
+func (m *ClusterDeleteResponse) GetCluster() *v1alpha1.Cluster {
 	if m != nil {
 		return m.Cluster
 	}
@@ -399,13 +841,36 @@ func (m *ClusterDeleteResponse) GetCluster() *github_com_pharmer_pharmer_apis_v1
 }
 
 type ClusterApplyRequest struct {
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ClusterApplyRequest) Reset()                    { *m = ClusterApplyRequest{} }
-func (m *ClusterApplyRequest) String() string            { return proto.CompactTextString(m) }
-func (*ClusterApplyRequest) ProtoMessage()               {}
-func (*ClusterApplyRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{19} }
+func (m *ClusterApplyRequest) Reset()         { *m = ClusterApplyRequest{} }
+func (m *ClusterApplyRequest) String() string { return proto.CompactTextString(m) }
+func (*ClusterApplyRequest) ProtoMessage()    {}
+func (*ClusterApplyRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{19}
+}
+
+func (m *ClusterApplyRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterApplyRequest.Unmarshal(m, b)
+}
+func (m *ClusterApplyRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterApplyRequest.Marshal(b, m, deterministic)
+}
+func (m *ClusterApplyRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterApplyRequest.Merge(m, src)
+}
+func (m *ClusterApplyRequest) XXX_Size() int {
+	return xxx_messageInfo_ClusterApplyRequest.Size(m)
+}
+func (m *ClusterApplyRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterApplyRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterApplyRequest proto.InternalMessageInfo
 
 func (m *ClusterApplyRequest) GetName() string {
 	if m != nil {
@@ -415,13 +880,36 @@ func (m *ClusterApplyRequest) GetName() string {
 }
 
 type ClusterMetadataRequest struct {
-	Uid string `protobuf:"bytes,1,opt,name=uid" json:"uid,omitempty"`
+	Uid                  string   `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ClusterMetadataRequest) Reset()                    { *m = ClusterMetadataRequest{} }
-func (m *ClusterMetadataRequest) String() string            { return proto.CompactTextString(m) }
-func (*ClusterMetadataRequest) ProtoMessage()               {}
-func (*ClusterMetadataRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{20} }
+func (m *ClusterMetadataRequest) Reset()         { *m = ClusterMetadataRequest{} }
+func (m *ClusterMetadataRequest) String() string { return proto.CompactTextString(m) }
+func (*ClusterMetadataRequest) ProtoMessage()    {}
+func (*ClusterMetadataRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{20}
+}
+
+func (m *ClusterMetadataRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterMetadataRequest.Unmarshal(m, b)
+}
+func (m *ClusterMetadataRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterMetadataRequest.Marshal(b, m, deterministic)
+}
+func (m *ClusterMetadataRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterMetadataRequest.Merge(m, src)
+}
+func (m *ClusterMetadataRequest) XXX_Size() int {
+	return xxx_messageInfo_ClusterMetadataRequest.Size(m)
+}
+func (m *ClusterMetadataRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterMetadataRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterMetadataRequest proto.InternalMessageInfo
 
 func (m *ClusterMetadataRequest) GetUid() string {
 	if m != nil {
@@ -431,13 +919,36 @@ func (m *ClusterMetadataRequest) GetUid() string {
 }
 
 type ClusterClientConfigRequest struct {
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ClusterClientConfigRequest) Reset()                    { *m = ClusterClientConfigRequest{} }
-func (m *ClusterClientConfigRequest) String() string            { return proto.CompactTextString(m) }
-func (*ClusterClientConfigRequest) ProtoMessage()               {}
-func (*ClusterClientConfigRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{21} }
+func (m *ClusterClientConfigRequest) Reset()         { *m = ClusterClientConfigRequest{} }
+func (m *ClusterClientConfigRequest) String() string { return proto.CompactTextString(m) }
+func (*ClusterClientConfigRequest) ProtoMessage()    {}
+func (*ClusterClientConfigRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{21}
+}
+
+func (m *ClusterClientConfigRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterClientConfigRequest.Unmarshal(m, b)
+}
+func (m *ClusterClientConfigRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterClientConfigRequest.Marshal(b, m, deterministic)
+}
+func (m *ClusterClientConfigRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterClientConfigRequest.Merge(m, src)
+}
+func (m *ClusterClientConfigRequest) XXX_Size() int {
+	return xxx_messageInfo_ClusterClientConfigRequest.Size(m)
+}
+func (m *ClusterClientConfigRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterClientConfigRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterClientConfigRequest proto.InternalMessageInfo
 
 func (m *ClusterClientConfigRequest) GetName() string {
 	if m != nil {
@@ -447,15 +958,38 @@ func (m *ClusterClientConfigRequest) GetName() string {
 }
 
 type ClusterClientConfigResponse struct {
-	Config *github_com_pharmer_pharmer_apis_v1alpha1.KubeConfig `protobuf:"bytes,1,opt,name=config" json:"config,omitempty"`
+	Config               *v1alpha1.KubeConfig `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *ClusterClientConfigResponse) Reset()                    { *m = ClusterClientConfigResponse{} }
-func (m *ClusterClientConfigResponse) String() string            { return proto.CompactTextString(m) }
-func (*ClusterClientConfigResponse) ProtoMessage()               {}
-func (*ClusterClientConfigResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{22} }
+func (m *ClusterClientConfigResponse) Reset()         { *m = ClusterClientConfigResponse{} }
+func (m *ClusterClientConfigResponse) String() string { return proto.CompactTextString(m) }
+func (*ClusterClientConfigResponse) ProtoMessage()    {}
+func (*ClusterClientConfigResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{22}
+}
 
-func (m *ClusterClientConfigResponse) GetConfig() *github_com_pharmer_pharmer_apis_v1alpha1.KubeConfig {
+func (m *ClusterClientConfigResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterClientConfigResponse.Unmarshal(m, b)
+}
+func (m *ClusterClientConfigResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterClientConfigResponse.Marshal(b, m, deterministic)
+}
+func (m *ClusterClientConfigResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterClientConfigResponse.Merge(m, src)
+}
+func (m *ClusterClientConfigResponse) XXX_Size() int {
+	return xxx_messageInfo_ClusterClientConfigResponse.Size(m)
+}
+func (m *ClusterClientConfigResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterClientConfigResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterClientConfigResponse proto.InternalMessageInfo
+
+func (m *ClusterClientConfigResponse) GetConfig() *v1alpha1.KubeConfig {
 	if m != nil {
 		return m.Config
 	}
@@ -463,15 +997,38 @@ func (m *ClusterClientConfigResponse) GetConfig() *github_com_pharmer_pharmer_ap
 }
 
 type ClusterMetadataResponse struct {
-	Config                    *ClusterMetadataResponse_KubedConfig                `protobuf:"bytes,1,opt,name=config" json:"config,omitempty"`
-	CustomResourceDefinitions []string                                            `protobuf:"bytes,2,rep,name=customResourceDefinitions" json:"customResourceDefinitions,omitempty"`
-	Upgrades                  []*github_com_pharmer_pharmer_apis_v1alpha1.Upgrade `protobuf:"bytes,3,rep,name=upgrades" json:"upgrades,omitempty"`
+	Config                    *ClusterMetadataResponse_KubedConfig `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
+	CustomResourceDefinitions []string                             `protobuf:"bytes,2,rep,name=customResourceDefinitions,proto3" json:"customResourceDefinitions,omitempty"`
+	Upgrades                  []*v1alpha1.Upgrade                  `protobuf:"bytes,3,rep,name=upgrades,proto3" json:"upgrades,omitempty"`
+	XXX_NoUnkeyedLiteral      struct{}                             `json:"-"`
+	XXX_unrecognized          []byte                               `json:"-"`
+	XXX_sizecache             int32                                `json:"-"`
 }
 
-func (m *ClusterMetadataResponse) Reset()                    { *m = ClusterMetadataResponse{} }
-func (m *ClusterMetadataResponse) String() string            { return proto.CompactTextString(m) }
-func (*ClusterMetadataResponse) ProtoMessage()               {}
-func (*ClusterMetadataResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{23} }
+func (m *ClusterMetadataResponse) Reset()         { *m = ClusterMetadataResponse{} }
+func (m *ClusterMetadataResponse) String() string { return proto.CompactTextString(m) }
+func (*ClusterMetadataResponse) ProtoMessage()    {}
+func (*ClusterMetadataResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{23}
+}
+
+func (m *ClusterMetadataResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterMetadataResponse.Unmarshal(m, b)
+}
+func (m *ClusterMetadataResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterMetadataResponse.Marshal(b, m, deterministic)
+}
+func (m *ClusterMetadataResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterMetadataResponse.Merge(m, src)
+}
+func (m *ClusterMetadataResponse) XXX_Size() int {
+	return xxx_messageInfo_ClusterMetadataResponse.Size(m)
+}
+func (m *ClusterMetadataResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterMetadataResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterMetadataResponse proto.InternalMessageInfo
 
 func (m *ClusterMetadataResponse) GetConfig() *ClusterMetadataResponse_KubedConfig {
 	if m != nil {
@@ -487,7 +1044,7 @@ func (m *ClusterMetadataResponse) GetCustomResourceDefinitions() []string {
 	return nil
 }
 
-func (m *ClusterMetadataResponse) GetUpgrades() []*github_com_pharmer_pharmer_apis_v1alpha1.Upgrade {
+func (m *ClusterMetadataResponse) GetUpgrades() []*v1alpha1.Upgrade {
 	if m != nil {
 		return m.Upgrades
 	}
@@ -495,20 +1052,41 @@ func (m *ClusterMetadataResponse) GetUpgrades() []*github_com_pharmer_pharmer_ap
 }
 
 type ClusterMetadataResponse_KubedConfig struct {
-	Version             *appscode_version.Version `protobuf:"bytes,1,opt,name=version" json:"version,omitempty"`
-	SearchEnabled       bool                      `protobuf:"varint,3,opt,name=searchEnabled" json:"searchEnabled,omitempty"`
-	ReverseIndexEnabled bool                      `protobuf:"varint,4,opt,name=reverseIndexEnabled" json:"reverseIndexEnabled,omitempty"`
-	AnalyticsEnabled    bool                      `protobuf:"varint,5,opt,name=analyticsEnabled" json:"analyticsEnabled,omitempty"`
+	Version              *version.Version `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+	SearchEnabled        bool             `protobuf:"varint,3,opt,name=searchEnabled,proto3" json:"searchEnabled,omitempty"`
+	ReverseIndexEnabled  bool             `protobuf:"varint,4,opt,name=reverseIndexEnabled,proto3" json:"reverseIndexEnabled,omitempty"`
+	AnalyticsEnabled     bool             `protobuf:"varint,5,opt,name=analyticsEnabled,proto3" json:"analyticsEnabled,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
 }
 
 func (m *ClusterMetadataResponse_KubedConfig) Reset()         { *m = ClusterMetadataResponse_KubedConfig{} }
 func (m *ClusterMetadataResponse_KubedConfig) String() string { return proto.CompactTextString(m) }
 func (*ClusterMetadataResponse_KubedConfig) ProtoMessage()    {}
 func (*ClusterMetadataResponse_KubedConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor1, []int{23, 0}
+	return fileDescriptor_01f9cba63d8f209f, []int{23, 0}
 }
 
-func (m *ClusterMetadataResponse_KubedConfig) GetVersion() *appscode_version.Version {
+func (m *ClusterMetadataResponse_KubedConfig) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ClusterMetadataResponse_KubedConfig.Unmarshal(m, b)
+}
+func (m *ClusterMetadataResponse_KubedConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ClusterMetadataResponse_KubedConfig.Marshal(b, m, deterministic)
+}
+func (m *ClusterMetadataResponse_KubedConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ClusterMetadataResponse_KubedConfig.Merge(m, src)
+}
+func (m *ClusterMetadataResponse_KubedConfig) XXX_Size() int {
+	return xxx_messageInfo_ClusterMetadataResponse_KubedConfig.Size(m)
+}
+func (m *ClusterMetadataResponse_KubedConfig) XXX_DiscardUnknown() {
+	xxx_messageInfo_ClusterMetadataResponse_KubedConfig.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ClusterMetadataResponse_KubedConfig proto.InternalMessageInfo
+
+func (m *ClusterMetadataResponse_KubedConfig) GetVersion() *version.Version {
 	if m != nil {
 		return m.Version
 	}
@@ -537,14 +1115,37 @@ func (m *ClusterMetadataResponse_KubedConfig) GetAnalyticsEnabled() bool {
 }
 
 type NodeGroupListRequest struct {
-	ClusterName string   `protobuf:"bytes,1,opt,name=clusterName" json:"clusterName,omitempty"`
-	Status      []string `protobuf:"bytes,2,rep,name=status" json:"status,omitempty"`
+	ClusterName          string   `protobuf:"bytes,1,opt,name=clusterName,proto3" json:"clusterName,omitempty"`
+	Status               []string `protobuf:"bytes,2,rep,name=status,proto3" json:"status,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *NodeGroupListRequest) Reset()                    { *m = NodeGroupListRequest{} }
-func (m *NodeGroupListRequest) String() string            { return proto.CompactTextString(m) }
-func (*NodeGroupListRequest) ProtoMessage()               {}
-func (*NodeGroupListRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{24} }
+func (m *NodeGroupListRequest) Reset()         { *m = NodeGroupListRequest{} }
+func (m *NodeGroupListRequest) String() string { return proto.CompactTextString(m) }
+func (*NodeGroupListRequest) ProtoMessage()    {}
+func (*NodeGroupListRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{24}
+}
+
+func (m *NodeGroupListRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NodeGroupListRequest.Unmarshal(m, b)
+}
+func (m *NodeGroupListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NodeGroupListRequest.Marshal(b, m, deterministic)
+}
+func (m *NodeGroupListRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NodeGroupListRequest.Merge(m, src)
+}
+func (m *NodeGroupListRequest) XXX_Size() int {
+	return xxx_messageInfo_NodeGroupListRequest.Size(m)
+}
+func (m *NodeGroupListRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_NodeGroupListRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NodeGroupListRequest proto.InternalMessageInfo
 
 func (m *NodeGroupListRequest) GetClusterName() string {
 	if m != nil {
@@ -561,15 +1162,38 @@ func (m *NodeGroupListRequest) GetStatus() []string {
 }
 
 type NodeGroupListResponse struct {
-	NodeGroups []*github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup `protobuf:"bytes,1,rep,name=nodeGroups" json:"nodeGroups,omitempty"`
+	NodeGroups           []*v1alpha1.NodeGroup `protobuf:"bytes,1,rep,name=nodeGroups,proto3" json:"nodeGroups,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
 }
 
-func (m *NodeGroupListResponse) Reset()                    { *m = NodeGroupListResponse{} }
-func (m *NodeGroupListResponse) String() string            { return proto.CompactTextString(m) }
-func (*NodeGroupListResponse) ProtoMessage()               {}
-func (*NodeGroupListResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{25} }
+func (m *NodeGroupListResponse) Reset()         { *m = NodeGroupListResponse{} }
+func (m *NodeGroupListResponse) String() string { return proto.CompactTextString(m) }
+func (*NodeGroupListResponse) ProtoMessage()    {}
+func (*NodeGroupListResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{25}
+}
 
-func (m *NodeGroupListResponse) GetNodeGroups() []*github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup {
+func (m *NodeGroupListResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NodeGroupListResponse.Unmarshal(m, b)
+}
+func (m *NodeGroupListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NodeGroupListResponse.Marshal(b, m, deterministic)
+}
+func (m *NodeGroupListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NodeGroupListResponse.Merge(m, src)
+}
+func (m *NodeGroupListResponse) XXX_Size() int {
+	return xxx_messageInfo_NodeGroupListResponse.Size(m)
+}
+func (m *NodeGroupListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_NodeGroupListResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NodeGroupListResponse proto.InternalMessageInfo
+
+func (m *NodeGroupListResponse) GetNodeGroups() []*v1alpha1.NodeGroup {
 	if m != nil {
 		return m.NodeGroups
 	}
@@ -577,14 +1201,37 @@ func (m *NodeGroupListResponse) GetNodeGroups() []*github_com_pharmer_pharmer_ap
 }
 
 type NodeGroupDescribeRequest struct {
-	ClusterName string `protobuf:"bytes,1,opt,name=clusterName" json:"clusterName,omitempty"`
-	Name        string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	ClusterName          string   `protobuf:"bytes,1,opt,name=clusterName,proto3" json:"clusterName,omitempty"`
+	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *NodeGroupDescribeRequest) Reset()                    { *m = NodeGroupDescribeRequest{} }
-func (m *NodeGroupDescribeRequest) String() string            { return proto.CompactTextString(m) }
-func (*NodeGroupDescribeRequest) ProtoMessage()               {}
-func (*NodeGroupDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{26} }
+func (m *NodeGroupDescribeRequest) Reset()         { *m = NodeGroupDescribeRequest{} }
+func (m *NodeGroupDescribeRequest) String() string { return proto.CompactTextString(m) }
+func (*NodeGroupDescribeRequest) ProtoMessage()    {}
+func (*NodeGroupDescribeRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{26}
+}
+
+func (m *NodeGroupDescribeRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NodeGroupDescribeRequest.Unmarshal(m, b)
+}
+func (m *NodeGroupDescribeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NodeGroupDescribeRequest.Marshal(b, m, deterministic)
+}
+func (m *NodeGroupDescribeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NodeGroupDescribeRequest.Merge(m, src)
+}
+func (m *NodeGroupDescribeRequest) XXX_Size() int {
+	return xxx_messageInfo_NodeGroupDescribeRequest.Size(m)
+}
+func (m *NodeGroupDescribeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_NodeGroupDescribeRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NodeGroupDescribeRequest proto.InternalMessageInfo
 
 func (m *NodeGroupDescribeRequest) GetClusterName() string {
 	if m != nil {
@@ -601,15 +1248,38 @@ func (m *NodeGroupDescribeRequest) GetName() string {
 }
 
 type NodeGroupDescribeResponse struct {
-	NodeGroup *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup" json:"nodeGroup,omitempty"`
+	NodeGroup            *v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup,proto3" json:"nodeGroup,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *NodeGroupDescribeResponse) Reset()                    { *m = NodeGroupDescribeResponse{} }
-func (m *NodeGroupDescribeResponse) String() string            { return proto.CompactTextString(m) }
-func (*NodeGroupDescribeResponse) ProtoMessage()               {}
-func (*NodeGroupDescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{27} }
+func (m *NodeGroupDescribeResponse) Reset()         { *m = NodeGroupDescribeResponse{} }
+func (m *NodeGroupDescribeResponse) String() string { return proto.CompactTextString(m) }
+func (*NodeGroupDescribeResponse) ProtoMessage()    {}
+func (*NodeGroupDescribeResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{27}
+}
 
-func (m *NodeGroupDescribeResponse) GetNodeGroup() *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup {
+func (m *NodeGroupDescribeResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NodeGroupDescribeResponse.Unmarshal(m, b)
+}
+func (m *NodeGroupDescribeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NodeGroupDescribeResponse.Marshal(b, m, deterministic)
+}
+func (m *NodeGroupDescribeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NodeGroupDescribeResponse.Merge(m, src)
+}
+func (m *NodeGroupDescribeResponse) XXX_Size() int {
+	return xxx_messageInfo_NodeGroupDescribeResponse.Size(m)
+}
+func (m *NodeGroupDescribeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_NodeGroupDescribeResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NodeGroupDescribeResponse proto.InternalMessageInfo
+
+func (m *NodeGroupDescribeResponse) GetNodeGroup() *v1alpha1.NodeGroup {
 	if m != nil {
 		return m.NodeGroup
 	}
@@ -617,15 +1287,38 @@ func (m *NodeGroupDescribeResponse) GetNodeGroup() *github_com_pharmer_pharmer_a
 }
 
 type NodeGroupCreateRequest struct {
-	NodeGroup *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup" json:"nodeGroup,omitempty"`
+	NodeGroup            *v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup,proto3" json:"nodeGroup,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *NodeGroupCreateRequest) Reset()                    { *m = NodeGroupCreateRequest{} }
-func (m *NodeGroupCreateRequest) String() string            { return proto.CompactTextString(m) }
-func (*NodeGroupCreateRequest) ProtoMessage()               {}
-func (*NodeGroupCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{28} }
+func (m *NodeGroupCreateRequest) Reset()         { *m = NodeGroupCreateRequest{} }
+func (m *NodeGroupCreateRequest) String() string { return proto.CompactTextString(m) }
+func (*NodeGroupCreateRequest) ProtoMessage()    {}
+func (*NodeGroupCreateRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{28}
+}
 
-func (m *NodeGroupCreateRequest) GetNodeGroup() *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup {
+func (m *NodeGroupCreateRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NodeGroupCreateRequest.Unmarshal(m, b)
+}
+func (m *NodeGroupCreateRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NodeGroupCreateRequest.Marshal(b, m, deterministic)
+}
+func (m *NodeGroupCreateRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NodeGroupCreateRequest.Merge(m, src)
+}
+func (m *NodeGroupCreateRequest) XXX_Size() int {
+	return xxx_messageInfo_NodeGroupCreateRequest.Size(m)
+}
+func (m *NodeGroupCreateRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_NodeGroupCreateRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NodeGroupCreateRequest proto.InternalMessageInfo
+
+func (m *NodeGroupCreateRequest) GetNodeGroup() *v1alpha1.NodeGroup {
 	if m != nil {
 		return m.NodeGroup
 	}
@@ -633,15 +1326,38 @@ func (m *NodeGroupCreateRequest) GetNodeGroup() *github_com_pharmer_pharmer_apis
 }
 
 type NodeGroupCreateResponse struct {
-	NodeGroup *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup" json:"nodeGroup,omitempty"`
+	NodeGroup            *v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup,proto3" json:"nodeGroup,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *NodeGroupCreateResponse) Reset()                    { *m = NodeGroupCreateResponse{} }
-func (m *NodeGroupCreateResponse) String() string            { return proto.CompactTextString(m) }
-func (*NodeGroupCreateResponse) ProtoMessage()               {}
-func (*NodeGroupCreateResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{29} }
+func (m *NodeGroupCreateResponse) Reset()         { *m = NodeGroupCreateResponse{} }
+func (m *NodeGroupCreateResponse) String() string { return proto.CompactTextString(m) }
+func (*NodeGroupCreateResponse) ProtoMessage()    {}
+func (*NodeGroupCreateResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{29}
+}
 
-func (m *NodeGroupCreateResponse) GetNodeGroup() *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup {
+func (m *NodeGroupCreateResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NodeGroupCreateResponse.Unmarshal(m, b)
+}
+func (m *NodeGroupCreateResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NodeGroupCreateResponse.Marshal(b, m, deterministic)
+}
+func (m *NodeGroupCreateResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NodeGroupCreateResponse.Merge(m, src)
+}
+func (m *NodeGroupCreateResponse) XXX_Size() int {
+	return xxx_messageInfo_NodeGroupCreateResponse.Size(m)
+}
+func (m *NodeGroupCreateResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_NodeGroupCreateResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NodeGroupCreateResponse proto.InternalMessageInfo
+
+func (m *NodeGroupCreateResponse) GetNodeGroup() *v1alpha1.NodeGroup {
 	if m != nil {
 		return m.NodeGroup
 	}
@@ -649,15 +1365,38 @@ func (m *NodeGroupCreateResponse) GetNodeGroup() *github_com_pharmer_pharmer_api
 }
 
 type NodeGroupUpdateRequest struct {
-	NodeGroup *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup" json:"nodeGroup,omitempty"`
+	NodeGroup            *v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup,proto3" json:"nodeGroup,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *NodeGroupUpdateRequest) Reset()                    { *m = NodeGroupUpdateRequest{} }
-func (m *NodeGroupUpdateRequest) String() string            { return proto.CompactTextString(m) }
-func (*NodeGroupUpdateRequest) ProtoMessage()               {}
-func (*NodeGroupUpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{30} }
+func (m *NodeGroupUpdateRequest) Reset()         { *m = NodeGroupUpdateRequest{} }
+func (m *NodeGroupUpdateRequest) String() string { return proto.CompactTextString(m) }
+func (*NodeGroupUpdateRequest) ProtoMessage()    {}
+func (*NodeGroupUpdateRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{30}
+}
 
-func (m *NodeGroupUpdateRequest) GetNodeGroup() *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup {
+func (m *NodeGroupUpdateRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NodeGroupUpdateRequest.Unmarshal(m, b)
+}
+func (m *NodeGroupUpdateRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NodeGroupUpdateRequest.Marshal(b, m, deterministic)
+}
+func (m *NodeGroupUpdateRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NodeGroupUpdateRequest.Merge(m, src)
+}
+func (m *NodeGroupUpdateRequest) XXX_Size() int {
+	return xxx_messageInfo_NodeGroupUpdateRequest.Size(m)
+}
+func (m *NodeGroupUpdateRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_NodeGroupUpdateRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NodeGroupUpdateRequest proto.InternalMessageInfo
+
+func (m *NodeGroupUpdateRequest) GetNodeGroup() *v1alpha1.NodeGroup {
 	if m != nil {
 		return m.NodeGroup
 	}
@@ -665,15 +1404,38 @@ func (m *NodeGroupUpdateRequest) GetNodeGroup() *github_com_pharmer_pharmer_apis
 }
 
 type NodeGroupUpdateResponse struct {
-	NodeGroup *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup" json:"nodeGroup,omitempty"`
+	NodeGroup            *v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup,proto3" json:"nodeGroup,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *NodeGroupUpdateResponse) Reset()                    { *m = NodeGroupUpdateResponse{} }
-func (m *NodeGroupUpdateResponse) String() string            { return proto.CompactTextString(m) }
-func (*NodeGroupUpdateResponse) ProtoMessage()               {}
-func (*NodeGroupUpdateResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{31} }
+func (m *NodeGroupUpdateResponse) Reset()         { *m = NodeGroupUpdateResponse{} }
+func (m *NodeGroupUpdateResponse) String() string { return proto.CompactTextString(m) }
+func (*NodeGroupUpdateResponse) ProtoMessage()    {}
+func (*NodeGroupUpdateResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{31}
+}
 
-func (m *NodeGroupUpdateResponse) GetNodeGroup() *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup {
+func (m *NodeGroupUpdateResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NodeGroupUpdateResponse.Unmarshal(m, b)
+}
+func (m *NodeGroupUpdateResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NodeGroupUpdateResponse.Marshal(b, m, deterministic)
+}
+func (m *NodeGroupUpdateResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NodeGroupUpdateResponse.Merge(m, src)
+}
+func (m *NodeGroupUpdateResponse) XXX_Size() int {
+	return xxx_messageInfo_NodeGroupUpdateResponse.Size(m)
+}
+func (m *NodeGroupUpdateResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_NodeGroupUpdateResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NodeGroupUpdateResponse proto.InternalMessageInfo
+
+func (m *NodeGroupUpdateResponse) GetNodeGroup() *v1alpha1.NodeGroup {
 	if m != nil {
 		return m.NodeGroup
 	}
@@ -681,14 +1443,37 @@ func (m *NodeGroupUpdateResponse) GetNodeGroup() *github_com_pharmer_pharmer_api
 }
 
 type NodeGroupDeleteRequest struct {
-	ClusterName string `protobuf:"bytes,1,opt,name=clusterName" json:"clusterName,omitempty"`
-	Name        string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	ClusterName          string   `protobuf:"bytes,1,opt,name=clusterName,proto3" json:"clusterName,omitempty"`
+	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *NodeGroupDeleteRequest) Reset()                    { *m = NodeGroupDeleteRequest{} }
-func (m *NodeGroupDeleteRequest) String() string            { return proto.CompactTextString(m) }
-func (*NodeGroupDeleteRequest) ProtoMessage()               {}
-func (*NodeGroupDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{32} }
+func (m *NodeGroupDeleteRequest) Reset()         { *m = NodeGroupDeleteRequest{} }
+func (m *NodeGroupDeleteRequest) String() string { return proto.CompactTextString(m) }
+func (*NodeGroupDeleteRequest) ProtoMessage()    {}
+func (*NodeGroupDeleteRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{32}
+}
+
+func (m *NodeGroupDeleteRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NodeGroupDeleteRequest.Unmarshal(m, b)
+}
+func (m *NodeGroupDeleteRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NodeGroupDeleteRequest.Marshal(b, m, deterministic)
+}
+func (m *NodeGroupDeleteRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NodeGroupDeleteRequest.Merge(m, src)
+}
+func (m *NodeGroupDeleteRequest) XXX_Size() int {
+	return xxx_messageInfo_NodeGroupDeleteRequest.Size(m)
+}
+func (m *NodeGroupDeleteRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_NodeGroupDeleteRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NodeGroupDeleteRequest proto.InternalMessageInfo
 
 func (m *NodeGroupDeleteRequest) GetClusterName() string {
 	if m != nil {
@@ -705,15 +1490,38 @@ func (m *NodeGroupDeleteRequest) GetName() string {
 }
 
 type NodeGroupDeleteResponse struct {
-	NodeGroup *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup" json:"nodeGroup,omitempty"`
+	NodeGroup            *v1alpha1.NodeGroup `protobuf:"bytes,1,opt,name=nodeGroup,proto3" json:"nodeGroup,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *NodeGroupDeleteResponse) Reset()                    { *m = NodeGroupDeleteResponse{} }
-func (m *NodeGroupDeleteResponse) String() string            { return proto.CompactTextString(m) }
-func (*NodeGroupDeleteResponse) ProtoMessage()               {}
-func (*NodeGroupDeleteResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{33} }
+func (m *NodeGroupDeleteResponse) Reset()         { *m = NodeGroupDeleteResponse{} }
+func (m *NodeGroupDeleteResponse) String() string { return proto.CompactTextString(m) }
+func (*NodeGroupDeleteResponse) ProtoMessage()    {}
+func (*NodeGroupDeleteResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{33}
+}
 
-func (m *NodeGroupDeleteResponse) GetNodeGroup() *github_com_pharmer_pharmer_apis_v1alpha1.NodeGroup {
+func (m *NodeGroupDeleteResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NodeGroupDeleteResponse.Unmarshal(m, b)
+}
+func (m *NodeGroupDeleteResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NodeGroupDeleteResponse.Marshal(b, m, deterministic)
+}
+func (m *NodeGroupDeleteResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NodeGroupDeleteResponse.Merge(m, src)
+}
+func (m *NodeGroupDeleteResponse) XXX_Size() int {
+	return xxx_messageInfo_NodeGroupDeleteResponse.Size(m)
+}
+func (m *NodeGroupDeleteResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_NodeGroupDeleteResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NodeGroupDeleteResponse proto.InternalMessageInfo
+
+func (m *NodeGroupDeleteResponse) GetNodeGroup() *v1alpha1.NodeGroup {
 	if m != nil {
 		return m.NodeGroup
 	}
@@ -721,14 +1529,37 @@ func (m *NodeGroupDeleteResponse) GetNodeGroup() *github_com_pharmer_pharmer_api
 }
 
 type SSHConfigGetRequest struct {
-	ClusterName string `protobuf:"bytes,1,opt,name=clusterName" json:"clusterName,omitempty"`
-	NodeName    string `protobuf:"bytes,2,opt,name=nodeName" json:"nodeName,omitempty"`
+	ClusterName          string   `protobuf:"bytes,1,opt,name=clusterName,proto3" json:"clusterName,omitempty"`
+	NodeName             string   `protobuf:"bytes,2,opt,name=nodeName,proto3" json:"nodeName,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *SSHConfigGetRequest) Reset()                    { *m = SSHConfigGetRequest{} }
-func (m *SSHConfigGetRequest) String() string            { return proto.CompactTextString(m) }
-func (*SSHConfigGetRequest) ProtoMessage()               {}
-func (*SSHConfigGetRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{34} }
+func (m *SSHConfigGetRequest) Reset()         { *m = SSHConfigGetRequest{} }
+func (m *SSHConfigGetRequest) String() string { return proto.CompactTextString(m) }
+func (*SSHConfigGetRequest) ProtoMessage()    {}
+func (*SSHConfigGetRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{34}
+}
+
+func (m *SSHConfigGetRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SSHConfigGetRequest.Unmarshal(m, b)
+}
+func (m *SSHConfigGetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SSHConfigGetRequest.Marshal(b, m, deterministic)
+}
+func (m *SSHConfigGetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SSHConfigGetRequest.Merge(m, src)
+}
+func (m *SSHConfigGetRequest) XXX_Size() int {
+	return xxx_messageInfo_SSHConfigGetRequest.Size(m)
+}
+func (m *SSHConfigGetRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SSHConfigGetRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SSHConfigGetRequest proto.InternalMessageInfo
 
 func (m *SSHConfigGetRequest) GetClusterName() string {
 	if m != nil {
@@ -745,15 +1576,38 @@ func (m *SSHConfigGetRequest) GetNodeName() string {
 }
 
 type SSHConfigGetResponse struct {
-	Config *github_com_pharmer_pharmer_apis_v1alpha1.SSHConfig `protobuf:"bytes,1,opt,name=config" json:"config,omitempty"`
+	Config               *v1alpha1.SSHConfig `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
-func (m *SSHConfigGetResponse) Reset()                    { *m = SSHConfigGetResponse{} }
-func (m *SSHConfigGetResponse) String() string            { return proto.CompactTextString(m) }
-func (*SSHConfigGetResponse) ProtoMessage()               {}
-func (*SSHConfigGetResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{35} }
+func (m *SSHConfigGetResponse) Reset()         { *m = SSHConfigGetResponse{} }
+func (m *SSHConfigGetResponse) String() string { return proto.CompactTextString(m) }
+func (*SSHConfigGetResponse) ProtoMessage()    {}
+func (*SSHConfigGetResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_01f9cba63d8f209f, []int{35}
+}
 
-func (m *SSHConfigGetResponse) GetConfig() *github_com_pharmer_pharmer_apis_v1alpha1.SSHConfig {
+func (m *SSHConfigGetResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SSHConfigGetResponse.Unmarshal(m, b)
+}
+func (m *SSHConfigGetResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SSHConfigGetResponse.Marshal(b, m, deterministic)
+}
+func (m *SSHConfigGetResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SSHConfigGetResponse.Merge(m, src)
+}
+func (m *SSHConfigGetResponse) XXX_Size() int {
+	return xxx_messageInfo_SSHConfigGetResponse.Size(m)
+}
+func (m *SSHConfigGetResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_SSHConfigGetResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SSHConfigGetResponse proto.InternalMessageInfo
+
+func (m *SSHConfigGetResponse) GetConfig() *v1alpha1.SSHConfig {
 	if m != nil {
 		return m.Config
 	}
@@ -800,6 +1654,115 @@ func init() {
 	proto.RegisterType((*SSHConfigGetResponse)(nil), "appscode.cloud.v1alpha1.SSHConfigGetResponse")
 }
 
+func init() { proto.RegisterFile("cloud.proto", fileDescriptor_01f9cba63d8f209f) }
+
+var fileDescriptor_01f9cba63d8f209f = []byte{
+	// 1641 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x59, 0xdd, 0x6e, 0xdc, 0x44,
+	0x14, 0x96, 0x93, 0x36, 0xdd, 0x9c, 0x14, 0xa9, 0x4c, 0xd3, 0x64, 0x63, 0x2a, 0xa8, 0x4c, 0x85,
+	0x4a, 0x9a, 0xd8, 0x9b, 0x4d, 0xf8, 0x6b, 0x83, 0x28, 0x4d, 0x4a, 0x5a, 0x35, 0x8d, 0x52, 0xa7,
+	0x0d, 0xa2, 0x42, 0x8a, 0x26, 0xf6, 0x64, 0x63, 0xea, 0xd8, 0xae, 0xc7, 0x0e, 0x44, 0x55, 0x6f,
+	0x2a, 0xf1, 0x04, 0xbd, 0xe1, 0x82, 0x5b, 0x90, 0x10, 0x12, 0x48, 0x48, 0x50, 0xb8, 0xe0, 0x92,
+	0x4a, 0x48, 0x5c, 0x20, 0x21, 0x24, 0x1e, 0x80, 0x07, 0xe0, 0x11, 0x90, 0x3d, 0x63, 0x7b, 0xbc,
+	0x7f, 0xb6, 0x43, 0x96, 0x9b, 0xec, 0xda, 0x73, 0xe6, 0x9c, 0xef, 0x9b, 0x39, 0xe7, 0x3b, 0x33,
+	0x1b, 0x18, 0x33, 0x6c, 0x37, 0x34, 0x55, 0xcf, 0x77, 0x03, 0x17, 0x4d, 0x62, 0xcf, 0xa3, 0x86,
+	0x6b, 0x12, 0x95, 0xbd, 0xdd, 0x9f, 0xc3, 0xb6, 0xb7, 0x8b, 0xe7, 0xe4, 0xb3, 0x2d, 0xd7, 0x6d,
+	0xd9, 0x44, 0xc3, 0x9e, 0xa5, 0x61, 0xc7, 0x71, 0x03, 0x1c, 0x58, 0xae, 0x43, 0xd9, 0x34, 0xf9,
+	0xc5, 0x64, 0x5a, 0x8f, 0xf1, 0x97, 0x33, 0xb7, 0xee, 0x5e, 0x6c, 0x63, 0x06, 0x07, 0x1e, 0xa1,
+	0x5a, 0xfc, 0x97, 0x1b, 0xbd, 0xd2, 0x61, 0xb4, 0x4f, 0x7c, 0x6a, 0xb9, 0x4e, 0xf2, 0xc9, 0xed,
+	0xde, 0x6c, 0x59, 0xc1, 0x6e, 0xb8, 0x1d, 0x5b, 0x79, 0xbb, 0xd8, 0xdf, 0x23, 0x7e, 0xfa, 0x89,
+	0x3d, 0x8b, 0x6a, 0x09, 0x68, 0xad, 0x45, 0x1c, 0xe2, 0xe3, 0x80, 0x70, 0x76, 0x8a, 0x07, 0x13,
+	0x4b, 0x3e, 0x31, 0x89, 0x13, 0x58, 0xd8, 0x5e, 0xb5, 0x68, 0xa0, 0x13, 0xea, 0xb9, 0x0e, 0x25,
+	0x68, 0x13, 0xc6, 0x8c, 0x74, 0x84, 0xd6, 0xa5, 0x73, 0xc3, 0x17, 0xc6, 0x9a, 0x0b, 0x6a, 0x16,
+	0x49, 0xe5, 0x11, 0xd2, 0xcf, 0x28, 0x52, 0xba, 0x3c, 0x6a, 0xe6, 0x56, 0x17, 0x1d, 0x29, 0x1a,
+	0x4c, 0x65, 0x43, 0xcb, 0x84, 0x1a, 0xbe, 0xb5, 0x4d, 0x74, 0xf2, 0x20, 0x24, 0x34, 0x40, 0x08,
+	0x8e, 0x39, 0x78, 0x8f, 0xd4, 0xa5, 0x73, 0xd2, 0x85, 0x51, 0x3d, 0xfe, 0xae, 0xf8, 0x20, 0x77,
+	0x9b, 0xc0, 0x61, 0xde, 0x01, 0xc8, 0xbc, 0xc7, 0xf3, 0x0e, 0x8b, 0x52, 0xf0, 0xa3, 0x7c, 0x2a,
+	0xc1, 0x64, 0x36, 0xb4, 0xe4, 0x13, 0x1c, 0xa4, 0x18, 0x07, 0x12, 0x11, 0x8d, 0xc3, 0x71, 0xf7,
+	0x63, 0x87, 0xf8, 0xf5, 0xa1, 0x98, 0x3a, 0x7b, 0x50, 0x3c, 0xa8, 0x77, 0xc2, 0x18, 0x28, 0x73,
+	0x57, 0x24, 0x7e, 0xd7, 0x33, 0x07, 0x4d, 0x3c, 0x4f, 0x31, 0x09, 0x38, 0x50, 0x8a, 0x7f, 0xe5,
+	0x36, 0x77, 0x99, 0xd8, 0x24, 0xe8, 0x97, 0x80, 0x48, 0x85, 0xd3, 0x3e, 0xb1, 0x09, 0xa6, 0x64,
+	0xcb, 0x27, 0x94, 0xf8, 0xfb, 0xc4, 0xdc, 0xb2, 0xbc, 0x78, 0xa3, 0x6a, 0xfa, 0xf3, 0x7c, 0x48,
+	0xe7, 0x23, 0x37, 0xbc, 0x68, 0x2b, 0x77, 0x5c, 0xdf, 0x20, 0xf5, 0xe1, 0xd8, 0x82, 0x3d, 0xa0,
+	0x59, 0x40, 0xf7, 0x09, 0xf1, 0xb6, 0x6c, 0xd7, 0xc4, 0xdb, 0xd8, 0xc6, 0x8e, 0x41, 0x7c, 0x5a,
+	0x3f, 0xc6, 0x9c, 0x44, 0x23, 0xab, 0xe2, 0x00, 0x5a, 0x80, 0x09, 0x33, 0x46, 0xb6, 0x65, 0x1e,
+	0x38, 0x78, 0xcf, 0x32, 0xb6, 0xf6, 0x5d, 0x3b, 0xdc, 0x23, 0xb4, 0x7e, 0x3c, 0x9e, 0x32, 0xce,
+	0x46, 0x97, 0xd9, 0xe0, 0x26, 0x1b, 0xcb, 0x2f, 0x66, 0xc2, 0x6c, 0xa0, 0x8b, 0x39, 0x03, 0x68,
+	0xc9, 0x0e, 0x69, 0x40, 0x7c, 0xa6, 0x1e, 0x6c, 0x19, 0x27, 0x60, 0x84, 0x06, 0x38, 0x08, 0x99,
+	0x6e, 0x8c, 0xea, 0xfc, 0x49, 0x31, 0xe1, 0x74, 0xce, 0x9a, 0x43, 0xbb, 0x05, 0x35, 0x83, 0xbd,
+	0x4e, 0x84, 0x66, 0xae, 0x02, 0x30, 0x36, 0x53, 0x4f, 0x5d, 0x28, 0x33, 0x30, 0xc1, 0x5f, 0x96,
+	0xd1, 0x97, 0x1d, 0x98, 0xec, 0xb0, 0xe6, 0xb8, 0x6e, 0xc2, 0x09, 0xee, 0x94, 0xaf, 0xd7, 0x21,
+	0x60, 0x25, 0x1e, 0x14, 0x03, 0xc6, 0xf9, 0xbb, 0xbc, 0x9e, 0x1c, 0x69, 0x10, 0x13, 0xce, 0xb4,
+	0x05, 0x19, 0x2c, 0x95, 0xbc, 0x42, 0x0c, 0x88, 0x4a, 0x9b, 0x2a, 0x1c, 0x69, 0x94, 0xdf, 0xa5,
+	0x94, 0x4b, 0xb1, 0x12, 0xcc, 0x40, 0x47, 0xb9, 0xaf, 0xf7, 0xd2, 0x81, 0xf5, 0x1e, 0x3a, 0x30,
+	0x03, 0x9d, 0xd5, 0xde, 0x5b, 0x06, 0x9a, 0xd0, 0xb5, 0xd0, 0xfb, 0x8a, 0x40, 0xb6, 0x70, 0x6d,
+	0x0a, 0x70, 0xa4, 0x0b, 0xf7, 0x6a, 0x5a, 0xca, 0xef, 0x7a, 0x9e, 0x7d, 0xd0, 0xaf, 0xc2, 0xa6,
+	0xd3, 0x7a, 0xbc, 0x45, 0x02, 0x6c, 0xe2, 0x00, 0x27, 0xd6, 0xa7, 0x60, 0x38, 0xb4, 0x4c, 0x6e,
+	0x1c, 0x7d, 0x55, 0x1a, 0x20, 0x27, 0x09, 0x6c, 0x5b, 0xc4, 0x09, 0x96, 0x5c, 0x67, 0xc7, 0x6a,
+	0xf5, 0xf3, 0x7e, 0x1f, 0x5e, 0xe8, 0x3a, 0x83, 0x93, 0x5e, 0x85, 0x11, 0x23, 0x7e, 0x53, 0x5d,
+	0xf2, 0x6e, 0x86, 0xdb, 0x84, 0x7b, 0xe3, 0x3e, 0x94, 0x5f, 0x86, 0x53, 0xb5, 0xc8, 0xb8, 0xa4,
+	0x02, 0x9b, 0x8f, 0xb4, 0xa8, 0xf6, 0x38, 0x3a, 0xaa, 0x3d, 0x3c, 0xc4, 0x01, 0xcd, 0x7c, 0x44,
+	0xb4, 0x08, 0x53, 0x46, 0x48, 0x03, 0x77, 0x4f, 0x27, 0xd4, 0x0d, 0x7d, 0x83, 0x2c, 0x93, 0x1d,
+	0xcb, 0xb1, 0xe2, 0xb3, 0x64, 0x7d, 0x28, 0x56, 0xd7, 0xde, 0x06, 0x91, 0xb2, 0x86, 0x5e, 0xcb,
+	0xc7, 0x26, 0xa1, 0xf5, 0xe1, 0xaa, 0xca, 0x7a, 0x97, 0xcd, 0xd4, 0x53, 0x17, 0xf2, 0x33, 0x09,
+	0xc6, 0x04, 0x90, 0x68, 0x1e, 0x4e, 0xf0, 0x93, 0x28, 0xe7, 0x3c, 0x95, 0x71, 0x4e, 0x8e, 0xa8,
+	0x9b, 0xec, 0x53, 0x4f, 0x2c, 0xd1, 0x79, 0x78, 0x8e, 0x12, 0xec, 0x1b, 0xbb, 0xd7, 0x1c, 0xbc,
+	0x6d, 0x13, 0x93, 0xd7, 0x47, 0xfe, 0x25, 0x6a, 0x44, 0x5d, 0x37, 0x9a, 0x42, 0x6e, 0x38, 0x26,
+	0xf9, 0x24, 0xb1, 0x65, 0x95, 0xd2, 0x6d, 0x08, 0x4d, 0xc3, 0x29, 0xec, 0x60, 0xfb, 0x20, 0xb0,
+	0x0c, 0x9a, 0x98, 0xb3, 0x3a, 0xe9, 0x78, 0xaf, 0xac, 0xc3, 0xf8, 0x9a, 0x6b, 0x92, 0x15, 0xdf,
+	0x0d, 0x3d, 0xb1, 0x71, 0x9d, 0x8b, 0x0e, 0xff, 0xf1, 0xe6, 0xac, 0x65, 0x79, 0x26, 0xbe, 0x12,
+	0x5a, 0xdb, 0x50, 0xae, 0xb5, 0xd9, 0x70, 0xa6, 0xcd, 0x23, 0x4f, 0x8b, 0x0d, 0x00, 0x27, 0x19,
+	0x48, 0xda, 0xdb, 0x7c, 0xf9, 0x4d, 0x48, 0x9d, 0xea, 0x82, 0x1b, 0x65, 0x1d, 0xea, 0xe9, 0x40,
+	0x7b, 0x93, 0x2b, 0xe6, 0x90, 0x94, 0xd1, 0x90, 0x50, 0x46, 0x0e, 0x4c, 0x75, 0xf1, 0xc8, 0x39,
+	0xdc, 0x86, 0xd1, 0x34, 0x38, 0xdf, 0xe9, 0x43, 0x51, 0xc8, 0xbc, 0x28, 0xf7, 0x61, 0x22, 0x7d,
+	0x9f, 0x6f, 0x88, 0x03, 0x08, 0x66, 0xc3, 0x64, 0x47, 0xb0, 0xff, 0x87, 0x5a, 0xbe, 0x41, 0x0e,
+	0x98, 0x5a, 0x5b, 0xa3, 0x1c, 0x40, 0xb4, 0x35, 0x81, 0x5a, 0xbe, 0x5f, 0x1e, 0x2e, 0xeb, 0x44,
+	0xf4, 0x6d, 0xdd, 0x6a, 0x00, 0xe8, 0x37, 0xe0, 0xf4, 0xc6, 0xc6, 0x75, 0xa6, 0x5d, 0x2b, 0xa4,
+	0x42, 0xd1, 0xcb, 0x50, 0x8b, 0xbc, 0xac, 0x65, 0xf0, 0xd3, 0xe7, 0xe8, 0x30, 0x94, 0x77, 0x9a,
+	0x76, 0xdb, 0x7c, 0x3b, 0xa8, 0x00, 0x3e, 0xf5, 0x97, 0x74, 0x81, 0xe6, 0x67, 0x27, 0x60, 0x2c,
+	0x3b, 0x81, 0x53, 0xf4, 0x44, 0x82, 0x63, 0x91, 0xca, 0xa0, 0xb3, 0x99, 0xe0, 0xb2, 0x1f, 0x10,
+	0xd4, 0x4d, 0xd7, 0x32, 0x39, 0x33, 0x59, 0xeb, 0xdd, 0x82, 0xba, 0xde, 0xfa, 0x95, 0xc5, 0xc7,
+	0xdf, 0xd7, 0x87, 0x6a, 0xd2, 0xe3, 0x3f, 0xfe, 0x7e, 0x32, 0xd4, 0x40, 0xaa, 0xb6, 0x95, 0xfb,
+	0x19, 0x23, 0xf6, 0x91, 0xfd, 0x98, 0x20, 0x5c, 0xeb, 0xb5, 0x8f, 0xa8, 0xeb, 0xa0, 0x1f, 0x25,
+	0xa8, 0x25, 0xda, 0x81, 0x9a, 0x25, 0x62, 0xb7, 0x49, 0x97, 0x3c, 0x5f, 0x69, 0x0e, 0xc7, 0xbc,
+	0x24, 0x60, 0x7e, 0x03, 0xbd, 0x56, 0x1e, 0xf3, 0xc3, 0x28, 0x05, 0x1f, 0x31, 0xe8, 0x3f, 0x48,
+	0x30, 0xc2, 0x94, 0x01, 0x35, 0x4a, 0x80, 0xc8, 0x29, 0x96, 0x3c, 0x57, 0x61, 0x06, 0x07, 0xbd,
+	0x22, 0x80, 0xbe, 0xac, 0xbc, 0xde, 0x1f, 0xf4, 0xc3, 0xf8, 0xd7, 0x80, 0x47, 0x1d, 0x0b, 0x7e,
+	0x49, 0x9a, 0x46, 0xbf, 0x4a, 0x30, 0xc2, 0xea, 0xbe, 0x14, 0xf0, 0x9c, 0x1e, 0x95, 0x02, 0x9e,
+	0x17, 0x15, 0xe5, 0x9e, 0x00, 0x7c, 0x4d, 0xbe, 0x51, 0x61, 0xb5, 0xb3, 0x07, 0x75, 0x8f, 0x9f,
+	0x7c, 0xd4, 0x6c, 0x07, 0x22, 0x2e, 0xdf, 0x49, 0x30, 0xc2, 0x54, 0xa0, 0x14, 0x97, 0x9c, 0x00,
+	0x95, 0xe2, 0x92, 0x97, 0x98, 0x7c, 0xe6, 0x4c, 0x1f, 0x2e, 0x73, 0x9a, 0x5f, 0x8e, 0x41, 0x8d,
+	0x1f, 0xe8, 0x28, 0xfa, 0x3c, 0xa9, 0xcb, 0x8b, 0x45, 0x87, 0x3f, 0xe1, 0xd4, 0x21, 0xcf, 0x94,
+	0x33, 0xe6, 0xa8, 0xdf, 0x12, 0x50, 0xcf, 0xa2, 0x8b, 0x05, 0xa8, 0x39, 0x32, 0x96, 0xe5, 0xdf,
+	0x8a, 0x05, 0xaa, 0x15, 0x45, 0x6d, 0xaf, 0xce, 0x46, 0xf9, 0x09, 0x1c, 0xea, 0x15, 0x01, 0xea,
+	0x02, 0x6a, 0x96, 0x84, 0x2a, 0xd6, 0xe5, 0x17, 0x59, 0x5d, 0xce, 0x16, 0x85, 0xcf, 0x17, 0xa5,
+	0x5a, 0xd6, 0xbc, 0x9b, 0xf4, 0x29, 0x55, 0x96, 0x35, 0x4a, 0xdd, 0x9f, 0xb3, 0x32, 0x2c, 0xc4,
+	0x99, 0xaf, 0x41, 0xb5, 0xac, 0x39, 0xc7, 0x79, 0x47, 0xc0, 0x79, 0x5d, 0x5e, 0x2a, 0xbb, 0xa6,
+	0xfc, 0x5b, 0xaf, 0xd2, 0xfb, 0x2a, 0x2b, 0xbd, 0xd9, 0xe2, 0x6d, 0x16, 0xeb, 0x4e, 0x2d, 0x6b,
+	0xde, 0x2d, 0x27, 0xa6, 0x0f, 0x93, 0x13, 0xdf, 0x48, 0x70, 0x3c, 0xbe, 0x74, 0xa2, 0xc2, 0xc2,
+	0x11, 0xef, 0xa6, 0xf2, 0xf9, 0x8e, 0x5e, 0xb9, 0xea, 0x3a, 0x2d, 0x3d, 0x74, 0x1c, 0xcb, 0x49,
+	0x2f, 0x8c, 0xca, 0x6d, 0x01, 0xdf, 0x35, 0xf9, 0x4a, 0x35, 0x7c, 0xd8, 0x88, 0xef, 0x5d, 0x1a,
+	0x8e, 0xe2, 0x8a, 0x1a, 0x7d, 0x52, 0xbc, 0x9c, 0xa2, 0xf9, 0xc2, 0xdc, 0xec, 0xbc, 0xfc, 0xca,
+	0x0b, 0xd5, 0x26, 0x71, 0x3a, 0x6b, 0x02, 0x9d, 0xab, 0xa8, 0x22, 0x1d, 0x23, 0xf6, 0x38, 0xcb,
+	0x0e, 0x21, 0x6c, 0xf1, 0x9f, 0x4a, 0x50, 0x4b, 0x2e, 0xae, 0xc5, 0x12, 0xd2, 0x76, 0xe1, 0x2f,
+	0x96, 0x90, 0xf6, 0x3b, 0xb1, 0x72, 0x5d, 0xc0, 0xbf, 0x88, 0x2e, 0x95, 0xc5, 0x1f, 0x5a, 0xe6,
+	0x23, 0x2d, 0xc9, 0x75, 0x26, 0xd4, 0x5f, 0xd7, 0x00, 0xd2, 0x63, 0x21, 0x45, 0x3f, 0x25, 0x52,
+	0xdd, 0x3b, 0xdf, 0xbb, 0x5d, 0x11, 0xfb, 0xe4, 0x7b, 0xd7, 0xfb, 0x9f, 0xa2, 0x0b, 0x04, 0xde,
+	0x43, 0xcb, 0x15, 0xeb, 0x75, 0x2d, 0xde, 0x87, 0xe8, 0xb0, 0xd9, 0x8a, 0x61, 0xb3, 0x4d, 0xf8,
+	0x4d, 0xd4, 0xf1, 0xb9, 0x62, 0x40, 0xed, 0x4a, 0xde, 0xac, 0x32, 0x85, 0xf3, 0xf8, 0x40, 0xe0,
+	0x71, 0x0b, 0xdd, 0xfc, 0xaf, 0x3c, 0xc4, 0x82, 0xfe, 0x33, 0x13, 0x79, 0xad, 0x18, 0x59, 0x5e,
+	0xe6, 0x1b, 0xe5, 0x27, 0x70, 0x22, 0xbb, 0x02, 0x91, 0x0f, 0x95, 0xf7, 0x4b, 0x57, 0x44, 0xe2,
+	0x2e, 0x93, 0xd0, 0x7e, 0x7b, 0x14, 0xd5, 0xfd, 0x3f, 0x59, 0x53, 0x28, 0xc1, 0x2b, 0xdf, 0x16,
+	0x1a, 0xe5, 0x27, 0x70, 0x5e, 0x8f, 0x25, 0x81, 0xd8, 0xbe, 0xfc, 0x60, 0x00, 0xc4, 0xba, 0xd9,
+	0xe6, 0xfb, 0xc8, 0xb3, 0xac, 0x8f, 0x68, 0x65, 0x92, 0x4c, 0xec, 0x24, 0x8d, 0xf2, 0x13, 0xba,
+	0xe5, 0xe4, 0xf4, 0x51, 0xe6, 0x64, 0xf3, 0xa9, 0x04, 0xa3, 0xe9, 0x3d, 0x2c, 0x6a, 0x8f, 0xc3,
+	0x2b, 0x24, 0xe8, 0xd3, 0x70, 0xba, 0x5c, 0x2c, 0xe5, 0xd9, 0x92, 0xd6, 0x9c, 0xcd, 0xb5, 0x98,
+	0xc7, 0x3b, 0xe8, 0xed, 0x43, 0xf1, 0xa0, 0x74, 0x37, 0x46, 0x7e, 0xf5, 0x32, 0xbc, 0x14, 0x5d,
+	0x31, 0xd3, 0xd0, 0xd8, 0xb3, 0xda, 0xc2, 0x5f, 0x3d, 0xc9, 0xd5, 0x76, 0xdd, 0x77, 0x03, 0x77,
+	0x5d, 0xba, 0x57, 0x4b, 0x46, 0xb6, 0x47, 0xe2, 0xff, 0x0b, 0xcf, 0xff, 0x1b, 0x00, 0x00, 0xff,
+	0xff, 0x82, 0x4c, 0xbe, 0x82, 0x04, 0x1f, 0x00, 0x00,
+}
+
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
 var _ grpc.ClientConn
@@ -808,10 +1771,11 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for Credentials service
-
+// CredentialsClient is the client API for Credentials service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type CredentialsClient interface {
-	List(ctx context.Context, in *appscode_dtypes.VoidRequest, opts ...grpc.CallOption) (*CredentialListResponse, error)
+	List(ctx context.Context, in *dtypes.VoidRequest, opts ...grpc.CallOption) (*CredentialListResponse, error)
 	Describe(ctx context.Context, in *CredentialDescribeRequest, opts ...grpc.CallOption) (*CredentialDescribeResponse, error)
 	Create(ctx context.Context, in *CredentialCreateRequest, opts ...grpc.CallOption) (*CredentialCreateResponse, error)
 	Update(ctx context.Context, in *CredentialUpdateRequest, opts ...grpc.CallOption) (*CredentialUpdateResponse, error)
@@ -826,9 +1790,9 @@ func NewCredentialsClient(cc *grpc.ClientConn) CredentialsClient {
 	return &credentialsClient{cc}
 }
 
-func (c *credentialsClient) List(ctx context.Context, in *appscode_dtypes.VoidRequest, opts ...grpc.CallOption) (*CredentialListResponse, error) {
+func (c *credentialsClient) List(ctx context.Context, in *dtypes.VoidRequest, opts ...grpc.CallOption) (*CredentialListResponse, error) {
 	out := new(CredentialListResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Credentials/List", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Credentials/List", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -837,7 +1801,7 @@ func (c *credentialsClient) List(ctx context.Context, in *appscode_dtypes.VoidRe
 
 func (c *credentialsClient) Describe(ctx context.Context, in *CredentialDescribeRequest, opts ...grpc.CallOption) (*CredentialDescribeResponse, error) {
 	out := new(CredentialDescribeResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Credentials/Describe", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Credentials/Describe", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -846,7 +1810,7 @@ func (c *credentialsClient) Describe(ctx context.Context, in *CredentialDescribe
 
 func (c *credentialsClient) Create(ctx context.Context, in *CredentialCreateRequest, opts ...grpc.CallOption) (*CredentialCreateResponse, error) {
 	out := new(CredentialCreateResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Credentials/Create", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Credentials/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -855,7 +1819,7 @@ func (c *credentialsClient) Create(ctx context.Context, in *CredentialCreateRequ
 
 func (c *credentialsClient) Update(ctx context.Context, in *CredentialUpdateRequest, opts ...grpc.CallOption) (*CredentialUpdateResponse, error) {
 	out := new(CredentialUpdateResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Credentials/Update", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Credentials/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -864,17 +1828,16 @@ func (c *credentialsClient) Update(ctx context.Context, in *CredentialUpdateRequ
 
 func (c *credentialsClient) Delete(ctx context.Context, in *CredentialDeleteRequest, opts ...grpc.CallOption) (*CredentialDeleteResponse, error) {
 	out := new(CredentialDeleteResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Credentials/Delete", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Credentials/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for Credentials service
-
+// CredentialsServer is the server API for Credentials service.
 type CredentialsServer interface {
-	List(context.Context, *appscode_dtypes.VoidRequest) (*CredentialListResponse, error)
+	List(context.Context, *dtypes.VoidRequest) (*CredentialListResponse, error)
 	Describe(context.Context, *CredentialDescribeRequest) (*CredentialDescribeResponse, error)
 	Create(context.Context, *CredentialCreateRequest) (*CredentialCreateResponse, error)
 	Update(context.Context, *CredentialUpdateRequest) (*CredentialUpdateResponse, error)
@@ -886,7 +1849,7 @@ func RegisterCredentialsServer(s *grpc.Server, srv CredentialsServer) {
 }
 
 func _Credentials_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(appscode_dtypes.VoidRequest)
+	in := new(dtypes.VoidRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -898,7 +1861,7 @@ func _Credentials_List_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: "/appscode.cloud.v1alpha1.Credentials/List",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CredentialsServer).List(ctx, req.(*appscode_dtypes.VoidRequest))
+		return srv.(CredentialsServer).List(ctx, req.(*dtypes.VoidRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1004,15 +1967,16 @@ var _Credentials_serviceDesc = grpc.ServiceDesc{
 	Metadata: "cloud.proto",
 }
 
-// Client API for Clusters service
-
+// ClustersClient is the client API for Clusters service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ClustersClient interface {
 	List(ctx context.Context, in *ClusterListRequest, opts ...grpc.CallOption) (*ClusterListResponse, error)
 	Describe(ctx context.Context, in *ClusterDescribeRequest, opts ...grpc.CallOption) (*ClusterDescribeResponse, error)
 	Create(ctx context.Context, in *ClusterCreateRequest, opts ...grpc.CallOption) (*ClusterCreateResponse, error)
 	Update(ctx context.Context, in *ClusterUpdateRequest, opts ...grpc.CallOption) (*ClusterUpdateResponse, error)
 	Delete(ctx context.Context, in *ClusterDeleteRequest, opts ...grpc.CallOption) (*ClusterDeleteResponse, error)
-	Apply(ctx context.Context, in *ClusterApplyRequest, opts ...grpc.CallOption) (*appscode_dtypes.LongRunningResponse, error)
+	Apply(ctx context.Context, in *ClusterApplyRequest, opts ...grpc.CallOption) (*dtypes.LongRunningResponse, error)
 	ClientConfig(ctx context.Context, in *ClusterClientConfigRequest, opts ...grpc.CallOption) (*ClusterClientConfigResponse, error)
 	Metadata(ctx context.Context, in *ClusterMetadataRequest, opts ...grpc.CallOption) (*ClusterMetadataResponse, error)
 }
@@ -1027,7 +1991,7 @@ func NewClustersClient(cc *grpc.ClientConn) ClustersClient {
 
 func (c *clustersClient) List(ctx context.Context, in *ClusterListRequest, opts ...grpc.CallOption) (*ClusterListResponse, error) {
 	out := new(ClusterListResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/List", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/List", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1036,7 +2000,7 @@ func (c *clustersClient) List(ctx context.Context, in *ClusterListRequest, opts 
 
 func (c *clustersClient) Describe(ctx context.Context, in *ClusterDescribeRequest, opts ...grpc.CallOption) (*ClusterDescribeResponse, error) {
 	out := new(ClusterDescribeResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Describe", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Describe", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1045,7 +2009,7 @@ func (c *clustersClient) Describe(ctx context.Context, in *ClusterDescribeReques
 
 func (c *clustersClient) Create(ctx context.Context, in *ClusterCreateRequest, opts ...grpc.CallOption) (*ClusterCreateResponse, error) {
 	out := new(ClusterCreateResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Create", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1054,7 +2018,7 @@ func (c *clustersClient) Create(ctx context.Context, in *ClusterCreateRequest, o
 
 func (c *clustersClient) Update(ctx context.Context, in *ClusterUpdateRequest, opts ...grpc.CallOption) (*ClusterUpdateResponse, error) {
 	out := new(ClusterUpdateResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Update", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1063,16 +2027,16 @@ func (c *clustersClient) Update(ctx context.Context, in *ClusterUpdateRequest, o
 
 func (c *clustersClient) Delete(ctx context.Context, in *ClusterDeleteRequest, opts ...grpc.CallOption) (*ClusterDeleteResponse, error) {
 	out := new(ClusterDeleteResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Delete", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *clustersClient) Apply(ctx context.Context, in *ClusterApplyRequest, opts ...grpc.CallOption) (*appscode_dtypes.LongRunningResponse, error) {
-	out := new(appscode_dtypes.LongRunningResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Apply", in, out, c.cc, opts...)
+func (c *clustersClient) Apply(ctx context.Context, in *ClusterApplyRequest, opts ...grpc.CallOption) (*dtypes.LongRunningResponse, error) {
+	out := new(dtypes.LongRunningResponse)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Apply", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1081,7 +2045,7 @@ func (c *clustersClient) Apply(ctx context.Context, in *ClusterApplyRequest, opt
 
 func (c *clustersClient) ClientConfig(ctx context.Context, in *ClusterClientConfigRequest, opts ...grpc.CallOption) (*ClusterClientConfigResponse, error) {
 	out := new(ClusterClientConfigResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/ClientConfig", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/ClientConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1090,22 +2054,21 @@ func (c *clustersClient) ClientConfig(ctx context.Context, in *ClusterClientConf
 
 func (c *clustersClient) Metadata(ctx context.Context, in *ClusterMetadataRequest, opts ...grpc.CallOption) (*ClusterMetadataResponse, error) {
 	out := new(ClusterMetadataResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Metadata", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Clusters/Metadata", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for Clusters service
-
+// ClustersServer is the server API for Clusters service.
 type ClustersServer interface {
 	List(context.Context, *ClusterListRequest) (*ClusterListResponse, error)
 	Describe(context.Context, *ClusterDescribeRequest) (*ClusterDescribeResponse, error)
 	Create(context.Context, *ClusterCreateRequest) (*ClusterCreateResponse, error)
 	Update(context.Context, *ClusterUpdateRequest) (*ClusterUpdateResponse, error)
 	Delete(context.Context, *ClusterDeleteRequest) (*ClusterDeleteResponse, error)
-	Apply(context.Context, *ClusterApplyRequest) (*appscode_dtypes.LongRunningResponse, error)
+	Apply(context.Context, *ClusterApplyRequest) (*dtypes.LongRunningResponse, error)
 	ClientConfig(context.Context, *ClusterClientConfigRequest) (*ClusterClientConfigResponse, error)
 	Metadata(context.Context, *ClusterMetadataRequest) (*ClusterMetadataResponse, error)
 }
@@ -1299,8 +2262,9 @@ var _Clusters_serviceDesc = grpc.ServiceDesc{
 	Metadata: "cloud.proto",
 }
 
-// Client API for NodeGroups service
-
+// NodeGroupsClient is the client API for NodeGroups service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type NodeGroupsClient interface {
 	List(ctx context.Context, in *NodeGroupListRequest, opts ...grpc.CallOption) (*NodeGroupListResponse, error)
 	Describe(ctx context.Context, in *NodeGroupDescribeRequest, opts ...grpc.CallOption) (*NodeGroupDescribeResponse, error)
@@ -1319,7 +2283,7 @@ func NewNodeGroupsClient(cc *grpc.ClientConn) NodeGroupsClient {
 
 func (c *nodeGroupsClient) List(ctx context.Context, in *NodeGroupListRequest, opts ...grpc.CallOption) (*NodeGroupListResponse, error) {
 	out := new(NodeGroupListResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.NodeGroups/List", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.NodeGroups/List", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1328,7 +2292,7 @@ func (c *nodeGroupsClient) List(ctx context.Context, in *NodeGroupListRequest, o
 
 func (c *nodeGroupsClient) Describe(ctx context.Context, in *NodeGroupDescribeRequest, opts ...grpc.CallOption) (*NodeGroupDescribeResponse, error) {
 	out := new(NodeGroupDescribeResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.NodeGroups/Describe", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.NodeGroups/Describe", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1337,7 +2301,7 @@ func (c *nodeGroupsClient) Describe(ctx context.Context, in *NodeGroupDescribeRe
 
 func (c *nodeGroupsClient) Create(ctx context.Context, in *NodeGroupCreateRequest, opts ...grpc.CallOption) (*NodeGroupCreateResponse, error) {
 	out := new(NodeGroupCreateResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.NodeGroups/Create", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.NodeGroups/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1346,7 +2310,7 @@ func (c *nodeGroupsClient) Create(ctx context.Context, in *NodeGroupCreateReques
 
 func (c *nodeGroupsClient) Update(ctx context.Context, in *NodeGroupUpdateRequest, opts ...grpc.CallOption) (*NodeGroupUpdateResponse, error) {
 	out := new(NodeGroupUpdateResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.NodeGroups/Update", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.NodeGroups/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1355,15 +2319,14 @@ func (c *nodeGroupsClient) Update(ctx context.Context, in *NodeGroupUpdateReques
 
 func (c *nodeGroupsClient) Delete(ctx context.Context, in *NodeGroupDeleteRequest, opts ...grpc.CallOption) (*NodeGroupDeleteResponse, error) {
 	out := new(NodeGroupDeleteResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.NodeGroups/Delete", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.NodeGroups/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for NodeGroups service
-
+// NodeGroupsServer is the server API for NodeGroups service.
 type NodeGroupsServer interface {
 	List(context.Context, *NodeGroupListRequest) (*NodeGroupListResponse, error)
 	Describe(context.Context, *NodeGroupDescribeRequest) (*NodeGroupDescribeResponse, error)
@@ -1495,8 +2458,9 @@ var _NodeGroups_serviceDesc = grpc.ServiceDesc{
 	Metadata: "cloud.proto",
 }
 
-// Client API for SSHConfig service
-
+// SSHConfigClient is the client API for SSHConfig service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SSHConfigClient interface {
 	Get(ctx context.Context, in *SSHConfigGetRequest, opts ...grpc.CallOption) (*SSHConfigGetResponse, error)
 }
@@ -1511,15 +2475,14 @@ func NewSSHConfigClient(cc *grpc.ClientConn) SSHConfigClient {
 
 func (c *sSHConfigClient) Get(ctx context.Context, in *SSHConfigGetRequest, opts ...grpc.CallOption) (*SSHConfigGetResponse, error) {
 	out := new(SSHConfigGetResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.SSHConfig/Get", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.SSHConfig/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for SSHConfig service
-
+// SSHConfigServer is the server API for SSHConfig service.
 type SSHConfigServer interface {
 	Get(context.Context, *SSHConfigGetRequest) (*SSHConfigGetResponse, error)
 }
@@ -1557,113 +2520,4 @@ var _SSHConfig_serviceDesc = grpc.ServiceDesc{
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "cloud.proto",
-}
-
-func init() { proto.RegisterFile("cloud.proto", fileDescriptor1) }
-
-var fileDescriptor1 = []byte{
-	// 1641 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x59, 0xdd, 0x6e, 0xdc, 0x44,
-	0x14, 0x96, 0x93, 0x36, 0xdd, 0x9c, 0x14, 0xa9, 0x4c, 0xd3, 0x64, 0x63, 0x2a, 0xa8, 0x4c, 0x85,
-	0x4a, 0x9a, 0xd8, 0x9b, 0x4d, 0xf8, 0x6b, 0x83, 0x28, 0x4d, 0x4a, 0x5a, 0x35, 0x8d, 0x52, 0xa7,
-	0x0d, 0xa2, 0x42, 0x8a, 0x26, 0xf6, 0x64, 0x63, 0xea, 0xd8, 0xae, 0xc7, 0x0e, 0x44, 0x55, 0x6f,
-	0x2a, 0xf1, 0x04, 0xbd, 0xe1, 0x82, 0x5b, 0x90, 0x10, 0x12, 0x48, 0x48, 0x50, 0xb8, 0xe0, 0x92,
-	0x4a, 0x48, 0x5c, 0x20, 0x21, 0x24, 0x1e, 0x80, 0x07, 0xe0, 0x11, 0x90, 0x3d, 0x63, 0x7b, 0xbc,
-	0x7f, 0xb6, 0x43, 0x96, 0x9b, 0xec, 0xda, 0x73, 0xe6, 0x9c, 0xef, 0x9b, 0x39, 0xe7, 0x3b, 0x33,
-	0x1b, 0x18, 0x33, 0x6c, 0x37, 0x34, 0x55, 0xcf, 0x77, 0x03, 0x17, 0x4d, 0x62, 0xcf, 0xa3, 0x86,
-	0x6b, 0x12, 0x95, 0xbd, 0xdd, 0x9f, 0xc3, 0xb6, 0xb7, 0x8b, 0xe7, 0xe4, 0xb3, 0x2d, 0xd7, 0x6d,
-	0xd9, 0x44, 0xc3, 0x9e, 0xa5, 0x61, 0xc7, 0x71, 0x03, 0x1c, 0x58, 0xae, 0x43, 0xd9, 0x34, 0xf9,
-	0xc5, 0x64, 0x5a, 0x8f, 0xf1, 0x97, 0x33, 0xb7, 0xee, 0x5e, 0x6c, 0x63, 0x06, 0x07, 0x1e, 0xa1,
-	0x5a, 0xfc, 0x97, 0x1b, 0xbd, 0xd2, 0x61, 0xb4, 0x4f, 0x7c, 0x6a, 0xb9, 0x4e, 0xf2, 0xc9, 0xed,
-	0xde, 0x6c, 0x59, 0xc1, 0x6e, 0xb8, 0x1d, 0x5b, 0x79, 0xbb, 0xd8, 0xdf, 0x23, 0x7e, 0xfa, 0x89,
-	0x3d, 0x8b, 0x6a, 0x09, 0x68, 0xad, 0x45, 0x1c, 0xe2, 0xe3, 0x80, 0x70, 0x76, 0x8a, 0x07, 0x13,
-	0x4b, 0x3e, 0x31, 0x89, 0x13, 0x58, 0xd8, 0x5e, 0xb5, 0x68, 0xa0, 0x13, 0xea, 0xb9, 0x0e, 0x25,
-	0x68, 0x13, 0xc6, 0x8c, 0x74, 0x84, 0xd6, 0xa5, 0x73, 0xc3, 0x17, 0xc6, 0x9a, 0x0b, 0x6a, 0x16,
-	0x49, 0xe5, 0x11, 0xd2, 0xcf, 0x28, 0x52, 0xba, 0x3c, 0x6a, 0xe6, 0x56, 0x17, 0x1d, 0x29, 0x1a,
-	0x4c, 0x65, 0x43, 0xcb, 0x84, 0x1a, 0xbe, 0xb5, 0x4d, 0x74, 0xf2, 0x20, 0x24, 0x34, 0x40, 0x08,
-	0x8e, 0x39, 0x78, 0x8f, 0xd4, 0xa5, 0x73, 0xd2, 0x85, 0x51, 0x3d, 0xfe, 0xae, 0xf8, 0x20, 0x77,
-	0x9b, 0xc0, 0x61, 0xde, 0x01, 0xc8, 0xbc, 0xc7, 0xf3, 0x0e, 0x8b, 0x52, 0xf0, 0xa3, 0x7c, 0x2a,
-	0xc1, 0x64, 0x36, 0xb4, 0xe4, 0x13, 0x1c, 0xa4, 0x18, 0x07, 0x12, 0x11, 0x8d, 0xc3, 0x71, 0xf7,
-	0x63, 0x87, 0xf8, 0xf5, 0xa1, 0x98, 0x3a, 0x7b, 0x50, 0x3c, 0xa8, 0x77, 0xc2, 0x18, 0x28, 0x73,
-	0x57, 0x24, 0x7e, 0xd7, 0x33, 0x07, 0x4d, 0x3c, 0x4f, 0x31, 0x09, 0x38, 0x50, 0x8a, 0x7f, 0xe5,
-	0x36, 0x77, 0x99, 0xd8, 0x24, 0xe8, 0x97, 0x80, 0x48, 0x85, 0xd3, 0x3e, 0xb1, 0x09, 0xa6, 0x64,
-	0xcb, 0x27, 0x94, 0xf8, 0xfb, 0xc4, 0xdc, 0xb2, 0xbc, 0x78, 0xa3, 0x6a, 0xfa, 0xf3, 0x7c, 0x48,
-	0xe7, 0x23, 0x37, 0xbc, 0x68, 0x2b, 0x77, 0x5c, 0xdf, 0x20, 0xf5, 0xe1, 0xd8, 0x82, 0x3d, 0xa0,
-	0x59, 0x40, 0xf7, 0x09, 0xf1, 0xb6, 0x6c, 0xd7, 0xc4, 0xdb, 0xd8, 0xc6, 0x8e, 0x41, 0x7c, 0x5a,
-	0x3f, 0xc6, 0x9c, 0x44, 0x23, 0xab, 0xe2, 0x00, 0x5a, 0x80, 0x09, 0x33, 0x46, 0xb6, 0x65, 0x1e,
-	0x38, 0x78, 0xcf, 0x32, 0xb6, 0xf6, 0x5d, 0x3b, 0xdc, 0x23, 0xb4, 0x7e, 0x3c, 0x9e, 0x32, 0xce,
-	0x46, 0x97, 0xd9, 0xe0, 0x26, 0x1b, 0xcb, 0x2f, 0x66, 0xc2, 0x6c, 0xa0, 0x8b, 0x39, 0x03, 0x68,
-	0xc9, 0x0e, 0x69, 0x40, 0x7c, 0xa6, 0x1e, 0x6c, 0x19, 0x27, 0x60, 0x84, 0x06, 0x38, 0x08, 0x99,
-	0x6e, 0x8c, 0xea, 0xfc, 0x49, 0x31, 0xe1, 0x74, 0xce, 0x9a, 0x43, 0xbb, 0x05, 0x35, 0x83, 0xbd,
-	0x4e, 0x84, 0x66, 0xae, 0x02, 0x30, 0x36, 0x53, 0x4f, 0x5d, 0x28, 0x33, 0x30, 0xc1, 0x5f, 0x96,
-	0xd1, 0x97, 0x1d, 0x98, 0xec, 0xb0, 0xe6, 0xb8, 0x6e, 0xc2, 0x09, 0xee, 0x94, 0xaf, 0xd7, 0x21,
-	0x60, 0x25, 0x1e, 0x14, 0x03, 0xc6, 0xf9, 0xbb, 0xbc, 0x9e, 0x1c, 0x69, 0x10, 0x13, 0xce, 0xb4,
-	0x05, 0x19, 0x2c, 0x95, 0xbc, 0x42, 0x0c, 0x88, 0x4a, 0x9b, 0x2a, 0x1c, 0x69, 0x94, 0xdf, 0xa5,
-	0x94, 0x4b, 0xb1, 0x12, 0xcc, 0x40, 0x47, 0xb9, 0xaf, 0xf7, 0xd2, 0x81, 0xf5, 0x1e, 0x3a, 0x30,
-	0x03, 0x9d, 0xd5, 0xde, 0x5b, 0x06, 0x9a, 0xd0, 0xb5, 0xd0, 0xfb, 0x8a, 0x40, 0xb6, 0x70, 0x6d,
-	0x0a, 0x70, 0xa4, 0x0b, 0xf7, 0x6a, 0x5a, 0xca, 0xef, 0x7a, 0x9e, 0x7d, 0xd0, 0xaf, 0xc2, 0xa6,
-	0xd3, 0x7a, 0xbc, 0x45, 0x02, 0x6c, 0xe2, 0x00, 0x27, 0xd6, 0xa7, 0x60, 0x38, 0xb4, 0x4c, 0x6e,
-	0x1c, 0x7d, 0x55, 0x1a, 0x20, 0x27, 0x09, 0x6c, 0x5b, 0xc4, 0x09, 0x96, 0x5c, 0x67, 0xc7, 0x6a,
-	0xf5, 0xf3, 0x7e, 0x1f, 0x5e, 0xe8, 0x3a, 0x83, 0x93, 0x5e, 0x85, 0x11, 0x23, 0x7e, 0x53, 0x5d,
-	0xf2, 0x6e, 0x86, 0xdb, 0x84, 0x7b, 0xe3, 0x3e, 0x94, 0x5f, 0x86, 0x53, 0xb5, 0xc8, 0xb8, 0xa4,
-	0x02, 0x9b, 0x8f, 0xb4, 0xa8, 0xf6, 0x38, 0x3a, 0xaa, 0x3d, 0x3c, 0xc4, 0x01, 0xcd, 0x7c, 0x44,
-	0xb4, 0x08, 0x53, 0x46, 0x48, 0x03, 0x77, 0x4f, 0x27, 0xd4, 0x0d, 0x7d, 0x83, 0x2c, 0x93, 0x1d,
-	0xcb, 0xb1, 0xe2, 0xb3, 0x64, 0x7d, 0x28, 0x56, 0xd7, 0xde, 0x06, 0x91, 0xb2, 0x86, 0x5e, 0xcb,
-	0xc7, 0x26, 0xa1, 0xf5, 0xe1, 0xaa, 0xca, 0x7a, 0x97, 0xcd, 0xd4, 0x53, 0x17, 0xf2, 0x33, 0x09,
-	0xc6, 0x04, 0x90, 0x68, 0x1e, 0x4e, 0xf0, 0x93, 0x28, 0xe7, 0x3c, 0x95, 0x71, 0x4e, 0x8e, 0xa8,
-	0x9b, 0xec, 0x53, 0x4f, 0x2c, 0xd1, 0x79, 0x78, 0x8e, 0x12, 0xec, 0x1b, 0xbb, 0xd7, 0x1c, 0xbc,
-	0x6d, 0x13, 0x93, 0xd7, 0x47, 0xfe, 0x25, 0x6a, 0x44, 0x5d, 0x37, 0x9a, 0x42, 0x6e, 0x38, 0x26,
-	0xf9, 0x24, 0xb1, 0x65, 0x95, 0xd2, 0x6d, 0x08, 0x4d, 0xc3, 0x29, 0xec, 0x60, 0xfb, 0x20, 0xb0,
-	0x0c, 0x9a, 0x98, 0xb3, 0x3a, 0xe9, 0x78, 0xaf, 0xac, 0xc3, 0xf8, 0x9a, 0x6b, 0x92, 0x15, 0xdf,
-	0x0d, 0x3d, 0xb1, 0x71, 0x9d, 0x8b, 0x0e, 0xff, 0xf1, 0xe6, 0xac, 0x65, 0x79, 0x26, 0xbe, 0x12,
-	0x5a, 0xdb, 0x50, 0xae, 0xb5, 0xd9, 0x70, 0xa6, 0xcd, 0x23, 0x4f, 0x8b, 0x0d, 0x00, 0x27, 0x19,
-	0x48, 0xda, 0xdb, 0x7c, 0xf9, 0x4d, 0x48, 0x9d, 0xea, 0x82, 0x1b, 0x65, 0x1d, 0xea, 0xe9, 0x40,
-	0x7b, 0x93, 0x2b, 0xe6, 0x90, 0x94, 0xd1, 0x90, 0x50, 0x46, 0x0e, 0x4c, 0x75, 0xf1, 0xc8, 0x39,
-	0xdc, 0x86, 0xd1, 0x34, 0x38, 0xdf, 0xe9, 0x43, 0x51, 0xc8, 0xbc, 0x28, 0xf7, 0x61, 0x22, 0x7d,
-	0x9f, 0x6f, 0x88, 0x03, 0x08, 0x66, 0xc3, 0x64, 0x47, 0xb0, 0xff, 0x87, 0x5a, 0xbe, 0x41, 0x0e,
-	0x98, 0x5a, 0x5b, 0xa3, 0x1c, 0x40, 0xb4, 0x35, 0x81, 0x5a, 0xbe, 0x5f, 0x1e, 0x2e, 0xeb, 0x44,
-	0xf4, 0x6d, 0xdd, 0x6a, 0x00, 0xe8, 0x37, 0xe0, 0xf4, 0xc6, 0xc6, 0x75, 0xa6, 0x5d, 0x2b, 0xa4,
-	0x42, 0xd1, 0xcb, 0x50, 0x8b, 0xbc, 0xac, 0x65, 0xf0, 0xd3, 0xe7, 0xe8, 0x30, 0x94, 0x77, 0x9a,
-	0x76, 0xdb, 0x7c, 0x3b, 0xa8, 0x00, 0x3e, 0xf5, 0x97, 0x74, 0x81, 0xe6, 0x67, 0x27, 0x60, 0x2c,
-	0x3b, 0x81, 0x53, 0xf4, 0x44, 0x82, 0x63, 0x91, 0xca, 0xa0, 0xb3, 0x99, 0xe0, 0xb2, 0x1f, 0x10,
-	0xd4, 0x4d, 0xd7, 0x32, 0x39, 0x33, 0x59, 0xeb, 0xdd, 0x82, 0xba, 0xde, 0xfa, 0x95, 0xc5, 0xc7,
-	0xdf, 0xd7, 0x87, 0x6a, 0xd2, 0xe3, 0x3f, 0xfe, 0x7e, 0x32, 0xd4, 0x40, 0xaa, 0xb6, 0x95, 0xfb,
-	0x19, 0x23, 0xf6, 0x91, 0xfd, 0x98, 0x20, 0x5c, 0xeb, 0xb5, 0x8f, 0xa8, 0xeb, 0xa0, 0x1f, 0x25,
-	0xa8, 0x25, 0xda, 0x81, 0x9a, 0x25, 0x62, 0xb7, 0x49, 0x97, 0x3c, 0x5f, 0x69, 0x0e, 0xc7, 0xbc,
-	0x24, 0x60, 0x7e, 0x03, 0xbd, 0x56, 0x1e, 0xf3, 0xc3, 0x28, 0x05, 0x1f, 0x31, 0xe8, 0x3f, 0x48,
-	0x30, 0xc2, 0x94, 0x01, 0x35, 0x4a, 0x80, 0xc8, 0x29, 0x96, 0x3c, 0x57, 0x61, 0x06, 0x07, 0xbd,
-	0x22, 0x80, 0xbe, 0xac, 0xbc, 0xde, 0x1f, 0xf4, 0xc3, 0xf8, 0xd7, 0x80, 0x47, 0x1d, 0x0b, 0x7e,
-	0x49, 0x9a, 0x46, 0xbf, 0x4a, 0x30, 0xc2, 0xea, 0xbe, 0x14, 0xf0, 0x9c, 0x1e, 0x95, 0x02, 0x9e,
-	0x17, 0x15, 0xe5, 0x9e, 0x00, 0x7c, 0x4d, 0xbe, 0x51, 0x61, 0xb5, 0xb3, 0x07, 0x75, 0x8f, 0x9f,
-	0x7c, 0xd4, 0x6c, 0x07, 0x22, 0x2e, 0xdf, 0x49, 0x30, 0xc2, 0x54, 0xa0, 0x14, 0x97, 0x9c, 0x00,
-	0x95, 0xe2, 0x92, 0x97, 0x98, 0x7c, 0xe6, 0x4c, 0x1f, 0x2e, 0x73, 0x9a, 0x5f, 0x8e, 0x41, 0x8d,
-	0x1f, 0xe8, 0x28, 0xfa, 0x3c, 0xa9, 0xcb, 0x8b, 0x45, 0x87, 0x3f, 0xe1, 0xd4, 0x21, 0xcf, 0x94,
-	0x33, 0xe6, 0xa8, 0xdf, 0x12, 0x50, 0xcf, 0xa2, 0x8b, 0x05, 0xa8, 0x39, 0x32, 0x96, 0xe5, 0xdf,
-	0x8a, 0x05, 0xaa, 0x15, 0x45, 0x6d, 0xaf, 0xce, 0x46, 0xf9, 0x09, 0x1c, 0xea, 0x15, 0x01, 0xea,
-	0x02, 0x6a, 0x96, 0x84, 0x2a, 0xd6, 0xe5, 0x17, 0x59, 0x5d, 0xce, 0x16, 0x85, 0xcf, 0x17, 0xa5,
-	0x5a, 0xd6, 0xbc, 0x9b, 0xf4, 0x29, 0x55, 0x96, 0x35, 0x4a, 0xdd, 0x9f, 0xb3, 0x32, 0x2c, 0xc4,
-	0x99, 0xaf, 0x41, 0xb5, 0xac, 0x39, 0xc7, 0x79, 0x47, 0xc0, 0x79, 0x5d, 0x5e, 0x2a, 0xbb, 0xa6,
-	0xfc, 0x5b, 0xaf, 0xd2, 0xfb, 0x2a, 0x2b, 0xbd, 0xd9, 0xe2, 0x6d, 0x16, 0xeb, 0x4e, 0x2d, 0x6b,
-	0xde, 0x2d, 0x27, 0xa6, 0x0f, 0x93, 0x13, 0xdf, 0x48, 0x70, 0x3c, 0xbe, 0x74, 0xa2, 0xc2, 0xc2,
-	0x11, 0xef, 0xa6, 0xf2, 0xf9, 0x8e, 0x5e, 0xb9, 0xea, 0x3a, 0x2d, 0x3d, 0x74, 0x1c, 0xcb, 0x49,
-	0x2f, 0x8c, 0xca, 0x6d, 0x01, 0xdf, 0x35, 0xf9, 0x4a, 0x35, 0x7c, 0xd8, 0x88, 0xef, 0x5d, 0x1a,
-	0x8e, 0xe2, 0x8a, 0x1a, 0x7d, 0x52, 0xbc, 0x9c, 0xa2, 0xf9, 0xc2, 0xdc, 0xec, 0xbc, 0xfc, 0xca,
-	0x0b, 0xd5, 0x26, 0x71, 0x3a, 0x6b, 0x02, 0x9d, 0xab, 0xa8, 0x22, 0x1d, 0x23, 0xf6, 0x38, 0xcb,
-	0x0e, 0x21, 0x6c, 0xf1, 0x9f, 0x4a, 0x50, 0x4b, 0x2e, 0xae, 0xc5, 0x12, 0xd2, 0x76, 0xe1, 0x2f,
-	0x96, 0x90, 0xf6, 0x3b, 0xb1, 0x72, 0x5d, 0xc0, 0xbf, 0x88, 0x2e, 0x95, 0xc5, 0x1f, 0x5a, 0xe6,
-	0x23, 0x2d, 0xc9, 0x75, 0x26, 0xd4, 0x5f, 0xd7, 0x00, 0xd2, 0x63, 0x21, 0x45, 0x3f, 0x25, 0x52,
-	0xdd, 0x3b, 0xdf, 0xbb, 0x5d, 0x11, 0xfb, 0xe4, 0x7b, 0xd7, 0xfb, 0x9f, 0xa2, 0x0b, 0x04, 0xde,
-	0x43, 0xcb, 0x15, 0xeb, 0x75, 0x2d, 0xde, 0x87, 0xe8, 0xb0, 0xd9, 0x8a, 0x61, 0xb3, 0x4d, 0xf8,
-	0x4d, 0xd4, 0xf1, 0xb9, 0x62, 0x40, 0xed, 0x4a, 0xde, 0xac, 0x32, 0x85, 0xf3, 0xf8, 0x40, 0xe0,
-	0x71, 0x0b, 0xdd, 0xfc, 0xaf, 0x3c, 0xc4, 0x82, 0xfe, 0x33, 0x13, 0x79, 0xad, 0x18, 0x59, 0x5e,
-	0xe6, 0x1b, 0xe5, 0x27, 0x70, 0x22, 0xbb, 0x02, 0x91, 0x0f, 0x95, 0xf7, 0x4b, 0x57, 0x44, 0xe2,
-	0x2e, 0x93, 0xd0, 0x7e, 0x7b, 0x14, 0xd5, 0xfd, 0x3f, 0x59, 0x53, 0x28, 0xc1, 0x2b, 0xdf, 0x16,
-	0x1a, 0xe5, 0x27, 0x70, 0x5e, 0x8f, 0x25, 0x81, 0xd8, 0xbe, 0xfc, 0x60, 0x00, 0xc4, 0xba, 0xd9,
-	0xe6, 0xfb, 0xc8, 0xb3, 0xac, 0x8f, 0x68, 0x65, 0x92, 0x4c, 0xec, 0x24, 0x8d, 0xf2, 0x13, 0xba,
-	0xe5, 0xe4, 0xf4, 0x51, 0xe6, 0x64, 0xf3, 0xa9, 0x04, 0xa3, 0xe9, 0x3d, 0x2c, 0x6a, 0x8f, 0xc3,
-	0x2b, 0x24, 0xe8, 0xd3, 0x70, 0xba, 0x5c, 0x2c, 0xe5, 0xd9, 0x92, 0xd6, 0x9c, 0xcd, 0xb5, 0x98,
-	0xc7, 0x3b, 0xe8, 0xed, 0x43, 0xf1, 0xa0, 0x74, 0x37, 0x46, 0x7e, 0xf5, 0x32, 0xbc, 0x14, 0x5d,
-	0x31, 0xd3, 0xd0, 0xd8, 0xb3, 0xda, 0xc2, 0x5f, 0x3d, 0xc9, 0xd5, 0x76, 0xdd, 0x77, 0x03, 0x77,
-	0x5d, 0xba, 0x57, 0x4b, 0x46, 0xb6, 0x47, 0xe2, 0xff, 0x0b, 0xcf, 0xff, 0x1b, 0x00, 0x00, 0xff,
-	0xff, 0x82, 0x4c, 0xbe, 0x82, 0x04, 0x1f, 0x00, 0x00,
 }

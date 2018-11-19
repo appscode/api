@@ -3,15 +3,14 @@
 
 package v1alpha2
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
-import _ "google.golang.org/genproto/googleapis/api/annotations"
-import _ "github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis/appscode/api"
-
 import (
-	context "golang.org/x/net/context"
+	context "context"
+	fmt "fmt"
+	proto "github.com/golang/protobuf/proto"
+	_ "github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis/appscode/api"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -19,14 +18,43 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type RegionListRequest struct {
-	CloudCredential string `protobuf:"bytes,1,opt,name=cloud_credential,json=cloudCredential" json:"cloud_credential,omitempty"`
+	CloudCredential      string   `protobuf:"bytes,1,opt,name=cloud_credential,json=cloudCredential,proto3" json:"cloud_credential,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *RegionListRequest) Reset()                    { *m = RegionListRequest{} }
-func (m *RegionListRequest) String() string            { return proto.CompactTextString(m) }
-func (*RegionListRequest) ProtoMessage()               {}
-func (*RegionListRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+func (m *RegionListRequest) Reset()         { *m = RegionListRequest{} }
+func (m *RegionListRequest) String() string { return proto.CompactTextString(m) }
+func (*RegionListRequest) ProtoMessage()    {}
+func (*RegionListRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_56d9f74966f40d04, []int{0}
+}
+
+func (m *RegionListRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RegionListRequest.Unmarshal(m, b)
+}
+func (m *RegionListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RegionListRequest.Marshal(b, m, deterministic)
+}
+func (m *RegionListRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RegionListRequest.Merge(m, src)
+}
+func (m *RegionListRequest) XXX_Size() int {
+	return xxx_messageInfo_RegionListRequest.Size(m)
+}
+func (m *RegionListRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_RegionListRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RegionListRequest proto.InternalMessageInfo
 
 func (m *RegionListRequest) GetCloudCredential() string {
 	if m != nil {
@@ -36,13 +64,36 @@ func (m *RegionListRequest) GetCloudCredential() string {
 }
 
 type RegionListResponse struct {
-	Regions []string `protobuf:"bytes,1,rep,name=regions" json:"regions,omitempty"`
+	Regions              []string `protobuf:"bytes,1,rep,name=regions,proto3" json:"regions,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *RegionListResponse) Reset()                    { *m = RegionListResponse{} }
-func (m *RegionListResponse) String() string            { return proto.CompactTextString(m) }
-func (*RegionListResponse) ProtoMessage()               {}
-func (*RegionListResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (m *RegionListResponse) Reset()         { *m = RegionListResponse{} }
+func (m *RegionListResponse) String() string { return proto.CompactTextString(m) }
+func (*RegionListResponse) ProtoMessage()    {}
+func (*RegionListResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_56d9f74966f40d04, []int{1}
+}
+
+func (m *RegionListResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RegionListResponse.Unmarshal(m, b)
+}
+func (m *RegionListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RegionListResponse.Marshal(b, m, deterministic)
+}
+func (m *RegionListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RegionListResponse.Merge(m, src)
+}
+func (m *RegionListResponse) XXX_Size() int {
+	return xxx_messageInfo_RegionListResponse.Size(m)
+}
+func (m *RegionListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_RegionListResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RegionListResponse proto.InternalMessageInfo
 
 func (m *RegionListResponse) GetRegions() []string {
 	if m != nil {
@@ -52,14 +103,37 @@ func (m *RegionListResponse) GetRegions() []string {
 }
 
 type ZoneListRequest struct {
-	CloudCredential string `protobuf:"bytes,1,opt,name=cloud_credential,json=cloudCredential" json:"cloud_credential,omitempty"`
-	Region          string `protobuf:"bytes,2,opt,name=region" json:"region,omitempty"`
+	CloudCredential      string   `protobuf:"bytes,1,opt,name=cloud_credential,json=cloudCredential,proto3" json:"cloud_credential,omitempty"`
+	Region               string   `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ZoneListRequest) Reset()                    { *m = ZoneListRequest{} }
-func (m *ZoneListRequest) String() string            { return proto.CompactTextString(m) }
-func (*ZoneListRequest) ProtoMessage()               {}
-func (*ZoneListRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+func (m *ZoneListRequest) Reset()         { *m = ZoneListRequest{} }
+func (m *ZoneListRequest) String() string { return proto.CompactTextString(m) }
+func (*ZoneListRequest) ProtoMessage()    {}
+func (*ZoneListRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_56d9f74966f40d04, []int{2}
+}
+
+func (m *ZoneListRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ZoneListRequest.Unmarshal(m, b)
+}
+func (m *ZoneListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ZoneListRequest.Marshal(b, m, deterministic)
+}
+func (m *ZoneListRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ZoneListRequest.Merge(m, src)
+}
+func (m *ZoneListRequest) XXX_Size() int {
+	return xxx_messageInfo_ZoneListRequest.Size(m)
+}
+func (m *ZoneListRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ZoneListRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ZoneListRequest proto.InternalMessageInfo
 
 func (m *ZoneListRequest) GetCloudCredential() string {
 	if m != nil {
@@ -76,13 +150,36 @@ func (m *ZoneListRequest) GetRegion() string {
 }
 
 type ZoneListResponse struct {
-	Zones []string `protobuf:"bytes,1,rep,name=zones" json:"zones,omitempty"`
+	Zones                []string `protobuf:"bytes,1,rep,name=zones,proto3" json:"zones,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ZoneListResponse) Reset()                    { *m = ZoneListResponse{} }
-func (m *ZoneListResponse) String() string            { return proto.CompactTextString(m) }
-func (*ZoneListResponse) ProtoMessage()               {}
-func (*ZoneListResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
+func (m *ZoneListResponse) Reset()         { *m = ZoneListResponse{} }
+func (m *ZoneListResponse) String() string { return proto.CompactTextString(m) }
+func (*ZoneListResponse) ProtoMessage()    {}
+func (*ZoneListResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_56d9f74966f40d04, []int{3}
+}
+
+func (m *ZoneListResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ZoneListResponse.Unmarshal(m, b)
+}
+func (m *ZoneListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ZoneListResponse.Marshal(b, m, deterministic)
+}
+func (m *ZoneListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ZoneListResponse.Merge(m, src)
+}
+func (m *ZoneListResponse) XXX_Size() int {
+	return xxx_messageInfo_ZoneListResponse.Size(m)
+}
+func (m *ZoneListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ZoneListResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ZoneListResponse proto.InternalMessageInfo
 
 func (m *ZoneListResponse) GetZones() []string {
 	if m != nil {
@@ -92,18 +189,41 @@ func (m *ZoneListResponse) GetZones() []string {
 }
 
 type BucketListRequest struct {
-	CloudCredential string `protobuf:"bytes,1,opt,name=cloud_credential,json=cloudCredential" json:"cloud_credential,omitempty"`
-	GceProject      string `protobuf:"bytes,2,opt,name=gce_project,json=gceProject" json:"gce_project,omitempty"`
-	ClusterUid      string `protobuf:"bytes,3,opt,name=cluster_uid,json=clusterUid" json:"cluster_uid,omitempty"`
-	SecretNamespace string `protobuf:"bytes,4,opt,name=secret_namespace,json=secretNamespace" json:"secret_namespace,omitempty"`
-	SecretName      string `protobuf:"bytes,5,opt,name=secret_name,json=secretName" json:"secret_name,omitempty"`
-	Provider        string `protobuf:"bytes,6,opt,name=provider" json:"provider,omitempty"`
+	CloudCredential      string   `protobuf:"bytes,1,opt,name=cloud_credential,json=cloudCredential,proto3" json:"cloud_credential,omitempty"`
+	GceProject           string   `protobuf:"bytes,2,opt,name=gce_project,json=gceProject,proto3" json:"gce_project,omitempty"`
+	ClusterUid           string   `protobuf:"bytes,3,opt,name=cluster_uid,json=clusterUid,proto3" json:"cluster_uid,omitempty"`
+	SecretNamespace      string   `protobuf:"bytes,4,opt,name=secret_namespace,json=secretNamespace,proto3" json:"secret_namespace,omitempty"`
+	SecretName           string   `protobuf:"bytes,5,opt,name=secret_name,json=secretName,proto3" json:"secret_name,omitempty"`
+	Provider             string   `protobuf:"bytes,6,opt,name=provider,proto3" json:"provider,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *BucketListRequest) Reset()                    { *m = BucketListRequest{} }
-func (m *BucketListRequest) String() string            { return proto.CompactTextString(m) }
-func (*BucketListRequest) ProtoMessage()               {}
-func (*BucketListRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
+func (m *BucketListRequest) Reset()         { *m = BucketListRequest{} }
+func (m *BucketListRequest) String() string { return proto.CompactTextString(m) }
+func (*BucketListRequest) ProtoMessage()    {}
+func (*BucketListRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_56d9f74966f40d04, []int{4}
+}
+
+func (m *BucketListRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BucketListRequest.Unmarshal(m, b)
+}
+func (m *BucketListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BucketListRequest.Marshal(b, m, deterministic)
+}
+func (m *BucketListRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BucketListRequest.Merge(m, src)
+}
+func (m *BucketListRequest) XXX_Size() int {
+	return xxx_messageInfo_BucketListRequest.Size(m)
+}
+func (m *BucketListRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_BucketListRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BucketListRequest proto.InternalMessageInfo
 
 func (m *BucketListRequest) GetCloudCredential() string {
 	if m != nil {
@@ -148,13 +268,36 @@ func (m *BucketListRequest) GetProvider() string {
 }
 
 type BucketListResponse struct {
-	Names []string `protobuf:"bytes,1,rep,name=names" json:"names,omitempty"`
+	Names                []string `protobuf:"bytes,1,rep,name=names,proto3" json:"names,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *BucketListResponse) Reset()                    { *m = BucketListResponse{} }
-func (m *BucketListResponse) String() string            { return proto.CompactTextString(m) }
-func (*BucketListResponse) ProtoMessage()               {}
-func (*BucketListResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{5} }
+func (m *BucketListResponse) Reset()         { *m = BucketListResponse{} }
+func (m *BucketListResponse) String() string { return proto.CompactTextString(m) }
+func (*BucketListResponse) ProtoMessage()    {}
+func (*BucketListResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_56d9f74966f40d04, []int{5}
+}
+
+func (m *BucketListResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BucketListResponse.Unmarshal(m, b)
+}
+func (m *BucketListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BucketListResponse.Marshal(b, m, deterministic)
+}
+func (m *BucketListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BucketListResponse.Merge(m, src)
+}
+func (m *BucketListResponse) XXX_Size() int {
+	return xxx_messageInfo_BucketListResponse.Size(m)
+}
+func (m *BucketListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_BucketListResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BucketListResponse proto.InternalMessageInfo
 
 func (m *BucketListResponse) GetNames() []string {
 	if m != nil {
@@ -172,6 +315,43 @@ func init() {
 	proto.RegisterType((*BucketListResponse)(nil), "appscode.cloud.v1alpha1.BucketListResponse")
 }
 
+func init() { proto.RegisterFile("metadata.proto", fileDescriptor_56d9f74966f40d04) }
+
+var fileDescriptor_56d9f74966f40d04 = []byte{
+	// 496 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0xc1, 0x6e, 0xd3, 0x40,
+	0x10, 0x95, 0x13, 0x1a, 0x92, 0xa9, 0xa0, 0xed, 0x0a, 0xc1, 0xca, 0x42, 0xb4, 0xf2, 0x29, 0x0d,
+	0xc8, 0x56, 0xc3, 0x05, 0x04, 0xe2, 0x10, 0x0e, 0x5c, 0x00, 0x45, 0x11, 0x5c, 0x7a, 0xb1, 0xb6,
+	0xeb, 0x91, 0xd9, 0xe2, 0xec, 0x2e, 0xde, 0x75, 0x0f, 0x20, 0x2e, 0xfd, 0x05, 0x7e, 0x80, 0x2b,
+	0x1f, 0xc0, 0x97, 0xf0, 0x0b, 0x1c, 0xf8, 0x08, 0x0e, 0xc8, 0xbb, 0x76, 0x93, 0x12, 0x5a, 0x85,
+	0xde, 0x32, 0x6f, 0xdf, 0xcc, 0x7b, 0x99, 0x79, 0x32, 0xdc, 0x9c, 0xa3, 0x65, 0x19, 0xb3, 0x2c,
+	0xd6, 0xa5, 0xb2, 0x8a, 0xdc, 0x61, 0x5a, 0x1b, 0xae, 0x32, 0x8c, 0x79, 0xa1, 0xaa, 0x2c, 0x3e,
+	0x39, 0x60, 0x85, 0x7e, 0xc7, 0x0e, 0xc2, 0xbb, 0xb9, 0x52, 0x79, 0x81, 0x09, 0xd3, 0x22, 0x61,
+	0x52, 0x2a, 0xcb, 0xac, 0x50, 0xd2, 0xf8, 0xb6, 0xf0, 0x5e, 0xdb, 0xf6, 0xef, 0xf7, 0xe8, 0x19,
+	0xec, 0xcc, 0x30, 0x17, 0x4a, 0xbe, 0x14, 0xc6, 0xce, 0xf0, 0x43, 0x85, 0xc6, 0x92, 0x7d, 0xd8,
+	0x76, 0x22, 0x29, 0x2f, 0x31, 0x43, 0x69, 0x05, 0x2b, 0x68, 0xb0, 0x17, 0x0c, 0x07, 0xb3, 0x2d,
+	0x87, 0x3f, 0x3f, 0x83, 0xa3, 0x18, 0xc8, 0x72, 0xbf, 0xd1, 0x4a, 0x1a, 0x24, 0x14, 0xae, 0x97,
+	0x0e, 0x35, 0x34, 0xd8, 0xeb, 0x0e, 0x07, 0xb3, 0xb6, 0x8c, 0xde, 0xc0, 0xd6, 0xa1, 0x92, 0x78,
+	0x35, 0x35, 0x72, 0x1b, 0x7a, 0x7e, 0x10, 0xed, 0x38, 0x42, 0x53, 0x45, 0x43, 0xd8, 0x5e, 0x4c,
+	0x6d, 0x3c, 0xdc, 0x82, 0x8d, 0x8f, 0x4a, 0x62, 0xeb, 0xc0, 0x17, 0xd1, 0xaf, 0x00, 0x76, 0x26,
+	0x15, 0x7f, 0x8f, 0xf6, 0x8a, 0x16, 0x76, 0x61, 0x33, 0xe7, 0x98, 0xea, 0x52, 0x1d, 0x23, 0xb7,
+	0x8d, 0x0f, 0xc8, 0x39, 0x4e, 0x3d, 0x52, 0x13, 0x78, 0x51, 0x19, 0x8b, 0x65, 0x5a, 0x89, 0x8c,
+	0x76, 0x3d, 0xa1, 0x81, 0xde, 0x8a, 0xac, 0x16, 0x33, 0xc8, 0x4b, 0xb4, 0xa9, 0x64, 0x73, 0x34,
+	0x9a, 0x71, 0xa4, 0xd7, 0xbc, 0x98, 0xc7, 0x5f, 0xb7, 0x70, 0x3d, 0x6b, 0x89, 0x4a, 0x37, 0xfc,
+	0xac, 0x05, 0x8b, 0x84, 0xd0, 0xd7, 0xa5, 0x3a, 0x11, 0x19, 0x96, 0xb4, 0xe7, 0x5e, 0xcf, 0xea,
+	0x68, 0x04, 0x64, 0xf9, 0x9f, 0x2e, 0xd6, 0xe2, 0x64, 0xdb, 0xb5, 0xb8, 0x62, 0xfc, 0xbb, 0x0b,
+	0xfd, 0x57, 0x4d, 0xe0, 0xc8, 0xd7, 0x00, 0x36, 0x7d, 0x8f, 0xbb, 0x19, 0x19, 0xc5, 0x17, 0x64,
+	0x2f, 0x5e, 0x89, 0x4e, 0x78, 0x7f, 0x2d, 0xae, 0xf7, 0x12, 0x3d, 0x3a, 0xfd, 0x4e, 0x3b, 0xfd,
+	0xe0, 0xf4, 0xc7, 0xcf, 0x2f, 0x9d, 0x07, 0x64, 0x94, 0xa4, 0xe7, 0xc2, 0xea, 0xfa, 0x93, 0xa6,
+	0x7f, 0x9c, 0x34, 0x09, 0x4a, 0x8e, 0x8d, 0x92, 0xe4, 0x5b, 0x00, 0x83, 0x7a, 0x54, 0x7d, 0x75,
+	0x43, 0x86, 0x17, 0x8a, 0xfe, 0x95, 0xb5, 0x70, 0x7f, 0x0d, 0x66, 0x63, 0xee, 0xc5, 0x92, 0xb9,
+	0x27, 0xe4, 0xf1, 0x7a, 0xe6, 0x3e, 0xf9, 0x1f, 0x9f, 0x13, 0x97, 0x36, 0xef, 0xb5, 0x5d, 0xa7,
+	0x3f, 0xc6, 0x65, 0xeb, 0x5c, 0x09, 0xe6, 0x25, 0xeb, 0x5c, 0x3d, 0xed, 0xff, 0xad, 0xf3, 0xc8,
+	0xbb, 0x71, 0x16, 0x27, 0x4f, 0x61, 0x97, 0xab, 0xf9, 0x42, 0x8b, 0x69, 0x71, 0x5e, 0x6f, 0x3c,
+	0xb9, 0xd1, 0xc6, 0x63, 0x5a, 0x7f, 0x37, 0xa6, 0xc1, 0x61, 0xbf, 0x7d, 0x3a, 0xea, 0xb9, 0x4f,
+	0xc9, 0xc3, 0x3f, 0x01, 0x00, 0x00, 0xff, 0xff, 0xd4, 0xe9, 0xe3, 0xb1, 0xb3, 0x04, 0x00, 0x00,
+}
+
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
 var _ grpc.ClientConn
@@ -180,8 +360,9 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for Metadata service
-
+// MetadataClient is the client API for Metadata service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MetadataClient interface {
 	ListRegions(ctx context.Context, in *RegionListRequest, opts ...grpc.CallOption) (*RegionListResponse, error)
 	ListZones(ctx context.Context, in *ZoneListRequest, opts ...grpc.CallOption) (*ZoneListResponse, error)
@@ -198,7 +379,7 @@ func NewMetadataClient(cc *grpc.ClientConn) MetadataClient {
 
 func (c *metadataClient) ListRegions(ctx context.Context, in *RegionListRequest, opts ...grpc.CallOption) (*RegionListResponse, error) {
 	out := new(RegionListResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Metadata/ListRegions", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Metadata/ListRegions", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -207,7 +388,7 @@ func (c *metadataClient) ListRegions(ctx context.Context, in *RegionListRequest,
 
 func (c *metadataClient) ListZones(ctx context.Context, in *ZoneListRequest, opts ...grpc.CallOption) (*ZoneListResponse, error) {
 	out := new(ZoneListResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Metadata/ListZones", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Metadata/ListZones", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -216,15 +397,14 @@ func (c *metadataClient) ListZones(ctx context.Context, in *ZoneListRequest, opt
 
 func (c *metadataClient) ListBuckets(ctx context.Context, in *BucketListRequest, opts ...grpc.CallOption) (*BucketListResponse, error) {
 	out := new(BucketListResponse)
-	err := grpc.Invoke(ctx, "/appscode.cloud.v1alpha1.Metadata/ListBuckets", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/appscode.cloud.v1alpha1.Metadata/ListBuckets", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for Metadata service
-
+// MetadataServer is the server API for Metadata service.
 type MetadataServer interface {
 	ListRegions(context.Context, *RegionListRequest) (*RegionListResponse, error)
 	ListZones(context.Context, *ZoneListRequest) (*ZoneListResponse, error)
@@ -308,41 +488,4 @@ var _Metadata_serviceDesc = grpc.ServiceDesc{
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "metadata.proto",
-}
-
-func init() { proto.RegisterFile("metadata.proto", fileDescriptor2) }
-
-var fileDescriptor2 = []byte{
-	// 496 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0xc1, 0x6e, 0xd3, 0x40,
-	0x10, 0x95, 0x13, 0x1a, 0x92, 0xa9, 0xa0, 0xed, 0x0a, 0xc1, 0xca, 0x42, 0xb4, 0xf2, 0x29, 0x0d,
-	0xc8, 0x56, 0xc3, 0x05, 0x04, 0xe2, 0x10, 0x0e, 0x5c, 0x00, 0x45, 0x11, 0x5c, 0x7a, 0xb1, 0xb6,
-	0xeb, 0x91, 0xd9, 0xe2, 0xec, 0x2e, 0xde, 0x75, 0x0f, 0x20, 0x2e, 0xfd, 0x05, 0x7e, 0x80, 0x2b,
-	0x1f, 0xc0, 0x97, 0xf0, 0x0b, 0x1c, 0xf8, 0x08, 0x0e, 0xc8, 0xbb, 0x76, 0x93, 0x12, 0x5a, 0x85,
-	0xde, 0x32, 0x6f, 0xdf, 0xcc, 0x7b, 0x99, 0x79, 0x32, 0xdc, 0x9c, 0xa3, 0x65, 0x19, 0xb3, 0x2c,
-	0xd6, 0xa5, 0xb2, 0x8a, 0xdc, 0x61, 0x5a, 0x1b, 0xae, 0x32, 0x8c, 0x79, 0xa1, 0xaa, 0x2c, 0x3e,
-	0x39, 0x60, 0x85, 0x7e, 0xc7, 0x0e, 0xc2, 0xbb, 0xb9, 0x52, 0x79, 0x81, 0x09, 0xd3, 0x22, 0x61,
-	0x52, 0x2a, 0xcb, 0xac, 0x50, 0xd2, 0xf8, 0xb6, 0xf0, 0x5e, 0xdb, 0xf6, 0xef, 0xf7, 0xe8, 0x19,
-	0xec, 0xcc, 0x30, 0x17, 0x4a, 0xbe, 0x14, 0xc6, 0xce, 0xf0, 0x43, 0x85, 0xc6, 0x92, 0x7d, 0xd8,
-	0x76, 0x22, 0x29, 0x2f, 0x31, 0x43, 0x69, 0x05, 0x2b, 0x68, 0xb0, 0x17, 0x0c, 0x07, 0xb3, 0x2d,
-	0x87, 0x3f, 0x3f, 0x83, 0xa3, 0x18, 0xc8, 0x72, 0xbf, 0xd1, 0x4a, 0x1a, 0x24, 0x14, 0xae, 0x97,
-	0x0e, 0x35, 0x34, 0xd8, 0xeb, 0x0e, 0x07, 0xb3, 0xb6, 0x8c, 0xde, 0xc0, 0xd6, 0xa1, 0x92, 0x78,
-	0x35, 0x35, 0x72, 0x1b, 0x7a, 0x7e, 0x10, 0xed, 0x38, 0x42, 0x53, 0x45, 0x43, 0xd8, 0x5e, 0x4c,
-	0x6d, 0x3c, 0xdc, 0x82, 0x8d, 0x8f, 0x4a, 0x62, 0xeb, 0xc0, 0x17, 0xd1, 0xaf, 0x00, 0x76, 0x26,
-	0x15, 0x7f, 0x8f, 0xf6, 0x8a, 0x16, 0x76, 0x61, 0x33, 0xe7, 0x98, 0xea, 0x52, 0x1d, 0x23, 0xb7,
-	0x8d, 0x0f, 0xc8, 0x39, 0x4e, 0x3d, 0x52, 0x13, 0x78, 0x51, 0x19, 0x8b, 0x65, 0x5a, 0x89, 0x8c,
-	0x76, 0x3d, 0xa1, 0x81, 0xde, 0x8a, 0xac, 0x16, 0x33, 0xc8, 0x4b, 0xb4, 0xa9, 0x64, 0x73, 0x34,
-	0x9a, 0x71, 0xa4, 0xd7, 0xbc, 0x98, 0xc7, 0x5f, 0xb7, 0x70, 0x3d, 0x6b, 0x89, 0x4a, 0x37, 0xfc,
-	0xac, 0x05, 0x8b, 0x84, 0xd0, 0xd7, 0xa5, 0x3a, 0x11, 0x19, 0x96, 0xb4, 0xe7, 0x5e, 0xcf, 0xea,
-	0x68, 0x04, 0x64, 0xf9, 0x9f, 0x2e, 0xd6, 0xe2, 0x64, 0xdb, 0xb5, 0xb8, 0x62, 0xfc, 0xbb, 0x0b,
-	0xfd, 0x57, 0x4d, 0xe0, 0xc8, 0xd7, 0x00, 0x36, 0x7d, 0x8f, 0xbb, 0x19, 0x19, 0xc5, 0x17, 0x64,
-	0x2f, 0x5e, 0x89, 0x4e, 0x78, 0x7f, 0x2d, 0xae, 0xf7, 0x12, 0x3d, 0x3a, 0xfd, 0x4e, 0x3b, 0xfd,
-	0xe0, 0xf4, 0xc7, 0xcf, 0x2f, 0x9d, 0x07, 0x64, 0x94, 0xa4, 0xe7, 0xc2, 0xea, 0xfa, 0x93, 0xa6,
-	0x7f, 0x9c, 0x34, 0x09, 0x4a, 0x8e, 0x8d, 0x92, 0xe4, 0x5b, 0x00, 0x83, 0x7a, 0x54, 0x7d, 0x75,
-	0x43, 0x86, 0x17, 0x8a, 0xfe, 0x95, 0xb5, 0x70, 0x7f, 0x0d, 0x66, 0x63, 0xee, 0xc5, 0x92, 0xb9,
-	0x27, 0xe4, 0xf1, 0x7a, 0xe6, 0x3e, 0xf9, 0x1f, 0x9f, 0x13, 0x97, 0x36, 0xef, 0xb5, 0x5d, 0xa7,
-	0x3f, 0xc6, 0x65, 0xeb, 0x5c, 0x09, 0xe6, 0x25, 0xeb, 0x5c, 0x3d, 0xed, 0xff, 0xad, 0xf3, 0xc8,
-	0xbb, 0x71, 0x16, 0x27, 0x4f, 0x61, 0x97, 0xab, 0xf9, 0x42, 0x8b, 0x69, 0x71, 0x5e, 0x6f, 0x3c,
-	0xb9, 0xd1, 0xc6, 0x63, 0x5a, 0x7f, 0x37, 0xa6, 0xc1, 0x61, 0xbf, 0x7d, 0x3a, 0xea, 0xb9, 0x4f,
-	0xc9, 0xc3, 0x3f, 0x01, 0x00, 0x00, 0xff, 0xff, 0xd4, 0xe9, 0xe3, 0xb1, 0xb3, 0x04, 0x00, 0x00,
 }
