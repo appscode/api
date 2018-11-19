@@ -16,9 +16,9 @@ import "github.com/pharmer/pharmer/apis/v1alpha1/generated.proto";
 
 
 service Credentials {
-  rpc List(dtypes.VoidRequest) returns (CredentialListResponse) {
+  rpc List(CredentialListRequest) returns (CredentialListResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cloud/v1alpha2/credentials/json"
+      get : "/_appscode/api/cloud/v1alpha2/{owner}/credentials/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -27,7 +27,7 @@ service Credentials {
 
   rpc Describe(CredentialDescribeRequest) returns (CredentialDescribeResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cloud/v1alpha2/credentials/{name}/json"
+      get : "/_appscode/api/cloud/v1alpha2/{owner}/credentials/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -46,7 +46,7 @@ service Credentials {
 
   rpc Update(CredentialUpdateRequest) returns (CredentialUpdateResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/cloud/v1alpha2/credentials/{credential.metadata.name}/json"
+      put: "/_appscode/api/cloud/v1alpha2/{owner}/credentials/{credential.metadata.name}/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -56,7 +56,7 @@ service Credentials {
 
   rpc Delete(CredentialDeleteRequest) returns (CredentialDeleteResponse) {
     option (google.api.http) = {
-      delete : "/_appscode/api/cloud/v1alpha2/credentials/{name}/json"
+      delete : "/_appscode/api/cloud/v1alpha2/{owner}/credentials/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -64,12 +64,17 @@ service Credentials {
   }
 }
 
+message CredentialListRequest {
+  string owner = 1;
+}
+
 message CredentialListResponse {
   repeated github.com.pharmer.pharmer.apis.v1alpha1.Credential credentials = 1;
 }
 
 message CredentialDescribeRequest {
-  string name = 1;
+  string owner =1;
+  string name = 2;
 }
 
 message CredentialDescribeResponse {
@@ -87,6 +92,7 @@ message CredentialCreateResponse {
 
 message CredentialUpdateRequest {
   github.com.pharmer.pharmer.apis.v1alpha1.Credential credential = 1;
+  string owner = 2;
 }
 
 message CredentialUpdateResponse {
@@ -99,6 +105,7 @@ message CredentialDeleteRequest {
   bool force = 3;
   bool keep_lodabalancers = 4;
   bool delete_dynamic_volumes = 5;
+  string owner = 6;
 }
 
 message CredentialDeleteResponse {
@@ -110,7 +117,7 @@ message CredentialDeleteResponse {
 service Clusters {
   rpc List(ClusterListRequest) returns (ClusterListResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cloud/v1alpha2/clusters/json"
+      get : "/_appscode/api/cloud/v1alpha2/{owner}/clusters/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -119,7 +126,7 @@ service Clusters {
 
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cloud/v1alpha2/clusters/{name}/json"
+      get : "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -128,7 +135,7 @@ service Clusters {
 
   rpc Create(ClusterCreateRequest) returns (ClusterCreateResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/cloud/v1alpha2/clusters/json"
+      post: "/_appscode/api/cloud/v1alpha2/{owner}/clusters/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -138,7 +145,7 @@ service Clusters {
 
   rpc Update(ClusterUpdateRequest) returns (ClusterUpdateResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/cloud/v1alpha2/clusters/{cluster.metadata.name}/json"
+      put: "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{cluster.metadata.name}/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -148,7 +155,7 @@ service Clusters {
 
   rpc Delete(ClusterDeleteRequest) returns (ClusterDeleteResponse) {
     option (google.api.http) = {
-      delete : "/_appscode/api/cloud/v1alpha2/clusters/{name}/json"
+      delete : "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -157,7 +164,7 @@ service Clusters {
 
   rpc Apply(ClusterApplyRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-       put: "/_appscode/api/cloud/v1alpha2/clusters/{name}/actions/apply/json"
+       put: "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{name}/actions/apply/json"
        body: "*"
     };
     option (appscode.api.cors) = {
@@ -167,7 +174,7 @@ service Clusters {
 
   rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cloud/v1alpha2/clusters/{name}/client-config/json"
+      get : "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{name}/client-config/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -176,7 +183,7 @@ service Clusters {
 
   rpc Metadata(ClusterMetadataRequest) returns (ClusterMetadataResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cloud/v1alpha2/clusters/{uid}/metadata/json"
+      get : "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{uid}/metadata/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -186,6 +193,7 @@ service Clusters {
 
 message ClusterListRequest {
   repeated string status = 1;
+  string owner = 2;
 }
 
 message ClusterListResponse {
@@ -194,6 +202,7 @@ message ClusterListResponse {
 
 message ClusterDescribeRequest {
   string name = 1;
+  string owner = 2;
 }
 
 message ClusterDescribeResponse {
@@ -202,6 +211,7 @@ message ClusterDescribeResponse {
 
 message ClusterCreateRequest {
   github.com.pharmer.pharmer.apis.v1alpha1.Cluster cluster = 1;
+  string owner = 2;
 }
 
 message ClusterCreateResponse {
@@ -210,6 +220,7 @@ message ClusterCreateResponse {
 
 message ClusterUpdateRequest {
   github.com.pharmer.pharmer.apis.v1alpha1.Cluster cluster = 1;
+  string owner = 2;
 }
 
 message ClusterUpdateResponse {
@@ -222,6 +233,7 @@ message ClusterDeleteRequest {
   bool force = 3;
   bool keepLodabalancers = 4;
   bool deleteDynamicVolumes = 5;
+  string owner = 6;
 }
 
 message ClusterDeleteResponse {
@@ -230,14 +242,17 @@ message ClusterDeleteResponse {
 
 message ClusterApplyRequest {
   string name = 1;
+  string owner = 2;
 }
 
 message ClusterMetadataRequest {
   string uid = 1;
+  string owner = 2;
 }
 
 message ClusterClientConfigRequest {
   string name = 1;
+  string owner = 2;
 }
 
 message ClusterClientConfigResponse {
@@ -264,7 +279,7 @@ message ClusterMetadataResponse {
 service NodeGroups {
   rpc List(NodeGroupListRequest) returns (NodeGroupListResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/nodegroups/json"
+      get : "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{clusterName}/nodegroups/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -273,7 +288,7 @@ service NodeGroups {
 
   rpc Describe(NodeGroupDescribeRequest) returns (NodeGroupDescribeResponse) {
     option (google.api.http) = {
-      get : "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/nodegroups/{name}/json"
+      get : "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{clusterName}/nodegroups/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -282,7 +297,7 @@ service NodeGroups {
 
   rpc Create(NodeGroupCreateRequest) returns (NodeGroupCreateResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/cloud/v1alpha2/clusters/{nodeGroup.metadata.clusterName}/nodegroups/json"
+      post: "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{nodeGroup.metadata.clusterName}/nodegroups/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -292,7 +307,7 @@ service NodeGroups {
 
   rpc Update(NodeGroupUpdateRequest) returns (NodeGroupUpdateResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/cloud/v1alpha2/clusters/{nodeGroup.metadata.clusterName}/nodegroups/{nodeGroup.metadata.name}/json"
+      put: "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{nodeGroup.metadata.clusterName}/nodegroups/{nodeGroup.metadata.name}/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -302,7 +317,7 @@ service NodeGroups {
 
   rpc Delete(NodeGroupDeleteRequest) returns (NodeGroupDeleteResponse) {
     option (google.api.http) = {
-      delete : "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/nodegroups/{name}/json"
+      delete : "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{clusterName}/nodegroups/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -313,6 +328,7 @@ service NodeGroups {
 message NodeGroupListRequest {
   string clusterName = 1;
   repeated string status = 2;
+  string owner = 3;
 }
 
 message NodeGroupListResponse {
@@ -322,6 +338,7 @@ message NodeGroupListResponse {
 message NodeGroupDescribeRequest {
   string clusterName = 1;
   string name = 2;
+  string owner = 3;
 }
 
 message NodeGroupDescribeResponse {
@@ -330,6 +347,7 @@ message NodeGroupDescribeResponse {
 
 message NodeGroupCreateRequest {
   github.com.pharmer.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+  string owner = 2;
 }
 
 message NodeGroupCreateResponse {
@@ -338,6 +356,7 @@ message NodeGroupCreateResponse {
 
 message NodeGroupUpdateRequest {
   github.com.pharmer.pharmer.apis.v1alpha1.NodeGroup nodeGroup = 1;
+  string owner = 2;
 }
 
 message NodeGroupUpdateResponse {
@@ -347,6 +366,7 @@ message NodeGroupUpdateResponse {
 message NodeGroupDeleteRequest {
   string clusterName = 1;
   string name = 2;
+  string owner = 3;
 }
 
 message NodeGroupDeleteResponse {
@@ -358,7 +378,7 @@ message NodeGroupDeleteResponse {
 service SSHConfig {
   rpc Get(SSHConfigGetRequest) returns (SSHConfigGetResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/ssh/json"
+      get: "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{clusterName}/ssh/json"
     };
   }
 }
@@ -366,6 +386,7 @@ service SSHConfig {
 message SSHConfigGetRequest {
   string clusterName = 1;
   string nodeName = 2;
+  string owner = 3;
 }
 
 message SSHConfigGetResponse {

@@ -1,22 +1,29 @@
 {
   "definitions": {
-    "v1alpha1CertificateDeleteRequest": {
+    "v1alpha2CertificateDeleteRequest": {
       "properties": {
+        "owner": {
+          "type": "string"
+        },
         "uid": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1alpha1CertificateDeployRequest": {
+    "v1alpha2CertificateDeployRequest": {
       "properties": {
         "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
-        "namespace": {
+        "owner": {
           "type": "string"
         },
         "secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "uid": {
@@ -25,18 +32,26 @@
       },
       "type": "object"
     },
-    "v1alpha1CertificateDescribeRequest": {
+    "v1alpha2CertificateDescribeRequest": {
       "properties": {
+        "owner": {
+          "type": "string"
+        },
         "uid": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1alpha1CertificateListRequest": {
+    "v1alpha2CertificateListRequest": {
+      "properties": {
+        "owner": {
+          "type": "string"
+        }
+      },
       "type": "object"
     },
-    "v1alpha1CertificateLoadRequest": {
+    "v1alpha2CertificateLoadRequest": {
       "properties": {
         "cert_data": {
           "type": "string"
@@ -45,6 +60,11 @@
           "type": "string"
         },
         "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         }
       },

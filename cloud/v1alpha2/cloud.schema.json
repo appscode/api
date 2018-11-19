@@ -111,10 +111,6 @@
       },
       "type": "object"
     },
-    "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
-      "type": "object"
-    },
     "v1Initializer": {
       "description": "Initializer is information about an initializer that has not yet completed.",
       "properties": {
@@ -755,6 +751,9 @@
       "properties": {
         "name": {
           "type": "string"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -762,6 +761,9 @@
     "v1alpha2ClusterClientConfigRequest": {
       "properties": {
         "name": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         }
       },
@@ -771,6 +773,9 @@
       "properties": {
         "cluster": {
           "$ref": "#/definitions/v1alpha1Cluster"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -789,6 +794,9 @@
         "name": {
           "type": "string"
         },
+        "owner": {
+          "type": "string"
+        },
         "releaseReservedIP": {
           "type": "boolean"
         }
@@ -799,12 +807,18 @@
       "properties": {
         "name": {
           "type": "string"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
     },
     "v1alpha2ClusterListRequest": {
       "properties": {
+        "owner": {
+          "type": "string"
+        },
         "status": {
           "items": {
             "type": "string"
@@ -816,6 +830,9 @@
     },
     "v1alpha2ClusterMetadataRequest": {
       "properties": {
+        "owner": {
+          "type": "string"
+        },
         "uid": {
           "type": "string"
         }
@@ -826,6 +843,9 @@
       "properties": {
         "cluster": {
           "$ref": "#/definitions/v1alpha1Cluster"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -855,6 +875,9 @@
         "name": {
           "type": "string"
         },
+        "owner": {
+          "type": "string"
+        },
         "release_reserved_ip": {
           "type": "boolean"
         }
@@ -865,6 +888,17 @@
       "properties": {
         "name": {
           "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2CredentialListRequest": {
+      "properties": {
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -873,6 +907,9 @@
       "properties": {
         "credential": {
           "$ref": "#/definitions/v1alpha1Credential"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -881,6 +918,9 @@
       "properties": {
         "nodeGroup": {
           "$ref": "#/definitions/v1alpha1NodeGroup"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -891,6 +931,9 @@
           "type": "string"
         },
         "name": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         }
       },
@@ -903,6 +946,9 @@
         },
         "name": {
           "type": "string"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -910,6 +956,9 @@
     "v1alpha2NodeGroupListRequest": {
       "properties": {
         "clusterName": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         },
         "status": {
@@ -925,6 +974,9 @@
       "properties": {
         "nodeGroup": {
           "$ref": "#/definitions/v1alpha1NodeGroup"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -935,6 +987,9 @@
           "type": "string"
         },
         "nodeName": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         }
       },

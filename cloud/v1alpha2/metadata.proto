@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package appscode.cloud.v1alpha1;
+package appscode.cloud.v1alpha2;
 
 option go_package = "v1alpha2";
 

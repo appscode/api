@@ -32,6 +32,24 @@ func request_Certificates_List_0(ctx context.Context, marshaler runtime.Marshale
 	var protoReq CertificateListRequest
 	var metadata runtime.ServerMetadata
 
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
+
 	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -47,6 +65,17 @@ func request_Certificates_Describe_0(ctx context.Context, marshaler runtime.Mars
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["uid"]
 	if !ok {
@@ -79,6 +108,17 @@ func request_Certificates_Load_0(ctx context.Context, marshaler runtime.Marshale
 		_   = err
 	)
 
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
+
 	val, ok = pathParams["name"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
@@ -105,6 +145,17 @@ func request_Certificates_Delete_0(ctx context.Context, marshaler runtime.Marsha
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["uid"]
 	if !ok {
@@ -136,6 +187,17 @@ func request_Certificates_Deploy_0(ctx context.Context, marshaler runtime.Marsha
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["uid"]
 	if !ok {
@@ -340,15 +402,15 @@ func RegisterCertificatesHandlerClient(ctx context.Context, mux *runtime.ServeMu
 }
 
 var (
-	pattern_Certificates_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cloud", "v1alpha2", "certificates", "json"}, ""))
+	pattern_Certificates_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "certificates", "json"}, ""))
 
-	pattern_Certificates_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "certificates", "uid", "json"}, ""))
+	pattern_Certificates_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "certificates", "uid", "json"}, ""))
 
-	pattern_Certificates_Load_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "certificates", "name", "actions", "obtain", "json"}, ""))
+	pattern_Certificates_Load_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8, 2, 9}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "certificates", "name", "actions", "obtain", "json"}, ""))
 
-	pattern_Certificates_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "certificates", "uid", "json"}, ""))
+	pattern_Certificates_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "certificates", "uid", "json"}, ""))
 
-	pattern_Certificates_Deploy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "certificates", "uid", "actions", "deploy", "json"}, ""))
+	pattern_Certificates_Deploy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8, 2, 9}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "certificates", "uid", "actions", "deploy", "json"}, ""))
 )
 
 var (

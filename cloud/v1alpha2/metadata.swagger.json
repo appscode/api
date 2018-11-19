@@ -4,7 +4,7 @@
     "application/json"
   ],
   "definitions": {
-    "v1alpha1BucketListRequest": {
+    "v1alpha2BucketListRequest": {
       "properties": {
         "cloud_credential": {
           "type": "string"
@@ -27,7 +27,7 @@
       },
       "type": "object"
     },
-    "v1alpha1BucketListResponse": {
+    "v1alpha2BucketListResponse": {
       "properties": {
         "names": {
           "items": {
@@ -38,7 +38,7 @@
       },
       "type": "object"
     },
-    "v1alpha1RegionListRequest": {
+    "v1alpha2RegionListRequest": {
       "properties": {
         "cloud_credential": {
           "type": "string"
@@ -46,7 +46,7 @@
       },
       "type": "object"
     },
-    "v1alpha1RegionListResponse": {
+    "v1alpha2RegionListResponse": {
       "properties": {
         "regions": {
           "items": {
@@ -57,7 +57,7 @@
       },
       "type": "object"
     },
-    "v1alpha1ZoneListRequest": {
+    "v1alpha2ZoneListRequest": {
       "properties": {
         "cloud_credential": {
           "type": "string"
@@ -68,7 +68,7 @@
       },
       "type": "object"
     },
-    "v1alpha1ZoneListResponse": {
+    "v1alpha2ZoneListResponse": {
       "properties": {
         "zones": {
           "items": {
@@ -131,7 +131,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1alpha1BucketListResponse"
+              "$ref": "#/definitions/v1alpha2BucketListResponse"
             }
           }
         },
@@ -155,7 +155,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1alpha1RegionListResponse"
+              "$ref": "#/definitions/v1alpha2RegionListResponse"
             }
           }
         },
@@ -185,7 +185,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1alpha1ZoneListResponse"
+              "$ref": "#/definitions/v1alpha2ZoneListResponse"
             }
           }
         },

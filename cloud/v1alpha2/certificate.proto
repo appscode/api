@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package appscode.cloud.v1alpha1;
+package appscode.cloud.v1alpha2;
 
 option go_package = "v1alpha2";
 
@@ -15,7 +15,7 @@ import "appscode.com/api/dtypes/types.proto";
 service Certificates {
   rpc List(CertificateListRequest) returns (CertificateListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/cloud/v1alpha2/certificates/json"
+      get: "/_appscode/api/cloud/v1alpha2/{owner}/certificates/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -24,7 +24,7 @@ service Certificates {
 
   rpc Describe(CertificateDescribeRequest) returns (CertificateDescribeResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/cloud/v1alpha2/certificates/{uid}/json"
+      get: "/_appscode/api/cloud/v1alpha2/{owner}/certificates/{uid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -33,7 +33,7 @@ service Certificates {
 
   rpc Load(CertificateLoadRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/cloud/v1alpha2/certificates/{name}/actions/obtain/json"
+      put: "/_appscode/api/cloud/v1alpha2/{owner}/certificates/{name}/actions/obtain/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -43,7 +43,7 @@ service Certificates {
 
   rpc Delete(CertificateDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/cloud/v1alpha2/certificates/{uid}/json"
+      delete: "/_appscode/api/cloud/v1alpha2/{owner}/certificates/{uid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -52,7 +52,7 @@ service Certificates {
 
   rpc Deploy(CertificateDeployRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/_appscode/api/cloud/v1alpha2/certificates/{uid}/actions/deploy/json"
+      put: "/_appscode/api/cloud/v1alpha2/{owner}/certificates/{uid}/actions/deploy/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -62,6 +62,7 @@ service Certificates {
 }
 
 message CertificateListRequest {
+  string owner = 1;
 }
 
 message CertificateListResponse {
@@ -69,7 +70,8 @@ message CertificateListResponse {
 }
 
 message CertificateDescribeRequest {
-  string uid = 1;
+  string owner = 1;
+  string uid = 2;
 }
 
 message CertificateDescribeResponse {
@@ -98,15 +100,17 @@ message CertificateLoadRequest {
   string name = 1;
   string cert_data = 2;
   string key_data = 3;
+  string owner = 4;
 }
 
 message CertificateDeleteRequest {
-  string uid = 1;
+  string owner = 1;
+  string uid = 2;
 }
 
 message CertificateDeployRequest {
   string uid = 1;
   string secret_name = 2;
   string cluster_name = 3;
-  string namespace = 4;
+  string owner = 4;
 }

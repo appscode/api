@@ -7,7 +7,7 @@
     "dtypesVoidResponse": {
       "type": "object"
     },
-    "v1alpha1Certificate": {
+    "v1alpha2Certificate": {
       "properties": {
         "cert": {
           "type": "string"
@@ -52,20 +52,23 @@
       },
       "type": "object"
     },
-    "v1alpha1CertificateDeleteRequest": {
+    "v1alpha2CertificateDeleteRequest": {
       "properties": {
+        "owner": {
+          "type": "string"
+        },
         "uid": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1alpha1CertificateDeployRequest": {
+    "v1alpha2CertificateDeployRequest": {
       "properties": {
         "cluster_name": {
           "type": "string"
         },
-        "namespace": {
+        "owner": {
           "type": "string"
         },
         "secret_name": {
@@ -77,37 +80,45 @@
       },
       "type": "object"
     },
-    "v1alpha1CertificateDescribeRequest": {
+    "v1alpha2CertificateDescribeRequest": {
       "properties": {
+        "owner": {
+          "type": "string"
+        },
         "uid": {
           "type": "string"
         }
       },
       "type": "object"
     },
-    "v1alpha1CertificateDescribeResponse": {
+    "v1alpha2CertificateDescribeResponse": {
       "properties": {
         "certificate": {
-          "$ref": "#/definitions/v1alpha1Certificate"
+          "$ref": "#/definitions/v1alpha2Certificate"
         }
       },
       "type": "object"
     },
-    "v1alpha1CertificateListRequest": {
+    "v1alpha2CertificateListRequest": {
+      "properties": {
+        "owner": {
+          "type": "string"
+        }
+      },
       "type": "object"
     },
-    "v1alpha1CertificateListResponse": {
+    "v1alpha2CertificateListResponse": {
       "properties": {
         "certificates": {
           "items": {
-            "$ref": "#/definitions/v1alpha1Certificate"
+            "$ref": "#/definitions/v1alpha2Certificate"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "v1alpha1CertificateLoadRequest": {
+    "v1alpha2CertificateLoadRequest": {
       "properties": {
         "cert_data": {
           "type": "string"
@@ -116,6 +127,9 @@
           "type": "string"
         },
         "name": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         }
       },
@@ -128,14 +142,22 @@
     "version": "1alpha2"
   },
   "paths": {
-    "/_appscode/api/cloud/v1alpha2/certificates/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/certificates/json": {
       "get": {
         "operationId": "List",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1alpha1CertificateListResponse"
+              "$ref": "#/definitions/v1alpha2CertificateListResponse"
             }
           }
         },
@@ -144,10 +166,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/certificates/{name}/actions/obtain/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/certificates/{name}/actions/obtain/json": {
       "put": {
         "operationId": "Load",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "name",
@@ -159,7 +187,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1CertificateLoadRequest"
+              "$ref": "#/definitions/v1alpha2CertificateLoadRequest"
             }
           }
         ],
@@ -176,10 +204,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/certificates/{uid}/actions/deploy/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/certificates/{uid}/actions/deploy/json": {
       "put": {
         "operationId": "Deploy",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "uid",
@@ -191,7 +225,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1CertificateDeployRequest"
+              "$ref": "#/definitions/v1alpha2CertificateDeployRequest"
             }
           }
         ],
@@ -208,10 +242,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/certificates/{uid}/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/certificates/{uid}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "uid",
@@ -236,6 +276,12 @@
         "parameters": [
           {
             "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
             "name": "uid",
             "required": true,
             "type": "string"
@@ -245,7 +291,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1alpha1CertificateDescribeResponse"
+              "$ref": "#/definitions/v1alpha2CertificateDescribeResponse"
             }
           }
         },

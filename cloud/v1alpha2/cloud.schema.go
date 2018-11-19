@@ -21,6 +21,7 @@ var clusterDescribeRequestSchema *gojsonschema.Schema
 var clusterListRequestSchema *gojsonschema.Schema
 var clusterMetadataRequestSchema *gojsonschema.Schema
 var nodeGroupUpdateRequestSchema *gojsonschema.Schema
+var credentialListRequestSchema *gojsonschema.Schema
 var credentialUpdateRequestSchema *gojsonschema.Schema
 var clusterCreateRequestSchema *gojsonschema.Schema
 var clusterClientConfigRequestSchema *gojsonschema.Schema
@@ -35,6 +36,9 @@ func init() {
     },
     "nodeName": {
       "type": "string"
+    },
+    "owner": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -47,6 +51,9 @@ func init() {
   "properties": {
     "name": {
       "type": "string"
+    },
+    "owner": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -58,6 +65,9 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
+      "type": "string"
+    },
+    "owner": {
       "type": "string"
     }
   },
@@ -367,6 +377,9 @@ func init() {
       "type": "string"
     },
     "name": {
+      "type": "string"
+    },
+    "owner": {
       "type": "string"
     }
   },
@@ -1025,6 +1038,9 @@ func init() {
   "properties": {
     "cluster": {
       "$ref": "#/definitions/v1alpha1Cluster"
+    },
+    "owner": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -1036,6 +1052,9 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "clusterName": {
+      "type": "string"
+    },
+    "owner": {
       "type": "string"
     },
     "status": {
@@ -1065,6 +1084,9 @@ func init() {
     "name": {
       "type": "string"
     },
+    "owner": {
+      "type": "string"
+    },
     "releaseReservedIP": {
       "type": "boolean"
     }
@@ -1081,6 +1103,9 @@ func init() {
       "type": "string"
     },
     "name": {
+      "type": "string"
+    },
+    "owner": {
       "type": "string"
     }
   },
@@ -1427,6 +1452,9 @@ func init() {
   "properties": {
     "nodeGroup": {
       "$ref": "#/definitions/v1alpha1NodeGroup"
+    },
+    "owner": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -1449,6 +1477,9 @@ func init() {
     "name": {
       "type": "string"
     },
+    "owner": {
+      "type": "string"
+    },
     "release_reserved_ip": {
       "type": "boolean"
     }
@@ -1463,6 +1494,9 @@ func init() {
   "properties": {
     "name": {
       "type": "string"
+    },
+    "owner": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -1473,6 +1507,9 @@ func init() {
 	clusterListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "owner": {
+      "type": "string"
+    },
     "status": {
       "items": {
         "type": "string"
@@ -1488,6 +1525,9 @@ func init() {
 	clusterMetadataRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "owner": {
+      "type": "string"
+    },
     "uid": {
       "type": "string"
     }
@@ -1835,6 +1875,21 @@ func init() {
   "properties": {
     "nodeGroup": {
       "$ref": "#/definitions/v1alpha1NodeGroup"
+    },
+    "owner": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	credentialListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "owner": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -2126,6 +2181,9 @@ func init() {
   "properties": {
     "credential": {
       "$ref": "#/definitions/v1alpha1Credential"
+    },
+    "owner": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -2783,6 +2841,9 @@ func init() {
   "properties": {
     "cluster": {
       "$ref": "#/definitions/v1alpha1Cluster"
+    },
+    "owner": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -2794,6 +2855,9 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "name": {
+      "type": "string"
+    },
+    "owner": {
       "type": "string"
     }
   },
@@ -2878,6 +2942,11 @@ func (m *NodeGroupUpdateRequest) Valid() (*gojsonschema.Result, error) {
 	return nodeGroupUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *NodeGroupUpdateRequest) IsRequest() {}
+
+func (m *CredentialListRequest) Valid() (*gojsonschema.Result, error) {
+	return credentialListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *CredentialListRequest) IsRequest() {}
 
 func (m *CredentialUpdateRequest) Valid() (*gojsonschema.Result, error) {
 	return credentialUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))

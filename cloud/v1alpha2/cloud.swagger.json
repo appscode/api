@@ -148,10 +148,6 @@
       "title": "Types for long running operation. usually called as jobs.\nNext Id = 3",
       "type": "object"
     },
-    "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
-      "type": "object"
-    },
     "v1Initializer": {
       "description": "Initializer is information about an initializer that has not yet completed.",
       "properties": {
@@ -1013,6 +1009,9 @@
       "properties": {
         "name": {
           "type": "string"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1020,6 +1019,9 @@
     "v1alpha2ClusterClientConfigRequest": {
       "properties": {
         "name": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         }
       },
@@ -1037,6 +1039,9 @@
       "properties": {
         "cluster": {
           "$ref": "#/definitions/v1alpha1Cluster"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1066,6 +1071,9 @@
         "name": {
           "type": "string"
         },
+        "owner": {
+          "type": "string"
+        },
         "releaseReservedIP": {
           "format": "boolean",
           "type": "boolean"
@@ -1085,6 +1093,9 @@
       "properties": {
         "name": {
           "type": "string"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1099,6 +1110,9 @@
     },
     "v1alpha2ClusterListRequest": {
       "properties": {
+        "owner": {
+          "type": "string"
+        },
         "status": {
           "items": {
             "type": "string"
@@ -1121,6 +1135,9 @@
     },
     "v1alpha2ClusterMetadataRequest": {
       "properties": {
+        "owner": {
+          "type": "string"
+        },
         "uid": {
           "type": "string"
         }
@@ -1151,6 +1168,9 @@
       "properties": {
         "cluster": {
           "$ref": "#/definitions/v1alpha1Cluster"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1199,6 +1219,9 @@
         "name": {
           "type": "string"
         },
+        "owner": {
+          "type": "string"
+        },
         "release_reserved_ip": {
           "format": "boolean",
           "type": "boolean"
@@ -1218,6 +1241,9 @@
       "properties": {
         "name": {
           "type": "string"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1226,6 +1252,14 @@
       "properties": {
         "credential": {
           "$ref": "#/definitions/v1alpha1Credential"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2CredentialListRequest": {
+      "properties": {
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1245,6 +1279,9 @@
       "properties": {
         "credential": {
           "$ref": "#/definitions/v1alpha1Credential"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1261,6 +1298,9 @@
       "properties": {
         "nodeGroup": {
           "$ref": "#/definitions/v1alpha1NodeGroup"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1279,6 +1319,9 @@
           "type": "string"
         },
         "name": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         }
       },
@@ -1299,6 +1342,9 @@
         },
         "name": {
           "type": "string"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1314,6 +1360,9 @@
     "v1alpha2NodeGroupListRequest": {
       "properties": {
         "clusterName": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         },
         "status": {
@@ -1340,6 +1389,9 @@
       "properties": {
         "nodeGroup": {
           "$ref": "#/definitions/v1alpha1NodeGroup"
+        },
+        "owner": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1358,6 +1410,9 @@
           "type": "string"
         },
         "nodeName": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         }
       },
@@ -1422,10 +1477,16 @@
     "version": "1alpha2"
   },
   "paths": {
-    "/_appscode/api/cloud/v1alpha2/clusters/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/json": {
       "get": {
         "operationId": "List",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "query",
             "items": {
@@ -1452,6 +1513,12 @@
         "operationId": "Create",
         "parameters": [
           {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "body",
             "required": true,
@@ -1473,10 +1540,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/clusters/{cluster.metadata.name}/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{cluster.metadata.name}/json": {
       "put": {
         "operationId": "Update",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "cluster.metadata.name",
@@ -1505,10 +1578,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/nodegroups/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{clusterName}/nodegroups/json": {
       "get": {
         "operationId": "List",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "clusterName",
@@ -1538,10 +1617,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/nodegroups/{name}/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{clusterName}/nodegroups/{name}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "clusterName",
@@ -1572,6 +1657,12 @@
         "parameters": [
           {
             "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
             "name": "clusterName",
             "required": true,
             "type": "string"
@@ -1596,10 +1687,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/clusters/{clusterName}/ssh/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{clusterName}/ssh/json": {
       "get": {
         "operationId": "Get",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "clusterName",
@@ -1626,10 +1723,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/clusters/{name}/actions/apply/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{name}/actions/apply/json": {
       "put": {
         "operationId": "Apply",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "name",
@@ -1658,10 +1761,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/clusters/{name}/client-config/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{name}/client-config/json": {
       "get": {
         "operationId": "ClientConfig",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "name",
@@ -1682,10 +1791,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/clusters/{name}/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{name}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "name",
@@ -1710,6 +1825,12 @@
         "parameters": [
           {
             "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
             "name": "name",
             "required": true,
             "type": "string"
@@ -1728,10 +1849,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/clusters/{nodeGroup.metadata.clusterName}/nodegroups/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{nodeGroup.metadata.clusterName}/nodegroups/json": {
       "post": {
         "operationId": "Create",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "nodeGroup.metadata.clusterName",
@@ -1760,10 +1887,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/clusters/{nodeGroup.metadata.clusterName}/nodegroups/{nodeGroup.metadata.name}/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{nodeGroup.metadata.clusterName}/nodegroups/{nodeGroup.metadata.name}/json": {
       "put": {
         "operationId": "Update",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "nodeGroup.metadata.clusterName",
@@ -1798,10 +1931,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/clusters/{uid}/metadata/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/clusters/{uid}/metadata/json": {
       "get": {
         "operationId": "Metadata",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "uid",
@@ -1822,9 +1961,17 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/credentials/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/credentials/json": {
       "get": {
         "operationId": "List",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -1836,12 +1983,48 @@
         "tags": [
           "Credentials"
         ]
+      },
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha2CredentialCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha2CredentialCreateResponse"
+            }
+          }
+        },
+        "tags": [
+          "Credentials"
+        ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/credentials/{credential.metadata.name}/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/credentials/{credential.metadata.name}/json": {
       "put": {
         "operationId": "Update",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "credential.metadata.name",
@@ -1870,10 +2053,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/credentials/{name}/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/credentials/{name}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "name",
@@ -1898,6 +2087,12 @@
         "parameters": [
           {
             "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
             "name": "name",
             "required": true,
             "type": "string"
@@ -1908,38 +2103,6 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/v1alpha2CredentialDescribeResponse"
-            }
-          }
-        },
-        "tags": [
-          "Credentials"
-        ]
-      }
-    },
-    "/_appscode/api/cloud/v1alpha2/{owner}/credentials/json": {
-      "post": {
-        "operationId": "Create",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "owner",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1alpha2CredentialCreateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1alpha2CredentialCreateResponse"
             }
           }
         },

@@ -12,7 +12,6 @@ import (
 	"io"
 	"net/http"
 
-	"appscode.com/api/dtypes"
 	"github.com/golang/protobuf/proto"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/utilities"
@@ -30,8 +29,26 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 func request_Credentials_List_0(ctx context.Context, marshaler runtime.Marshaler, client CredentialsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq dtypes.VoidRequest
+	var protoReq CredentialListRequest
 	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	msg, err := client.List(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -48,6 +65,17 @@ func request_Credentials_Describe_0(ctx context.Context, marshaler runtime.Marsh
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -111,6 +139,17 @@ func request_Credentials_Update_0(ctx context.Context, marshaler runtime.Marshal
 		_   = err
 	)
 
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
+
 	val, ok = pathParams["credential.metadata.name"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "credential.metadata.name")
@@ -128,7 +167,7 @@ func request_Credentials_Update_0(ctx context.Context, marshaler runtime.Marshal
 }
 
 var (
-	filter_Credentials_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_Credentials_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"owner": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_Credentials_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client CredentialsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -141,6 +180,17 @@ func request_Credentials_Delete_0(ctx context.Context, marshaler runtime.Marshal
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -163,12 +213,30 @@ func request_Credentials_Delete_0(ctx context.Context, marshaler runtime.Marshal
 }
 
 var (
-	filter_Clusters_List_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_Clusters_List_0 = &utilities.DoubleArray{Encoding: map[string]int{"owner": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
 func request_Clusters_List_0(ctx context.Context, marshaler runtime.Marshaler, client ClustersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ClusterListRequest
 	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Clusters_List_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
@@ -189,6 +257,17 @@ func request_Clusters_Describe_0(ctx context.Context, marshaler runtime.Marshale
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -214,6 +293,24 @@ func request_Clusters_Create_0(ctx context.Context, marshaler runtime.Marshaler,
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
+
 	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -234,6 +331,17 @@ func request_Clusters_Update_0(ctx context.Context, marshaler runtime.Marshaler,
 		_   = err
 	)
 
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
+
 	val, ok = pathParams["cluster.metadata.name"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster.metadata.name")
@@ -251,7 +359,7 @@ func request_Clusters_Update_0(ctx context.Context, marshaler runtime.Marshaler,
 }
 
 var (
-	filter_Clusters_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_Clusters_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"owner": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_Clusters_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client ClustersClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -264,6 +372,17 @@ func request_Clusters_Delete_0(ctx context.Context, marshaler runtime.Marshaler,
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -300,6 +419,17 @@ func request_Clusters_Apply_0(ctx context.Context, marshaler runtime.Marshaler, 
 		_   = err
 	)
 
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
+
 	val, ok = pathParams["name"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
@@ -326,6 +456,17 @@ func request_Clusters_ClientConfig_0(ctx context.Context, marshaler runtime.Mars
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -354,6 +495,17 @@ func request_Clusters_Metadata_0(ctx context.Context, marshaler runtime.Marshale
 		_   = err
 	)
 
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
+
 	val, ok = pathParams["uid"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
@@ -371,7 +523,7 @@ func request_Clusters_Metadata_0(ctx context.Context, marshaler runtime.Marshale
 }
 
 var (
-	filter_NodeGroups_List_0 = &utilities.DoubleArray{Encoding: map[string]int{"clusterName": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_NodeGroups_List_0 = &utilities.DoubleArray{Encoding: map[string]int{"owner": 0, "clusterName": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_NodeGroups_List_0(ctx context.Context, marshaler runtime.Marshaler, client NodeGroupsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -384,6 +536,17 @@ func request_NodeGroups_List_0(ctx context.Context, marshaler runtime.Marshaler,
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["clusterName"]
 	if !ok {
@@ -415,6 +578,17 @@ func request_NodeGroups_Describe_0(ctx context.Context, marshaler runtime.Marsha
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["clusterName"]
 	if !ok {
@@ -458,6 +632,17 @@ func request_NodeGroups_Create_0(ctx context.Context, marshaler runtime.Marshale
 		_   = err
 	)
 
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
+
 	val, ok = pathParams["nodeGroup.metadata.clusterName"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "nodeGroup.metadata.clusterName")
@@ -488,6 +673,17 @@ func request_NodeGroups_Update_0(ctx context.Context, marshaler runtime.Marshale
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["nodeGroup.metadata.clusterName"]
 	if !ok {
@@ -527,6 +723,17 @@ func request_NodeGroups_Delete_0(ctx context.Context, marshaler runtime.Marshale
 		_   = err
 	)
 
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
+
 	val, ok = pathParams["clusterName"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "clusterName")
@@ -555,7 +762,7 @@ func request_NodeGroups_Delete_0(ctx context.Context, marshaler runtime.Marshale
 }
 
 var (
-	filter_SSHConfig_Get_0 = &utilities.DoubleArray{Encoding: map[string]int{"clusterName": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_SSHConfig_Get_0 = &utilities.DoubleArray{Encoding: map[string]int{"owner": 0, "clusterName": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_SSHConfig_Get_0(ctx context.Context, marshaler runtime.Marshaler, client SSHConfigClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -568,6 +775,17 @@ func request_SSHConfig_Get_0(ctx context.Context, marshaler runtime.Marshaler, c
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["clusterName"]
 	if !ok {
@@ -776,15 +994,15 @@ func RegisterCredentialsHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_Credentials_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cloud", "v1alpha2", "credentials", "json"}, ""))
+	pattern_Credentials_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "credentials", "json"}, ""))
 
-	pattern_Credentials_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "credentials", "name", "json"}, ""))
+	pattern_Credentials_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "credentials", "name", "json"}, ""))
 
 	pattern_Credentials_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "credentials", "json"}, ""))
 
-	pattern_Credentials_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "credentials", "credential.metadata.name", "json"}, ""))
+	pattern_Credentials_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "credentials", "credential.metadata.name", "json"}, ""))
 
-	pattern_Credentials_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "credentials", "name", "json"}, ""))
+	pattern_Credentials_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "credentials", "name", "json"}, ""))
 )
 
 var (
@@ -1073,21 +1291,21 @@ func RegisterClustersHandlerClient(ctx context.Context, mux *runtime.ServeMux, c
 }
 
 var (
-	pattern_Clusters_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "json"}, ""))
+	pattern_Clusters_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "json"}, ""))
 
-	pattern_Clusters_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "name", "json"}, ""))
+	pattern_Clusters_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "name", "json"}, ""))
 
-	pattern_Clusters_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "json"}, ""))
+	pattern_Clusters_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "json"}, ""))
 
-	pattern_Clusters_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "cluster.metadata.name", "json"}, ""))
+	pattern_Clusters_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "cluster.metadata.name", "json"}, ""))
 
-	pattern_Clusters_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "name", "json"}, ""))
+	pattern_Clusters_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "name", "json"}, ""))
 
-	pattern_Clusters_Apply_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "name", "actions", "apply", "json"}, ""))
+	pattern_Clusters_Apply_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8, 2, 9}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "name", "actions", "apply", "json"}, ""))
 
-	pattern_Clusters_ClientConfig_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "name", "client-config", "json"}, ""))
+	pattern_Clusters_ClientConfig_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "name", "client-config", "json"}, ""))
 
-	pattern_Clusters_Metadata_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "uid", "metadata", "json"}, ""))
+	pattern_Clusters_Metadata_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "uid", "metadata", "json"}, ""))
 )
 
 var (
@@ -1295,15 +1513,15 @@ func RegisterNodeGroupsHandlerClient(ctx context.Context, mux *runtime.ServeMux,
 }
 
 var (
-	pattern_NodeGroups_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "clusterName", "nodegroups", "json"}, ""))
+	pattern_NodeGroups_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "clusterName", "nodegroups", "json"}, ""))
 
-	pattern_NodeGroups_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "clusterName", "nodegroups", "name", "json"}, ""))
+	pattern_NodeGroups_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8, 2, 9}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "clusterName", "nodegroups", "name", "json"}, ""))
 
-	pattern_NodeGroups_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "nodeGroup.metadata.clusterName", "nodegroups", "json"}, ""))
+	pattern_NodeGroups_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "nodeGroup.metadata.clusterName", "nodegroups", "json"}, ""))
 
-	pattern_NodeGroups_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "nodeGroup.metadata.clusterName", "nodegroups", "nodeGroup.metadata.name", "json"}, ""))
+	pattern_NodeGroups_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8, 2, 9}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "nodeGroup.metadata.clusterName", "nodegroups", "nodeGroup.metadata.name", "json"}, ""))
 
-	pattern_NodeGroups_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "clusterName", "nodegroups", "name", "json"}, ""))
+	pattern_NodeGroups_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8, 2, 9}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "clusterName", "nodegroups", "name", "json"}, ""))
 )
 
 var (
@@ -1389,7 +1607,7 @@ func RegisterSSHConfigHandlerClient(ctx context.Context, mux *runtime.ServeMux, 
 }
 
 var (
-	pattern_SSHConfig_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "clusters", "clusterName", "ssh", "json"}, ""))
+	pattern_SSHConfig_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "clusters", "clusterName", "ssh", "json"}, ""))
 )
 
 var (
