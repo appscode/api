@@ -112,5 +112,6 @@ message CertificateDeployRequest {
   string uid = 1;
   string secret_name = 2;
   string cluster_name = 3;
-  string owner = 4;
+  string namespace = 4;
+  string owner = 5;
 }

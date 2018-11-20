@@ -1,0 +1,219 @@
+{
+  "basePath": "/",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "v1alpha2Auth": {
+      "properties": {
+        "auth_type": {
+          "type": "string"
+        },
+        "secret": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2ClusterApplyRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2DescribeRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        },
+        "timestamp": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2DescribeResponse": {
+      "properties": {
+        "logs": {
+          "items": {
+            "$ref": "#/definitions/v1alpha2Log"
+          },
+          "type": "array"
+        },
+        "op": {
+          "$ref": "#/definitions/v1alpha2Operation"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2Log": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "timestamp": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2LogDescribeRequest": {
+      "properties": {
+        "log_id": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2LogDescribeResponse": {
+      "properties": {
+        "log": {
+          "$ref": "#/definitions/v1alpha2Log"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2Metadata": {
+      "description": "Metadata holds other on request or operation specific data\nthat could be used inside that operation.\nAn welldefined message instead of a map is used\nso that the data fields can be explicitly defined with\nits own data type. Resolves data convertions.",
+      "properties": {
+        "author_name": {
+          "type": "string"
+        },
+        "author_phid": {
+          "description": "PHID of the user who requested this operation.",
+          "type": "string"
+        },
+        "purchase_phids": {
+          "description": "Contains PurchasePHID is this is a purchase request.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2Operation": {
+      "properties": {
+        "auth": {
+          "$ref": "#/definitions/v1alpha2Auth"
+        },
+        "cluster_apply_request": {
+          "$ref": "#/definitions/v1alpha2ClusterApplyRequest"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1alpha2Metadata"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/v1alpha2OperationType"
+        }
+      },
+      "title": "Next Id: 22",
+      "type": "object"
+    },
+    "v1alpha2OperationType": {
+      "default": "UNKNOWN",
+      "enum": [
+        "UNKNOWN",
+        "CLUSTER_APPLY",
+        "NAMESPACE_CREATE"
+      ],
+      "title": "Next Id: 18",
+      "type": "string"
+    }
+  },
+  "host": "api.appscode.com",
+  "info": {
+    "title": "operation.proto",
+    "version": "1alpha2"
+  },
+  "paths": {
+    "/_appscode/api/operation/v1alpha2/operations/{phid}/json": {
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "phid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "int64",
+            "in": "query",
+            "name": "timestamp",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha2DescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Operations"
+        ]
+      }
+    },
+    "/_appscode/api/operation/v1alpha2/operations/{phid}/logs/{log_id}/json": {
+      "get": {
+        "operationId": "DescribeLog",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "phid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "log_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha2LogDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Operations"
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
+}

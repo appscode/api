@@ -68,6 +68,9 @@
         "cluster_name": {
           "type": "string"
         },
+        "namespace": {
+          "type": "string"
+        },
         "owner": {
           "type": "string"
         },

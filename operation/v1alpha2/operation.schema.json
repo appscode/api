@@ -1,0 +1,37 @@
+{
+  "definitions": {
+    "v1alpha2ClusterApplyRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2DescribeRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha2LogDescribeRequest": {
+      "properties": {
+        "log_id": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
