@@ -3,8 +3,6 @@
     "v1alpha2BucketListRequest": {
       "properties": {
         "cloud_credential": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "cluster_uid": {
@@ -17,8 +15,6 @@
           "type": "string"
         },
         "secret_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "secret_namespace": {
@@ -30,8 +26,6 @@
     "v1alpha2RegionListRequest": {
       "properties": {
         "cloud_credential": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -40,8 +34,6 @@
     "v1alpha2ZoneListRequest": {
       "properties": {
         "cloud_credential": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "region": {

@@ -45,12 +45,9 @@ func init() {
       "type": "array"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "update": {
@@ -72,12 +69,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "size_gb": {
@@ -121,7 +115,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "raw": {
@@ -156,7 +149,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "raw": {
@@ -178,7 +170,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "provider": {
@@ -197,7 +188,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     }
   },
@@ -215,12 +205,9 @@ func init() {
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "type": {
@@ -256,11 +243,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
       "type": "string"
     },
     "type": {
@@ -291,12 +276,9 @@ func init() {
       "type": "array"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "update": {
@@ -327,8 +309,6 @@ func init() {
       "type": "boolean"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "selector": {
@@ -351,12 +331,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -375,7 +352,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "size_gb": {
@@ -418,7 +394,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "plugin": {
@@ -446,12 +421,9 @@ func init() {
       "type": "boolean"
     },
     "name": {
-      "maxLength": 63,
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "raw": {
@@ -476,13 +448,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "targetType": {

@@ -45,13 +45,9 @@ func init() {
       "type": "array"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -76,13 +72,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -129,8 +121,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -168,8 +158,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -194,8 +182,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "provider": {
@@ -214,8 +200,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -236,13 +220,9 @@ func init() {
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "type": {
@@ -281,13 +261,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -321,13 +297,9 @@ func init() {
       "type": "array"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -361,8 +333,6 @@ func init() {
       "type": "boolean"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -388,13 +358,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -416,8 +382,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "size_gb": {
@@ -460,8 +424,6 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -492,13 +454,9 @@ func init() {
       "type": "boolean"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {
@@ -526,13 +484,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "owner": {

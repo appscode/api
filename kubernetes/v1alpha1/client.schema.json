@@ -18,12 +18,9 @@
           "type": "array"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "update": {
@@ -55,7 +52,6 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "raw": {
@@ -76,11 +72,9 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
           "type": "string"
         },
         "type": {
@@ -101,12 +95,9 @@
           "type": "boolean"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "raw": {
@@ -127,7 +118,6 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "size_gb": {
@@ -156,7 +146,6 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "provider": {
@@ -179,12 +168,9 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "type": {
@@ -208,8 +194,6 @@
           "type": "boolean"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "selector": {
@@ -228,12 +212,9 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "size_gb": {
@@ -248,12 +229,9 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -271,7 +249,6 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "plugin": {
@@ -289,7 +266,6 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         }
       },
@@ -315,13 +291,9 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "targetType": {
@@ -351,12 +323,9 @@
           "type": "array"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "update": {
@@ -374,7 +343,6 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
           "type": "string"
         },
         "raw": {

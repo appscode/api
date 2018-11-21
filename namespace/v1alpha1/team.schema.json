@@ -55,8 +55,6 @@
           "type": "array"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "password": {
@@ -77,8 +75,6 @@
     "v1alpha1GetRequest": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -87,8 +83,6 @@
     "v1alpha1IsAvailableRequest": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },
