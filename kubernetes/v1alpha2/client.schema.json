@@ -135,6 +135,9 @@
         "name": {
           "type": "string"
         },
+        "owner": {
+          "type": "string"
+        },
         "size_gb": {
           "type": "integer"
         },
@@ -147,6 +150,9 @@
     "v1alpha2DiskDeleteRequest": {
       "properties": {
         "cluster": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         },
         "uid": {
@@ -163,6 +169,9 @@
         "name": {
           "type": "string"
         },
+        "owner": {
+          "type": "string"
+        },
         "provider": {
           "type": "string"
         }
@@ -172,6 +181,9 @@
     "v1alpha2DiskListRequest": {
       "properties": {
         "cluster": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         }
       },

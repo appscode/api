@@ -735,9 +735,7 @@ func (m *KubeResourceList) String() string            { return proto.CompactText
 func (*KubeResourceList) ProtoMessage()               {}
 func (*KubeResourceList) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{12} }
 
-type isKubeResourceList_Resource interface {
-	isKubeResourceList_Resource()
-}
+type isKubeResourceList_Resource interface{ isKubeResourceList_Resource() }
 
 type KubeResourceList_Certificates_ struct {
 	Certificates *KubeResourceList_Certificates `protobuf:"bytes,3,opt,name=certificates,oneof"`
@@ -2835,9 +2833,7 @@ func (m *KubeResource) String() string            { return proto.CompactTextStri
 func (*KubeResource) ProtoMessage()               {}
 func (*KubeResource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{13} }
 
-type isKubeResource_Resource interface {
-	isKubeResource_Resource()
-}
+type isKubeResource_Resource interface{ isKubeResource_Resource() }
 
 type KubeResource_Certificate struct {
 	Certificate *Certificate `protobuf:"bytes,5,opt,name=certificate,oneof"`
@@ -7869,9 +7865,7 @@ func (m *StashBackend) String() string            { return proto.CompactTextStri
 func (*StashBackend) ProtoMessage()               {}
 func (*StashBackend) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{61} }
 
-type isStashBackend_Storage interface {
-	isStashBackend_Storage()
-}
+type isStashBackend_Storage interface{ isStashBackend_Storage() }
 
 type StashBackend_Local struct {
 	Local *StashBackend_LocalSpec `protobuf:"bytes,2,opt,name=local,oneof"`
@@ -10063,9 +10057,7 @@ func (m *SnapshotStorageSpec) String() string            { return proto.CompactT
 func (*SnapshotStorageSpec) ProtoMessage()               {}
 func (*SnapshotStorageSpec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{83} }
 
-type isSnapshotStorageSpec_Storage interface {
-	isSnapshotStorageSpec_Storage()
-}
+type isSnapshotStorageSpec_Storage interface{ isSnapshotStorageSpec_Storage() }
 
 type SnapshotStorageSpec_Local struct {
 	Local *SnapshotStorageSpec_LocalSpec `protobuf:"bytes,2,opt,name=local,oneof"`

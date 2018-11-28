@@ -329,30 +329,30 @@
       "url": "/_appscode/api/cloud/v1alpha2/{owner}/credentials/json"
     }
   },
+  "/_appscode/api/cloud/v1alpha2/*/disks/*/json": {
+    "delete": {
+      "file": "/kubernetes/v1alpha2/client.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/{owner}/disks/{uid}/json"
+    },
+    "get": {
+      "file": "/kubernetes/v1alpha2/client.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/{owner}/disks/{name}/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha2/*/disks/json": {
+    "get": {
+      "file": "/kubernetes/v1alpha2/client.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/{owner}/disks/json"
+    },
+    "post": {
+      "file": "/kubernetes/v1alpha2/client.proto",
+      "url": "/_appscode/api/cloud/v1alpha2/{owner}/disks/json"
+    }
+  },
   "/_appscode/api/cloud/v1alpha2/buckets/json": {
     "get": {
       "file": "/cloud/v1alpha2/metadata.proto",
       "url": "/_appscode/api/cloud/v1alpha2/buckets/json"
-    }
-  },
-  "/_appscode/api/cloud/v1alpha2/disks/*/json": {
-    "delete": {
-      "file": "/kubernetes/v1alpha2/client.proto",
-      "url": "/_appscode/api/cloud/v1alpha2/disks/{uid}/json"
-    },
-    "get": {
-      "file": "/kubernetes/v1alpha2/client.proto",
-      "url": "/_appscode/api/cloud/v1alpha2/disks/{name}/json"
-    }
-  },
-  "/_appscode/api/cloud/v1alpha2/disks/json": {
-    "get": {
-      "file": "/kubernetes/v1alpha2/client.proto",
-      "url": "/_appscode/api/cloud/v1alpha2/disks/json"
-    },
-    "post": {
-      "file": "/kubernetes/v1alpha2/client.proto",
-      "url": "/_appscode/api/cloud/v1alpha2/disks/json"
     }
   },
   "/_appscode/api/cloud/v1alpha2/regions/*/zones/json": {

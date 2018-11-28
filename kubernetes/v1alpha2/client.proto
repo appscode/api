@@ -143,7 +143,7 @@ service Clients {
 service Disks {
   rpc List(DiskListRequest) returns (DiskListResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/cloud/v1alpha2/disks/json"
+      get: "/_appscode/api/cloud/v1alpha2/{owner}/disks/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -152,7 +152,7 @@ service Disks {
 
   rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
     option (google.api.http) = {
-      get: "/_appscode/api/cloud/v1alpha2/disks/{name}/json"
+      get: "/_appscode/api/cloud/v1alpha2/{owner}/disks/{name}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -161,7 +161,7 @@ service Disks {
 
   rpc Create(DiskCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/_appscode/api/cloud/v1alpha2/disks/json"
+      post: "/_appscode/api/cloud/v1alpha2/{owner}/disks/json"
       body: "*"
     };
     option (appscode.api.cors) = {
@@ -171,7 +171,7 @@ service Disks {
 
   rpc Delete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/_appscode/api/cloud/v1alpha2/disks/{uid}/json"
+      delete: "/_appscode/api/cloud/v1alpha2/{owner}/disks/{uid}/json"
     };
     option (appscode.api.cors) = {
       enable: true
@@ -1670,6 +1670,7 @@ message Certificate {
 
 message DiskListRequest {
   string cluster=1;
+  string owner = 2;
 }
 
 message DiskListResponse {
@@ -1680,6 +1681,7 @@ message DiskDescribeRequest {
   string cluster = 1;
   string name = 2;
   string provider = 3;
+  string owner = 4;
 }
 
 message DiskDescribeResponse {
@@ -1692,11 +1694,13 @@ message DiskCreateRequest {
   string zone = 3;
   string disk_type = 4;
   int64 size_gb = 5;
+  string owner = 6;
 }
 
 message DiskDeleteRequest {
   string cluster = 1;
   string uid = 2;
+  string owner = 3;
 }
 
 message Disk {

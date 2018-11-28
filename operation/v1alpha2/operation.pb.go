@@ -275,9 +275,7 @@ func (m *Operation) String() string            { return proto.CompactTextString(
 func (*Operation) ProtoMessage()               {}
 func (*Operation) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
 
-type isOperation_Request interface {
-	isOperation_Request()
-}
+type isOperation_Request interface{ isOperation_Request() }
 
 type Operation_ClusterApplyRequest struct {
 	ClusterApplyRequest *appscode_cloud_v1alpha2.ClusterApplyRequest `protobuf:"bytes,1,opt,name=cluster_apply_request,json=clusterApplyRequest,oneof"`

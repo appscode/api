@@ -789,12 +789,30 @@ func request_Clients_ReverseIndex_0(ctx context.Context, marshaler runtime.Marsh
 }
 
 var (
-	filter_Disks_List_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_Disks_List_0 = &utilities.DoubleArray{Encoding: map[string]int{"owner": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
 func request_Disks_List_0(ctx context.Context, marshaler runtime.Marshaler, client DisksClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DiskListRequest
 	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Disks_List_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
@@ -806,7 +824,7 @@ func request_Disks_List_0(ctx context.Context, marshaler runtime.Marshaler, clie
 }
 
 var (
-	filter_Disks_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_Disks_Describe_0 = &utilities.DoubleArray{Encoding: map[string]int{"owner": 0, "name": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_Disks_Describe_0(ctx context.Context, marshaler runtime.Marshaler, client DisksClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -819,6 +837,17 @@ func request_Disks_Describe_0(ctx context.Context, marshaler runtime.Marshaler, 
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["name"]
 	if !ok {
@@ -848,13 +877,31 @@ func request_Disks_Create_0(ctx context.Context, marshaler runtime.Marshaler, cl
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
+
 	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
 var (
-	filter_Disks_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"uid": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_Disks_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"owner": 0, "uid": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
 func request_Disks_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client DisksClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
@@ -867,6 +914,17 @@ func request_Disks_Delete_0(ctx context.Context, marshaler runtime.Marshaler, cl
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["owner"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "owner")
+	}
+
+	protoReq.Owner, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "owner", err)
+	}
 
 	val, ok = pathParams["uid"]
 	if !ok {
@@ -1520,13 +1578,13 @@ func RegisterDisksHandlerClient(ctx context.Context, mux *runtime.ServeMux, clie
 }
 
 var (
-	pattern_Disks_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cloud", "v1alpha2", "disks", "json"}, ""))
+	pattern_Disks_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "disks", "json"}, ""))
 
-	pattern_Disks_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "disks", "name", "json"}, ""))
+	pattern_Disks_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "disks", "name", "json"}, ""))
 
-	pattern_Disks_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cloud", "v1alpha2", "disks", "json"}, ""))
+	pattern_Disks_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "disks", "json"}, ""))
 
-	pattern_Disks_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha2", "disks", "uid", "json"}, ""))
+	pattern_Disks_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha2", "owner", "disks", "uid", "json"}, ""))
 )
 
 var (

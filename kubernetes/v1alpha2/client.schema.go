@@ -94,6 +94,9 @@ func init() {
   "properties": {
     "cluster": {
       "type": "string"
+    },
+    "owner": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -182,6 +185,9 @@ func init() {
       "type": "string"
     },
     "name": {
+      "type": "string"
+    },
+    "owner": {
       "type": "string"
     },
     "provider": {
@@ -384,6 +390,9 @@ func init() {
     "name": {
       "type": "string"
     },
+    "owner": {
+      "type": "string"
+    },
     "size_gb": {
       "type": "integer"
     },
@@ -400,6 +409,9 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
+      "type": "string"
+    },
+    "owner": {
       "type": "string"
     },
     "uid": {

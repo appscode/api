@@ -2226,44 +2226,21 @@
     },
     "v1CSIPersistentVolumeSource": {
       "properties": {
-        "controllerPublishSecretRef": {
-          "$ref": "#/definitions/v1SecretReference",
-          "title": "ControllerPublishSecretRef is a reference to the secret object containing\nsensitive information to pass to the CSI driver to complete the CSI\nControllerPublishVolume and ControllerUnpublishVolume calls.\nThis field is optional, and  may be empty if no secret is required. If the\nsecret object contains more than one secret, all secrets are passed.\n+optional"
-        },
         "driver": {
           "description": "Driver is the name of the driver to use for this volume.\nRequired.",
           "type": "string"
-        },
-        "fsType": {
-          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\".\n+optional",
-          "type": "string"
-        },
-        "nodePublishSecretRef": {
-          "$ref": "#/definitions/v1SecretReference",
-          "title": "NodePublishSecretRef is a reference to the secret object containing\nsensitive information to pass to the CSI driver to complete the CSI\nNodePublishVolume and NodeUnpublishVolume calls.\nThis field is optional, and  may be empty if no secret is required. If the\nsecret object contains more than one secret, all secrets are passed.\n+optional"
-        },
-        "nodeStageSecretRef": {
-          "$ref": "#/definitions/v1SecretReference",
-          "title": "NodeStageSecretRef is a reference to the secret object containing sensitive\ninformation to pass to the CSI driver to complete the CSI NodeStageVolume\nand NodeStageVolume and NodeUnstageVolume calls.\nThis field is optional, and  may be empty if no secret is required. If the\nsecret object contains more than one secret, all secrets are passed.\n+optional"
         },
         "readOnly": {
           "format": "boolean",
           "title": "Optional: The value to pass to ControllerPublishVolumeRequest.\nDefaults to false (read/write).\n+optional",
           "type": "boolean"
         },
-        "volumeAttributes": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "title": "Attributes of the volume to publish.\n+optional",
-          "type": "object"
-        },
         "volumeHandle": {
           "description": "VolumeHandle is the unique volume name returned by the CSI volume\nplugin\u2019s CreateVolume to refer to the volume on all subsequent calls.\nRequired.",
           "type": "string"
         }
       },
-      "title": "Represents storage that is managed by an external CSI volume driver (Beta feature)",
+      "title": "Represents storage that is managed by an external CSI volume driver",
       "type": "object"
     },
     "v1CephFSPersistentVolumeSource": {
@@ -2334,29 +2311,6 @@
       },
       "type": "object"
     },
-    "v1CinderPersistentVolumeSource": {
-      "description": "Represents a cinder volume resource in Openstack.\nA Cinder volume must exist before mounting to a container.\nThe volume must also be in the same region as the kubelet.\nCinder volumes support ownership management and SELinux relabeling.",
-      "properties": {
-        "fsType": {
-          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md\n+optional",
-          "type": "string"
-        },
-        "readOnly": {
-          "format": "boolean",
-          "title": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\nMore info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md\n+optional",
-          "type": "boolean"
-        },
-        "secretRef": {
-          "$ref": "#/definitions/v1SecretReference",
-          "title": "Optional: points to a secret object containing parameters used to connect\nto OpenStack.\n+optional"
-        },
-        "volumeID": {
-          "title": "volume id used to identify the volume in cinder\nMore info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1CinderVolumeSource": {
       "description": "Represents a cinder volume resource in Openstack.\nA Cinder volume must exist before mounting to a container.\nThe volume must also be in the same region as the kubelet.\nCinder volumes support ownership management and SELinux relabeling.",
       "properties": {
@@ -2368,10 +2322,6 @@
           "format": "boolean",
           "title": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\nMore info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md\n+optional",
           "type": "boolean"
-        },
-        "secretRef": {
-          "$ref": "#/definitions/corev1LocalObjectReference",
-          "title": "Optional: points to a secret object containing parameters used to connect\nto OpenStack.\n+optional"
         },
         "volumeID": {
           "title": "volume id used to identify the volume in cinder\nMore info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
@@ -2529,38 +2479,8 @@
       },
       "type": "object"
     },
-    "v1FlexPersistentVolumeSource": {
-      "description": "FlexPersistentVolumeSource represents a generic persistent volume resource that is\nprovisioned/attached using an exec based plugin.",
-      "properties": {
-        "driver": {
-          "description": "Driver is the name of the driver to use for this volume.",
-          "type": "string"
-        },
-        "fsType": {
-          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script.\n+optional",
-          "type": "string"
-        },
-        "options": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "title": "Optional: Extra command options if any.\n+optional",
-          "type": "object"
-        },
-        "readOnly": {
-          "format": "boolean",
-          "title": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\n+optional",
-          "type": "boolean"
-        },
-        "secretRef": {
-          "$ref": "#/definitions/v1SecretReference",
-          "title": "Optional: SecretRef is reference to the secret object containing\nsensitive information to pass to the plugin scripts. This may be\nempty if no secret object is specified. If the secret object\ncontains more than one secret, all secrets are passed to the plugin\nscripts.\n+optional"
-        }
-      },
-      "type": "object"
-    },
     "v1FlexVolumeSource": {
-      "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.",
+      "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an alpha feature and may change in future.",
       "properties": {
         "driver": {
           "description": "Driver is the name of the driver to use for this volume.",
@@ -2628,7 +2548,7 @@
       "type": "object"
     },
     "v1GitRepoVolumeSource": {
-      "description": "Represents a volume that is populated with the contents of a git repository.\nGit repo volumes do not support ownership management.\nGit repo volumes support SELinux relabeling.\n\nDEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an\nEmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir\ninto the Pod's container.",
+      "description": "Represents a volume that is populated with the contents of a git repository.\nGit repo volumes do not support ownership management.\nGit repo volumes support SELinux relabeling.",
       "properties": {
         "directory": {
           "title": "Target directory name.\nMust not contain or start with '..'.  If '.' is supplied, the volume directory will be the\ngit repository.  Otherwise, if specified, the volume will contain the git repository in\nthe subdirectory with the given name.\n+optional",
@@ -2813,16 +2733,12 @@
     },
     "v1LocalVolumeSource": {
       "properties": {
-        "fsType": {
-          "title": "Filesystem type to mount.\nIt applies only when the Path is a block device.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". The default value is to auto-select a fileystem if unspecified.\n+optional",
-          "type": "string"
-        },
         "path": {
-          "description": "The full path to the volume on the node.\nIt can be either a directory or block device (disk, partition, ...).",
+          "title": "The full path to the volume on the node\nFor alpha, this path must be a directory\nOnce block as a source is supported, then this path can point to a block device",
           "type": "string"
         }
       },
-      "title": "Local represents directly-attached storage with node affinity (Beta feature)",
+      "title": "Local represents directly-attached storage with node affinity",
       "type": "object"
     },
     "v1NFSVolumeSource": {
@@ -2879,20 +2795,20 @@
           "title": "CephFS represents a Ceph FS mount on the host that shares a pod's lifetime\n+optional"
         },
         "cinder": {
-          "$ref": "#/definitions/v1CinderPersistentVolumeSource",
+          "$ref": "#/definitions/v1CinderVolumeSource",
           "title": "Cinder represents a cinder volume attached and mounted on kubelets host machine\nMore info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md\n+optional"
         },
         "csi": {
           "$ref": "#/definitions/v1CSIPersistentVolumeSource",
-          "title": "CSI represents storage that handled by an external CSI driver (Beta feature).\n+optional"
+          "title": "CSI represents storage that handled by an external CSI driver\n+optional"
         },
         "fc": {
           "$ref": "#/definitions/v1FCVolumeSource",
           "title": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.\n+optional"
         },
         "flexVolume": {
-          "$ref": "#/definitions/v1FlexPersistentVolumeSource",
-          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.\n+optional"
+          "$ref": "#/definitions/v1FlexVolumeSource",
+          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future.\n+optional"
         },
         "flocker": {
           "$ref": "#/definitions/v1FlockerVolumeSource",
@@ -3118,7 +3034,7 @@
     "v1ScaleIOPersistentVolumeSource": {
       "properties": {
         "fsType": {
-          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\".\nDefault is \"xfs\"\n+optional",
+          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\n+optional",
           "type": "string"
         },
         "gateway": {
@@ -3144,7 +3060,7 @@
           "type": "boolean"
         },
         "storageMode": {
-          "title": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned.\nDefault is ThinProvisioned.\n+optional",
+          "title": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned.\n+optional",
           "type": "string"
         },
         "storagePool": {
@@ -3166,7 +3082,7 @@
     "v1ScaleIOVolumeSource": {
       "properties": {
         "fsType": {
-          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\".\nDefault is \"xfs\".\n+optional",
+          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\n+optional",
           "type": "string"
         },
         "gateway": {
@@ -3192,7 +3108,7 @@
           "type": "boolean"
         },
         "storageMode": {
-          "title": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned.\nDefault is ThinProvisioned.\n+optional",
+          "title": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned.\n+optional",
           "type": "string"
         },
         "storagePool": {
@@ -3273,25 +3189,6 @@
       },
       "type": "object"
     },
-    "v1ServiceAccountTokenProjection": {
-      "description": "ServiceAccountTokenProjection represents a projected service account token\nvolume. This projection can be used to insert a service account token into\nthe pods runtime filesystem for use against APIs (Kubernetes API Server or\notherwise).",
-      "properties": {
-        "audience": {
-          "title": "Audience is the intended audience of the token. A recipient of a token\nmust identify itself with an identifier specified in the audience of the\ntoken, and otherwise should reject the token. The audience defaults to the\nidentifier of the apiserver.\n+optional",
-          "type": "string"
-        },
-        "expirationSeconds": {
-          "format": "int64",
-          "title": "ExpirationSeconds is the requested duration of validity of the service\naccount token. As the token approaches expiration, the kubelet volume\nplugin will proactively rotate the service account token. The kubelet will\nstart trying to rotate the token if the token is older than 80 percent of\nits time to live or if the token is older than 24 hours.Defaults to 1 hour\nand must be at least 10 minutes.\n+optional",
-          "type": "integer"
-        },
-        "path": {
-          "description": "Path is the path relative to the mount point of the file to project the\ntoken into.",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1StorageOSPersistentVolumeSource": {
       "description": "Represents a StorageOS persistent volume resource.",
       "properties": {
@@ -3350,19 +3247,15 @@
       "properties": {
         "configMap": {
           "$ref": "#/definitions/v1ConfigMapProjection",
-          "title": "information about the configMap data to project\n+optional"
+          "title": "information about the configMap data to project"
         },
         "downwardAPI": {
           "$ref": "#/definitions/v1DownwardAPIProjection",
-          "title": "information about the downwardAPI data to project\n+optional"
+          "title": "information about the downwardAPI data to project"
         },
         "secret": {
           "$ref": "#/definitions/v1SecretProjection",
-          "title": "information about the secret data to project\n+optional"
-        },
-        "serviceAccountToken": {
-          "$ref": "#/definitions/v1ServiceAccountTokenProjection",
-          "title": "information about the serviceAccountToken data to project\n+optional"
+          "title": "information about the secret data to project"
         }
       },
       "title": "Projection that may be projected along with other supported volume types",
@@ -3409,7 +3302,7 @@
         },
         "flexVolume": {
           "$ref": "#/definitions/v1FlexVolumeSource",
-          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin.\n+optional"
+          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future.\n+optional"
         },
         "flocker": {
           "$ref": "#/definitions/v1FlockerVolumeSource",
@@ -3421,7 +3314,7 @@
         },
         "gitRepo": {
           "$ref": "#/definitions/v1GitRepoVolumeSource",
-          "title": "GitRepo represents a git repository at a particular revision.\nDEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an\nEmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir\ninto the Pod's container.\n+optional"
+          "title": "GitRepo represents a git repository at a particular revision.\n+optional"
         },
         "glusterfs": {
           "$ref": "#/definitions/v1GlusterfsVolumeSource",
@@ -3974,6 +3867,9 @@
         "name": {
           "type": "string"
         },
+        "owner": {
+          "type": "string"
+        },
         "size_gb": {
           "format": "int64",
           "type": "integer"
@@ -3989,6 +3885,9 @@
         "cluster": {
           "type": "string"
         },
+        "owner": {
+          "type": "string"
+        },
         "uid": {
           "type": "string"
         }
@@ -4001,6 +3900,9 @@
           "type": "string"
         },
         "name": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         },
         "provider": {
@@ -4020,6 +3922,9 @@
     "v1alpha2DiskListRequest": {
       "properties": {
         "cluster": {
+          "type": "string"
+        },
+        "owner": {
           "type": "string"
         }
       },
@@ -6499,10 +6404,16 @@
     "version": "1alpha2"
   },
   "paths": {
-    "/_appscode/api/cloud/v1alpha2/disks/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/disks/json": {
       "get": {
         "operationId": "List",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "query",
             "name": "cluster",
@@ -6526,6 +6437,12 @@
         "operationId": "Create",
         "parameters": [
           {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "body",
             "required": true,
@@ -6547,10 +6464,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/disks/{name}/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/disks/{name}/json": {
       "get": {
         "operationId": "Describe",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "name",
@@ -6583,10 +6506,16 @@
         ]
       }
     },
-    "/_appscode/api/cloud/v1alpha2/disks/{uid}/json": {
+    "/_appscode/api/cloud/v1alpha2/{owner}/disks/{uid}/json": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "uid",
